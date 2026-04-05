@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ECLAT - Boutique Beaut&eacute; &amp; Wellness Premium. Outils et soins tendance pour une peau &eacute;clatante. Livraison rapide en France.">
+    <meta name="keywords" content="beaut&eacute;, wellness, skincare, masque LED, K-beauty, soins visage, roller quartz, France">
+    <title>ECLAT - Beaut&eacute; &amp; Wellness Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>Livraison offerte d&egrave;s 49&euro; d'achat &bull; Paiement en 3x sans frais</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">&Eacute;CLAT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#bestsellers">Best-sellers</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#about">Notre histoire</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartBtn" aria-label="Panier">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <span class="hero-tag">Nouvelle collection printemps 2026</span>
+            <h1>Votre rituel beaut&eacute; <br><em>r&eacute;invent&eacute;</em></h1>
+            <p>D&eacute;couvrez nos outils et soins wellness s&eacute;lectionn&eacute;s par des experts. Technologie innovante, r&eacute;sultats visibles.</p>
+            <div class="hero-buttons">
+                <a href="#produits" class="btn btn-primary">D&eacute;couvrir la collection</a>
+                <a href="#bestsellers" class="btn btn-outline">Nos best-sellers</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>15K+</strong>
+                    <span>Clientes satisfaites</span>
+                </div>
+                <div class="stat">
+                    <strong>4.8/5</strong>
+                    <span>Note moyenne</span>
+                </div>
+                <div class="stat">
+                    <strong>48h</strong>
+                    <span>Livraison express</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-circle"></div>
+            <div class="hero-product-display">
+                <div class="floating-card card-1">
+                    <span class="fc-icon">&#9734;</span>
+                    <span>Best-seller</span>
+                </div>
+                <div class="floating-card card-2">
+                    <span class="fc-icon">&#10003;</span>
+                    <span>Dermatologiquement test&eacute;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badge-grid">
+                <div class="badge-item">
+                    <div class="badge-icon">&#128666;</div>
+                    <h4>Livraison rapide</h4>
+                    <p>48h en France m&eacute;tropolitaine</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">&#128274;</div>
+                    <h4>Paiement s&eacute;curis&eacute;</h4>
+                    <p>Stripe &bull; CB &bull; PayPal</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">&#8634;</div>
+                    <h4>Retours gratuits</h4>
+                    <p>30 jours pour changer d'avis</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">&#127807;</div>
+                    <h4>&Eacute;co-responsable</h4>
+                    <p>Emballages recycl&eacute;s</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="produits">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre s&eacute;lection</span>
+                <h2>Produits tendance</h2>
+                <p>Chaque produit est s&eacute;lectionn&eacute; pour son efficacit&eacute; prouv&eacute;e et sa qualit&eacute; premium.</p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">Tous</button>
+                <button class="filter-btn" data-category="visage">Visage</button>
+                <button class="filter-btn" data-category="corps">Corps</button>
+                <button class="filter-btn" data-category="outils">Outils</button>
+                <button class="filter-btn" data-category="aromatherapie">Aromath&eacute;rapie</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="bestsellers-section" id="bestsellers">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Les plus aim&eacute;s</span>
+                <h2>Nos best-sellers</h2>
+            </div>
+            <div class="bestseller-showcase" id="bestsellerShowcase">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Reviews -->
+    <section class="reviews-section" id="avis">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Avis clients</span>
+                <h2>Elles adorent &Eacute;CLAT</h2>
+                <p>Plus de 15 000 clientes satisfaites en France</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">&laquo; Le masque LED a compl&egrave;tement transform&eacute; ma peau en 3 semaines. Je ne peux plus m'en passer ! &raquo;</p>
+                    <div class="review-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <strong>Marie L.</strong>
+                            <span>Paris &bull; Achat v&eacute;rifi&eacute;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">&laquo; Livraison ultra rapide et le roller en quartz est magnifique. Qualit&eacute; au top pour le prix. &raquo;</p>
+                    <div class="review-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <strong>Sophie D.</strong>
+                            <span>Lyon &bull; Achat v&eacute;rifi&eacute;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">&laquo; J'ai offert le set coiffure 7-en-1 &agrave; ma soeur, elle est fan. Le packaging est sublime. Merci &Eacute;CLAT ! &raquo;</p>
+                    <div class="review-author">
+                        <div class="author-avatar">C</div>
+                        <div>
+                            <strong>Camille R.</strong>
+                            <span>Bordeaux &bull; Achat v&eacute;rifi&eacute;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                    <p class="review-text">&laquo; Tr&egrave;s satisfaite du s&eacute;rum vitamine C. Ma peau est plus lumineuse d&egrave;s la premi&egrave;re semaine. &raquo;</p>
+                    <div class="review-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <strong>Am&eacute;lie T.</strong>
+                            <span>Marseille &bull; Achat v&eacute;rifi&eacute;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram / Social Section -->
+    <section class="social-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">@eclat.beaute</span>
+                <h2>Rejoignez la communaut&eacute;</h2>
+                <p>Partagez vos routines avec #MonRituelEclat</p>
+            </div>
+            <div class="social-grid">
+                <div class="social-card" style="background: linear-gradient(135deg, #f5e6d3, #e8c8a9);">
+                    <span class="social-tag">Routine du matin</span>
+                </div>
+                <div class="social-card" style="background: linear-gradient(135deg, #d4e6f1, #a9cce3);">
+                    <span class="social-tag">Self-care dimanche</span>
+                </div>
+                <div class="social-card" style="background: linear-gradient(135deg, #d5f5e3, #a9dfbf);">
+                    <span class="social-tag">Avant / Apr&egrave;s</span>
+                </div>
+                <div class="social-card" style="background: linear-gradient(135deg, #f9e5f5, #e8a9d4);">
+                    <span class="social-tag">Unboxing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">Notre histoire</span>
+                    <h2>La beaut&eacute; accessible, sans compromis</h2>
+                    <p>&Eacute;CLAT est n&eacute;e d'une conviction simple : chaque personne m&eacute;rite d'acc&eacute;der aux meilleurs outils et soins beaut&eacute;, sans se ruiner.</p>
+                    <p>Nous s&eacute;lectionnons chaque produit avec exigence, testons tout en conditions r&eacute;elles, et ne proposons que ce qui fonctionne vraiment.</p>
+                    <div class="about-values">
+                        <div class="value-item">
+                            <strong>Qualit&eacute; premium</strong>
+                            <span>Chaque produit est test&eacute; et approuv&eacute;</span>
+                        </div>
+                        <div class="value-item">
+                            <strong>&Eacute;co-responsable</strong>
+                            <span>Emballages recycl&eacute;s et recyclables</span>
+                        </div>
+                        <div class="value-item">
+                            <strong>Cruelty-free</strong>
+                            <span>Aucun test sur les animaux</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-shape"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2>-10% sur votre premi&egrave;re commande</h2>
+                <p>Inscrivez-vous &agrave; notre newsletter et recevez nos conseils beaut&eacute; + un code promo exclusif.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Votre adresse email" required>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="footer-logo">&Eacute;CLAT</h3>
+                    <p>Beaut&eacute; &amp; Wellness Premium</p>
+                    <p>Votre rituel beaut&eacute; r&eacute;invent&eacute;.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Boutique</h4>
+                    <ul>
+                        <li><a href="#produits">Tous les produits</a></li>
+                        <li><a href="#bestsellers">Best-sellers</a></li>
+                        <li><a href="#produits">Nouveaut&eacute;s</a></li>
+                        <li><a href="#produits">Coffrets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Aide</h4>
+                    <ul>
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                        <li><a href="pages/livraison.html">Livraison</a></li>
+                        <li><a href="pages/retours.html">Retours &amp; remboursements</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>L&eacute;gal</h4>
+                    <ul>
+                        <li><a href="pages/cgv.html">CGV</a></li>
+                        <li><a href="pages/mentions-legales.html">Mentions l&eacute;gales</a></li>
+                        <li><a href="pages/confidentialite.html">Politique de confidentialit&eacute;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 &Eacute;CLAT. Tous droits r&eacute;serv&eacute;s.</p>
+                <div class="payment-icons">
+                    <span class="payment-badge">CB</span>
+                    <span class="payment-badge">Visa</span>
+                    <span class="payment-badge">Mastercard</span>
+                    <span class="payment-badge">PayPal</span>
+                    <span class="payment-badge">3x sans frais</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Votre panier</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <p>Votre panier est vide</p>
+                <a href="#produits" class="btn btn-outline">D&eacute;couvrir nos produits</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-subtotal">
+                <span>Sous-total</span>
+                <strong id="cartSubtotal">0,00 &euro;</strong>
+            </div>
+            <div class="cart-shipping">
+                <span>Livraison</span>
+                <span id="cartShipping">Calcul&eacute;e &agrave; l'&eacute;tape suivante</span>
+            </div>
+            <button class="btn btn-primary btn-full" id="checkoutBtn">Commander</button>
+            <p class="cart-secure">&#128274; Paiement 100% s&eacute;curis&eacute;</p>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="product-modal" id="productModal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

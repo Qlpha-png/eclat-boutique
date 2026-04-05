@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - &Eacute;CLAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .legal-page { max-width: 800px; margin: 40px auto; padding: 0 24px 80px; }
+        .legal-page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 32px; }
+        .faq-item { border: 1px solid var(--color-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+        .faq-question { width: 100%; text-align: left; padding: 20px 24px; font-size: 0.95rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: var(--color-white); transition: var(--transition); }
+        .faq-question:hover { background: var(--color-bg-alt); }
+        .faq-arrow { transition: transform 0.3s; font-size: 1.2rem; color: var(--color-secondary); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer-inner { padding: 0 24px 20px; font-size: 0.9rem; color: var(--color-text-light); line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; Retour</a>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Questions Fr&eacute;quentes</h1>
+
+        <div class="faq-item">
+            <button class="faq-question">Quels sont les d&eacute;lais de livraison ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Nous proposons 3 options : Point Relais (3-5 jours, gratuit d&egrave;s 49&euro;), Domicile Colissimo (2-4 jours, 3,90&euro;) et Express Chronopost (24-48h, 7,90&euro;). Toutes les commandes pass&eacute;es avant 14h sont exp&eacute;di&eacute;es le jour m&ecirc;me.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Comment retourner un produit ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Vous disposez de 30 jours pour retourner un produit (au lieu des 14 jours l&eacute;gaux). Contactez-nous &agrave; contact@eclat-beaute.fr, nous vous enverrons une &eacute;tiquette de retour pr&eacute;pay&eacute;e. Le remboursement est effectu&eacute; sous 5 jours ouvr&eacute;s apr&egrave;s r&eacute;ception du retour.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Les paiements sont-ils s&eacute;curis&eacute;s ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Oui, tous les paiements sont trait&eacute;s par Stripe, leader mondial du paiement en ligne. Vos donn&eacute;es bancaires sont chiffr&eacute;es et ne sont jamais stock&eacute;es sur nos serveurs. Nous acceptons CB, Visa, Mastercard et PayPal.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Peut-on payer en plusieurs fois ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Oui ! Le paiement en 3 fois sans frais est disponible pour toute commande sup&eacute;rieure &agrave; 50&euro;. L'option appara&icirc;t automatiquement lors du paiement.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Les produits sont-ils test&eacute;s sur les animaux ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Non, jamais. Tous nos produits sont certifi&eacute;s cruelty-free. Nous s&eacute;lectionnons uniquement des fournisseurs qui respectent cette politique. Nous sommes &eacute;galement engag&eacute;s dans une d&eacute;marche &eacute;co-responsable avec des emballages recycl&eacute;s et recyclables.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Comment utiliser le masque LED ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Nettoyez votre visage, appliquez votre s&eacute;rum habituel, puis posez le masque LED pendant 15 minutes. Choisissez la couleur selon votre besoin : rouge (anti-&acirc;ge), bleu (anti-acn&eacute;), vert (teint uniforme). Utilisez-le 3-4 fois par semaine pour des r&eacute;sultats optimaux. Des r&eacute;sultats sont visibles d&egrave;s 2-3 semaines.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Livrez-vous en dehors de la France ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Oui, nous livrons en France m&eacute;tropolitaine, Belgique, Suisse et Luxembourg. Les frais et d&eacute;lais varient selon la destination. Contactez-nous pour toute autre destination.
+            </div></div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Proposez-vous des codes promo ? <span class="faq-arrow">&#9660;</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner">
+                Oui ! Inscrivez-vous &agrave; notre newsletter pour recevoir un code -10% sur votre premi&egrave;re commande (code BIENVENUE10). Nous proposons r&eacute;guli&egrave;rement des offres exclusives &agrave; nos abonn&eacute;s.
+            </div></div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
