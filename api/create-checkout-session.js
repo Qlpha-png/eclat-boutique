@@ -18,9 +18,9 @@ module.exports = async (req, res) => {
         return res.status(500).json({ error: 'STRIPE_SECRET_KEY not set', debug: 'env missing' });
     }
 
-    // Debug: check key format without exposing it
-    if (!secretKey.startsWith('sk_test_')) {
-        return res.status(500).json({ error: 'Invalid key format', debug: 'key does not start with sk_test_', keyStart: secretKey.substring(0, 10) });
+    // Check key format
+    if (!secretKey.startsWith('sk_test_') && !secretKey.startsWith('sk_live_')) {
+        return res.status(500).json({ error: 'Invalid key format' });
     }
 
     try {
