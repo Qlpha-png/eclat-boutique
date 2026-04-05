@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productsGrid.innerHTML = filtered.map(product => `
             <div class="product-card fade-in" data-id="${product.id}">
                 <div class="product-image">
-                    <span class="product-emoji">${product.emoji}</span>
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
                         product.badge === 'new' ? 'Nouveau' :
                         product.badge === 'promo' ? 'Promo' : 'Best-seller'
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bestsellerShowcase.innerHTML = bestsellers.map(product => `
             <div class="bestseller-card fade-in">
                 <div class="bestseller-image">
-                    <span class="product-emoji">${product.emoji}</span>
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
                     <div class="bestseller-rank">#${product.bestsellerRank}</div>
                 </div>
                 <div class="bestseller-info">
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modalContent.innerHTML = `
             <div class="modal-grid">
-                <div class="modal-image">${product.emoji}</div>
+                <div class="modal-image"><img src="${product.image}" alt="${product.name}"></div>
                 <div class="modal-details">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
                     <h2 class="product-name">${product.name}</h2>
