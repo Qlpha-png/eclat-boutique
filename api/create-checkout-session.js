@@ -14,7 +14,15 @@ module.exports = async (req, res) => {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const secretKey = process.env.STRIPE_SECRET_KEY;
+    if (!secretKey) {
+        return res.status(500).json({ error: 'Stripe is not configured on server' });
+    }
+
+    const stripe = new Stripe(secretKey, {
+        apiVersion: '2024-12-18.acacia',
+        timeout: 10000,
+    });
 
     try {
         const { items, shipping_cost, customer_email } = req.body;
