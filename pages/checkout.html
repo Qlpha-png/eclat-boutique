@@ -192,11 +192,53 @@
             radio.addEventListener('change', updateTotals);
         });
 
-        // Form submit
-        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+        // Form submit - Stripe Checkout
+        document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // In production, this would redirect to Stripe Checkout
-            alert('Redirection vers le paiement s\u00e9curis\u00e9 Stripe...\n\nNote : Pour activer le paiement r\u00e9el, connectez votre compte Stripe.');
+
+            if (cart.isEmpty()) return;
+
+            const payBtn = document.getElementById('payBtn');
+            payBtn.disabled = true;
+            payBtn.textContent = 'Redirection vers le paiement...';
+
+            // Calculate shipping cost
+            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+            let shippingCost = 0;
+            shippingRadios.forEach(radio => {
+                if (radio.checked) {
+                    if (radio.value === 'home') shippingCost = 3.90;
+                    else if (radio.value === 'express') shippingCost = 7.90;
+                }
+            });
+            const subtotal = cart.getTotal();
+            if (subtotal >= 49 && shippingCost !== 7.90) shippingCost = 0;
+
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: cart.items,
+                        shipping_cost: shippingCost,
+                        customer_email: email
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Erreur lors de la cr\u00e9ation du paiement');
+                }
+            } catch (error) {
+                alert('Erreur : ' + error.message + '\n\nV\u00e9rifiez que Stripe est bien configur\u00e9.');
+                payBtn.disabled = false;
+                payBtn.innerHTML = '&#128274; Payer maintenant';
+            }
         });
 
         renderCheckout();
