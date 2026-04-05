@@ -6,9 +6,46 @@
     <meta name="description" content="ECLAT - Boutique Beaut&eacute; &amp; Wellness Premium. Outils et soins tendance pour une peau &eacute;clatante. Livraison rapide en France.">
     <meta name="keywords" content="beaut&eacute;, wellness, skincare, masque LED, K-beauty, soins visage, roller quartz, France">
     <title>ECLAT - Beaut&eacute; &amp; Wellness Premium</title>
+
+    <!-- SEO & Social -->
+    <meta property="og:title" content="&Eacute;CLAT - Beaut&eacute; &amp; Wellness Premium">
+    <meta property="og:description" content="Outils et soins wellness s&eacute;lectionn&eacute;s par des experts. Masques LED, K-beauty, rollers quartz. Livraison rapide en France.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eclat-beaute.fr">
+    <meta property="og:image" content="https://eclat-beaute.fr/img/og-image.png">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eclat-beaute.fr">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#10024;</text></svg>">
+
+    <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "\u00c9CLAT",
+        "description": "Boutique Beaut\u00e9 & Wellness Premium - Outils et soins tendance",
+        "url": "https://eclat-beaute.fr",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "15000"
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -358,6 +395,17 @@
     <div class="product-modal" id="productModal">
         <button class="modal-close" id="modalClose">&times;</button>
         <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <!-- Cookie Banner RGPD -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>Nous utilisons des cookies pour am&eacute;liorer votre exp&eacute;rience. En continuant, vous acceptez notre <a href="pages/confidentialite.html">politique de confidentialit&eacute;</a>.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept">Accepter</button>
+                <button class="btn btn-sm btn-outline" id="cookieRefuse">Refuser</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/products.js"></script>

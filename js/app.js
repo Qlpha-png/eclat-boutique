@@ -346,6 +346,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Cookie Banner ---
+    const cookieBanner = document.getElementById('cookieBanner');
+    if (cookieBanner) {
+        const cookieChoice = localStorage.getItem('eclat_cookies');
+        if (cookieChoice) {
+            cookieBanner.classList.add('hidden');
+        }
+        document.getElementById('cookieAccept')?.addEventListener('click', () => {
+            localStorage.setItem('eclat_cookies', 'accepted');
+            cookieBanner.classList.add('hidden');
+        });
+        document.getElementById('cookieRefuse')?.addEventListener('click', () => {
+            localStorage.setItem('eclat_cookies', 'refused');
+            cookieBanner.classList.add('hidden');
+        });
+    }
+
     // --- Initialize ---
     renderProducts();
     renderBestsellers();

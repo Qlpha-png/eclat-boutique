@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/checkout.html
+
+Sitemap: https://eclat-beaute.fr/sitemap.xml
