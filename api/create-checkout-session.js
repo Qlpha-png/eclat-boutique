@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const secretKey = process.env.STRIPE_SECRET_KEY;
+    const secretKey = (process.env.STRIPE_SECRET_KEY || '').trim();
     if (!secretKey) {
         return res.status(500).json({ error: 'STRIPE_SECRET_KEY not set', debug: 'env missing' });
     }
