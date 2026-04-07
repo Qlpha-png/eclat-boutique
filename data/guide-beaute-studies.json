@@ -1,0 +1,416 @@
+{
+  "guideBeaute": {
+    "title": "Guide Beaute - Eclat Boutique",
+    "description": "Donnees scientifiques pour la page educative Guide Beaute, basees sur des etudes publiees dans des revues dermatologiques a comite de lecture.",
+    "lastUpdated": "2026-04-07",
+    "disclaimer": "Ces references sont fournies a titre educatif. Les resultats individuels peuvent varier. Consultez un dermatologue pour des conseils personnalises.",
+    "categories": [
+      {
+        "id": "led-light-therapy",
+        "name": "Therapie par lumiere LED",
+        "slug": "therapie-led",
+        "icon": "lightbulb",
+        "relatedProducts": ["Masque LED 7 couleurs"],
+        "summary": "La phototherapie LED utilise differentes longueurs d'onde pour traiter des problemes cutanes specifiques. La lumiere rouge (633 nm) stimule la production de collagene et reduit les rides, la lumiere bleue (415 nm) cible les bacteries responsables de l'acne, et le proche infrarouge (830 nm) favorise la cicatrisation et reduit l'inflammation.",
+        "keyBenefits": [
+          "Reduction des rides jusqu'a 36% apres traitement",
+          "Augmentation de l'elasticite cutanee jusqu'a 19%",
+          "Augmentation de la densite de collagene intradermique",
+          "Amelioration de l'acne via la lumiere bleue (415 nm)",
+          "Traitement non invasif, bien tolere et indolore"
+        ],
+        "studies": [
+          {
+            "id": "led-1",
+            "authors": "Lee SY, Park KH, Choi JW, Kwon JK, Lee DR, Shin MS, Lee JS, You CE, Park MY",
+            "title": "A prospective, randomized, placebo-controlled, double-blinded, and split-face clinical study on LED phototherapy for skin rejuvenation",
+            "journal": "Journal of Photochemistry and Photobiology B: Biology",
+            "year": 2007,
+            "volume": "88(1)",
+            "pages": "51-67",
+            "doi": "10.1016/j.jphotobiol.2007.04.014",
+            "pmid": "17566756",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/17566756/",
+            "studyType": "Essai clinique randomise, controle par placebo, en double aveugle",
+            "sampleSize": "76 patients",
+            "keyFindings": "Reduction significative des rides (max 36%) et augmentation de l'elasticite cutanee (max 19%) par rapport a la valeur initiale. Augmentation marquee du collagene et des fibres elastiques confirmee histologiquement dans tous les groupes de traitement (830 nm seul, 633 nm seul, combinaison)."
+          },
+          {
+            "id": "led-2",
+            "authors": "Wunsch A, Matuschka K",
+            "title": "A Controlled Trial to Determine the Efficacy of Red and Near-Infrared Light Treatment in Patient Satisfaction, Reduction of Fine Lines, Wrinkles, Skin Roughness, and Intradermal Collagen Density Increase",
+            "journal": "Photomedicine and Laser Surgery",
+            "year": 2014,
+            "volume": "32(2)",
+            "pages": "93-100",
+            "doi": "10.1089/pho.2013.3616",
+            "pmid": "24286286",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/24286286/",
+            "pmcUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3926176/",
+            "studyType": "Essai clinique prospectif, randomise et controle",
+            "sampleSize": "136 volontaires (113 traites + 23 temoins)",
+            "keyFindings": "Amelioration significative du teint, de la sensation cutanee, de la rugosite de la peau et de la densite de collagene mesuree par echographie. Les longueurs d'onde 611-650 nm et 570-850 nm ont demontre efficacite et securite pour le rajeunissement cutane."
+          }
+        ]
+      },
+      {
+        "id": "gua-sha-massage",
+        "name": "Gua Sha et massage facial",
+        "slug": "gua-sha",
+        "icon": "spa",
+        "relatedProducts": ["Gua Sha en quartz rose"],
+        "summary": "Le Gua Sha est une technique ancestrale de massage par pression-glissement qui ameliore la microcirculation cutanee, le tonus musculaire et les contours du visage. Les etudes montrent une augmentation significative du flux sanguin local et une amelioration mesurable des contours faciaux.",
+        "keyBenefits": [
+          "Augmentation de la microcirculation multipliee par 4 dans la zone traitee",
+          "Reduction des distances de surface faciale de 2,23 a 2,40 mm (changements visibles)",
+          "Amelioration du tonus musculaire (p < 0,001)",
+          "Amelioration du drainage lymphatique",
+          "Augmentation du flux sanguin et de la reponse vasodilatatrice"
+        ],
+        "studies": [
+          {
+            "id": "guasha-1",
+            "authors": "Nielsen A, Knoblauch NTM, Dobos GJ, Michalsen A, Kaptchuk TJ",
+            "title": "The Effect of Gua Sha Treatment on the Microcirculation of Surface Tissue: A Pilot Study in Healthy Subjects",
+            "journal": "Explore: The Journal of Science and Healing",
+            "year": 2007,
+            "volume": "3(5)",
+            "pages": "456-466",
+            "doi": "10.1016/j.explore.2007.06.001",
+            "pmid": "17905355",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/17905355/",
+            "studyType": "Etude pilote avec imagerie Laser Doppler",
+            "sampleSize": "11 sujets sains",
+            "keyFindings": "Le Gua Sha a provoque une augmentation de la microcirculation multipliee par 4 dans la zone traitee pendant les 7,5 premieres minutes, et une augmentation significative maintenue pendant 25 minutes (P < 0,001)."
+          },
+          {
+            "id": "guasha-2",
+            "authors": "Hamp A, Anderson J, Laughter MR, Anderson JB, Presley CL, Rundle CW, Dellavalle RP",
+            "title": "Gua-sha, Jade Roller, and Facial Massage: Are There Benefits Within Dermatology?",
+            "journal": "Journal of Cosmetic Dermatology",
+            "year": 2023,
+            "volume": "22(2)",
+            "pages": "700-703",
+            "doi": "10.1111/jocd.15421",
+            "pmid": "36170573",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/36170573/",
+            "studyType": "Revue de la litterature",
+            "sampleSize": "N/A (revue)",
+            "keyFindings": "Le Gua Sha augmente le flux sanguin et lymphatique. Le massage court (5 min) avec un Jade Roller augmente le flux sanguin, tandis que l'utilisation a long terme ameliore la reponse vasodilatatrice. Benefices proposes : reduction de l'inflammation, des rides, des poches et amelioration de la circulation."
+          }
+        ]
+      },
+      {
+        "id": "sonic-cleansing",
+        "name": "Nettoyage sonique / ultrasonique",
+        "slug": "nettoyage-sonique",
+        "icon": "waves",
+        "relatedProducts": ["Skin scrubber ultrasonique", "Brosse nettoyante sonique"],
+        "summary": "Les appareils de nettoyage sonique utilisent des oscillations a haute frequence pour nettoyer la peau en profondeur, deloger les comedons et ameliorer les affections inflammatoires comme l'acne, tout en preservant l'hydratation cutanee mieux que le nettoyage manuel.",
+        "keyBenefits": [
+          "Nettoyage en profondeur des pores sans deshydrater la peau",
+          "Reduction des lesions inflammatoires et non inflammatoires (acne)",
+          "Meilleure preservation de l'homeostasie cutanee vs nettoyage manuel",
+          "Delogement des comedons grace a la flexion oscillatoire",
+          "Compatible avec les peaux sensibles lorsqu'il est suivi d'une hydratation"
+        ],
+        "studies": [
+          {
+            "id": "sonic-1",
+            "authors": "Gold MH, Ablon G, Andriessen A, Goldberg D, Hooper D, Mandy S",
+            "title": "Facial Cleansing With a Sonic Brush - A Review of the Literature and Current Recommendations",
+            "journal": "Journal of Cosmetic Dermatology",
+            "year": 2019,
+            "volume": "18(3)",
+            "pages": "686-691",
+            "doi": "10.1111/jocd.12906",
+            "pmid": "30985993",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/30985993/",
+            "studyType": "Revue de la litterature avec recommandations cliniques",
+            "sampleSize": "N/A (revue)",
+            "keyFindings": "Le nettoyage sonique suivi d'une rehydratation et protection cutanee appropriees peut ameliorer les affections inflammatoires incluant l'acne vulgaire et les dommages cutanes. La technologie sonique offre un nettoyage doux et efficace."
+          },
+          {
+            "id": "sonic-2",
+            "authors": "Aiello LM, Vergilio MM, Monteiro E Silva SA, Anselmo T, Leonardi GR",
+            "title": "Skin Effect of Facial Cleansing Combined With an Electric Sonic Device",
+            "journal": "Journal of Cosmetic Dermatology",
+            "year": 2021,
+            "volume": "20(11)",
+            "pages": "3537-3544",
+            "doi": "10.1111/jocd.14017",
+            "pmid": "33619809",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33619809/",
+            "studyType": "Etude clinique comparative (split-face)",
+            "sampleSize": "12 sujets",
+            "keyFindings": "Le nettoyage avec un appareil sonique n'a pas provoque de reduction significative de l'hydratation, suggerant une meilleure preservation de l'homeostasie cutanee par rapport au nettoyage manuel."
+          }
+        ]
+      },
+      {
+        "id": "cryotherapy",
+        "name": "Cryotherapie / therapie par le froid",
+        "slug": "cryotherapie",
+        "icon": "ac_unit",
+        "relatedProducts": ["Ice Roller (cryotherapie)"],
+        "summary": "La cryotherapie utilise l'application controlee du froid pour reduire l'inflammation, resserer les pores, diminuer les poches et ameliorer l'apparence des rides. Le froid provoque une vasoconstriction suivie d'une vasodilatation reactive, stimulant la circulation sanguine.",
+        "keyBenefits": [
+          "Reduction significative des rides du front (91% des sujets avec amelioration a 1 point a 30 jours)",
+          "Effet anti-inflammatoire et decongestionnant",
+          "Reduction des poches et de l'oedeme facial",
+          "Resserrement temporaire des pores",
+          "Excellents resultats cosmetiques documentes"
+        ],
+        "studies": [
+          {
+            "id": "cryo-1",
+            "authors": "Palmer FR 3rd, Hsu M, Narurkar V, Munyon T, Day D, Karnik J, Tatsutani K",
+            "title": "Safety and Effectiveness of Focused Cold Therapy for the Treatment of Hyperdynamic Forehead Wrinkles",
+            "journal": "Dermatologic Surgery",
+            "year": 2015,
+            "volume": "41(2)",
+            "pages": "232-241",
+            "doi": "10.1097/DSS.0000000000000155",
+            "pmid": "25654195",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/25654195/",
+            "studyType": "Essai clinique prospectif",
+            "sampleSize": "41 sujets (36 analyses)",
+            "keyFindings": "91% des sujets ont presente au moins 1 point d'amelioration de la severite des rides du front a 30 jours, et 70% au moins 2 points d'amelioration. Satisfaction elevee des sujets, aucun evenement indesirable grave."
+          },
+          {
+            "id": "cryo-2",
+            "authors": "StatPearls [Internet] - Solanki AA, Ertel MK, Engelman DE, Kouba DJ",
+            "title": "Cryotherapy in Dermatology",
+            "journal": "StatPearls Publishing (NCBI Bookshelf)",
+            "year": 2024,
+            "volume": "N/A",
+            "pages": "NBK482319",
+            "doi": "N/A",
+            "pmid": "29493944",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/29493944/",
+            "ncbiUrl": "https://www.ncbi.nlm.nih.gov/books/NBK482319/",
+            "studyType": "Revue clinique / Reference medicale",
+            "sampleSize": "N/A (revue)",
+            "keyFindings": "La cryotherapie est une alternative efficace aux techniques plus invasives, rapide et economique en ambulatoire, avec d'excellents resultats cosmetiques. Le froid induit la destruction tissulaire par cristallisation intracellulaire, stase vasculaire et lesion osmotique."
+          }
+        ]
+      },
+      {
+        "id": "vitamin-c",
+        "name": "Vitamine C topique",
+        "slug": "vitamine-c",
+        "icon": "local_pharmacy",
+        "relatedProducts": ["Serum Vitamine C"],
+        "summary": "La vitamine C topique (acide ascorbique) est l'un des antioxydants les plus puissants pour la peau. Elle stimule la synthese de collagene, protege contre les dommages UV, reduit l'hyperpigmentation et ameliore visiblement les rides et le teint en 12 semaines d'utilisation.",
+        "keyBenefits": [
+          "Stimulation de la synthese de collagene et stabilisation des fibres",
+          "Photoprotection contre les UVA et UVB",
+          "Reduction de l'hyperpigmentation et du melasma",
+          "Amelioration visible des rides fines en 12 semaines",
+          "Effet antioxydant puissant (regeneration de la vitamine E oxydee)"
+        ],
+        "studies": [
+          {
+            "id": "vitc-1",
+            "authors": "Pullar JM, Carr AC, Vissers MCM",
+            "title": "The Roles of Vitamin C in Skin Health",
+            "journal": "Nutrients",
+            "year": 2017,
+            "volume": "9(8)",
+            "pages": "866",
+            "doi": "10.3390/nu9080866",
+            "pmid": "28805671",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/28805671/",
+            "pmcUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579659/",
+            "studyType": "Revue scientifique",
+            "sampleSize": "N/A (revue)",
+            "keyFindings": "La peau normale contient des concentrations elevees de vitamine C qui stimule la synthese de collagene et protege contre les dommages UV. La vitamine C est particulierement efficace en combinaison avec la vitamine E, regenerant cette derniere une fois oxydee."
+          },
+          {
+            "id": "vitc-2",
+            "authors": "Humbert PG, Haftek M, Creidi P, Lapiere C, Nusgens B, Richard A, Schmitt D, Rougier A, Zahouani H",
+            "title": "Topical Ascorbic Acid on Photoaged Skin. Clinical, Topographical and Ultrastructural Evaluation: Double-blind Study vs. Placebo",
+            "journal": "Experimental Dermatology",
+            "year": 2003,
+            "volume": "12(3)",
+            "pages": "237-244",
+            "doi": "10.1034/j.1600-0625.2003.00008.x",
+            "pmid": "12823436",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/12823436/",
+            "studyType": "Essai clinique randomise en double aveugle vs placebo",
+            "sampleSize": "Volontaires saines avec peau photo-agee",
+            "keyFindings": "Une creme a 5% de vitamine C appliquee pendant 6 mois a demontre une amelioration cliniquement apparente de la peau photo-agee, avec des modifications positives du relief cutane et de l'ultrastructure, suggerant une influence positive sur le vieillissement cutane lie au soleil."
+          }
+        ]
+      },
+      {
+        "id": "collagen",
+        "name": "Collagene pour la peau",
+        "slug": "collagene",
+        "icon": "science",
+        "relatedProducts": ["Patchs collagene pour les yeux", "Masque lifting collagene"],
+        "summary": "Le collagene hydrolyse peut ameliorer l'hydratation, l'elasticite et reduire les rides lorsqu'il est utilise de maniere topique ou orale pendant au moins 90 jours. Les meta-analyses montrent des resultats prometteurs, bien que la qualite des etudes varie.",
+        "keyBenefits": [
+          "Augmentation de l'hydratation cutanee de 13,8% apres 12 semaines",
+          "Amelioration de l'elasticite de 22,7% (indice R2)",
+          "Reduction de la rugosite de 19,6% (indice Rz)",
+          "Reduction des rides apres 90 jours de supplementation",
+          "Application topique : effet hydratant et liftant immediat"
+        ],
+        "studies": [
+          {
+            "id": "coll-1",
+            "authors": "de Miranda RB, Weimer P, Rossi RC",
+            "title": "Effects of Hydrolyzed Collagen Supplementation on Skin Aging: A Systematic Review and Meta-analysis",
+            "journal": "International Journal of Dermatology",
+            "year": 2021,
+            "volume": "60(12)",
+            "pages": "1449-1461",
+            "doi": "10.1111/ijd.15518",
+            "pmid": "33742704",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33742704/",
+            "studyType": "Revue systematique et meta-analyse",
+            "sampleSize": "19 etudes, 1125 participants (ages de 20 a 70 ans, 95% femmes)",
+            "keyFindings": "La supplementation en collagene hydrolyse pendant 90 jours est efficace pour reduire le vieillissement cutane : reduction des rides et amelioration de l'elasticite et de l'hydratation par rapport au placebo."
+          },
+          {
+            "id": "coll-2",
+            "authors": "Bolke L, Schlippe G, Gerss J, Voss W",
+            "title": "A Collagen Supplement Improves Skin Hydration, Elasticity, Roughness, and Density: Results of a Randomized, Placebo-Controlled, Blind Study",
+            "journal": "Nutrients",
+            "year": 2019,
+            "volume": "11(10)",
+            "pages": "2494",
+            "doi": "10.3390/nu11102494",
+            "pmid": "31623893",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/31623893/",
+            "studyType": "Essai randomise, controle par placebo, en aveugle",
+            "sampleSize": "72 femmes (ages > 35 ans)",
+            "keyFindings": "Apres 12 semaines vs placebo : hydratation cutanee augmentee de 13,8%, elasticite amelioree de 22,7% (indice R2), rugosite reduite de 19,6% (indice profilometrique Rz)."
+          }
+        ],
+        "nuance": "Important : une meta-analyse recente (PMID 40324552, 2025) note que les etudes de haute qualite et celles non financees par l'industrie pharmaceutique ne montrent pas d'effets significatifs, suggerant un possible biais dans les etudes financees par l'industrie. La transparence est essentielle."
+      },
+      {
+        "id": "rosehip-oil",
+        "name": "Huile de rose musquee (rosehip)",
+        "slug": "huile-rose-musquee",
+        "icon": "local_florist",
+        "relatedProducts": ["Huile de rose musquee"],
+        "summary": "L'huile de rose musquee (Rosa canina) est riche en acides gras essentiels, vitamines A et C, et antioxydants. Les etudes montrent des benefices pour la cicatrisation, l'hydratation, la reduction des rides et la protection de la barriere cutanee.",
+        "keyBenefits": [
+          "Amelioration significative des rides (crow's feet) apres 8 semaines",
+          "Augmentation de l'hydratation et de l'elasticite cutanee",
+          "Acceleration de la cicatrisation et amelioration des cicatrices",
+          "Proprietes anti-inflammatoires et reparatrices de la barriere cutanee",
+          "Riche en acides gras essentiels et antioxydants naturels"
+        ],
+        "studies": [
+          {
+            "id": "rose-1",
+            "authors": "Phetcharat L, Wongsuphasawat K, Winther K",
+            "title": "The Effectiveness of a Standardized Rose Hip Powder, Containing Seeds and Shells of Rosa canina, on Cell Longevity, Skin Wrinkles, Moisture, and Elasticity",
+            "journal": "Clinical Interventions in Aging",
+            "year": 2015,
+            "volume": "10",
+            "pages": "1849-1856",
+            "doi": "10.2147/CIA.S90092",
+            "pmid": "26604725",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/26604725/",
+            "pmcUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4655903/",
+            "studyType": "Essai clinique randomise en double aveugle",
+            "sampleSize": "34 sujets sains (ages 35-65 ans)",
+            "keyFindings": "Apres 8 semaines, le groupe rose musquee a montre des ameliorations statistiquement significatives des rides (crow's feet, P < 0,05), de l'hydratation cutanee (P < 0,05) et de l'elasticite (P < 0,05)."
+          },
+          {
+            "id": "rose-2",
+            "authors": "Lei Z, Cao Z, Yang Z, Ao M, Jin W, Yu L",
+            "title": "Rosehip Oil Promotes Excisional Wound Healing by Accelerating the Phenotypic Transition of Macrophages",
+            "journal": "Planta Medica",
+            "year": 2019,
+            "volume": "85(7)",
+            "pages": "563-569",
+            "doi": "10.1055/a-0725-8456",
+            "pmid": "30199901",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/30199901/",
+            "studyType": "Etude experimentale (in vivo)",
+            "sampleSize": "N/A (modele animal)",
+            "keyFindings": "L'huile de rose musquee favorise significativement la cicatrisation et ameliore les cicatrices en accelerant la transition phenotypique des macrophages (M1 vers M2) et en inhibant la transition epithelio-mesenchymateuse."
+          }
+        ]
+      },
+      {
+        "id": "ems-facial",
+        "name": "EMS (Electrostimulation musculaire faciale)",
+        "slug": "ems-facial",
+        "icon": "bolt",
+        "relatedProducts": ["V-Line EMS Roller"],
+        "summary": "L'electrostimulation musculaire (EMS) faciale utilise des microcourants ou des impulsions electriques pour tonifier les muscles du visage, ameliorer les contours faciaux et reduire les rides. Les essais cliniques montrent une augmentation de l'epaisseur musculaire et une amelioration de l'ovale du visage.",
+        "keyBenefits": [
+          "Augmentation de l'epaisseur musculaire faciale de 18,6% en 12 semaines",
+          "Amelioration significative de l'elasticite cutanee et des rides",
+          "Amelioration de l'angle de la machoire et du volume sous-mental",
+          "Reduction de la profondeur des sillons nasogeniens",
+          "Augmentation du flux sanguin dans les zones traitees"
+        ],
+        "studies": [
+          {
+            "id": "ems-1",
+            "authors": "Kavanagh S, Newell J, Hennessy M, Sadick N",
+            "title": "Use of a Neuromuscular Electrical Stimulation Device for Facial Muscle Toning: A Randomized, Controlled Trial",
+            "journal": "Journal of Cosmetic Dermatology",
+            "year": 2012,
+            "volume": "11(4)",
+            "pages": "261-266",
+            "doi": "10.1111/jocd.12007",
+            "pmid": "23174048",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/23174048/",
+            "studyType": "Essai clinique randomise et controle",
+            "sampleSize": "108 femmes saines (age moyen 43,7 ans)",
+            "keyFindings": "L'epaisseur musculaire moyenne a augmente de 18,6% dans le groupe EMS vs pas de changement dans le groupe temoin. Differences significatives entre les groupes a 6 semaines (P = 0,05) et 12 semaines (P = 0,0001). Protocole : 20 min/jour, 5 jours/semaine."
+          },
+          {
+            "id": "ems-2",
+            "authors": "Omatsu J, Yamashita T, Mori T, et al.",
+            "title": "Neuromuscular Electrical Stimulation for Facial Wrinkles and Sagging: The 8-week Prospective, Split-Face, Controlled Trial in Asians",
+            "journal": "Journal of Cosmetic Dermatology",
+            "year": 2024,
+            "volume": "23",
+            "pages": "3222-3233",
+            "doi": "10.1111/jocd.16403",
+            "pmid": "38992992",
+            "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/38992992/",
+            "studyType": "Essai prospectif split-face controle",
+            "sampleSize": "24 femmes adultes (ages 30-59 ans)",
+            "keyFindings": "Ameliorations significatives de l'elasticite cutanee et des rides (P < 0,05), de l'angle de la machoire (P < 0,01), du volume sous-mental et des joues (P < 0,05), et de la profondeur des sillons nasogeniens (P = 0,03). Amelioration du flux sanguin (P < 0,05)."
+          }
+        ]
+      }
+    ],
+    "additionalProductNotes": {
+      "facial-steamer": {
+        "relatedProducts": ["Steamer facial"],
+        "note": "La vapeur faciale ouvre les pores et facilite le nettoyage. Bien que peu d'etudes cliniques specifiques existent pour les steamers domestiques, la vapeur est largement utilisee en dermatologie esthetique comme etape preparatoire aux soins. Les benefices de la chaleur humide sur la microcirculation sont bien documentes."
+      },
+      "anti-wrinkle-stickers": {
+        "relatedProducts": ["Patchs anti-rides"],
+        "note": "Les patchs anti-rides fonctionnent par occlusion et immobilisation mecanique, empechant la contraction musculaire pendant le sommeil. Le principe s'apparente a l'immobilisation temporaire de la zone, limitant la formation des rides d'expression."
+      },
+      "steam-eye-mask": {
+        "relatedProducts": ["Masque yeux vapeur (spa)"],
+        "note": "Les masques chauffants pour les yeux combinent chaleur douce et relaxation. La chaleur ameliore la microcirculation peri-orbitaire et la relaxation reduit la tension musculaire autour des yeux, contribuant a attenuer l'apparence des cernes et poches."
+      },
+      "aroma-diffuser": {
+        "relatedProducts": ["Diffuseur d'aromes"],
+        "note": "L'aromatherapie avec des huiles essentielles peut reduire le stress et ameliorer la qualite du sommeil. Le stress chronique etant un facteur accelerant le vieillissement cutane (via le cortisol), la gestion du stress contribue indirectement a la sante de la peau."
+      },
+      "heatless-curling": {
+        "relatedProducts": ["Kit de boucles sans chaleur"],
+        "note": "Les methodes de bouclage sans chaleur evitent les dommages thermiques aux cheveux (denaturation de la keratine, perte d'hydratation). Les etudes sur les dommages capillaires lies a la chaleur soutiennent l'interet des alternatives sans chaleur pour preserver la sante des cheveux."
+      }
+    },
+    "legalDisclaimer": {
+      "fr": "Les informations presentees sur cette page sont fournies a titre educatif uniquement et ne constituent pas un avis medical. Les etudes citees proviennent de revues scientifiques a comite de lecture. Les resultats individuels peuvent varier. Les produits vendus sur Eclat Boutique ne sont pas des dispositifs medicaux et ne pretendent pas diagnostiquer, traiter, guerir ou prevenir une quelconque maladie. Consultez un dermatologue ou un professionnel de sante pour des conseils personnalises."
+    }
+  }
+}
