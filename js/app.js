@@ -321,6 +321,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cross-sell suggestions
         renderCrossSell();
+
+        // Smart bundle detection
+        checkBundleMatch();
     }
 
     function renderCrossSell() {
@@ -379,6 +382,96 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             cart.updateQty(productId, qty);
         }
+    };
+
+    // --- Smart Bundle Detection ---
+    function checkBundleMatch() {
+        let container = document.getElementById('cartBundleSuggestion');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'cartBundleSuggestion';
+            const shippingBar = document.getElementById('cartShippingProgress');
+            if (shippingBar) {
+                shippingBar.insertAdjacentElement('afterend', container);
+            }
+        }
+
+        if (typeof BUNDLES === 'undefined' || cart.isEmpty()) {
+            container.innerHTML = '';
+            return;
+        }
+
+        const cartProductIds = cart.items
+            .filter(item => typeof item.id === 'number')
+            .map(item => item.id);
+
+        const suggestions = [];
+        BUNDLES.forEach(bundle => {
+            if (cart.items.some(item => item.id === 'bundle-' + bundle.key)) return;
+            if (!bundle.productIds.every(pid => cartProductIds.includes(pid))) return;
+
+            const individualTotal = bundle.productIds.reduce((sum, pid) => {
+                const p = PRODUCTS.find(pr => pr.id === pid);
+                return sum + (p ? p.price : 0);
+            }, 0);
+            const savings = individualTotal - bundle.price;
+            if (savings > 0) {
+                suggestions.push({ bundle, savings, individualTotal });
+            }
+        });
+
+        if (suggestions.length === 0) {
+            container.innerHTML = '';
+            return;
+        }
+
+        container.innerHTML = suggestions.map(s => `
+            <div class="bundle-suggestion">
+                <div class="bundle-suggestion-icon">&#127873;</div>
+                <div class="bundle-suggestion-text">
+                    <strong>${s.bundle.name}</strong><br>
+                    Ces produits forment un coffret !
+                    <span class="bundle-savings">Économisez ${formatPrice(s.savings)}</span>
+                </div>
+                <button class="btn btn-primary btn-sm bundle-convert-btn" onclick="convertToBundle('${s.bundle.key}')">
+                    ${formatPrice(s.bundle.price)} au lieu de ${formatPrice(s.individualTotal)}
+                </button>
+            </div>
+        `).join('');
+    }
+
+    window.convertToBundle = function(bundleKey) {
+        const bundle = BUNDLES.find(b => b.key === bundleKey);
+        if (!bundle) return;
+
+        const individualTotal = bundle.productIds.reduce((sum, pid) => {
+            const p = PRODUCTS.find(pr => pr.id === pid);
+            return sum + (p ? p.price : 0);
+        }, 0);
+        const savings = individualTotal - bundle.price;
+
+        bundle.productIds.forEach(pid => {
+            const item = cart.items.find(i => i.id === pid);
+            if (item) {
+                if (item.qty > 1) {
+                    item.qty -= 1;
+                } else {
+                    cart.items = cart.items.filter(i => i.id !== pid);
+                }
+            }
+        });
+
+        const firstProduct = PRODUCTS.find(p => p.id === bundle.productIds[0]);
+        cart.items.push({
+            id: 'bundle-' + bundle.key,
+            name: bundle.name,
+            price: bundle.price,
+            image: firstProduct ? firstProduct.image : '',
+            qty: 1
+        });
+
+        cart.save();
+        showToast(bundle.name + ' appliqué ! -' + formatPrice(savings));
     };
 
     cart.onChange(() => renderCart());

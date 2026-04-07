@@ -2717,3 +2717,46 @@ input { font-family: inherit; }
     border-radius: 2px;
     transition: width 0.4s ease;
 }
+
+/* Bundle suggestion in cart */
+.bundle-suggestion {
+    background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: bundlePulse 0.5s ease;
+}
+@keyframes bundlePulse {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.bundle-suggestion-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+.bundle-suggestion-text {
+    flex: 1;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #2e7d32;
+}
+.bundle-savings {
+    display: inline-block;
+    background: #4caf50;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+}
+.bundle-convert-btn {
+    white-space: nowrap;
+    font-size: 0.72rem !important;
+    padding: 8px 10px !important;
+    line-height: 1.3;
+}
