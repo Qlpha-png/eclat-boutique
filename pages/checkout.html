@@ -201,7 +201,7 @@
             checkoutItems.innerHTML = cart.items.map(item => `
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--color-border);">
                     <div style="display:flex;align-items:center;gap:12px;">
-                        <span style="font-size:1.5rem;">${item.emoji}</span>
+                        <img src="${item.image}" alt="${item.name}" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
                         <div>
                             <div style="font-weight:600;font-size:0.9rem;">${item.name}</div>
                             <div style="font-size:0.8rem;color:var(--color-text-light);">Qty: ${item.qty}</div>

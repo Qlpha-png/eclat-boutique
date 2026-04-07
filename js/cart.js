@@ -30,7 +30,7 @@ class Cart {
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                emoji: product.emoji,
+                image: product.image,
                 qty: qty
             });
         }

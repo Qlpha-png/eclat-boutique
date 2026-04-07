@@ -16,17 +16,15 @@ const TRANSLATIONS = {
         nav_guarantees: 'Garanties',
 
         // Hero
-        hero_tag: 'Nouvelle collection printemps 2026',
-        hero_title: 'Votre rituel beauté',
-        hero_title_em: 'réinventé',
-        hero_desc: 'Découvrez nos outils et soins wellness sélectionnés par des experts. Technologie innovante, résultats visibles.',
-        hero_cta1: 'Mon diagnostic gratuit',
-        hero_cta2: 'Voir la collection',
-        hero_stat1: 'Clientes satisfaites',
-        hero_stat2: 'Note moyenne',
-        hero_stat3: 'Livraison express',
-        hero_floating_bestseller: 'Best-seller',
-        hero_floating_tested: 'Dermatologiquement testé',
+        hero_tag: 'Soins & outils haut de gamme',
+        hero_title: 'La beauté qui se voit.',
+        hero_title_em: 'La science qui le prouve.',
+        hero_desc: 'Des technologies professionnelles, documentées par des études cliniques. Sélectionnées pour leur efficacité, pas pour leur packaging.',
+        hero_cta1: 'Trouver ma routine',
+        hero_cta2: 'Découvrir la collection',
+        hero_stat1: 'Fondé sur la science',
+        hero_stat2: 'Efficacité testée',
+        hero_stat3: 'Satisfait ou remboursé',
         brands_bar_title: 'Ils nous font confiance — Nos marques partenaires',
 
         // Trust
@@ -164,17 +162,15 @@ const TRANSLATIONS = {
         nav_packs: 'Bundles',
         nav_guarantees: 'Guarantees',
 
-        hero_tag: 'New spring 2026 collection',
-        hero_title: 'Your beauty ritual',
-        hero_title_em: 'reinvented',
-        hero_desc: 'Discover our wellness tools and skincare curated by experts. Innovative technology, visible results.',
-        hero_cta1: 'My free skin diagnostic',
-        hero_cta2: 'View collection',
-        hero_stat1: 'Happy customers',
-        hero_stat2: 'Average rating',
-        hero_stat3: 'Express delivery',
-        hero_floating_bestseller: 'Best-seller',
-        hero_floating_tested: 'Dermatologically tested',
+        hero_tag: 'Premium skincare & tools',
+        hero_title: 'Beauty you can see.',
+        hero_title_em: 'Science that proves it.',
+        hero_desc: 'Professional technologies, backed by clinical studies. Selected for their efficacy, not their packaging.',
+        hero_cta1: 'Find my routine',
+        hero_cta2: 'Discover the collection',
+        hero_stat1: 'Science-backed',
+        hero_stat2: 'Tested efficacy',
+        hero_stat3: 'Satisfied or refunded',
         brands_bar_title: 'Trusted by the best — Our partner brands',
 
         trust1_title: 'Fast shipping',
@@ -302,17 +298,15 @@ const TRANSLATIONS = {
         nav_packs: 'Packs',
         nav_guarantees: 'Garantías',
 
-        hero_tag: 'Nueva colección primavera 2026',
-        hero_title: 'Tu ritual de belleza',
-        hero_title_em: 'reinventado',
-        hero_desc: 'Descubre nuestras herramientas y cuidados wellness seleccionados por expertos. Tecnología innovadora, resultados visibles.',
-        hero_cta1: 'Mi diagnóstico gratis',
-        hero_cta2: 'Ver la colección',
-        hero_stat1: 'Clientas satisfechas',
-        hero_stat2: 'Nota media',
-        hero_stat3: 'Envío exprés',
-        hero_floating_bestseller: 'Más vendido',
-        hero_floating_tested: 'Dermatológicamente testado',
+        hero_tag: 'Cuidados y herramientas premium',
+        hero_title: 'Belleza que se ve.',
+        hero_title_em: 'Ciencia que lo demuestra.',
+        hero_desc: 'Tecnologías profesionales, respaldadas por estudios clínicos. Seleccionadas por su eficacia, no por su packaging.',
+        hero_cta1: 'Encontrar mi rutina',
+        hero_cta2: 'Descubrir la colección',
+        hero_stat1: 'Basado en la ciencia',
+        hero_stat2: 'Eficacia probada',
+        hero_stat3: 'Satisfecho o reembolsado',
         brands_bar_title: 'Confían en nosotros — Nuestras marcas asociadas',
 
         trust1_title: 'Envío rápido',
@@ -440,17 +434,15 @@ const TRANSLATIONS = {
         nav_packs: 'Sets',
         nav_guarantees: 'Garantien',
 
-        hero_tag: 'Neue Frühlingskollektion 2026',
-        hero_title: 'Ihr Beauty-Ritual',
-        hero_title_em: 'neu erfunden',
-        hero_desc: 'Entdecken Sie unsere von Experten ausgewählten Wellness-Tools und Hautpflege. Innovative Technologie, sichtbare Ergebnisse.',
-        hero_cta1: 'Mein Gratis-Hautdiagnose',
-        hero_cta2: 'Kollektion ansehen',
-        hero_stat1: 'Zufriedene Kundinnen',
-        hero_stat2: 'Durchschnittsbewertung',
-        hero_stat3: 'Expresslieferung',
-        hero_floating_bestseller: 'Bestseller',
-        hero_floating_tested: 'Dermatologisch getestet',
+        hero_tag: 'Premium-Pflege & Werkzeuge',
+        hero_title: 'Schönheit, die man sieht.',
+        hero_title_em: 'Wissenschaft, die es beweist.',
+        hero_desc: 'Professionelle Technologien, durch klinische Studien belegt. Ausgewählt nach Wirksamkeit, nicht nach Verpackung.',
+        hero_cta1: 'Meine Routine finden',
+        hero_cta2: 'Kollektion entdecken',
+        hero_stat1: 'Wissenschaftlich fundiert',
+        hero_stat2: 'Getestete Wirksamkeit',
+        hero_stat3: 'Zufrieden oder Geld zurück',
         brands_bar_title: 'Vertrauenswürdig — Unsere Partnermarken',
 
         trust1_title: 'Schneller Versand',
@@ -600,10 +592,6 @@ function applyTranslations() {
         '.hero-content > p': 'hero_desc',
         '.hero-buttons .btn-primary': 'hero_cta1',
         '.hero-buttons .btn-outline': 'hero_cta2',
-
-        // Floating cards
-        '.floating-card.card-2 span:last-child': 'hero_floating_tested',
-
         // Brands bar
         '.brands-bar-title': 'brands_bar_title',
 
@@ -680,13 +668,8 @@ function applyTranslations() {
     const heroH1 = document.querySelector('.hero-content h1');
     if (heroH1) {
         const emEl = heroH1.querySelector('em');
-        // Rebuild h1 content
-        heroH1.childNodes.forEach(node => {
-            if (node.nodeType === 3 && node.textContent.trim()) {
-                node.textContent = t('hero_title') + ' ';
-            }
-        });
-        if (emEl) emEl.textContent = t('hero_title_em');
+        // Rebuild h1: "Title<br><em>Subtitle</em>"
+        heroH1.innerHTML = t('hero_title') + '<br><em>' + t('hero_title_em') + '</em>';
     }
 
     // Hero stats
@@ -694,14 +677,10 @@ function applyTranslations() {
     const statKeys = ['hero_stat1', 'hero_stat2', 'hero_stat3'];
     stats.forEach((stat, i) => {
         if (statKeys[i]) {
-            const span = stat.querySelector('span');
+            const span = stat.querySelector('span:not(.stat-icon)');
             if (span) span.textContent = t(statKeys[i]);
         }
     });
-
-    // Floating card "Best-seller"
-    const card1 = document.querySelector('.floating-card.card-1 span:last-child');
-    if (card1) card1.textContent = t('hero_floating_bestseller');
 
     // Update HTML lang
     document.documentElement.lang = currentLang;

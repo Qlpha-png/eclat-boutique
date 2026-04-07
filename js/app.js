@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productsGrid.innerHTML = filtered.map(product => `
             <div class="product-card fade-in" data-id="${product.id}">
-                <div class="product-image">
+                <div class="product-image" onclick="openModal(${product.id})" style="cursor:pointer;">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
                         product.badge === 'new' ? t('badge_new') :
@@ -68,11 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         product.badge === 'lancement' ? t('badge_lancement') :
                         product.badge === 'marque' ? (product.name.split(' — ')[0] || 'Marque') : t('badge_bestseller')
                     }</span>` : ''}
-                    <button class="product-quick-view" onclick="openModal(${product.id})">${t('btn_quick_view')}</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name">${product.name}</h3>
+                    <h3 class="product-name" onclick="openModal(${product.id})" style="cursor:pointer;">${product.name}</h3>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '&#9733;' : ''}
                         ${product.reviews > 0 ? `<span class="count">(${product.reviews.toLocaleString('fr-FR')} ${t('reviews_count')})</span>` : ''}
@@ -158,9 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Modal ---
+    // Product → Guide mapping
+    const productGuideMap = {
+        1: { section: 'led', label: 'Luminothérapie LED' },
+        2: { section: 'guasha', label: 'Gua Sha & Massage facial' },
+        3: { section: 'ultrasons', label: 'Ultrasons cutanés' },
+        4: { section: 'ultrasons', label: 'Nettoyage sonique' },
+        5: { section: 'cryo', label: 'Cryothérapie cutanée' },
+        6: { section: 'ems', label: 'EMS facial' },
+        7: { section: 'led', label: 'Préparation de la peau' },
+        8: { section: 'vitc', label: 'Vitamine C topique' },
+        9: { section: 'collagene', label: 'Collagène' },
+        10: { section: 'collagene', label: 'Collagène' },
+        11: { section: 'rosehip', label: 'Huile de Rose Musquée' },
+        12: { section: 'collagene', label: 'Collagène & Anti-rides' }
+    };
+
     window.openModal = function(productId) {
         const product = PRODUCTS.find(p => p.id === productId);
         if (!product) return;
+
+        const guide = productGuideMap[product.id];
+        const guideLink = guide ? `<a href="pages/guide-beaute.html#${guide.section}" class="modal-guide-link">Lire l'étude scientifique : ${guide.label} →</a>` : '';
 
         modalContent.innerHTML = `
             <div class="modal-grid">
@@ -173,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="count">${product.rating}/5</span>
                     </div>
                     <p class="product-description">${product.description}</p>
+                    ${guideLink}
                     <div class="product-price">
                         <span class="price-current">${formatPrice(product.price)}</span>
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
@@ -222,9 +241,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Auto-open cart if redirected from diagnostic quiz
-    if (new URLSearchParams(window.location.search).get('openCart') === '1') {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('openCart') === '1') {
         setTimeout(() => { renderCart(); openCart(); }, 300);
         history.replaceState(null, '', window.location.pathname);
+    }
+
+    // Auto-open product modal if redirected from guide
+    const openModalId = urlParams.get('produit');
+    if (openModalId) {
+        setTimeout(() => openModal(parseInt(openModalId)), 400);
+        history.replaceState(null, '', window.location.pathname + window.location.hash);
     }
 
     function renderCart() {
