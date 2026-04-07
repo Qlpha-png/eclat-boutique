@@ -88,7 +88,7 @@ const TRANSLATIONS = {
         cart_cross_sell: 'Complétez votre routine',
 
         // Banner
-        banner_text: 'Livraison offerte dès 49€ d\'achat • Paiement sécurisé Stripe',
+        banner_text: 'Livraison offerte dès 29€ • Satisfait ou remboursé 30j • Paiement sécurisé',
 
         // Footer
         footer_shop: 'Boutique',
@@ -227,7 +227,7 @@ const TRANSLATIONS = {
         cart_shipping_remaining: 'Only {amount} away from free shipping',
         cart_cross_sell: 'Complete your routine',
 
-        banner_text: 'Free shipping over €49 • Secure payment via Stripe',
+        banner_text: 'Free shipping over €29 • 30-day money-back guarantee • Secure payment',
 
         footer_shop: 'Shop',
         footer_help: 'Help',
@@ -363,7 +363,7 @@ const TRANSLATIONS = {
         cart_shipping_remaining: 'Solo faltan {amount} para envío gratis',
         cart_cross_sell: 'Completa tu rutina',
 
-        banner_text: 'Envío gratis a partir de 49€ • Pago seguro con Stripe',
+        banner_text: 'Envío gratis a partir de 29€ • Satisfecho o reembolsado 30d • Pago seguro',
 
         footer_shop: 'Tienda',
         footer_help: 'Ayuda',
@@ -499,7 +499,7 @@ const TRANSLATIONS = {
         cart_shipping_remaining: 'Nur noch {amount} bis zum kostenlosen Versand',
         cart_cross_sell: 'Vervollständigen Sie Ihre Routine',
 
-        banner_text: 'Kostenloser Versand ab 49€ • Sichere Zahlung über Stripe',
+        banner_text: 'Kostenloser Versand ab 29€ • 30 Tage Geld-zurück • Sichere Zahlung',
 
         footer_shop: 'Shop',
         footer_help: 'Hilfe',

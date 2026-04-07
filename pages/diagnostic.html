@@ -293,7 +293,7 @@
             document.getElementById('routineTotal').innerHTML = `
                 <div class="total-label">Votre routine complète</div>
                 <div class="total-price">${total.toFixed(2).replace('.', ',')} €</div>
-                <div class="total-savings">Livraison offerte ${total >= 49 ? '✓ (incluse !)' : `dès 49€ (plus que ${(49 - total).toFixed(2).replace('.', ',')} €)`}</div>
+                <div class="total-savings">Livraison offerte ${total >= 29 ? '✓ (incluse !)' : `dès 29€ (plus que ${(29 - total).toFixed(2).replace('.', ',')} €)`}</div>
                 <button onclick="addAllToCart()" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);border:none;cursor:pointer;">Ajouter tout au panier</button>
             `;
 

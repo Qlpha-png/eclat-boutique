@@ -2534,3 +2534,186 @@ input { font-family: inherit; }
         font-size: 0.78rem;
     }
 }
+
+/* ============================
+   EMAIL POPUP — Capture BIENVENUE10
+   ============================ */
+.email-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+.email-popup-overlay.active { display: flex; }
+
+.email-popup {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    max-width: 440px;
+    width: 90%;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    animation: popupSlideIn 0.35s ease;
+}
+
+@keyframes popupSlideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.email-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-light);
+    line-height: 1;
+}
+
+.email-popup h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.email-popup .popup-code {
+    display: inline-block;
+    background: var(--color-bg-alt);
+    border: 2px dashed var(--color-secondary);
+    color: var(--color-secondary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    padding: 8px 24px;
+    border-radius: var(--radius-sm);
+    margin: 12px 0;
+}
+
+.email-popup p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.email-popup form {
+    display: flex;
+    gap: 8px;
+}
+
+.email-popup form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+}
+
+.email-popup form button {
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
+.email-popup .popup-note {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .email-popup form { flex-direction: column; }
+    .email-popup { padding: 32px 20px; }
+}
+
+/* ============================
+   TRUST BADGES — Produits
+   ============================ */
+.product-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.trust-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: var(--color-text-light);
+    background: var(--color-bg-alt);
+    padding: 3px 8px;
+    border-radius: var(--radius-xl);
+    font-weight: 500;
+}
+
+.trust-tag.shipping {
+    color: var(--color-success);
+    background: rgba(76,175,80,0.08);
+}
+
+/* Modal trust badges */
+.modal-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0;
+    padding: 14px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+}
+
+.modal-trust-item .trust-icon {
+    font-size: 1rem;
+}
+
+/* Free shipping progress bar in cart */
+.cart-shipping-progress {
+    padding: 10px 0;
+    margin-bottom: 8px;
+}
+
+.cart-shipping-progress p {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.cart-shipping-progress p strong {
+    color: var(--color-success);
+}
+
+.shipping-bar {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.shipping-bar-fill {
+    height: 100%;
+    background: var(--color-success);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}

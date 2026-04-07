@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="price-current">${formatPrice(product.price)}</span>
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
+                    <div class="product-trust">
+                        <span class="trust-tag shipping">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
+                        <span class="trust-tag">&#128260; 30j rembours&eacute;</span>
+                    </div>
                     <div class="product-actions">
                         <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">Ajouter au panier</button>
                     </div>
@@ -196,6 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="price-current">${formatPrice(product.price)}</span>
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
+                    <div class="modal-trust">
+                        <div class="modal-trust-item"><span class="trust-icon">&#128666;</span> Livraison offerte d\u00e8s 29\u20ac</div>
+                        <div class="modal-trust-item"><span class="trust-icon">&#128260;</span> Satisfait ou rembours\u00e9 30j</div>
+                        <div class="modal-trust-item"><span class="trust-icon">&#128274;</span> Paiement s\u00e9curis\u00e9</div>
+                    </div>
                     <ul class="modal-features">
                         ${product.features.map(f => `<li>${f}</li>`).join('')}
                     </ul>
@@ -291,6 +300,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const total = cart.getTotal();
         cartSubtotal.textContent = formatPrice(total);
+
+        // Free shipping progress bar
+        const FREE_SHIPPING_THRESHOLD = 29;
+        let shippingBar = document.getElementById('cartShippingProgress');
+        if (!shippingBar) {
+            shippingBar = document.createElement('div');
+            shippingBar.id = 'cartShippingProgress';
+            shippingBar.className = 'cart-shipping-progress';
+            const subtotalEl = document.querySelector('.cart-subtotal');
+            if (subtotalEl) subtotalEl.parentNode.insertBefore(shippingBar, subtotalEl);
+        }
+        const remaining = FREE_SHIPPING_THRESHOLD - total;
+        const pct = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100);
+        if (remaining > 0) {
+            shippingBar.innerHTML = `<p>Plus que <strong>${formatPrice(remaining)}</strong> pour la livraison offerte !</p><div class="shipping-bar"><div class="shipping-bar-fill" style="width:${pct}%"></div></div>`;
+        } else {
+            shippingBar.innerHTML = `<p><strong>&#10003; Livraison offerte !</strong></p><div class="shipping-bar"><div class="shipping-bar-fill" style="width:100%"></div></div>`;
+        }
 
         // Cross-sell suggestions
         renderCrossSell();
