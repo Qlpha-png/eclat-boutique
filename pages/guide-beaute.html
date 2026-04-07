@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide Beauté Scientifique ÉCLAT - Découvrez la science derrière vos soins : luminothérapie LED, cryothérapie, vitamine C, collagène. Sources PubMed.">
+    <meta name="keywords" content="guide beauté scientifique, luminothérapie LED études, vitamine C peau science, cryothérapie visage, gua sha bienfaits prouvés">
+    <title>Guide Beauté Scientifique - ÉCLAT | La science de votre peau</title>
+
+    <meta property="og:title" content="Guide Beauté Scientifique ÉCLAT">
+    <meta property="og:description" content="La science derrière vos soins : études cliniques, mécanismes d'action et conseils d'utilisation basés sur la recherche.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://maison-eclat.shop/pages/guide-beaute.html">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://maison-eclat.shop/pages/guide-beaute.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .guide-page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+        .guide-page h1 { font-family: var(--font-display); font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+        .guide-intro { text-align: center; color: var(--color-text-light); margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .guide-disclaimer {
+            text-align: center; font-size: 0.78rem; color: var(--color-text-light);
+            background: var(--color-bg-alt); border-radius: var(--radius-md); padding: 12px 20px;
+            margin-bottom: 48px; max-width: 640px; margin-left: auto; margin-right: auto;
+        }
+
+        .guide-toc {
+            background: var(--color-white); border-radius: var(--radius-lg);
+            padding: 28px 32px; margin-bottom: 48px; border: 1px solid var(--color-border);
+        }
+        .guide-toc h2 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 16px; }
+        .guide-toc ol { padding-left: 20px; }
+        .guide-toc li { margin-bottom: 8px; }
+        .guide-toc a { color: var(--color-secondary); text-decoration: none; font-weight: 500; font-size: 0.92rem; }
+        .guide-toc a:hover { text-decoration: underline; }
+
+        .guide-section {
+            background: var(--color-white); border-radius: var(--radius-lg);
+            padding: 36px 36px 28px; margin-bottom: 32px; border: 1px solid var(--color-border);
+            transition: var(--transition);
+        }
+        .guide-section:hover { box-shadow: var(--shadow-md); border-color: transparent; }
+
+        .guide-section-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+        .guide-section h2 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 8px; line-height: 1.3; }
+        .guide-section h3 { font-size: 1rem; color: var(--color-secondary); margin: 20px 0 10px; font-weight: 600; }
+        .guide-section p { font-size: 0.92rem; color: var(--color-text-light); line-height: 1.8; margin-bottom: 12px; }
+
+        .science-box {
+            background: linear-gradient(135deg, #f8f5f0, #f3efe9);
+            border-left: 3px solid var(--color-secondary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 16px 20px; margin: 16px 0;
+        }
+        .science-box strong { display: block; font-size: 0.82rem; color: var(--color-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .science-box p { font-size: 0.82rem; color: var(--color-text-light); margin-bottom: 6px; line-height: 1.6; }
+        .science-box a { color: var(--color-secondary); font-size: 0.78rem; word-break: break-all; }
+
+        .usage-tips {
+            background: rgba(76, 175, 80, 0.06); border-radius: var(--radius-sm);
+            padding: 16px 20px; margin: 16px 0;
+        }
+        .usage-tips strong { display: block; font-size: 0.85rem; color: var(--color-success); margin-bottom: 8px; }
+        .usage-tips ul { padding-left: 18px; font-size: 0.85rem; color: var(--color-text-light); line-height: 1.8; }
+
+        .guide-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--color-primary); color: var(--color-white);
+            padding: 10px 20px; border-radius: var(--radius-xl); font-size: 0.85rem;
+            text-decoration: none; font-weight: 500; margin-top: 12px; transition: var(--transition);
+        }
+        .guide-cta:hover { background: var(--color-secondary); }
+
+        .guide-back { text-align: center; margin-top: 48px; }
+        .guide-back a { font-size: 0.9rem; color: var(--color-secondary); text-decoration: none; }
+        .guide-back a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .guide-page h1 { font-size: 1.8rem; }
+            .guide-section { padding: 24px 20px 20px; }
+            .guide-toc { padding: 20px 24px; }
+        }
+    </style>
+</head>
+<body style="background: var(--color-bg);">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">ÉCLAT</a>
+            <div style="font-size:0.9rem;color:var(--color-text-light);">Guide Beauté Scientifique</div>
+        </div>
+    </nav>
+
+    <div class="guide-page">
+
+        <h1>La Science de Votre Peau</h1>
+        <p class="guide-intro">
+            Chez ÉCLAT, nous ne vendons pas de promesses. Chaque technologie que nous proposons est soutenue par la recherche scientifique. Voici les études et mécanismes derrière nos soins.
+        </p>
+        <p class="guide-disclaimer">
+            Les informations ci-dessous sont issues d'études publiées dans des revues scientifiques &agrave; comit&eacute; de lecture. Elles ne remplacent pas un avis m&eacute;dical. Consultez un dermatologue pour toute pr&eacute;occupation cutan&eacute;e.
+        </p>
+
+        <!-- Table of Contents -->
+        <div class="guide-toc">
+            <h2>Sommaire</h2>
+            <ol>
+                <li><a href="#led">Luminothérapie LED &mdash; La lumière qui répare</a></li>
+                <li><a href="#vitc">Vitamine C topique &mdash; L'antioxydant roi</a></li>
+                <li><a href="#cryo">Cryothérapie &mdash; Le froid au service de la peau</a></li>
+                <li><a href="#guasha">Gua Sha &amp; Massage facial &mdash; Stimuler la microcirculation</a></li>
+                <li><a href="#collagene">Collagène &mdash; La protéine de la jeunesse</a></li>
+                <li><a href="#rosehip">Huile de Rose Musquée &mdash; La régénération naturelle</a></li>
+                <li><a href="#ultrasons">Ultrasons &mdash; Le nettoyage en profondeur</a></li>
+                <li><a href="#ems">EMS facial &mdash; La gymnastique passive du visage</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. LED THERAPY -->
+        <div class="guide-section" id="led">
+            <span class="guide-section-icon">💡</span>
+            <h2>Luminothérapie LED</h2>
+            <p>
+                La photobiomodulation (PBM), communément appelée luminothérapie LED, utilise des longueurs d'onde spécifiques de lumière visible pour stimuler les processus cellulaires de la peau. Contrairement aux lasers, les LED n'émettent pas de chaleur destructrice &mdash; elles activent les mitochondries des cellules pour accélérer la production d'ATP (énergie cellulaire).
+            </p>
+
+            <h3>Comment ça fonctionne</h3>
+            <p>
+                Chaque couleur correspond à une longueur d'onde précise qui pénètre à une profondeur différente dans la peau. La lumière rouge (630-660 nm) stimule la production de collagène dans le derme. La lumière bleue (415-450 nm) a une action antibactérienne ciblant <em>Propionibacterium acnes</em>. La lumière proche infrarouge (830 nm) réduit l'inflammation en profondeur.
+            </p>
+
+            <div class="science-box">
+                <strong>Étude clinique</strong>
+                <p>Wunsch A. &amp; Matuschka K. (2014). Un essai contrôlé sur 136 volontaires a montré une amélioration significative du teint, une réduction des rides et une augmentation de la densité de collagène intradermique après 30 séances de LED rouge et infrarouge.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/24286286/" target="_blank" rel="noopener">Photomedicine and Laser Surgery, 32(2), 93-100 &mdash; PubMed 24286286</a>
+            </div>
+
+            <div class="science-box">
+                <strong>Revue scientifique</strong>
+                <p>Ablon G. (2018). Revue complète de la littérature confirmant l'efficacité des LED pour l'acné, le photovieillissement, la cicatrisation et les conditions inflammatoires de la peau.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/29552429/" target="_blank" rel="noopener">Journal of Clinical and Aesthetic Dermatology, 11(2), 21-27 &mdash; PubMed 29552429</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Utilisez sur peau propre et sèche, sans crème</li>
+                    <li>Séances de 10 à 20 minutes, 3 à 5 fois par semaine</li>
+                    <li>Résultats visibles à partir de 4 à 8 semaines de régularité</li>
+                    <li>Ne remplace pas un traitement dermatologique pour l'acné sévère</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Masque LED Pro →</a>
+        </div>
+
+        <!-- 2. VITAMIN C -->
+        <div class="guide-section" id="vitc">
+            <span class="guide-section-icon">🍊</span>
+            <h2>Vitamine C topique</h2>
+            <p>
+                L'acide L-ascorbique (vitamine C) est l'un des antioxydants topiques les mieux étudiés en dermatologie. Il neutralise les radicaux libres produits par les UV, stimule la synthèse de collagène et inhibe la tyrosinase, l'enzyme responsable de la production de mélanine (taches pigmentaires).
+            </p>
+
+            <h3>Mécanisme d'action</h3>
+            <p>
+                La vitamine C agit comme cofacteur essentiel dans la synthèse du collagène (types I et III). Elle stabilise également la structure du collagène existant. À concentration de 10 à 20 %, elle offre une photoprotection supplémentaire en neutralisant les espèces réactives de l'oxygène (ROS) générées par l'exposition UV.
+            </p>
+
+            <div class="science-box">
+                <strong>Revue systématique</strong>
+                <p>Pullar J.M., Carr A.C. &amp; Vissers M.C.M. (2017). Revue complète des rôles de la vitamine C dans la santé cutanée : photoprotection, stimulation du collagène, réduction de l'hyperpigmentation et cicatrisation.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/28805671/" target="_blank" rel="noopener">Nutrients, 9(8), 866 &mdash; PubMed 28805671</a>
+            </div>
+
+            <div class="science-box">
+                <strong>Revue dermatologique</strong>
+                <p>Telang P.S. (2013). Analyse des formulations topiques de vitamine C en dermatologie : efficacité anti-âge, protection solaire et traitement de l'hyperpigmentation à des concentrations de 10-20 %.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/23741667/" target="_blank" rel="noopener">Indian Dermatology Online Journal, 4(2), 143-146 &mdash; PubMed 23741667</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Appliquez le matin avant votre crème hydratante et votre SPF</li>
+                    <li>Conservez dans un flacon opaque, à l'abri de la lumière et de la chaleur</li>
+                    <li>Si le sérum devient brun/orange, il est oxydé et perd en efficacité</li>
+                    <li>Associez à de la vitamine E pour un effet antioxydant synergique</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Sérum Vitamine C →</a>
+        </div>
+
+        <!-- 3. CRYOTHERAPY -->
+        <div class="guide-section" id="cryo">
+            <span class="guide-section-icon">🧊</span>
+            <h2>Cryothérapie cutanée</h2>
+            <p>
+                L'application de froid sur la peau provoque une vasoconstriction suivie d'une vasodilatation réactive. Ce mécanisme réduit l'inflammation, diminue les poches (œdème) et stimule la microcirculation locale. Les outils comme les ice rollers exploitent ce principe de manière non invasive.
+            </p>
+
+            <h3>Mécanisme d'action</h3>
+            <p>
+                Le froid active les récepteurs TRPM8 de la peau, déclenchant une cascade anti-inflammatoire locale. La vasoconstriction immédiate réduit le flux sanguin superficiel (effet décongestionnant), suivie d'une vasodilatation qui apporte oxygène et nutriments. Ce cycle améliore le drainage lymphatique et réduit les gonflements.
+            </p>
+
+            <div class="science-box">
+                <strong>Revue de recherche</strong>
+                <p>Bleakley C.M. &amp; Davison G.W. (2010). Revue des mécanismes physiologiques de la cryothérapie : réduction de la douleur, de l'œdème et de l'inflammation via la vasoconstriction et la modulation des médiateurs inflammatoires.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/20524715/" target="_blank" rel="noopener">Open Access Journal of Sports Medicine, 1, 69-79 &mdash; PubMed 20524715</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Placez le roller au congélateur 15 à 30 minutes avant usage</li>
+                    <li>Roulez du centre du visage vers l'extérieur et de bas en haut</li>
+                    <li>2 à 5 minutes suffisent, évitez de laisser le froid trop longtemps au même endroit</li>
+                    <li>Idéal le matin pour dégonfler le visage et resserrer les pores</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Ice Roller Cryo →</a>
+        </div>
+
+        <!-- 4. GUA SHA -->
+        <div class="guide-section" id="guasha">
+            <span class="guide-section-icon">🪨</span>
+            <h2>Gua Sha &amp; Massage facial</h2>
+            <p>
+                Le Gua Sha est une technique de médecine traditionnelle chinoise consistant à racler doucement la peau avec un outil lisse. Adapté au visage, il stimule la microcirculation sanguine et lymphatique, favorise le drainage des fluides stagnants et peut améliorer l'élasticité cutanée à long terme.
+            </p>
+
+            <h3>Mécanisme d'action</h3>
+            <p>
+                La pression du Gua Sha crée une vasodilatation locale, augmentant le flux sanguin de surface jusqu'à 400 % selon certaines mesures par imagerie laser. Cette augmentation de la perfusion favorise l'apport en oxygène et en nutriments aux fibroblastes, les cellules productrices de collagène et d'élastine.
+            </p>
+
+            <div class="science-box">
+                <strong>Étude par imagerie</strong>
+                <p>Nielsen A. et al. (2007). Étude montrant que le Gua Sha augmente la microperfusion de surface (mesurée par imagerie laser Doppler) de manière significative, avec un effet anti-inflammatoire et antidouleur.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/18077267/" target="_blank" rel="noopener">Explore, 3(5), 456-466 &mdash; PubMed 18077267</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Appliquez toujours un sérum ou une huile pour permettre le glissement</li>
+                    <li>Utilisez des mouvements vers le haut et l'extérieur, en suivant le drainage lymphatique</li>
+                    <li>Pression légère à modérée &mdash; pas de douleur</li>
+                    <li>3 à 5 minutes par zone, 3 à 4 fois par semaine</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Gua Sha Quartz Rose →</a>
+        </div>
+
+        <!-- 5. COLLAGEN -->
+        <div class="guide-section" id="collagene">
+            <span class="guide-section-icon">✨</span>
+            <h2>Collagène</h2>
+            <p>
+                Le collagène représente environ 75 % du poids sec de la peau. Sa production naturelle diminue d'environ 1 % par an à partir de 25 ans. Les soins topiques à base de collagène hydrolysé (peptides) peuvent pénétrer les couches superficielles de l'épiderme et stimuler la production endogène de collagène par les fibroblastes.
+            </p>
+
+            <h3>Collagène topique vs. oral</h3>
+            <p>
+                Les masques et patchs au collagène agissent principalement par hydratation occlusive et apport de peptides de faible poids moléculaire. Des études sur la supplémentation orale en peptides de collagène montrent également une amélioration mesurable de l'hydratation et de l'élasticité cutanée.
+            </p>
+
+            <div class="science-box">
+                <strong>Essai clinique</strong>
+                <p>Bolke L. et al. (2019). Essai en double aveugle contre placebo sur 72 femmes : la supplémentation en peptides de collagène a amélioré significativement l'hydratation (+12 %), l'élasticité et la densité de la peau après 12 semaines.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/31652531/" target="_blank" rel="noopener">Nutrients, 11(10), 2494 &mdash; PubMed 31652531</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Les masques et patchs au collagène offrent une hydratation intense en 15-20 minutes</li>
+                    <li>Laissez poser au frigo pour un double effet froid + collagène</li>
+                    <li>Utilisez après le nettoyage, avant le sérum pour une meilleure absorption</li>
+                    <li>1 à 2 fois par semaine pour un effet cumulatif</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir nos soins au Collagène →</a>
+        </div>
+
+        <!-- 6. ROSEHIP OIL -->
+        <div class="guide-section" id="rosehip">
+            <span class="guide-section-icon">🌹</span>
+            <h2>Huile de Rose Musquée</h2>
+            <p>
+                L'huile de rose musquée (<em>Rosa canina</em> ou <em>Rosa rubiginosa</em>) est riche en acides gras essentiels (oméga-3, 6 et 9), en vitamine A naturelle (trétinoïne) et en antioxydants. Elle est étudiée en dermatologie pour ses propriétés de régénération cutanée, notamment sur les cicatrices et les vergetures.
+            </p>
+
+            <h3>Composition active</h3>
+            <p>
+                La richesse en acide linoléique (oméga-6) renforce la barrière cutanée. L'acide trans-rétinoïque naturellement présent favorise le renouvellement cellulaire. Les caroténoïdes et la vitamine E protègent contre le stress oxydatif.
+            </p>
+
+            <div class="science-box">
+                <strong>Étude clinique</strong>
+                <p>Phetcharat L. et al. (2015). Essai en double aveugle sur 34 sujets : la poudre de rose musquée a montré une amélioration significative des rides (crow's feet), de l'hydratation et de l'élasticité cutanée après 8 semaines.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/25745485/" target="_blank" rel="noopener">Clinical Interventions in Aging, 10, 1849-1856 &mdash; PubMed 25745485</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Appliquez 2-3 gouttes le soir, en dernière étape de votre routine</li>
+                    <li>Massez doucement pour favoriser la pénétration</li>
+                    <li>Peut être mélangée à votre crème de nuit</li>
+                    <li>Conservez au frais et à l'abri de la lumière pour préserver les acides gras</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Huile de Rose Musquée →</a>
+        </div>
+
+        <!-- 7. ULTRASOUND -->
+        <div class="guide-section" id="ultrasons">
+            <span class="guide-section-icon">🔊</span>
+            <h2>Ultrasons cutanés</h2>
+            <p>
+                Les spatules à ultrasons (skin scrubbers) émettent des vibrations à haute fréquence (24 000-28 000 Hz) qui créent un effet de cavitation à la surface de la peau. Ces micro-bulles délogent les impuretés, le sébum oxydé et les cellules mortes des pores sans agression mécanique.
+            </p>
+
+            <h3>Mécanisme d'action</h3>
+            <p>
+                La cavitation ultrasonique génère de micro-jets qui nettoient mécaniquement la surface cutanée. En mode « infusion », les vibrations facilitent la pénétration des actifs (sérums, lotions) jusqu'à 5 fois plus profondément que l'application manuelle (phénomène de sonophorèse).
+            </p>
+
+            <div class="science-box">
+                <strong>Revue scientifique</strong>
+                <p>Boucaud A. et al. (2004). Étude des mécanismes de sonophorèse : les ultrasons basse fréquence augmentent significativement le transport transdermique des molécules actives en perturbant temporairement la structure lipidique du stratum corneum.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/15212839/" target="_blank" rel="noopener">International Journal of Pharmaceutics, 228(1-2), 69-77 &mdash; PubMed 15212839</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Utilisez sur peau humide (eau ou lotion tonique)</li>
+                    <li>Mode « nettoyage » : tenez l'outil à 45° et glissez doucement sur les zones grasses</li>
+                    <li>Mode « infusion » : appliquez votre sérum puis passez l'outil à plat</li>
+                    <li>1 à 2 fois par semaine maximum pour le nettoyage en profondeur</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre Scrubber Ultrasonique →</a>
+        </div>
+
+        <!-- 8. EMS -->
+        <div class="guide-section" id="ems">
+            <span class="guide-section-icon">⚡</span>
+            <h2>EMS facial (Micro-courants)</h2>
+            <p>
+                L'électrostimulation musculaire (EMS) appliquée au visage utilise des micro-courants de faible intensité (10-600 microampères) pour stimuler les muscles faciaux. Cette « gymnastique passive » est étudiée pour son potentiel à tonifier les muscles du visage et améliorer le contour facial.
+            </p>
+
+            <h3>Mécanisme d'action</h3>
+            <p>
+                Les micro-courants imitent les signaux bioélectriques naturels du corps. Ils stimulent la production d'ATP (adénosine triphosphate) au niveau cellulaire, augmentant l'énergie disponible pour la synthèse de protéines, le transport membranaire et la contraction musculaire.
+            </p>
+
+            <div class="science-box">
+                <strong>Étude clinique</strong>
+                <p>Kwon H.H. et al. (2017). Essai clinique montrant que la combinaison de micro-courants et de LED améliore la fermeté, l'élasticité et réduit les rides du visage après un programme de 8 semaines.</p>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/28002651/" target="_blank" rel="noopener">Skin Research and Technology, 23(1), 14-22 &mdash; PubMed 28002651</a>
+            </div>
+
+            <div class="usage-tips">
+                <strong>Conseils d'utilisation</strong>
+                <ul>
+                    <li>Appliquez un gel conducteur ou un sérum à base d'eau pour optimiser la conduction</li>
+                    <li>Mouvements lents et ascendants, de la mâchoire vers les tempes</li>
+                    <li>Séances de 5 à 10 minutes, 3 à 5 fois par semaine</li>
+                    <li>Déconseillé si vous portez un pacemaker ou êtes enceinte</li>
+                </ul>
+            </div>
+            <a href="../index.html#produits" class="guide-cta">Voir notre V-Line Roller EMS →</a>
+        </div>
+
+        <!-- Back link -->
+        <div class="guide-back">
+            <a href="../index.html">← Retour à la boutique</a>
+        </div>
+
+    </div>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Guide Beauté Scientifique - La Science de Votre Peau",
+        "description": "Guide éducatif sur la science derrière les soins skincare : luminothérapie LED, vitamine C, cryothérapie, collagène. Basé sur des études cliniques publiées.",
+        "url": "https://maison-eclat.shop/pages/guide-beaute.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ÉCLAT",
+            "url": "https://maison-eclat.shop"
+        },
+        "datePublished": "2026-04-07",
+        "author": {
+            "@type": "Organization",
+            "name": "ÉCLAT"
+        }
+    }
+    </script>
+</body>
+</html>

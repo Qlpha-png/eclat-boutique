@@ -11,6 +11,7 @@ const TRANSLATIONS = {
         nav_reviews: 'Avis',
         nav_story: 'Notre histoire',
         nav_loyalty: 'Avantages',
+        nav_guide: 'Guide Beauté',
 
         // Hero
         hero_tag: 'Nouvelle collection printemps 2026',
@@ -156,6 +157,7 @@ const TRANSLATIONS = {
         nav_reviews: 'Reviews',
         nav_story: 'Our story',
         nav_loyalty: 'Benefits',
+        nav_guide: 'Beauty Guide',
 
         hero_tag: 'New spring 2026 collection',
         hero_title: 'Your beauty ritual',
@@ -290,6 +292,7 @@ const TRANSLATIONS = {
         nav_reviews: 'Opiniones',
         nav_story: 'Nuestra historia',
         nav_loyalty: 'Ventajas',
+        nav_guide: 'Guía Belleza',
 
         hero_tag: 'Nueva colección primavera 2026',
         hero_title: 'Tu ritual de belleza',
@@ -424,6 +427,7 @@ const TRANSLATIONS = {
         nav_reviews: 'Bewertungen',
         nav_story: 'Unsere Geschichte',
         nav_loyalty: 'Vorteile',
+        nav_guide: 'Beauty-Guide',
 
         hero_tag: 'Neue Frühlingskollektion 2026',
         hero_title: 'Ihr Beauty-Ritual',
@@ -579,7 +583,8 @@ function applyTranslations() {
         '.nav-links li:nth-child(3) a': 'nav_bestsellers',
         '.nav-links li:nth-child(4) a': 'nav_reviews',
         '.nav-links li:nth-child(5) a': 'nav_story',
-        '.nav-links li:nth-child(6) a': 'nav_loyalty',
+        '.nav-links li:nth-child(6) a': 'nav_guide',
+        '.nav-links li:nth-child(7) a': 'nav_loyalty',
 
         // Hero — TOUT
         '.hero-tag': 'hero_tag',
