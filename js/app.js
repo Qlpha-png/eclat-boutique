@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const itemsHTML = cart.items.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image">${item.emoji}</div>
+                <div class="cart-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
@@ -258,17 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const total = cart.getTotal();
         cartSubtotal.textContent = formatPrice(total);
-
-        const shippingEl = document.getElementById('cartShipping');
-        if (total >= 49) {
-            shippingEl.textContent = t('cart_free_shipping');
-            shippingEl.style.color = '#4caf50';
-            shippingEl.style.fontWeight = '600';
-        } else {
-            shippingEl.textContent = t('cart_shipping_remaining').replace('{amount}', formatPrice(49 - total));
-            shippingEl.style.color = '';
-            shippingEl.style.fontWeight = '';
-        }
 
         // Cross-sell suggestions
         renderCrossSell();
@@ -360,10 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 showToast(t('newsletter_success'));
             } else {
-                showToast(t('newsletter_success'));
+                showToast(t('newsletter_error'), 'error');
             }
         } catch (err) {
-            showToast(t('newsletter_success'));
+            showToast(t('newsletter_error'), 'error');
         }
 
         newsletterForm.reset();

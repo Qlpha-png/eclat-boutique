@@ -12,6 +12,8 @@ const TRANSLATIONS = {
         nav_story: 'Notre histoire',
         nav_loyalty: 'Avantages',
         nav_guide: 'Guide Beauté',
+        nav_packs: 'Coffrets',
+        nav_guarantees: 'Garanties',
 
         // Hero
         hero_tag: 'Nouvelle collection printemps 2026',
@@ -58,6 +60,7 @@ const TRANSLATIONS = {
         btn_add_short: '+ Ajouter',
         toast_added: '{name} ajouté au panier !',
         newsletter_success: 'Merci ! Votre code promo -10% : BIENVENUE10',
+        newsletter_error: 'Une erreur est survenue. Veuillez réessayer.',
 
         // Bestsellers
         section_best_tag: 'Les plus aimés',
@@ -158,6 +161,8 @@ const TRANSLATIONS = {
         nav_story: 'Our story',
         nav_loyalty: 'Benefits',
         nav_guide: 'Beauty Guide',
+        nav_packs: 'Bundles',
+        nav_guarantees: 'Guarantees',
 
         hero_tag: 'New spring 2026 collection',
         hero_title: 'Your beauty ritual',
@@ -201,6 +206,7 @@ const TRANSLATIONS = {
         btn_add_short: '+ Add',
         toast_added: '{name} added to cart!',
         newsletter_success: 'Thank you! Your -10% promo code: BIENVENUE10',
+        newsletter_error: 'An error occurred. Please try again.',
 
         section_best_tag: 'Most loved',
         section_best_title: 'Our best-sellers',
@@ -293,6 +299,8 @@ const TRANSLATIONS = {
         nav_story: 'Nuestra historia',
         nav_loyalty: 'Ventajas',
         nav_guide: 'Guía Belleza',
+        nav_packs: 'Packs',
+        nav_guarantees: 'Garantías',
 
         hero_tag: 'Nueva colección primavera 2026',
         hero_title: 'Tu ritual de belleza',
@@ -336,6 +344,7 @@ const TRANSLATIONS = {
         btn_add_short: '+ Añadir',
         toast_added: '¡{name} añadido al carrito!',
         newsletter_success: '¡Gracias! Tu código promo -10%: BIENVENUE10',
+        newsletter_error: 'Se produjo un error. Inténtalo de nuevo.',
 
         section_best_tag: 'Los más amados',
         section_best_title: 'Nuestros más vendidos',
@@ -428,6 +437,8 @@ const TRANSLATIONS = {
         nav_story: 'Unsere Geschichte',
         nav_loyalty: 'Vorteile',
         nav_guide: 'Beauty-Guide',
+        nav_packs: 'Sets',
+        nav_guarantees: 'Garantien',
 
         hero_tag: 'Neue Frühlingskollektion 2026',
         hero_title: 'Ihr Beauty-Ritual',
@@ -471,6 +482,7 @@ const TRANSLATIONS = {
         btn_add_short: '+ Hinzufügen',
         toast_added: '{name} zum Warenkorb hinzugefügt!',
         newsletter_success: 'Danke! Ihr -10% Promo-Code: BIENVENUE10',
+        newsletter_error: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.',
 
         section_best_tag: 'Am beliebtesten',
         section_best_title: 'Unsere Bestseller',
@@ -577,14 +589,11 @@ function applyTranslations() {
         // Top banner
         '.top-banner p': 'banner_text',
 
-        // Nav links
-        '.nav-links li:nth-child(1) a': 'nav_home',
-        '.nav-links li:nth-child(2) a': 'nav_products',
-        '.nav-links li:nth-child(3) a': 'nav_bestsellers',
-        '.nav-links li:nth-child(4) a': 'nav_reviews',
-        '.nav-links li:nth-child(5) a': 'nav_story',
-        '.nav-links li:nth-child(6) a': 'nav_guide',
-        '.nav-links li:nth-child(7) a': 'nav_loyalty',
+        // Nav links (4 items: Produits, Coffrets, Garanties, Guide)
+        '.nav-links li:nth-child(1) a': 'nav_products',
+        '.nav-links li:nth-child(2) a': 'nav_packs',
+        '.nav-links li:nth-child(3) a': 'nav_guarantees',
+        '.nav-links li:nth-child(4) a': 'nav_guide',
 
         // Hero — TOUT
         '.hero-tag': 'hero_tag',
