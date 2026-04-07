@@ -293,24 +293,25 @@ input { font-family: inherit; }
 
 .hero-stats {
     display: flex;
-    gap: 40px;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .hero-stats .stat {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
-.hero-stats strong {
-    font-size: 1.5rem;
-    font-family: var(--font-display);
-    color: var(--color-primary);
+.hero-stats .stat-icon {
+    font-size: 1rem;
+    opacity: 0.6;
 }
 
 .hero-stats span {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--color-text-light);
-    margin-top: 4px;
+    letter-spacing: 0.2px;
 }
 
 .hero-visual {
