@@ -221,6 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     });
 
+    // Auto-open cart if redirected from diagnostic quiz
+    if (new URLSearchParams(window.location.search).get('openCart') === '1') {
+        setTimeout(() => { renderCart(); openCart(); }, 300);
+        history.replaceState(null, '', window.location.pathname);
+    }
+
     function renderCart() {
         cartCount.textContent = cart.getCount();
 

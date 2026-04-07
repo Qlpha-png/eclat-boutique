@@ -188,9 +188,11 @@
         </div>
     </div>
 
+    <script src="../js/products.js"></script>
     <script>
         const answers = {};
         let currentStep = 1;
+        let recommendedIds = [];
 
         function selectOption(el) {
             const step = el.closest('.diag-step');
@@ -213,47 +215,46 @@
             }, 400);
         }
 
+        // Routines basées UNIQUEMENT sur les vrais produits ÉCLAT (IDs du catalogue)
         function showResult() {
-            const skin = answers[1];
             const concern = answers[2];
             const budget = answers[3];
-            const age = answers[4];
 
             const routines = {
                 acne: {
                     summary: 'peau à imperfections qui a besoin de purification et de régulation',
                     steps: [
-                        { step: 'Nettoyage', product: 'CeraVe — Gel Moussant', price: 11.90, why: 'Nettoie sans agresser' },
-                        { step: 'Traitement', product: 'The Ordinary — Niacinamide 10%', price: 9.90, why: 'Réduit pores et sébum' },
-                        { step: 'Soin ciblé', product: 'Garnier — Patchs Anti-Boutons', price: 8.90, why: 'Traitement overnight' },
-                        { step: 'Outil', product: 'Scrubber Ultrasonique', price: 29.90, why: 'Désincruste les pores en profondeur' }
+                        { id: 4, step: 'Nettoyage', why: 'Nettoyage sonique en profondeur, désincruste les pores' },
+                        { id: 3, step: 'Purification', why: 'Ultrasons pour extraire sébum et points noirs sans agresser' },
+                        { id: 8, step: 'Sérum', why: 'Vitamine C antioxydante, réduit les marques post-acné' },
+                        { id: 1, step: 'Traitement LED', why: 'Lumière bleue antibactérienne, lumière rouge cicatrisante' }
                     ]
                 },
                 aging: {
                     summary: 'peau mature qui a besoin de fermeté, régénération et éclat',
                     steps: [
-                        { step: 'Sérum', product: 'Sérum Éclat Vitamine C 20%', price: 27.90, why: 'Booste le collagène' },
-                        { step: 'Soin nuit', product: 'Huile Précieuse Rose Musquée', price: 22.90, why: 'Régénère pendant le sommeil' },
-                        { step: 'Anti-rides', product: 'Stickers Anti-Rides Nuit', price: 17.90, why: 'Lisse les rides overnight' },
-                        { step: 'Massage', product: 'Masque LED Pro 7 Couleurs', price: 44.90, why: 'Lumière rouge anti-âge' }
+                        { id: 8, step: 'Sérum', why: 'Vitamine C 20% — stimule la production de collagène' },
+                        { id: 11, step: 'Soin nuit', why: 'Huile de rose musquée — régénération cellulaire nocturne' },
+                        { id: 12, step: 'Anti-rides', why: 'Stickers lissants — corrigent les rides pendant le sommeil' },
+                        { id: 1, step: 'Traitement LED', why: 'Lumière rouge 630nm — stimulation du collagène profond' }
                     ]
                 },
                 glow: {
                     summary: 'peau en quête d\'éclat, d\'uniformité et de luminosité',
                     steps: [
-                        { step: 'Exfoliation', product: 'The Ordinary — Peeling AHA 30%', price: 12.90, why: 'Resurfaçage hebdomadaire' },
-                        { step: 'Sérum', product: 'Sérum Éclat Vitamine C 20%', price: 27.90, why: 'Anti-taches et luminosité' },
-                        { step: 'Masque', product: 'Masque Collagène Glass Skin', price: 19.90, why: 'Résultat glass skin immédiat' },
-                        { step: 'Massage', product: 'Jade Roller & Gua Sha', price: 24.90, why: 'Booste la circulation' }
+                        { id: 3, step: 'Exfoliation', why: 'Scrubber ultrasonique — resurfaçage doux, teint uniforme' },
+                        { id: 8, step: 'Sérum', why: 'Vitamine C — anti-taches, boost de luminosité' },
+                        { id: 10, step: 'Masque', why: 'Collagène lifting — résultat glass skin immédiat' },
+                        { id: 2, step: 'Massage', why: 'Gua Sha quartz rose — booste la microcirculation' }
                     ]
                 },
                 hydration: {
                     summary: 'peau déshydratée qui a besoin de confort et de nutrition',
                     steps: [
-                        { step: 'Hydratation', product: 'The Ordinary — Acide Hyaluronique', price: 8.90, why: 'Hydratation multi-profondeur' },
-                        { step: 'Protection', product: 'CeraVe — Crème Hydratante SPF30', price: 14.90, why: 'Protège et hydrate toute la journée' },
-                        { step: 'Soin nuit', product: 'Huile Précieuse Rose Musquée', price: 22.90, why: 'Nourrit en profondeur' },
-                        { step: 'Contour yeux', product: 'Patchs Yeux Or 24K', price: 14.90, why: 'Hydrate le contour des yeux' }
+                        { id: 7, step: 'Préparation', why: 'Facial steamer — ouvre les pores, optimise l\'absorption' },
+                        { id: 11, step: 'Nutrition', why: 'Huile de rose musquée — nourrit et restaure la barrière cutanée' },
+                        { id: 9, step: 'Contour yeux', why: 'Patchs collagène or 24K — hydratation intense zone fragile' },
+                        { id: 5, step: 'Drainage', why: 'Ice roller cryo — réduit poches et active la circulation' }
                     ]
                 }
             };
@@ -261,36 +262,60 @@
             const routine = routines[concern] || routines.glow;
             let steps = routine.steps;
 
-            // Adjust based on budget
+            // Adapter au budget
             if (budget === 'low') steps = steps.slice(0, 2);
             if (budget === 'medium') steps = steps.slice(0, 3);
 
-            const total = steps.reduce((sum, s) => sum + s.price, 0);
+            // Résoudre les vrais produits depuis le catalogue
+            const resolved = steps.map(s => {
+                const product = PRODUCTS.find(p => p.id === s.id);
+                return product ? { ...s, product } : null;
+            }).filter(Boolean);
+
+            recommendedIds = resolved.map(r => r.product.id);
+            const total = resolved.reduce((sum, r) => sum + r.product.price, 0);
 
             document.getElementById('diagSummary').textContent =
                 `Pour votre ${routine.summary}, voici la routine idéale :`;
 
-            document.getElementById('routineSteps').innerHTML = steps.map((s, i) => `
+            document.getElementById('routineSteps').innerHTML = resolved.map((r, i) => `
                 <div class="routine-step">
                     <div class="step-num">${i + 1}</div>
                     <div class="step-info">
-                        <div class="step-name">${s.step}</div>
-                        <div class="step-product">${s.product}</div>
-                        <div style="font-size:0.78rem;color:var(--color-text-light);margin-top:2px;">${s.why}</div>
+                        <div class="step-name">${r.step}</div>
+                        <div class="step-product">${r.product.name}</div>
+                        <div style="font-size:0.78rem;color:var(--color-text-light);margin-top:2px;">${r.why}</div>
                     </div>
-                    <div class="step-price">${s.price.toFixed(2).replace('.', ',')} €</div>
+                    <div class="step-price">${r.product.price.toFixed(2).replace('.', ',')} €</div>
                 </div>
             `).join('');
 
             document.getElementById('routineTotal').innerHTML = `
                 <div class="total-label">Votre routine complète</div>
                 <div class="total-price">${total.toFixed(2).replace('.', ',')} €</div>
-                <div class="total-savings">Livraison offerte ${total >= 49 ? '(vous y êtes !)' : `dès 49€ (plus que ${(49 - total).toFixed(2).replace('.', ',')} €)`}</div>
-                <a href="../index.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);">Ajouter tout au panier</a>
+                <div class="total-savings">Livraison offerte ${total >= 49 ? '✓ (incluse !)' : `dès 49€ (plus que ${(49 - total).toFixed(2).replace('.', ',')} €)`}</div>
+                <button onclick="addAllToCart()" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);border:none;cursor:pointer;">Ajouter tout au panier</button>
             `;
 
             document.getElementById('diagResult').classList.add('active');
             document.querySelectorAll('.diag-progress .bar').forEach(b => b.classList.add('active'));
+        }
+
+        function addAllToCart() {
+            // Sauvegarder les IDs dans localStorage pour que app.js les ajoute au panier
+            const existing = JSON.parse(localStorage.getItem('eclat_cart')) || [];
+            recommendedIds.forEach(id => {
+                const product = PRODUCTS.find(p => p.id === id);
+                if (!product) return;
+                const inCart = existing.find(item => item.id === id);
+                if (inCart) {
+                    inCart.qty += 1;
+                } else {
+                    existing.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });
+                }
+            });
+            localStorage.setItem('eclat_cart', JSON.stringify(existing));
+            window.location.href = '../index.html?openCart=1';
         }
     </script>
 </body>
