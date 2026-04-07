@@ -801,6 +801,10 @@ function applyTranslations() {
         else if (badge.classList.contains('badge-lancement')) badge.textContent = t('badge_lancement');
     });
 
+    // Trust badges on product cards
+    document.querySelectorAll('.trust-tag.shipping').forEach(el => { el.textContent = t('trust_shipping'); });
+    document.querySelectorAll('.trust-tag:not(.shipping)').forEach(el => { el.textContent = t('trust_refund'); });
+
     // Review count labels — "(3 247 avis)" → "(3 247 reviews)"
     document.querySelectorAll('.product-rating .count').forEach(el => {
         const match = el.textContent.match(/\(([\d\s.,]+)\s/);
