@@ -148,7 +148,23 @@ const TRANSLATIONS = {
         success_step3_title: 'Livraison',
         success_step3_desc: 'Suivi par email et SMS dès l\'expédition',
         success_back: 'Retour à la boutique',
-        success_contact: 'Un problème ? Contactez-nous à'
+        success_contact: 'Un problème ? Contactez-nous à',
+
+        // Bundles
+        bundle_section_title: 'Économisez avec nos coffrets',
+        bundle_eclat_name: 'Routine Éclat',
+        bundle_antiage_name: 'Routine Anti-Âge',
+        bundle_glow_name: 'Routine Glow',
+        bundle_eclat_products: 'Ice Roller Cryo + Sérum Vitamine C 20% + Gua Sha Quartz Rose',
+        bundle_antiage_products: 'Masque LED Pro 7 Couleurs + Sérum Vitamine C 20% + Masque Collagène Lifting',
+        bundle_glow_products: 'Sérum Vitamine C 20% + Huile Rose Musquée + Patchs Yeux Collagène',
+        bundle_save: 'Économisez',
+        bundle_free_shipping: 'Livraison offerte',
+        bundle_add: 'Ajouter au panier',
+        bundle_match_text: 'Ces produits forment un coffret !',
+        bundle_converted_toast: 'Coffret appliqué !',
+        bundle_added_toast: 'Coffret ajouté au panier !',
+        bundle_prefix: 'Coffret'
     },
 
     en: {
@@ -284,7 +300,23 @@ const TRANSLATIONS = {
         success_step3_title: 'Delivery',
         success_step3_desc: 'Tracking by email and SMS upon shipment',
         success_back: 'Back to shop',
-        success_contact: 'Any issue? Contact us at'
+        success_contact: 'Any issue? Contact us at',
+
+        // Bundles
+        bundle_section_title: 'Save with our bundles',
+        bundle_eclat_name: 'Radiance Routine',
+        bundle_antiage_name: 'Anti-Aging Routine',
+        bundle_glow_name: 'Glow Routine',
+        bundle_eclat_products: 'Ice Roller + Vitamin C Serum 20% + Rose Quartz Gua Sha',
+        bundle_antiage_products: 'LED Pro Mask 7 Colors + Vitamin C Serum 20% + Collagen Lifting Mask',
+        bundle_glow_products: 'Vitamin C Serum 20% + Rosehip Precious Oil + Collagen Eye Patches',
+        bundle_save: 'Save',
+        bundle_free_shipping: 'Free shipping',
+        bundle_add: 'Add to cart',
+        bundle_match_text: 'These products make a bundle!',
+        bundle_converted_toast: 'Bundle applied!',
+        bundle_added_toast: 'Bundle added to cart!',
+        bundle_prefix: 'Bundle'
     },
 
     es: {
@@ -420,7 +452,23 @@ const TRANSLATIONS = {
         success_step3_title: 'Envío',
         success_step3_desc: 'Seguimiento por email y SMS tras el envío',
         success_back: 'Volver a la tienda',
-        success_contact: '¿Algún problema? Contáctanos en'
+        success_contact: '¿Algún problema? Contáctanos en',
+
+        // Bundles
+        bundle_section_title: 'Ahorra con nuestros packs',
+        bundle_eclat_name: 'Rutina Luminosidad',
+        bundle_antiage_name: 'Rutina Anti-Edad',
+        bundle_glow_name: 'Rutina Glow',
+        bundle_eclat_products: 'Ice Roller Cryo + Sérum Vitamina C 20% + Gua Sha Cuarzo Rosa',
+        bundle_antiage_products: 'Máscara LED Pro 7 Colores + Sérum Vitamina C 20% + Mascarilla Colágeno Lifting',
+        bundle_glow_products: 'Sérum Vitamina C 20% + Aceite Rosa Mosqueta + Parches Ojos Colágeno',
+        bundle_save: 'Ahorra',
+        bundle_free_shipping: 'Envío gratis',
+        bundle_add: 'Añadir al carrito',
+        bundle_match_text: '¡Estos productos forman un pack!',
+        bundle_converted_toast: '¡Pack aplicado!',
+        bundle_added_toast: '¡Pack añadido al carrito!',
+        bundle_prefix: 'Pack'
     },
 
     de: {
@@ -556,7 +604,23 @@ const TRANSLATIONS = {
         success_step3_title: 'Lieferung',
         success_step3_desc: 'Verfolgung per E-Mail und SMS nach dem Versand',
         success_back: 'Zur\u00fcck zum Shop',
-        success_contact: 'Ein Problem? Kontaktieren Sie uns unter'
+        success_contact: 'Ein Problem? Kontaktieren Sie uns unter',
+
+        // Bundles
+        bundle_section_title: 'Sparen Sie mit unseren Sets',
+        bundle_eclat_name: 'Strahlkraft-Routine',
+        bundle_antiage_name: 'Anti-Aging-Routine',
+        bundle_glow_name: 'Glow-Routine',
+        bundle_eclat_products: 'Ice Roller Cryo + Vitamin C Serum 20% + Rosenquarz Gua Sha',
+        bundle_antiage_products: 'LED Pro Maske 7 Farben + Vitamin C Serum 20% + Kollagen Lifting-Maske',
+        bundle_glow_products: 'Vitamin C Serum 20% + Hagebuttenöl + Kollagen Augenpads',
+        bundle_save: 'Sparen Sie',
+        bundle_free_shipping: 'Kostenloser Versand',
+        bundle_add: 'In den Warenkorb',
+        bundle_match_text: 'Diese Produkte bilden ein Set!',
+        bundle_converted_toast: 'Set angewendet!',
+        bundle_added_toast: 'Set zum Warenkorb hinzugefügt!',
+        bundle_prefix: 'Set'
     }
 };
 
@@ -709,6 +773,27 @@ function applyTranslations() {
 
     // Translate product names & descriptions if products-i18n.js is loaded
     if (typeof translateProducts === 'function') translateProducts();
+
+    // Translate bundles section
+    const bundleTitle = document.querySelector('.bundles-section h2');
+    if (bundleTitle) bundleTitle.textContent = t('bundle_section_title');
+    const bundleKeys = ['eclat', 'antiage', 'glow'];
+    document.querySelectorAll('.bundle-card').forEach((card, i) => {
+        if (!bundleKeys[i]) return;
+        const key = bundleKeys[i];
+        const nameEl = card.querySelector('.bundle-name');
+        if (nameEl) nameEl.textContent = t('bundle_' + key + '_name');
+        const prodEl = card.querySelector('.bundle-products');
+        if (prodEl) prodEl.textContent = t('bundle_' + key + '_products');
+        const savEl = card.querySelector('.bundle-savings');
+        if (savEl) {
+            const priceMatch = savEl.textContent.match(/[\d,]+\s*€/);
+            const price = priceMatch ? priceMatch[0] : '';
+            savEl.textContent = t('bundle_save') + ' ' + price + ' \u2022 ' + t('bundle_free_shipping');
+        }
+        const btnEl = card.querySelector('.btn');
+        if (btnEl) btnEl.textContent = t('bundle_add');
+    });
 }
 
 // Auto-detect language on load

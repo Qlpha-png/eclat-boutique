@@ -402,9 +402,9 @@
         window.addBundleToCart = function(bundleKey) {
             var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
             if (!bundle) return;
+            var bundleName = t('bundle_prefix') + ' ' + t('bundle_' + bundleKey + '_name');
             var firstProduct = PRODUCTS.find(function(p) { return p.id === bundle.productIds[0]; });
             var img = firstProduct ? firstProduct.image : '';
-            // Ajouter comme un seul article au prix bundle
             var bundleId = 'bundle-' + bundle.key;
             var existing = cart.items.find(function(item) { return item.id === bundleId; });
             if (existing) {
@@ -412,14 +412,14 @@
             } else {
                 cart.items.push({
                     id: bundleId,
-                    name: bundle.name,
+                    name: bundleName,
                     price: bundle.price,
                     image: img,
                     qty: 1
                 });
             }
             cart.save();
-            if (window.showToast) showToast('Coffret ajout\u00e9 au panier !');
+            if (window.showToast) showToast(t('bundle_added_toast'));
         };
 
         // Email capture popup — appears after 8s, once per session

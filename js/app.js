@@ -425,19 +425,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        container.innerHTML = suggestions.map(s => `
+        container.innerHTML = suggestions.map(s => {
+            const bundleName = t('bundle_prefix') + ' ' + t('bundle_' + s.bundle.key + '_name');
+            return `
             <div class="bundle-suggestion">
                 <div class="bundle-suggestion-icon">&#127873;</div>
                 <div class="bundle-suggestion-text">
-                    <strong>${s.bundle.name}</strong><br>
-                    Ces produits forment un coffret !
-                    <span class="bundle-savings">Économisez ${formatPrice(s.savings)}</span>
+                    <strong>${bundleName}</strong><br>
+                    ${t('bundle_match_text')}
+                    <span class="bundle-savings">${t('bundle_save')} ${formatPrice(s.savings)}</span>
                 </div>
                 <button class="btn btn-primary btn-sm bundle-convert-btn" onclick="convertToBundle('${s.bundle.key}')">
-                    ${formatPrice(s.bundle.price)} au lieu de ${formatPrice(s.individualTotal)}
+                    ${formatPrice(s.bundle.price)}
                 </button>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
     }
 
     window.convertToBundle = function(bundleKey) {
@@ -461,17 +463,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        const bundleName = t('bundle_prefix') + ' ' + t('bundle_' + bundle.key + '_name');
         const firstProduct = PRODUCTS.find(p => p.id === bundle.productIds[0]);
         cart.items.push({
             id: 'bundle-' + bundle.key,
-            name: bundle.name,
+            name: bundleName,
             price: bundle.price,
             image: firstProduct ? firstProduct.image : '',
             qty: 1
         });
 
         cart.save();
-        showToast(bundle.name + ' appliqué ! -' + formatPrice(savings));
+        showToast(t('bundle_converted_toast') + ' -' + formatPrice(savings));
     };
 
     cart.onChange(() => renderCart());
