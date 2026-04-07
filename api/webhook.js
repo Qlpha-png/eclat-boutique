@@ -6,8 +6,6 @@ const Stripe = require('stripe');
 // ============================
 
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -38,13 +36,23 @@ module.exports = async (req, res) => {
 
     // ============================
     // ROUTER D'ÉVÉNEMENTS
+    // Note idempotency : pour une vraie protection anti-doublon en prod,
+    // stocker event.id dans Vercel KV ou Upstash Redis.
     // ============================
     const results = {};
+    console.log('[WEBHOOK] Event:', event.type, '| ID:', event.id || 'N/A');
 
     try {
         switch (event.type) {
             case 'checkout.session.completed': {
                 const session = event.data.object;
+
+                // Vérifier que le paiement est bien reçu
+                if (session.payment_status !== 'paid') {
+                    console.log('[WEBHOOK] Payment not yet paid, skipping:', session.payment_status);
+                    return res.status(200).json({ received: true, skipped: 'payment_status_not_paid' });
+                }
+
                 console.log('[WEBHOOK] Checkout completed:', session.id);
 
                 // ÉTAPE 1 : Extraire la commande
@@ -56,9 +64,14 @@ module.exports = async (req, res) => {
                 results.fulfillment = await autoFulfill(order);
                 console.log('[PIPELINE] Fulfillment CJ:', results.fulfillment.mode);
 
-                // ÉTAPE 3 : Email de confirmation au client
-                results.email = await sendConfirmationEmail(order);
-                console.log('[PIPELINE] Email:', results.email.success ? 'sent' : 'skipped');
+                // ÉTAPE 3 : Email de confirmation au client (seulement si fulfillment OK)
+                if (results.fulfillment.mode !== 'auto_failed' || results.fulfillment.fallback === 'manual') {
+                    results.email = await sendConfirmationEmail(order);
+                    console.log('[PIPELINE] Email:', results.email.success ? 'sent' : 'skipped');
+                } else {
+                    results.email = { success: false, reason: 'fulfillment_failed' };
+                    console.log('[PIPELINE] Email skipped: fulfillment failed without fallback');
+                }
 
                 // ÉTAPE 4 : SMS de confirmation au client (si téléphone fourni + Brevo configuré)
                 results.sms = await sendOrderSMS(order);
@@ -104,7 +117,7 @@ async function extractOrder(stripe, session) {
     }
 
     return {
-        id: `ECL-${Date.now()}`,
+        id: `ECL-${Date.now()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`,
         stripeSessionId: session.id,
         paymentIntentId: session.payment_intent,
         createdAt: new Date().toISOString(),
@@ -353,7 +366,7 @@ async function autoFulfill(order) {
 
 const EMAIL_TRANSLATIONS = {
     fr: {
-        subject: 'Votre commande {id} est confirmee',
+        subject: 'Votre commande {id} est confirmée',
         preheader: 'Merci pour votre achat ! Votre rituel beaute est en route.',
         hello: 'Bonjour {name},',
         thanks_title: 'Merci pour votre confiance',
@@ -583,10 +596,10 @@ const EMAIL_TRANSLATIONS = {
 };
 
 const EMAIL_SUBJECTS = {
-    fr: (id) => `Votre commande ${id} est confirmee ✨`,
+    fr: (id) => `Votre commande ${id} est confirmée ✨`,
     en: (id) => `Your order ${id} is confirmed ✨`,
-    es: (id) => `Tu pedido ${id} esta confirmado ✨`,
-    de: (id) => `Ihre Bestellung ${id} ist bestaetigt ✨`,
+    es: (id) => `Tu pedido ${id} está confirmado ✨`,
+    de: (id) => `Ihre Bestellung ${id} ist bestätigt ✨`,
 };
 
 async function sendConfirmationEmail(order) {
@@ -1029,6 +1042,12 @@ async function sendOrderSMS(order) {
 
     const country = order.shipping?.address?.country || 'FR';
     const formattedPhone = formatPhoneInternational(phone, country);
+
+    // Validation basique : le numéro formaté doit contenir 10-15 chiffres
+    const digits = formattedPhone.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 15) {
+        return { sent: false, reason: 'invalid phone format: ' + digits.length + ' digits' };
+    }
 
     // Enregistrer le contact dans Brevo (en parallèle)
     saveContactToBrevo(order).catch(e => console.error('[BREVO] Save failed:', e));

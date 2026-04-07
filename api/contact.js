@@ -3,7 +3,9 @@
 // Reçoit les messages du formulaire contact et les envoie par email via Resend
 // ============================
 
-const CONTACT_EMAIL = 'contact@maison-eclat.shop';
+// CONTACT_RECIPIENT : ton email perso pour recevoir les messages
+// Configurer sur Vercel : CONTACT_RECIPIENT=ton-email@gmail.com
+const CONTACT_EMAIL = process.env.CONTACT_RECIPIENT || 'contact@maison-eclat.shop';
 
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://maison-eclat.shop');
