@@ -93,10 +93,47 @@
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Merci pour votre message ! Notre \u00e9quipe vous r\u00e9pondra sous 48h.');
-            this.reset();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours...';
+
+            const data = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value.trim()
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+
+                if (result.success) {
+                    this.innerHTML = '<div style="text-align:center;padding:40px 0;"><div style="font-size:3rem;margin-bottom:16px;">✓</div><h3 style="font-family:var(--font-display);margin-bottom:8px;">Message envoyé !</h3><p style="color:var(--color-text-light);">Merci ' + data.name.split(' ')[0] + ', notre équipe vous répondra sous 48h.</p></div>';
+                } else if (result.mode === 'mailto') {
+                    const subjectLabels = { commande: 'Ma commande', produit: 'Question produit', retour: 'Retour / Remboursement', partenariat: 'Partenariat / Presse', autre: 'Autre' };
+                    const mailSubject = encodeURIComponent('[Contact] ' + (subjectLabels[data.subject] || data.subject));
+                    const mailBody = encodeURIComponent('Nom : ' + data.name + '\nEmail : ' + data.email + '\n\n' + data.message);
+                    window.location.href = 'mailto:contact@maison-eclat.shop?subject=' + mailSubject + '&body=' + mailBody;
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                } else {
+                    throw new Error(result.error || 'Erreur');
+                }
+            } catch (err) {
+                const mailSubject = encodeURIComponent('[Contact] Message depuis le site');
+                const mailBody = encodeURIComponent('Nom : ' + data.name + '\nEmail : ' + data.email + '\nSujet : ' + data.subject + '\n\n' + data.message);
+                window.location.href = 'mailto:contact@maison-eclat.shop?subject=' + mailSubject + '&body=' + mailBody;
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
         });
     </script>
 </body>
