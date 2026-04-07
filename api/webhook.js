@@ -185,7 +185,23 @@ const PRODUCT_DATA = {
     'Stickers Anti-Rides Micro-Crystal': { cost: 0.53, supplier: 'cj', cjVariantId: '2603080834381637200', cjProductId: '2603080834381636900' },
     'Masque Yeux Vapeur SPA': { cost: 2.63, supplier: 'cj', cjVariantId: '2507200553561616300', cjProductId: '2507200553561614700' },
     'Diffuseur Arôme Ultrasonique': { cost: 15.14, supplier: 'cj', cjVariantId: '2602270733571637400', cjProductId: '2602270733571636700' },
-    'Kit Boucles Sans Chaleur': { cost: 1.97, supplier: 'cj', cjVariantId: '1481815597804294144', cjProductId: '1481815597737185280' }
+    'Kit Boucles Sans Chaleur': { cost: 1.97, supplier: 'cj', cjVariantId: '1481815597804294144', cjProductId: '1481815597737185280' },
+    // --- COFFRETS (bundles → multiples produits CJ) ---
+    'Coffret Routine Éclat': { cost: 3.91, supplier: 'cj', isBundle: true, products: [
+        { cjProductId: '2508010604181617000', cjVariantId: '2508010604181617800' },
+        { cjProductId: '2603300928441600800', cjVariantId: '2603300928441601200' },
+        { cjProductId: '2602120829411639000', cjVariantId: '2602120829411639400' }
+    ]},
+    'Coffret Routine Anti-Âge': { cost: 12.42, supplier: 'cj', isBundle: true, products: [
+        { cjProductId: '2512020745411613700', cjVariantId: '2512020745411614100' },
+        { cjProductId: '2603300928441600800', cjVariantId: '2603300928441601200' },
+        { cjProductId: '2604060437251602800', cjVariantId: '2604060437251603100' }
+    ]},
+    'Coffret Routine Glow': { cost: 4.68, supplier: 'cj', isBundle: true, products: [
+        { cjProductId: '2603300928441600800', cjVariantId: '2603300928441601200' },
+        { cjProductId: '2503141112311610800', cjVariantId: '2503141112311611000' },
+        { cjProductId: '2603301345481600700', cjVariantId: '2603301345481601100' }
+    ]}
 };
 
 async function autoFulfill(order) {

@@ -290,15 +290,67 @@
                 </div>
             `).join('');
 
+            // Chercher si un coffret correspond aux produits recommandés
+            let bundleHtml = '';
+            if (typeof BUNDLES !== 'undefined') {
+                const matchedBundle = BUNDLES.find(b => {
+                    const overlap = b.productIds.filter(id => recommendedIds.includes(id));
+                    return overlap.length >= 2; // au moins 2 produits en commun
+                });
+                if (matchedBundle) {
+                    const bundleTotal = matchedBundle.price;
+                    const bundleIndividual = matchedBundle.productIds.reduce((s, id) => {
+                        const p = PRODUCTS.find(pr => pr.id === id);
+                        return s + (p ? p.price : 0);
+                    }, 0);
+                    const saving = (bundleIndividual - bundleTotal).toFixed(2).replace('.', ',');
+                    bundleHtml = `
+                        <div style="margin-top:20px;padding:16px 20px;background:#f0f7f0;border:1px solid #c8e6c9;border-radius:12px;text-align:center;">
+                            <p style="font-size:0.85rem;color:#2e7d32;margin:0 0 8px;font-weight:600;">
+                                \u2728 Astuce : le ${matchedBundle.name} contient ces produits !
+                            </p>
+                            <p style="font-size:0.82rem;color:#558b2f;margin:0 0 12px;">
+                                ${bundleTotal.toFixed(2).replace('.', ',')} \u20ac au lieu de ${bundleIndividual.toFixed(2).replace('.', ',')} \u20ac \u2014 \u00e9conomisez ${saving} \u20ac
+                            </p>
+                            <button onclick="addBundleFromDiag('${matchedBundle.key}')" class="btn btn-primary" style="background:#2e7d32;border:none;cursor:pointer;font-size:0.9rem;">
+                                Prendre le coffret \u00e0 ${bundleTotal.toFixed(2).replace('.', ',')} \u20ac
+                            </button>
+                        </div>`;
+                }
+            }
+
             document.getElementById('routineTotal').innerHTML = `
-                <div class="total-label">Votre routine complète</div>
-                <div class="total-price">${total.toFixed(2).replace('.', ',')} €</div>
-                <div class="total-savings">Livraison offerte ${total >= 29 ? '✓ (incluse !)' : `dès 29€ (plus que ${(29 - total).toFixed(2).replace('.', ',')} €)`}</div>
+                <div class="total-label">Votre routine compl\u00e8te</div>
+                <div class="total-price">${total.toFixed(2).replace('.', ',')} \u20ac</div>
+                <div class="total-savings">Livraison offerte ${total >= 29 ? '\u2713 (incluse !)' : `d\u00e8s 29\u20ac (plus que ${(29 - total).toFixed(2).replace('.', ',')} \u20ac)`}</div>
                 <button onclick="addAllToCart()" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);border:none;cursor:pointer;">Ajouter tout au panier</button>
+                ${bundleHtml}
             `;
 
             document.getElementById('diagResult').classList.add('active');
             document.querySelectorAll('.diag-progress .bar').forEach(b => b.classList.add('active'));
+        }
+
+        function addBundleFromDiag(bundleKey) {
+            const bundle = BUNDLES.find(b => b.key === bundleKey);
+            if (!bundle) return;
+            const firstProduct = PRODUCTS.find(p => p.id === bundle.productIds[0]);
+            const existing = JSON.parse(localStorage.getItem('eclat_cart')) || [];
+            const bundleId = 'bundle-' + bundle.key;
+            const inCart = existing.find(item => item.id === bundleId);
+            if (inCart) {
+                inCart.qty += 1;
+            } else {
+                existing.push({
+                    id: bundleId,
+                    name: bundle.name,
+                    price: bundle.price,
+                    image: firstProduct ? firstProduct.image : '',
+                    qty: 1
+                });
+            }
+            localStorage.setItem('eclat_cart', JSON.stringify(existing));
+            window.location.href = '../index.html?openCart=1';
         }
 
         function addAllToCart() {

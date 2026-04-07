@@ -192,7 +192,7 @@
                         <span class="bundle-price">24,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 7,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([5, 8, 2])" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('eclat')" style="margin-top:16px;">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card featured">
                     <div class="bundle-icon">&#128081;</div>
@@ -203,7 +203,7 @@
                         <span class="bundle-price">49,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 17,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([1, 8, 10])" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('antiage')" style="margin-top:16px;">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card">
                     <div class="bundle-icon">&#127800;</div>
@@ -214,7 +214,7 @@
                         <span class="bundle-price">29,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 9,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([8, 11, 9])" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('glow')" style="margin-top:16px;">Ajouter au panier</button>
                 </div>
             </div>
         </div>
@@ -398,13 +398,28 @@
     <script src="js/products-i18n.js"></script>
     <script src="js/chatbot.js"></script>
     <script>
-        // Bundle add-to-cart function
-        window.addBundleToCart = function(productIds) {
-            productIds.forEach(id => {
-                const product = PRODUCTS.find(p => p.id === id);
-                if (product) cart.add(product);
-            });
-            if (window.showToast) showToast('Pack ajout\u00e9 au panier !');
+        // Bundle add-to-cart — ajoute UN article coffret au prix réel du bundle
+        window.addBundleToCart = function(bundleKey) {
+            var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
+            if (!bundle) return;
+            var firstProduct = PRODUCTS.find(function(p) { return p.id === bundle.productIds[0]; });
+            var img = firstProduct ? firstProduct.image : '';
+            // Ajouter comme un seul article au prix bundle
+            var bundleId = 'bundle-' + bundle.key;
+            var existing = cart.items.find(function(item) { return item.id === bundleId; });
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.items.push({
+                    id: bundleId,
+                    name: bundle.name,
+                    price: bundle.price,
+                    image: img,
+                    qty: 1
+                });
+            }
+            cart.save();
+            if (window.showToast) showToast('Coffret ajout\u00e9 au panier !');
         };
 
         // Email capture popup — appears after 8s, once per session

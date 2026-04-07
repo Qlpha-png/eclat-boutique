@@ -303,6 +303,30 @@ const PRODUCTS = [
 ];
 
 // ============================
+// COFFRETS — Prix bundle réels (pas les prix individuels)
+// ============================
+const BUNDLES = [
+    {
+        key: 'eclat',
+        name: 'Coffret Routine Éclat',
+        productIds: [5, 8, 2],   // Ice Roller + Sérum VitC + Gua Sha
+        price: 24.90
+    },
+    {
+        key: 'antiage',
+        name: 'Coffret Routine Anti-Âge',
+        productIds: [1, 8, 10],  // LED + Sérum VitC + Masque Collagène
+        price: 49.90
+    },
+    {
+        key: 'glow',
+        name: 'Coffret Routine Glow',
+        productIds: [8, 11, 9],  // Sérum VitC + Huile Rose + Patchs Yeux
+        price: 29.90
+    }
+];
+
+// ============================
 // ROUTINE BEAUTÉ — Mapping produit → étape
 // Utilisé par le "Complétez votre routine" dans le panier
 // ============================
