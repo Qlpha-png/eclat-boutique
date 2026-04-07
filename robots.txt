@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /pages/checkout.html
+Disallow: /pages/success.html
+Disallow: /pages/admin.html
+Disallow: /api/
 
 Sitemap: https://maison-eclat.shop/sitemap.xml
