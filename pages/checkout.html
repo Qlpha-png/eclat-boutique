@@ -134,7 +134,7 @@
             <label style="display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--color-border);border-radius:var(--radius-sm);margin-bottom:10px;cursor:pointer;">
                 <input type="radio" name="shipping" value="relay" checked>
                 <div>
-                    <strong style="font-size:0.9rem;">Livraison standard - Gratuite</strong>
+                    <strong style="font-size:0.9rem;" id="standardShippingLabel">Livraison standard</strong>
                     <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">7-14 jours ouvr&eacute;s (livraison suivie)</p>
                 </div>
             </label>
@@ -223,13 +223,21 @@
             shippingRadios.forEach(radio => {
                 if (radio.checked) {
                     if (radio.value === 'express') shippingCost = 7.90;
-                    else shippingCost = subtotal >= 49 ? 0 : 3.90;
+                    else shippingCost = subtotal >= 29 ? 0 : 3.90;
                 }
             });
 
             document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotal);
             document.getElementById('checkoutShipping').textContent = shippingCost === 0 ? t('checkout_free') : formatPrice(shippingCost);
             document.getElementById('checkoutTotal').textContent = formatPrice(subtotal + shippingCost);
+
+            // Update standard shipping label based on cart total
+            var stdLabel = document.getElementById('standardShippingLabel');
+            if (stdLabel) {
+                stdLabel.textContent = subtotal >= 29
+                    ? 'Livraison standard - Gratuite'
+                    : 'Livraison standard - 3,90\u20ac (gratuite d\u00e8s 29\u20ac)';
+            }
         }
 
         // Shipping option change
@@ -264,8 +272,8 @@
                 }
             });
             const subtotal = cart.getTotal();
-            if (subtotal >= 49 && shippingCost !== 7.90) shippingCost = 0;
-            if (subtotal < 49 && shippingCost === 0) shippingCost = 3.90;
+            if (subtotal >= 29 && shippingCost !== 7.90) shippingCost = 0;
+            if (subtotal < 29 && shippingCost === 0) shippingCost = 3.90;
 
             const email = document.getElementById('email').value;
 
