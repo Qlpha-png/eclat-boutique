@@ -754,6 +754,9 @@ function buildConfirmationHtml(order, lang) {
                     <td style="padding:8px 0;font-size:18px;color:${dark};font-weight:700;">${t.total}</td>
                     <td align="right" style="padding:8px 0;font-size:24px;color:${dark};font-weight:700;">${order.total.toFixed(2).replace('.', ',')} &euro;</td>
                 </tr>
+                <tr>
+                    <td colspan="2" style="padding:4px 0 0;font-size:11px;color:${muted};font-style:italic;">TVA non applicable, art. 293 B du CGI (micro-entreprise)</td>
+                </tr>
                 </table>
             </td>
         </tr>
