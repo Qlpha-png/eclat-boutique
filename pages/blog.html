@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog beauté ÉCLAT - Conseils skincare, routines visage, tendances K-beauty et guides d'utilisation de vos outils beauté.">
+    <meta name="keywords" content="blog beauté, routine skincare, K-beauty, masque LED avis, gua sha comment utiliser, jade roller bienfaits">
+    <title>Blog Beauté - ÉCLAT | Conseils & Routines Skincare</title>
+
+    <meta property="og:title" content="Blog Beauté ÉCLAT - Conseils & Routines">
+    <meta property="og:description" content="Découvrez nos guides beauté, routines skincare et conseils d'experts pour une peau éclatante.">
+    <meta property="og:type" content="blog">
+    <meta property="og:url" content="https://maison-eclat.shop/pages/blog.html">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://maison-eclat.shop/pages/blog.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-page { max-width: 900px; margin: 40px auto; padding: 0 24px; }
+        .blog-page h1 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 12px; text-align: center; }
+        .blog-page > p { text-align: center; color: var(--color-text-light); margin-bottom: 48px; }
+
+        .blog-grid { display: flex; flex-direction: column; gap: 32px; }
+
+        .blog-article {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            transition: var(--transition);
+        }
+        .blog-article:hover { box-shadow: var(--shadow-lg); border-color: transparent; transform: translateY(-3px); }
+
+        .blog-thumb {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f0eb, #ede4da);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-content { padding: 28px 32px; display: flex; flex-direction: column; justify-content: center; }
+        .blog-meta { font-size: 0.75rem; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+        .blog-content h2 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 10px; line-height: 1.3; }
+        .blog-content h2 a { color: var(--color-text); text-decoration: none; transition: var(--transition); }
+        .blog-content h2 a:hover { color: var(--color-secondary); }
+        .blog-excerpt { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.7; margin-bottom: 16px; }
+        .blog-read-more { font-size: 0.85rem; color: var(--color-secondary); font-weight: 600; text-decoration: none; }
+        .blog-read-more:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .blog-article { grid-template-columns: 1fr; }
+            .blog-thumb { aspect-ratio: 16/9; font-size: 3rem; }
+        }
+    </style>
+</head>
+<body style="background: var(--color-bg);">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">ÉCLAT</a>
+            <div style="font-size:0.9rem;color:var(--color-text-light);">Blog Beauté</div>
+        </div>
+    </nav>
+
+    <div class="blog-page">
+        <h1>Le Blog Beauté ÉCLAT</h1>
+        <p>Conseils d'experts, routines skincare et tendances pour une peau éclatante au quotidien.</p>
+
+        <div class="blog-grid">
+
+            <article class="blog-article">
+                <div class="blog-thumb">💡</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Guide complet • 8 min de lecture</div>
+                    <h2><a href="#">Masque LED visage : le guide ultime pour des résultats visibles</a></h2>
+                    <p class="blog-excerpt">Découvrez comment la luminothérapie LED révolutionne les soins du visage. Quelle couleur pour quel problème de peau ? Combien de temps pour voir des résultats ? On vous dit tout.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="blog-thumb">🧖‍♀️</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Routine • 5 min de lecture</div>
+                    <h2><a href="#">La routine skincare du matin en 5 étapes (même quand on a pas le temps)</a></h2>
+                    <p class="blog-excerpt">Nettoyage, sérum, hydratation... On vous montre la routine minimaliste mais efficace pour démarrer la journée avec une peau lumineuse. Adaptée à tous les types de peau.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="blog-thumb">🌹</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Comparatif • 6 min de lecture</div>
+                    <h2><a href="#">Jade Roller vs Gua Sha : lequel choisir selon votre peau ?</a></h2>
+                    <p class="blog-excerpt">Deux outils ancestraux, deux techniques différentes. On compare les bienfaits, les gestes et les résultats pour vous aider à choisir celui qui correspond le mieux à vos besoins.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="blog-thumb">🧴</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Ingrédients • 4 min de lecture</div>
+                    <h2><a href="#">Vitamine C en skincare : pourquoi c'est l'actif n°1 anti-taches</a></h2>
+                    <p class="blog-excerpt">La vitamine C est l'ingrédient star pour un teint uniforme et lumineux. Concentration idéale, comment l'appliquer, avec quels actifs la combiner : le guide complet.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="blog-thumb">🌿</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Tendance • 7 min de lecture</div>
+                    <h2><a href="#">K-Beauty en France : les 5 tendances qui changent tout en 2026</a></h2>
+                    <p class="blog-excerpt">Glass skin, skip-care, slugging... Les tendances beauté coréennes continuent de conquérir la France. Découvrez celles qui valent vraiment le coup d'être adoptées.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="blog-thumb">🧊</div>
+                <div class="blog-content">
+                    <div class="blog-meta">Astuce • 3 min de lecture</div>
+                    <h2><a href="#">Derma roller : 5 erreurs à ne surtout pas faire (et comment bien l'utiliser)</a></h2>
+                    <p class="blog-excerpt">Le micro-needling à domicile peut transformer votre peau... ou l'abîmer si mal utilisé. Voici les erreurs les plus courantes et nos conseils pour des résultats pro.</p>
+                    <a href="#" class="blog-read-more">Lire l'article →</a>
+                </div>
+            </article>
+
+        </div>
+
+        <div style="text-align:center;margin-top:48px;">
+            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">← Retour à la boutique</a>
+        </div>
+    </div>
+
+    <!-- Schema.org Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Beauté ÉCLAT",
+        "description": "Conseils skincare, routines beauté et tendances pour une peau éclatante",
+        "url": "https://maison-eclat.shop/pages/blog.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ÉCLAT",
+            "url": "https://maison-eclat.shop"
+        }
+    }
+    </script>
+</body>
+</html>

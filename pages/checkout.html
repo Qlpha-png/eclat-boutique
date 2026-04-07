@@ -14,29 +14,56 @@
         <div class="nav-container">
             <a href="../index.html" class="logo">&Eacute;CLAT</a>
             <div style="display:flex;align-items:center;gap:8px;font-size:0.9rem;color:var(--color-text-light);">
-                &#128274; Paiement s&eacute;curis&eacute;
+                &#128274; <span data-i18n="checkout_secure_nav">Paiement s&eacute;curis&eacute;</span>
             </div>
         </div>
     </nav>
 
     <div class="checkout-page">
-        <h1>Finaliser ma commande</h1>
+        <!-- Progress indicator -->
+        <div style="display:flex;justify-content:center;gap:8px;align-items:center;margin-bottom:28px;font-size:0.85rem;">
+            <span style="display:flex;align-items:center;gap:6px;color:var(--color-secondary);font-weight:600;">
+                <span style="background:var(--color-secondary);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;">1</span>
+                Panier &#10003;
+            </span>
+            <span style="width:32px;height:2px;background:var(--color-secondary);"></span>
+            <span style="display:flex;align-items:center;gap:6px;color:var(--color-primary);font-weight:700;">
+                <span style="background:var(--color-primary);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;">2</span>
+                Livraison
+            </span>
+            <span style="width:32px;height:2px;background:var(--color-border);"></span>
+            <span style="display:flex;align-items:center;gap:6px;color:var(--color-text-light);">
+                <span style="background:var(--color-border);color:var(--color-text-light);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;">3</span>
+                Paiement
+            </span>
+        </div>
+
+        <!-- Guest checkout reassurance -->
+        <div style="display:flex;align-items:center;gap:12px;background:#f0f7f0;border:1px solid #c8e6c9;border-radius:8px;padding:14px 20px;margin-bottom:24px;">
+            <span style="font-size:1.4rem;">&#128274;</span>
+            <div>
+                <strong style="font-size:0.9rem;color:#2e7d32;">Commande rapide et s&eacute;curis&eacute;e</strong>
+                <p style="font-size:0.8rem;color:#558b2f;margin:2px 0 0;">Pas de cr&eacute;ation de compte n&eacute;cessaire. Paiement 100% s&eacute;curis&eacute; par Stripe.</p>
+            </div>
+        </div>
+
+        <h1 data-i18n="checkout_title">Finaliser ma commande</h1>
 
         <!-- Order Summary -->
         <div class="checkout-form" style="margin-bottom:24px;" id="orderSummary">
-            <h3 style="font-family:var(--font-display);margin-bottom:16px;">R&eacute;capitulatif</h3>
+            <h3 style="font-family:var(--font-display);margin-bottom:16px;" data-i18n="checkout_summary">R&eacute;capitulatif</h3>
             <div id="checkoutItems"></div>
             <div style="border-top:1px solid var(--color-border);padding-top:16px;margin-top:16px;">
                 <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-                    <span>Sous-total</span>
+                    <span data-i18n="checkout_subtotal">Sous-total</span>
                     <strong id="checkoutSubtotal">0,00 &euro;</strong>
                 </div>
                 <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:0.9rem;color:var(--color-text-light);">
-                    <span>Livraison</span>
+                    <span data-i18n="checkout_shipping">Livraison</span>
                     <span id="checkoutShipping">Gratuite</span>
                 </div>
                 <div style="display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;margin-top:12px;padding-top:12px;border-top:1px solid var(--color-border);">
-                    <span>Total</span>
+                    <span data-i18n="checkout_total">Total</span>
                     <span id="checkoutTotal">0,00 &euro;</span>
                 </div>
             </div>
@@ -44,95 +71,115 @@
 
         <!-- Shipping Info -->
         <form class="checkout-form" id="checkoutForm">
-            <h3 style="font-family:var(--font-display);margin-bottom:20px;">Informations de livraison</h3>
+            <h3 style="font-family:var(--font-display);margin-bottom:20px;" data-i18n="checkout_info">Informations de livraison</h3>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="firstName">Pr&eacute;nom</label>
+                    <label for="firstName" data-i18n="checkout_firstname">Pr&eacute;nom</label>
                     <input type="text" id="firstName" required placeholder="Marie">
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Nom</label>
+                    <label for="lastName" data-i18n="checkout_lastname">Nom</label>
                     <input type="text" id="lastName" required placeholder="Dupont">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email" data-i18n="checkout_email">Email</label>
                 <input type="email" id="email" required placeholder="marie@exemple.fr">
             </div>
 
             <div class="form-group">
-                <label for="phone">T&eacute;l&eacute;phone</label>
+                <label for="phone" data-i18n="checkout_phone">T&eacute;l&eacute;phone</label>
                 <input type="tel" id="phone" required placeholder="06 12 34 56 78">
             </div>
 
             <div class="form-group">
-                <label for="address">Adresse</label>
+                <label for="address" data-i18n="checkout_address">Adresse</label>
                 <input type="text" id="address" required placeholder="12 Rue de la Paix">
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label for="zipcode">Code postal</label>
+                    <label for="zipcode" data-i18n="checkout_zip">Code postal</label>
                     <input type="text" id="zipcode" required placeholder="75001" pattern="[0-9]{5}">
                 </div>
                 <div class="form-group">
-                    <label for="city">Ville</label>
+                    <label for="city" data-i18n="checkout_city">Ville</label>
                     <input type="text" id="city" required placeholder="Paris">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="country">Pays</label>
+                <label for="country" data-i18n="checkout_country">Pays</label>
                 <select id="country" required>
-                    <option value="FR" selected>France m&eacute;tropolitaine</option>
-                    <option value="BE">Belgique</option>
-                    <option value="CH">Suisse</option>
+                    <option value="FR" selected>France</option>
+                    <option value="BE">Belgique / Belgium</option>
+                    <option value="CH">Suisse / Switzerland</option>
                     <option value="LU">Luxembourg</option>
+                    <option value="DE">Deutschland / Allemagne</option>
+                    <option value="ES">Espa&ntilde;a / Espagne</option>
+                    <option value="IT">Italia / Italie</option>
+                    <option value="NL">Nederland / Pays-Bas</option>
+                    <option value="PT">Portugal</option>
+                    <option value="AT">&Ouml;sterreich / Autriche</option>
+                    <option value="IE">Ireland / Irlande</option>
+                    <option value="GB">United Kingdom</option>
                 </select>
             </div>
 
-            <h3 style="font-family:var(--font-display);margin:28px 0 20px;">Mode de livraison</h3>
+            <h3 style="font-family:var(--font-display);margin:28px 0 20px;" data-i18n="checkout_shipping_method">Mode de livraison</h3>
 
             <label style="display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--color-border);border-radius:var(--radius-sm);margin-bottom:10px;cursor:pointer;">
                 <input type="radio" name="shipping" value="relay" checked>
                 <div>
-                    <strong style="font-size:0.9rem;">Point Relais - Gratuit</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">3-5 jours ouvr&eacute;s (Mondial Relay)</p>
-                </div>
-            </label>
-
-            <label style="display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--color-border);border-radius:var(--radius-sm);margin-bottom:10px;cursor:pointer;">
-                <input type="radio" name="shipping" value="home">
-                <div>
-                    <strong style="font-size:0.9rem;">Domicile - 3,90&euro;</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">2-4 jours ouvr&eacute;s (Colissimo)</p>
+                    <strong style="font-size:0.9rem;">Livraison standard - Gratuite</strong>
+                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">7-14 jours ouvr&eacute;s (livraison suivie)</p>
                 </div>
             </label>
 
             <label style="display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--color-border);border-radius:var(--radius-sm);margin-bottom:24px;cursor:pointer;">
                 <input type="radio" name="shipping" value="express">
                 <div>
-                    <strong style="font-size:0.9rem;">Express - 7,90&euro;</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">24-48h (Chronopost)</p>
+                    <strong style="font-size:0.9rem;">Livraison express - 7,90&euro;</strong>
+                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">5-10 jours ouvr&eacute;s (exp&eacute;dition prioritaire)</p>
                 </div>
             </label>
 
+            <!-- Pre-contractual info (Article L221-5 Code de la consommation) -->
+            <div style="background:var(--color-bg);padding:16px 20px;border-radius:8px;margin-bottom:20px;border-left:3px solid var(--color-secondary);">
+                <p style="font-size:0.8rem;color:var(--color-text-light);margin:0 0 4px;line-height:1.6;">
+                    <strong>Vendeur :</strong> Maison &Eacute;clat &mdash; Kevin VOISIN<br>
+                    <strong>Droit de r&eacute;tractation :</strong> 30 jours apr&egrave;s r&eacute;ception<br>
+                    <strong>D&eacute;lai de livraison :</strong> 7 &agrave; 14 jours ouvr&eacute;s<br>
+                    <strong>M&eacute;diation :</strong> <a href="https://www.mediateur-consommation-smp.fr" target="_blank" rel="noopener" style="color:var(--color-secondary);">SMP - M&eacute;diation Professionnelle</a>
+                </p>
+            </div>
+
+            <!-- CGV acceptance (mandatory) -->
+            <label style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;cursor:pointer;font-size:0.85rem;color:var(--color-text-light);line-height:1.5;">
+                <input type="checkbox" id="acceptCGV" required style="margin-top:3px;min-width:18px;min-height:18px;">
+                <span>J'accepte les <a href="cgv.html" target="_blank" style="color:var(--color-secondary);text-decoration:underline;">conditions g&eacute;n&eacute;rales de vente</a> et la <a href="confidentialite.html" target="_blank" style="color:var(--color-secondary);text-decoration:underline;">politique de confidentialit&eacute;</a>. Je reconnais mon droit de r&eacute;tractation de 30 jours. *</span>
+            </label>
+
             <button type="submit" class="btn btn-primary btn-full" style="padding:16px;font-size:1rem;" id="payBtn">
-                &#128274; Payer maintenant
+                &#128274; <span data-i18n="checkout_pay">Payer maintenant</span>
             </button>
 
-            <p style="text-align:center;font-size:0.8rem;color:var(--color-text-light);margin-top:16px;">
-                Paiement 100% s&eacute;curis&eacute; par Stripe. Vos donn&eacute;es bancaires ne sont jamais stock&eacute;es sur nos serveurs.
-            </p>
+            <!-- Trust badges -->
+            <div style="display:flex;justify-content:center;gap:20px;margin-top:20px;flex-wrap:wrap;">
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--color-text-light);">&#128274; Paiement s&eacute;curis&eacute;</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--color-text-light);">&#128230; Livraison suivie</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--color-text-light);">&#128260; Retours gratuits 30j</span>
+            </div>
         </form>
 
         <div style="text-align:center;margin-top:24px;">
-            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; Retour &agrave; la boutique</a>
+            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);" id="checkoutBackLink">&larr; <span data-i18n="checkout_back">Retour &agrave; la boutique</span></a>
         </div>
     </div>
 
+    <script src="../js/i18n.js"></script>
     <script src="../js/products.js"></script>
     <script src="../js/cart.js"></script>
     <script>
@@ -147,7 +194,7 @@
             const checkoutTotal = document.getElementById('checkoutTotal');
 
             if (cart.isEmpty()) {
-                checkoutItems.innerHTML = '<p style="color:var(--color-text-light);">Votre panier est vide.</p>';
+                checkoutItems.innerHTML = '<p style="color:var(--color-text-light);">' + t('checkout_empty') + '</p>';
                 return;
             }
 
@@ -174,16 +221,13 @@
 
             shippingRadios.forEach(radio => {
                 if (radio.checked) {
-                    if (radio.value === 'home') shippingCost = 3.90;
-                    else if (radio.value === 'express') shippingCost = 7.90;
-                    else shippingCost = 0;
+                    if (radio.value === 'express') shippingCost = 7.90;
+                    else shippingCost = subtotal >= 49 ? 0 : 3.90;
                 }
             });
 
-            if (subtotal >= 49) shippingCost = Math.min(shippingCost, shippingCost === 7.90 ? 7.90 : 0);
-
             document.getElementById('checkoutSubtotal').textContent = formatPrice(subtotal);
-            document.getElementById('checkoutShipping').textContent = shippingCost === 0 ? 'Gratuite' : formatPrice(shippingCost);
+            document.getElementById('checkoutShipping').textContent = shippingCost === 0 ? t('checkout_free') : formatPrice(shippingCost);
             document.getElementById('checkoutTotal').textContent = formatPrice(subtotal + shippingCost);
         }
 
@@ -198,21 +242,29 @@
 
             if (cart.isEmpty()) return;
 
+            // CGV acceptance validation
+            const cgvCheckbox = document.getElementById('acceptCGV');
+            if (!cgvCheckbox.checked) {
+                alert('Veuillez accepter les conditions g\u00e9n\u00e9rales de vente pour continuer.');
+                cgvCheckbox.focus();
+                return;
+            }
+
             const payBtn = document.getElementById('payBtn');
             payBtn.disabled = true;
-            payBtn.textContent = 'Redirection vers le paiement...';
+            payBtn.textContent = t('checkout_redirect');
 
             // Calculate shipping cost
             const shippingRadios = document.querySelectorAll('input[name="shipping"]');
             let shippingCost = 0;
             shippingRadios.forEach(radio => {
                 if (radio.checked) {
-                    if (radio.value === 'home') shippingCost = 3.90;
-                    else if (radio.value === 'express') shippingCost = 7.90;
+                    if (radio.value === 'express') shippingCost = 7.90;
                 }
             });
             const subtotal = cart.getTotal();
             if (subtotal >= 49 && shippingCost !== 7.90) shippingCost = 0;
+            if (subtotal < 49 && shippingCost === 0) shippingCost = 3.90;
 
             const email = document.getElementById('email').value;
 
@@ -232,16 +284,26 @@
                 if (data.url) {
                     window.location.href = data.url;
                 } else {
-                    throw new Error(data.error || 'Erreur lors de la cr\u00e9ation du paiement');
+                    throw new Error(data.error || t('checkout_error'));
                 }
             } catch (error) {
-                alert('Erreur : ' + error.message + '\n\nV\u00e9rifiez que Stripe est bien configur\u00e9.');
+                alert(t('checkout_error_prefix') + ' : ' + error.message + '\n\n' + t('checkout_error_stripe'));
                 payBtn.disabled = false;
-                payBtn.innerHTML = '&#128274; Payer maintenant';
+                payBtn.innerHTML = '&#128274; <span data-i18n="checkout_pay">' + t('checkout_pay') + '</span>';
             }
+        });
+
+        // Apply i18n translations to data-i18n elements
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                el.textContent = t(key);
+            });
+            document.documentElement.lang = currentLang;
         });
 
         renderCheckout();
     </script>
+    <script src="../js/automation.js"></script>
 </body>
 </html>

@@ -60,11 +60,13 @@ module.exports = async (req, res) => {
             payment_method_types: ['card'],
             line_items,
             mode: 'payment',
-            success_url: `${req.headers.origin || 'https://eclat-boutique.vercel.app'}/pages/success.html`,
-            cancel_url: `${req.headers.origin || 'https://eclat-boutique.vercel.app'}/pages/checkout.html`,
+            success_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/success.html`,
+            cancel_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/checkout.html`,
+            allow_promotion_codes: true,
+            phone_number_collection: { enabled: true },
             locale: 'fr',
             shipping_address_collection: {
-                allowed_countries: ['FR', 'BE', 'CH', 'LU'],
+                allowed_countries: ['FR', 'BE', 'CH', 'LU', 'DE', 'ES', 'IT', 'NL', 'PT', 'AT', 'IE', 'GB'],
             },
             customer_email: customer_email || undefined,
         });

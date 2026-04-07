@@ -39,11 +39,7 @@
             "@type": "PostalAddress",
             "addressCountry": "FR"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "15000"
-        }
+        "foundingDate": "2026"
     }
     </script>
 </head>
@@ -51,7 +47,7 @@
 
     <!-- Top Banner -->
     <div class="top-banner">
-        <p>Livraison offerte d&egrave;s 49&euro; d'achat &bull; Paiement en 3x sans frais</p>
+        <p>Livraison offerte d&egrave;s 49&euro; d'achat &bull; Paiement s&eacute;curis&eacute; Stripe</p>
     </div>
 
     <!-- Navigation -->
@@ -64,6 +60,7 @@
                 <li><a href="#bestsellers">Best-sellers</a></li>
                 <li><a href="#avis">Avis</a></li>
                 <li><a href="#about">Notre histoire</a></li>
+                <li><a href="#fidelite">Fidélité</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="cart-btn" id="cartBtn" aria-label="Panier">
@@ -88,26 +85,28 @@
             <h1>Votre rituel beaut&eacute; <br><em>r&eacute;invent&eacute;</em></h1>
             <p>D&eacute;couvrez nos outils et soins wellness s&eacute;lectionn&eacute;s par des experts. Technologie innovante, r&eacute;sultats visibles.</p>
             <div class="hero-buttons">
-                <a href="#produits" class="btn btn-primary">D&eacute;couvrir la collection</a>
-                <a href="#bestsellers" class="btn btn-outline">Nos best-sellers</a>
+                <a href="pages/diagnostic.html" class="btn btn-primary">Mon diagnostic gratuit</a>
+                <a href="#produits" class="btn btn-outline">Voir la collection</a>
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <strong>15K+</strong>
-                    <span>Clientes satisfaites</span>
+                    <strong>16</strong>
+                    <span>Marques s&eacute;lectionn&eacute;es</span>
                 </div>
                 <div class="stat">
-                    <strong>4.8/5</strong>
-                    <span>Note moyenne</span>
+                    <strong>30j</strong>
+                    <span>Satisfait ou rembours&eacute;</span>
                 </div>
                 <div class="stat">
-                    <strong>48h</strong>
-                    <span>Livraison express</span>
+                    <strong>7-14j</strong>
+                    <span>Livraison suivie</span>
                 </div>
             </div>
         </div>
         <div class="hero-visual">
-            <div class="hero-circle"></div>
+            <div class="hero-circle">
+                <img src="images/products/jade-roller.jpg" alt="Jade Roller ÉCLAT" style="width:70%;height:70%;object-fit:cover;border-radius:50%;opacity:0.9;">
+            </div>
             <div class="hero-product-display">
                 <div class="floating-card card-1">
                     <span class="fc-icon">&#9734;</span>
@@ -127,8 +126,8 @@
             <div class="badge-grid">
                 <div class="badge-item">
                     <div class="badge-icon">&#128666;</div>
-                    <h4>Livraison rapide</h4>
-                    <p>48h en France m&eacute;tropolitaine</p>
+                    <h4>Livraison suivie</h4>
+                    <p>7-14 jours ouvr&eacute;s en Europe</p>
                 </div>
                 <div class="badge-item">
                     <div class="badge-icon">&#128274;</div>
@@ -161,10 +160,10 @@
             <!-- Category Filter -->
             <div class="category-filter">
                 <button class="filter-btn active" data-category="all">Tous</button>
-                <button class="filter-btn" data-category="visage">Visage</button>
-                <button class="filter-btn" data-category="corps">Corps</button>
-                <button class="filter-btn" data-category="outils">Outils</button>
-                <button class="filter-btn" data-category="aromatherapie">Aromath&eacute;rapie</button>
+                <button class="filter-btn" data-category="visage">Soins visage</button>
+                <button class="filter-btn" data-category="soin">Skincare</button>
+                <button class="filter-btn" data-category="outils">Outils beaut&eacute;</button>
+                <button class="filter-btn" data-category="aromatherapie">Bien-&ecirc;tre</button>
             </div>
 
             <!-- Products Grid -->
@@ -187,58 +186,66 @@
         </div>
     </section>
 
-    <!-- Social Proof / Reviews -->
+    <!-- Promesse ÉCLAT -->
+    <section class="promise-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre promesse</span>
+                <h2>Pourquoi choisir &Eacute;CLAT ?</h2>
+            </div>
+            <div class="promise-grid">
+                <div class="promise-item">
+                    <div class="promise-icon">&#128300;</div>
+                    <h4>Test&eacute;s &amp; approuv&eacute;s</h4>
+                    <p>Chaque produit est s&eacute;lectionn&eacute; et test&eacute; par notre &eacute;quipe avant d'&ecirc;tre propos&eacute;.</p>
+                </div>
+                <div class="promise-item">
+                    <div class="promise-icon">&#128176;</div>
+                    <h4>Prix direct usine</h4>
+                    <p>Sans interm&eacute;diaire, nous vous offrons la qualit&eacute; pro &agrave; prix accessible.</p>
+                </div>
+                <div class="promise-item">
+                    <div class="promise-icon">&#127758;</div>
+                    <h4>Livraison Europe</h4>
+                    <p>Exp&eacute;dition vers 12 pays europ&eacute;ens. Suivi en temps r&eacute;el de votre colis.</p>
+                </div>
+                <div class="promise-item">
+                    <div class="promise-icon">&#128172;</div>
+                    <h4>Support r&eacute;actif</h4>
+                    <p>Une question ? Notre &eacute;quipe r&eacute;pond sous 24h par email ou chat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagements / Why ÉCLAT -->
     <section class="reviews-section" id="avis">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Avis clients</span>
-                <h2>Elles adorent &Eacute;CLAT</h2>
-                <p>Plus de 15 000 clientes satisfaites en France</p>
+                <span class="section-tag">Nos engagements</span>
+                <h2>Pourquoi choisir &Eacute;CLAT ?</h2>
+                <p>Des garanties concr&egrave;tes, pas des promesses en l'air.</p>
             </div>
             <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="review-text">&laquo; Le masque LED a compl&egrave;tement transform&eacute; ma peau en 3 semaines. Je ne peux plus m'en passer ! &raquo;</p>
-                    <div class="review-author">
-                        <div class="author-avatar">M</div>
-                        <div>
-                            <strong>Marie L.</strong>
-                            <span>Paris &bull; Achat v&eacute;rifi&eacute;</span>
-                        </div>
-                    </div>
+                <div class="review-card" style="text-align:center;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128274;</div>
+                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Paiement 100% s&eacute;curis&eacute;</h4>
+                    <p class="review-text">Vos donn&eacute;es bancaires sont trait&eacute;es exclusivement par Stripe, leader mondial. Rien n'est stock&eacute; sur nos serveurs.</p>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="review-text">&laquo; Livraison ultra rapide et le roller en quartz est magnifique. Qualit&eacute; au top pour le prix. &raquo;</p>
-                    <div class="review-author">
-                        <div class="author-avatar">S</div>
-                        <div>
-                            <strong>Sophie D.</strong>
-                            <span>Lyon &bull; Achat v&eacute;rifi&eacute;</span>
-                        </div>
-                    </div>
+                <div class="review-card" style="text-align:center;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128260;</div>
+                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">30 jours satisfait ou rembours&eacute;</h4>
+                    <p class="review-text">Le double du minimum l&eacute;gal. Si un produit ne vous convient pas, nous vous remboursons int&eacute;gralement.</p>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="review-text">&laquo; J'ai offert le set coiffure 7-en-1 &agrave; ma soeur, elle est fan. Le packaging est sublime. Merci &Eacute;CLAT ! &raquo;</p>
-                    <div class="review-author">
-                        <div class="author-avatar">C</div>
-                        <div>
-                            <strong>Camille R.</strong>
-                            <span>Bordeaux &bull; Achat v&eacute;rifi&eacute;</span>
-                        </div>
-                    </div>
+                <div class="review-card" style="text-align:center;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128230;</div>
+                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Livraison suivie en Europe</h4>
+                    <p class="review-text">Chaque commande est suivie avec un num&eacute;ro de tracking envoy&eacute; par email. Gratuit d&egrave;s 49&euro;.</p>
                 </div>
-                <div class="review-card">
-                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-                    <p class="review-text">&laquo; Tr&egrave;s satisfaite du s&eacute;rum vitamine C. Ma peau est plus lumineuse d&egrave;s la premi&egrave;re semaine. &raquo;</p>
-                    <div class="review-author">
-                        <div class="author-avatar">A</div>
-                        <div>
-                            <strong>Am&eacute;lie T.</strong>
-                            <span>Marseille &bull; Achat v&eacute;rifi&eacute;</span>
-                        </div>
-                    </div>
+                <div class="review-card" style="text-align:center;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">&#127807;</div>
+                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">S&eacute;lection experte, cruelty-free</h4>
+                    <p class="review-text">16 marques de r&eacute;f&eacute;rence, aucun test sur les animaux. Chaque produit est choisi pour son efficacit&eacute; prouv&eacute;e.</p>
                 </div>
             </div>
         </div>
@@ -300,6 +307,98 @@
         </div>
     </section>
 
+    <!-- Programme Fidélité -->
+    <section class="loyalty-section" id="fidelite">
+        <div class="container">
+            <div class="loyalty-banner">
+                <div class="loyalty-content">
+                    <span class="section-tag" style="color:var(--color-secondary);">Avantages ÉCLAT</span>
+                    <h2>On prend soin de nos clientes</h2>
+                    <p>Chez ÉCLAT, chaque commande compte. Nous vous remercions avec des avantages concrets et honnêtes.</p>
+                </div>
+                <div class="loyalty-perks">
+                    <div class="perk-item">
+                        <span class="perk-icon">🎁</span>
+                        <div class="perk-text">
+                            <strong>-10% sur votre 1ère commande</strong>
+                            <span>Code BIENVENUE10 via notre newsletter</span>
+                        </div>
+                    </div>
+                    <div class="perk-item">
+                        <span class="perk-icon">💌</span>
+                        <div class="perk-text">
+                            <strong>Codes promo exclusifs</strong>
+                            <span>Envoyés par email après chaque achat</span>
+                        </div>
+                    </div>
+                    <div class="perk-item">
+                        <span class="perk-icon">🚚</span>
+                        <div class="perk-text">
+                            <strong>Livraison offerte dès 49€</strong>
+                            <span>Livraison suivie dans toute l'Europe</span>
+                        </div>
+                    </div>
+                    <div class="perk-item">
+                        <span class="perk-icon">🔄</span>
+                        <div class="perk-text">
+                            <strong>30 jours satisfait ou remboursé</strong>
+                            <span>Retours gratuits, sans condition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundles / Packs -->
+    <section class="bundles-section" id="packs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nos packs</span>
+                <h2>Économisez avec nos coffrets</h2>
+                <p>Des routines complètes à prix réduit. Jusqu'à -30% par rapport aux produits individuels.</p>
+            </div>
+            <div class="bundles-grid">
+                <div class="bundle-card">
+                    <div class="bundle-icon">✨</div>
+                    <h3 class="bundle-name">Pack Découverte</h3>
+                    <p class="bundle-products">Ice Roller + Patchs Yeux Or 24K + Masque Collagène Glass Skin</p>
+                    <div class="bundle-pricing">
+                        <span class="bundle-old-price">49,70 €</span>
+                        <span class="bundle-price">34,90 €</span>
+                    </div>
+                    <div class="bundle-savings">Économisez 14,80 €</div>
+                    <br><br>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([6, 8, 9])">Ajouter au panier</button>
+                </div>
+                <div class="bundle-card featured">
+                    <div class="bundle-icon">💆</div>
+                    <h3 class="bundle-name">Pack Rituel Visage</h3>
+                    <p class="bundle-products">Jade Roller Set + Sérum Vitamine C 20% + Huile Rose Musquée</p>
+                    <div class="bundle-pricing">
+                        <span class="bundle-old-price">75,70 €</span>
+                        <span class="bundle-price">54,90 €</span>
+                    </div>
+                    <div class="bundle-savings">Économisez 20,80 €</div>
+                    <br><br>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([2, 3, 10])">Ajouter au panier</button>
+                </div>
+                <div class="bundle-card">
+                    <div class="bundle-icon">👑</div>
+                    <h3 class="bundle-name">Pack Premium Complet</h3>
+                    <p class="bundle-products">Masque LED Pro + Scrubber Ultrasonique + Sérum Vitamine C 20%</p>
+                    <div class="bundle-pricing">
+                        <span class="bundle-old-price">102,70 €</span>
+                        <span class="bundle-price">74,90 €</span>
+                    </div>
+                    <div class="bundle-savings">Économisez 27,80 €</div>
+                    <br><br>
+                    <button class="btn btn-primary btn-full" onclick="addBundleToCart([1, 4, 3])">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter -->
     <section class="newsletter-section">
         <div class="container">
@@ -329,7 +428,7 @@
                         <li><a href="#produits">Tous les produits</a></li>
                         <li><a href="#bestsellers">Best-sellers</a></li>
                         <li><a href="#produits">Nouveaut&eacute;s</a></li>
-                        <li><a href="#produits">Coffrets</a></li>
+                        <li><a href="#packs">Coffrets</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -339,6 +438,7 @@
                         <li><a href="pages/livraison.html">Livraison</a></li>
                         <li><a href="pages/retours.html">Retours &amp; remboursements</a></li>
                         <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="pages/blog.html">Blog Beauté</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -357,7 +457,7 @@
                     <span class="payment-badge">Visa</span>
                     <span class="payment-badge">Mastercard</span>
                     <span class="payment-badge">PayPal</span>
-                    <span class="payment-badge">3x sans frais</span>
+                    <span class="payment-badge">Stripe</span>
                 </div>
             </div>
         </div>
@@ -400,7 +500,7 @@
     <!-- Cookie Banner RGPD -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-content">
-            <p>Nous utilisons des cookies pour am&eacute;liorer votre exp&eacute;rience. En continuant, vous acceptez notre <a href="pages/confidentialite.html">politique de confidentialit&eacute;</a>.</p>
+            <p>Ce site utilise uniquement des cookies fonctionnels (panier, pr&eacute;f&eacute;rences de langue). Aucun cookie publicitaire ou de suivi. <a href="pages/confidentialite.html">En savoir plus</a>.</p>
             <div class="cookie-actions">
                 <button class="btn btn-sm btn-primary" id="cookieAccept">Accepter</button>
                 <button class="btn btn-sm btn-outline" id="cookieRefuse">Refuser</button>
@@ -410,6 +510,52 @@
 
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/smart-features.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/automation.js"></script>
+    <script src="js/products-i18n.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Bundle add-to-cart function
+        window.addBundleToCart = function(productIds) {
+            productIds.forEach(id => {
+                const product = PRODUCTS.find(p => p.id === id);
+                if (product) cart.add(product);
+            });
+            if (window.showToast) showToast('Pack ajouté au panier ! 🎉');
+        };
+    </script>
+
+    <!-- Floating CTA button (appears on scroll past hero) -->
+    <a href="pages/diagnostic.html" id="floatingCTA" style="
+        position:fixed;bottom:24px;left:24px;z-index:999;
+        display:none;align-items:center;gap:8px;
+        background:linear-gradient(135deg,#c9a87c 0%,#b8956d 100%);
+        color:#fff;font-size:0.85rem;font-weight:600;
+        padding:12px 20px;border-radius:30px;
+        text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);
+        transition:transform 0.2s,box-shadow 0.2s;letter-spacing:0.5px;
+    " onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.2)'">
+        &#10024; Mon diagnostic gratuit
+    </a>
+    <script>
+        (function(){
+            var cta = document.getElementById('floatingCTA');
+            if (!cta) return;
+            var shown = false;
+            window.addEventListener('scroll', function(){
+                if (window.scrollY > 600 && !shown) {
+                    cta.style.display = 'inline-flex';
+                    cta.style.animation = 'fadeIn 0.3s ease';
+                    shown = true;
+                } else if (window.scrollY <= 400 && shown) {
+                    cta.style.display = 'none';
+                    shown = false;
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

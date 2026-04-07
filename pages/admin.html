@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin - ÉCLAT Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-2: #242424;
+            --border: #2a2a2a;
+            --text: #e5e5e5;
+            --text-dim: #888;
+            --gold: #c9a87c;
+            --green: #4caf50;
+            --red: #e74c3c;
+            --blue: #3498db;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+        .admin-header {
+            background:var(--surface);
+            border-bottom:1px solid var(--border);
+            padding:16px 32px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .admin-logo { font-size:1.2rem; font-weight:700; letter-spacing:3px; color:var(--gold); }
+        .admin-user { font-size:0.85rem; color:var(--text-dim); }
+
+        .admin-container { max-width:1200px; margin:0 auto; padding:32px; }
+
+        /* Stats Cards */
+        .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:32px; }
+        .stat-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:24px;
+        }
+        .stat-label { font-size:0.78rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+        .stat-value { font-size:2rem; font-weight:700; }
+        .stat-value.gold { color:var(--gold); }
+        .stat-value.green { color:var(--green); }
+        .stat-change { font-size:0.78rem; margin-top:4px; }
+        .stat-change.up { color:var(--green); }
+
+        /* Section */
+        .section-title {
+            font-size:1.1rem;
+            font-weight:600;
+            margin-bottom:16px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        /* Orders Table */
+        .orders-table {
+            width:100%;
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            overflow:hidden;
+            margin-bottom:32px;
+        }
+        .orders-table table { width:100%; border-collapse:collapse; }
+        .orders-table th {
+            text-align:left;
+            padding:14px 16px;
+            font-size:0.75rem;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            color:var(--text-dim);
+            background:var(--surface-2);
+            border-bottom:1px solid var(--border);
+        }
+        .orders-table td {
+            padding:14px 16px;
+            font-size:0.88rem;
+            border-bottom:1px solid var(--border);
+        }
+        .orders-table tr:last-child td { border-bottom:none; }
+        .orders-table tr:hover td { background:var(--surface-2); }
+
+        .badge {
+            display:inline-block;
+            padding:4px 10px;
+            border-radius:20px;
+            font-size:0.72rem;
+            font-weight:600;
+        }
+        .badge-paid { background:rgba(76,175,80,0.15); color:var(--green); }
+        .badge-pending { background:rgba(241,196,15,0.15); color:#f1c40f; }
+        .badge-shipped { background:rgba(52,152,219,0.15); color:var(--blue); }
+        .badge-action {
+            background:var(--gold);
+            color:#000;
+            cursor:pointer;
+            border:none;
+            font-family:inherit;
+        }
+        .badge-action:hover { opacity:0.8; }
+
+        /* Supplier Section */
+        .supplier-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+        .supplier-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:24px;
+        }
+        .supplier-card h3 { font-size:1rem; margin-bottom:4px; }
+        .supplier-card .supplier-type { font-size:0.78rem; color:var(--gold); margin-bottom:12px; }
+        .supplier-card p { font-size:0.82rem; color:var(--text-dim); line-height:1.6; }
+        .supplier-card .supplier-stats { margin-top:12px; display:flex; gap:16px; }
+        .supplier-card .ss-item { font-size:0.78rem; }
+        .supplier-card .ss-item strong { color:var(--text); display:block; }
+
+        /* Margin Calculator */
+        .margin-table { width:100%; border-collapse:collapse; }
+        .margin-table th { text-align:left; padding:10px 12px; font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+        .margin-table td { padding:10px 12px; font-size:0.85rem; }
+        .margin-table tr:nth-child(even) { background:var(--surface-2); }
+        .margin-bar { height:6px; border-radius:3px; background:var(--border); }
+        .margin-bar-fill { height:100%; border-radius:3px; background:var(--green); }
+
+        /* Automation Status */
+        .auto-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:32px; }
+        .auto-card {
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:24px;
+            display:flex;
+            gap:16px;
+            align-items:flex-start;
+        }
+        .auto-icon { font-size:1.8rem; }
+        .auto-title { font-weight:600; font-size:0.95rem; margin-bottom:4px; }
+        .auto-desc { font-size:0.82rem; color:var(--text-dim); line-height:1.5; }
+        .auto-status { margin-top:8px; font-size:0.78rem; font-weight:600; }
+        .auto-status.active { color:var(--green); }
+        .auto-status.setup { color:var(--gold); }
+
+        /* Login Overlay */
+        .login-overlay {
+            position:fixed; inset:0; background:var(--bg);
+            display:flex; align-items:center; justify-content:center; z-index:100;
+        }
+        .login-box {
+            background:var(--surface); border:1px solid var(--border);
+            border-radius:16px; padding:48px; text-align:center; max-width:400px; width:90%;
+        }
+        .login-box h2 { font-size:1.5rem; margin-bottom:8px; }
+        .login-box p { color:var(--text-dim); font-size:0.9rem; margin-bottom:24px; }
+        .login-box input {
+            width:100%; padding:14px 16px; background:var(--surface-2); border:1px solid var(--border);
+            border-radius:8px; color:var(--text); font-size:0.95rem; margin-bottom:16px; outline:none;
+        }
+        .login-box input:focus { border-color:var(--gold); }
+        .login-box button {
+            width:100%; padding:14px; background:var(--gold); color:#000; border:none;
+            border-radius:8px; font-weight:600; font-size:0.95rem; cursor:pointer;
+        }
+        .login-box button:hover { opacity:0.9; }
+        .login-error { color:var(--red); font-size:0.82rem; margin-top:8px; display:none; }
+
+        .hidden { display:none !important; }
+
+        @media (max-width:768px) {
+            .stats-grid { grid-template-columns:repeat(2,1fr); }
+            .supplier-grid, .auto-grid { grid-template-columns:1fr; }
+            .admin-container { padding:16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Gate -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <div style="font-size:2rem;margin-bottom:12px;">🔒</div>
+            <h2>ÉCLAT Admin</h2>
+            <p>Accès réservé — entrez votre mot de passe</p>
+            <input type="password" id="adminPassword" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')attemptLogin()">
+            <button onclick="attemptLogin()">Se connecter</button>
+            <div class="login-error" id="loginError">Mot de passe incorrect</div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="admin-dashboard hidden" id="adminDashboard">
+        <header class="admin-header">
+            <div class="admin-logo">ÉCLAT ADMIN</div>
+            <div class="admin-user">Kevin • <a href="../index.html" style="color:var(--gold);">Voir la boutique</a></div>
+        </header>
+
+        <div class="admin-container">
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Chiffre d'affaires</div>
+                    <div class="stat-value gold" id="statRevenue">—</div>
+                    <div class="stat-change up">Depuis Stripe</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Commandes</div>
+                    <div class="stat-value" id="statOrders">—</div>
+                    <div class="stat-change">Total payées</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Panier moyen</div>
+                    <div class="stat-value green" id="statAvg">—</div>
+                    <div class="stat-change">Par commande</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Marge estimée</div>
+                    <div class="stat-value green" id="statMargin">~70%</div>
+                    <div class="stat-change up">Moyenne catalogue</div>
+                </div>
+            </div>
+
+            <!-- Orders -->
+            <div class="section-title">
+                <span>Commandes récentes</span>
+                <button class="badge badge-action" onclick="loadOrders()">Actualiser</button>
+            </div>
+            <div class="orders-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Articles</th>
+                            <th>Total</th>
+                            <th>Paiement</th>
+                            <th>Fulfillment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersBody">
+                        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:32px;">Chargement...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Automation Status -->
+            <div class="section-title"><span>Automatisation</span></div>
+            <div class="auto-grid">
+                <div class="auto-card">
+                    <div class="auto-icon">⚡</div>
+                    <div>
+                        <div class="auto-title">Webhook Stripe</div>
+                        <div class="auto-desc">Capture automatique des commandes à chaque paiement réussi. Les données client et produits sont extraites de Stripe.</div>
+                        <div class="auto-status active">✓ Actif — /api/webhook</div>
+                    </div>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">📦</div>
+                    <div>
+                        <div class="auto-title">Fulfillment CJDropshipping</div>
+                        <div class="auto-desc">Commande automatique chez le fournisseur via l'API CJ. Mapping produit ÉCLAT → SKU fournisseur.</div>
+                        <div class="auto-status setup">⏳ À configurer — créer compte CJ + clé API</div>
+                    </div>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">📧</div>
+                    <div>
+                        <div class="auto-title">Emails transactionnels</div>
+                        <div class="auto-desc">Confirmation de commande, suivi de livraison, demande d'avis post-réception.</div>
+                        <div class="auto-status setup">⏳ À configurer — choisir Resend ou Brevo</div>
+                    </div>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">🔄</div>
+                    <div>
+                        <div class="auto-title">Sync stock fournisseur</div>
+                        <div class="auto-desc">Synchronisation automatique des stocks CJ pour éviter les ruptures. Alerte si stock &lt; 5 unités.</div>
+                        <div class="auto-status setup">⏳ Phase 2 — après connexion CJ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suppliers -->
+            <div class="section-title"><span>Fournisseurs & Marges</span></div>
+            <div class="supplier-grid">
+                <div class="supplier-card">
+                    <h3>CJDropshipping</h3>
+                    <div class="supplier-type">Dropshipping EU • Gratuit</div>
+                    <p>Entrepôts EU (France, Allemagne). Livraison 3-8 jours. MOQ 0. Le meilleur rapport qualité/marge pour démarrer.</p>
+                    <div class="supplier-stats">
+                        <div class="ss-item"><strong>3-8j</strong>Livraison</div>
+                        <div class="ss-item"><strong>0€</strong>Abonnement</div>
+                        <div class="ss-item"><strong>67-90%</strong>Marge</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <h3>Webdrop Market</h3>
+                    <div class="supplier-type">Dropshipping FR • Français</div>
+                    <p>Entrepôt France, livraison 24-48h. SAV français. Idéal pour la livraison express et la confiance client.</p>
+                    <div class="supplier-stats">
+                        <div class="ss-item"><strong>24-48h</strong>Livraison</div>
+                        <div class="ss-item"><strong>FR</strong>Entrepôt</div>
+                        <div class="ss-item"><strong>55-75%</strong>Marge</div>
+                    </div>
+                </div>
+                <div class="supplier-card">
+                    <h3>Marque blanche</h3>
+                    <div class="supplier-type">Phase 2 • Skincare premium</div>
+                    <p>Sérum, huiles, patchs en marque propre ÉCLAT. MOQ 50-100 unités. Marge maximale + branding exclusif.</p>
+                    <div class="supplier-stats">
+                        <div class="ss-item"><strong>50+</strong>MOQ</div>
+                        <div class="ss-item"><strong>4-8 sem</strong>Délai</div>
+                        <div class="ss-item"><strong>80-92%</strong>Marge</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Margin Calculator -->
+            <div class="section-title"><span>Marges par produit</span></div>
+            <div class="orders-table" style="margin-bottom:32px;">
+                <table class="margin-table">
+                    <thead>
+                        <tr><th>Produit</th><th>Coût</th><th>Prix vente</th><th>Marge</th><th>Marge %</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Masque LED 7 Couleurs</td><td>~20€</td><td>39,90€</td><td style="color:var(--green)">19,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:50%"></div></div></td></tr>
+                        <tr><td>Jade Roller Facial</td><td>~3€</td><td>19,90€</td><td style="color:var(--green)">16,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:85%"></div></div></td></tr>
+                        <tr><td>Gua Sha Quartz Rose</td><td>~2€</td><td>17,90€</td><td style="color:var(--green)">15,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:89%"></div></div></td></tr>
+                        <tr><td>Sérum Vitamine C</td><td>~7€</td><td>24,90€</td><td style="color:var(--green)">17,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:72%"></div></div></td></tr>
+                        <tr><td>Patchs Yeux Or</td><td>~2€</td><td>12,90€</td><td style="color:var(--green)">10,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:84%"></div></div></td></tr>
+                        <tr><td>Derma Roller Pro</td><td>~4€</td><td>22,90€</td><td style="color:var(--green)">18,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:82%"></div></div></td></tr>
+                        <tr><td>Diffuseur Nuage</td><td>~12€</td><td>29,90€</td><td style="color:var(--green)">17,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:60%"></div></div></td></tr>
+                        <tr><td>Huile Rose Musquée</td><td>~5€</td><td>19,90€</td><td style="color:var(--green)">14,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:75%"></div></div></td></tr>
+                        <tr><td>Brosse Nettoyante</td><td>~6€</td><td>21,90€</td><td style="color:var(--green)">15,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:73%"></div></div></td></tr>
+                        <tr><td>Set Pinceaux Pro</td><td>~8€</td><td>24,90€</td><td style="color:var(--green)">16,90€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:68%"></div></div></td></tr>
+                        <tr><td>Bandeau Spa</td><td>~1,50€</td><td>9,90€</td><td style="color:var(--green)">8,40€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:85%"></div></div></td></tr>
+                        <tr><td>Éponge Konjac</td><td>~0,80€</td><td>8,90€</td><td style="color:var(--green)">8,10€</td><td><div class="margin-bar"><div class="margin-bar-fill" style="width:91%"></div></div></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Simple password gate (côté client — pour un vrai projet, utiliser auth serveur)
+        const ADMIN_HASH = 'eclat2026';
+
+        function attemptLogin() {
+            const pw = document.getElementById('adminPassword').value;
+            if (pw === ADMIN_HASH) {
+                localStorage.setItem('eclat_admin_auth', Date.now());
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                loadOrders();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        // Auto-login si déjà connecté récemment (24h)
+        const lastAuth = parseInt(localStorage.getItem('eclat_admin_auth') || '0');
+        if (Date.now() - lastAuth < 86400000) {
+            document.getElementById('loginOverlay').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            loadOrders();
+        }
+
+        async function loadOrders() {
+            try {
+                const res = await fetch('/api/orders');
+                if (!res.ok) throw new Error('API error');
+                const data = await res.json();
+
+                // Update stats
+                const totalRev = data.orders.reduce((sum, o) => sum + o.total, 0);
+                document.getElementById('statRevenue').textContent = totalRev.toFixed(2).replace('.', ',') + ' €';
+                document.getElementById('statOrders').textContent = data.count;
+                document.getElementById('statAvg').textContent = data.count > 0
+                    ? (totalRev / data.count).toFixed(2).replace('.', ',') + ' €'
+                    : '—';
+
+                // Render orders
+                if (data.orders.length === 0) {
+                    document.getElementById('ordersBody').innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:32px;">Aucune commande pour le moment. Les commandes apparaîtront ici automatiquement après le premier paiement Stripe.</td></tr>';
+                    return;
+                }
+
+                document.getElementById('ordersBody').innerHTML = data.orders.map(o => `
+                    <tr>
+                        <td>${new Date(o.created).toLocaleDateString('fr-FR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' })}</td>
+                        <td>${o.email || '—'}</td>
+                        <td>${o.items} article${o.items > 1 ? 's' : ''}</td>
+                        <td><strong>${o.total.toFixed(2).replace('.', ',')} €</strong></td>
+                        <td><span class="badge badge-paid">Payé</span></td>
+                        <td><span class="badge badge-pending">À expédier</span></td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                document.getElementById('ordersBody').innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:32px;">
+                    Dashboard prêt ! Les commandes Stripe apparaîtront ici une fois la clé API configurée sur Vercel.<br>
+                    <small style="color:var(--gold);">Variables requises : STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET (optionnel), ADMIN_API_KEY (optionnel)</small>
+                </td></tr>`;
+            }
+        }
+    </script>
+</body>
+</html>

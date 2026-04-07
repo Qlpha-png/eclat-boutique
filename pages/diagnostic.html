@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diagnostic beauté gratuit - Découvrez votre routine skincare personnalisée en 60 secondes avec ÉCLAT.">
+    <title>Diagnostic Beauté - ÉCLAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .diag-page { max-width:640px; margin:0 auto; padding:40px 24px 80px; min-height:100vh; }
+        .diag-header { text-align:center; margin-bottom:40px; }
+        .diag-header h1 { font-family:var(--font-display); font-size:2.2rem; margin-bottom:8px; }
+        .diag-header p { color:var(--color-text-light); }
+
+        .diag-progress { display:flex; gap:6px; margin-bottom:32px; }
+        .diag-progress .bar { flex:1; height:4px; border-radius:2px; background:var(--color-border); transition:all 0.4s; }
+        .diag-progress .bar.active { background:var(--color-secondary); }
+
+        .diag-step { display:none; animation:fadeUp 0.4s ease; }
+        .diag-step.active { display:block; }
+
+        @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+        .diag-question { font-family:var(--font-display); font-size:1.4rem; margin-bottom:24px; text-align:center; }
+
+        .diag-options { display:flex; flex-direction:column; gap:12px; }
+        .diag-option {
+            padding:18px 24px; border:2px solid var(--color-border); border-radius:var(--radius-md);
+            cursor:pointer; transition:var(--transition); font-size:0.95rem; text-align:left;
+            display:flex; align-items:center; gap:14px; background:var(--color-white);
+        }
+        .diag-option:hover { border-color:var(--color-secondary); transform:translateX(4px); }
+        .diag-option.selected { border-color:var(--color-secondary); background:rgba(201,168,124,0.08); }
+        .diag-option .opt-icon { font-size:1.5rem; }
+
+        .diag-result { display:none; animation:fadeUp 0.5s ease; }
+        .diag-result.active { display:block; }
+        .diag-result h2 { font-family:var(--font-display); font-size:1.6rem; margin-bottom:16px; text-align:center; }
+        .diag-result > p { text-align:center; color:var(--color-text-light); margin-bottom:32px; }
+
+        .routine-step {
+            display:flex; gap:16px; padding:20px; background:var(--color-white);
+            border-radius:var(--radius-md); border:1px solid var(--color-border); margin-bottom:12px;
+            align-items:center; transition:var(--transition);
+        }
+        .routine-step:hover { box-shadow:var(--shadow-md); border-color:transparent; }
+        .routine-step .step-num {
+            width:36px; height:36px; background:var(--color-secondary); color:var(--color-white);
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-weight:700; font-size:0.9rem; flex-shrink:0;
+        }
+        .routine-step .step-info { flex:1; }
+        .routine-step .step-name { font-weight:600; font-size:0.95rem; margin-bottom:2px; }
+        .routine-step .step-product { font-size:0.82rem; color:var(--color-secondary); font-weight:600; }
+        .routine-step .step-price { font-weight:700; font-size:1rem; color:var(--color-primary); white-space:nowrap; }
+
+        .routine-total {
+            text-align:center; padding:24px; background:linear-gradient(135deg, var(--color-primary), #1a1714);
+            color:var(--color-white); border-radius:var(--radius-md); margin-top:24px;
+        }
+        .routine-total .total-label { font-size:0.85rem; opacity:0.7; }
+        .routine-total .total-price { font-size:2rem; font-weight:700; margin:8px 0; }
+        .routine-total .total-savings { color:var(--color-secondary); font-weight:600; }
+        .routine-total .btn { margin-top:16px; display:inline-block; }
+    </style>
+</head>
+<body style="background:var(--color-bg);">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">ÉCLAT</a>
+            <span style="font-size:0.85rem;color:var(--color-text-light);">Diagnostic Beauté</span>
+        </div>
+    </nav>
+
+    <div class="diag-page">
+        <div class="diag-header">
+            <h1>Votre routine sur-mesure</h1>
+            <p>Répondez à 4 questions, recevez votre routine personnalisée en 60 secondes.</p>
+        </div>
+
+        <div class="diag-progress" id="progress">
+            <div class="bar active"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Step 1: Skin Type -->
+        <div class="diag-step active" data-step="1">
+            <h2 class="diag-question">Quel est votre type de peau ?</h2>
+            <div class="diag-options">
+                <div class="diag-option" data-value="dry" onclick="selectOption(this)">
+                    <span class="opt-icon">🏜️</span>
+                    <div><strong>Sèche</strong><br><small style="color:var(--color-text-light)">Tiraillements, manque de confort</small></div>
+                </div>
+                <div class="diag-option" data-value="oily" onclick="selectOption(this)">
+                    <span class="opt-icon">💧</span>
+                    <div><strong>Grasse</strong><br><small style="color:var(--color-text-light)">Brillance, pores dilatés</small></div>
+                </div>
+                <div class="diag-option" data-value="combo" onclick="selectOption(this)">
+                    <span class="opt-icon">⚖️</span>
+                    <div><strong>Mixte</strong><br><small style="color:var(--color-text-light)">Zone T grasse, joues sèches</small></div>
+                </div>
+                <div class="diag-option" data-value="sensitive" onclick="selectOption(this)">
+                    <span class="opt-icon">🌸</span>
+                    <div><strong>Sensible</strong><br><small style="color:var(--color-text-light)">Rougeurs, réactions fréquentes</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Main Concern -->
+        <div class="diag-step" data-step="2">
+            <h2 class="diag-question">Votre préoccupation principale ?</h2>
+            <div class="diag-options">
+                <div class="diag-option" data-value="acne" onclick="selectOption(this)">
+                    <span class="opt-icon">🎯</span>
+                    <div><strong>Acné & imperfections</strong><br><small style="color:var(--color-text-light)">Boutons, points noirs, marques</small></div>
+                </div>
+                <div class="diag-option" data-value="aging" onclick="selectOption(this)">
+                    <span class="opt-icon">✨</span>
+                    <div><strong>Anti-âge & fermeté</strong><br><small style="color:var(--color-text-light)">Rides, relâchement, manque d'éclat</small></div>
+                </div>
+                <div class="diag-option" data-value="glow" onclick="selectOption(this)">
+                    <span class="opt-icon">🌟</span>
+                    <div><strong>Éclat & teint uniforme</strong><br><small style="color:var(--color-text-light)">Taches, teint terne, irrégularités</small></div>
+                </div>
+                <div class="diag-option" data-value="hydration" onclick="selectOption(this)">
+                    <span class="opt-icon">💦</span>
+                    <div><strong>Hydratation intense</strong><br><small style="color:var(--color-text-light)">Déshydratation, inconfort, tiraillements</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Budget -->
+        <div class="diag-step" data-step="3">
+            <h2 class="diag-question">Votre budget routine ?</h2>
+            <div class="diag-options">
+                <div class="diag-option" data-value="low" onclick="selectOption(this)">
+                    <span class="opt-icon">🪙</span>
+                    <div><strong>Petit budget</strong><br><small style="color:var(--color-text-light)">Moins de 30€</small></div>
+                </div>
+                <div class="diag-option" data-value="medium" onclick="selectOption(this)">
+                    <span class="opt-icon">💰</span>
+                    <div><strong>Budget moyen</strong><br><small style="color:var(--color-text-light)">30€ - 60€</small></div>
+                </div>
+                <div class="diag-option" data-value="high" onclick="selectOption(this)">
+                    <span class="opt-icon">💎</span>
+                    <div><strong>Je veux le meilleur</strong><br><small style="color:var(--color-text-light)">60€ et plus</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Age -->
+        <div class="diag-step" data-step="4">
+            <h2 class="diag-question">Votre tranche d'âge ?</h2>
+            <div class="diag-options">
+                <div class="diag-option" data-value="18-25" onclick="selectOption(this)">
+                    <span class="opt-icon">🌱</span>
+                    <div><strong>18 - 25 ans</strong></div>
+                </div>
+                <div class="diag-option" data-value="26-35" onclick="selectOption(this)">
+                    <span class="opt-icon">🌿</span>
+                    <div><strong>26 - 35 ans</strong></div>
+                </div>
+                <div class="diag-option" data-value="36-45" onclick="selectOption(this)">
+                    <span class="opt-icon">🌳</span>
+                    <div><strong>36 - 45 ans</strong></div>
+                </div>
+                <div class="diag-option" data-value="45+" onclick="selectOption(this)">
+                    <span class="opt-icon">👑</span>
+                    <div><strong>45 ans et plus</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div class="diag-result" id="diagResult">
+            <h2>Votre routine personnalisée</h2>
+            <p id="diagSummary"></p>
+            <div id="routineSteps"></div>
+            <div class="routine-total" id="routineTotal"></div>
+            <div style="text-align:center;margin-top:24px;">
+                <a href="../index.html" style="color:var(--color-secondary);font-size:0.9rem;">Voir tous nos produits</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {};
+        let currentStep = 1;
+
+        function selectOption(el) {
+            const step = el.closest('.diag-step');
+            step.querySelectorAll('.diag-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+
+            const stepNum = parseInt(step.dataset.step);
+            answers[stepNum] = el.dataset.value;
+
+            setTimeout(() => {
+                if (stepNum < 4) {
+                    step.classList.remove('active');
+                    document.querySelector(`[data-step="${stepNum + 1}"]`).classList.add('active');
+                    document.querySelectorAll('.diag-progress .bar')[stepNum].classList.add('active');
+                    currentStep = stepNum + 1;
+                } else {
+                    step.classList.remove('active');
+                    showResult();
+                }
+            }, 400);
+        }
+
+        function showResult() {
+            const skin = answers[1];
+            const concern = answers[2];
+            const budget = answers[3];
+            const age = answers[4];
+
+            const routines = {
+                acne: {
+                    summary: 'peau à imperfections qui a besoin de purification et de régulation',
+                    steps: [
+                        { step: 'Nettoyage', product: 'CeraVe — Gel Moussant', price: 11.90, why: 'Nettoie sans agresser' },
+                        { step: 'Traitement', product: 'The Ordinary — Niacinamide 10%', price: 9.90, why: 'Réduit pores et sébum' },
+                        { step: 'Soin ciblé', product: 'Garnier — Patchs Anti-Boutons', price: 8.90, why: 'Traitement overnight' },
+                        { step: 'Outil', product: 'Scrubber Ultrasonique', price: 29.90, why: 'Désincruste les pores en profondeur' }
+                    ]
+                },
+                aging: {
+                    summary: 'peau mature qui a besoin de fermeté, régénération et éclat',
+                    steps: [
+                        { step: 'Sérum', product: 'Sérum Éclat Vitamine C 20%', price: 27.90, why: 'Booste le collagène' },
+                        { step: 'Soin nuit', product: 'Huile Précieuse Rose Musquée', price: 22.90, why: 'Régénère pendant le sommeil' },
+                        { step: 'Anti-rides', product: 'Stickers Anti-Rides Nuit', price: 17.90, why: 'Lisse les rides overnight' },
+                        { step: 'Massage', product: 'Masque LED Pro 7 Couleurs', price: 44.90, why: 'Lumière rouge anti-âge' }
+                    ]
+                },
+                glow: {
+                    summary: 'peau en quête d\'éclat, d\'uniformité et de luminosité',
+                    steps: [
+                        { step: 'Exfoliation', product: 'The Ordinary — Peeling AHA 30%', price: 12.90, why: 'Resurfaçage hebdomadaire' },
+                        { step: 'Sérum', product: 'Sérum Éclat Vitamine C 20%', price: 27.90, why: 'Anti-taches et luminosité' },
+                        { step: 'Masque', product: 'Masque Collagène Glass Skin', price: 19.90, why: 'Résultat glass skin immédiat' },
+                        { step: 'Massage', product: 'Jade Roller & Gua Sha', price: 24.90, why: 'Booste la circulation' }
+                    ]
+                },
+                hydration: {
+                    summary: 'peau déshydratée qui a besoin de confort et de nutrition',
+                    steps: [
+                        { step: 'Hydratation', product: 'The Ordinary — Acide Hyaluronique', price: 8.90, why: 'Hydratation multi-profondeur' },
+                        { step: 'Protection', product: 'CeraVe — Crème Hydratante SPF30', price: 14.90, why: 'Protège et hydrate toute la journée' },
+                        { step: 'Soin nuit', product: 'Huile Précieuse Rose Musquée', price: 22.90, why: 'Nourrit en profondeur' },
+                        { step: 'Contour yeux', product: 'Patchs Yeux Or 24K', price: 14.90, why: 'Hydrate le contour des yeux' }
+                    ]
+                }
+            };
+
+            const routine = routines[concern] || routines.glow;
+            let steps = routine.steps;
+
+            // Adjust based on budget
+            if (budget === 'low') steps = steps.slice(0, 2);
+            if (budget === 'medium') steps = steps.slice(0, 3);
+
+            const total = steps.reduce((sum, s) => sum + s.price, 0);
+
+            document.getElementById('diagSummary').textContent =
+                `Pour votre ${routine.summary}, voici la routine idéale :`;
+
+            document.getElementById('routineSteps').innerHTML = steps.map((s, i) => `
+                <div class="routine-step">
+                    <div class="step-num">${i + 1}</div>
+                    <div class="step-info">
+                        <div class="step-name">${s.step}</div>
+                        <div class="step-product">${s.product}</div>
+                        <div style="font-size:0.78rem;color:var(--color-text-light);margin-top:2px;">${s.why}</div>
+                    </div>
+                    <div class="step-price">${s.price.toFixed(2).replace('.', ',')} €</div>
+                </div>
+            `).join('');
+
+            document.getElementById('routineTotal').innerHTML = `
+                <div class="total-label">Votre routine complète</div>
+                <div class="total-price">${total.toFixed(2).replace('.', ',')} €</div>
+                <div class="total-savings">Livraison offerte ${total >= 49 ? '(vous y êtes !)' : `dès 49€ (plus que ${(49 - total).toFixed(2).replace('.', ',')} €)`}</div>
+                <a href="../index.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);">Ajouter tout au panier</a>
+            `;
+
+            document.getElementById('diagResult').classList.add('active');
+            document.querySelectorAll('.diag-progress .bar').forEach(b => b.classList.add('active'));
+        }
+    </script>
+</body>
+</html>

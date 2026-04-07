@@ -17,45 +17,76 @@
 
     <div style="max-width:600px;margin:80px auto;text-align:center;padding:0 24px;">
         <div style="font-size:4rem;margin-bottom:24px;">&#10003;</div>
-        <h1 style="font-family:var(--font-display);font-size:2.2rem;margin-bottom:16px;">Merci pour votre commande !</h1>
-        <p style="color:var(--color-text-light);font-size:1.05rem;line-height:1.7;margin-bottom:32px;">
+        <h1 style="font-family:var(--font-display);font-size:2.2rem;margin-bottom:16px;" data-i18n="success_title">Merci pour votre commande !</h1>
+        <p style="color:var(--color-text-light);font-size:1.05rem;line-height:1.7;margin-bottom:32px;" data-i18n="success_subtitle">
             Votre paiement a &eacute;t&eacute; accept&eacute;. Vous allez recevoir un email de confirmation avec le d&eacute;tail de votre commande et votre num&eacute;ro de suivi.
         </p>
 
         <div style="background:var(--color-white);border:1px solid var(--color-border);border-radius:12px;padding:28px;margin-bottom:32px;text-align:left;">
-            <h3 style="font-family:var(--font-display);margin-bottom:16px;">Prochaines &eacute;tapes</h3>
+            <h3 style="font-family:var(--font-display);margin-bottom:16px;" data-i18n="success_next_steps">Prochaines &eacute;tapes</h3>
             <div style="display:flex;gap:12px;align-items:start;margin-bottom:14px;">
                 <span style="background:var(--color-secondary);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0;">1</span>
                 <div>
-                    <strong style="font-size:0.9rem;">Confirmation par email</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">Vous recevrez un r&eacute;capitulatif dans les minutes qui suivent</p>
+                    <strong style="font-size:0.9rem;" data-i18n="success_step1_title">Confirmation par email</strong>
+                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;" data-i18n="success_step1_desc">Vous recevrez un r&eacute;capitulatif dans les minutes qui suivent</p>
                 </div>
             </div>
             <div style="display:flex;gap:12px;align-items:start;margin-bottom:14px;">
                 <span style="background:var(--color-secondary);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0;">2</span>
                 <div>
-                    <strong style="font-size:0.9rem;">Pr&eacute;paration</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">Votre commande est pr&eacute;par&eacute;e et exp&eacute;di&eacute;e sous 24-48h</p>
+                    <strong style="font-size:0.9rem;" data-i18n="success_step2_title">Pr&eacute;paration</strong>
+                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;" data-i18n="success_step2_desc">Votre commande est pr&eacute;par&eacute;e et exp&eacute;di&eacute;e sous 1-3 jours ouvr&eacute;s</p>
                 </div>
             </div>
             <div style="display:flex;gap:12px;align-items:start;">
                 <span style="background:var(--color-secondary);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0;">3</span>
                 <div>
-                    <strong style="font-size:0.9rem;">Livraison</strong>
-                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;">Suivi par email + SMS d&egrave;s l'exp&eacute;dition</p>
+                    <strong style="font-size:0.9rem;" data-i18n="success_step3_title">Livraison</strong>
+                    <p style="font-size:0.8rem;color:var(--color-text-light);margin-top:2px;" data-i18n="success_step3_desc">Suivi par email et SMS d&egrave;s l'exp&eacute;dition</p>
                 </div>
             </div>
         </div>
 
-        <a href="../index.html" class="btn btn-primary">Retour &agrave; la boutique</a>
+        <!-- Next purchase discount -->
+        <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:24px;margin-bottom:24px;text-align:center;">
+            <p style="font-size:0.9rem;color:#5d4037;margin:0 0 8px;font-weight:600;">&#127873; Code exclusif pour votre prochain achat :</p>
+            <div style="background:#fff;border:2px dashed #c9a87c;border-radius:8px;padding:12px;display:inline-block;margin-bottom:8px;">
+                <code style="font-size:1.3rem;font-weight:700;color:#2d2926;letter-spacing:3px;">MERCI10</code>
+            </div>
+            <p style="font-size:0.8rem;color:#795548;margin:0;">-10% sur votre prochaine commande (valable 30 jours)</p>
+        </div>
+
+        <!-- Guarantees reminder -->
+        <div style="display:flex;justify-content:center;gap:24px;margin-bottom:32px;flex-wrap:wrap;">
+            <span style="font-size:0.8rem;color:var(--color-text-light);">&#128274; Paiement s&eacute;curis&eacute;</span>
+            <span style="font-size:0.8rem;color:var(--color-text-light);">&#128230; Livraison suivie</span>
+            <span style="font-size:0.8rem;color:var(--color-text-light);">&#128260; Retours gratuits 30j</span>
+        </div>
+
+        <a href="../index.html" class="btn btn-primary" style="padding:14px 40px;" data-i18n="success_back">Continuer mes achats</a>
+
+        <div style="margin-top:24px;">
+            <a href="faq.html" style="font-size:0.85rem;color:var(--color-secondary);text-decoration:underline;">Consulter la FAQ</a>
+        </div>
+
         <p style="margin-top:20px;font-size:0.85rem;color:var(--color-text-light);">
-            Un probl&egrave;me ? Contactez-nous &agrave; <a href="mailto:contact@maison-eclat.shop" style="color:var(--color-secondary);">contact@maison-eclat.shop</a>
+            <span data-i18n="success_contact">Un probl&egrave;me ? Contactez-nous &agrave;</span> <a href="mailto:contact@maison-eclat.shop" style="color:var(--color-secondary);">contact@maison-eclat.shop</a>
         </p>
     </div>
 
+    <script src="../js/i18n.js"></script>
     <script>
         // Clear cart after successful purchase
         localStorage.removeItem('eclat_cart');
+
+        // Apply i18n translations to data-i18n elements
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                el.textContent = t(key);
+            });
+            document.documentElement.lang = currentLang;
+        });
     </script>
 </body>
 </html>

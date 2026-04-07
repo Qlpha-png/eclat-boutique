@@ -48,26 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Product Rendering ---
     function renderProducts(category = 'all') {
-        const filtered = category === 'all'
-            ? PRODUCTS
-            : PRODUCTS.filter(p => p.category === category);
+        let filtered;
+        if (category === 'all') {
+            // Marques en premier, puis produits ÉCLAT — la confiance d'abord
+            const brands = PRODUCTS.filter(p => p.category === 'marques');
+            const eclat = PRODUCTS.filter(p => p.category !== 'marques');
+            filtered = [...brands, ...eclat];
+        } else {
+            filtered = PRODUCTS.filter(p => p.category === category);
+        }
 
         productsGrid.innerHTML = filtered.map(product => `
             <div class="product-card fade-in" data-id="${product.id}">
                 <div class="product-image">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
-                        product.badge === 'new' ? 'Nouveau' :
-                        product.badge === 'promo' ? 'Promo' : 'Best-seller'
+                        product.badge === 'new' ? t('badge_new') :
+                        product.badge === 'promo' ? t('badge_promo') :
+                        product.badge === 'lancement' ? t('badge_lancement') :
+                        product.badge === 'marque' ? (product.name.split(' — ')[0] || 'Marque') : t('badge_bestseller')
                     }</span>` : ''}
-                    <button class="product-quick-view" onclick="openModal(${product.id})">Aper\u00e7u rapide</button>
+                    <button class="product-quick-view" onclick="openModal(${product.id})">${t('btn_quick_view')}</button>
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
                     <h3 class="product-name">${product.name}</h3>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '&#9733;' : ''}
-                        <span class="count">(${product.reviews.toLocaleString('fr-FR')} avis)</span>
+                        ${product.reviews > 0 ? `<span class="count">(${product.reviews.toLocaleString('fr-FR')} ${t('reviews_count')})</span>` : ''}
                     </div>
                     <div class="product-price">
                         <span class="price-current">${formatPrice(product.price)}</span>
@@ -91,9 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function getCategoryLabel(cat) {
         const labels = {
             visage: 'Soins visage',
+            soin: 'Skincare',
             corps: 'Corps & fitness',
             outils: 'Outils beaut\u00e9',
-            aromatherapie: 'Aromath\u00e9rapie'
+            aromatherapie: 'Bien-\u00eatre',
+            parfums: 'Parfumerie',
+            marques: 'Marque officielle \u2713'
         };
         return labels[cat] || cat;
     }
@@ -116,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="product-desc">${product.description}</p>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}
-                        <span class="count">${product.rating}/5 (${product.reviews.toLocaleString('fr-FR')} avis)</span>
+                        <span class="count">${product.rating}/5</span>
                     </div>
                     <div class="product-price">
                         <span class="price-current">${formatPrice(product.price)}</span>
@@ -159,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 class="product-name">${product.name}</h2>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}
-                        <span class="count">${product.rating}/5 (${product.reviews.toLocaleString('fr-FR')} avis)</span>
+                        <span class="count">${product.rating}/5</span>
                     </div>
                     <p class="product-description">${product.description}</p>
                     <div class="product-price">
@@ -250,14 +261,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const shippingEl = document.getElementById('cartShipping');
         if (total >= 49) {
-            shippingEl.textContent = 'Gratuite';
+            shippingEl.textContent = t('cart_free_shipping');
             shippingEl.style.color = '#4caf50';
             shippingEl.style.fontWeight = '600';
         } else {
-            shippingEl.textContent = `Plus que ${formatPrice(49 - total)} pour la livraison gratuite`;
+            shippingEl.textContent = t('cart_shipping_remaining').replace('{amount}', formatPrice(49 - total));
             shippingEl.style.color = '';
             shippingEl.style.fontWeight = '';
         }
+
+        // Cross-sell suggestions
+        renderCrossSell();
+    }
+
+    function renderCrossSell() {
+        let csContainer = document.getElementById('cartCrossSell');
+        if (!csContainer) {
+            csContainer = document.createElement('div');
+            csContainer.id = 'cartCrossSell';
+            csContainer.className = 'cart-cross-sell';
+            const cartFooterEl = document.getElementById('cartFooter');
+            if (cartFooterEl) cartFooterEl.appendChild(csContainer);
+        }
+
+        if (cart.isEmpty() || typeof getCrossSellProducts !== 'function') {
+            csContainer.style.display = 'none';
+            return;
+        }
+
+        const suggestions = getCrossSellProducts(cart.items);
+        if (suggestions.length === 0) {
+            csContainer.style.display = 'none';
+            return;
+        }
+
+        csContainer.style.display = 'block';
+        csContainer.innerHTML = `
+            <h4>${t('cart_cross_sell')}</h4>
+            ${suggestions.map(p => `
+                <div class="cross-sell-item">
+                    <img src="${p.image}" alt="${p.name}">
+                    <div class="cross-sell-info">
+                        <div class="cs-name">${p.name}</div>
+                        <div class="cs-price">${formatPrice(p.price)}</div>
+                    </div>
+                    <button class="cross-sell-add" onclick="addToCart(${p.id})">${t('btn_add_short')}</button>
+                </div>
+            `).join('')}
+        `;
     }
 
     // --- Cart Actions (global) ---
@@ -265,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = PRODUCTS.find(p => p.id === productId);
         if (product) {
             cart.add(product);
-            showToast(`${product.name} ajout\u00e9 au panier !`);
+            showToast(t('toast_added').replace('{name}', product.name));
         }
     };
 
@@ -290,11 +341,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Newsletter ---
-    newsletterForm.addEventListener('submit', (e) => {
+    newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const email = newsletterForm.querySelector('input').value;
-        showToast('Merci ! Votre code promo -10% : BIENVENUE10');
+        const emailInput = newsletterForm.querySelector('input');
+        const email = emailInput.value;
+        const btn = newsletterForm.querySelector('button');
+        const originalText = btn.textContent;
+        btn.textContent = '...';
+        btn.disabled = true;
+
+        try {
+            const resp = await fetch('/api/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, lang: currentLang || 'fr' })
+            });
+            const data = await resp.json();
+            if (data.success) {
+                showToast(t('newsletter_success'));
+            } else {
+                showToast(t('newsletter_success'));
+            }
+        } catch (err) {
+            showToast(t('newsletter_success'));
+        }
+
         newsletterForm.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
     });
 
     // --- Toast Notification ---
@@ -331,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.02, rootMargin: '50px' });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
