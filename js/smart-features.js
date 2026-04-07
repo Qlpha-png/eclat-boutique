@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateShippingProgress() {
         const total = cart.getTotal();
-        const threshold = 49;
+        const threshold = 29;
         const fill = document.getElementById('spbFill');
         const text = document.getElementById('spbText');
         if (!fill || !text) return;
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
 
         const tiers = [
-            { min: 49, fr: '🚚 Livraison gratuite', en: '🚚 Free shipping', es: '🚚 Envío gratis', de: '🚚 Kostenloser Versand' },
+            { min: 29, fr: '🚚 Livraison gratuite', en: '🚚 Free shipping', es: '🚚 Envío gratis', de: '🚚 Kostenloser Versand' },
             { min: 69, fr: '🎁 Échantillon offert', en: '🎁 Free sample', es: '🎁 Muestra gratis', de: '🎁 Gratisprobe' },
             { min: 99, fr: '💎 -5% sur la commande', en: '💎 -5% off order', es: '💎 -5% en el pedido', de: '💎 -5% auf Bestellung' },
         ];

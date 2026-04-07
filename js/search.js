@@ -162,8 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="product-image">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
-                        product.badge === 'new' ? 'Nouveau' :
-                        product.badge === 'promo' ? 'Promo' : 'Best-seller'
+                        product.badge === 'new' ? t('badge_new') :
+                        product.badge === 'promo' ? t('badge_promo') :
+                        product.badge === 'lancement' ? t('badge_lancement') : t('badge_bestseller')
                     }</span>` : ''}
                     <button class="product-quick-view" onclick="openModal(${product.id})">${quickViewText}</button>
                 </div>

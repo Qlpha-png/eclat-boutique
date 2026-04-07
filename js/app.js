@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
                     <div class="product-trust">
-                        <span class="trust-tag shipping">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
-                        <span class="trust-tag">&#128260; 30j rembours&eacute;</span>
+                        <span class="trust-tag shipping">${t('trust_shipping')}</span>
+                        <span class="trust-tag">${t('trust_refund')}</span>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">Ajouter au panier</button>
+                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${t('btn_add_cart')}</button>
                     </div>
                 </div>
             </div>
@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
                     <div class="product-actions" style="margin-top:12px">
-                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">Ajouter au panier</button>
-                        <button class="btn btn-outline btn-sm" onclick="openModal(${product.id})">D\u00e9tails</button>
+                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${t('btn_add_cart')}</button>
+                        <button class="btn btn-outline btn-sm" onclick="openModal(${product.id})">${t('btn_details')}</button>
                     </div>
                 </div>
             </div>
@@ -201,15 +201,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
                     <div class="modal-trust">
-                        <div class="modal-trust-item"><span class="trust-icon">&#128666;</span> Livraison offerte d\u00e8s 29\u20ac</div>
-                        <div class="modal-trust-item"><span class="trust-icon">&#128260;</span> Satisfait ou rembours\u00e9 30j</div>
-                        <div class="modal-trust-item"><span class="trust-icon">&#128274;</span> Paiement s\u00e9curis\u00e9</div>
+                        <div class="modal-trust-item"><span class="trust-icon">&#128666;</span> ${t('trust_modal_shipping')}</div>
+                        <div class="modal-trust-item"><span class="trust-icon">&#128260;</span> ${t('trust_modal_refund')}</div>
+                        <div class="modal-trust-item"><span class="trust-icon">&#128274;</span> ${t('trust_modal_secure')}</div>
                     </div>
                     <ul class="modal-features">
                         ${product.features.map(f => `<li>${f}</li>`).join('')}
                     </ul>
                     <button class="btn btn-primary btn-full" onclick="addToCart(${product.id}); closeModal();">
-                        Ajouter au panier - ${formatPrice(product.price)}
+                        ${t('btn_add_cart')} - ${formatPrice(product.price)}
                     </button>
                 </div>
             </div>

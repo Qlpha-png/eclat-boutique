@@ -164,7 +164,16 @@ const TRANSLATIONS = {
         bundle_match_text: 'Ces produits forment un coffret !',
         bundle_converted_toast: 'Coffret appliqué !',
         bundle_added_toast: 'Coffret ajouté au panier !',
-        bundle_prefix: 'Coffret'
+        bundle_prefix: 'Coffret',
+
+        // Trust badges
+        trust_shipping: '\ud83d\ude9a Livraison offerte d\u00e8s 29\u20ac',
+        trust_refund: '\ud83d\udd04 30j rembours\u00e9',
+        trust_modal_shipping: 'Livraison offerte d\u00e8s 29\u20ac',
+        trust_modal_refund: 'Satisfait ou rembours\u00e9 30j',
+        trust_modal_secure: 'Paiement s\u00e9curis\u00e9',
+        popup_code_toast: 'Code BIENVENUE10 activ\u00e9 ! V\u00e9rifiez votre email.',
+        btn_details: 'D\u00e9tails'
     },
 
     en: {
@@ -316,7 +325,16 @@ const TRANSLATIONS = {
         bundle_match_text: 'These products make a bundle!',
         bundle_converted_toast: 'Bundle applied!',
         bundle_added_toast: 'Bundle added to cart!',
-        bundle_prefix: 'Bundle'
+        bundle_prefix: 'Bundle',
+
+        // Trust badges
+        trust_shipping: '\ud83d\ude9a Free shipping over \u20ac29',
+        trust_refund: '\ud83d\udd04 30-day refund',
+        trust_modal_shipping: 'Free shipping over \u20ac29',
+        trust_modal_refund: '30-day money-back guarantee',
+        trust_modal_secure: 'Secure payment',
+        popup_code_toast: 'Code BIENVENUE10 activated! Check your email.',
+        btn_details: 'Details'
     },
 
     es: {
@@ -468,7 +486,16 @@ const TRANSLATIONS = {
         bundle_match_text: '¡Estos productos forman un pack!',
         bundle_converted_toast: '¡Pack aplicado!',
         bundle_added_toast: '¡Pack añadido al carrito!',
-        bundle_prefix: 'Pack'
+        bundle_prefix: 'Pack',
+
+        // Trust badges
+        trust_shipping: '\ud83d\ude9a Env\u00edo gratis desde 29\u20ac',
+        trust_refund: '\ud83d\udd04 30d reembolso',
+        trust_modal_shipping: 'Env\u00edo gratis desde 29\u20ac',
+        trust_modal_refund: 'Satisfecho o reembolsado 30d',
+        trust_modal_secure: 'Pago seguro',
+        popup_code_toast: '\u00a1C\u00f3digo BIENVENUE10 activado! Revisa tu email.',
+        btn_details: 'Detalles'
     },
 
     de: {
@@ -619,8 +646,17 @@ const TRANSLATIONS = {
         bundle_add: 'In den Warenkorb',
         bundle_match_text: 'Diese Produkte bilden ein Set!',
         bundle_converted_toast: 'Set angewendet!',
-        bundle_added_toast: 'Set zum Warenkorb hinzugefügt!',
-        bundle_prefix: 'Set'
+        bundle_added_toast: 'Set zum Warenkorb hinzugef\u00fcgt!',
+        bundle_prefix: 'Set',
+
+        // Trust badges
+        trust_shipping: '\ud83d\ude9a Kostenloser Versand ab 29\u20ac',
+        trust_refund: '\ud83d\udd04 30 Tage R\u00fcckgabe',
+        trust_modal_shipping: 'Kostenloser Versand ab 29\u20ac',
+        trust_modal_refund: '30 Tage Geld-zur\u00fcck-Garantie',
+        trust_modal_secure: 'Sichere Zahlung',
+        popup_code_toast: 'Code BIENVENUE10 aktiviert! Pr\u00fcfen Sie Ihre E-Mail.',
+        btn_details: 'Details'
     }
 };
 
