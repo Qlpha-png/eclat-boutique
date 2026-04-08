@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compose ta routine - &Eacute;CLAT</title>
+    <meta name="description" content="Créez votre routine beauté personnalisée. Choisissez vos produits étape par étape et économisez jusqu'à -15% automatiquement.">
+    <link rel="canonical" href="https://maison-eclat.shop/pages/routine-builder.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .rb-page{max-width:900px;margin:40px auto;padding:0 24px 80px;}
+        .rb-page h1{font-family:var(--font-display);font-size:2.2rem;text-align:center;margin-bottom:8px;}
+        .rb-page .rb-subtitle{text-align:center;color:var(--color-text-light);margin-bottom:12px;font-size:0.95rem;}
+
+        .rb-discount-bar{text-align:center;margin-bottom:40px;}
+        .rb-tiers{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+        .rb-tier{padding:8px 16px;border-radius:20px;font-size:0.8rem;font-weight:600;border:1px solid var(--color-border);color:var(--color-text-light);transition:all 0.3s;}
+        .rb-tier.active{background:var(--color-secondary);color:#fff;border-color:var(--color-secondary);}
+        .rb-tier.next{border-color:var(--color-secondary);color:var(--color-secondary);}
+
+        .rb-steps{display:flex;flex-direction:column;gap:24px;}
+        .rb-step-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;transition:all 0.3s;}
+        .rb-step-card.filled{border-color:var(--color-secondary);box-shadow:0 2px 12px rgba(201,168,124,0.15);}
+        .rb-step-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+        .rb-step-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex-shrink:0;border:2px solid var(--color-border);color:var(--color-text-light);transition:all 0.3s;}
+        .rb-step-card.filled .rb-step-num{background:var(--color-secondary);color:#fff;border-color:var(--color-secondary);}
+        .rb-step-title{font-family:var(--font-display);font-size:1.1rem;}
+        .rb-step-desc{font-size:0.82rem;color:var(--color-text-light);}
+
+        .rb-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+        .rb-option{border:2px solid var(--color-border);border-radius:var(--radius-md);padding:14px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:12px;}
+        .rb-option:hover{border-color:var(--color-secondary);transform:translateY(-2px);}
+        .rb-option.selected{border-color:var(--color-secondary);background:rgba(201,168,124,0.06);}
+        .rb-option img{width:56px;height:56px;object-fit:cover;border-radius:var(--radius-sm);}
+        .rb-opt-info{flex:1;min-width:0;}
+        .rb-opt-name{font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .rb-opt-price{font-size:0.9rem;color:var(--color-secondary);font-weight:700;}
+
+        .rb-summary{position:sticky;bottom:0;background:var(--color-white);border-top:1px solid var(--color-border);padding:20px 24px;margin:0 -24px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 -4px 20px rgba(0,0,0,0.08);z-index:100;}
+        .rb-total{font-family:var(--font-display);}
+        .rb-total .rb-label{font-size:0.8rem;color:var(--color-text-light);}
+        .rb-total .rb-price{font-size:1.5rem;font-weight:700;}
+        .rb-total .rb-original{font-size:0.85rem;color:var(--color-text-light);text-decoration:line-through;margin-left:8px;}
+        .rb-total .rb-saving{font-size:0.8rem;color:var(--color-success);font-weight:600;}
+        .rb-add-btn{background:var(--color-primary);color:#fff;border:none;padding:14px 32px;border-radius:var(--radius-xl);font-weight:600;font-size:0.95rem;cursor:pointer;transition:all 0.3s;white-space:nowrap;}
+        .rb-add-btn:hover{background:var(--color-secondary);}
+        .rb-add-btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+        @media(max-width:768px){
+            .rb-options{grid-template-columns:1fr;}
+            .rb-summary{flex-direction:column;text-align:center;}
+        }
+    </style>
+</head>
+<body style="background:var(--color-bg);">
+    <nav class="navbar"><div class="nav-container"><a href="../index.html" class="logo">&Eacute;CLAT</a><a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; Boutique</a></div></nav>
+
+    <div class="rb-page">
+        <h1>Compose ta routine</h1>
+        <p class="rb-subtitle">Choisis tes produits &eacute;tape par &eacute;tape. Plus tu en ajoutes, plus tu &eacute;conomises.</p>
+
+        <div class="rb-discount-bar">
+            <div class="rb-tiers" id="rbTiers"></div>
+        </div>
+
+        <div class="rb-steps" id="rbSteps"></div>
+
+        <div class="rb-summary" id="rbSummary" style="display:none;">
+            <div class="rb-total">
+                <div class="rb-label">Ta routine</div>
+                <div><span class="rb-price" id="rbPrice">0 &euro;</span><span class="rb-original" id="rbOriginal"></span></div>
+                <div class="rb-saving" id="rbSaving"></div>
+            </div>
+            <button class="rb-add-btn" id="rbAddBtn" disabled onclick="addRoutineToCart()">Ajouter tout au panier</button>
+        </div>
+    </div>
+
+    <script src="../js/products.js"></script>
+    <script>
+    (function(){
+        var selected = {};
+        var discountTiers = [
+            { min: 2, pct: 5, label: '2 produits = -5%' },
+            { min: 3, pct: 10, label: '3 produits = -10%' },
+            { min: 4, pct: 15, label: '4+ produits = -15%' }
+        ];
+
+        var steps = [
+            { key: 'nettoyage', title: 'Nettoyage', desc: 'Prépare la peau en éliminant impuretés et sébum', icon: '1', ids: [4, 3] },
+            { key: 'preparation', title: 'Préparation', desc: 'Ouvre les pores et prépare la peau aux actifs', icon: '2', ids: [7, 5] },
+            { key: 'serum', title: 'Sérum actif', desc: 'L\'actif concentré qui traite votre besoin principal', icon: '3', ids: [8, 11] },
+            { key: 'soin', title: 'Soin ciblé', desc: 'Traitement spécifique (contour yeux, masque, anti-rides)', icon: '4', ids: [9, 10, 12, 13] },
+            { key: 'outil', title: 'Outil beauté', desc: 'La technologie qui décuple les résultats', icon: '5', ids: [1, 2, 6] }
+        ];
+
+        function escapeHTML(s){if(typeof s!=='string')return s;var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+        function getDiscount(){
+            var count = Object.keys(selected).length;
+            for(var i=discountTiers.length-1;i>=0;i--){
+                if(count>=discountTiers[i].min) return discountTiers[i];
+            }
+            return null;
+        }
+
+        function renderTiers(){
+            var count = Object.keys(selected).length;
+            var html = '';
+            discountTiers.forEach(function(t){
+                var cls = count>=t.min ? 'active' : (count===t.min-1 ? 'next' : '');
+                html += '<span class="rb-tier '+cls+'">'+t.label+'</span>';
+            });
+            document.getElementById('rbTiers').innerHTML = html;
+        }
+
+        function renderSteps(){
+            var html = '';
+            steps.forEach(function(step){
+                var products = step.ids.map(function(id){return PRODUCTS.find(function(p){return p.id===id;});}).filter(Boolean);
+                var filled = selected[step.key] ? 'filled' : '';
+                html += '<div class="rb-step-card '+filled+'" data-step="'+step.key+'">';
+                html += '<div class="rb-step-header"><div class="rb-step-num">'+step.icon+'</div><div><div class="rb-step-title">'+step.title+'</div><div class="rb-step-desc">'+step.desc+'</div></div></div>';
+                html += '<div class="rb-options">';
+                products.forEach(function(p){
+                    var sel = selected[step.key]===p.id ? 'selected' : '';
+                    html += '<div class="rb-option '+sel+'" onclick="selectProduct(\''+step.key+'\','+p.id+')">';
+                    html += '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.name)+'" loading="lazy">';
+                    html += '<div class="rb-opt-info"><div class="rb-opt-name">'+escapeHTML(p.name)+'</div><div class="rb-opt-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div></div>';
+                    html += '</div>';
+                });
+                html += '</div></div>';
+            });
+            document.getElementById('rbSteps').innerHTML = html;
+        }
+
+        function updateSummary(){
+            var count = Object.keys(selected).length;
+            var summary = document.getElementById('rbSummary');
+            if(count===0){summary.style.display='none';return;}
+            summary.style.display='flex';
+
+            var total = 0;
+            for(var k in selected){
+                var p = PRODUCTS.find(function(pr){return pr.id===selected[k];});
+                if(p) total += p.price;
+            }
+
+            var disc = getDiscount();
+            var finalPrice = total;
+            var saving = 0;
+            if(disc){
+                saving = total * disc.pct / 100;
+                finalPrice = total - saving;
+            }
+
+            document.getElementById('rbPrice').textContent = finalPrice.toFixed(2).replace('.',',') + ' \u20ac';
+            document.getElementById('rbOriginal').textContent = disc ? total.toFixed(2).replace('.',',')+' \u20ac' : '';
+            document.getElementById('rbSaving').textContent = disc ? '\u00c9conomie : -'+saving.toFixed(2).replace('.',',')+' \u20ac (-'+disc.pct+'%)' : '';
+            document.getElementById('rbAddBtn').disabled = count < 2;
+        }
+
+        window.selectProduct = function(stepKey, productId){
+            if(selected[stepKey]===productId){
+                delete selected[stepKey];
+            } else {
+                selected[stepKey] = productId;
+            }
+            renderSteps();
+            renderTiers();
+            updateSummary();
+        };
+
+        window.addRoutineToCart = function(){
+            var count = Object.keys(selected).length;
+            if(count<2) return;
+            var disc = getDiscount();
+            var items = [];
+            for(var k in selected){
+                var p = PRODUCTS.find(function(pr){return pr.id===selected[k];});
+                if(p) items.push(p);
+            }
+            // Build custom routine as cart items
+            var existing = [];
+            try{existing=JSON.parse(localStorage.getItem('eclat_cart'))||[];}catch(e){existing=[];}
+
+            items.forEach(function(p){
+                var price = disc ? Math.round(p.price*(100-disc.pct))/100 : p.price;
+                var inCart = existing.find(function(i){return i.id===p.id;});
+                if(inCart){
+                    inCart.qty += 1;
+                } else {
+                    existing.push({id:p.id, name:p.name, price:price, image:p.image, qty:1});
+                }
+            });
+
+            localStorage.setItem('eclat_cart', JSON.stringify(existing));
+            window.location.href = '../index.html?openCart=1';
+        };
+
+        renderSteps();
+        renderTiers();
+        updateSummary();
+    })();
+    </script>
+</body>
+</html>

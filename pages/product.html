@@ -44,8 +44,22 @@
         .pp-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
         .pp-cert { display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:600; background:var(--color-bg-alt); padding:6px 12px; border-radius:20px; }
         .pp-cert-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+        .pp-cross-sell { margin-top:48px; padding-top:32px; border-top:1px solid var(--color-border); }
+        .pp-cross-sell h2 { font-family:var(--font-display); font-size:1.3rem; margin-bottom:20px; }
+        .pp-cs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+        .pp-cs-card { background:var(--color-white); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:16px; text-align:center; transition:all 0.3s; text-decoration:none; color:inherit; display:block; }
+        .pp-cs-card:hover { border-color:var(--color-secondary); transform:translateY(-3px); box-shadow:var(--shadow-md); }
+        .pp-cs-card img { width:100%; height:120px; object-fit:cover; border-radius:var(--radius-sm); margin-bottom:10px; }
+        .pp-cs-name { font-size:0.85rem; font-weight:600; margin-bottom:4px; }
+        .pp-cs-price { font-size:0.95rem; color:var(--color-secondary); font-weight:700; }
+        .sticky-atc { position:fixed; bottom:0; left:0; right:0; background:var(--color-white); border-top:1px solid var(--color-border); box-shadow:0 -4px 20px rgba(0,0,0,0.1); z-index:1000; padding:12px 24px; transition:transform 0.3s; }
+        .sticky-atc-inner { max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .sticky-atc-info { display:flex; align-items:center; gap:12px; }
+        .sticky-price { font-size:1.1rem; color:var(--color-secondary); font-weight:700; }
+        .sticky-btn { white-space:nowrap; padding:10px 24px !important; font-size:0.9rem !important; }
         @media (max-width:768px) {
             .pp-specs { grid-template-columns:1fr; }
+            .sticky-atc-info strong { max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; display:block; }
             .pp-grid { grid-template-columns:1fr; gap:24px; }
             .pp-name { font-size:1.5rem; }
         }
@@ -65,6 +79,18 @@
         <div class="pp-grid">
             <div class="pp-image" id="ppImage"></div>
             <div class="pp-info" id="ppInfo"></div>
+        </div>
+        <div id="ppCrossSell"></div>
+    </div>
+
+    <!-- Sticky add-to-cart bar -->
+    <div class="sticky-atc" id="stickyATC" style="display:none;">
+        <div class="sticky-atc-inner">
+            <div class="sticky-atc-info">
+                <strong id="stickyName"></strong>
+                <span id="stickyPrice" class="sticky-price"></span>
+            </div>
+            <a id="stickyBtn" href="#" class="btn btn-primary sticky-btn">Ajouter au panier</a>
         </div>
     </div>
 
@@ -173,6 +199,42 @@
                 howToHTML +
                 specsHTML +
                 ingredientsHTML;
+            // Cross-sell: related products
+            var crossSellMap = {
+                1:[8,3], 2:[5,6], 3:[8,4], 4:[3,8], 5:[2,9],
+                6:[2,5], 7:[1,10], 8:[11,9], 9:[8,12], 10:[8,7],
+                11:[8,10], 12:[9,11], 13:[14,7], 14:[13,15], 15:[2,5]
+            };
+            var related = (crossSellMap[product.id] || [])
+                .map(function(rid){return PRODUCTS.find(function(p){return p.id===rid;});})
+                .filter(Boolean);
+
+            if (related.length > 0) {
+                document.getElementById('ppCrossSell').innerHTML =
+                    '<div class="pp-cross-sell"><h2>Compl\u00e8te ta routine</h2><div class="pp-cs-grid">' +
+                    related.map(function(p){
+                        return '<a href="product.html?id='+p.id+'" class="pp-cs-card">' +
+                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.name)+'" loading="lazy">' +
+                            '<div class="pp-cs-name">'+escapeHTML(p.name)+'</div>' +
+                            '<div class="pp-cs-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div>' +
+                        '</a>';
+                    }).join('') +
+                    '</div></div>';
+            }
+
+            // Sticky add-to-cart bar (appears when CTA scrolls out of view)
+            var stickyBar = document.getElementById('stickyATC');
+            document.getElementById('stickyName').textContent = product.name;
+            document.getElementById('stickyPrice').textContent = product.price.toFixed(2).replace('.',',') + ' \u20ac';
+            document.getElementById('stickyBtn').href = '../index.html?produit=' + product.id;
+
+            var mainCTA = document.querySelector('.pp-actions .btn');
+            if (mainCTA) {
+                var observer = new IntersectionObserver(function(entries){
+                    stickyBar.style.display = entries[0].isIntersecting ? 'none' : 'block';
+                }, {threshold:0});
+                observer.observe(mainCTA);
+            }
         }
     </script>
 </body>
