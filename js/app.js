@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name" onclick="openModal(${product.id})" style="cursor:pointer;">${escapeHTML(product.name)}</h3>
+                    <h3 class="product-name"><a href="pages/product.html?id=${product.id}" style="color:inherit;text-decoration:none;" onclick="event.preventDefault();openModal(${product.id})">${escapeHTML(product.name)}</a></h3>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '&#9733;' : ''}
                         ${product.reviews > 0 ? `<span class="count">(${product.reviews.toLocaleString('fr-FR')} ${t('reviews_count')})</span>` : ''}
@@ -211,9 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
                     </div>
                     <div class="modal-trust">
-                        <div class="modal-trust-item"><span class="trust-icon">&#128666;</span> ${t('trust_modal_shipping')}</div>
-                        <div class="modal-trust-item"><span class="trust-icon">&#128260;</span> ${t('trust_modal_refund')}</div>
-                        <div class="modal-trust-item"><span class="trust-icon">&#128274;</span> ${t('trust_modal_secure')}</div>
+                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128666;</span> ${t('trust_modal_shipping')}</div>
+                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128260;</span> ${t('trust_modal_refund')}</div>
+                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128274;</span> ${t('trust_modal_secure')}</div>
                     </div>
                     <ul class="modal-features">
                         ${product.features.map(f => `<li>${escapeHTML(f)}</li>`).join('')}

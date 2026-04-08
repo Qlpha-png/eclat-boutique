@@ -254,7 +254,7 @@
                         <span class="bundle-price">24,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 7,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('eclat')" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('eclat')">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card featured">
                     <div class="bundle-icon">&#128081;</div>
@@ -265,7 +265,7 @@
                         <span class="bundle-price">49,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 17,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('antiage')" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('antiage')">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card">
                     <div class="bundle-icon">&#127800;</div>
@@ -276,7 +276,7 @@
                         <span class="bundle-price">29,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 9,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full" onclick="addBundleToCart('glow')" style="margin-top:16px;">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('glow')">Ajouter au panier</button>
                 </div>
             </div>
         </div>
@@ -291,35 +291,35 @@
                 <p>Pas de promesses en l'air &mdash; des garanties v&eacute;rifiables.</p>
             </div>
             <div class="reviews-grid">
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128274;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Paiement 100% s&eacute;curis&eacute;</h4>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128274;</div>
+                    <h4 class="guarantee-title">Paiement 100% s&eacute;curis&eacute;</h4>
                     <p class="review-text">Stripe, leader mondial. Rien n'est stock&eacute; sur nos serveurs.</p>
                 </div>
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128260;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">30 jours satisfait ou rembours&eacute;</h4>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128260;</div>
+                    <h4 class="guarantee-title">30 jours satisfait ou rembours&eacute;</h4>
                     <p class="review-text">Le double du minimum l&eacute;gal. Retour gratuit, remboursement int&eacute;gral.</p>
                 </div>
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128230;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Livraison suivie + SMS</h4>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128230;</div>
+                    <h4 class="guarantee-title">Livraison suivie + SMS</h4>
                     <p class="review-text">Tracking par email et SMS. Gratuit d&egrave;s 29&euro;. 12 pays europ&eacute;ens.</p>
                 </div>
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128172;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Support r&eacute;actif 24h</h4>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128172;</div>
+                    <h4 class="guarantee-title">Support r&eacute;actif 24h</h4>
                     <p class="review-text">Une question ? R&eacute;ponse sous 24h par email ou chat.</p>
                 </div>
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128300;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">S&eacute;lection test&eacute;e</h4>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128300;</div>
+                    <h4 class="guarantee-title">S&eacute;lection test&eacute;e</h4>
                     <p class="review-text">Chaque produit est test&eacute; avant d'&ecirc;tre propos&eacute;. Cruelty-free.</p>
                 </div>
-                <div class="review-card" style="text-align:center;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">&#128218;</div>
-                    <h4 style="font-family:var(--font-display);margin-bottom:8px;">Science, pas marketing</h4>
-                    <p class="review-text">Chaque technologie est document&eacute;e. <a href="pages/guide-beaute.html" style="color:var(--color-secondary);">Voir le guide &rarr;</a></p>
+                <div class="review-card guarantee-card">
+                    <div class="guarantee-icon" aria-hidden="true">&#128218;</div>
+                    <h4 class="guarantee-title">Science, pas marketing</h4>
+                    <p class="review-text">Chaque technologie est document&eacute;e. <a href="pages/guide-beaute.html" class="guarantee-link">Voir le guide &rarr;</a></p>
                 </div>
             </div>
         </div>
@@ -461,115 +461,11 @@
     <script src="js/automation.js" defer></script>
     <script src="js/products-i18n.js" defer></script>
     <script src="js/chatbot.js" defer></script>
-    <script>
-        // Bundle add-to-cart — ajoute UN article coffret au prix réel du bundle
-        window.addBundleToCart = function(bundleKey) {
-            var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
-            if (!bundle) return;
-            var bundleName = t('bundle_prefix') + ' ' + t('bundle_' + bundleKey + '_name');
-            var firstProduct = PRODUCTS.find(function(p) { return p.id === bundle.productIds[0]; });
-            var img = firstProduct ? firstProduct.image : '';
-            var bundleId = 'bundle-' + bundle.key;
-            var existing = cart.items.find(function(item) { return item.id === bundleId; });
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.items.push({
-                    id: bundleId,
-                    name: bundleName,
-                    price: bundle.price,
-                    image: img,
-                    qty: 1
-                });
-            }
-            cart.save();
-            if (window.showToast) showToast(t('bundle_added_toast'));
-        };
-
-        // Language selector
-        (function() {
-            var btn = document.getElementById('langBtn');
-            var dropdown = document.getElementById('langDropdown');
-            var label = document.getElementById('langLabel');
-            if (!btn || !dropdown) return;
-            btn.addEventListener('click', function() {
-                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-            });
-            dropdown.querySelectorAll('button').forEach(function(b) {
-                b.addEventListener('click', function() {
-                    var lang = b.dataset.lang;
-                    if (typeof setLanguage === 'function') setLanguage(lang);
-                    label.textContent = lang.toUpperCase();
-                    dropdown.style.display = 'none';
-                });
-            });
-            document.addEventListener('click', function(e) {
-                if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.style.display = 'none';
-                }
-            });
-        })();
-
-        // Email capture popup — appears after 8s, once per session
-        (function() {
-            var popup = document.getElementById('emailPopup');
-            var closeBtn = document.getElementById('emailPopupClose');
-            var form = document.getElementById('popupNewsletterForm');
-            if (!popup || localStorage.getItem('eclat_popup_closed')) return;
-
-            setTimeout(function() { popup.classList.add('active'); }, 8000);
-
-            closeBtn.addEventListener('click', function() {
-                popup.classList.remove('active');
-                localStorage.setItem('eclat_popup_closed', '1');
-            });
-            popup.addEventListener('click', function(e) {
-                if (e.target === popup) {
-                    popup.classList.remove('active');
-                    localStorage.setItem('eclat_popup_closed', '1');
-                }
-            });
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                var email = form.querySelector('input').value;
-                var btn = form.querySelector('button');
-                btn.textContent = '...';
-                btn.disabled = true;
-                try {
-                    await fetch('/api/newsletter', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: email, lang: window.currentLang || 'fr' })
-                    });
-                } catch(err) {}
-                popup.classList.remove('active');
-                localStorage.setItem('eclat_popup_closed', '1');
-                if (window.showToast) showToast(t('popup_code_toast'));
-            });
-        })();
-    </script>
+    <script src="js/init.js" defer></script>
 
     <!-- Floating CTA button (appears on scroll past hero) -->
     <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
-    <script>
-        (function(){
-            var cta = document.getElementById('floatingCTA');
-            if (!cta) return;
-            var shown = false;
-            window.addEventListener('scroll', function(){
-                if (window.scrollY > 600 && !shown) {
-                    cta.style.display = 'inline-flex';
-                    cta.style.animation = 'fadeIn 0.3s ease';
-                    shown = true;
-                } else if (window.scrollY <= 400 && shown) {
-                    cta.style.display = 'none';
-                    shown = false;
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
