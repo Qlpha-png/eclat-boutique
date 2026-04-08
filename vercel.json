@@ -1,11 +1,6 @@
 {
     "outputDirectory": ".",
-    "crons": [
-        {
-            "path": "/api/v2/jobs",
-            "schedule": "0 6 * * *"
-        }
-    ],
+    "crons": [],
     "headers": [
         {
             "source": "/(.*)",

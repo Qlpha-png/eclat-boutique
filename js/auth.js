@@ -207,6 +207,10 @@
                 variables: {
                     colorPrimary: '#c9a87c',
                     colorText: '#2d2926',
+                    colorBackground: '#faf8f5',
+                    colorInputBackground: '#ffffff',
+                    colorInputText: '#2d2926',
+                    borderRadius: '8px',
                     fontFamily: 'Inter, sans-serif'
                 }
             },
@@ -233,17 +237,17 @@
 
     /**
      * Retourne la locale Clerk correspondant à la langue du site
+     * Clerk CDN auto-détecte les locales standard
      */
     function getClerkLocale() {
         var lang = window.currentLang || document.documentElement.lang || 'fr';
-        // Clerk supporte frFR, enUS, esES, deDE
         var localeMap = {
-            'fr': undefined, // Clerk uses frFR import, we'll handle via appearance
-            'en': undefined,
-            'es': undefined,
-            'de': undefined
+            'fr': 'fr-FR',
+            'en': 'en-US',
+            'es': 'es-ES',
+            'de': 'de-DE'
         };
-        return localeMap[lang];
+        return localeMap[lang] || 'fr-FR';
     }
 
     /**
