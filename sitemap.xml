@@ -115,6 +115,43 @@
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    <!-- Blog Articles -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/masque-led-guide.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/routine-skincare-matin.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/jade-roller-vs-gua-sha.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/vitamine-c-skincare.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/k-beauty-tendances-2026.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/derma-roller-erreurs.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
     <!-- Info Pages -->
     <url>
         <loc>https://maison-eclat.shop/pages/faq.html</loc>
