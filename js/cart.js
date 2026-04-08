@@ -4,7 +4,8 @@
 
 class Cart {
     constructor() {
-        this.items = JSON.parse(localStorage.getItem('eclat_cart')) || [];
+        try { this.items = JSON.parse(localStorage.getItem('eclat_cart')) || []; }
+        catch { this.items = []; }
         this.listeners = [];
     }
 
