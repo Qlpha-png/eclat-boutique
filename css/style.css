@@ -2902,3 +2902,30 @@ input { font-family: inherit; }
 .bundle-cta {
     margin-top: 16px;
 }
+
+/* --- Certification Badges Row --- */
+.cert-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+}
+.cert-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    background: var(--color-white);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+}
+.cert-dot-sm {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}

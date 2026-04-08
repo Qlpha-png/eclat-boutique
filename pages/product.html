@@ -34,7 +34,18 @@
         .pp-guide a { color:var(--color-secondary); font-weight:600; font-size:0.9rem; text-decoration:none; }
         .pp-guide a:hover { text-decoration:underline; }
         .pp-back { display:inline-block; margin-bottom:24px; color:var(--color-secondary); text-decoration:none; font-size:0.9rem; }
+        .pp-section { margin-top:32px; padding-top:24px; border-top:1px solid var(--color-border); }
+        .pp-section h2 { font-family:var(--font-display); font-size:1.2rem; margin-bottom:16px; }
+        .pp-howto { background:var(--color-bg-alt); border-radius:var(--radius-md); padding:20px 24px; font-size:0.9rem; line-height:1.9; }
+        .pp-ingredients { font-size:0.85rem; color:var(--color-text-light); line-height:1.8; background:var(--color-white); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:16px 20px; }
+        .pp-specs { display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.88rem; }
+        .pp-specs dt { font-weight:600; color:var(--color-text); }
+        .pp-specs dd { margin:0; color:var(--color-text-light); margin-bottom:8px; }
+        .pp-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+        .pp-cert { display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:600; background:var(--color-bg-alt); padding:6px 12px; border-radius:20px; }
+        .pp-cert-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
         @media (max-width:768px) {
+            .pp-specs { grid-template-columns:1fr; }
             .pp-grid { grid-template-columns:1fr; gap:24px; }
             .pp-name { font-size:1.5rem; }
         }
@@ -114,6 +125,29 @@
                 ? '<div class="pp-guide"><a href="guide-beaute.html#' + guide + '">Lire l\'\u00e9tude scientifique \u2192</a></div>'
                 : '';
 
+            // Build specs HTML
+            var specsHTML = '';
+            if (product.specs) {
+                specsHTML = '<div class="pp-section"><h2>Sp\u00e9cifications techniques</h2><dl class="pp-specs">';
+                var specLabels = { puissance:'Puissance', longueurs:'Longueurs d\'onde', batterie:'Batterie', poids:'Poids', materiau:'Mat\u00e9riau', dimensions:'Dimensions', entretien:'Entretien', frequence:'Fr\u00e9quence', modes:'Modes', etancheite:'\u00c9tanch\u00e9it\u00e9', tetes:'T\u00eates', vitesse:'Vitesse', technologie:'Technologie', particules:'Particules', reservoir:'R\u00e9servoir', autonomie:'Autonomie', concentration:'Concentration', ph:'pH', contenance:'Contenance', conservation:'Conservation', temperature:'Temp\u00e9rature', rotation:'Rotation', contenu:'Contenu', duree_pose:'Dur\u00e9e de pose', type:'Type', purete:'Puret\u00e9', extraction:'Extraction', zones:'Zones', reutilisable:'R\u00e9utilisable', duree:'Dur\u00e9e', parfum:'Parfum', capacite:'Capacit\u00e9', couverture:'Couverture', bruit:'Bruit', arret:'Arr\u00eat auto', longueur:'Longueur' };
+                for (var key in product.specs) {
+                    specsHTML += '<dt>' + (specLabels[key] || key) + '</dt><dd>' + escapeHTML(product.specs[key]) + '</dd>';
+                }
+                specsHTML += '</dl></div>';
+            }
+
+            // Build ingredients HTML
+            var ingredientsHTML = '';
+            if (product.ingredients) {
+                ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(product.ingredients) + '</div></div>';
+            }
+
+            // Build how-to HTML
+            var howToHTML = '';
+            if (product.howTo) {
+                howToHTML = '<div class="pp-section"><h2>Mode d\'emploi</h2><div class="pp-howto">' + escapeHTML(product.howTo) + '</div></div>';
+            }
+
             document.getElementById('ppInfo').innerHTML =
                 '<div class="pp-category">' + (catLabels[product.category] || product.category) + '</div>' +
                 '<h1 class="pp-name">' + escapeHTML(product.name) + '</h1>' +
@@ -129,7 +163,16 @@
                 '</div>' +
                 '<div class="pp-actions">' +
                     '<a href="../index.html?produit=' + product.id + '" class="btn btn-primary">Ajouter au panier</a>' +
-                '</div>';
+                '</div>' +
+                '<div class="pp-badges">' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Cruelty-free</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#ff9800;"></span> \u00c9co-emballage</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> Garantie 30j</div>' +
+                '</div>' +
+                howToHTML +
+                specsHTML +
+                ingredientsHTML;
         }
     </script>
 </body>
