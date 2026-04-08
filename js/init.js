@@ -98,30 +98,6 @@ window.addBundleToCart = function(bundleKey) {
     if (window.showToast) showToast(t('bundle_added_toast'));
 };
 
-// Language selector
-(function() {
-    var btn = document.getElementById('langBtn');
-    var dropdown = document.getElementById('langDropdown');
-    var label = document.getElementById('langLabel');
-    if (!btn || !dropdown) return;
-    btn.addEventListener('click', function() {
-        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    });
-    dropdown.querySelectorAll('button').forEach(function(b) {
-        b.addEventListener('click', function() {
-            var lang = b.dataset.lang;
-            if (typeof setLanguage === 'function') setLanguage(lang);
-            label.textContent = lang.toUpperCase();
-            dropdown.style.display = 'none';
-        });
-    });
-    document.addEventListener('click', function(e) {
-        if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
-    });
-})();
-
 // Email capture popup — appears after 8s, once per session
 (function() {
     var popup = document.getElementById('emailPopup');
