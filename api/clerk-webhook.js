@@ -4,7 +4,7 @@
  * Synchronise les utilisateurs dans Neon (PostgreSQL)
  */
 
-const { getDB } = require('./db');
+const { getDB } = require('./_lib/db');
 const { verifyWebhook } = require('./_middleware/auth');
 
 function generateReferralCode() {

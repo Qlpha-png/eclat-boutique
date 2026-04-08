@@ -4,7 +4,7 @@
  * Crée toutes les tables nécessaires dans Neon (PostgreSQL)
  */
 
-const { getDB } = require('./db');
+const { getDB } = require('./_lib/db');
 
 const MIGRATIONS = [
     // 1. Users (synced from Clerk)
