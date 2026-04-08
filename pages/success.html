@@ -6,8 +6,12 @@
     <title>Commande confirm&eacute;e - &Eacute;CLAT</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
 </head>
 <body style="background: var(--color-bg);">
     <nav class="navbar">
@@ -75,7 +79,7 @@
         </p>
     </div>
 
-    <script src="../js/i18n.js"></script>
+    <script src="../js/i18n.js" defer></script>
     <script>
         // Clear cart after successful purchase
         localStorage.removeItem('eclat_cart');
@@ -89,5 +93,6 @@
             document.documentElement.lang = currentLang;
         });
     </script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

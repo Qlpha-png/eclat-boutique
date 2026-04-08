@@ -7,9 +7,13 @@
     <meta name="description" content="Questions fréquentes ÉCLAT : livraison en Europe, retours gratuits 30 jours, paiement sécurisé Stripe, garantie 2 ans. Toutes les réponses ici.">
     <link rel="canonical" href="https://maison-eclat.shop/pages/faq.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/i18n.js"></script>
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
+    <script src="../js/i18n.js" defer></script>
     <style>
         .faq-page { max-width: 800px; margin: 40px auto; padding: 0 24px 80px; }
         .faq-page h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 8px; text-align: center; }
@@ -407,5 +411,6 @@
             noResults.style.display = found === 0 && query ? 'block' : 'none';
         });
     </script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

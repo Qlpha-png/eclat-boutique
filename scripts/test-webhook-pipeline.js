@@ -27,10 +27,10 @@ const fakeEvent = {
             amount_subtotal: 4990,
             amount_total: 5380,
             locale: process.env.TEST_LANG || null,
-            customer_email: 'kevinvoisin2016@gmail.com',
+            customer_email: 'test@maison-eclat.shop',
             customer_details: {
-                email: 'kevinvoisin2016@gmail.com',
-                name: process.env.TEST_NAME || 'Kevin Voisin (TEST)',
+                email: 'test@maison-eclat.shop',
+                name: process.env.TEST_NAME || 'Client Test (TEST)',
                 phone: '+33600000000',
                 address: {
                     line1: process.env.TEST_ADDR || '12 Rue de Test',
@@ -42,7 +42,7 @@ const fakeEvent = {
                 }
             },
             shipping_details: {
-                name: process.env.TEST_NAME || 'Kevin Voisin (TEST)',
+                name: process.env.TEST_NAME || 'Client Test (TEST)',
                 address: {
                     line1: process.env.TEST_ADDR || '12 Rue de Test',
                     line2: '',

@@ -6,8 +6,12 @@
     <meta name="description" content="Diagnostic beauté gratuit - Découvrez votre routine skincare personnalisée en 60 secondes avec ÉCLAT.">
     <title>Diagnostic Beauté - ÉCLAT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
     <style>
         .diag-page { max-width:640px; margin:0 auto; padding:40px 24px 80px; min-height:100vh; }
         .diag-header { text-align:center; margin-bottom:40px; }
@@ -204,7 +208,7 @@
         </div>
     </div>
 
-    <script src="../js/products.js"></script>
+    <script src="../js/products.js" defer></script>
     <script>
         const answers = {};
         let currentStep = 1;
@@ -388,5 +392,6 @@
             window.location.href = '../index.html?openCart=1';
         }
     </script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

@@ -7,8 +7,12 @@
     <meta name="description" content="Politique de confidentialité ÉCLAT : protection de vos données personnelles, paiement sécurisé Stripe, conformité RGPD.">
     <link rel="canonical" href="https://maison-eclat.shop/pages/confidentialite.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
     <style>
         .legal-page { max-width: 800px; margin: 40px auto; padding: 0 24px 80px; }
         .legal-page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 32px; }
@@ -105,5 +109,6 @@
         <h2>10. S&eacute;curit&eacute;</h2>
         <p>Nous mettons en oeuvre des mesures techniques et organisationnelles pour prot&eacute;ger vos donn&eacute;es : chiffrement SSL/TLS, acc&egrave;s restreint, sauvegardes r&eacute;guli&egrave;res.</p>
     </div>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

@@ -6,7 +6,9 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Admin - ÉCLAT Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             --bg: #0f0f0f;
@@ -180,6 +182,8 @@
             .admin-container { padding:16px; }
         }
     </style>
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
 </head>
 <body>
 
@@ -199,7 +203,7 @@
     <div class="admin-dashboard hidden" id="adminDashboard">
         <header class="admin-header">
             <div class="admin-logo">ÉCLAT ADMIN</div>
-            <div class="admin-user">Kevin • <a href="../index.html" style="color:var(--gold);">Voir la boutique</a></div>
+            <div class="admin-user">Admin • <a href="../index.html" style="color:var(--gold);">Voir la boutique</a></div>
         </header>
 
         <div class="admin-container">
@@ -412,5 +416,6 @@
             }
         }
     </script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>

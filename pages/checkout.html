@@ -6,8 +6,12 @@
     <title>Commande - &Eacute;CLAT</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Clerk Auth -->
+    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
 </head>
 <body style="background: var(--color-bg);">
 
@@ -150,7 +154,7 @@
             <!-- Pre-contractual info (Article L221-5 Code de la consommation) -->
             <div style="background:var(--color-bg);padding:16px 20px;border-radius:8px;margin-bottom:20px;border-left:3px solid var(--color-secondary);">
                 <p style="font-size:0.8rem;color:var(--color-text-light);margin:0 0 4px;line-height:1.6;">
-                    <strong>Vendeur :</strong> Maison &Eacute;clat &mdash; Kevin VOISIN<br>
+                    <strong>Vendeur :</strong> Maison &Eacute;CLAT &mdash; Micro-entreprise<br>
                     <strong>Droit de r&eacute;tractation :</strong> 30 jours apr&egrave;s r&eacute;ception<br>
                     <strong>D&eacute;lai de livraison :</strong> 7 &agrave; 14 jours ouvr&eacute;s<br>
                     <strong>M&eacute;diation :</strong> <a href="https://www.mediateur-consommation-smp.fr" target="_blank" rel="noopener" style="color:var(--color-secondary);">SMP - M&eacute;diation Professionnelle</a>
@@ -180,9 +184,9 @@
         </div>
     </div>
 
-    <script src="../js/i18n.js"></script>
-    <script src="../js/products.js"></script>
-    <script src="../js/cart.js"></script>
+    <script src="../js/i18n.js" defer></script>
+    <script src="../js/products.js" defer></script>
+    <script src="../js/cart.js" defer></script>
     <script>
         function formatPrice(price) {
             return price.toFixed(2).replace('.', ',') + ' \u20ac';
@@ -302,17 +306,17 @@
             }
         });
 
-        // Apply i18n translations to data-i18n elements
+        // Apply i18n translations and render checkout after deferred scripts load
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('[data-i18n]').forEach(function(el) {
                 var key = el.getAttribute('data-i18n');
                 el.textContent = t(key);
             });
             document.documentElement.lang = currentLang;
+            renderCheckout();
         });
-
-        renderCheckout();
     </script>
-    <script src="../js/automation.js"></script>
+    <script src="../js/automation.js" defer></script>
+    <script src="../js/auth.js" defer></script>
 </body>
 </html>
