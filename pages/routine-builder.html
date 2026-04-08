@@ -66,6 +66,12 @@
             <div class="rb-tiers" id="rbTiers"></div>
         </div>
 
+        <div style="background:linear-gradient(135deg,var(--color-primary),#1a1714);color:#fff;border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:32px;text-align:center;">
+            <p style="margin:0 0 4px;font-size:0.85rem;opacity:0.7;">Le meilleur deal</p>
+            <p style="margin:0 0 12px;font-size:1rem;font-weight:600;">Nos coffrets offrent jusqu'&agrave; <strong style="color:var(--color-secondary);">-26%</strong> de r&eacute;duction</p>
+            <a href="../index.html#packs" style="color:var(--color-secondary);font-weight:600;font-size:0.9rem;text-decoration:none;">Voir les coffrets &rarr;</a>
+        </div>
+
         <div class="rb-steps" id="rbSteps"></div>
 
         <div class="rb-summary" id="rbSummary" style="display:none;">
@@ -83,9 +89,9 @@
     (function(){
         var selected = {};
         var discountTiers = [
-            { min: 2, pct: 5, label: '2 produits = -5%' },
-            { min: 3, pct: 10, label: '3 produits = -10%' },
-            { min: 4, pct: 15, label: '4+ produits = -15%' }
+            { min: 2, pct: 3, label: '2 produits = -3%' },
+            { min: 3, pct: 7, label: '3 produits = -7%' },
+            { min: 4, pct: 10, label: '4+ produits = -10%' }
         ];
 
         var steps = [
