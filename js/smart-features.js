@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     html += `<div class="rb-step missing" onclick="addToCart(${best.id}); renderRoutineBuilder();">
                         <span class="rb-icon">${step.icon}</span>
                         <span class="rb-label">${label}</span>
-                        <span class="rb-suggest">${best.name.split(' ').slice(0, 3).join(' ')} — ${best.price.toFixed(2).replace('.', ',')}€</span>
+                        <span class="rb-suggest">${typeof escapeHTML==='function'?escapeHTML(best.name.split(' ').slice(0, 3).join(' ')):best.name.split(' ').slice(0, 3).join(' ')} — ${best.price.toFixed(2).replace('.', ',')}€</span>
                         <span class="rb-add">+ ${addTexts[lang] || addTexts.fr}</span>
                     </div>`;
                 }
@@ -339,9 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="recently-viewed-grid">
                     ${products.map(p => `
                         <div class="rv-card" onclick="openModal(${p.id})">
-                            <img src="${p.image}" alt="${p.name}" loading="lazy">
+                            <img src="${typeof escapeHTML==='function'?escapeHTML(p.image):p.image}" alt="${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}" loading="lazy">
                             <div class="rv-info">
-                                <span class="rv-name">${p.name}</span>
+                                <span class="rv-name">${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}</span>
                                 <strong class="rv-price">${p.price.toFixed(2).replace('.', ',')} €</strong>
                             </div>
                         </div>

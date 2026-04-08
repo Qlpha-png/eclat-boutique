@@ -2,6 +2,13 @@
 // ECLAT - Main Application
 // ============================
 
+function escapeHTML(str) {
+    if (typeof str !== 'string') return str;
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM Elements ---
@@ -61,17 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
         productsGrid.innerHTML = filtered.map(product => `
             <div class="product-card fade-in" data-id="${product.id}">
                 <div class="product-image" onclick="openModal(${product.id})" style="cursor:pointer;">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
                         product.badge === 'new' ? t('badge_new') :
                         product.badge === 'promo' ? t('badge_promo') :
                         product.badge === 'lancement' ? t('badge_lancement') :
-                        product.badge === 'marque' ? (product.name.split(' — ')[0] || 'Marque') : t('badge_bestseller')
+                        product.badge === 'marque' ? (escapeHTML(product.name.split(' — ')[0]) || 'Marque') : t('badge_bestseller')
                     }</span>` : ''}
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name" onclick="openModal(${product.id})" style="cursor:pointer;">${product.name}</h3>
+                    <h3 class="product-name" onclick="openModal(${product.id})" style="cursor:pointer;">${escapeHTML(product.name)}</h3>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '&#9733;' : ''}
                         ${product.reviews > 0 ? `<span class="count">(${product.reviews.toLocaleString('fr-FR')} ${t('reviews_count')})</span>` : ''}
@@ -121,13 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         bestsellerShowcase.innerHTML = bestsellers.map(product => `
             <div class="bestseller-card fade-in">
                 <div class="bestseller-image">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
                     <div class="bestseller-rank">#${product.bestsellerRank}</div>
                 </div>
                 <div class="bestseller-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-desc">${product.description}</p>
+                    <h3 class="product-name">${escapeHTML(product.name)}</h3>
+                    <p class="product-desc">${escapeHTML(product.description)}</p>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}
                         <span class="count">${product.rating}/5</span>
@@ -177,24 +184,27 @@ document.addEventListener('DOMContentLoaded', () => {
         12: { section: 'collagene', label: 'Collagène & Anti-rides' }
     };
 
+    let modalTrigger = null;
+
     window.openModal = function(productId) {
         const product = PRODUCTS.find(p => p.id === productId);
         if (!product) return;
 
+        modalTrigger = document.activeElement;
         const guide = productGuideMap[product.id];
         const guideLink = guide ? `<a href="pages/guide-beaute.html#${guide.section}" class="modal-guide-link">Lire l'étude scientifique : ${guide.label} →</a>` : '';
 
         modalContent.innerHTML = `
             <div class="modal-grid">
-                <div class="modal-image"><img src="${product.image}" alt="${product.name}"></div>
+                <div class="modal-image"><img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}"></div>
                 <div class="modal-details">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h2 class="product-name">${product.name}</h2>
+                    <h2 class="product-name" id="modalTitle">${escapeHTML(product.name)}</h2>
                     <div class="product-rating">
                         ${'&#9733;'.repeat(Math.floor(product.rating))}
                         <span class="count">${product.rating}/5</span>
                     </div>
-                    <p class="product-description">${product.description}</p>
+                    <p class="product-description">${escapeHTML(product.description)}</p>
                     ${guideLink}
                     <div class="product-price">
                         <span class="price-current">${formatPrice(product.price)}</span>
@@ -206,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="modal-trust-item"><span class="trust-icon">&#128274;</span> ${t('trust_modal_secure')}</div>
                     </div>
                     <ul class="modal-features">
-                        ${product.features.map(f => `<li>${f}</li>`).join('')}
+                        ${product.features.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
                     </ul>
                     <button class="btn btn-primary btn-full" onclick="addToCart(${product.id}); closeModal();">
                         ${t('btn_add_cart')} - ${formatPrice(product.price)}
@@ -218,13 +228,23 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.add('active');
         productModal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        // Focus the close button for accessibility
+        setTimeout(() => modalClose.focus(), 100);
     };
 
     window.closeModal = function() {
         modalOverlay.classList.remove('active');
         productModal.classList.remove('active');
         document.body.style.overflow = '';
+        if (modalTrigger) { modalTrigger.focus(); modalTrigger = null; }
     };
+
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && productModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 
     modalClose.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
@@ -279,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const itemsHTML = cart.items.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
+                <div class="cart-item-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy"></div>
                 <div class="cart-item-details">
-                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-name">${escapeHTML(item.name)}</div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
                     <div class="cart-item-qty">
                         <button class="qty-btn" onclick="updateCartQty(${item.id}, ${item.qty - 1})">-</button>
@@ -352,9 +372,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4>${t('cart_cross_sell')}</h4>
             ${suggestions.map(p => `
                 <div class="cross-sell-item">
-                    <img src="${p.image}" alt="${p.name}">
+                    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">
                     <div class="cross-sell-info">
-                        <div class="cs-name">${p.name}</div>
+                        <div class="cs-name">${escapeHTML(p.name)}</div>
                         <div class="cs-price">${formatPrice(p.price)}</div>
                     </div>
                     <button class="cross-sell-add" onclick="addToCart(${p.id})">${t('btn_add_short')}</button>

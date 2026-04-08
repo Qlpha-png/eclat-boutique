@@ -23,6 +23,7 @@
 
     <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
@@ -42,8 +43,58 @@
         "foundingDate": "2026"
     }
     </script>
+
+    <!-- Product Schema for Bundles -->
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Coffret Routine \u00c9clat",
+            "description": "Ice Roller Cryo + S\u00e9rum Vitamine C 20% + Gua Sha Quartz Rose",
+            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "offers": {
+                "@type": "Offer",
+                "price": "24.90",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://maison-eclat.shop/#packs"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Coffret Routine Anti-\u00c2ge",
+            "description": "Masque LED Pro 7 Couleurs + S\u00e9rum Vitamine C 20% + Masque Collag\u00e8ne Lifting",
+            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "offers": {
+                "@type": "Offer",
+                "price": "49.90",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://maison-eclat.shop/#packs"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Coffret Routine Glow",
+            "description": "S\u00e9rum Vitamine C 20% + Huile Rose Musqu\u00e9e + Patchs Yeux Collag\u00e8ne",
+            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "offers": {
+                "@type": "Offer",
+                "price": "29.90",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "url": "https://maison-eclat.shop/#packs"
+            }
+        }
+    ]
+    </script>
 </head>
 <body>
+
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
     <!-- Top Banner -->
     <div class="top-banner">
@@ -61,6 +112,17 @@
                 <li><a href="pages/guide-beaute.html">Guide Beauté</a></li>
             </ul>
             <div class="nav-actions">
+                <div class="lang-selector">
+                    <button id="langBtn" aria-label="Changer la langue" type="button">
+                        <span aria-hidden="true">&#127760;</span> <span id="langLabel">FR</span>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown" style="display:none;">
+                        <button type="button" data-lang="fr">Fran&ccedil;ais</button>
+                        <button type="button" data-lang="en">English</button>
+                        <button type="button" data-lang="es">Espa&ntilde;ol</button>
+                        <button type="button" data-lang="de">Deutsch</button>
+                    </div>
+                </div>
                 <button class="cart-btn" id="cartBtn" aria-label="Panier">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -77,7 +139,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="accueil">
+    <section class="hero" id="main-content">
         <div class="hero-content">
             <span class="hero-tag">Soins &amp; outils haut de gamme</span>
             <h1>La beaut&eacute; qui se voit.<br><em>La science qui le prouve.</em></h1>
@@ -113,22 +175,22 @@
         <div class="container">
             <div class="badge-grid">
                 <div class="badge-item">
-                    <div class="badge-icon">&#128666;</div>
+                    <div class="badge-icon" aria-hidden="true">&#128666;</div>
                     <h4>Livraison suivie</h4>
                     <p>7-14 jours ouvr&eacute;s en Europe</p>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">&#128274;</div>
+                    <div class="badge-icon" aria-hidden="true">&#128274;</div>
                     <h4>Paiement s&eacute;curis&eacute;</h4>
                     <p>Stripe &bull; CB &bull; PayPal</p>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">&#8634;</div>
+                    <div class="badge-icon" aria-hidden="true">&#8634;</div>
                     <h4>Retours gratuits</h4>
                     <p>30 jours pour changer d'avis</p>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">&#127807;</div>
+                    <div class="badge-icon" aria-hidden="true">&#127807;</div>
                     <h4>&Eacute;co-responsable</h4>
                     <p>Emballages recycl&eacute;s</p>
                 </div>
@@ -270,7 +332,8 @@
                 <h2>-10% sur votre premi&egrave;re commande</h2>
                 <p>Recevez votre code <strong>BIENVENUE10</strong> + nos conseils beaut&eacute; exclusifs.</p>
                 <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Votre adresse email" required>
+                    <label for="newsletterEmail" class="sr-only">Adresse email</label>
+                    <input type="email" id="newsletterEmail" placeholder="Votre adresse email" required>
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
                 </form>
             </div>
@@ -357,7 +420,7 @@
 
     <!-- Quick View Modal -->
     <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="product-modal" id="productModal">
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <button class="modal-close" id="modalClose">&times;</button>
         <div class="modal-content" id="modalContent"></div>
     </div>
@@ -381,22 +444,23 @@
             <div class="popup-code">BIENVENUE10</div>
             <p>Inscrivez-vous et recevez votre code de r&eacute;duction + nos conseils beaut&eacute; exclusifs.</p>
             <form id="popupNewsletterForm">
-                <input type="email" placeholder="Votre email" required>
+                <label for="popupEmail" class="sr-only">Adresse email</label>
+                <input type="email" id="popupEmail" placeholder="Votre email" required>
                 <button type="submit" class="btn btn-primary">J'en profite</button>
             </form>
             <p class="popup-note">&#128274; Aucun spam. D&eacute;sinscription en 1 clic.</p>
         </div>
     </div>
 
-    <script src="js/products.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/smart-features.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/automation.js"></script>
-    <script src="js/products-i18n.js"></script>
-    <script src="js/chatbot.js"></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/smart-features.js" defer></script>
+    <script src="js/search.js" defer></script>
+    <script src="js/automation.js" defer></script>
+    <script src="js/products-i18n.js" defer></script>
+    <script src="js/chatbot.js" defer></script>
     <script>
         // Bundle add-to-cart — ajoute UN article coffret au prix réel du bundle
         window.addBundleToCart = function(bundleKey) {
@@ -421,6 +485,30 @@
             cart.save();
             if (window.showToast) showToast(t('bundle_added_toast'));
         };
+
+        // Language selector
+        (function() {
+            var btn = document.getElementById('langBtn');
+            var dropdown = document.getElementById('langDropdown');
+            var label = document.getElementById('langLabel');
+            if (!btn || !dropdown) return;
+            btn.addEventListener('click', function() {
+                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            });
+            dropdown.querySelectorAll('button').forEach(function(b) {
+                b.addEventListener('click', function() {
+                    var lang = b.dataset.lang;
+                    if (typeof setLanguage === 'function') setLanguage(lang);
+                    label.textContent = lang.toUpperCase();
+                    dropdown.style.display = 'none';
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        })();
 
         // Email capture popup — appears after 8s, once per session
         (function() {
@@ -463,16 +551,8 @@
     </script>
 
     <!-- Floating CTA button (appears on scroll past hero) -->
-    <a href="pages/diagnostic.html" id="floatingCTA" style="
-        position:fixed;bottom:24px;left:24px;z-index:999;
-        display:none;align-items:center;gap:8px;
-        background:linear-gradient(135deg,#c9a87c 0%,#b8956d 100%);
-        color:#fff;font-size:0.85rem;font-weight:600;
-        padding:12px 20px;border-radius:30px;
-        text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);
-        transition:transform 0.2s,box-shadow 0.2s;letter-spacing:0.5px;
-    " onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 24px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.2)'">
-        &#10024; Mon diagnostic gratuit
+    <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
+        <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
     <script>
         (function(){

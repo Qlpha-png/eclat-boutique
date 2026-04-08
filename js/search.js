@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = products.map(product => `
             <div class="product-card fade-in visible" data-id="${product.id}">
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    <img src="${typeof escapeHTML==='function'?escapeHTML(product.image):product.image}" alt="${typeof escapeHTML==='function'?escapeHTML(product.name):product.name}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
                         product.badge === 'new' ? t('badge_new') :
                         product.badge === 'promo' ? t('badge_promo') :
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name">${product.name}</h3>
+                    <h3 class="product-name">${typeof escapeHTML==='function'?escapeHTML(product.name):product.name}</h3>
                     <div class="product-rating">
                         ${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '★' : ''}
                         <span class="count">(${product.reviews.toLocaleString('fr-FR')} ${reviewsWord})</span>

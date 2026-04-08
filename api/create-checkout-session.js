@@ -1,7 +1,13 @@
 const Stripe = require('stripe');
 
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0]);
+    }
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -30,6 +36,28 @@ module.exports = async (req, res) => {
 
         if (!items || !items.length) {
             return res.status(400).json({ error: 'No items provided' });
+        }
+
+        // Server-side validation
+        for (const item of items) {
+            if (typeof item.price !== 'number' || item.price <= 0 || item.price > 500) {
+                return res.status(400).json({ error: 'Invalid item price' });
+            }
+            if (!Number.isInteger(item.qty) || item.qty < 1 || item.qty > 20) {
+                return res.status(400).json({ error: 'Invalid item quantity' });
+            }
+            if (typeof item.name !== 'string' || item.name.length === 0 || item.name.length > 200) {
+                return res.status(400).json({ error: 'Invalid item name' });
+            }
+        }
+        if (customer_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer_email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
+        }
+        if (shipping_cost !== undefined && shipping_cost !== null) {
+            const validShipping = [0, 3.90, 7.90];
+            if (typeof shipping_cost !== 'number' || !validShipping.includes(shipping_cost)) {
+                return res.status(400).json({ error: 'Invalid shipping cost' });
+            }
         }
 
         const line_items = items.map(item => ({
