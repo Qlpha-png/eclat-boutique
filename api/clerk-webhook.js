@@ -5,7 +5,7 @@
  */
 
 const { getDB } = require('./_lib/db');
-const { verifyWebhook } = require('./_middleware/auth');
+const { Webhook } = require('svix');
 
 function generateReferralCode() {
     var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -21,8 +21,7 @@ module.exports = async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Vérifier la signature du webhook Clerk
-    const payload = req.body;
+    // Vérifier la signature du webhook Clerk via Svix
     const svixId = req.headers['svix-id'];
     const svixTimestamp = req.headers['svix-timestamp'];
     const svixSignature = req.headers['svix-signature'];
@@ -31,9 +30,25 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'Missing svix headers' });
     }
 
-    // Note: Pour une vérification complète, utiliser le package 'svix'
-    // Pour la V2, on vérifie via le webhook secret si configuré
-    // En attendant, on accepte les requêtes avec les headers svix présents
+    const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+        console.error('[clerk-webhook] CLERK_WEBHOOK_SECRET not set');
+        return res.status(500).json({ error: 'Webhook secret not configured' });
+    }
+
+    let payload;
+    try {
+        const wh = new Webhook(webhookSecret);
+        const body = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
+        payload = wh.verify(body, {
+            'svix-id': svixId,
+            'svix-timestamp': svixTimestamp,
+            'svix-signature': svixSignature
+        });
+    } catch (err) {
+        console.error('[clerk-webhook] Signature verification failed:', err.message);
+        return res.status(401).json({ error: 'Invalid signature' });
+    }
 
     const eventType = payload.type;
     const data = payload.data;
