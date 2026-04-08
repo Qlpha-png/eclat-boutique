@@ -4,7 +4,9 @@ const Stripe = require('stripe');
 // GET /api/orders - Liste les paiements Stripe récents
 // GET /api/orders?session_id=xxx - Détails d'une commande
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    const origin = req.headers.origin;
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigins.includes(origin) ? origin : allowedOrigins[0]);
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 

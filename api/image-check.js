@@ -7,7 +7,9 @@
 const https = require('https');
 
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    const origin = req.headers.origin;
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigins.includes(origin) ? origin : allowedOrigins[0]);
 
     if (req.method !== 'GET') {
         return res.status(405).json({ error: 'Method not allowed' });
