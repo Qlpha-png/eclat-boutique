@@ -1410,8 +1410,8 @@ input { font-family: inherit; }
 }
 
 .qty-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid var(--color-border);
     display: flex;
@@ -2880,4 +2880,25 @@ input { font-family: inherit; }
 .lang-dropdown button:hover {
     background: var(--color-bg-alt);
     color: var(--color-secondary);
+}
+
+/* --- Guarantee Cards --- */
+.guarantee-card {
+    text-align: center;
+}
+.guarantee-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+.guarantee-title {
+    font-family: var(--font-display);
+    margin-bottom: 8px;
+}
+.guarantee-link {
+    color: var(--color-secondary);
+}
+
+/* --- Bundle CTA --- */
+.bundle-cta {
+    margin-top: 16px;
 }
