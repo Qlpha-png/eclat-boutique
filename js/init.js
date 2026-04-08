@@ -2,6 +2,78 @@
 // ECLAT - Initialization (extracted from inline scripts)
 // ============================
 
+// --- Real welcome offer timer (7 days from first visit) ---
+(function() {
+    var firstVisit = localStorage.getItem('eclat_first_visit');
+    if (!firstVisit) {
+        firstVisit = Date.now();
+        localStorage.setItem('eclat_first_visit', firstVisit);
+    }
+    var expiry = parseInt(firstVisit) + 7 * 24 * 60 * 60 * 1000; // 7 days
+    var banner = document.querySelector('.top-banner p');
+    if (!banner) return;
+
+    function updateTimer() {
+        var now = Date.now();
+        var remaining = expiry - now;
+        if (remaining <= 0) {
+            // Offer expired — remove the code mention
+            return;
+        }
+        var days = Math.floor(remaining / (24*60*60*1000));
+        var hours = Math.floor((remaining % (24*60*60*1000)) / (60*60*1000));
+        var timerEl = document.getElementById('welcomeTimer');
+        if (timerEl) {
+            timerEl.textContent = days + 'j ' + hours + 'h';
+        }
+    }
+
+    // Add timer to the popup code display
+    var popupCode = document.querySelector('.popup-code');
+    if (popupCode && (expiry - Date.now()) > 0) {
+        var timerSpan = document.createElement('div');
+        timerSpan.style.cssText = 'font-size:0.75rem;color:var(--color-text-light);margin-top:6px;';
+        timerSpan.innerHTML = 'Expire dans <strong id="welcomeTimer"></strong>';
+        popupCode.insertAdjacentElement('afterend', timerSpan);
+        updateTimer();
+        setInterval(updateTimer, 60000);
+    }
+})();
+
+// --- Abandoned cart trigger (sends email if user provided email + has cart) ---
+(function() {
+    // Check every 5 minutes if user has items + email but hasn't ordered
+    var cartEmail = localStorage.getItem('eclat_cart_email');
+    var abandonSent = localStorage.getItem('eclat_abandon_sent');
+
+    // Capture email from newsletter signup for later abandon cart use
+    document.addEventListener('submit', function(e) {
+        var input = e.target.querySelector('input[type="email"]');
+        if (input && input.value) {
+            localStorage.setItem('eclat_cart_email', input.value);
+        }
+    }, true);
+
+    // On page unload, if cart has items and we have email, schedule abandon email
+    window.addEventListener('beforeunload', function() {
+        var email = localStorage.getItem('eclat_cart_email');
+        var cartData = localStorage.getItem('eclat_cart');
+        if (!email || !cartData || abandonSent) return;
+        try {
+            var items = JSON.parse(cartData);
+            if (items.length === 0) return;
+            // Use sendBeacon for reliable delivery
+            var total = items.reduce(function(s,i){return s+i.price*i.qty;},0);
+            navigator.sendBeacon('/api/abandoned-cart', JSON.stringify({
+                email: email,
+                items: items,
+                total: total
+            }));
+            localStorage.setItem('eclat_abandon_sent', '1');
+        } catch(e) {}
+    });
+})();
+
 // Bundle add-to-cart
 window.addBundleToCart = function(bundleKey) {
     var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
