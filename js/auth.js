@@ -236,18 +236,53 @@
     }
 
     /**
-     * Retourne la locale Clerk correspondant à la langue du site
-     * Clerk CDN auto-détecte les locales standard
+     * Retourne la localisation Clerk selon la langue du site
+     * Le CDN Clerk nécessite un objet de traduction explicite
      */
     function getClerkLocale() {
         var lang = window.currentLang || document.documentElement.lang || 'fr';
-        var localeMap = {
-            'fr': 'fr-FR',
-            'en': 'en-US',
-            'es': 'es-ES',
-            'de': 'de-DE'
+        var translations = {
+            'fr': {
+                signIn: { start: { title: 'Connexion', subtitle: 'pour continuer sur Maison ÉCLAT', actionText: 'Pas encore de compte ?', actionLink: 'Inscription' },
+                    password: { title: 'Entrez votre mot de passe', subtitle: '', actionText: 'Utiliser une autre méthode', actionLink: '' } },
+                signUp: { start: { title: 'Inscription', subtitle: 'pour continuer sur Maison ÉCLAT', actionText: 'Déjà un compte ?', actionLink: 'Connexion' } },
+                userButton: { action__signOut: 'Déconnexion', action__manageAccount: 'Gérer le compte' },
+                userProfile: { start: { headerTitle__account: 'Compte', headerTitle__security: 'Sécurité' } },
+                formFieldLabel__emailAddress: 'Adresse email',
+                formFieldLabel__username: 'Nom d\'utilisateur',
+                formFieldLabel__password: 'Mot de passe',
+                formFieldLabel__firstName: 'Prénom',
+                formFieldLabel__lastName: 'Nom',
+                formButtonPrimary: 'Continuer',
+                socialButtonsBlockButton: 'Continuer avec {{provider}}',
+                dividerText: 'ou',
+                footerActionLink__useAnotherMethod: 'Utiliser une autre méthode'
+            },
+            'en': undefined,
+            'es': {
+                signIn: { start: { title: 'Iniciar sesión', subtitle: 'para continuar en Maison ÉCLAT', actionText: '¿No tienes cuenta?', actionLink: 'Regístrate' } },
+                signUp: { start: { title: 'Registro', subtitle: 'para continuar en Maison ÉCLAT', actionText: '¿Ya tienes cuenta?', actionLink: 'Iniciar sesión' } },
+                formFieldLabel__emailAddress: 'Correo electrónico',
+                formFieldLabel__password: 'Contraseña',
+                formFieldLabel__firstName: 'Nombre',
+                formFieldLabel__lastName: 'Apellido',
+                formButtonPrimary: 'Continuar',
+                socialButtonsBlockButton: 'Continuar con {{provider}}',
+                dividerText: 'o'
+            },
+            'de': {
+                signIn: { start: { title: 'Anmelden', subtitle: 'um bei Maison ÉCLAT fortzufahren', actionText: 'Kein Konto?', actionLink: 'Registrieren' } },
+                signUp: { start: { title: 'Registrieren', subtitle: 'um bei Maison ÉCLAT fortzufahren', actionText: 'Bereits ein Konto?', actionLink: 'Anmelden' } },
+                formFieldLabel__emailAddress: 'E-Mail-Adresse',
+                formFieldLabel__password: 'Passwort',
+                formFieldLabel__firstName: 'Vorname',
+                formFieldLabel__lastName: 'Nachname',
+                formButtonPrimary: 'Weiter',
+                socialButtonsBlockButton: 'Weiter mit {{provider}}',
+                dividerText: 'oder'
+            }
         };
-        return localeMap[lang] || 'fr-FR';
+        return translations[lang];
     }
 
     /**
