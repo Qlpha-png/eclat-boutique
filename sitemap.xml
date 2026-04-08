@@ -164,6 +164,19 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <!-- Account & Auth (noindex but in sitemap for crawl budget) -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/login.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/register.html</loc>
+        <lastmod>2026-04-08</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
     <!-- Info Pages -->
     <url>
         <loc>https://maison-eclat.shop/pages/faq.html</loc>

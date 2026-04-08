@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon compte - &Eacute;CLAT</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .account-page{max-width:900px;margin:40px auto;padding:0 24px 80px;}
+        .account-page h1{font-family:var(--font-display);font-size:2rem;margin-bottom:32px;}
+        .account-grid{display:grid;grid-template-columns:220px 1fr;gap:32px;}
+        .account-nav{display:flex;flex-direction:column;gap:4px;}
+        .account-nav button{text-align:left;padding:12px 16px;border:none;background:none;border-radius:var(--radius-md);font-size:0.9rem;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);}
+        .account-nav button:hover,.account-nav button.active{background:var(--color-bg-alt);font-weight:600;color:var(--color-secondary);}
+        .account-section{display:none;}
+        .account-section.active{display:block;}
+        .account-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;}
+        .account-card h3{font-family:var(--font-display);margin-bottom:12px;}
+        .tier-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+        .tier-bronze{background:#f5e6d3;color:#8b6914;}
+        .tier-silver{background:#e8e8e8;color:#666;}
+        .tier-gold{background:#fef3c7;color:#92400e;}
+        .tier-diamond{background:#ede9fe;color:#6d28d9;}
+        .points-display{font-size:2rem;font-weight:700;color:var(--color-secondary);}
+        .order-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--color-border);font-size:0.9rem;}
+        .order-row:last-child{border-bottom:none;}
+        .order-status{padding:4px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;}
+        .status-paid{background:#dbeafe;color:#1d4ed8;}
+        .status-shipped{background:#fef3c7;color:#92400e;}
+        .status-delivered{background:#dcfce7;color:#16a34a;}
+        .wishlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+        .wishlist-item{text-align:center;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md);}
+        .wishlist-item img{width:80px;height:80px;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:8px;}
+        .logout-btn{color:var(--color-error);font-weight:600;cursor:pointer;background:none;border:none;font-size:0.9rem;padding:12px 16px;text-align:left;width:100%;}
+        @media(max-width:768px){.account-grid{grid-template-columns:1fr;}.account-nav{flex-direction:row;overflow-x:auto;gap:0;}}
+    </style>
+</head>
+<body style="background:var(--color-bg);">
+    <nav class="navbar"><div class="nav-container"><a href="../index.html" class="logo">&Eacute;CLAT</a><a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; Boutique</a></div></nav>
+
+    <div class="account-page">
+        <h1>Mon compte</h1>
+
+        <div id="loading" style="text-align:center;padding:60px;color:var(--color-text-light);">Chargement...</div>
+
+        <div class="account-grid" id="accountContent" style="display:none;">
+            <div class="account-nav" id="accountNav">
+                <button class="active" data-tab="overview">Tableau de bord</button>
+                <button data-tab="orders">Mes commandes</button>
+                <button data-tab="wishlist">Wishlist</button>
+                <button data-tab="loyalty">Fid&eacute;lit&eacute;</button>
+                <button data-tab="addresses">Adresses</button>
+                <button data-tab="referral">Parrainage</button>
+                <button class="logout-btn" id="logoutBtn">D&eacute;connexion</button>
+            </div>
+
+            <div>
+                <!-- Overview -->
+                <div class="account-section active" id="tab-overview">
+                    <div class="account-card">
+                        <h3>Bonjour <span id="userName"></span> !</h3>
+                        <p style="color:var(--color-text-light);font-size:0.9rem;">Statut : <span class="tier-badge" id="userTier"></span></p>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;">
+                        <div class="account-card" style="text-align:center;">
+                            <div style="font-size:0.8rem;color:var(--color-text-light);">Points fid&eacute;lit&eacute;</div>
+                            <div class="points-display" id="userPoints">0</div>
+                        </div>
+                        <div class="account-card" style="text-align:center;">
+                            <div style="font-size:0.8rem;color:var(--color-text-light);">Total d&eacute;pens&eacute;</div>
+                            <div class="points-display" id="userSpent">0 &euro;</div>
+                        </div>
+                        <div class="account-card" style="text-align:center;">
+                            <div style="font-size:0.8rem;color:var(--color-text-light);">Commandes</div>
+                            <div class="points-display" id="userOrderCount">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders -->
+                <div class="account-section" id="tab-orders">
+                    <div class="account-card">
+                        <h3>Mes commandes</h3>
+                        <div id="ordersList"></div>
+                    </div>
+                </div>
+
+                <!-- Wishlist -->
+                <div class="account-section" id="tab-wishlist">
+                    <div class="account-card">
+                        <h3>Ma wishlist</h3>
+                        <div class="wishlist-grid" id="wishlistGrid"></div>
+                    </div>
+                </div>
+
+                <!-- Loyalty -->
+                <div class="account-section" id="tab-loyalty">
+                    <div class="account-card">
+                        <h3>Programme fid&eacute;lit&eacute;</h3>
+                        <p>1&euro; d&eacute;pens&eacute; = 1 point. Vos points d&eacute;bloquent des r&eacute;compenses :</p>
+                        <div id="loyaltyTiers" style="margin-top:16px;"></div>
+                    </div>
+                </div>
+
+                <!-- Addresses -->
+                <div class="account-section" id="tab-addresses">
+                    <div class="account-card">
+                        <h3>Mes adresses</h3>
+                        <div id="addressList"></div>
+                    </div>
+                </div>
+
+                <!-- Referral -->
+                <div class="account-section" id="tab-referral">
+                    <div class="account-card">
+                        <h3>Parrainage</h3>
+                        <p>Partagez votre code et gagnez -10% pour vous et votre filleul :</p>
+                        <div style="background:var(--color-bg-alt);padding:16px;border-radius:var(--radius-md);text-align:center;margin-top:16px;">
+                            <div style="font-size:1.4rem;font-weight:700;letter-spacing:2px;" id="referralCode"></div>
+                            <button onclick="navigator.clipboard.writeText(document.getElementById('referralCode').textContent)" style="margin-top:8px;padding:8px 16px;border:1px solid var(--color-border);border-radius:20px;background:var(--color-white);cursor:pointer;font-size:0.8rem;">Copier le code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check auth
+        var session = JSON.parse(localStorage.getItem('eclat_session') || 'null');
+        if (!session) { window.location.href = 'login.html'; }
+
+        // Tab navigation
+        document.querySelectorAll('#accountNav button[data-tab]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#accountNav button').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                document.querySelectorAll('.account-section').forEach(function(s) { s.classList.remove('active'); });
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('eclat_session');
+            localStorage.removeItem('eclat_user');
+            window.location.href = 'login.html';
+        });
+
+        // Load profile
+        async function loadProfile() {
+            try {
+                var resp = await fetch('/api/v2/auth?action=profile', {
+                    headers: { 'Authorization': 'Bearer ' + session.access_token }
+                });
+
+                if (!resp.ok) {
+                    localStorage.removeItem('eclat_session');
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                var data = await resp.json();
+                var user = data.user;
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('accountContent').style.display = 'grid';
+
+                // Overview
+                document.getElementById('userName').textContent = user.name || user.email;
+                var tierEl = document.getElementById('userTier');
+                tierEl.textContent = user.tier;
+                tierEl.className = 'tier-badge tier-' + user.tier;
+                document.getElementById('userPoints').textContent = user.loyalty_points;
+                document.getElementById('userSpent').textContent = parseFloat(user.total_spent).toFixed(2).replace('.', ',') + ' \u20ac';
+                document.getElementById('userOrderCount').textContent = (user.orders || []).length;
+
+                // Orders
+                var ordersHTML = (user.orders || []).length === 0
+                    ? '<p style="color:var(--color-text-light);">Aucune commande pour le moment.</p>'
+                    : (user.orders || []).map(function(o) {
+                        var statusClass = 'status-' + o.status;
+                        var date = new Date(o.created_at).toLocaleDateString('fr-FR');
+                        return '<div class="order-row">' +
+                            '<div><strong>#' + o.id.substring(0, 8) + '</strong><br><span style="color:var(--color-text-light);font-size:0.8rem;">' + date + '</span></div>' +
+                            '<span class="order-status ' + statusClass + '">' + o.status + '</span>' +
+                            '<strong>' + parseFloat(o.total).toFixed(2).replace('.', ',') + ' \u20ac</strong>' +
+                        '</div>';
+                    }).join('');
+                document.getElementById('ordersList').innerHTML = ordersHTML;
+
+                // Wishlist
+                var wishHTML = (user.wishlist || []).length === 0
+                    ? '<p style="color:var(--color-text-light);">Votre wishlist est vide.</p>'
+                    : (user.wishlist || []).map(function(w) {
+                        var p = w.products;
+                        return '<div class="wishlist-item">' +
+                            '<img src="' + (p.image_url || '') + '" alt="' + (p.name || '') + '">' +
+                            '<div style="font-size:0.8rem;font-weight:600;">' + (p.name || '') + '</div>' +
+                            '<div style="color:var(--color-secondary);font-weight:700;">' + (p.price || 0).toFixed(2).replace('.', ',') + ' \u20ac</div>' +
+                        '</div>';
+                    }).join('');
+                document.getElementById('wishlistGrid').innerHTML = wishHTML;
+
+                // Loyalty tiers
+                var tiers = [
+                    { name: 'Bronze', min: 0, perk: 'Acc\u00e8s au programme' },
+                    { name: 'Silver', min: 100, perk: '-5% permanent' },
+                    { name: 'Gold', min: 500, perk: '-10% + livraison offerte' },
+                    { name: 'Diamond', min: 1000, perk: '-15% + acc\u00e8s VIP' }
+                ];
+                document.getElementById('loyaltyTiers').innerHTML = tiers.map(function(t) {
+                    var active = user.loyalty_points >= t.min;
+                    return '<div style="padding:12px 16px;border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:8px;opacity:' + (active ? '1' : '0.5') + ';">' +
+                        '<strong>' + t.name + '</strong> (' + t.min + '+ pts) — ' + t.perk +
+                        (active ? ' \u2705' : '') +
+                    '</div>';
+                }).join('');
+
+                // Addresses
+                document.getElementById('addressList').innerHTML = (user.addresses || []).length === 0
+                    ? '<p style="color:var(--color-text-light);">Aucune adresse sauvegard\u00e9e.</p>'
+                    : (user.addresses || []).map(function(a) {
+                        return '<div style="padding:12px 0;border-bottom:1px solid var(--color-border);">' +
+                            '<strong>' + a.label + '</strong><br>' +
+                            a.name + '<br>' + a.line1 + '<br>' + a.postal_code + ' ' + a.city + ', ' + a.country +
+                        '</div>';
+                    }).join('');
+
+                // Referral
+                document.getElementById('referralCode').textContent = user.referral_code || 'N/A';
+
+            } catch (err) {
+                document.getElementById('loading').textContent = 'Erreur de chargement. Rafra\u00eechissez la page.';
+            }
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>
