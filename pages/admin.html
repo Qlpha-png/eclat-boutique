@@ -276,6 +276,11 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
                     Retours
                 </a>
+                <div class="nav-section">Fid&eacute;lit&eacute;</div>
+                <a href="#" data-tab="loyalty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    &Eacute;conomie &Eacute;clats
+                </a>
                 <div class="nav-section">Marketing</div>
                 <a href="#" data-tab="promos">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -683,6 +688,110 @@
                     </div>
                 </div>
 
+                <!-- Loyalty Economy Dashboard -->
+                <div class="tab-panel" id="tab-loyalty" style="display:none;">
+                    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+                        <div class="stat-card">
+                            <div class="stat-label">&Eacute;clats en circulation</div>
+                            <div class="stat-value gold" id="lyCirculating">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total &eacute;mis</div>
+                            <div class="stat-value green" id="lyEarned">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total d&eacute;pens&eacute;s</div>
+                            <div class="stat-value" id="lySpent" style="color:var(--red);">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Burn rate</div>
+                            <div class="stat-value" id="lyBurnRate">--%</div>
+                            <div class="stat-label" id="lyInflationAlert" style="color:var(--red);display:none;">&#9888; Inflation !</div>
+                        </div>
+                    </div>
+
+                    <!-- Tiers distribution -->
+                    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px;">
+                        <div class="stat-card" style="border-left:3px solid #92400e;">
+                            <div class="stat-label">&Eacute;clat</div>
+                            <div class="stat-value" id="lyTierEclat">--</div>
+                        </div>
+                        <div class="stat-card" style="border-left:3px solid #3730a3;">
+                            <div class="stat-label">Lumi&egrave;re</div>
+                            <div class="stat-value" id="lyTierLumiere">--</div>
+                        </div>
+                        <div class="stat-card" style="border-left:3px solid #9d174d;">
+                            <div class="stat-label">Prestige</div>
+                            <div class="stat-value" id="lyTierPrestige">--</div>
+                        </div>
+                        <div class="stat-card" style="border-left:3px solid #6d28d9;">
+                            <div class="stat-label">Diamant</div>
+                            <div class="stat-value" id="lyTierDiamant">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Today stats -->
+                    <div class="stats-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:20px;">
+                        <div class="stat-card">
+                            <div class="stat-label">Coffres ouverts aujourd'hui</div>
+                            <div class="stat-value gold" id="lyChestsToday">--</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Check-ins aujourd'hui</div>
+                            <div class="stat-value green" id="lyCheckinsToday">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Sources breakdown (7j) -->
+                    <div class="data-table-wrap" style="margin-bottom:24px;">
+                        <div class="data-table-header">
+                            <h3>&Eacute;missions par source (7 derniers jours)</h3>
+                        </div>
+                        <div id="lySourcesBreakdown" style="padding:16px;display:flex;flex-wrap:wrap;gap:12px;"></div>
+                    </div>
+
+                    <!-- Top clients -->
+                    <div class="data-table-wrap" style="margin-bottom:24px;">
+                        <div class="data-table-header">
+                            <h3>Top 10 clients par &Eacute;clats</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Client</th>
+                                    <th>&Eacute;clats</th>
+                                    <th>Tier</th>
+                                    <th>Streak</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lyTopClientsBody">
+                                <tr><td colspan="5" class="empty-state"><div class="spinner" style="margin:0 auto;"></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Recent transactions -->
+                    <div class="data-table-wrap">
+                        <div class="data-table-header">
+                            <h3>Transactions r&eacute;centes</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Source</th>
+                                    <th>Montant</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lyRecentTxBody">
+                                <tr><td colspan="4" class="empty-state"><div class="spinner" style="margin:0 auto;"></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -860,7 +969,7 @@
         }
 
         // ── Tab Navigation ──
-        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', products: 'Produits', reviews: 'Avis', returns: 'Retours', promos: 'Codes promo', newsletter: 'Newsletter' };
+        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', products: 'Produits', reviews: 'Avis', returns: 'Retours', loyalty: '\u00c9conomie \u00c9clats', promos: 'Codes promo', newsletter: 'Newsletter' };
         var reviewsPage = 1;
         var returnsPage = 1;
         var newsletterPage = 1;
@@ -888,6 +997,7 @@
             if (tab === 'products') loadProducts();
             if (tab === 'reviews') loadReviews();
             if (tab === 'returns') loadReturns();
+            if (tab === 'loyalty') loadLoyalty();
             if (tab === 'promos') loadPromos();
             if (tab === 'newsletter') loadNewsletter();
         };
@@ -1473,6 +1583,111 @@
                 renderPagination('newsletterPagination', data.page, data.pages, data.total, function(p) { newsletterPage = p; loadNewsletter(); });
             } catch (err) {
                 document.getElementById('newsletterBody').innerHTML = '<tr><td colspan="5" class="empty-state"><p>' + err.message + '</p></td></tr>';
+            }
+        };
+
+        // ── Loyalty Economy Dashboard ──
+        window.loadLoyalty = async function() {
+            try {
+                var data = await api('loyalty');
+                var eco = data.economy || {};
+                var tiers = data.tiers || {};
+                var today = data.today || {};
+
+                // Economy stats
+                document.getElementById('lyCirculating').textContent = (eco.total_circulating || 0).toLocaleString('fr-FR');
+                document.getElementById('lyEarned').textContent = (eco.total_earned || 0).toLocaleString('fr-FR');
+                document.getElementById('lySpent').textContent = (eco.total_spent || 0).toLocaleString('fr-FR');
+                document.getElementById('lyBurnRate').textContent = (eco.burn_rate || 0) + '%';
+
+                var alertEl = document.getElementById('lyInflationAlert');
+                if (eco.inflation_alert) {
+                    alertEl.style.display = 'block';
+                } else {
+                    alertEl.style.display = 'none';
+                }
+
+                // Tier distribution
+                document.getElementById('lyTierEclat').textContent = tiers.eclat || 0;
+                document.getElementById('lyTierLumiere').textContent = tiers.lumiere || 0;
+                document.getElementById('lyTierPrestige').textContent = tiers.prestige || 0;
+                document.getElementById('lyTierDiamant').textContent = tiers.diamant || 0;
+
+                // Today stats
+                document.getElementById('lyChestsToday').textContent = today.chests_opened || 0;
+                document.getElementById('lyCheckinsToday').textContent = today.checkins || 0;
+
+                // Sources breakdown (7 days)
+                var sourcesEl = document.getElementById('lySourcesBreakdown');
+                var sources = data.weekly_sources || {};
+                var sourceLabels = {
+                    purchase: 'Achats', checkin: 'Check-ins', chest: 'Coffres', review: 'Avis',
+                    referral: 'Parrainage', challenge: 'D\u00e9fis', birthday: 'Anniversaire',
+                    redemption: 'Redemption', admin_adjustment: 'Ajustement admin'
+                };
+                var sourceColors = {
+                    purchase: 'var(--gold)', checkin: 'var(--green)', chest: 'var(--blue)',
+                    review: '#9b59b6', referral: '#e67e22', challenge: '#1abc9c',
+                    birthday: '#e91e63', redemption: 'var(--red)', admin_adjustment: 'var(--text-dim)'
+                };
+                var sourceKeys = Object.keys(sources);
+                if (sourceKeys.length === 0) {
+                    sourcesEl.innerHTML = '<p style="color:var(--text-dim);font-size:0.85rem;">Aucune \u00e9mission cette semaine</p>';
+                } else {
+                    sourcesEl.innerHTML = sourceKeys.map(function(key) {
+                        var color = sourceColors[key] || 'var(--text-dim)';
+                        var label = sourceLabels[key] || key;
+                        return '<div style="background:var(--surface-2);border-radius:8px;padding:12px 16px;min-width:120px;text-align:center;">' +
+                            '<div style="font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">' + esc(label) + '</div>' +
+                            '<div style="font-size:1.3rem;font-weight:700;color:' + color + ';">' + sources[key].toLocaleString('fr-FR') + '</div>' +
+                            '</div>';
+                    }).join('');
+                }
+
+                // Top 10 clients
+                var topBody = document.getElementById('lyTopClientsBody');
+                var clients = data.top_clients || [];
+                if (clients.length === 0) {
+                    topBody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="icon">&#9733;</div><p>Aucun client avec des \u00c9clats</p></td></tr>';
+                } else {
+                    var tierBadges = {
+                        eclat: '<span class="badge badge-pending">\u00c9clat</span>',
+                        lumiere: '<span class="badge badge-processing">Lumi\u00e8re</span>',
+                        prestige: '<span class="badge badge-shipped">Prestige</span>',
+                        diamant: '<span class="badge badge-paid">Diamant</span>'
+                    };
+                    topBody.innerHTML = clients.map(function(c, i) {
+                        return '<tr>' +
+                            '<td>' + (i + 1) + '</td>' +
+                            '<td>' + esc(c.name || 'Inconnu') + '</td>' +
+                            '<td style="font-weight:600;color:var(--gold);">' + (c.eclats || 0).toLocaleString('fr-FR') + '</td>' +
+                            '<td>' + (tierBadges[c.tier] || tierBadges.eclat) + '</td>' +
+                            '<td>' + (c.streak || 0) + (c.streak > 0 ? ' \ud83d\udd25' : '') + '</td>' +
+                            '</tr>';
+                    }).join('');
+                }
+
+                // Recent transactions
+                var txBody = document.getElementById('lyRecentTxBody');
+                var txList = data.recent_transactions || [];
+                if (txList.length === 0) {
+                    txBody.innerHTML = '<tr><td colspan="4" class="empty-state"><p>Aucune transaction</p></td></tr>';
+                } else {
+                    var typeLabels = { earn: 'Gain', spend: 'D\u00e9pense' };
+                    txBody.innerHTML = txList.map(function(tx) {
+                        var isEarn = tx.type === 'earn';
+                        var sourceLabel = sourceLabels[tx.source] || tx.source;
+                        return '<tr>' +
+                            '<td><span class="badge ' + (isEarn ? 'badge-paid' : 'badge-refunded') + '">' + (typeLabels[tx.type] || tx.type) + '</span></td>' +
+                            '<td>' + esc(sourceLabel) + '</td>' +
+                            '<td style="font-weight:600;color:' + (isEarn ? 'var(--green)' : 'var(--red)') + ';">' + (isEarn ? '+' : '-') + tx.amount + '</td>' +
+                            '<td>' + fmtDate(tx.created_at) + '</td>' +
+                            '</tr>';
+                    }).join('');
+                }
+            } catch (err) {
+                document.getElementById('lyCirculating').textContent = 'Erreur';
+                console.error('[loadLoyalty]', err.message);
             }
         };
 
