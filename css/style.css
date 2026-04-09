@@ -146,6 +146,34 @@ input { font-family: inherit; }
     gap: 16px;
 }
 
+.loyalty-widget {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(201,168,124,0.15), rgba(201,168,124,0.05));
+    border: 1px solid rgba(201,168,124,0.3);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.loyalty-widget:hover {
+    background: linear-gradient(135deg, rgba(201,168,124,0.25), rgba(201,168,124,0.1));
+    border-color: var(--color-secondary);
+    transform: translateY(-1px);
+}
+.lw-eclats {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+}
+.lw-label {
+    font-size: 0.7rem;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+}
+
 .cart-btn {
     position: relative;
     color: var(--color-primary);

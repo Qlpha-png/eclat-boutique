@@ -22,6 +22,13 @@
         var eclats = profile.eclats || 0;
         var streak = profile.purchase_streak || 0;
 
+        // Widget header (Éclats dans la navbar)
+        var widget = document.getElementById('navLoyaltyWidget');
+        if (widget) {
+            document.getElementById('lwEclats').textContent = eclats;
+            widget.style.display = 'flex';
+        }
+
         // Trouver le palier actuel et suivant
         var currentTier = TIERS[0];
         var nextTier = TIERS[1];
