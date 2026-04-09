@@ -129,8 +129,8 @@ module.exports = async function handler(req, res) {
                 'anthropic-version': '2023-06-01'
             },
             body: JSON.stringify({
-                model: 'claude-haiku-4-5-20251001',
-                max_tokens: 150,
+                model: tier.model,
+                max_tokens: tier.maxTokens,
                 system: SYSTEM_PROMPT + '\n\nLangue du client : ' + (lang || 'fr'),
                 messages: messages
             })
@@ -172,8 +172,8 @@ module.exports = async function handler(req, res) {
 };
 
 function getTier(eclats) {
-    if (eclats >= 1000) return { name: 'Diamant', level: 3, monthlyLimit: null, nextTierName: null };
-    if (eclats >= 500) return { name: 'Prestige', level: 2, monthlyLimit: 50, nextTierName: 'Diamant' };
-    if (eclats >= 200) return { name: 'Lumière', level: 1, monthlyLimit: 20, nextTierName: 'Prestige' };
-    return { name: 'Éclat', level: 0, monthlyLimit: 0, nextTierName: 'Lumière' };
+    if (eclats >= 1000) return { name: 'Diamant', level: 3, monthlyLimit: null, nextTierName: null, model: 'claude-sonnet-4-5-20241022', maxTokens: 300 };
+    if (eclats >= 500) return { name: 'Prestige', level: 2, monthlyLimit: 50, nextTierName: 'Diamant', model: 'claude-haiku-4-5-20251001', maxTokens: 200 };
+    if (eclats >= 200) return { name: 'Lumière', level: 1, monthlyLimit: 20, nextTierName: 'Prestige', model: 'claude-haiku-4-5-20251001', maxTokens: 150 };
+    return { name: 'Éclat', level: 0, monthlyLimit: 0, nextTierName: 'Lumière', model: null, maxTokens: 0 };
 }
