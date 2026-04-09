@@ -1,11 +1,17 @@
 // ============================
 // ÉCLAT - Assistant Beauté Intelligent
-// Chatbot multilingue avec recommandations produits
+// Chatbot hybride : mots-clés (gratuit) + IA Claude (palier Lumière+)
 // ============================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Réponses avec suggestions de suivi
+    // ── Mode IA : activé si utilisateur connecté avec palier >= Lumière ──
+    var aiMode = false;
+    var aiHistory = [];
+    var aiTier = null;
+    var aiUsage = { used: 0, limit: null };
+
+    // ── Réponses avec suggestions de suivi (mode basique) ──
     const KB = {
         fr: {
             greeting: 'Bonjour ! Je suis votre conseillère beauté ÉCLAT. Quel est votre besoin aujourd\'hui ?',
@@ -261,13 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
                 <div class="chat-header-info">
-                    <div class="chat-avatar">E</div>
+                    <div class="chat-avatar" id="chatAvatar">E</div>
                     <div>
-                        <strong>Conseillère ÉCLAT</strong>
-                        <span class="chat-status">En ligne</span>
+                        <strong>Conseill&egrave;re &Eacute;CLAT</strong>
+                        <span class="chat-status" id="chatStatus">En ligne</span>
                     </div>
                 </div>
                 <button class="chat-close" id="chatClose">&times;</button>
+            </div>
+            <div id="chatAiBadge" style="display:none;padding:6px 16px;background:linear-gradient(135deg,#1a1520,#2d1f3d);text-align:center;font-size:0.7rem;color:#c9a87c;letter-spacing:0.5px;border-bottom:1px solid rgba(201,168,124,0.2);">
+                <span id="chatTierBadge"></span>
             </div>
             <div class="chat-messages" id="chatMessages"></div>
             <div class="chat-suggestions" id="chatSuggestions"></div>
@@ -303,11 +312,76 @@ document.addEventListener('DOMContentLoaded', () => {
     function initChat() {
         const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
         const kb = KB[lang] || KB.fr;
-        addMessage(kb.greeting, 'bot');
-        showSuggestions(kb.suggestions);
 
-        const placeholders = { fr: 'Décrivez votre besoin...', en: 'Describe your need...', es: 'Describe tu necesidad...', de: 'Beschreiben Sie Ihr Anliegen...' };
+        // Vérifier si l'utilisateur a accès au mode IA
+        checkAiAccess();
+
+        if (aiMode) {
+            const aiGreetings = {
+                fr: 'Bonjour ! Je suis votre <strong>conseillère beauté IA</strong> personnelle. Posez-moi n\'importe quelle question sur votre peau, vos routines ou nos produits !',
+                en: 'Hello! I\'m your personal <strong>AI beauty advisor</strong>. Ask me anything about your skin, routines, or our products!',
+                es: '&iexcl;Hola! Soy tu <strong>asesora de belleza IA</strong> personal. &iexcl;Preg&uacute;ntame lo que quieras sobre tu piel, rutinas o productos!',
+                de: 'Hallo! Ich bin Ihre pers&ouml;nliche <strong>KI-Beautyberaterin</strong>. Fragen Sie mich alles &uuml;ber Ihre Haut, Routinen oder unsere Produkte!'
+            };
+            addMessage(aiGreetings[lang] || aiGreetings.fr, 'bot');
+            showSuggestions(['Ma routine du soir', 'J\'ai la peau sèche', 'Quel produit pour les rides ?', 'Mon diagnostic beauté']);
+        } else {
+            addMessage(kb.greeting, 'bot');
+            showSuggestions(kb.suggestions);
+
+            // Montrer l'upgrade prompt si connecté mais palier insuffisant
+            if (window.auth && window.auth.isSignedIn() && !aiMode) {
+                const profile = window.auth.getProfile();
+                const eclats = (profile && profile.eclats) || 0;
+                if (eclats < 200) {
+                    setTimeout(() => {
+                        addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;margin:-4px 0;font-size:0.82rem;">' +
+                            '<strong style="color:#c9a87c;">Passez en mode IA</strong><br>' +
+                            '<span style="color:#999;">Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle. ' +
+                            'Vous avez <strong style="color:#c9a87c;">' + eclats + '/200</strong> \u00c9clats.</span>' +
+                        '</div>', 'bot');
+                    }, 1500);
+                }
+            }
+        }
+
+        const placeholders = {
+            fr: aiMode ? 'Posez votre question beauté...' : 'Décrivez votre besoin...',
+            en: aiMode ? 'Ask your beauty question...' : 'Describe your need...',
+            es: aiMode ? 'Haz tu pregunta de belleza...' : 'Describe tu necesidad...',
+            de: aiMode ? 'Stellen Sie Ihre Beauty-Frage...' : 'Beschreiben Sie Ihr Anliegen...'
+        };
         chatInput.placeholder = placeholders[lang] || placeholders.fr;
+    }
+
+    function checkAiAccess() {
+        aiMode = false;
+        if (!window.auth || !window.auth.isSignedIn()) return;
+
+        const profile = window.auth.getProfile();
+        if (!profile) return;
+
+        const eclats = profile.eclats || 0;
+        if (eclats >= 200) {
+            aiMode = true;
+            aiTier = eclats >= 1000 ? 'Diamant' : eclats >= 500 ? 'Prestige' : 'Lumière';
+
+            // Afficher le badge IA
+            const badge = document.getElementById('chatAiBadge');
+            const tierBadge = document.getElementById('chatTierBadge');
+            const avatar = document.getElementById('chatAvatar');
+            const status = document.getElementById('chatStatus');
+
+            if (badge) {
+                badge.style.display = 'block';
+                tierBadge.innerHTML = '\u2728 Mode IA &bull; Palier ' + aiTier;
+            }
+            if (avatar) {
+                avatar.style.background = 'linear-gradient(135deg,#c9a87c,#e8d5b5)';
+                avatar.innerHTML = '\u2728';
+            }
+            if (status) status.textContent = 'IA active';
+        }
     }
 
     function addMessage(text, sender) {
@@ -349,13 +423,116 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.appendChild(typing);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        setTimeout(() => {
-            typing.remove();
-            const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
-            const result = getResponse(msg, lang);
+        if (aiMode) {
+            // ── Mode IA : appel API ──
+            sendToAI(msg, typing);
+        } else {
+            // ── Mode basique : mots-clés ──
+            setTimeout(() => {
+                typing.remove();
+                const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+                const result = getResponse(msg, lang);
+                addMessage(result.answer, 'bot');
+                showSuggestions(result.followUp);
+            }, 600 + Math.random() * 400);
+        }
+    }
+
+    async function sendToAI(msg, typingEl) {
+        const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+
+        // Ajouter au historique
+        aiHistory.push({ role: 'user', content: msg });
+
+        try {
+            const token = window.auth && window.auth._session ? window.auth._session.access_token : '';
+            const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({
+                    message: msg,
+                    lang: lang,
+                    history: aiHistory.slice(-6)
+                })
+            });
+
+            typingEl.remove();
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                handleAiError(data, lang);
+                return;
+            }
+
+            // Réponse IA
+            addMessage(data.reply, 'bot');
+            aiHistory.push({ role: 'assistant', content: data.reply });
+
+            // Afficher usage
+            if (data.usage && data.usage.limit) {
+                aiUsage = data.usage;
+                const tierBadge = document.getElementById('chatTierBadge');
+                if (tierBadge) {
+                    tierBadge.innerHTML = '\u2728 ' + data.tier + ' &bull; ' + data.usage.used + '/' + data.usage.limit + ' msg';
+                }
+            }
+
+            // Suggestions contextuelles IA
+            showSuggestions(['Recommande-moi un produit', 'Ma routine complète', 'Autre question']);
+
+        } catch (err) {
+            typingEl.remove();
+            // Fallback sur mots-clés si API down
+            const lang2 = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+            const result = getResponse(msg, lang2);
             addMessage(result.answer, 'bot');
             showSuggestions(result.followUp);
-        }, 600 + Math.random() * 400);
+        }
+    }
+
+    function handleAiError(data, lang) {
+        if (data.upgrade === 'login') {
+            addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
+                '<strong style="color:#c9a87c;">Connectez-vous</strong><br>' +
+                '<span style="color:#999;">Cr\u00e9ez un compte gratuit pour acc\u00e9der \u00e0 votre conseill\u00e8re beaut\u00e9 IA.</span><br>' +
+                '<a href="pages/register.html" style="color:#c9a87c;font-weight:600;font-size:0.8rem;">Cr\u00e9er mon compte \u2192</a></div>', 'bot');
+            aiMode = false;
+            return;
+        }
+        if (data.upgrade === 'eclats') {
+            addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
+                '<strong style="color:#c9a87c;">D\u00e9bloquez l\'IA beauté</strong><br>' +
+                '<span style="color:#999;">Encore ' + (data.needed - data.current) + ' \u00c9clats pour atteindre le palier ' + data.tierName + ' et acc\u00e9der \u00e0 l\'IA.</span></div>', 'bot');
+            aiMode = false;
+            return;
+        }
+        if (data.upgrade === 'tier') {
+            addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
+                '<strong style="color:#c9a87c;">Limite mensuelle atteinte</strong><br>' +
+                '<span style="color:#999;">' + data.used + '/' + data.limit + ' messages utilis\u00e9s ce mois. ' +
+                'Passez au palier <strong style="color:#c9a87c;">' + (data.nextTier || 'sup\u00e9rieur') + '</strong> pour plus de messages !</span></div>', 'bot');
+            aiMode = false;
+            // Fallback sur mots-clés
+            const result = getResponse(aiHistory[aiHistory.length - 1]?.content || '', 'fr');
+            addMessage(result.answer, 'bot');
+            return;
+        }
+        if (data.upgrade === 'purchase') {
+            addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
+                '<strong style="color:#c9a87c;">Budget IA atteint</strong><br>' +
+                '<span style="color:#999;">Faites un achat pour d\u00e9bloquer plus de conversations IA !</span><br>' +
+                '<a href="index.html" style="color:#c9a87c;font-weight:600;font-size:0.8rem;">Voir nos produits \u2192</a></div>', 'bot');
+            aiMode = false;
+            return;
+        }
+        // Erreur générique
+        addMessage('D\u00e9sol\u00e9e, une erreur est survenue. Laissez-moi vous aider autrement !', 'bot');
+        const result = getResponse(aiHistory[aiHistory.length - 1]?.content || '', 'fr');
+        if (result.answer) addMessage(result.answer, 'bot');
     }
 
     chatBubble.addEventListener('click', toggleChat);
