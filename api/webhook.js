@@ -296,12 +296,39 @@ async function persistToSupabase(order, session) {
                         .eq('id', authUser.id)
                         .single();
                     if (profile) {
-                        const eclatsEarned = Math.floor(order.total);
+                        // Calcul du streak multiplicateur
+                        const now = new Date();
+                        const currentMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+                        const lastMonth = profile.last_purchase_month || '';
+                        let streak = profile.purchase_streak || 0;
+
+                        if (lastMonth === currentMonth) {
+                            // Déjà acheté ce mois — pas de changement streak
+                        } else {
+                            // Vérifier si c'est le mois consécutif
+                            const prevDate = lastMonth ? new Date(lastMonth + '-01') : null;
+                            if (prevDate) {
+                                prevDate.setMonth(prevDate.getMonth() + 1);
+                                const expectedMonth = prevDate.getFullYear() + '-' + String(prevDate.getMonth() + 1).padStart(2, '0');
+                                streak = (expectedMonth === currentMonth) ? streak + 1 : 1;
+                            } else {
+                                streak = 1;
+                            }
+                        }
+
+                        // Multiplicateur basé sur le streak
+                        const multiplier = streak >= 6 ? 3.0 : streak >= 3 ? 2.0 : streak >= 2 ? 1.5 : 1.0;
+                        const baseEclats = Math.floor(order.total);
+                        const eclatsEarned = Math.floor(baseEclats * multiplier);
+
                         await sb.from('profiles').update({
                             eclats: (profile.eclats || 0) + eclatsEarned,
-                            total_spent: (parseFloat(profile.total_spent) || 0) + order.total
+                            total_spent: (parseFloat(profile.total_spent) || 0) + order.total,
+                            purchase_streak: streak,
+                            last_purchase_month: currentMonth
                         }).eq('id', authUser.id);
-                        console.log('[PERSIST] +' + eclatsEarned + ' Éclats for', order.customer.email);
+
+                        console.log('[PERSIST] +' + eclatsEarned + ' Éclats (base ' + baseEclats + ' x' + multiplier + ' streak ' + streak + ') for', order.customer.email);
                     }
                 }
             } catch (e) {
