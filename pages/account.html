@@ -967,13 +967,27 @@
 
         // Init chat widget after auth
         function initChatWidget() {
-            var interval = setInterval(function() {
-                if (window.auth && window.auth._session) {
-                    clearInterval(interval);
+            function trySetup() {
+                if (window.auth && window.auth.getProfile && window.auth.getProfile()) {
                     setupChat();
+                    return true;
                 }
-            }, 500);
-            setTimeout(function() { clearInterval(interval); }, 10000);
+                return false;
+            }
+            // If auth already ready with profile, setup immediately
+            if (trySetup()) return;
+            // Otherwise use onReady callback + fallback polling
+            if (window.auth && window.auth.onReady) {
+                window.auth.onReady(function() {
+                    // Profile might load slightly after session, small delay
+                    setTimeout(function() { if (!trySetup()) { setTimeout(trySetup, 1000); } }, 300);
+                });
+            } else {
+                var interval = setInterval(function() {
+                    if (trySetup()) clearInterval(interval);
+                }, 500);
+                setTimeout(function() { clearInterval(interval); }, 10000);
+            }
         }
 
         function setupChat() {
