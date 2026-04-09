@@ -38,6 +38,65 @@
         .streak-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#fff8e1;border-radius:20px;font-size:0.8rem;font-weight:600;color:#f59e0b;}
         .logout-btn{color:#e74c3c;font-weight:600;cursor:pointer;background:none;border:none;font-size:0.9rem;padding:12px 16px;text-align:left;width:100%;font-family:var(--font-body);}
         .logout-btn:hover{background:#fef2f2;border-radius:var(--radius-md);}
+        /* === Coffre du Jour === */
+        .chest-container{text-align:center;padding:30px 20px;}
+        .chest-box{width:120px;height:120px;margin:0 auto 20px;cursor:pointer;position:relative;transition:transform 0.3s;}
+        .chest-box:hover{transform:scale(1.08);}
+        .chest-box.opening{animation:chestShake 0.6s ease-in-out;}
+        .chest-box.opened{animation:chestOpen 0.8s ease-out forwards;}
+        @keyframes chestShake{0%,100%{transform:rotate(0)}20%{transform:rotate(-8deg)}40%{transform:rotate(8deg)}60%{transform:rotate(-5deg)}80%{transform:rotate(5deg)}}
+        @keyframes chestOpen{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(0.9);opacity:0.3}}
+        .chest-icon{font-size:80px;line-height:120px;display:block;}
+        .chest-timer{font-size:0.85rem;color:var(--color-text-light);margin-top:8px;}
+        .chest-slots{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+        .chest-slot{width:90px;padding:16px 8px;border-radius:12px;text-align:center;font-size:0.8rem;font-weight:600;opacity:0;transform:translateY(20px);animation:slotReveal 0.4s ease-out forwards;border:2px solid transparent;}
+        .chest-slot.commun{background:#f3f4f6;color:#6b7280;border-color:#d1d5db;}
+        .chest-slot.peu_commun{background:#dbeafe;color:#2563eb;border-color:#93c5fd;}
+        .chest-slot.rare{background:#ede9fe;color:#7c3aed;border-color:#a78bfa;}
+        .chest-slot.exclusif{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#b45309;border-color:#fbbf24;}
+        .chest-slot.legendaire{background:linear-gradient(135deg,#fce7f3,#ede9fe,#dbeafe);color:#6d28d9;border-color:#c084fc;box-shadow:0 0 12px rgba(168,85,247,0.3);}
+        @keyframes slotReveal{to{opacity:1;transform:translateY(0)}}
+        .slot-value{font-size:1.1rem;margin-bottom:4px;}
+        .slot-rarity{font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;opacity:0.7;}
+        /* === Confetti === */
+        .confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;}
+        .confetti{position:absolute;width:8px;height:8px;top:-10px;animation:confettiFall 2.5s ease-out forwards;}
+        @keyframes confettiFall{to{top:110vh;opacity:0;transform:rotate(720deg)}}
+        /* === Badges === */
+        .badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:12px;}
+        .badge-item{text-align:center;padding:12px 4px;border-radius:12px;transition:all 0.2s;}
+        .badge-item.locked{opacity:0.3;filter:grayscale(1);}
+        .badge-item .badge-icon{font-size:2rem;display:block;margin-bottom:6px;}
+        .badge-item .badge-name{font-size:0.7rem;color:var(--color-text-light);line-height:1.2;}
+        /* === Defis === */
+        .challenge-card{background:var(--color-bg-alt);border-radius:var(--radius-md);padding:16px;margin-bottom:12px;}
+        .challenge-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+        .challenge-reward{font-size:0.8rem;font-weight:700;color:var(--color-secondary);}
+        .challenge-progress{height:6px;background:var(--color-border);border-radius:3px;overflow:hidden;}
+        .challenge-fill{height:100%;background:var(--color-secondary);border-radius:3px;transition:width 0.5s;}
+        .challenge-done{background:#dcfce7!important;}
+        .challenge-done .challenge-fill{background:#16a34a;}
+        /* === Redemption === */
+        .redeem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+        .redeem-btn{padding:16px 12px;border:2px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-white);cursor:pointer;text-align:center;transition:all 0.2s;font-family:var(--font-body);}
+        .redeem-btn:hover:not(:disabled){border-color:var(--color-secondary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+        .redeem-btn:disabled{opacity:0.4;cursor:not-allowed;}
+        .redeem-cost{font-size:0.75rem;color:var(--color-secondary);font-weight:700;margin-top:6px;}
+        .redeem-label{font-size:0.82rem;font-weight:600;}
+        /* === Toast === */
+        .toast-container{position:fixed;top:20px;right:20px;z-index:10000;display:flex;flex-direction:column;gap:8px;}
+        .toast{padding:14px 24px;border-radius:12px;font-size:0.9rem;font-weight:600;color:#fff;transform:translateX(120%);animation:toastIn 0.4s ease-out forwards;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+        .toast.eclats{background:linear-gradient(135deg,#f59e0b,#d97706);}
+        .toast.tier-up{background:linear-gradient(135deg,#7c3aed,#6d28d9);}
+        .toast.badge{background:linear-gradient(135deg,#2563eb,#1d4ed8);}
+        .toast.success{background:linear-gradient(135deg,#16a34a,#15803d);}
+        .toast.removing{animation:toastOut 0.3s ease-in forwards;}
+        @keyframes toastIn{to{transform:translateX(0)}}
+        @keyframes toastOut{to{transform:translateX(120%);opacity:0}}
+        /* === Check-in === */
+        .checkin-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;border-radius:30px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);}
+        .checkin-btn:hover:not(:disabled){transform:scale(1.05);box-shadow:0 4px 16px rgba(245,158,11,0.4);}
+        .checkin-btn:disabled{opacity:0.5;cursor:not-allowed;background:#9ca3af;}
         .form-group{margin-bottom:16px;}
         .form-group label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;}
         .form-group input{width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:0.9rem;font-family:var(--font-body);box-sizing:border-box;}
@@ -64,7 +123,7 @@
                 <button class="active" data-tab="overview">Tableau de bord</button>
                 <button data-tab="profile">Mon profil</button>
                 <button data-tab="orders">Mes commandes</button>
-                <button data-tab="loyalty">Fid&eacute;lit&eacute;</button>
+                <button data-tab="loyalty">Mes &Eacute;clats</button>
                 <button data-tab="referral">Parrainage</button>
                 <button data-tab="privacy">Mes donn&eacute;es (RGPD)</button>
                 <button class="logout-btn" id="logoutBtn">D&eacute;connexion</button>
@@ -140,22 +199,61 @@
                     </div>
                 </div>
 
-                <!-- Loyalty -->
+                <!-- Loyalty / Mes Eclats -->
                 <div class="account-section" id="tab-loyalty">
+                    <!-- Check-in + Coffre du Jour -->
                     <div class="account-card">
-                        <h3>Programme &Eacute;clats</h3>
-                        <p style="font-size:0.9rem;color:var(--color-text-light);margin-bottom:20px;">Gagnez des &Eacute;clats &agrave; chaque action. Montez de palier pour d&eacute;bloquer des avantages exclusifs.</p>
-                        <div id="loyaltyTiers"></div>
-                    </div>
-                    <div class="account-card">
-                        <h3>Comment gagner des &Eacute;clats ?</h3>
-                        <div style="font-size:0.85rem;color:var(--color-text-light);line-height:1.8;">
-                            <div>&#127873; <strong>Inscription</strong> : +50 &Eacute;clats</div>
-                            <div>&#128176; <strong>Achat</strong> : 1&euro; = 1 &Eacute;clat</div>
-                            <div>&#128293; <strong>Connexion quotidienne</strong> : +5 &Eacute;clats</div>
-                            <div>&#129309; <strong>Parrainer un ami</strong> : +100 &Eacute;clats</div>
-                            <div>&#11088; <strong>Laisser un avis</strong> : +20 &Eacute;clats</div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+                            <div>
+                                <h3 style="margin-bottom:4px;">Connexion quotidienne</h3>
+                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:0;" id="checkinSubtext">Gagnez des &Eacute;clats chaque jour !</p>
+                            </div>
+                            <button class="checkin-btn" id="checkinBtn" onclick="doCheckin()">&#9989; Check-in</button>
                         </div>
+                    </div>
+
+                    <!-- Coffre du Jour -->
+                    <div class="account-card">
+                        <h3>&#127873; Coffre du Jour</h3>
+                        <div class="chest-container" id="chestContainer">
+                            <div class="chest-box" id="chestBox" onclick="openChest()">
+                                <span class="chest-icon">&#128230;</span>
+                            </div>
+                            <p style="font-size:0.9rem;font-weight:600;" id="chestLabel">Touchez pour ouvrir !</p>
+                            <div class="chest-slots" id="chestSlots"></div>
+                            <div class="chest-timer" id="chestTimer"></div>
+                        </div>
+                    </div>
+
+                    <!-- Defis hebdomadaires -->
+                    <div class="account-card">
+                        <h3>&#127942; D&eacute;fis de la semaine</h3>
+                        <div id="challengesList"><p style="color:var(--color-text-light);font-size:0.85rem;">Chargement...</p></div>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="account-card">
+                        <h3>&#127941; Ma collection de badges</h3>
+                        <div class="badges-grid" id="badgesGrid"><p style="color:var(--color-text-light);font-size:0.85rem;">Chargement...</p></div>
+                    </div>
+
+                    <!-- Redemption -->
+                    <div class="account-card">
+                        <h3>&#127381; &Eacute;changer mes &Eacute;clats</h3>
+                        <p style="font-size:0.82rem;color:var(--color-text-light);margin-bottom:16px;">Solde : <strong id="redeemBalance">0</strong> &Eacute;clats</p>
+                        <div class="redeem-grid" id="redeemGrid"></div>
+                    </div>
+
+                    <!-- Historique -->
+                    <div class="account-card">
+                        <h3>Historique r&eacute;cent</h3>
+                        <div id="loyaltyHistory"><p style="color:var(--color-text-light);font-size:0.85rem;">Chargement...</p></div>
+                    </div>
+
+                    <!-- Paliers -->
+                    <div class="account-card">
+                        <h3>Paliers &Eacute;clats</h3>
+                        <div id="loyaltyTiers"></div>
                     </div>
                 </div>
 
@@ -202,10 +300,10 @@
     <script>
     (function() {
         var TIERS = [
-            { key: 'eclat', name: '\u00c9clat', min: 0, perk: 'Acc\u00e8s au programme', color: '#92400e', bg: '#fef3c7' },
-            { key: 'lumiere', name: 'Lumi\u00e8re', min: 200, perk: '-5% permanent', color: '#3730a3', bg: '#e0e7ff' },
-            { key: 'prestige', name: 'Prestige', min: 500, perk: '-10% + livraison offerte', color: '#9d174d', bg: '#fce7f3' },
-            { key: 'diamant', name: 'Diamant', min: 1000, perk: '-15% + acc\u00e8s VIP + cadeaux', color: '#6d28d9', bg: '#ede9fe' }
+            { key: 'eclat', name: '\u00c9clat', min: 0, perk: 'Coffre du Jour (3 slots) + programme fid\u00e9lit\u00e9', color: '#92400e', bg: '#fef3c7' },
+            { key: 'lumiere', name: 'Lumi\u00e8re', min: 200, perk: 'Coffre 4 slots + chatbot IA + x1.3 \u00c9clats', color: '#3730a3', bg: '#e0e7ff' },
+            { key: 'prestige', name: 'Prestige', min: 500, perk: 'Coffre 5 slots + promos exclusives + x1.6 \u00c9clats', color: '#9d174d', bg: '#fce7f3' },
+            { key: 'diamant', name: 'Diamant', min: 1000, perk: 'Coffre 6 slots + IA premium + -10% permanent + x2 \u00c9clats', color: '#6d28d9', bg: '#ede9fe' }
         ];
 
         function getCurrentTier(eclats) {
@@ -356,6 +454,339 @@
                 '</div>';
             }).join('');
 
+            // ==========================================
+            // LOYALTY API — Charger le profil fidelite
+            // ==========================================
+            var _token = auth._session?.access_token;
+            var _loyaltyProfile = null;
+
+            async function loadLoyaltyProfile() {
+                if (!_token) return;
+                try {
+                    var res = await fetch('/api/loyalty/profile', {
+                        headers: { 'Authorization': 'Bearer ' + _token }
+                    });
+                    if (!res.ok) return;
+                    _loyaltyProfile = await res.json();
+                    renderLoyalty(_loyaltyProfile);
+                } catch(e) { console.warn('[loyalty]', e.message); }
+            }
+
+            function renderLoyalty(lp) {
+                // Update overview with fresh data
+                document.getElementById('userPoints').textContent = lp.eclats || 0;
+                document.getElementById('userStreak').textContent = (lp.streak?.days || 0) + 'j';
+                document.getElementById('redeemBalance').textContent = lp.eclats || 0;
+
+                if (lp.streak?.days >= 3) {
+                    var sEl = document.getElementById('streakBadge');
+                    sEl.style.display = 'inline-flex';
+                    sEl.textContent = '\uD83D\uDD25 ' + lp.streak.days + ' jours';
+                }
+
+                // Check-in button state
+                var checkinBtn = document.getElementById('checkinBtn');
+                var checkinSub = document.getElementById('checkinSubtext');
+                if (!lp.streak?.checkin_available) {
+                    checkinBtn.disabled = true;
+                    checkinBtn.innerHTML = '\u2705 D\u00e9j\u00e0 fait !';
+                    checkinSub.textContent = 'Revenez demain pour continuer votre streak de ' + (lp.streak?.days || 0) + ' jours !';
+                } else {
+                    checkinSub.textContent = 'Streak actuel : ' + (lp.streak?.days || 0) + ' jours \u2014 gagnez ' + getStreakReward(lp.streak?.days || 0) + ' \u00c9clats !';
+                }
+
+                // Chest state
+                var chestBox = document.getElementById('chestBox');
+                var chestLabel = document.getElementById('chestLabel');
+                var chestTimer = document.getElementById('chestTimer');
+                if (!lp.chest?.available) {
+                    chestBox.style.opacity = '0.4';
+                    chestBox.style.cursor = 'not-allowed';
+                    chestBox.onclick = null;
+                    chestLabel.textContent = 'D\u00e9j\u00e0 ouvert aujourd\'hui !';
+                    if (lp.chest?.next) {
+                        startChestCountdown(lp.chest.next, chestTimer);
+                    }
+                }
+
+                // Challenges
+                renderChallenges(lp.challenges || []);
+
+                // Badges
+                renderBadges(lp.badges || []);
+
+                // Redemption
+                loadRedemptionOptions(lp.eclats || 0);
+
+                // History
+                renderHistory(lp.history || []);
+            }
+
+            function getStreakReward(days) {
+                if (days >= 30) return 10;
+                if (days >= 21) return 8;
+                if (days >= 7) return 5;
+                return 2;
+            }
+
+            function startChestCountdown(nextTime, el) {
+                function update() {
+                    var diff = new Date(nextTime) - new Date();
+                    if (diff <= 0) { el.textContent = 'Coffre disponible ! Rechargez la page.'; return; }
+                    var h = Math.floor(diff / 3600000);
+                    var m = Math.floor((diff % 3600000) / 60000);
+                    el.textContent = 'Prochain coffre dans ' + h + 'h ' + m + 'min';
+                }
+                update();
+                setInterval(update, 60000);
+            }
+
+            // === CHECK-IN ===
+            window.doCheckin = async function() {
+                var btn = document.getElementById('checkinBtn');
+                btn.disabled = true;
+                btn.innerHTML = '\u23f3 ...';
+                try {
+                    var res = await fetch('/api/loyalty/checkin', {
+                        method: 'POST',
+                        headers: { 'Authorization': 'Bearer ' + _token, 'Content-Type': 'application/json' }
+                    });
+                    var data = await res.json();
+                    if (data.success) {
+                        btn.innerHTML = '\u2705 +' + data.eclats_earned + ' \u00c9clats !';
+                        showToast('+' + data.eclats_earned + ' \u00c9clats (streak ' + data.streak + 'j)', 'eclats');
+                        document.getElementById('userPoints').textContent = data.total_eclats;
+                        document.getElementById('userStreak').textContent = data.streak + 'j';
+                        document.getElementById('redeemBalance').textContent = data.total_eclats;
+                        if (data.tier_upgraded) {
+                            showToast('Nouveau palier : ' + data.tier.toUpperCase() + ' !', 'tier-up');
+                            spawnConfetti();
+                        }
+                        if (data.badges_unlocked?.length) {
+                            data.badges_unlocked.forEach(function(b) { showToast('Badge d\u00e9bloqu\u00e9 : ' + b, 'badge'); });
+                        }
+                    } else if (data.already_checked_in) {
+                        btn.innerHTML = '\u2705 D\u00e9j\u00e0 fait !';
+                    }
+                } catch(e) { btn.innerHTML = 'Erreur'; }
+            };
+
+            // === COFFRE DU JOUR ===
+            window.openChest = async function() {
+                var box = document.getElementById('chestBox');
+                if (box.style.cursor === 'not-allowed') return;
+                box.onclick = null;
+
+                // Animation shake
+                box.classList.add('opening');
+                await new Promise(function(r) { setTimeout(r, 600); });
+                box.classList.remove('opening');
+                box.classList.add('opened');
+
+                try {
+                    var res = await fetch('/api/loyalty/chest', {
+                        method: 'POST',
+                        headers: { 'Authorization': 'Bearer ' + _token, 'Content-Type': 'application/json' }
+                    });
+                    var data = await res.json();
+
+                    if (data.success) {
+                        document.getElementById('chestLabel').textContent = '';
+                        var slotsEl = document.getElementById('chestSlots');
+                        slotsEl.innerHTML = '';
+
+                        // Reveal slots one by one
+                        var hasRare = false;
+                        data.rewards.forEach(function(r, i) {
+                            setTimeout(function() {
+                                var slot = document.createElement('div');
+                                slot.className = 'chest-slot ' + r.rarity;
+                                slot.style.animationDelay = (i * 0.15) + 's';
+                                slot.innerHTML = '<div class="slot-value">' + r.label + '</div><div class="slot-rarity">' + r.rarity.replace('_', ' ') + '</div>';
+                                slotsEl.appendChild(slot);
+                                if (r.rarity === 'rare' || r.rarity === 'exclusif' || r.rarity === 'legendaire') hasRare = true;
+                                if (i === data.rewards.length - 1 && hasRare) spawnConfetti();
+                            }, i * 300);
+                        });
+
+                        setTimeout(function() {
+                            if (data.total_eclats > 0) showToast('+' + data.total_eclats + ' \u00c9clats du coffre !', 'eclats');
+                            if (data.promo_codes?.length) {
+                                data.promo_codes.forEach(function(p) { showToast('Code promo : ' + p.code + ' (' + p.label + ')', 'success'); });
+                            }
+                            document.getElementById('userPoints').textContent = data.new_balance;
+                            document.getElementById('redeemBalance').textContent = data.new_balance;
+                        }, data.rewards.length * 300 + 500);
+
+                        // Disable chest
+                        box.style.opacity = '0.4';
+                        box.style.cursor = 'not-allowed';
+                        if (data.next_chest) startChestCountdown(data.next_chest, document.getElementById('chestTimer'));
+                    } else if (data.already_opened) {
+                        box.classList.remove('opened');
+                        box.style.opacity = '0.4';
+                        document.getElementById('chestLabel').textContent = 'D\u00e9j\u00e0 ouvert !';
+                    }
+                } catch(e) {
+                    box.classList.remove('opened');
+                    document.getElementById('chestLabel').textContent = 'Erreur, r\u00e9essayez.';
+                }
+            };
+
+            // === CHALLENGES ===
+            function renderChallenges(challenges) {
+                var el = document.getElementById('challengesList');
+                if (!challenges.length) { el.innerHTML = '<p style="color:var(--color-text-light);font-size:0.85rem;">Aucun d\u00e9fi actif cette semaine.</p>'; return; }
+                el.innerHTML = challenges.map(function(c) {
+                    var pct = c.target > 0 ? Math.min(100, Math.round((c.progress / c.target) * 100)) : 0;
+                    var done = c.completed;
+                    return '<div class="challenge-card' + (done ? ' challenge-done' : '') + '">' +
+                        '<div class="challenge-header">' +
+                            '<div><span style="font-size:1.2rem;margin-right:6px;">' + (c.icon || '\u2b50') + '</span><strong>' + c.title + '</strong></div>' +
+                            '<span class="challenge-reward">' + (done ? '\u2705' : '+' + c.reward + ' \u00c9clats') + '</span>' +
+                        '</div>' +
+                        '<p style="font-size:0.8rem;color:var(--color-text-light);margin:0 0 8px;">' + c.description + '</p>' +
+                        '<div class="challenge-progress"><div class="challenge-fill" style="width:' + pct + '%;"></div></div>' +
+                        '<div style="font-size:0.75rem;color:var(--color-text-light);margin-top:4px;">' + c.progress + '/' + c.target + (done ? ' \u2014 Termin\u00e9 !' : '') + '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // === BADGES ===
+            function renderBadges(unlockedBadges) {
+                var ALL_BADGES = [
+                    { key: 'first_order', icon: '\uD83D\uDECD\uFE0F', name: '1er achat' },
+                    { key: 'regular_5', icon: '\uD83D\uDCAB', name: 'Habitu\u00e9e' },
+                    { key: 'vip_10', icon: '\uD83D\uDC51', name: 'VIP' },
+                    { key: 'big_spender_100', icon: '\uD83D\uDC8E', name: '100\u20ac' },
+                    { key: 'big_spender_500', icon: '\uD83C\uDFC6', name: '500\u20ac' },
+                    { key: 'lumiere', icon: '\u2728', name: 'Lumi\u00e8re' },
+                    { key: 'prestige', icon: '\uD83C\uDF1F', name: 'Prestige' },
+                    { key: 'diamant', icon: '\uD83D\uDC8E', name: 'Diamant' },
+                    { key: 'streak_3', icon: '\uD83D\uDD25', name: 'Fid\u00e8le' },
+                    { key: 'streak_6', icon: '\uD83D\uDD25', name: 'D\u00e9vou\u00e9e' },
+                    { key: 'first_referral', icon: '\uD83E\uDD1D', name: 'Ambassadrice' },
+                    { key: 'referral_5', icon: '\uD83D\uDCE3', name: 'Influenceuse' },
+                    { key: 'first_review', icon: '\u2B50', name: '1er avis' },
+                    { key: 'reviewer_5', icon: '\uD83D\uDCDD', name: 'Critique' },
+                    { key: 'coffret_lover', icon: '\uD83C\uDF81', name: 'Coffres 10x' },
+                    { key: 'birthday', icon: '\uD83C\uDF82', name: 'Anniversaire' },
+                    { key: 'early_adopter', icon: '\uD83D\uDE80', name: 'Pionni\u00e8re' }
+                ];
+                var unlockedKeys = unlockedBadges.map(function(b) { return b.key; });
+                var el = document.getElementById('badgesGrid');
+                el.innerHTML = ALL_BADGES.map(function(b) {
+                    var unlocked = unlockedKeys.includes(b.key);
+                    return '<div class="badge-item' + (unlocked ? '' : ' locked') + '" title="' + b.name + '">' +
+                        '<span class="badge-icon">' + b.icon + '</span>' +
+                        '<span class="badge-name">' + b.name + '</span>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // === REDEMPTION ===
+            async function loadRedemptionOptions(balance) {
+                try {
+                    var res = await fetch('/api/loyalty/redeem', {
+                        headers: { 'Authorization': 'Bearer ' + _token }
+                    });
+                    if (!res.ok) return;
+                    var data = await res.json();
+                    var grid = document.getElementById('redeemGrid');
+                    grid.innerHTML = (data.rewards || []).map(function(r) {
+                        return '<button class="redeem-btn" ' + (r.affordable ? '' : 'disabled') + ' onclick="redeemReward(\'' + r.key + '\')">' +
+                            '<div class="redeem-label">' + r.label + '</div>' +
+                            '<div class="redeem-cost">' + r.cost + ' \u00c9clats</div>' +
+                        '</button>';
+                    }).join('');
+                } catch(e) {}
+            }
+
+            window.redeemReward = async function(key) {
+                if (!confirm('Utiliser vos \u00c9clats pour cette r\u00e9compense ?')) return;
+                try {
+                    var res = await fetch('/api/loyalty/redeem', {
+                        method: 'POST',
+                        headers: { 'Authorization': 'Bearer ' + _token, 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ reward_key: key })
+                    });
+                    var data = await res.json();
+                    if (data.success) {
+                        showToast('R\u00e9compense obtenue !', 'success');
+                        if (data.result?.code) showToast('Code : ' + data.result.code, 'success');
+                        document.getElementById('userPoints').textContent = data.new_balance;
+                        document.getElementById('redeemBalance').textContent = data.new_balance;
+                        loadRedemptionOptions(data.new_balance);
+                    } else {
+                        showToast(data.error || 'Erreur', 'eclats');
+                    }
+                } catch(e) { showToast('Erreur r\u00e9seau', 'eclats'); }
+            };
+
+            // === HISTORY ===
+            function renderHistory(history) {
+                var el = document.getElementById('loyaltyHistory');
+                if (!history.length) { el.innerHTML = '<p style="color:var(--color-text-light);font-size:0.85rem;">Aucune activit\u00e9 pour le moment.</p>'; return; }
+                var sourceLabels = {
+                    purchase: '\uD83D\uDED2 Achat', checkin: '\u2705 Check-in', chest: '\uD83C\uDF81 Coffre',
+                    review: '\u2B50 Avis', referral: '\uD83E\uDD1D Parrainage', challenge: '\uD83C\uDFC6 D\u00e9fi',
+                    birthday: '\uD83C\uDF82 Anniversaire', badge: '\uD83C\uDFC5 Badge',
+                    discount_3: '\uD83D\uDCB3 -3\u20ac', discount_5: '\uD83D\uDCB3 -5\u20ac', discount_10: '\uD83D\uDCB3 -10\u20ac',
+                    discount_15pct: '\uD83D\uDCB3 -15%', shipping: '\uD83D\uDE9A Livraison', ai_messages: '\uD83E\uDD16 IA',
+                    admin_adjustment: '\u2699\uFE0F Admin', double_eclats: '\u26A1 Double'
+                };
+                el.innerHTML = history.map(function(h) {
+                    var sign = h.type === 'earn' ? '+' : '-';
+                    var color = h.type === 'earn' ? '#16a34a' : '#e74c3c';
+                    var label = sourceLabels[h.source] || h.source;
+                    var date = new Date(h.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+                    return '<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-border);font-size:0.85rem;">' +
+                        '<div>' + label + ' <span style="color:var(--color-text-light);font-size:0.75rem;">' + date + '</span></div>' +
+                        '<strong style="color:' + color + ';">' + sign + h.amount + '</strong>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // === TOAST NOTIFICATIONS ===
+            var toastContainer = document.createElement('div');
+            toastContainer.className = 'toast-container';
+            document.body.appendChild(toastContainer);
+
+            window.showToast = function(msg, type) {
+                var toast = document.createElement('div');
+                toast.className = 'toast ' + (type || 'eclats');
+                toast.textContent = msg;
+                toastContainer.appendChild(toast);
+                setTimeout(function() {
+                    toast.classList.add('removing');
+                    setTimeout(function() { toast.remove(); }, 300);
+                }, 4000);
+            };
+
+            // === CONFETTI ===
+            window.spawnConfetti = function() {
+                var container = document.createElement('div');
+                container.className = 'confetti-container';
+                document.body.appendChild(container);
+                var colors = ['#f59e0b', '#7c3aed', '#2563eb', '#16a34a', '#e74c3c', '#ec4899'];
+                for (var i = 0; i < 50; i++) {
+                    var c = document.createElement('div');
+                    c.className = 'confetti';
+                    c.style.left = Math.random() * 100 + '%';
+                    c.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    c.style.animationDelay = (Math.random() * 1) + 's';
+                    c.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+                    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    c.style.width = (6 + Math.random() * 6) + 'px';
+                    c.style.height = (6 + Math.random() * 6) + 'px';
+                    container.appendChild(c);
+                }
+                setTimeout(function() { container.remove(); }, 4000);
+            };
+
+            // Charger le profil fidelite
+            loadLoyaltyProfile();
+
             // Orders — charger depuis Supabase
             (async function() {
                 try {
@@ -452,7 +883,7 @@
 
             // Deep link support (#fidelite, #commandes, etc.)
             var hash = window.location.hash.replace('#', '');
-            var hashMap = { fidelite: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral', rgpd: 'privacy', donnees: 'privacy' };
+            var hashMap = { fidelite: 'loyalty', eclats: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral', rgpd: 'privacy', donnees: 'privacy' };
             if (hashMap[hash]) {
                 var tabBtn = document.querySelector('[data-tab="' + hashMap[hash] + '"]');
                 if (tabBtn) tabBtn.click();
