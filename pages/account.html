@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
     <style>
         .account-page{max-width:900px;margin:40px auto;padding:0 24px 80px;}
         .account-page h1{font-family:var(--font-display);font-size:2rem;margin-bottom:32px;}
@@ -289,6 +290,13 @@
                     <div class="account-card">
                         <h3>Paliers &Eacute;clats</h3>
                         <div id="loyaltyTiers"></div>
+                    </div>
+
+                    <!-- Leaderboard mensuel -->
+                    <div class="account-card">
+                        <h3>&#127942; Classement du mois</h3>
+                        <p style="font-size:0.82rem;color:var(--color-text-light);margin-bottom:12px;">Les meilleurs collecteurs d'&Eacute;clats ce mois-ci</p>
+                        <div id="leaderboardList" style="font-size:0.88rem;"><p style="color:var(--color-text-light);">Chargement...</p></div>
                     </div>
                 </div>
 
@@ -782,6 +790,40 @@
                 }).join('');
             }
 
+            // === LEADERBOARD ===
+            (async function loadLeaderboard() {
+                try {
+                    var headers = {};
+                    if (auth._session) headers['Authorization'] = 'Bearer ' + auth._session.access_token;
+                    var res = await fetch('/api/loyalty/leaderboard', { headers: headers });
+                    if (!res.ok) throw new Error('err');
+                    var data = await res.json();
+                    var el = document.getElementById('leaderboardList');
+                    if (!data.leaderboard || data.leaderboard.length === 0) {
+                        el.innerHTML = '<p style="color:var(--color-text-light);font-size:0.85rem;">Aucun classement ce mois. Soyez le premier !</p>';
+                        return;
+                    }
+                    var medals = ['\uD83E\uDD47', '\uD83E\uDD48', '\uD83E\uDD49'];
+                    var tierColors = { eclat: '#92400e', lumiere: '#3730a3', prestige: '#9d174d', diamant: '#6d28d9' };
+                    el.innerHTML = data.leaderboard.map(function(entry) {
+                        var medal = medals[entry.rank - 1] || ('#' + entry.rank);
+                        var highlight = entry.isYou ? 'background:var(--color-bg-alt);border-radius:8px;font-weight:700;' : '';
+                        var youTag = entry.isYou ? ' <span style="font-size:0.7rem;background:var(--color-secondary);color:#fff;padding:2px 8px;border-radius:10px;">Vous</span>' : '';
+                        var tierDot = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + (tierColors[entry.tier] || '#92400e') + ';margin-right:6px;"></span>';
+                        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--color-border);' + highlight + '">' +
+                            '<div>' + medal + ' ' + tierDot + entry.name + youTag + '</div>' +
+                            '<strong style="color:var(--color-secondary);">+' + entry.earned + '</strong>' +
+                        '</div>';
+                    }).join('');
+                    if (data.currentUserRank && data.currentUserRank.rank > 10) {
+                        el.innerHTML += '<div style="text-align:center;padding:12px;font-size:0.82rem;color:var(--color-text-light);">Votre position : #' + data.currentUserRank.rank + ' sur ' + data.currentUserRank.total + ' (' + data.currentUserRank.earned + ' \u00c9clats ce mois)</div>';
+                    }
+                } catch(e) {
+                    var el = document.getElementById('leaderboardList');
+                    if (el) el.innerHTML = '<p style="color:var(--color-text-light);font-size:0.85rem;">Classement indisponible.</p>';
+                }
+            })();
+
             // === TOAST NOTIFICATIONS ===
             var toastContainer = document.createElement('div');
             toastContainer.className = 'toast-container';
@@ -1102,5 +1144,6 @@
         initChatWidget();
     })();
     </script>
+    <script src="../js/themes.js" defer></script>
 </body>
 </html>
