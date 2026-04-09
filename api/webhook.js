@@ -251,7 +251,7 @@ async function persistToSupabase(order, session) {
         const { data: savedOrder, error: orderError } = await sb
             .from('orders')
             .insert({
-                customer_id: customerId,
+                user_id: customerId,
                 stripe_session_id: session.id,
                 stripe_payment_intent: session.payment_intent,
                 email: order.customer.email,

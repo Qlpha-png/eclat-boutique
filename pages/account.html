@@ -332,6 +332,40 @@
                 '</div>';
             }).join('');
 
+            // Orders — charger depuis Supabase
+            (async function() {
+                try {
+                    var { data: orders, error } = await auth._supabase
+                        .from('orders')
+                        .select('id, order_number, status, total, currency, created_at')
+                        .order('created_at', { ascending: false })
+                        .limit(20);
+
+                    var container = document.getElementById('ordersList');
+                    if (error || !orders || orders.length === 0) {
+                        container.innerHTML = '<p style="color:var(--color-text-light);">Aucune commande pour le moment.</p>';
+                    } else {
+                        var statusMap = {
+                            paid: { label: 'Pay\u00e9e', color: '#16a34a' },
+                            shipped: { label: 'Exp\u00e9di\u00e9e', color: '#2563eb' },
+                            delivered: { label: 'Livr\u00e9e', color: '#16a34a' },
+                            cancelled: { label: 'Annul\u00e9e', color: '#e74c3c' },
+                            refunded: { label: 'Rembours\u00e9e', color: '#f59e0b' }
+                        };
+                        container.innerHTML = orders.map(function(o) {
+                            var s = statusMap[o.status] || { label: o.status, color: '#888' };
+                            var date = new Date(o.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+                            return '<div class="order-row">' +
+                                '<div><strong>' + (o.order_number || o.id.substring(0, 8)) + '</strong><br><span style="font-size:0.8rem;color:var(--color-text-light);">' + date + '</span></div>' +
+                                '<div style="text-align:right;"><span style="color:' + s.color + ';font-weight:600;font-size:0.8rem;">' + s.label + '</span><br><strong>' + parseFloat(o.total).toFixed(2) + ' \u20ac</strong></div>' +
+                            '</div>';
+                        }).join('');
+                    }
+                } catch(e) {
+                    console.warn('[account] Orders load error:', e.message);
+                }
+            })();
+
             // Referral
             document.getElementById('referralCode').textContent = profile.referral_code || '---';
             document.getElementById('copyRefBtn').addEventListener('click', function() {
