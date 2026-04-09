@@ -4,8 +4,15 @@
  * Requiert : auth Supabase + rôle admin
  */
 const { requireAdmin, getSupabase } = require('../_middleware/auth');
+const { applyRateLimit } = require('../_middleware/rateLimit');
+const { logAdminAction } = require('../_middleware/audit');
+
+const VALID_STATUSES = ['pending', 'paid', 'processing', 'shipped', 'delivered', 'refunded', 'cancelled'];
+const VALID_FULFILLMENT = ['unfulfilled', 'processing', 'shipped', 'delivered', 'returned'];
 
 module.exports = async function handler(req, res) {
+    if (applyRateLimit(req, res, 'admin')) return;
+
     const admin = await requireAdmin(req);
     if (!admin) return res.status(401).json({ error: 'Admin requis' });
 
@@ -41,7 +48,8 @@ module.exports = async function handler(req, res) {
                 query = query.eq('status', status);
             }
             if (search) {
-                query = query.or(`email.ilike.%${search}%,notes.ilike.%${search}%`);
+                const safe = search.replace(/[%_\\(),.]/g, '');
+                if (safe) query = query.or(`email.ilike.%${safe}%,notes.ilike.%${safe}%`);
             }
 
             const { data, count, error } = await query;
@@ -66,8 +74,18 @@ module.exports = async function handler(req, res) {
             if (!id) return res.status(400).json({ error: 'ID requis' });
 
             const updates = {};
-            if (status) updates.status = status;
-            if (fulfillment_status) updates.fulfillment_status = fulfillment_status;
+            if (status) {
+                if (!VALID_STATUSES.includes(status)) {
+                    return res.status(400).json({ error: 'Statut invalide', valid: VALID_STATUSES });
+                }
+                updates.status = status;
+            }
+            if (fulfillment_status) {
+                if (!VALID_FULFILLMENT.includes(fulfillment_status)) {
+                    return res.status(400).json({ error: 'Statut fulfillment invalide', valid: VALID_FULFILLMENT });
+                }
+                updates.fulfillment_status = fulfillment_status;
+            }
             if (tracking_number !== undefined) updates.tracking_number = tracking_number;
             if (carrier !== undefined) updates.carrier = carrier;
             if (tracking_url !== undefined) updates.tracking_url = tracking_url;
@@ -85,6 +103,12 @@ module.exports = async function handler(req, res) {
                 .single();
 
             if (error) throw error;
+
+            await logAdminAction({
+                adminId: admin.userId, action: 'update', entityType: 'order',
+                entityId: id, details: updates, req
+            });
+
             return res.status(200).json(data);
         } catch (err) {
             console.error('[admin/orders PATCH]', err.message);

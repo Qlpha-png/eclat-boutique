@@ -3,8 +3,10 @@
  * Requiert : auth Supabase + rôle admin
  */
 const { requireAdmin, getSupabase } = require('../_middleware/auth');
+const { applyRateLimit } = require('../_middleware/rateLimit');
 
 module.exports = async function handler(req, res) {
+    if (applyRateLimit(req, res, 'admin')) return;
     if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
     const admin = await requireAdmin(req);

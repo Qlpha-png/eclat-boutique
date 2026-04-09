@@ -3,6 +3,8 @@
 // Email éducatif professionnel + code BIENVENUE10
 // ============================
 
+const { applyRateLimit } = require('./_middleware/rateLimit');
+
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
     const origin = req.headers.origin;
@@ -11,6 +13,7 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'contact')) return;
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     const { email, lang } = req.body;

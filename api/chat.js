@@ -4,6 +4,7 @@
  * Utilise Claude Haiku (~0.001€/message)
  */
 const { verifyAuth, getProfile, getSupabase } = require('./_middleware/auth');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 const SYSTEM_PROMPT = `Tu es "Éclat", l'assistante beauté IA de la boutique en ligne ÉCLAT (maison-eclat.shop).
 
@@ -40,6 +41,7 @@ COFFRETS :
 
 module.exports = async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+    if (applyRateLimit(req, res, 'chat')) return;
 
     const apiKey = (process.env.ANTHROPIC_API_KEY || '').trim();
     if (!apiKey) {

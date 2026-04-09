@@ -1,6 +1,8 @@
 const { verifyAuth, getProfile } = require('./_middleware/auth');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 module.exports = async function handler(req, res) {
+    if (applyRateLimit(req, res, 'public')) return;
     if (req.method !== 'GET') {
         return res.status(405).json({ error: 'Method not allowed' });
     }

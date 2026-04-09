@@ -7,12 +7,15 @@
 // Configurer sur Vercel : CONTACT_RECIPIENT=ton-email@gmail.com
 const CONTACT_EMAIL = process.env.CONTACT_RECIPIENT || 'contact@maison-eclat.shop';
 
+const { applyRateLimit } = require('./_middleware/rateLimit');
+
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://maison-eclat.shop');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'contact')) return;
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
     const { name, email, subject, message } = req.body || {};
