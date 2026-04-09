@@ -197,6 +197,18 @@
 
         /* ── Empty state ── */
         .empty-state { text-align:center; padding:48px 20px; color:var(--text-dim); }
+
+        /* ── Toggle switch ── */
+        .toggle { position:relative; width:40px; height:22px; cursor:pointer; display:inline-block; }
+        .toggle input { opacity:0; width:0; height:0; }
+        .toggle .slider { position:absolute; inset:0; background:var(--surface-3); border-radius:22px; transition:0.2s; }
+        .toggle .slider::before { content:''; position:absolute; width:16px; height:16px; left:3px; bottom:3px; background:var(--text-dim); border-radius:50%; transition:0.2s; }
+        .toggle input:checked + .slider { background:var(--green); }
+        .toggle input:checked + .slider::before { transform:translateX(18px); background:#fff; }
+
+        /* ── Product image thumb ── */
+        .prod-thumb { width:40px; height:40px; border-radius:6px; object-fit:cover; background:var(--surface-2); }
+        .prod-thumb-placeholder { width:40px; height:40px; border-radius:6px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.7rem; }
         .empty-state .icon { font-size:2.5rem; margin-bottom:12px; }
         .empty-state p { font-size:0.9rem; margin-bottom:16px; }
 
@@ -251,6 +263,10 @@
                 <a href="#" data-tab="customers">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
                     Clients
+                </a>
+                <a href="#" data-tab="products">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    Produits
                 </a>
                 <div class="nav-section">Marketing</div>
                 <a href="#" data-tab="promos">
@@ -465,6 +481,51 @@
                     </div>
                 </div>
 
+                <!-- ═══ TAB : Produits ═══ -->
+                <div class="tab-panel" id="tab-products">
+                    <div class="data-table-wrap">
+                        <div class="data-table-header">
+                            <h3>Produits</h3>
+                            <div class="table-filters">
+                                <select id="productCategoryFilter" onchange="loadProducts()">
+                                    <option value="">Toutes categories</option>
+                                    <option value="visage">Visage</option>
+                                    <option value="corps">Corps</option>
+                                    <option value="cheveux">Cheveux</option>
+                                    <option value="accessoires">Accessoires</option>
+                                    <option value="coffrets">Coffrets</option>
+                                </select>
+                                <select id="productActiveFilter" onchange="loadProducts()">
+                                    <option value="">Tous</option>
+                                    <option value="true">Actifs</option>
+                                    <option value="false">Inactifs</option>
+                                </select>
+                                <input type="text" id="productSearch" placeholder="Rechercher..." onkeyup="debounce(loadProducts, 400)()">
+                                <button class="btn btn-gold btn-sm" onclick="openProductModal()">+ Ajouter</button>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:50px;"></th>
+                                    <th>Nom</th>
+                                    <th>Categorie</th>
+                                    <th>Prix</th>
+                                    <th>Ancien prix</th>
+                                    <th>Badge</th>
+                                    <th>Stock</th>
+                                    <th>Actif</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsBody">
+                                <tr><td colspan="9" class="empty-state"><div class="spinner" style="margin:0 auto;"></div></td></tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination" id="productsPagination"></div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -481,6 +542,93 @@
         </div>
     </div>
 
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal" style="max-width:700px;">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Ajouter un produit</h3>
+                <button class="modal-close" onclick="closeProductModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="productEditId">
+                <div class="form-row">
+                    <div class="form-group" style="flex:2;">
+                        <label>Nom</label>
+                        <input type="text" id="prodName" required placeholder="Serum Eclat Radiance">
+                    </div>
+                    <div class="form-group">
+                        <label>Categorie</label>
+                        <select id="prodCategory">
+                            <option value="">--</option>
+                            <option value="visage">Visage</option>
+                            <option value="corps">Corps</option>
+                            <option value="cheveux">Cheveux</option>
+                            <option value="accessoires">Accessoires</option>
+                            <option value="coffrets">Coffrets</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tagline</label>
+                    <input type="text" id="prodTagline" placeholder="Phrase d'accroche courte">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="prodDescription" rows="3" style="resize:vertical;"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prix (EUR)</label>
+                        <input type="number" id="prodPrice" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ancien prix (EUR)</label>
+                        <input type="number" id="prodComparePrice" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" id="prodStock" min="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Badge</label>
+                        <select id="prodBadge">
+                            <option value="">Aucun</option>
+                            <option value="new">Nouveau</option>
+                            <option value="best">Best-seller</option>
+                            <option value="promo">Promo</option>
+                            <option value="lancement">Lancement</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Poids (g)</label>
+                        <input type="number" id="prodWeight" min="0">
+                    </div>
+                    <div class="form-group" style="display:flex;flex-direction:column;">
+                        <label>Options</label>
+                        <div style="display:flex;gap:16px;padding-top:8px;">
+                            <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--text);text-transform:none;letter-spacing:0;">
+                                <input type="checkbox" id="prodActive" checked> Actif
+                            </label>
+                            <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--text);text-transform:none;letter-spacing:0;">
+                                <input type="checkbox" id="prodFeatured"> En vedette
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Images (URLs, une par ligne)</label>
+                    <textarea id="prodImages" rows="3" style="resize:vertical;" placeholder="https://..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeProductModal()">Annuler</button>
+                <button class="btn btn-gold" onclick="saveProduct()">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="../js/auth.js?v=2" defer></script>
     <script>
@@ -491,6 +639,7 @@
         var currentTab = 'dashboard';
         var ordersPage = 1;
         var customersPage = 1;
+        var productsPage = 1;
 
         // ── Debounce utility ──
         var _debounceTimers = {};
@@ -553,7 +702,7 @@
         }
 
         // ── Tab Navigation ──
-        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', promos: 'Codes promo' };
+        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', products: 'Produits', promos: 'Codes promo' };
 
         document.querySelectorAll('.sidebar-nav a[data-tab]').forEach(function(link) {
             link.addEventListener('click', function(e) {
@@ -575,6 +724,7 @@
 
             if (tab === 'orders') loadOrders();
             if (tab === 'customers') loadCustomers();
+            if (tab === 'products') loadProducts();
             if (tab === 'promos') loadPromos();
         };
 
@@ -841,6 +991,148 @@
             } catch (err) {
                 alert('Erreur : ' + err.message);
             }
+        };
+
+        // ── Products ──
+        window.loadProducts = async function() {
+            var category = document.getElementById('productCategoryFilter').value;
+            var active = document.getElementById('productActiveFilter').value;
+            var search = document.getElementById('productSearch').value;
+            var params = 'products?page=' + productsPage + '&limit=20';
+            if (category) params += '&category=' + category;
+            if (active) params += '&active=' + active;
+            if (search) params += '&search=' + encodeURIComponent(search);
+
+            try {
+                var data = await api(params);
+                var body = document.getElementById('productsBody');
+
+                if (!data.products || data.products.length === 0) {
+                    body.innerHTML = '<tr><td colspan="9" class="empty-state"><div class="icon">&#128230;</div><p>Aucun produit</p></td></tr>';
+                    return;
+                }
+
+                var badgeLabels = { 'new': 'Nouveau', best: 'Best-seller', promo: 'Promo', lancement: 'Lancement' };
+
+                body.innerHTML = data.products.map(function(p) {
+                    var img = p.images && p.images.length > 0
+                        ? '<img class="prod-thumb" src="' + esc(p.images[0]) + '" alt="" onerror="this.outerHTML=\'<div class=prod-thumb-placeholder>?</div>\'">'
+                        : '<div class="prod-thumb-placeholder">?</div>';
+                    var badgeHtml = p.badge ? '<span class="badge badge-paid">' + (badgeLabels[p.badge] || p.badge) + '</span>' : '--';
+                    return '<tr>' +
+                        '<td>' + img + '</td>' +
+                        '<td><strong>' + esc(p.name) + '</strong></td>' +
+                        '<td>' + esc(p.category || '--') + '</td>' +
+                        '<td><strong>' + fmtEur(p.price) + '</strong></td>' +
+                        '<td>' + (p.compare_at_price ? '<span style="text-decoration:line-through;color:var(--text-dim);">' + fmtEur(p.compare_at_price) + '</span>' : '--') + '</td>' +
+                        '<td>' + badgeHtml + '</td>' +
+                        '<td>' + (p.stock !== null && p.stock !== undefined ? p.stock : '--') + '</td>' +
+                        '<td><label class="toggle"><input type="checkbox"' + (p.is_active ? ' checked' : '') + ' onchange="toggleProductActive(\'' + p.id + '\', this.checked)"><span class="slider"></span></label></td>' +
+                        '<td><button class="btn btn-outline btn-sm" onclick="openProductModal(\'' + p.id + '\')">Modifier</button></td>' +
+                    '</tr>';
+                }).join('');
+
+                renderPagination('productsPagination', data.page, data.pages, data.total, function(p) {
+                    productsPage = p;
+                    loadProducts();
+                });
+            } catch (err) {
+                document.getElementById('productsBody').innerHTML = '<tr><td colspan="9" class="empty-state"><p>' + err.message + '</p></td></tr>';
+            }
+        };
+
+        window.openProductModal = async function(id) {
+            document.getElementById('productEditId').value = id || '';
+            document.getElementById('productModalTitle').textContent = id ? 'Modifier le produit' : 'Ajouter un produit';
+
+            // Reset form
+            document.getElementById('prodName').value = '';
+            document.getElementById('prodCategory').value = '';
+            document.getElementById('prodTagline').value = '';
+            document.getElementById('prodDescription').value = '';
+            document.getElementById('prodPrice').value = '';
+            document.getElementById('prodComparePrice').value = '';
+            document.getElementById('prodStock').value = '';
+            document.getElementById('prodBadge').value = '';
+            document.getElementById('prodWeight').value = '';
+            document.getElementById('prodActive').checked = true;
+            document.getElementById('prodFeatured').checked = false;
+            document.getElementById('prodImages').value = '';
+
+            if (id) {
+                try {
+                    var p = await api('products?id=' + id);
+                    document.getElementById('prodName').value = p.name || '';
+                    document.getElementById('prodCategory').value = p.category || '';
+                    document.getElementById('prodTagline').value = p.tagline || '';
+                    document.getElementById('prodDescription').value = p.description || '';
+                    document.getElementById('prodPrice').value = p.price || '';
+                    document.getElementById('prodComparePrice').value = p.compare_at_price || '';
+                    document.getElementById('prodStock').value = p.stock != null ? p.stock : '';
+                    document.getElementById('prodBadge').value = p.badge || '';
+                    document.getElementById('prodWeight').value = p.weight_grams || '';
+                    document.getElementById('prodActive').checked = p.is_active !== false;
+                    document.getElementById('prodFeatured').checked = p.is_featured || false;
+                    document.getElementById('prodImages').value = (p.images || []).join('\n');
+                } catch (err) {
+                    alert('Erreur chargement produit : ' + err.message);
+                    return;
+                }
+            }
+
+            document.getElementById('productModal').classList.add('open');
+        };
+
+        window.saveProduct = async function() {
+            var id = document.getElementById('productEditId').value;
+            var name = document.getElementById('prodName').value.trim();
+            var price = document.getElementById('prodPrice').value;
+
+            if (!name || !price) { alert('Nom et prix requis'); return; }
+
+            var imagesRaw = document.getElementById('prodImages').value.trim();
+            var images = imagesRaw ? imagesRaw.split('\n').map(function(s) { return s.trim(); }).filter(Boolean) : [];
+
+            var body = {
+                name: name,
+                price: parseFloat(price),
+                compare_at_price: document.getElementById('prodComparePrice').value ? parseFloat(document.getElementById('prodComparePrice').value) : null,
+                tagline: document.getElementById('prodTagline').value.trim() || null,
+                description: document.getElementById('prodDescription').value.trim() || null,
+                category: document.getElementById('prodCategory').value || null,
+                badge: document.getElementById('prodBadge').value || null,
+                stock: document.getElementById('prodStock').value ? parseInt(document.getElementById('prodStock').value) : null,
+                weight_grams: document.getElementById('prodWeight').value ? parseInt(document.getElementById('prodWeight').value) : null,
+                is_active: document.getElementById('prodActive').checked,
+                is_featured: document.getElementById('prodFeatured').checked,
+                images: images
+            };
+
+            try {
+                if (id) {
+                    body.id = id;
+                    await api('products', { method: 'PATCH', body: body });
+                } else {
+                    await api('products', { method: 'POST', body: body });
+                }
+                closeProductModal();
+                loadProducts();
+            } catch (err) {
+                alert('Erreur : ' + err.message);
+            }
+        };
+
+        window.toggleProductActive = async function(id, active) {
+            try {
+                await api('products', { method: 'PATCH', body: { id: id, is_active: active } });
+            } catch (err) {
+                alert('Erreur : ' + err.message);
+                loadProducts();
+            }
+        };
+
+        window.closeProductModal = function() {
+            document.getElementById('productModal').classList.remove('open');
         };
 
         // ── Helpers ──
