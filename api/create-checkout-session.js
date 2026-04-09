@@ -1,6 +1,7 @@
 const Stripe = require('stripe');
 
 const { applyRateLimit } = require('./_middleware/rateLimit');
+const { checkFraud } = require('./_middleware/fraud');
 
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
@@ -61,6 +62,13 @@ module.exports = async (req, res) => {
             if (typeof shipping_cost !== 'number' || !validShipping.includes(shipping_cost)) {
                 return res.status(400).json({ error: 'Invalid shipping cost' });
             }
+        }
+
+        // Anti-fraude
+        const itemsTotal = items.reduce((s, i) => s + i.price * i.qty, 0) + (shipping_cost || 0);
+        const fraudResult = checkFraud(req, { email: customer_email, items, total: itemsTotal });
+        if (fraudResult && fraudResult.blocked) {
+            return res.status(429).json({ error: 'Trop de tentatives. Réessayez plus tard.' });
         }
 
         const line_items = items.map(item => ({

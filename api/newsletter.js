@@ -4,6 +4,7 @@
 // ============================
 
 const { applyRateLimit } = require('./_middleware/rateLimit');
+const { generateUnsubToken } = require('./unsubscribe');
 
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
@@ -226,7 +227,7 @@ module.exports = async (req, res) => {
         <a href="${site}/pages/contact.html" style="color:#6b6560;text-decoration:underline;">Contact</a>
     </p>
     <p style="font-size:11px;color:#b8b0a8;margin:8px 0 0;">
-        <a href="mailto:contact@maison-eclat.shop?subject=Desabonnement%20newsletter" style="color:#b8b0a8;text-decoration:underline;">${t.unsubscribe}</a>
+        <a href="${site}/api/unsubscribe?email=${encodeURIComponent(email)}&token=${generateUnsubToken(email)}" style="color:#b8b0a8;text-decoration:underline;">${t.unsubscribe}</a>
     </p>
 </td></tr>
 

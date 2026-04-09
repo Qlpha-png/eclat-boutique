@@ -4,6 +4,7 @@
 // ============================
 
 const { applyRateLimit } = require('./_middleware/rateLimit');
+const { generateUnsubToken } = require('./unsubscribe');
 
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
@@ -47,7 +48,7 @@ module.exports = async (req, res) => {
                 from: 'ÉCLAT Beauté <contact@maison-eclat.shop>',
                 to: email,
                 subject: 'Vous avez oublié quelque chose... 🛍️',
-                html: buildAbandonedCartEmail(items, total)
+                html: buildAbandonedCartEmail(items, total, email)
             })
         });
 
@@ -58,7 +59,7 @@ module.exports = async (req, res) => {
     }
 };
 
-function buildAbandonedCartEmail(items, total) {
+function buildAbandonedCartEmail(items, total, email) {
     return `
 <!DOCTYPE html>
 <html><body style="font-family:'Helvetica Neue',Arial,sans-serif;background:#faf8f5;margin:0;padding:0;">
@@ -84,6 +85,9 @@ function buildAbandonedCartEmail(items, total) {
             <p style="margin:0 0 4px;font-size:14px;opacity:0.7;">Rien que pour vous</p>
             <p style="margin:0;font-size:20px;font-weight:700;">-10% avec le code REVIENS10</p>
         </div>
+    </div>
+    <div style="text-align:center;padding:16px 0;">
+        <a href="https://maison-eclat.shop/api/unsubscribe?email=${encodeURIComponent(email)}&token=${generateUnsubToken(email)}" style="font-size:11px;color:#b8b0a8;text-decoration:underline;">Se desabonner</a>
     </div>
 </div>
 </body></html>`;

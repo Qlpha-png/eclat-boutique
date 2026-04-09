@@ -66,6 +66,7 @@
                 <button data-tab="orders">Mes commandes</button>
                 <button data-tab="loyalty">Fid&eacute;lit&eacute;</button>
                 <button data-tab="referral">Parrainage</button>
+                <button data-tab="privacy">Mes donn&eacute;es (RGPD)</button>
                 <button class="logout-btn" id="logoutBtn">D&eacute;connexion</button>
             </div>
 
@@ -167,6 +168,29 @@
                             <div class="referral-code" id="referralCode">---</div>
                             <button class="copy-btn" id="copyRefBtn">Copier le code</button>
                             <div id="copyMsg" style="font-size:0.8rem;margin-top:8px;color:var(--color-success);display:none;">Copi&eacute; !</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RGPD / Mes données -->
+                <div class="account-section" id="tab-privacy">
+                    <div class="account-card">
+                        <h3>Mes donn&eacute;es personnelles</h3>
+                        <p style="font-size:0.9rem;color:var(--color-text-light);margin-bottom:20px;">
+                            Conform&eacute;ment au RGPD et &agrave; la loi Informatique et Libert&eacute;s, vous disposez d'un droit d'acc&egrave;s, de rectification, de suppression et de portabilit&eacute; de vos donn&eacute;es.
+                        </p>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <div style="background:#f8f6f3;border-radius:10px;padding:16px;border:1px solid #e8e4de;">
+                                <strong>Exporter mes donn&eacute;es</strong>
+                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 12px;">T&eacute;l&eacute;chargez un fichier contenant toutes vos donn&eacute;es personnelles (profil, commandes, avis).</p>
+                                <button class="btn btn-sm btn-outline" id="gdprExportBtn" onclick="exportMyData()">T&eacute;l&eacute;charger mes donn&eacute;es</button>
+                            </div>
+                            <div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca;">
+                                <strong style="color:#dc2626;">Supprimer mon compte</strong>
+                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 4px;">Vos donn&eacute;es personnelles seront supprim&eacute;es/anonymis&eacute;es. Les donn&eacute;es de facturation sont conserv&eacute;es 10 ans (obligation l&eacute;gale).</p>
+                                <p style="font-size:0.82rem;color:#dc2626;font-weight:600;margin:0 0 12px;">Cette action est irr&eacute;versible.</p>
+                                <button class="btn btn-sm" style="background:#dc2626;color:#fff;" id="gdprDeleteBtn" onclick="deleteMyData()">Supprimer mes donn&eacute;es</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -378,6 +402,39 @@
                 });
             });
 
+            // RGPD — Export & Suppression
+            window.exportMyData = async function() {
+                try {
+                    var res = await fetch('/api/gdpr?action=export', {
+                        headers: { 'Authorization': 'Bearer ' + auth._session.access_token }
+                    });
+                    if (!res.ok) throw new Error('Erreur export');
+                    var blob = await res.blob();
+                    var url = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'eclat-mes-donnees.json';
+                    document.body.appendChild(a); a.click(); a.remove();
+                    URL.revokeObjectURL(url);
+                } catch (err) { alert('Erreur : ' + err.message); }
+            };
+
+            window.deleteMyData = async function() {
+                if (!confirm('ATTENTION : Cette action est irreversible. Toutes vos donnees personnelles seront supprimees. Voulez-vous continuer ?')) return;
+                if (!confirm('Derniere confirmation : supprimer definitivement votre compte et vos donnees ?')) return;
+                try {
+                    var res = await fetch('/api/gdpr', {
+                        method: 'POST',
+                        headers: { 'Authorization': 'Bearer ' + auth._session.access_token, 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ confirm: true })
+                    });
+                    var data = await res.json();
+                    if (!res.ok) throw new Error(data.error);
+                    alert(data.message);
+                    auth.signOut();
+                } catch (err) { alert('Erreur : ' + err.message); }
+            };
+
             // Logout
             document.getElementById('logoutBtn').addEventListener('click', function() {
                 auth.signOut();
@@ -395,7 +452,7 @@
 
             // Deep link support (#fidelite, #commandes, etc.)
             var hash = window.location.hash.replace('#', '');
-            var hashMap = { fidelite: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral' };
+            var hashMap = { fidelite: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral', rgpd: 'privacy', donnees: 'privacy' };
             if (hashMap[hash]) {
                 var tabBtn = document.querySelector('[data-tab="' + hashMap[hash] + '"]');
                 if (tabBtn) tabBtn.click();

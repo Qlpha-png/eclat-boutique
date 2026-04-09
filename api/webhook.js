@@ -1,5 +1,6 @@
 const Stripe = require('stripe');
 const { getSupabase } = require('./_middleware/auth');
+const { generateUnsubToken } = require('./unsubscribe');
 
 // ============================
 // ÉCLAT - Master Webhook
@@ -1118,7 +1119,7 @@ ${crossSellItems.length > 0 ? `
             <a href="${site}/pages/confidentialite.html" style="color:#6b6560;text-decoration:underline;">RGPD</a> &nbsp;|&nbsp;
             <a href="${site}/pages/faq.html" style="color:#6b6560;text-decoration:underline;">FAQ</a> &nbsp;|&nbsp;
             <a href="${site}/pages/retours.html" style="color:#6b6560;text-decoration:underline;">${t.guarantee_2_title}</a> &nbsp;|&nbsp;
-            <a href="mailto:contact@maison-eclat.shop?subject=${encodeURIComponent(t.unsubscribe)}" style="color:#6b6560;text-decoration:underline;">${t.unsubscribe}</a>
+            <a href="${site}/api/unsubscribe?email=${encodeURIComponent(order.email)}&token=${generateUnsubToken(order.email)}" style="color:#6b6560;text-decoration:underline;">${t.unsubscribe}</a>
         </p>
     </div>
 </td></tr>
