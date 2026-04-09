@@ -36,6 +36,25 @@ module.exports = async function handler(req, res) {
         const weekRevenue = weekOrders.reduce((s, o) => s + parseFloat(o.total || 0), 0);
         const avgOrder = allOrders.length > 0 ? totalRevenue / allOrders.length : 0;
 
+        // Time-series : revenu et commandes par jour (30 derniers jours)
+        const daily = {};
+        for (let i = 29; i >= 0; i--) {
+            const d = new Date(now - i * 86400000).toISOString().slice(0, 10);
+            daily[d] = { revenue: 0, orders: 0 };
+        }
+        allOrders.forEach(o => {
+            const d = new Date(o.created_at).toISOString().slice(0, 10);
+            if (daily[d]) {
+                daily[d].revenue += parseFloat(o.total || 0);
+                daily[d].orders += 1;
+            }
+        });
+        const timeSeries = Object.entries(daily).map(([date, v]) => ({
+            date,
+            revenue: Math.round(v.revenue * 100) / 100,
+            orders: v.orders
+        }));
+
         return res.status(200).json({
             revenue: {
                 total: Math.round(totalRevenue * 100) / 100,
@@ -51,7 +70,8 @@ module.exports = async function handler(req, res) {
             customers: {
                 total: customersCount.count || 0
             },
-            avgOrder: Math.round(avgOrder * 100) / 100
+            avgOrder: Math.round(avgOrder * 100) / 100,
+            timeSeries
         });
     } catch (err) {
         console.error('[admin/stats]', err.message);
