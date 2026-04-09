@@ -207,7 +207,16 @@
             });
         }
 
+        // Timeout sécurité — si auth ne répond pas en 8s, afficher message
+        var loadingTimeout = setTimeout(function() {
+            var el = document.getElementById('loading');
+            if (el && el.style.display !== 'none') {
+                el.innerHTML = 'Session expir\u00e9e ou erreur de chargement.<br><a href="login.html" style="color:var(--color-secondary);font-weight:600;margin-top:12px;display:inline-block;">Se reconnecter</a>';
+            }
+        }, 8000);
+
         waitForAuth(function() {
+            clearTimeout(loadingTimeout);
             if (!auth.isSignedIn()) {
                 window.location.href = 'login.html';
                 return;

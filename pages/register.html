@@ -185,11 +185,14 @@
 
             // Supabase envoie un email de confirmation
             if (res.data.user && !res.data.session) {
-                // Email confirmation requise
+                // Email confirmation requise — montrer message puis rediriger
                 successEl.textContent = t.success_confirm;
                 successEl.style.display = 'block';
-                btn.disabled = false;
-                btn.textContent = t.btn_register;
+                btn.disabled = true;
+                form.style.display = 'none';
+                setTimeout(function() {
+                    window.location.href = 'login.html';
+                }, 4000);
             } else if (res.data.session) {
                 // Auto-confirm activé, rediriger
                 window.location.href = 'account.html';

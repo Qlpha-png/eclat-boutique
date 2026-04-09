@@ -282,7 +282,18 @@
                     if (auth.isSignedIn()) {
                         recordDailyLogin();
                     }
+                }).catch(function(err) {
+                    console.error('[auth] getSession error:', err);
+                    auth._notifyReady();
                 });
+
+                // Timeout de sécurité — toujours déclencher ready dans les 5s
+                setTimeout(function() {
+                    if (!auth._ready) {
+                        console.warn('[auth] Timeout — forçage ready');
+                        auth._notifyReady();
+                    }
+                }, 5000);
 
             } catch (err) {
                 console.error('[auth] Init error:', err);

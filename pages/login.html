@@ -91,10 +91,19 @@
         var sb = SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
         if (sb) {
+            var redirect = new URLSearchParams(window.location.search).get('redirect') || 'account.html';
+
+            // Écouter les changements d'auth (gère la confirmation email via URL tokens)
+            sb.auth.onAuthStateChange(function(event, session) {
+                if (session && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
+                    window.location.href = redirect;
+                }
+            });
+
+            // Vérifier aussi la session existante (déjà connecté)
             sb.auth.getSession().then(function(res) {
                 if (res.data.session) {
-                    var redirect = new URLSearchParams(window.location.search).get('redirect');
-                    window.location.href = redirect || 'account.html';
+                    window.location.href = redirect;
                 }
             });
         }
