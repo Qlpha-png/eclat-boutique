@@ -1,37 +1,22 @@
 /**
- * ÉCLAT Boutique — Module de connexion Neon (PostgreSQL serverless)
+ * ÉCLAT Boutique — Module de connexion Supabase (PostgreSQL)
  * Singleton partagé par toutes les API serverless
- * Wrapper de compatibilité : même API que l'ancien client Turso
  */
 
-const { Pool } = require('@neondatabase/serverless');
+const { createClient } = require('@supabase/supabase-js');
 
-let _pool = null;
+let _supabase = null;
 
 function getDB() {
-    if (!_pool) {
-        if (!process.env.DATABASE_URL) {
-            throw new Error('DATABASE_URL must be set');
+    if (!_supabase) {
+        const url = process.env.SUPABASE_URL;
+        const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        if (!url || !key) {
+            throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set');
         }
-        _pool = new Pool({ connectionString: process.env.DATABASE_URL });
+        _supabase = createClient(url, key);
     }
-    return {
-        execute: async (query) => {
-            let sql, args;
-            if (typeof query === 'string') {
-                sql = query;
-                args = [];
-            } else {
-                sql = query.sql;
-                args = query.args || [];
-            }
-            // Convertir les placeholders ? en $1, $2, $3... (PostgreSQL)
-            let idx = 0;
-            const pgSql = sql.replace(/\?/g, () => `$${++idx}`);
-            const result = await _pool.query(pgSql, args);
-            return { rows: result.rows };
-        }
-    };
+    return _supabase;
 }
 
 module.exports = { getDB };

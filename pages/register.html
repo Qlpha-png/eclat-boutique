@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
     <style>
         .auth-page{max-width:440px;margin:60px auto;padding:0 24px 80px;}
         .auth-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px 32px;}
@@ -18,15 +17,23 @@
         .form-group label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;}
         .form-group input{width:100%;padding:12px 16px;border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:0.95rem;font-family:var(--font-body);box-sizing:border-box;}
         .form-group input:focus{outline:none;border-color:var(--color-secondary);}
+        .form-row{display:flex;gap:12px;}
+        .form-row .form-group{flex:1;}
         .auth-btn{width:100%;padding:14px;background:var(--color-primary);color:var(--color-white);border:none;border-radius:var(--radius-xl);font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s;}
         .auth-btn:hover{background:var(--color-secondary);}
         .auth-btn:disabled{opacity:0.5;cursor:not-allowed;}
         .auth-links{text-align:center;margin-top:24px;font-size:0.85rem;}
         .auth-links a{color:var(--color-secondary);text-decoration:none;font-weight:600;}
         .auth-error{background:#fef2f2;color:#dc2626;padding:12px 16px;border-radius:var(--radius-md);font-size:0.85rem;margin-bottom:16px;display:none;}
+        .auth-success{background:#f0fdf4;color:#16a34a;padding:12px 16px;border-radius:var(--radius-md);font-size:0.85rem;margin-bottom:16px;display:none;}
         .perks{background:var(--color-bg-alt);border-radius:var(--radius-md);padding:16px 20px;margin-bottom:24px;font-size:0.85rem;}
         .perks li{margin-bottom:6px;line-height:1.6;}
         .pwd-strength{height:4px;border-radius:2px;margin-top:6px;transition:all 0.3s;}
+        .welcome-badge{text-align:center;background:linear-gradient(135deg,#fdf6e9,#fff9f0);border:1px solid #e8d5b5;border-radius:var(--radius-md);padding:12px;margin-bottom:20px;font-size:0.85rem;color:var(--color-secondary,#c9a87c);font-weight:600;}
+        .consent-group{margin-bottom:20px;font-size:0.8rem;color:var(--color-text-light);}
+        .consent-group label{display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-weight:400;}
+        .consent-group input[type="checkbox"]{margin-top:2px;accent-color:var(--color-secondary,#c9a87c);}
+        .consent-group a{color:var(--color-secondary);text-decoration:underline;}
     </style>
 </head>
 <body style="background:var(--color-bg);">
@@ -34,49 +41,96 @@
 
     <div class="auth-page">
         <div class="auth-card">
-            <h1>Cr&eacute;er un compte</h1>
-            <p class="subtitle">Rejoignez la communaut&eacute; &Eacute;CLAT</p>
+            <h1 data-i18n="register_title">Cr&eacute;er un compte</h1>
+            <p class="subtitle" data-i18n="register_subtitle">Rejoignez la communaut&eacute; &Eacute;CLAT</p>
+
+            <div class="welcome-badge" data-i18n="welcome_badge">+50 &Eacute;clats de bienvenue offerts !</div>
 
             <ul class="perks">
-                <li>&#10003; Suivi de vos commandes en temps r&eacute;el</li>
-                <li>&#10003; Points fid&eacute;lit&eacute; sur chaque achat</li>
-                <li>&#10003; Wishlist et adresses sauvegard&eacute;es</li>
-                <li>&#10003; Offres exclusives r&eacute;serv&eacute;es aux membres</li>
+                <li data-i18n="perk_1">&#10003; Suivi de vos commandes en temps r&eacute;el</li>
+                <li data-i18n="perk_2">&#10003; Points fid&eacute;lit&eacute; sur chaque achat</li>
+                <li data-i18n="perk_3">&#10003; Wishlist et adresses sauvegard&eacute;es</li>
+                <li data-i18n="perk_4">&#10003; Offres exclusives r&eacute;serv&eacute;es aux membres</li>
             </ul>
 
             <div class="auth-error" id="authError"></div>
+            <div class="auth-success" id="authSuccess"></div>
 
             <form id="registerForm">
-                <div class="form-group">
-                    <label for="name">Pr&eacute;nom</label>
-                    <input type="text" id="name" required autocomplete="given-name">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" data-i18n="label_first_name">Pr&eacute;nom</label>
+                        <input type="text" id="firstName" required autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" data-i18n="label_last_name">Nom</label>
+                        <input type="text" id="lastName" required autocomplete="family-name">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">Adresse email</label>
+                    <label for="email" data-i18n="label_email">Adresse email</label>
                     <input type="email" id="email" required autocomplete="email">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe (8 caract&egrave;res min.)</label>
+                    <label for="password" data-i18n="label_password">Mot de passe (8 caract&egrave;res min.)</label>
                     <input type="password" id="password" required minlength="8" autocomplete="new-password">
                     <div class="pwd-strength" id="pwdStrength"></div>
                 </div>
-                <button type="submit" class="auth-btn" id="submitBtn">Cr&eacute;er mon compte</button>
+                <div class="form-group">
+                    <label for="referral" data-i18n="label_referral">Code parrain (optionnel)</label>
+                    <input type="text" id="referral" autocomplete="off" placeholder="">
+                </div>
+                <div class="consent-group">
+                    <label>
+                        <input type="checkbox" id="consent" required>
+                        <span data-i18n="consent_text">J'accepte les <a href="cgv.html">CGV</a> et la <a href="confidentialite.html">Politique de confidentialit&eacute;</a>. Mes donn&eacute;es sont trait&eacute;es conform&eacute;ment au RGPD.</span>
+                    </label>
+                </div>
+                <button type="submit" class="auth-btn" id="submitBtn" data-i18n="btn_register">Cr&eacute;er mon compte</button>
             </form>
 
             <div class="auth-links">
-                <p>D&eacute;j&agrave; un compte ? <a href="login.html">Se connecter</a></p>
+                <p><span data-i18n="has_account">D&eacute;j&agrave; un compte ?</span> <a href="login.html" data-i18n="login_link">Se connecter</a></p>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
-        var form = document.getElementById('registerForm');
-        var errorEl = document.getElementById('authError');
-        var btn = document.getElementById('submitBtn');
+    (function() {
+        var SUPABASE_URL = 'https://omysrhwpyexlcgwyiigq.supabase.co';
+        var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9teXNyaHdweWV4bGNnd3lpaWdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NzE5MjUsImV4cCI6MjA5MTI0NzkyNX0.SG-q9sE-jNgDm1rCezj84cNIUbphziDAnh6EtuGiIpM';
+
+        var translations = {
+            fr: { register_title:'Créer un compte', register_subtitle:'Rejoignez la communauté ÉCLAT', welcome_badge:'+50 Éclats de bienvenue offerts !', perk_1:'\u2713 Suivi de vos commandes en temps réel', perk_2:'\u2713 Points fidélité sur chaque achat', perk_3:'\u2713 Wishlist et adresses sauvegardées', perk_4:'\u2713 Offres exclusives réservées aux membres', label_first_name:'Prénom', label_last_name:'Nom', label_email:'Adresse email', label_password:'Mot de passe (8 caractères min.)', label_referral:'Code parrain (optionnel)', consent_text:'J\'accepte les <a href="cgv.html">CGV</a> et la <a href="confidentialite.html">Politique de confidentialité</a>. Mes données sont traitées conformément au RGPD.', btn_register:'Créer mon compte', btn_loading:'Création...', has_account:'Déjà un compte ?', login_link:'Se connecter', err_generic:'Erreur lors de la création du compte', err_network:'Erreur réseau. Réessayez.', success_confirm:'Compte créé ! Vérifiez votre email pour confirmer votre inscription.' },
+            en: { register_title:'Create an account', register_subtitle:'Join the ÉCLAT community', welcome_badge:'+50 welcome Éclats!', perk_1:'\u2713 Real-time order tracking', perk_2:'\u2713 Loyalty points on every purchase', perk_3:'\u2713 Saved wishlist and addresses', perk_4:'\u2713 Exclusive member-only offers', label_first_name:'First name', label_last_name:'Last name', label_email:'Email address', label_password:'Password (8 characters min.)', label_referral:'Referral code (optional)', consent_text:'I accept the <a href="cgv.html">Terms</a> and <a href="confidentialite.html">Privacy Policy</a>. My data is processed in compliance with GDPR.', btn_register:'Create my account', btn_loading:'Creating...', has_account:'Already have an account?', login_link:'Log in', err_generic:'Error creating account', err_network:'Network error. Try again.', success_confirm:'Account created! Check your email to confirm your registration.' },
+            es: { register_title:'Crear una cuenta', register_subtitle:'Únete a la comunidad ÉCLAT', welcome_badge:'+50 Éclats de bienvenida!', perk_1:'\u2713 Seguimiento de pedidos en tiempo real', perk_2:'\u2713 Puntos de fidelidad en cada compra', perk_3:'\u2713 Wishlist y direcciones guardadas', perk_4:'\u2713 Ofertas exclusivas para miembros', label_first_name:'Nombre', label_last_name:'Apellido', label_email:'Correo electrónico', label_password:'Contraseña (8 caracteres mín.)', label_referral:'Código de referido (opcional)', consent_text:'Acepto los <a href="cgv.html">Términos</a> y la <a href="confidentialite.html">Política de privacidad</a>. Mis datos se tratan conforme al RGPD.', btn_register:'Crear mi cuenta', btn_loading:'Creando...', has_account:'¿Ya tienes cuenta?', login_link:'Iniciar sesión', err_generic:'Error al crear la cuenta', err_network:'Error de red. Inténtalo de nuevo.', success_confirm:'¡Cuenta creada! Revisa tu email para confirmar tu registro.' },
+            de: { register_title:'Konto erstellen', register_subtitle:'Werden Sie Teil der ÉCLAT-Community', welcome_badge:'+50 Willkommens-Éclats!', perk_1:'\u2713 Echtzeit-Bestellverfolgung', perk_2:'\u2713 Treuepunkte bei jedem Einkauf', perk_3:'\u2713 Gespeicherte Wunschliste und Adressen', perk_4:'\u2713 Exklusive Mitgliederangebote', label_first_name:'Vorname', label_last_name:'Nachname', label_email:'E-Mail-Adresse', label_password:'Passwort (mind. 8 Zeichen)', label_referral:'Empfehlungscode (optional)', consent_text:'Ich akzeptiere die <a href="cgv.html">AGB</a> und die <a href="confidentialite.html">Datenschutzrichtlinie</a>. Meine Daten werden DSGVO-konform verarbeitet.', btn_register:'Konto erstellen', btn_loading:'Wird erstellt...', has_account:'Bereits ein Konto?', login_link:'Anmelden', err_generic:'Fehler beim Erstellen des Kontos', err_network:'Netzwerkfehler. Versuchen Sie es erneut.', success_confirm:'Konto erstellt! Überprüfen Sie Ihre E-Mail, um Ihre Registrierung zu bestätigen.' }
+        };
+
+        var lang = window.currentLang || document.documentElement.lang || 'fr';
+        var t = translations[lang] || translations.fr;
+
+        // Appliquer i18n (innerHTML pour les liens dans consent)
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (key === 'consent_text') { el.innerHTML = t[key]; } else { el.textContent = t[key]; }
+            }
+        });
+
+        var sb = SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        // Rediriger si déjà connecté
+        if (sb) {
+            sb.auth.getSession().then(function(res) {
+                if (res.data.session) window.location.href = 'account.html';
+            });
+        }
+
+        // Password strength
         var pwdInput = document.getElementById('password');
         var pwdBar = document.getElementById('pwdStrength');
-
-        // Password strength indicator
         pwdInput.addEventListener('input', function() {
             var val = pwdInput.value;
             var strength = 0;
@@ -89,62 +143,59 @@
             pwdBar.style.background = colors[Math.max(0, strength - 1)] || '#e5e7eb';
         });
 
+        var form = document.getElementById('registerForm');
+        var errorEl = document.getElementById('authError');
+        var successEl = document.getElementById('authSuccess');
+        var btn = document.getElementById('submitBtn');
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
+            if (!sb) return;
             errorEl.style.display = 'none';
+            successEl.style.display = 'none';
             btn.disabled = true;
-            btn.textContent = 'Cr\u00e9ation...';
+            btn.textContent = t.btn_loading;
 
-            try {
-                var resp = await fetch('/api/v2/auth?action=signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        password: document.getElementById('password').value
-                    })
-                });
-                var data = await resp.json();
+            var firstName = document.getElementById('firstName').value.trim();
+            var lastName = document.getElementById('lastName').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value;
+            var referral = document.getElementById('referral').value.trim();
 
-                if (!resp.ok) {
-                    errorEl.textContent = data.error || 'Erreur lors de la cr\u00e9ation';
-                    errorEl.style.display = 'block';
-                    btn.disabled = false;
-                    btn.textContent = 'Cr\u00e9er mon compte';
-                    return;
+            var res = await sb.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        first_name: firstName,
+                        last_name: lastName,
+                        referral_code: referral || null
+                    },
+                    emailRedirectTo: window.location.origin + '/pages/login.html'
                 }
+            });
 
-                // Connecter automatiquement
-                var loginResp = await fetch('/api/v2/auth?action=login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: document.getElementById('email').value,
-                        password: document.getElementById('password').value
-                    })
-                });
-                var loginData = await loginResp.json();
-
-                if (loginResp.ok) {
-                    localStorage.setItem('eclat_session', JSON.stringify(loginData.session));
-                    localStorage.setItem('eclat_user', JSON.stringify(loginData.user));
-                }
-
-                window.location.href = 'account.html';
-
-            } catch (err) {
-                errorEl.textContent = 'Erreur r\u00e9seau. R\u00e9essayez.';
+            if (res.error) {
+                errorEl.textContent = res.error.message || t.err_generic;
                 errorEl.style.display = 'block';
                 btn.disabled = false;
-                btn.textContent = 'Cr\u00e9er mon compte';
+                btn.textContent = t.btn_register;
+                return;
+            }
+
+            // Supabase envoie un email de confirmation
+            if (res.data.user && !res.data.session) {
+                // Email confirmation requise
+                successEl.textContent = t.success_confirm;
+                successEl.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = t.btn_register;
+            } else if (res.data.session) {
+                // Auto-confirm activé, rediriger
+                window.location.href = 'account.html';
             }
         });
-
-        if (localStorage.getItem('eclat_session')) {
-            window.location.href = 'account.html';
-        }
+    })();
     </script>
-    <script src="../js/auth.js" defer></script>
 </body>
 </html>

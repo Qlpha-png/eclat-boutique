@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <script defer data-clerk-publishable-key="pk_test_Y2xhc3NpYy10YXBpci00OC5jbGVyay5hY2NvdW50cy5kZXYk" src="https://classic-tapir-48.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
     <style>
         .auth-page{max-width:440px;margin:60px auto;padding:0 24px 80px;}
         .auth-card{background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px 32px;}
@@ -36,33 +35,70 @@
 
     <div class="auth-page">
         <div class="auth-card">
-            <h1>Connexion</h1>
-            <p class="subtitle">Acc&eacute;dez &agrave; votre espace client</p>
+            <h1 data-i18n="login_title">Connexion</h1>
+            <p class="subtitle" data-i18n="login_subtitle">Acc&eacute;dez &agrave; votre espace client</p>
 
             <div class="auth-error" id="authError"></div>
             <div class="auth-success" id="authSuccess"></div>
 
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="email">Adresse email</label>
+                    <label for="email" data-i18n="label_email">Adresse email</label>
                     <input type="email" id="email" required autocomplete="email">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe</label>
+                    <label for="password" data-i18n="label_password">Mot de passe</label>
                     <input type="password" id="password" required autocomplete="current-password" minlength="8">
-                    <span class="forgot-link"><a href="#" id="forgotBtn">Mot de passe oubli&eacute; ?</a></span>
+                    <span class="forgot-link"><a href="#" id="forgotBtn" data-i18n="forgot_password">Mot de passe oubli&eacute; ?</a></span>
                 </div>
-                <button type="submit" class="auth-btn" id="submitBtn">Se connecter</button>
+                <button type="submit" class="auth-btn" id="submitBtn" data-i18n="btn_login">Se connecter</button>
             </form>
 
             <div class="auth-links">
-                <p>Pas encore de compte ? <a href="register.html">Cr&eacute;er un compte</a></p>
-                <p style="margin-top:8px;"><a href="../index.html">Continuer sans compte</a></p>
+                <p><span data-i18n="no_account">Pas encore de compte ?</span> <a href="register.html" data-i18n="create_account">Cr&eacute;er un compte</a></p>
+                <p style="margin-top:8px;"><a href="../index.html" data-i18n="continue_guest">Continuer sans compte</a></p>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
+    (function() {
+        var SUPABASE_URL = 'https://omysrhwpyexlcgwyiigq.supabase.co';
+        var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9teXNyaHdweWV4bGNnd3lpaWdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NzE5MjUsImV4cCI6MjA5MTI0NzkyNX0.SG-q9sE-jNgDm1rCezj84cNIUbphziDAnh6EtuGiIpM';
+
+        var translations = {
+            fr: { login_title:'Connexion', login_subtitle:'Accédez à votre espace client', label_email:'Adresse email', label_password:'Mot de passe', forgot_password:'Mot de passe oublié ?', btn_login:'Se connecter', btn_loading:'Connexion...', no_account:'Pas encore de compte ?', create_account:'Créer un compte', continue_guest:'Continuer sans compte', err_invalid:'Identifiants incorrects', err_network:'Erreur de connexion. Réessayez.', err_email_first:'Entrez votre email d\'abord', reset_sent:'Si ce compte existe, un email de réinitialisation a été envoyé.' },
+            en: { login_title:'Log in', login_subtitle:'Access your account', label_email:'Email address', label_password:'Password', forgot_password:'Forgot password?', btn_login:'Log in', btn_loading:'Logging in...', no_account:'No account yet?', create_account:'Create an account', continue_guest:'Continue as guest', err_invalid:'Invalid credentials', err_network:'Connection error. Try again.', err_email_first:'Enter your email first', reset_sent:'If this account exists, a reset email has been sent.' },
+            es: { login_title:'Iniciar sesión', login_subtitle:'Accede a tu espacio cliente', label_email:'Correo electrónico', label_password:'Contraseña', forgot_password:'¿Olvidaste tu contraseña?', btn_login:'Iniciar sesión', btn_loading:'Conectando...', no_account:'¿No tienes cuenta?', create_account:'Crear una cuenta', continue_guest:'Continuar sin cuenta', err_invalid:'Credenciales incorrectas', err_network:'Error de conexión. Inténtalo de nuevo.', err_email_first:'Introduce tu email primero', reset_sent:'Si esta cuenta existe, se ha enviado un email de restablecimiento.' },
+            de: { login_title:'Anmelden', login_subtitle:'Zugang zu Ihrem Kundenbereich', label_email:'E-Mail-Adresse', label_password:'Passwort', forgot_password:'Passwort vergessen?', btn_login:'Anmelden', btn_loading:'Anmeldung...', no_account:'Noch kein Konto?', create_account:'Konto erstellen', continue_guest:'Ohne Konto fortfahren', err_invalid:'Ungültige Anmeldedaten', err_network:'Verbindungsfehler. Versuchen Sie es erneut.', err_email_first:'Geben Sie zuerst Ihre E-Mail ein', reset_sent:'Falls dieses Konto existiert, wurde eine E-Mail zum Zurücksetzen gesendet.' }
+        };
+
+        var lang = window.currentLang || document.documentElement.lang || 'fr';
+        var t = translations[lang] || translations.fr;
+
+        // Appliquer i18n
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n');
+            if (t[key]) el.textContent = t[key];
+        });
+
+        // Vérifier si déjà connecté
+        if (!SUPABASE_ANON_KEY) {
+            console.warn('[login] SUPABASE_ANON_KEY manquante');
+        }
+
+        var sb = SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        if (sb) {
+            sb.auth.getSession().then(function(res) {
+                if (res.data.session) {
+                    var redirect = new URLSearchParams(window.location.search).get('redirect');
+                    window.location.href = redirect || 'account.html';
+                }
+            });
+        }
+
         var form = document.getElementById('loginForm');
         var errorEl = document.getElementById('authError');
         var successEl = document.getElementById('authSuccess');
@@ -70,69 +106,47 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
+            if (!sb) return;
             errorEl.style.display = 'none';
+            successEl.style.display = 'none';
             btn.disabled = true;
-            btn.textContent = 'Connexion...';
+            btn.textContent = t.btn_loading;
 
-            try {
-                var resp = await fetch('/api/v2/auth?action=login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: document.getElementById('email').value,
-                        password: document.getElementById('password').value
-                    })
-                });
-                var data = await resp.json();
+            var res = await sb.auth.signInWithPassword({
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value
+            });
 
-                if (!resp.ok) {
-                    errorEl.textContent = data.error || 'Identifiants incorrects';
-                    errorEl.style.display = 'block';
-                    btn.disabled = false;
-                    btn.textContent = 'Se connecter';
-                    return;
-                }
-
-                // Sauvegarder la session
-                localStorage.setItem('eclat_session', JSON.stringify(data.session));
-                localStorage.setItem('eclat_user', JSON.stringify(data.user));
-
-                // Rediriger
-                var redirect = new URLSearchParams(window.location.search).get('redirect');
-                window.location.href = redirect || 'account.html';
-
-            } catch (err) {
-                errorEl.textContent = 'Erreur de connexion. R\u00e9essayez.';
+            if (res.error) {
+                errorEl.textContent = t.err_invalid;
                 errorEl.style.display = 'block';
                 btn.disabled = false;
-                btn.textContent = 'Se connecter';
+                btn.textContent = t.btn_login;
+                return;
             }
+
+            var redirect = new URLSearchParams(window.location.search).get('redirect');
+            window.location.href = redirect || 'account.html';
         });
 
-        // Forgot password
+        // Mot de passe oublié
         document.getElementById('forgotBtn').addEventListener('click', async function(e) {
             e.preventDefault();
-            var email = document.getElementById('email').value;
+            if (!sb) return;
+            var email = document.getElementById('email').value.trim();
             if (!email) {
-                errorEl.textContent = 'Entrez votre email d\'abord';
+                errorEl.textContent = t.err_email_first;
                 errorEl.style.display = 'block';
                 return;
             }
-            await fetch('/api/v2/auth?action=reset', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email })
+            await sb.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/pages/login.html'
             });
-            successEl.textContent = 'Si ce compte existe, un email de r\u00e9initialisation a \u00e9t\u00e9 envoy\u00e9.';
+            successEl.textContent = t.reset_sent;
             successEl.style.display = 'block';
             errorEl.style.display = 'none';
         });
-
-        // Si déjà connecté, rediriger
-        if (localStorage.getItem('eclat_session')) {
-            window.location.href = 'account.html';
-        }
+    })();
     </script>
-    <script src="../js/auth.js" defer></script>
 </body>
 </html>
