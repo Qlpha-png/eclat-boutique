@@ -1,0 +1,58 @@
+/**
+ * GET /api/admin/stats — KPIs du dashboard admin
+ * Requiert : auth Supabase + rôle admin
+ */
+const { requireAdmin, getSupabase } = require('../_middleware/auth');
+
+module.exports = async function handler(req, res) {
+    if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+    const admin = await requireAdmin(req);
+    if (!admin) return res.status(401).json({ error: 'Admin requis' });
+
+    try {
+        const sb = getSupabase();
+        const now = new Date();
+        const thirtyDaysAgo = new Date(now - 30 * 86400000).toISOString();
+        const sevenDaysAgo = new Date(now - 7 * 86400000).toISOString();
+
+        // Requêtes en parallèle pour la performance
+        const [ordersAll, ordersMonth, ordersWeek, customersCount, pendingOrders] = await Promise.all([
+            sb.from('orders').select('total, created_at', { count: 'exact' }),
+            sb.from('orders').select('total').gte('created_at', thirtyDaysAgo),
+            sb.from('orders').select('total').gte('created_at', sevenDaysAgo),
+            sb.from('customers').select('id', { count: 'exact', head: true }),
+            sb.from('orders').select('id', { count: 'exact', head: true }).eq('fulfillment_status', 'pending')
+        ]);
+
+        const allOrders = ordersAll.data || [];
+        const monthOrders = ordersMonth.data || [];
+        const weekOrders = ordersWeek.data || [];
+
+        const totalRevenue = allOrders.reduce((s, o) => s + parseFloat(o.total || 0), 0);
+        const monthRevenue = monthOrders.reduce((s, o) => s + parseFloat(o.total || 0), 0);
+        const weekRevenue = weekOrders.reduce((s, o) => s + parseFloat(o.total || 0), 0);
+        const avgOrder = allOrders.length > 0 ? totalRevenue / allOrders.length : 0;
+
+        return res.status(200).json({
+            revenue: {
+                total: Math.round(totalRevenue * 100) / 100,
+                month: Math.round(monthRevenue * 100) / 100,
+                week: Math.round(weekRevenue * 100) / 100
+            },
+            orders: {
+                total: ordersAll.count || allOrders.length,
+                month: monthOrders.length,
+                week: weekOrders.length,
+                pending: pendingOrders.count || 0
+            },
+            customers: {
+                total: customersCount.count || 0
+            },
+            avgOrder: Math.round(avgOrder * 100) / 100
+        });
+    } catch (err) {
+        console.error('[admin/stats]', err.message);
+        return res.status(500).json({ error: err.message });
+    }
+};

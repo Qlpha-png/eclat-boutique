@@ -1,8 +1,9 @@
 const Stripe = require('stripe');
+const { getSupabase } = require('./_middleware/auth');
 
 // ============================
 // ÉCLAT - Master Webhook
-// Pipeline complet : Paiement → Commande fournisseur → Email client
+// Pipeline complet : Paiement → Commande fournisseur → Email client → Supabase
 // ============================
 
 module.exports = async (req, res) => {
@@ -42,6 +43,24 @@ module.exports = async (req, res) => {
     const results = {};
     console.log('[WEBHOOK] Event:', event.type, '| ID:', event.id || 'N/A');
 
+    // Idempotency : vérifier si cet événement a déjà été traité
+    if (event.id) {
+        try {
+            const sb = getSupabase();
+            const { data: existing } = await sb.from('webhook_events').select('id').eq('id', event.id).single();
+            if (existing) {
+                console.log('[WEBHOOK] Duplicate event, skipping:', event.id);
+                return res.status(200).json({ received: true, duplicate: true });
+            }
+            await sb.from('webhook_events').insert({ id: event.id, type: event.type });
+        } catch (e) {
+            // Continuer même si Supabase n'est pas configuré
+            if (!e.message || !e.message.includes('SUPABASE')) {
+                console.warn('[WEBHOOK] Idempotency check:', e.message);
+            }
+        }
+    }
+
     try {
         switch (event.type) {
             case 'checkout.session.completed': {
@@ -59,6 +78,10 @@ module.exports = async (req, res) => {
                 const order = await extractOrder(stripe, session);
                 results.order = order;
                 console.log('[PIPELINE] Order extracted:', order.id);
+
+                // ÉTAPE 1b : Persister commande + client dans Supabase
+                results.persist = await persistToSupabase(order, session);
+                console.log('[PIPELINE] Supabase:', results.persist.saved ? 'saved' : results.persist.reason || 'skipped');
 
                 // ÉTAPE 2 : Commander chez CJDropshipping (routage automatique)
                 results.fulfillment = await autoFulfill(order);
@@ -176,6 +199,122 @@ function detectLang(session) {
     };
 
     return COUNTRY_LANG[country] || 'en';
+}
+
+// ============================
+// ÉTAPE 1b : Persister dans Supabase (commandes, clients, Éclats)
+// ============================
+
+async function persistToSupabase(order, session) {
+    let sb;
+    try {
+        sb = getSupabase();
+    } catch (e) {
+        return { saved: false, reason: 'supabase_not_configured' };
+    }
+
+    try {
+        // 1. Upsert client dans la table customers
+        let customerId = null;
+        if (order.customer.email) {
+            const { data: existingCustomer } = await sb
+                .from('customers')
+                .select('id, total_spent, loyalty_points')
+                .eq('email', order.customer.email)
+                .single();
+
+            if (existingCustomer) {
+                customerId = existingCustomer.id;
+                await sb.from('customers').update({
+                    name: order.customer.name || undefined,
+                    phone: order.customer.phone || undefined,
+                    total_spent: (parseFloat(existingCustomer.total_spent) || 0) + order.total,
+                    loyalty_points: (existingCustomer.loyalty_points || 0) + Math.floor(order.total)
+                }).eq('id', customerId);
+            } else {
+                const { data: newCustomer } = await sb
+                    .from('customers')
+                    .insert({
+                        email: order.customer.email,
+                        name: order.customer.name || null,
+                        phone: order.customer.phone || null,
+                        total_spent: order.total,
+                        loyalty_points: Math.floor(order.total)
+                    })
+                    .select('id')
+                    .single();
+                if (newCustomer) customerId = newCustomer.id;
+            }
+        }
+
+        // 2. Insérer la commande
+        const { data: savedOrder, error: orderError } = await sb
+            .from('orders')
+            .insert({
+                customer_id: customerId,
+                stripe_session_id: session.id,
+                stripe_payment_intent: session.payment_intent,
+                email: order.customer.email,
+                phone: order.customer.phone || null,
+                status: 'paid',
+                subtotal: order.subtotal,
+                shipping_cost: 0,
+                discount_amount: 0,
+                total: order.total,
+                shipping_address: order.shipping || null,
+                notes: order.id
+            })
+            .select('id')
+            .single();
+
+        if (orderError) {
+            console.error('[PERSIST] Order insert error:', orderError.message);
+            return { saved: false, reason: orderError.message };
+        }
+
+        // 3. Insérer les articles de la commande
+        if (savedOrder && order.items.length > 0) {
+            const items = order.items.map(item => ({
+                order_id: savedOrder.id,
+                name: item.name,
+                price: item.unitPrice,
+                quantity: item.quantity
+            }));
+            const { error: itemsError } = await sb.from('order_items').insert(items);
+            if (itemsError) console.warn('[PERSIST] Items insert:', itemsError.message);
+        }
+
+        // 4. Mettre à jour les Éclats dans profiles (si utilisateur enregistré)
+        if (order.customer.email) {
+            try {
+                const { data: { users } } = await sb.auth.admin.listUsers({ perPage: 1000 });
+                const authUser = users.find(u => u.email === order.customer.email);
+                if (authUser) {
+                    const { data: profile } = await sb
+                        .from('profiles')
+                        .select('eclats, total_spent')
+                        .eq('id', authUser.id)
+                        .single();
+                    if (profile) {
+                        const eclatsEarned = Math.floor(order.total);
+                        await sb.from('profiles').update({
+                            eclats: (profile.eclats || 0) + eclatsEarned,
+                            total_spent: (parseFloat(profile.total_spent) || 0) + order.total
+                        }).eq('id', authUser.id);
+                        console.log('[PERSIST] +' + eclatsEarned + ' Éclats for', order.customer.email);
+                    }
+                }
+            } catch (e) {
+                console.warn('[PERSIST] Éclats update skipped:', e.message);
+            }
+        }
+
+        console.log('[PERSIST] Order saved:', savedOrder.id, '| Customer:', customerId);
+        return { saved: true, orderId: savedOrder.id, customerId };
+    } catch (err) {
+        console.error('[PERSIST] Error:', err.message);
+        return { saved: false, reason: err.message };
+    }
 }
 
 // ============================
