@@ -215,15 +215,34 @@
             }
         }, 8000);
 
-        waitForAuth(function() {
+        waitForAuth(async function() {
             clearTimeout(loadingTimeout);
             if (!auth.isSignedIn()) {
                 window.location.href = 'login.html';
                 return;
             }
 
-            var profile = auth.getProfile() || {};
             var user = auth.getUser();
+            var profile = auth.getProfile();
+
+            // Retry si profil non chargé
+            if (!profile && auth._session) {
+                try {
+                    var resp = await fetch('/api/profile', {
+                        headers: { 'Authorization': 'Bearer ' + auth._session.access_token }
+                    });
+                    if (resp.ok) profile = await resp.json();
+                } catch(e) {}
+            }
+
+            // Fallback métadonnées JWT
+            if (!profile) {
+                profile = {
+                    first_name: (user.user_metadata || {}).first_name || '',
+                    last_name: (user.user_metadata || {}).last_name || '',
+                    eclats: 0, streak_days: 0, referral_code: null, loyalty_tier: 'eclat'
+                };
+            }
             var eclats = profile.eclats || 0;
             var tier = getCurrentTier(eclats);
             var nextTier = getNextTier(eclats);

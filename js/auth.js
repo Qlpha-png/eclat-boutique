@@ -102,12 +102,18 @@
         document.head.appendChild(script);
     }
 
-    // ── Récupérer le profil depuis la table profiles ──
+    // ── Récupérer le profil via API serveur (bypass RLS) ──
     async function fetchProfile(userId) {
-        if (!auth._supabase || !userId) return null;
+        if (!auth._session) return null;
         try {
-            var res = await auth._supabase.from('profiles').select('*').eq('id', userId).single();
-            return res.data || null;
+            var resp = await fetch('/api/profile', {
+                headers: { 'Authorization': 'Bearer ' + auth._session.access_token }
+            });
+            if (resp.ok) {
+                return await resp.json();
+            }
+            console.warn('[auth] fetchProfile API ' + resp.status);
+            return null;
         } catch (e) {
             console.error('[auth] fetchProfile error:', e);
             return null;
