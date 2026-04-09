@@ -1,6 +1,8 @@
 const Stripe = require('stripe');
 const { getSupabase } = require('./_middleware/auth');
 const { generateUnsubToken } = require('./unsubscribe');
+const { creditReferralParrain } = require('./loyalty/referral');
+const { getStreakMultiplier, checkTierUpgrade } = require('./loyalty/checkin');
 
 // ============================
 // ÉCLAT - Master Webhook
@@ -286,7 +288,7 @@ async function persistToSupabase(order, session) {
             if (itemsError) console.warn('[PERSIST] Items insert:', itemsError.message);
         }
 
-        // 4. Mettre à jour les Éclats dans profiles (si utilisateur enregistré)
+        // 4. Créditer les Éclats (système fidélité avancé)
         if (order.customer.email) {
             try {
                 const { data: { users } } = await sb.auth.admin.listUsers({ perPage: 1000 });
@@ -294,43 +296,101 @@ async function persistToSupabase(order, session) {
                 if (authUser) {
                     const { data: profile } = await sb
                         .from('profiles')
-                        .select('eclats, total_spent')
+                        .select('eclats, total_spent, loyalty_tier, streak_days, purchase_streak, last_purchase_month')
                         .eq('id', authUser.id)
                         .single();
                     if (profile) {
-                        // Calcul du streak multiplicateur
+                        // Multiplicateur tier
+                        const TIER_MULT = { eclat: 1.0, lumiere: 1.3, prestige: 1.6, diamant: 2.0 };
+                        const tierMult = TIER_MULT[profile.loyalty_tier || 'eclat'] || 1.0;
+
+                        // Multiplicateur streak quotidien (check-in)
+                        const streakMult = getStreakMultiplier(profile.streak_days || 0);
+
+                        // Purchase streak mensuel (existant)
                         const now = new Date();
                         const currentMonth = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
                         const lastMonth = profile.last_purchase_month || '';
-                        let streak = profile.purchase_streak || 0;
-
-                        if (lastMonth === currentMonth) {
-                            // Déjà acheté ce mois — pas de changement streak
-                        } else {
-                            // Vérifier si c'est le mois consécutif
+                        let purchaseStreak = profile.purchase_streak || 0;
+                        if (lastMonth !== currentMonth) {
                             const prevDate = lastMonth ? new Date(lastMonth + '-01') : null;
                             if (prevDate) {
                                 prevDate.setMonth(prevDate.getMonth() + 1);
                                 const expectedMonth = prevDate.getFullYear() + '-' + String(prevDate.getMonth() + 1).padStart(2, '0');
-                                streak = (expectedMonth === currentMonth) ? streak + 1 : 1;
+                                purchaseStreak = (expectedMonth === currentMonth) ? purchaseStreak + 1 : 1;
                             } else {
-                                streak = 1;
+                                purchaseStreak = 1;
                             }
                         }
 
-                        // Multiplicateur basé sur le streak
-                        const multiplier = streak >= 6 ? 3.0 : streak >= 3 ? 2.0 : streak >= 2 ? 1.5 : 1.0;
+                        // Calcul final : base × tier × streak
                         const baseEclats = Math.floor(order.total);
-                        const eclatsEarned = Math.floor(baseEclats * multiplier);
+                        const eclatsEarned = Math.floor(baseEclats * tierMult * streakMult);
+
+                        const newTotal = (profile.eclats || 0) + eclatsEarned;
 
                         await sb.from('profiles').update({
-                            eclats: (profile.eclats || 0) + eclatsEarned,
+                            eclats: newTotal,
                             total_spent: (parseFloat(profile.total_spent) || 0) + order.total,
-                            purchase_streak: streak,
+                            purchase_streak: purchaseStreak,
                             last_purchase_month: currentMonth
                         }).eq('id', authUser.id);
 
-                        console.log('[PERSIST] +' + eclatsEarned + ' Éclats (base ' + baseEclats + ' x' + multiplier + ' streak ' + streak + ') for', order.customer.email);
+                        // Transaction log
+                        await sb.from('loyalty_points').insert({
+                            user_id: authUser.id,
+                            amount: eclatsEarned,
+                            type: 'earn',
+                            source: 'purchase',
+                            reference_id: savedOrder?.id || session.id,
+                            metadata: {
+                                order_total: order.total,
+                                base: baseEclats,
+                                tier_mult: tierMult,
+                                streak_mult: streakMult,
+                                tier: profile.loyalty_tier || 'eclat'
+                            }
+                        });
+
+                        // Tier upgrade
+                        await checkTierUpgrade(sb, authUser.id, newTotal, profile.loyalty_tier || 'eclat');
+
+                        // Badges achat
+                        const orderCount = await getOrderCount(sb, order.customer.email);
+                        const badgesToCheck = [
+                            { count: 1, key: 'first_order' },
+                            { count: 5, key: 'regular_5' },
+                            { count: 10, key: 'vip_10' }
+                        ];
+                        for (const b of badgesToCheck) {
+                            if (orderCount >= b.count) {
+                                await sb.from('user_badges').insert({
+                                    user_id: authUser.id, badge_key: b.key
+                                }).then(() => {}).catch(() => {});
+                            }
+                        }
+
+                        // Badge dépense totale
+                        const totalSpent = (parseFloat(profile.total_spent) || 0) + order.total;
+                        if (totalSpent >= 500) {
+                            await sb.from('user_badges').insert({
+                                user_id: authUser.id, badge_key: 'big_spender_500'
+                            }).then(() => {}).catch(() => {});
+                        } else if (totalSpent >= 100) {
+                            await sb.from('user_badges').insert({
+                                user_id: authUser.id, badge_key: 'big_spender_100'
+                            }).then(() => {}).catch(() => {});
+                        }
+
+                        // Parrainage : créditer le parrain si 1ère commande du filleul
+                        if (orderCount === 1) {
+                            const refResult = await creditReferralParrain(sb, authUser.id);
+                            if (refResult) {
+                                console.log('[PERSIST] Referral bonus: +' + refResult.eclats + ' to parrain', refResult.parrain_id);
+                            }
+                        }
+
+                        console.log('[PERSIST] +' + eclatsEarned + ' Éclats (base ' + baseEclats + ' ×' + tierMult + ' tier ×' + streakMult + ' streak) for', order.customer.email);
                     }
                 }
             } catch (e) {
@@ -343,6 +403,19 @@ async function persistToSupabase(order, session) {
     } catch (err) {
         console.error('[PERSIST] Error:', err.message);
         return { saved: false, reason: err.message };
+    }
+}
+
+async function getOrderCount(sb, email) {
+    try {
+        const { count } = await sb
+            .from('orders')
+            .select('id', { count: 'exact', head: true })
+            .eq('email', email)
+            .eq('status', 'paid');
+        return count || 0;
+    } catch (e) {
+        return 0;
     }
 }
 
