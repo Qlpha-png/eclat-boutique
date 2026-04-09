@@ -791,7 +791,7 @@ input { font-family: inherit; }
 .chat-input-area button:hover { background: var(--color-secondary); }
 
 @media (max-width: 480px) {
-    .chat-window { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; bottom: -24px; right: -24px; }
+    .chat-window { width: calc(100vw - 16px); height: 70vh; max-height: 500px; border-radius: 16px 16px 0 0; bottom: -24px; right: -16px; }
 }
 
 /* --- Language Selector --- */
