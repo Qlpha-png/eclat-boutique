@@ -1,0 +1,172 @@
+/* ============================
+   ÉCLAT — Animations CSS
+   Fade-in, scale, stagger, skeleton
+   ============================ */
+
+/* Page load fade */
+body { opacity: 1; transition: opacity 0.3s ease; }
+
+/* Fade Up */
+.anim-fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.anim-fade-up.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade In */
+.anim-fade-in {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.anim-fade-in.anim-visible {
+    opacity: 1;
+}
+
+/* Fade Scale */
+.anim-fade-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.anim-fade-scale.anim-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger children */
+.anim-stagger-children > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.anim-stagger-children > .anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Product card hover effects */
+.product-card,
+.cat-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+.product-card:hover,
+.cat-card:hover {
+    box-shadow: 0 12px 40px rgba(45, 41, 38, 0.15);
+}
+.product-card .product-image img,
+.cat-card img {
+    transition: transform 0.4s ease;
+}
+.product-card:hover .product-image img,
+.cat-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Skeleton loading */
+.skeleton {
+    background: linear-gradient(90deg, var(--color-bg-alt) 25%, var(--color-border) 50%, var(--color-bg-alt) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+}
+.skeleton-card {
+    height: 360px;
+    border-radius: var(--radius-md);
+}
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+    width: 80%;
+}
+.skeleton-text.short { width: 50%; }
+.skeleton-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Button loading spinner */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+}
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Hero slide transition */
+.hero-slide {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    position: absolute;
+    inset: 0;
+}
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Section reveal */
+.section-header {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-header.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth scroll behavior */
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+/* Social counters responsive */
+@media (max-width: 768px) {
+    .social-counters .container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .footer .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce) {
+    .anim-fade-up,
+    .anim-fade-in,
+    .anim-fade-scale,
+    .anim-stagger-children > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .skeleton { animation: none; }
+    .product-card .product-image img,
+    .cat-card img { transition: none; }
+}

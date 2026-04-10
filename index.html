@@ -36,6 +36,8 @@
     <noscript><link rel="stylesheet" href="css/style.css"></noscript>
     <link rel="stylesheet" href="css/themes.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/themes.css"></noscript>
+    <link rel="stylesheet" href="css/animations.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
 
@@ -184,7 +186,7 @@
     </section>
 
     <!-- Trust Badges -->
-    <section class="trust-badges">
+    <section class="trust-badges anim-fade-up">
         <div class="container">
             <div class="badge-grid">
                 <div class="badge-item">
@@ -232,8 +234,11 @@
     });
     </script>
 
+    <!-- Preferences Quiz (1ère visite) -->
+    <div id="prefsQuizHome" style="display:none;"></div>
+
     <!-- Products Section -->
-    <section class="products-section" id="produits">
+    <section class="products-section anim-fade-up" id="produits">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Notre s&eacute;lection</span>
@@ -258,7 +263,7 @@
     </section>
 
     <!-- Best Sellers -->
-    <section class="bestsellers-section" id="bestsellers">
+    <section class="bestsellers-section anim-fade-up" id="bestsellers">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Les plus aim&eacute;s</span>
@@ -374,33 +379,66 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Social Counters -->
+    <section class="social-counters anim-fade-up" style="background:var(--color-primary);color:#fff;padding:48px 24px;">
+        <div class="container" style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--color-secondary);" data-count="1500">0</div>
+                <div style="font-size:.85rem;opacity:.7;margin-top:4px;">Clients satisfaits</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--color-secondary);" data-count="15">0</div>
+                <div style="font-size:.85rem;opacity:.7;margin-top:4px;">Produits premium</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--color-secondary);" data-count="50000">0</div>
+                <div style="font-size:.85rem;opacity:.7;margin-top:4px;">&Eacute;clats distribu&eacute;s</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--color-secondary);" data-count="98">0</div>
+                <div style="font-size:.85rem;opacity:.7;margin-top:4px;">% satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Pro -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-grid" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;">
                 <div class="footer-col">
                     <h3 class="footer-logo">&Eacute;CLAT</h3>
                     <p>Beaut&eacute; &amp; Wellness Premium</p>
-                    <p>Votre rituel beaut&eacute; r&eacute;invent&eacute;.</p>
+                    <p style="font-size:.85rem;color:var(--color-text-light);margin-top:8px;">Des soins s&eacute;lectionn&eacute;s pour leur efficacit&eacute; prouv&eacute;e. Programme fid&eacute;lit&eacute; &Eacute;clats, livraison suivie, satisfait ou rembours&eacute;.</p>
+                    <div style="margin-top:16px;">
+                        <a href="pages/diagnostic.html" style="color:var(--color-secondary);font-weight:600;font-size:.85rem;text-decoration:none;">Mon diagnostic beaut&eacute; gratuit &rarr;</a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Boutique</h4>
                     <ul>
                         <li><a href="#produits">Tous les produits</a></li>
                         <li><a href="#bestsellers">Best-sellers</a></li>
-                        <li><a href="#produits">Nouveaut&eacute;s</a></li>
+                        <li><a href="pages/category.html?cat=visage">Soins visage</a></li>
+                        <li><a href="pages/category.html?cat=corps">Soins corps</a></li>
                         <li><a href="#packs">Coffrets</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Aide</h4>
+                    <h4>Service Client</h4>
                     <ul>
                         <li><a href="pages/faq.html">FAQ</a></li>
                         <li><a href="pages/livraison.html">Livraison</a></li>
-                        <li><a href="pages/retours.html">Retours &amp; remboursements</a></li>
+                        <li><a href="pages/retours.html">Retours</a></li>
                         <li><a href="pages/contact.html">Contact</a></li>
-                        <li><a href="pages/blog.html">Blog Beauté</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="pages/blog.html">Blog Beaut&eacute;</a></li>
                         <li><a href="pages/guide-beaute.html">Guide Scientifique</a></li>
+                        <li><a href="pages/diagnostic.html">Diagnostic IA</a></li>
+                        <li><a href="pages/routine-builder.html">Routine Builder</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -408,19 +446,21 @@
                     <ul>
                         <li><a href="pages/cgv.html">CGV</a></li>
                         <li><a href="pages/mentions-legales.html">Mentions l&eacute;gales</a></li>
-                        <li><a href="pages/confidentialite.html">Politique de confidentialit&eacute;</a></li>
+                        <li><a href="pages/confidentialite.html">Confidentialit&eacute;</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 &Eacute;CLAT. Tous droits r&eacute;serv&eacute;s.</p>
-                <div class="payment-icons">
-                    <span class="payment-badge">CB</span>
-                    <span class="payment-badge">Visa</span>
-                    <span class="payment-badge">Mastercard</span>
-                    <span class="payment-badge">PayPal</span>
-                    <span class="payment-badge">Stripe</span>
-                </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--color-border);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;">
+                <span style="font-size:.75rem;color:var(--color-text-light);margin-right:8px;">Paiement s&eacute;curis&eacute;</span>
+                <span class="payment-badge">Visa</span>
+                <span class="payment-badge">Mastercard</span>
+                <span class="payment-badge">CB</span>
+                <span class="payment-badge">PayPal</span>
+                <span class="payment-badge">Apple Pay</span>
+                <span class="payment-badge">Google Pay</span>
+            </div>
+            <div class="footer-bottom" style="margin-top:16px;">
+                <p>&copy; 2026 &Eacute;CLAT &mdash; Maison &Eacute;clat, micro-entreprise. Tous droits r&eacute;serv&eacute;s.</p>
             </div>
         </div>
     </footer>
@@ -548,6 +588,16 @@
     <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
+<script src="js/mega-menu.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/preferences.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof EclatPrefs !== 'undefined' && !EclatPrefs.hasPrefs()) {
+        EclatPrefs.showQuiz('prefsQuizHome');
+    }
+});
+</script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 <script src="js/push.js" defer></script>
 </body>
