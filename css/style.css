@@ -3511,6 +3511,15 @@ input { font-family: inherit; }
     color: var(--color-white) !important;
 }
 
+/* --- Wishlist heart icon --- */
+.wishlist-heart.active svg {
+    fill: #e74c3c;
+    stroke: #e74c3c;
+}
+.wishlist-heart:hover {
+    transform: scale(1.15);
+}
+
 /* --- Category cards mobile fix --- */
 @media (max-width: 768px) {
     .categories-visual div[style*="grid-template-columns:repeat(4"] {
