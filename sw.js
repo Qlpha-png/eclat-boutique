@@ -8,10 +8,10 @@ var PRECACHE = [
     '/',
     '/css/style.css',
     '/css/themes.css',
-    '/js/products.js',
-    '/js/cart.js',
-    '/js/i18n.js',
-    '/js/app.js',
+    '/js/products.js?v=2',
+    '/js/cart.js?v=2',
+    '/js/i18n.js?v=2',
+    '/js/app.js?v=2',
     '/pages/offline.html'
 ];
 
