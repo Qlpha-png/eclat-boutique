@@ -259,34 +259,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     .sort(function(a, b) { return (a.bestsellerRank || 999) - (b.bestsellerRank || 999); });
             }
 
-            bestsellerShowcase.innerHTML = products.map(function(product, idx) {
+            // Carousel compact horizontal — comme Amazon/Sephora
+            var trackId = 'bs-track';
+            var cardsHTML = products.map(function(product, idx) {
                 var rank = isRealData ? (idx + 1) : (product.bestsellerRank || (idx + 1));
-                return '<div class="bestseller-card fade-in">' +
-                    '<div class="bestseller-image">' +
-                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';">' +
-                        '<div class="bestseller-rank">#' + rank + '</div>' +
+                var pName = (typeof getProductText === 'function') ? (getProductText(product.id, 'name', (typeof currentLang !== 'undefined' ? currentLang : 'fr')) || product.name) : product.name;
+                return '<div style="min-width:220px;max-width:220px;flex-shrink:0;background:var(--color-white,#fff);border-radius:12px;border:1px solid var(--color-border,#e8e4de);overflow:hidden;cursor:pointer;transition:all .3s;" onclick="openModal(' + product.id + ')">' +
+                    '<div style="position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,#f5f0eb,#ede4da);">' +
+                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
+                        '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary,#c9a87c);color:#fff;font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:700;">#' + rank + '</span>' +
                     '</div>' +
-                    '<div class="bestseller-info">' +
-                        '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
-                        '<h3 class="product-name">' + escapeHTML(product.name) + '</h3>' +
-                        '<p class="product-desc">' + escapeHTML(product.description).substring(0, 120) + '...</p>' +
-                        (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ')</span></div>' : '') +
-                        '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
-                            (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
-                        '</div>' +
-                        '<div class="product-actions" style="margin-top:12px">' +
-                            '<button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button>' +
-                            '<button class="btn btn-outline btn-sm" onclick="openModal(' + product.id + ')">' + t('btn_details') + '</button>' +
-                        '</div>' +
+                    '<div style="padding:12px;">' +
+                        '<div style="font-size:.72rem;color:var(--color-text-light,#6b6560);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + getCategoryLabel(product.category) + '</div>' +
+                        '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>' +
+                        '<div style="color:var(--color-secondary,#c9a87c);font-weight:700;font-size:1rem;margin-bottom:8px;">' + formatPrice(product.price) + '</div>' +
+                        '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();addToCart(' + product.id + ')" style="width:100%;font-size:.8rem;padding:8px 12px;">' + t('btn_add_cart') + '</button>' +
                     '</div>' +
                 '</div>';
             }).join('');
 
-            requestAnimationFrame(function() {
-                document.querySelectorAll('.bestseller-card.fade-in').forEach(function(el, i) {
-                    setTimeout(function() { el.classList.add('visible'); }, i * 150);
-                });
-            });
+            bestsellerShowcase.innerHTML =
+                '<div style="position:relative;overflow:hidden;">' +
+                    '<div id="' + trackId + '" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px 0;">' +
+                        cardsHTML +
+                    '</div>' +
+                    '<button onclick="var t=document.getElementById(\'' + trackId + '\');if(t)t.scrollBy({left:-260,behavior:\'smooth\'})" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10094;</button>' +
+                    '<button onclick="var t=document.getElementById(\'' + trackId + '\');if(t)t.scrollBy({left:260,behavior:\'smooth\'})" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10095;</button>' +
+                '</div>';
         });
     }
 

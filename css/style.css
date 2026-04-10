@@ -1116,70 +1116,23 @@ input { font-family: inherit; }
     font-size: 0.8rem;
 }
 
-/* --- Bestsellers Section --- */
+/* --- Bestsellers Section (carousel compact) --- */
 .bestsellers-section {
-    padding: 80px 0;
+    padding: 48px 0;
     background: var(--color-white);
 }
 
 .bestseller-showcase {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    margin-top: 16px;
 }
 
-.bestseller-card {
-    background: var(--color-bg);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    transition: var(--transition);
+/* Hide scrollbar on carousel tracks */
+.bestseller-showcase [style*="overflow-x"] {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
-
-.bestseller-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-}
-
-.bestseller-image {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #f5f0eb, #ede4da);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.bestseller-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.bestseller-rank {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 36px;
-    height: 36px;
-    background: var(--color-secondary);
-    color: var(--color-white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.bestseller-info {
-    padding: 24px;
-}
-
-.bestseller-info .product-name {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
+.bestseller-showcase [style*="overflow-x"]::-webkit-scrollbar {
+    display: none;
 }
 
 .bestseller-info .product-desc {
@@ -3000,8 +2953,11 @@ input { font-family: inherit; }
 /* --- Skip Link --- */
 .skip-link {
     position: absolute;
-    top: -100%;
-    left: 16px;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
     z-index: 10000;
     background: var(--color-primary);
     color: var(--color-white);
@@ -3012,7 +2968,12 @@ input { font-family: inherit; }
     font-size: 0.9rem;
 }
 .skip-link:focus {
+    position: fixed;
+    left: 16px;
     top: 16px;
+    width: auto;
+    height: auto;
+    overflow: visible;
 }
 
 /* --- Screen Reader Only --- */

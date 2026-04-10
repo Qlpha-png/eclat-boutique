@@ -3,7 +3,7 @@
 // Cache-first assets, network-first API/HTML
 // ============================
 
-var CACHE_NAME = 'eclat-v4';
+var CACHE_NAME = 'eclat-v5';
 var PRECACHE = [
     '/',
     '/css/style.css',
@@ -50,20 +50,21 @@ self.addEventListener('fetch', function(event) {
     // Skip non-GET
     if (event.request.method !== 'GET') return;
 
-    // Skip API calls, Stripe, analytics, Supabase — network only
+    // Skip API calls, Stripe, analytics, Supabase, CJ CDN images — network only
+    // CJ CDN : ne PAS intercepter — le navigateur gère le referrerpolicy directement
     if (url.pathname.startsWith('/api/') ||
         url.hostname.includes('stripe.com') ||
         url.hostname.includes('google-analytics') ||
         url.hostname.includes('googletagmanager') ||
-        url.hostname.includes('supabase.co')) {
+        url.hostname.includes('supabase.co') ||
+        url.hostname.includes('cjdropshipping.com')) {
         return;
     }
 
     // Static assets (CSS, JS, fonts, images) — cache-first
     if (url.pathname.match(/\.(css|js|woff2?|ttf|eot|png|jpe?g|gif|svg|webp|avif|ico)$/) ||
         url.hostname.includes('fonts.googleapis.com') ||
-        url.hostname.includes('fonts.gstatic.com') ||
-        url.hostname.includes('cjdropshipping.com')) {
+        url.hostname.includes('fonts.gstatic.com')) {
         event.respondWith(
             caches.match(event.request).then(function(cached) {
                 if (cached) return cached;
