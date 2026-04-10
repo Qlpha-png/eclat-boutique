@@ -1,236 +1,359 @@
 // ============================
-// ECLAT - Main Application
+// ECLAT - Main Application v2
+// Pagination 24 produits, filtres unifiés, performance optimisée
 // ============================
+
+var PRODUCTS_PER_PAGE = 24;
+var _currentProductsPage = 1;
+var _currentFilteredList = [];
+var _currentCategory = 'all';
 
 function escapeHTML(str) {
     if (typeof str !== 'string') return str;
-    const div = document.createElement('div');
+    var div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function getCategoryLabel(cat) {
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+    if (typeof getCategoryText === 'function') {
+        var txt = getCategoryText(cat, lang);
+        if (txt && txt !== cat) return txt;
+    }
+    var labels = {
+        visage: 'Soins visage', soin: 'S\u00e9rums & Soins', corps: 'Soins corps',
+        cheveux: 'Cheveux', ongles: 'Ongles', homme: 'Homme',
+        accessoire: 'Accessoires', outils: 'Outils beaut\u00e9',
+        aromatherapie: 'Bien-\u00eatre', coffrets: 'Coffrets',
+        parfums: 'Parfumerie', marques: 'Marque officielle \u2713'
+    };
+    return labels[cat] || cat;
+}
+
+// Expose globally
+window.getCategoryLabel = getCategoryLabel;
+
+document.addEventListener('DOMContentLoaded', function() {
 
     // --- DOM Elements ---
-    const navbar = document.getElementById('navbar');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const cartBtn = document.getElementById('cartBtn');
-    const cartCount = document.getElementById('cartCount');
-    const cartSidebar = document.getElementById('cartSidebar');
-    const cartOverlay = document.getElementById('cartOverlay');
-    const cartClose = document.getElementById('cartClose');
-    const cartItems = document.getElementById('cartItems');
-    const cartEmpty = document.getElementById('cartEmpty');
-    const cartFooter = document.getElementById('cartFooter');
-    const cartSubtotal = document.getElementById('cartSubtotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const productsGrid = document.getElementById('productsGrid');
-    const bestsellerShowcase = document.getElementById('bestsellerShowcase');
-    const modalOverlay = document.getElementById('modalOverlay');
-    const productModal = document.getElementById('productModal');
-    const modalClose = document.getElementById('modalClose');
-    const modalContent = document.getElementById('modalContent');
-    const newsletterForm = document.getElementById('newsletterForm');
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    var navbar = document.getElementById('navbar');
+    var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    var navLinks = document.getElementById('navLinks');
+    var cartBtn = document.getElementById('cartBtn');
+    var cartCount = document.getElementById('cartCount');
+    var cartSidebar = document.getElementById('cartSidebar');
+    var cartOverlay = document.getElementById('cartOverlay');
+    var cartClose = document.getElementById('cartClose');
+    var cartItems = document.getElementById('cartItems');
+    var cartEmpty = document.getElementById('cartEmpty');
+    var cartFooter = document.getElementById('cartFooter');
+    var cartSubtotal = document.getElementById('cartSubtotal');
+    var checkoutBtn = document.getElementById('checkoutBtn');
+    var productsGrid = document.getElementById('productsGrid');
+    var bestsellerShowcase = document.getElementById('bestsellerShowcase');
+    var modalOverlay = document.getElementById('modalOverlay');
+    var productModal = document.getElementById('productModal');
+    var modalClose = document.getElementById('modalClose');
+    var modalContent = document.getElementById('modalContent');
+    var newsletterForm = document.getElementById('newsletterForm');
+    var filterBtns = document.querySelectorAll('.filter-btn');
 
     // --- Navbar scroll effect ---
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // --- Mobile menu ---
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
 
     // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
-    });
-
-    // --- Product Rendering ---
-    function renderProducts(category = 'all') {
-        let filtered;
-        if (category === 'all') {
-            // Marques en premier, puis produits ÉCLAT — la confiance d'abord
-            const brands = PRODUCTS.filter(p => p.category === 'marques');
-            const eclat = PRODUCTS.filter(p => p.category !== 'marques');
-            filtered = [...brands, ...eclat];
-        } else {
-            filtered = PRODUCTS.filter(p => p.category === category);
-        }
-
-        productsGrid.innerHTML = filtered.map(product => `
-            <div class="product-card fade-in" data-id="${product.id}">
-                <div class="product-image" onclick="openModal(${product.id})" style="cursor:pointer;position:relative;">
-                    <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
-                    ${product.badge ? `<span class="product-badge badge-${product.badge}">${
-                        product.badge === 'new' ? t('badge_new') :
-                        product.badge === 'promo' ? t('badge_promo') :
-                        product.badge === 'lancement' ? t('badge_lancement') :
-                        product.badge === 'marque' ? (escapeHTML(product.name.split(' — ')[0]) || 'Marque') : t('badge_bestseller')
-                    }</span>` : ''}
-                    ${typeof Wishlist !== 'undefined' ? `<span style="position:absolute;top:8px;right:8px;z-index:2;">${Wishlist.heartHTML(product.id, 22)}</span>` : ''}
-                </div>
-                <div class="product-info">
-                    <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name"><a href="pages/product.html?id=${product.id}" style="color:inherit;text-decoration:none;" onclick="event.preventDefault();openModal(${product.id})">${escapeHTML(product.name)}</a></h3>
-                    <div class="product-rating">
-                        ${'&#9733;'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '&#9733;' : ''}
-                        ${product.reviews > 0 ? `<span class="count">(${product.reviews.toLocaleString('fr-FR')} ${t('reviews_count')})</span>` : ''}
-                    </div>
-                    <div class="product-price">
-                        <span class="price-current">${formatPrice(product.price)}</span>
-                        ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                    </div>
-                    <div class="product-trust">
-                        <span class="trust-tag shipping">${t('trust_shipping')}</span>
-                        <span class="trust-tag">${t('trust_refund')}</span>
-                    </div>
-                    <div class="product-actions">
-                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${t('btn_add_cart')}</button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-
-        // Trigger fade-in animations
-        requestAnimationFrame(() => {
-            document.querySelectorAll('.product-card.fade-in').forEach((el, i) => {
-                setTimeout(() => el.classList.add('visible'), i * 80);
+    if (navLinks) {
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
             });
         });
     }
 
-    function getCategoryLabel(cat) {
-        const labels = {
-            visage: 'Soins visage',
-            soin: 'Skincare',
-            corps: 'Corps & fitness',
-            outils: 'Outils beaut\u00e9',
-            aromatherapie: 'Bien-\u00eatre',
-            parfums: 'Parfumerie',
-            marques: 'Marque officielle \u2713'
-        };
-        return labels[cat] || cat;
+    // --- Render a single product card HTML ---
+    function productCardHTML(product) {
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+        var pName = (typeof getProductText === 'function') ? getProductText(product.id, 'name', lang) : product.name;
+        if (!pName) pName = product.name;
+        var badgeHTML = '';
+        if (product.badge) {
+            var badgeText = product.badge === 'new' ? t('badge_new') :
+                product.badge === 'promo' ? t('badge_promo') :
+                product.badge === 'lancement' ? t('badge_lancement') :
+                product.badge === 'marque' ? (escapeHTML(product.name.split(' — ')[0]) || 'Marque') : t('badge_bestseller');
+            badgeHTML = '<span class="product-badge badge-' + product.badge + '">' + badgeText + '</span>';
+        }
+        var wishHTML = (typeof Wishlist !== 'undefined') ? '<span style="position:absolute;top:8px;right:8px;z-index:2;">' + Wishlist.heartHTML(product.id, 22) + '</span>' : '';
+        // Directive Omnibus : afficher les étoiles SEULEMENT si des vrais avis existent
+        var starsHTML = '';
+        var reviewsHTML = '';
+        if (product.reviews > 0) {
+            starsHTML = '&#9733;'.repeat(Math.floor(product.rating));
+            if (product.rating % 1 >= 0.5) starsHTML += '&#9733;';
+            reviewsHTML = '<span class="count">(' + product.reviews.toLocaleString('fr-FR') + ' ' + t('reviews_count') + ')</span>';
+        }
+        var oldPriceHTML = product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '';
+
+        return '<div class="product-card fade-in" data-id="' + product.id + '" data-product-id="' + product.id + '">' +
+            '<div class="product-image" onclick="openModal(' + product.id + ')" style="cursor:pointer;position:relative;">' +
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'has-fallback\');this.parentElement.innerHTML+=\'<div class=fallback-label>' + escapeHTML(pName) + '</div>\';">' +
+                badgeHTML + wishHTML +
+            '</div>' +
+            '<div class="product-info">' +
+                '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                '<h3 class="product-name"><a href="pages/product.html?id=' + product.id + '" style="color:inherit;text-decoration:none;" onclick="event.preventDefault();openModal(' + product.id + ')">' + escapeHTML(pName) + '</a></h3>' +
+                '<div class="product-rating">' + starsHTML + ' ' + reviewsHTML + '</div>' +
+                '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span> ' + oldPriceHTML + '</div>' +
+                '<div class="product-trust"><span class="trust-tag shipping">' + t('trust_shipping') + '</span><span class="trust-tag">' + t('trust_refund') + '</span></div>' +
+                '<div class="product-actions"><button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button></div>' +
+            '</div>' +
+        '</div>';
     }
+
+    // --- Expose card builder globally for search.js ---
+    window._productCardHTML = productCardHTML;
+
+    // --- Product Rendering with Pagination ---
+    function renderProducts(category) {
+        if (typeof category === 'undefined') category = _currentCategory;
+        _currentCategory = category;
+        _currentProductsPage = 1;
+
+        var filtered;
+        if (category === 'all') {
+            filtered = PRODUCTS.slice();
+        } else {
+            filtered = PRODUCTS.filter(function(p) { return p.category === category; });
+        }
+        _currentFilteredList = filtered;
+
+        renderPage(filtered, 1, true);
+    }
+
+    // Expose for search.js
+    window.renderProducts = renderProducts;
+
+    function renderPage(products, page, replace) {
+        if (!productsGrid) return;
+        var start = 0;
+        var end = page * PRODUCTS_PER_PAGE;
+        var visible = products.slice(start, end);
+        var remaining = products.length - end;
+
+        if (replace) {
+            productsGrid.innerHTML = '';
+        }
+
+        var html = '';
+        var startIdx = replace ? 0 : (page - 1) * PRODUCTS_PER_PAGE;
+        var endIdx = Math.min(page * PRODUCTS_PER_PAGE, products.length);
+        for (var i = startIdx; i < endIdx; i++) {
+            html += productCardHTML(products[i]);
+        }
+
+        // Remove old load-more button
+        var oldBtn = productsGrid.querySelector('.load-more-container');
+        if (oldBtn) oldBtn.remove();
+
+        if (replace) {
+            productsGrid.innerHTML = html;
+        } else {
+            productsGrid.insertAdjacentHTML('beforeend', html);
+        }
+
+        // Count display
+        var countText = products.length + ' ' + (products.length > 1 ? t('products_count') || 'produits' : t('product_count') || 'produit');
+        var countEl = document.getElementById('searchCount');
+        if (countEl) countEl.textContent = countText;
+
+        // Load More button
+        if (remaining > 0) {
+            var loadMoreDiv = document.createElement('div');
+            loadMoreDiv.className = 'load-more-container';
+            loadMoreDiv.style.cssText = 'grid-column:1/-1;text-align:center;padding:32px 0;';
+            var showCount = Math.min(PRODUCTS_PER_PAGE, remaining);
+            loadMoreDiv.innerHTML = '<button class="btn btn-outline load-more-btn" id="loadMoreBtn">' +
+                t('load_more') || ('Voir plus (' + remaining + ' restants)') +
+                '</button>' +
+                '<p style="font-size:.8rem;color:var(--color-text-light);margin-top:8px;">' + countText + '</p>';
+            productsGrid.appendChild(loadMoreDiv);
+
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                _currentProductsPage++;
+                renderPage(_currentFilteredList, _currentProductsPage, false);
+                // Animate new cards
+                var newCards = productsGrid.querySelectorAll('.product-card.fade-in:not(.visible)');
+                newCards.forEach(function(el, i) {
+                    setTimeout(function() { el.classList.add('visible'); }, i * 40);
+                });
+            });
+        } else if (products.length > PRODUCTS_PER_PAGE) {
+            // Show total count at bottom
+            var totalDiv = document.createElement('div');
+            totalDiv.className = 'load-more-container';
+            totalDiv.style.cssText = 'grid-column:1/-1;text-align:center;padding:16px 0;';
+            totalDiv.innerHTML = '<p style="font-size:.85rem;color:var(--color-text-light);">' + countText + '</p>';
+            productsGrid.appendChild(totalDiv);
+        }
+
+        // No results
+        if (products.length === 0) {
+            productsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 24px;color:var(--color-text-light);">' +
+                '<div style="font-size:3rem;margin-bottom:16px;">&#128269;</div>' +
+                '<h3 style="font-family:var(--font-display);margin-bottom:8px;">' + (t('no_results') || 'Aucun produit trouv\u00e9') + '</h3>' +
+                '<p>' + (t('no_results_hint') || 'Essayez de modifier vos filtres.') + '</p></div>';
+        }
+
+        // Trigger fade-in for first batch only (not 515 at once!)
+        requestAnimationFrame(function() {
+            var cards = productsGrid.querySelectorAll('.product-card.fade-in:not(.visible)');
+            cards.forEach(function(el, i) {
+                setTimeout(function() { el.classList.add('visible'); }, i * 40);
+            });
+        });
+    }
+
+    // Expose renderPage for search.js
+    window._renderProductPage = function(products) {
+        _currentFilteredList = products;
+        _currentProductsPage = 1;
+        renderPage(products, 1, true);
+    };
 
     // --- Bestsellers ---
     function renderBestsellers() {
-        const bestsellers = PRODUCTS
-            .filter(p => p.bestseller)
-            .sort((a, b) => a.bestsellerRank - b.bestsellerRank);
+        if (!bestsellerShowcase) return;
+        var bestsellers = PRODUCTS
+            .filter(function(p) { return p.bestseller; })
+            .sort(function(a, b) { return a.bestsellerRank - b.bestsellerRank; });
 
-        bestsellerShowcase.innerHTML = bestsellers.map(product => `
-            <div class="bestseller-card fade-in">
-                <div class="bestseller-image">
-                    <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
-                    <div class="bestseller-rank">#${product.bestsellerRank}</div>
-                </div>
-                <div class="bestseller-info">
-                    <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h3 class="product-name">${escapeHTML(product.name)}</h3>
-                    <p class="product-desc">${escapeHTML(product.description)}</p>
-                    <div class="product-rating">
-                        ${'&#9733;'.repeat(Math.floor(product.rating))}
-                        <span class="count">${product.rating}/5</span>
-                    </div>
-                    <div class="product-price">
-                        <span class="price-current">${formatPrice(product.price)}</span>
-                        ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                    </div>
-                    <div class="product-actions" style="margin-top:12px">
-                        <button class="btn btn-primary btn-sm" onclick="addToCart(${product.id})">${t('btn_add_cart')}</button>
-                        <button class="btn btn-outline btn-sm" onclick="openModal(${product.id})">${t('btn_details')}</button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
+        bestsellerShowcase.innerHTML = bestsellers.map(function(product) {
+            return '<div class="bestseller-card fade-in">' +
+                '<div class="bestseller-image">' +
+                    '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" onerror="this.style.display=\'none\';">' +
+                    '<div class="bestseller-rank">#' + product.bestsellerRank + '</div>' +
+                '</div>' +
+                '<div class="bestseller-info">' +
+                    '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                    '<h3 class="product-name">' + escapeHTML(product.name) + '</h3>' +
+                    '<p class="product-desc">' + escapeHTML(product.description).substring(0, 120) + '...</p>' +
+                    '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5</span></div>' +
+                    '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
+                        (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
+                    '</div>' +
+                    '<div class="product-actions" style="margin-top:12px">' +
+                        '<button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button>' +
+                        '<button class="btn btn-outline btn-sm" onclick="openModal(' + product.id + ')">' + t('btn_details') + '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+        }).join('');
 
-        requestAnimationFrame(() => {
-            document.querySelectorAll('.bestseller-card.fade-in').forEach((el, i) => {
-                setTimeout(() => el.classList.add('visible'), i * 150);
+        requestAnimationFrame(function() {
+            document.querySelectorAll('.bestseller-card.fade-in').forEach(function(el, i) {
+                setTimeout(function() { el.classList.add('visible'); }, i * 150);
             });
         });
     }
 
     // --- Category Filter ---
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) { b.classList.remove('active'); });
             btn.classList.add('active');
+            _currentCategory = btn.dataset.category;
+            // Reset advanced filters
+            var searchEl = document.getElementById('productSearch');
+            if (searchEl) searchEl.value = '';
+            var priceEl = document.getElementById('filterPrice');
+            if (priceEl) priceEl.value = 'all';
+            var ratingEl = document.getElementById('filterRating');
+            if (ratingEl) ratingEl.value = '0';
+            var concernEl = document.getElementById('filterConcern');
+            if (concernEl) concernEl.value = 'all';
+            var sortEl = document.getElementById('filterSort');
+            if (sortEl) sortEl.value = 'popular';
             renderProducts(btn.dataset.category);
         });
     });
 
     // --- Modal ---
-    // Product → Guide mapping
-    const productGuideMap = {
-        1: { section: 'led', label: 'Luminothérapie LED' },
+    var productGuideMap = {
+        1: { section: 'led', label: 'Luminoth\u00e9rapie LED' },
         2: { section: 'guasha', label: 'Gua Sha & Massage facial' },
-        3: { section: 'ultrasons', label: 'Ultrasons cutanés' },
+        3: { section: 'ultrasons', label: 'Ultrasons cutan\u00e9s' },
         4: { section: 'ultrasons', label: 'Nettoyage sonique' },
-        5: { section: 'cryo', label: 'Cryothérapie cutanée' },
+        5: { section: 'cryo', label: 'Cryoth\u00e9rapie cutan\u00e9e' },
         6: { section: 'ems', label: 'EMS facial' },
-        7: { section: 'led', label: 'Préparation de la peau' },
+        7: { section: 'led', label: 'Pr\u00e9paration de la peau' },
         8: { section: 'vitc', label: 'Vitamine C topique' },
-        9: { section: 'collagene', label: 'Collagène' },
-        10: { section: 'collagene', label: 'Collagène' },
-        11: { section: 'rosehip', label: 'Huile de Rose Musquée' },
-        12: { section: 'collagene', label: 'Collagène & Anti-rides' }
+        9: { section: 'collagene', label: 'Collag\u00e8ne' },
+        10: { section: 'collagene', label: 'Collag\u00e8ne' },
+        11: { section: 'rosehip', label: 'Huile de Rose Musqu\u00e9e' },
+        12: { section: 'collagene', label: 'Collag\u00e8ne & Anti-rides' }
     };
 
-    let modalTrigger = null;
+    var modalTrigger = null;
 
     window.openModal = function(productId) {
-        const product = PRODUCTS.find(p => p.id === productId);
+        var product = PRODUCTS.find(function(p) { return p.id === productId; });
         if (!product) return;
 
         modalTrigger = document.activeElement;
-        const guide = productGuideMap[product.id];
-        const guideLink = guide ? `<a href="pages/guide-beaute.html#${guide.section}" class="modal-guide-link">Lire l'étude scientifique : ${guide.label} →</a>` : '';
+        var guide = productGuideMap[product.id];
+        var guideLink = guide ? '<a href="pages/guide-beaute.html#' + guide.section + '" class="modal-guide-link">Lire l\'&eacute;tude scientifique : ' + guide.label + ' &rarr;</a>' : '';
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+        var pName = (typeof getProductText === 'function') ? (getProductText(product.id, 'name', lang) || product.name) : product.name;
+        var pDesc = (typeof getProductText === 'function') ? (getProductText(product.id, 'description', lang) || product.description) : product.description;
+        var features = product.features || [];
+        if (typeof getProductText === 'function' && lang !== 'fr') {
+            var trFeatures = getProductText(product.id, 'features', lang);
+            if (trFeatures && trFeatures.length) features = trFeatures;
+        }
 
-        modalContent.innerHTML = `
-            <div class="modal-grid">
-                <div class="modal-image"><img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}"></div>
-                <div class="modal-details">
-                    <div class="product-category">${getCategoryLabel(product.category)}</div>
-                    <h2 class="product-name" id="modalTitle">${escapeHTML(product.name)}</h2>
-                    <div class="product-rating">
-                        ${'&#9733;'.repeat(Math.floor(product.rating))}
-                        <span class="count">${product.rating}/5</span>
-                    </div>
-                    <p class="product-description">${escapeHTML(product.description)}</p>
-                    ${guideLink}
-                    <div class="product-price">
-                        <span class="price-current">${formatPrice(product.price)}</span>
-                        ${product.oldPrice ? `<span class="price-old">${formatPrice(product.oldPrice)}</span>` : ''}
-                    </div>
-                    <div class="modal-trust">
-                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128666;</span> ${t('trust_modal_shipping')}</div>
-                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128260;</span> ${t('trust_modal_refund')}</div>
-                        <div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#128274;</span> ${t('trust_modal_secure')}</div>
-                    </div>
-                    <ul class="modal-features">
-                        ${product.features.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
-                    </ul>
-                    <button class="btn btn-primary btn-full" onclick="addToCart(${product.id}); closeModal();">
-                        ${t('btn_add_cart')} - ${formatPrice(product.price)}
-                    </button>
-                </div>
-            </div>
-        `;
+        modalContent.innerHTML =
+            '<div class="modal-grid">' +
+                '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '"></div>' +
+                '<div class="modal-details">' +
+                    '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                    '<h2 class="product-name" id="modalTitle">' + escapeHTML(pName) + '</h2>' +
+                    '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5</span></div>' +
+                    '<p class="product-description">' + escapeHTML(pDesc) + '</p>' +
+                    guideLink +
+                    '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
+                        (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
+                    '</div>' +
+                    '<div class="modal-trust">' +
+                        '<div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#x1F69A;</span> ' + t('trust_modal_shipping') + '</div>' +
+                        '<div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#x1F504;</span> ' + t('trust_modal_refund') + '</div>' +
+                        '<div class="modal-trust-item"><span class="trust-icon" aria-hidden="true">&#x1F512;</span> ' + t('trust_modal_secure') + '</div>' +
+                    '</div>' +
+                    '<ul class="modal-features">' +
+                        features.map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') +
+                    '</ul>' +
+                    '<button class="btn btn-primary btn-full" onclick="addToCart(' + product.id + '); closeModal();">' +
+                        t('btn_add_cart') + ' - ' + formatPrice(product.price) +
+                    '</button>' +
+                    '<a href="pages/product.html?id=' + product.id + '" class="btn btn-outline btn-full" style="margin-top:8px;">' + (t('btn_full_details') || 'Voir la fiche compl\u00e8te') + '</a>' +
+                '</div>' +
+            '</div>';
 
         modalOverlay.classList.add('active');
         productModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        // Focus the close button for accessibility
-        setTimeout(() => modalClose.focus(), 100);
+        setTimeout(function() { if (modalClose) modalClose.focus(); }, 100);
     };
 
     window.closeModal = function() {
@@ -241,14 +364,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Escape key closes modal
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && productModal.classList.contains('active')) {
             closeModal();
         }
     });
 
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
     // --- Cart UI ---
     function openCart() {
@@ -386,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Cart Actions (global) ---
     window.addToCart = function(productId) {
-        const product = PRODUCTS.find(p => p.id === productId);
+        var product = PRODUCTS.find(function(p) { return p.id === productId; });
         if (product) {
             cart.add(product);
             showToast(t('toast_added').replace('{name}', product.name));
@@ -407,14 +530,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Smart Bundle Detection ---
     function checkBundleMatch() {
-        let container = document.getElementById('cartBundleSuggestion');
+        var container = document.getElementById('cartBundleSuggestion');
         if (!container) {
             container = document.createElement('div');
             container.id = 'cartBundleSuggestion';
-            const shippingBar = document.getElementById('cartShippingProgress');
-            if (shippingBar) {
-                shippingBar.insertAdjacentElement('afterend', container);
-            }
+            var shippingBar = document.getElementById('cartShippingProgress');
+            if (shippingBar) shippingBar.insertAdjacentElement('afterend', container);
         }
 
         if (typeof BUNDLES === 'undefined' || cart.isEmpty()) {
@@ -422,136 +543,106 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const cartProductIds = cart.items
-            .filter(item => typeof item.id === 'number')
-            .map(item => item.id);
+        var cartProductIds = cart.items
+            .filter(function(item) { return typeof item.id === 'number'; })
+            .map(function(item) { return item.id; });
 
-        const suggestions = [];
-        BUNDLES.forEach(bundle => {
-            if (cart.items.some(item => item.id === 'bundle-' + bundle.key)) return;
-            if (!bundle.productIds.every(pid => cartProductIds.includes(pid))) return;
-
-            const individualTotal = bundle.productIds.reduce((sum, pid) => {
-                const p = PRODUCTS.find(pr => pr.id === pid);
+        var suggestions = [];
+        BUNDLES.forEach(function(bundle) {
+            if (cart.items.some(function(item) { return item.id === 'bundle-' + bundle.key; })) return;
+            if (!bundle.productIds.every(function(pid) { return cartProductIds.indexOf(pid) !== -1; })) return;
+            var individualTotal = bundle.productIds.reduce(function(sum, pid) {
+                var p = PRODUCTS.find(function(pr) { return pr.id === pid; });
                 return sum + (p ? p.price : 0);
             }, 0);
-            const savings = individualTotal - bundle.price;
-            if (savings > 0) {
-                suggestions.push({ bundle, savings, individualTotal });
-            }
+            var savings = individualTotal - bundle.price;
+            if (savings > 0) suggestions.push({ bundle: bundle, savings: savings, individualTotal: individualTotal });
         });
 
-        if (suggestions.length === 0) {
-            container.innerHTML = '';
-            return;
-        }
+        if (suggestions.length === 0) { container.innerHTML = ''; return; }
 
-        container.innerHTML = suggestions.map(s => {
-            const bundleName = t('bundle_prefix') + ' ' + t('bundle_' + s.bundle.key + '_name');
-            return `
-            <div class="bundle-suggestion">
-                <div class="bundle-suggestion-icon">&#127873;</div>
-                <div class="bundle-suggestion-text">
-                    <strong>${bundleName}</strong><br>
-                    ${t('bundle_match_text')}
-                    <span class="bundle-savings">${t('bundle_save')} ${formatPrice(s.savings)}</span>
-                </div>
-                <button class="btn btn-primary btn-sm bundle-convert-btn" onclick="convertToBundle('${s.bundle.key}')">
-                    ${formatPrice(s.bundle.price)}
-                </button>
-            </div>`;
+        container.innerHTML = suggestions.map(function(s) {
+            var bundleName = t('bundle_prefix') + ' ' + t('bundle_' + s.bundle.key + '_name');
+            return '<div class="bundle-suggestion"><div class="bundle-suggestion-icon">&#127873;</div>' +
+                '<div class="bundle-suggestion-text"><strong>' + bundleName + '</strong><br>' +
+                t('bundle_match_text') + ' <span class="bundle-savings">' + t('bundle_save') + ' ' + formatPrice(s.savings) + '</span></div>' +
+                '<button class="btn btn-primary btn-sm bundle-convert-btn" onclick="convertToBundle(\'' + s.bundle.key + '\')">' + formatPrice(s.bundle.price) + '</button></div>';
         }).join('');
     }
 
     window.convertToBundle = function(bundleKey) {
-        const bundle = BUNDLES.find(b => b.key === bundleKey);
+        var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
         if (!bundle) return;
-
-        const individualTotal = bundle.productIds.reduce((sum, pid) => {
-            const p = PRODUCTS.find(pr => pr.id === pid);
+        var individualTotal = bundle.productIds.reduce(function(sum, pid) {
+            var p = PRODUCTS.find(function(pr) { return pr.id === pid; });
             return sum + (p ? p.price : 0);
         }, 0);
-        const savings = individualTotal - bundle.price;
-
-        bundle.productIds.forEach(pid => {
-            const item = cart.items.find(i => i.id === pid);
+        var savings = individualTotal - bundle.price;
+        bundle.productIds.forEach(function(pid) {
+            var item = cart.items.find(function(i) { return i.id === pid; });
             if (item) {
-                if (item.qty > 1) {
-                    item.qty -= 1;
-                } else {
-                    cart.items = cart.items.filter(i => i.id !== pid);
-                }
+                if (item.qty > 1) item.qty -= 1;
+                else cart.items = cart.items.filter(function(i) { return i.id !== pid; });
             }
         });
-
-        const bundleName = t('bundle_prefix') + ' ' + t('bundle_' + bundle.key + '_name');
-        const firstProduct = PRODUCTS.find(p => p.id === bundle.productIds[0]);
-        cart.items.push({
-            id: 'bundle-' + bundle.key,
-            name: bundleName,
-            price: bundle.price,
-            image: firstProduct ? firstProduct.image : '',
-            qty: 1
-        });
-
+        var bundleName = t('bundle_prefix') + ' ' + t('bundle_' + bundle.key + '_name');
+        var firstProduct = PRODUCTS.find(function(p) { return p.id === bundle.productIds[0]; });
+        cart.items.push({ id: 'bundle-' + bundle.key, name: bundleName, price: bundle.price, image: firstProduct ? firstProduct.image : '', qty: 1 });
         cart.save();
         showToast(t('bundle_converted_toast') + ' -' + formatPrice(savings));
     };
 
-    cart.onChange(() => renderCart());
+    cart.onChange(function() { renderCart(); });
 
     // --- Checkout ---
-    checkoutBtn.addEventListener('click', () => {
-        if (cart.isEmpty()) return;
-        window.location.href = 'pages/checkout.html';
-    });
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function() {
+            if (cart.isEmpty()) return;
+            window.location.href = 'pages/checkout.html';
+        });
+    }
 
     // --- Newsletter ---
-    newsletterForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const emailInput = newsletterForm.querySelector('input');
-        const email = emailInput.value;
-        const btn = newsletterForm.querySelector('button');
-        const originalText = btn.textContent;
-        btn.textContent = '...';
-        btn.disabled = true;
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var emailInput = newsletterForm.querySelector('input');
+            var email = emailInput.value;
+            var btn = newsletterForm.querySelector('button');
+            var originalText = btn.textContent;
+            btn.textContent = '...';
+            btn.disabled = true;
 
-        try {
-            const resp = await fetch('/api/newsletter', {
+            fetch('/api/newsletter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, lang: currentLang || 'fr' })
-            });
-            const data = await resp.json();
-            if (data.success) {
-                showToast(t('newsletter_success'));
-            } else {
+                body: JSON.stringify({ email: email, lang: currentLang || 'fr' })
+            }).then(function(resp) { return resp.json(); })
+            .then(function(data) {
+                showToast(data.success ? t('newsletter_success') : t('newsletter_error'));
+            }).catch(function() {
                 showToast(t('newsletter_error'), 'error');
-            }
-        } catch (err) {
-            showToast(t('newsletter_error'), 'error');
-        }
-
-        newsletterForm.reset();
-        btn.textContent = originalText;
-        btn.disabled = false;
-    });
+            }).finally(function() {
+                newsletterForm.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
+        });
+    }
 
     // --- Toast Notification ---
-    function showToast(message, type = '') {
-        const existing = document.querySelector('.toast');
+    function showToast(message, type) {
+        if (!type) type = '';
+        var existing = document.querySelector('.toast');
         if (existing) existing.remove();
-
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
+        var toast = document.createElement('div');
+        toast.className = 'toast ' + type;
         toast.textContent = message;
         document.body.appendChild(toast);
-
-        requestAnimationFrame(() => toast.classList.add('show'));
-
-        setTimeout(() => {
+        requestAnimationFrame(function() { toast.classList.add('show'); });
+        setTimeout(function() {
             toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
+            setTimeout(function() { toast.remove(); }, 300);
         }, 3000);
     }
 
@@ -564,19 +655,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.formatPrice = formatPrice;
 
-    // --- Scroll animations ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    // --- Scroll animations (IntersectionObserver — only for sections, not 500 cards) ---
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.02, rootMargin: '50px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('section.anim-fade-up, .fade-in:not(.product-card)').forEach(function(el) {
+        observer.observe(el);
+    });
 
     // --- Smooth scroll for anchor links ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -587,21 +678,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Cookie Banner ---
-    const cookieBanner = document.getElementById('cookieBanner');
-    if (cookieBanner) {
-        const cookieChoice = localStorage.getItem('eclat_cookies');
-        if (cookieChoice) {
-            cookieBanner.classList.add('hidden');
-        }
-        document.getElementById('cookieAccept')?.addEventListener('click', () => {
-            localStorage.setItem('eclat_cookies', 'accepted');
-            cookieBanner.classList.add('hidden');
-        });
-        document.getElementById('cookieRefuse')?.addEventListener('click', () => {
-            localStorage.setItem('eclat_cookies', 'refused');
-            cookieBanner.classList.add('hidden');
-        });
-    }
+    // REMPLACE par js/cookie-consent.js (bandeau granulaire CNIL)
+    // L'ancien bandeau #cookieBanner est masque par cookie-consent.js
 
     // --- Initialize ---
     renderProducts();

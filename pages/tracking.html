@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi de commande - &Eacute;CLAT</title>
+    <meta name="description" content="Suivez votre commande ÉCLAT en temps réel. Statut, transporteur, numéro de suivi et estimation de livraison.">
+    <link rel="canonical" href="https://maison-eclat.shop/pages/tracking.html">
+    <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/tracking.html?lang=fr">
+    <link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/tracking.html?lang=en">
+    <link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/tracking.html?lang=es">
+    <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/tracking.html?lang=de">
+    <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/tracking.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#10024;</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
+    <style>
+        /* ── Tracking page layout ── */
+        .tracking-page { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+        .tracking-page h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 6px; text-align: center; }
+        .tracking-subtitle { text-align: center; color: var(--color-text-light); margin-bottom: 36px; font-size: 0.95rem; }
+
+        /* ── Search form ── */
+        .tracking-search { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 32px; }
+        .tracking-search-title { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 16px; text-align: center; }
+        .tracking-search-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .tracking-search-input { flex: 1; min-width: 200px; padding: 14px 18px; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 0.92rem; font-family: var(--font-body); transition: var(--transition); }
+        .tracking-search-input:focus { outline: none; border-color: var(--color-secondary); box-shadow: 0 0 0 3px rgba(201,168,124,0.15); }
+        .tracking-search-btn { padding: 14px 28px; background: var(--color-primary); color: var(--color-white); border: none; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: var(--font-body); white-space: nowrap; }
+        .tracking-search-btn:hover { background: var(--color-secondary); }
+        .tracking-search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .tracking-search-hint { font-size: 0.78rem; color: var(--color-text-light); margin-top: 10px; text-align: center; }
+        .tracking-email-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+        .tracking-email-row.hidden { display: none; }
+
+        /* ── Order header card ── */
+        .tracking-header { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
+        .tracking-header-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .tracking-order-ref { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+        .tracking-order-date { font-size: 0.85rem; color: var(--color-text-light); margin-top: 2px; }
+        .tracking-status-badge { display: inline-block; padding: 5px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.3px; }
+
+        /* ── Progress timeline bar ── */
+        .tracking-progress { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px 24px; margin-bottom: 24px; }
+        .progress-steps { display: flex; justify-content: space-between; position: relative; margin: 0; padding: 0; list-style: none; }
+        .progress-steps::before { content: ''; position: absolute; top: 17px; left: 0; right: 0; height: 3px; background: var(--color-border); z-index: 0; }
+        .progress-bar-fill { position: absolute; top: 17px; left: 0; height: 3px; background: var(--color-secondary); z-index: 1; transition: width 0.8s cubic-bezier(.4,0,.2,1); }
+        .progress-step { position: relative; z-index: 2; text-align: center; flex: 1; }
+        .progress-dot { width: 36px; height: 36px; border-radius: 50%; background: var(--color-bg-alt); border: 3px solid var(--color-border); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 0.85rem; transition: all 0.4s; }
+        .progress-step.active .progress-dot { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(201,168,124,0.2); }
+        .progress-step.done .progress-dot { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
+        .progress-step-label { font-size: 0.72rem; color: var(--color-text-light); line-height: 1.3; }
+        .progress-step.active .progress-step-label { color: var(--color-secondary); font-weight: 600; }
+        .progress-step.done .progress-step-label { color: var(--color-text); font-weight: 500; }
+
+        /* ── Tracking number card ── */
+        .tracking-number-card { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+        .tracking-num-label { font-size: 0.82rem; color: var(--color-text-light); margin-bottom: 4px; }
+        .tracking-num-value { font-size: 1.08rem; font-weight: 700; letter-spacing: 0.5px; font-family: 'Courier New', monospace; }
+        .tracking-carrier { font-size: 0.82rem; color: var(--color-text-light); margin-top: 4px; }
+        .tracking-num-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tracking-num-link { display: inline-block; background: var(--color-secondary); color: #fff; padding: 10px 22px; border-radius: var(--radius-md); font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: var(--transition); white-space: nowrap; }
+        .tracking-num-link:hover { opacity: 0.9; transform: translateY(-1px); }
+        .tracking-copy-btn { display: inline-block; background: var(--color-white); color: var(--color-text); padding: 10px 18px; border-radius: var(--radius-md); font-size: 0.82rem; font-weight: 500; border: 1px solid var(--color-border); cursor: pointer; transition: var(--transition); white-space: nowrap; font-family: var(--font-body); }
+        .tracking-copy-btn:hover { border-color: var(--color-secondary); color: var(--color-secondary); }
+
+        /* ── Estimated delivery ── */
+        .tracking-estimate { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 22px 24px; margin-bottom: 24px; text-align: center; }
+        .tracking-estimate-icon { font-size: 1.6rem; margin-bottom: 8px; }
+        .tracking-estimate-label { font-size: 0.82rem; color: var(--color-text-light); margin-bottom: 4px; }
+        .tracking-estimate-range { font-size: 1.05rem; font-weight: 600; }
+
+        /* ── Events timeline ── */
+        .tracking-events { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px; }
+        .tracking-events h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 20px; }
+        .tracking-timeline { position: relative; padding-left: 30px; }
+        .tracking-timeline::before { content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: var(--color-border); }
+        .tracking-event { position: relative; padding-bottom: 22px; opacity: 0; animation: eventFadeIn 0.4s ease-out forwards; }
+        .tracking-event:last-child { padding-bottom: 0; }
+        .tracking-event-dot { position: absolute; left: -26px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-border); border: 2px solid var(--color-white); }
+        .tracking-event:first-child .tracking-event-dot { background: var(--color-secondary); width: 14px; height: 14px; left: -27px; top: 4px; box-shadow: 0 0 0 4px rgba(201,168,124,0.2); }
+        .tracking-event-date { font-size: 0.78rem; color: var(--color-text-light); margin-bottom: 2px; }
+        .tracking-event-desc { font-size: 0.9rem; font-weight: 500; }
+        .tracking-event-location { font-size: 0.78rem; color: var(--color-text-light); margin-top: 2px; }
+        @keyframes eventFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ── No tracking info ── */
+        .tracking-empty { text-align: center; padding: 48px 20px; color: var(--color-text-light); }
+        .tracking-empty-icon { font-size: 2.8rem; margin-bottom: 14px; }
+        .tracking-empty p { font-size: 0.92rem; line-height: 1.7; }
+
+        /* ── Help box ── */
+        .tracking-help { background: var(--color-bg-alt); border-radius: var(--radius-md); padding: 28px; text-align: center; border: 1px solid var(--color-border); }
+        .tracking-help h3 { font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 8px; }
+        .tracking-help p { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 4px; }
+        .tracking-help a { color: var(--color-secondary); font-weight: 600; text-decoration: none; }
+
+        /* ── Auto-refresh indicator ── */
+        .tracking-refresh { text-align: center; font-size: 0.75rem; color: var(--color-text-light); margin-top: 18px; }
+        .tracking-refresh-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; margin-right: 5px; vertical-align: middle; animation: refreshPulse 2s ease-in-out infinite; }
+        @keyframes refreshPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* ── Loading spinner ── */
+        .tracking-loading { text-align: center; padding: 60px 20px; }
+        .tracking-spinner { width: 42px; height: 42px; border: 3px solid var(--color-border); border-top-color: var(--color-secondary); border-radius: 50%; animation: tspin 0.8s linear infinite; margin: 0 auto 16px; }
+        @keyframes tspin { to { transform: rotate(360deg); } }
+
+        /* ── Error state ── */
+        .tracking-error-state { text-align: center; padding: 48px 20px; }
+        .tracking-error-state a { color: var(--color-secondary); font-weight: 600; text-decoration: none; }
+
+        /* ── Footer (mini) ── */
+        .tracking-footer { background: var(--color-white); border-top: 1px solid var(--color-border); padding: 32px 24px; margin-top: 40px; }
+        .tracking-footer-inner { max-width: 760px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+        .tracking-footer-col h4 { font-family: var(--font-display); font-size: 0.9rem; margin-bottom: 10px; }
+        .tracking-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tracking-footer-col li { margin-bottom: 6px; }
+        .tracking-footer-col a { font-size: 0.82rem; color: var(--color-text-light); text-decoration: none; transition: color 0.2s; }
+        .tracking-footer-col a:hover { color: var(--color-secondary); }
+        .tracking-footer-bottom { max-width: 760px; margin: 16px auto 0; padding-top: 16px; border-top: 1px solid var(--color-border); text-align: center; font-size: 0.78rem; color: var(--color-text-light); }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .tracking-page { padding: 24px 16px 60px; }
+            .tracking-page h1 { font-size: 1.6rem; }
+            .progress-step-label { font-size: 0.62rem; }
+            .progress-dot { width: 28px; height: 28px; font-size: 0.72rem; }
+            .tracking-number-card { flex-direction: column; text-align: center; }
+            .tracking-num-actions { justify-content: center; }
+            .tracking-search-row { flex-direction: column; }
+            .tracking-search-btn { width: 100%; }
+            .tracking-footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>&#128666; <span data-i18n="banner_shipping">Livraison offerte d&egrave;s 29&euro;</span> &bull; &#128260; <span data-i18n="banner_returns">Satisfait ou rembours&eacute; 30j</span> &bull; &#128274; <span data-i18n="banner_secure">Paiement s&eacute;curis&eacute;</span></p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#produits" data-i18n="nav_products">Produits</a></li>
+                <li><a href="../index.html#packs" data-i18n="nav_bundles">Coffrets</a></li>
+                <li><a href="guide-beaute.html" data-i18n="nav_guide">Guide Beaut&eacute;</a></li>
+                <li><a href="a-propos.html" data-i18n="nav_about">&Agrave; propos</a></li>
+                <li><a href="account.html" id="navAccount" data-i18n="nav_account">Mon compte</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="account.html#eclats" id="navLoyaltyWidget" class="loyalty-widget" style="display:none;" aria-label="Mes Éclats">
+                    <span class="lw-eclats" id="lwEclats">0</span>
+                    <span class="lw-label">&Eacute;clats</span>
+                </a>
+                <a href="wishlist.html" class="cart-btn" aria-label="Favoris" style="position:relative;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
+                    <span class="cart-count" id="wishlistBadge" style="display:none;">0</span>
+                </a>
+                <button class="cart-btn" id="cartBtn" aria-label="Panier">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="tracking-page">
+        <h1 data-i18n="tracking_title">Suivi de commande</h1>
+        <p class="tracking-subtitle" data-i18n="tracking_subtitle">Suivez votre colis en temps r&eacute;el</p>
+
+        <!-- ── Search form ── -->
+        <div class="tracking-search" id="trackingSearch">
+            <p class="tracking-search-title" data-i18n="tracking_search_title">Entrez votre num&eacute;ro de commande ou de suivi</p>
+            <div class="tracking-search-row">
+                <input type="text" class="tracking-search-input" id="trackingInput" placeholder="ECL-XXXX ou num&eacute;ro de suivi" data-i18n-placeholder="tracking_input_placeholder" autocomplete="off" spellcheck="false">
+                <button class="tracking-search-btn" id="trackingSearchBtn" data-i18n="tracking_search_btn">Rechercher</button>
+            </div>
+            <div class="tracking-email-row hidden" id="trackingEmailRow">
+                <input type="email" class="tracking-search-input" id="trackingEmailInput" placeholder="Votre email de commande" data-i18n-placeholder="tracking_email_placeholder" autocomplete="email">
+            </div>
+            <p class="tracking-search-hint" data-i18n="tracking_search_hint">Retrouvez votre num&eacute;ro dans l'email de confirmation de commande</p>
+        </div>
+
+        <!-- ── Loading state ── -->
+        <div id="trackingLoading" style="display:none;" class="tracking-loading">
+            <div class="tracking-spinner"></div>
+            <p style="color:var(--color-text-light);font-size:0.9rem;" data-i18n="tracking_loading">Chargement du suivi...</p>
+        </div>
+
+        <!-- ── Main content (hidden until loaded) ── -->
+        <div id="trackingContent" style="display:none;">
+
+            <!-- Order header -->
+            <div class="tracking-header">
+                <div class="tracking-header-row">
+                    <div>
+                        <div class="tracking-order-ref" id="trackingOrderRef"></div>
+                        <div class="tracking-order-date" id="trackingOrderDate"></div>
+                    </div>
+                    <span class="tracking-status-badge" id="trackingStatusBadge"></span>
+                </div>
+            </div>
+
+            <!-- Progress timeline bar -->
+            <div class="tracking-progress">
+                <div style="position:relative;">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                    <ul class="progress-steps" id="progressSteps">
+                        <li class="progress-step" data-step="ordered">
+                            <div class="progress-dot">&#10003;</div>
+                            <div class="progress-step-label" data-i18n="tracking_step_ordered">Command&eacute;</div>
+                        </li>
+                        <li class="progress-step" data-step="prepared">
+                            <div class="progress-dot">&#128230;</div>
+                            <div class="progress-step-label" data-i18n="tracking_step_prepared">En pr&eacute;paration</div>
+                        </li>
+                        <li class="progress-step" data-step="shipped">
+                            <div class="progress-dot">&#128666;</div>
+                            <div class="progress-step-label" data-i18n="tracking_step_shipped">Exp&eacute;di&eacute;</div>
+                        </li>
+                        <li class="progress-step" data-step="in_transit">
+                            <div class="progress-dot">&#9992;</div>
+                            <div class="progress-step-label" data-i18n="tracking_step_transit">En transit</div>
+                        </li>
+                        <li class="progress-step" data-step="delivered">
+                            <div class="progress-dot">&#127968;</div>
+                            <div class="progress-step-label" data-i18n="tracking_step_delivered">Livr&eacute;</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tracking number card -->
+            <div class="tracking-number-card" id="trackingNumberCard" style="display:none;">
+                <div>
+                    <div class="tracking-num-label" data-i18n="tracking_number_label">Num&eacute;ro de suivi</div>
+                    <div class="tracking-num-value" id="trackingNumValue"></div>
+                    <div class="tracking-carrier" id="trackingCarrier"></div>
+                </div>
+                <div class="tracking-num-actions">
+                    <button class="tracking-copy-btn" id="trackingCopyBtn" data-i18n="tracking_copy">Copier</button>
+                    <a href="#" target="_blank" rel="noopener" class="tracking-num-link" id="trackingExternalLink" data-i18n="tracking_external_link">Suivre sur 17track &#8599;</a>
+                </div>
+            </div>
+
+            <!-- Estimated delivery -->
+            <div class="tracking-estimate" id="trackingEstimate">
+                <div class="tracking-estimate-icon">&#128197;</div>
+                <div class="tracking-estimate-label" data-i18n="tracking_estimate_label">Livraison estim&eacute;e</div>
+                <div class="tracking-estimate-range" id="trackingEstimateRange"></div>
+            </div>
+
+            <!-- Events timeline -->
+            <div class="tracking-events" id="trackingEventsSection">
+                <h3 data-i18n="tracking_events_title">Historique de suivi</h3>
+                <div class="tracking-timeline" id="trackingTimeline"></div>
+            </div>
+
+            <!-- No tracking info yet -->
+            <div id="trackingEmpty" style="display:none;" class="tracking-empty">
+                <div class="tracking-empty-icon">&#128230;</div>
+                <p data-i18n="tracking_no_info">Votre commande est en cours de pr&eacute;paration.<br>Les informations de suivi seront disponibles d&egrave;s l'exp&eacute;dition.</p>
+            </div>
+
+            <!-- Help box -->
+            <div class="tracking-help">
+                <h3 data-i18n="tracking_help_title">Besoin d'aide ?</h3>
+                <p data-i18n="tracking_help_text">Notre &eacute;quipe est l&agrave; pour vous aider.</p>
+                <p><a href="mailto:contact@maison-eclat.shop">contact@maison-eclat.shop</a></p>
+                <p style="font-size:0.78rem;margin-top:6px;"><a href="faq.html" data-i18n="tracking_help_faq">Consulter la FAQ</a> &bull; <a href="support.html" data-i18n="tracking_help_support">Cr&eacute;er un ticket</a></p>
+            </div>
+
+            <!-- Auto-refresh indicator -->
+            <div class="tracking-refresh" id="trackingRefresh">
+                <span class="tracking-refresh-dot"></span>
+                <span data-i18n="tracking_auto_refresh">Mise &agrave; jour automatique toutes les 5 min</span>
+            </div>
+        </div>
+
+        <!-- ── Error state ── -->
+        <div id="trackingError" style="display:none;" class="tracking-error-state">
+            <div style="font-size:2.5rem;margin-bottom:14px;">&#9888;&#65039;</div>
+            <p id="trackingErrorMsg" style="font-size:0.95rem;margin-bottom:16px;">Une erreur est survenue.</p>
+            <p><a href="account.html#commandes" data-i18n="tracking_back_orders">&larr; Retour &agrave; mes commandes</a></p>
+            <p style="margin-top:8px;"><a href="#" id="trackingRetryLink" data-i18n="tracking_retry">R&eacute;essayer</a></p>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="tracking-footer">
+        <div class="tracking-footer-inner">
+            <div class="tracking-footer-col">
+                <h4>&Eacute;CLAT</h4>
+                <p style="font-size:0.82rem;color:var(--color-text-light);">Beaut&eacute; &amp; Wellness Premium</p>
+            </div>
+            <div class="tracking-footer-col">
+                <h4 data-i18n="footer_service">Service Client</h4>
+                <ul>
+                    <li><a href="faq.html" data-i18n="footer_faq">FAQ</a></li>
+                    <li><a href="livraison.html" data-i18n="footer_shipping">Livraison</a></li>
+                    <li><a href="retours.html" data-i18n="footer_returns">Retours</a></li>
+                    <li><a href="contact.html" data-i18n="footer_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="tracking-footer-col">
+                <h4 data-i18n="footer_legal">L&eacute;gal</h4>
+                <ul>
+                    <li><a href="cgv.html" data-i18n="footer_cgv">CGV</a></li>
+                    <li><a href="mentions-legales.html" data-i18n="footer_mentions">Mentions l&eacute;gales</a></li>
+                    <li><a href="confidentialite.html" data-i18n="footer_privacy">Confidentialit&eacute;</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tracking-footer-bottom">
+            <p>&copy; 2026 &Eacute;CLAT &mdash; Maison &Eacute;clat, micro-entreprise. Tous droits r&eacute;serv&eacute;s.</p>
+        </div>
+    </footer>
+
+    <script src="../js/products.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/themes.js" defer></script>
+
+    <script>
+    // ============================
+    // ÉCLAT — Suivi de commande (IIFE, var/function style)
+    // ============================
+    (function() {
+        'use strict';
+
+        // ── i18n : 4 langues (FR, EN, ES, DE) ──
+        var T = {
+            fr: {
+                tracking_title: 'Suivi de commande',
+                tracking_subtitle: 'Suivez votre colis en temps réel',
+                tracking_search_title: 'Entrez votre numéro de commande ou de suivi',
+                tracking_input_placeholder: 'ECL-XXXX ou numéro de suivi',
+                tracking_email_placeholder: 'Votre email de commande',
+                tracking_search_btn: 'Rechercher',
+                tracking_search_hint: 'Retrouvez votre numéro dans l\'email de confirmation de commande',
+                tracking_loading: 'Chargement du suivi...',
+                tracking_step_ordered: 'Commandé',
+                tracking_step_prepared: 'En préparation',
+                tracking_step_shipped: 'Expédié',
+                tracking_step_transit: 'En transit',
+                tracking_step_delivered: 'Livré',
+                tracking_number_label: 'Numéro de suivi',
+                tracking_copy: 'Copier',
+                tracking_copied: 'Copié !',
+                tracking_external_link: 'Suivre sur 17track ↗',
+                tracking_estimate_label: 'Livraison estimée',
+                tracking_events_title: 'Historique de suivi',
+                tracking_no_info: 'Votre commande est en cours de préparation.<br>Les informations de suivi seront disponibles dès l\'expédition.',
+                tracking_help_title: 'Besoin d\'aide ?',
+                tracking_help_text: 'Notre équipe est là pour vous aider.',
+                tracking_help_faq: 'Consulter la FAQ',
+                tracking_help_support: 'Créer un ticket',
+                tracking_auto_refresh: 'Mise à jour automatique toutes les 5 min',
+                tracking_back_orders: '← Retour à mes commandes',
+                tracking_retry: 'Réessayer',
+                tracking_order: 'Commande',
+                tracking_from: 'du',
+                tracking_error_notfound: 'Commande introuvable. Vérifiez votre numéro de commande ou de suivi.',
+                tracking_error_generic: 'Une erreur est survenue. Veuillez réessayer.',
+                tracking_error_unauthorized: 'Vous n\'êtes pas autorisé à voir cette commande.',
+                tracking_estimate_between: 'Entre le',
+                tracking_estimate_and: 'et le',
+                tracking_carrier_label: 'Transporteur :',
+                footer_service: 'Service Client',
+                footer_faq: 'FAQ',
+                footer_shipping: 'Livraison',
+                footer_returns: 'Retours',
+                footer_contact: 'Contact',
+                footer_legal: 'Légal',
+                footer_cgv: 'CGV',
+                footer_mentions: 'Mentions légales',
+                footer_privacy: 'Confidentialité'
+            },
+            en: {
+                tracking_title: 'Order Tracking',
+                tracking_subtitle: 'Track your package in real time',
+                tracking_search_title: 'Enter your order or tracking number',
+                tracking_input_placeholder: 'ECL-XXXX or tracking number',
+                tracking_email_placeholder: 'Your order email address',
+                tracking_search_btn: 'Search',
+                tracking_search_hint: 'Find your number in the order confirmation email',
+                tracking_loading: 'Loading tracking info...',
+                tracking_step_ordered: 'Ordered',
+                tracking_step_prepared: 'Preparing',
+                tracking_step_shipped: 'Shipped',
+                tracking_step_transit: 'In transit',
+                tracking_step_delivered: 'Delivered',
+                tracking_number_label: 'Tracking number',
+                tracking_copy: 'Copy',
+                tracking_copied: 'Copied!',
+                tracking_external_link: 'Track on 17track ↗',
+                tracking_estimate_label: 'Estimated delivery',
+                tracking_events_title: 'Tracking history',
+                tracking_no_info: 'Your order is being prepared.<br>Tracking info will be available once shipped.',
+                tracking_help_title: 'Need help?',
+                tracking_help_text: 'Our team is here to help.',
+                tracking_help_faq: 'View FAQ',
+                tracking_help_support: 'Create a ticket',
+                tracking_auto_refresh: 'Auto-refresh every 5 min',
+                tracking_back_orders: '← Back to my orders',
+                tracking_retry: 'Retry',
+                tracking_order: 'Order',
+                tracking_from: 'from',
+                tracking_error_notfound: 'Order not found. Please check your order or tracking number.',
+                tracking_error_generic: 'An error occurred. Please try again.',
+                tracking_error_unauthorized: 'You are not authorized to view this order.',
+                tracking_estimate_between: 'Between',
+                tracking_estimate_and: 'and',
+                tracking_carrier_label: 'Carrier:',
+                footer_service: 'Customer Service',
+                footer_faq: 'FAQ',
+                footer_shipping: 'Shipping',
+                footer_returns: 'Returns',
+                footer_contact: 'Contact',
+                footer_legal: 'Legal',
+                footer_cgv: 'Terms & Conditions',
+                footer_mentions: 'Legal Notice',
+                footer_privacy: 'Privacy Policy'
+            },
+            es: {
+                tracking_title: 'Seguimiento de pedido',
+                tracking_subtitle: 'Sigue tu paquete en tiempo real',
+                tracking_search_title: 'Ingresa tu número de pedido o seguimiento',
+                tracking_input_placeholder: 'ECL-XXXX o número de seguimiento',
+                tracking_email_placeholder: 'Tu correo electrónico del pedido',
+                tracking_search_btn: 'Buscar',
+                tracking_search_hint: 'Encuentra tu número en el correo de confirmación del pedido',
+                tracking_loading: 'Cargando seguimiento...',
+                tracking_step_ordered: 'Pedido',
+                tracking_step_prepared: 'En preparación',
+                tracking_step_shipped: 'Enviado',
+                tracking_step_transit: 'En tránsito',
+                tracking_step_delivered: 'Entregado',
+                tracking_number_label: 'Número de seguimiento',
+                tracking_copy: 'Copiar',
+                tracking_copied: '¡Copiado!',
+                tracking_external_link: 'Seguir en 17track ↗',
+                tracking_estimate_label: 'Entrega estimada',
+                tracking_events_title: 'Historial de seguimiento',
+                tracking_no_info: 'Tu pedido está siendo preparado.<br>La información de seguimiento estará disponible una vez enviado.',
+                tracking_help_title: '¿Necesitas ayuda?',
+                tracking_help_text: 'Nuestro equipo está aquí para ayudarte.',
+                tracking_help_faq: 'Ver FAQ',
+                tracking_help_support: 'Crear un ticket',
+                tracking_auto_refresh: 'Actualización automática cada 5 min',
+                tracking_back_orders: '← Volver a mis pedidos',
+                tracking_retry: 'Reintentar',
+                tracking_order: 'Pedido',
+                tracking_from: 'del',
+                tracking_error_notfound: 'Pedido no encontrado. Verifica tu número de pedido o seguimiento.',
+                tracking_error_generic: 'Ocurrió un error. Inténtalo de nuevo.',
+                tracking_error_unauthorized: 'No estás autorizado para ver este pedido.',
+                tracking_estimate_between: 'Entre el',
+                tracking_estimate_and: 'y el',
+                tracking_carrier_label: 'Transportista:',
+                footer_service: 'Atención al Cliente',
+                footer_faq: 'FAQ',
+                footer_shipping: 'Envío',
+                footer_returns: 'Devoluciones',
+                footer_contact: 'Contacto',
+                footer_legal: 'Legal',
+                footer_cgv: 'Condiciones',
+                footer_mentions: 'Aviso legal',
+                footer_privacy: 'Privacidad'
+            },
+            de: {
+                tracking_title: 'Sendungsverfolgung',
+                tracking_subtitle: 'Verfolge dein Paket in Echtzeit',
+                tracking_search_title: 'Bestellnummer oder Sendungsnummer eingeben',
+                tracking_input_placeholder: 'ECL-XXXX oder Sendungsnummer',
+                tracking_email_placeholder: 'Deine Bestell-E-Mail-Adresse',
+                tracking_search_btn: 'Suchen',
+                tracking_search_hint: 'Deine Nummer findest du in der Bestellbestätigungs-E-Mail',
+                tracking_loading: 'Sendungsverfolgung wird geladen...',
+                tracking_step_ordered: 'Bestellt',
+                tracking_step_prepared: 'In Vorbereitung',
+                tracking_step_shipped: 'Versendet',
+                tracking_step_transit: 'Unterwegs',
+                tracking_step_delivered: 'Zugestellt',
+                tracking_number_label: 'Sendungsnummer',
+                tracking_copy: 'Kopieren',
+                tracking_copied: 'Kopiert!',
+                tracking_external_link: 'Auf 17track verfolgen ↗',
+                tracking_estimate_label: 'Voraussichtliche Lieferung',
+                tracking_events_title: 'Sendungsverlauf',
+                tracking_no_info: 'Deine Bestellung wird vorbereitet.<br>Sendungsinformationen sind verfügbar, sobald das Paket versendet wurde.',
+                tracking_help_title: 'Hilfe benötigt?',
+                tracking_help_text: 'Unser Team ist für dich da.',
+                tracking_help_faq: 'FAQ ansehen',
+                tracking_help_support: 'Ticket erstellen',
+                tracking_auto_refresh: 'Automatische Aktualisierung alle 5 Min.',
+                tracking_back_orders: '← Zurück zu meinen Bestellungen',
+                tracking_retry: 'Erneut versuchen',
+                tracking_order: 'Bestellung',
+                tracking_from: 'vom',
+                tracking_error_notfound: 'Bestellung nicht gefunden. Bitte überprüfe deine Bestell- oder Sendungsnummer.',
+                tracking_error_generic: 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.',
+                tracking_error_unauthorized: 'Du bist nicht berechtigt, diese Bestellung einzusehen.',
+                tracking_estimate_between: 'Zwischen dem',
+                tracking_estimate_and: 'und dem',
+                tracking_carrier_label: 'Spediteur:',
+                footer_service: 'Kundenservice',
+                footer_faq: 'FAQ',
+                footer_shipping: 'Versand',
+                footer_returns: 'Rücksendungen',
+                footer_contact: 'Kontakt',
+                footer_legal: 'Rechtliches',
+                footer_cgv: 'AGB',
+                footer_mentions: 'Impressum',
+                footer_privacy: 'Datenschutz'
+            }
+        };
+
+        var lang = 'fr';
+        var refreshTimer = null;
+        var currentQuery = '';
+        var currentEmail = '';
+
+        function tr(key) {
+            return (T[lang] || T.fr)[key] || T.fr[key] || key;
+        }
+
+        function detectLang() {
+            var params = new URLSearchParams(window.location.search);
+            var paramLang = params.get('lang');
+            if (paramLang && T[paramLang]) { lang = paramLang; return; }
+            var stored = localStorage.getItem('eclat_lang');
+            if (stored && T[stored]) { lang = stored; return; }
+            var browserLang = (navigator.language || '').substring(0, 2).toLowerCase();
+            if (T[browserLang]) { lang = browserLang; return; }
+            lang = 'fr';
+        }
+
+        function applyTranslations() {
+            var els = document.querySelectorAll('[data-i18n]');
+            for (var i = 0; i < els.length; i++) {
+                var key = els[i].getAttribute('data-i18n');
+                var val = tr(key);
+                if (val) els[i].innerHTML = val;
+            }
+            // Placeholders
+            var placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            for (var j = 0; j < placeholders.length; j++) {
+                var pKey = placeholders[j].getAttribute('data-i18n-placeholder');
+                var pVal = tr(pKey);
+                if (pVal) placeholders[j].placeholder = pVal;
+            }
+            document.title = tr('tracking_title') + ' - \u00C9CLAT';
+            document.documentElement.lang = lang;
+        }
+
+        // ── Status colors ──
+        var STATUS_COLORS = {
+            ordered:          { bg: '#e0f2fe', color: '#0369a1' },
+            prepared:         { bg: '#fef3c7', color: '#92400e' },
+            shipped:          { bg: '#dbeafe', color: '#1d4ed8' },
+            in_transit:       { bg: '#e0e7ff', color: '#4338ca' },
+            out_for_delivery: { bg: '#fce7f3', color: '#9d174d' },
+            delivered:        { bg: '#dcfce7', color: '#166534' },
+            attempt_failed:   { bg: '#fef2f2', color: '#991b1b' },
+            exception:        { bg: '#fef2f2', color: '#991b1b' },
+            expired:          { bg: '#f3f4f6', color: '#6b7280' }
+        };
+
+        var STEP_ORDER = ['ordered', 'prepared', 'shipped', 'in_transit', 'delivered'];
+
+        function getStepIndex(status) {
+            if (status === 'out_for_delivery') return 3;
+            var idx = STEP_ORDER.indexOf(status);
+            return idx >= 0 ? idx : 0;
+        }
+
+        // ── HTML escaping ──
+        function escHtml(str) {
+            if (!str) return '';
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ── UI State functions ──
+        function showLoading() {
+            document.getElementById('trackingLoading').style.display = '';
+            document.getElementById('trackingContent').style.display = 'none';
+            document.getElementById('trackingError').style.display = 'none';
+        }
+
+        function showError(msg) {
+            document.getElementById('trackingLoading').style.display = 'none';
+            document.getElementById('trackingContent').style.display = 'none';
+            document.getElementById('trackingError').style.display = '';
+            document.getElementById('trackingErrorMsg').textContent = msg || tr('tracking_error_generic');
+        }
+
+        function showContent() {
+            document.getElementById('trackingLoading').style.display = 'none';
+            document.getElementById('trackingContent').style.display = '';
+            document.getElementById('trackingError').style.display = 'none';
+            // Hide search form once results are shown
+            document.getElementById('trackingSearch').style.display = 'none';
+        }
+
+        // ── Render tracking data ──
+        function renderTracking(data) {
+            showContent();
+
+            // Order header
+            var ref = data.orderRef || data.orderId || '';
+            if (ref.length > 16) ref = ref.substring(0, 12) + '...';
+            document.getElementById('trackingOrderRef').textContent = tr('tracking_order') + ' ' + ref;
+
+            var dateLocale = lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'fr' ? 'fr-FR' : 'en-GB';
+            var orderDate = new Date(data.orderDate).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' });
+            document.getElementById('trackingOrderDate').textContent = tr('tracking_from') + ' ' + orderDate;
+
+            // Status badge
+            var badge = document.getElementById('trackingStatusBadge');
+            var colors = STATUS_COLORS[data.status] || STATUS_COLORS.ordered;
+            badge.textContent = data.statusLabel || '';
+            badge.style.background = colors.bg;
+            badge.style.color = colors.color;
+
+            // Progress bar
+            var currentStepIdx = getStepIndex(data.status);
+            var steps = document.querySelectorAll('#progressSteps .progress-step');
+            for (var i = 0; i < steps.length; i++) {
+                steps[i].classList.remove('active', 'done');
+                if (i < currentStepIdx) {
+                    steps[i].classList.add('done');
+                } else if (i === currentStepIdx) {
+                    steps[i].classList.add('active');
+                }
+            }
+            var fillPercent = (currentStepIdx / (STEP_ORDER.length - 1)) * 100;
+            document.getElementById('progressBarFill').style.width = fillPercent + '%';
+
+            // Tracking number card
+            var numCard = document.getElementById('trackingNumberCard');
+            if (data.trackingNumber) {
+                numCard.style.display = '';
+                document.getElementById('trackingNumValue').textContent = data.trackingNumber;
+                document.getElementById('trackingCarrier').textContent = data.carrier ? tr('tracking_carrier_label') + ' ' + data.carrier : '';
+
+                var extLink = document.getElementById('trackingExternalLink');
+                if (data.trackingUrl) {
+                    extLink.href = data.trackingUrl;
+                    extLink.style.display = '';
+                } else {
+                    // Fallback to 17track
+                    extLink.href = 'https://t.17track.net/' + lang + '#nums=' + encodeURIComponent(data.trackingNumber);
+                    extLink.style.display = '';
+                }
+            } else {
+                numCard.style.display = 'none';
+            }
+
+            // Estimated delivery
+            var estimateEl = document.getElementById('trackingEstimate');
+            if (data.estimatedDelivery && data.status !== 'delivered') {
+                estimateEl.style.display = '';
+                var minDate = new Date(data.estimatedDelivery.min).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long' });
+                var maxDate = new Date(data.estimatedDelivery.max).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long' });
+                document.getElementById('trackingEstimateRange').textContent = tr('tracking_estimate_between') + ' ' + minDate + ' ' + tr('tracking_estimate_and') + ' ' + maxDate;
+            } else if (data.status === 'delivered') {
+                estimateEl.style.display = 'none';
+            }
+
+            // Events timeline
+            var eventsSection = document.getElementById('trackingEventsSection');
+            var emptySection = document.getElementById('trackingEmpty');
+            var timeline = document.getElementById('trackingTimeline');
+
+            if (data.events && data.events.length > 0) {
+                eventsSection.style.display = '';
+                emptySection.style.display = 'none';
+
+                var eventsHtml = '';
+                for (var j = 0; j < data.events.length; j++) {
+                    var evt = data.events[j];
+                    var evtDate = '';
+                    if (evt.date) {
+                        var d = new Date(evt.date);
+                        evtDate = d.toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })
+                            + ' ' + d.toLocaleTimeString(dateLocale, { hour: '2-digit', minute: '2-digit' });
+                    }
+
+                    eventsHtml += '<div class="tracking-event" style="animation-delay:' + (j * 0.08) + 's;">'
+                        + '<div class="tracking-event-dot"></div>'
+                        + '<div class="tracking-event-date">' + escHtml(evtDate) + '</div>'
+                        + '<div class="tracking-event-desc">' + escHtml(evt.description) + '</div>'
+                        + (evt.location ? '<div class="tracking-event-location">&#128205; ' + escHtml(evt.location) + '</div>' : '')
+                        + '</div>';
+                }
+                timeline.innerHTML = eventsHtml;
+            } else {
+                eventsSection.style.display = 'none';
+                emptySection.style.display = '';
+            }
+        }
+
+        // ── Copy tracking number ──
+        function setupCopyButton() {
+            var copyBtn = document.getElementById('trackingCopyBtn');
+            if (!copyBtn) return;
+            copyBtn.addEventListener('click', function() {
+                var numVal = document.getElementById('trackingNumValue').textContent;
+                if (!numVal) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(numVal).then(function() {
+                        copyBtn.textContent = tr('tracking_copied');
+                        setTimeout(function() { copyBtn.textContent = tr('tracking_copy'); }, 2000);
+                    });
+                } else {
+                    // Fallback
+                    var ta = document.createElement('textarea');
+                    ta.value = numVal;
+                    ta.style.position = 'fixed';
+                    ta.style.opacity = '0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    copyBtn.textContent = tr('tracking_copied');
+                    setTimeout(function() { copyBtn.textContent = tr('tracking_copy'); }, 2000);
+                }
+            });
+        }
+
+        // ── Build API URL ──
+        function buildApiUrl(query, email) {
+            var base = '/api/tracking?lang=' + encodeURIComponent(lang);
+            // Detect if it looks like an order ID (starts with ECL- or is a UUID)
+            var isOrderId = /^ECL-/i.test(query) || /^[0-9a-f]{8}-[0-9a-f]{4}-/i.test(query);
+            if (isOrderId) {
+                base += '&orderId=' + encodeURIComponent(query);
+            } else {
+                base += '&trackingNumber=' + encodeURIComponent(query);
+            }
+            if (email) {
+                base += '&email=' + encodeURIComponent(email);
+            }
+            return base;
+        }
+
+        // ── Fetch tracking data ──
+        function loadTracking(query, email) {
+            if (!query) {
+                showError(tr('tracking_error_notfound'));
+                return;
+            }
+
+            showLoading();
+            currentQuery = query;
+            currentEmail = email || '';
+
+            var url = buildApiUrl(query, email);
+            var headers = { 'Accept': 'application/json' };
+
+            // If user is authenticated, send Bearer token
+            var token = null;
+            if (window.auth && typeof window.auth.getToken === 'function') {
+                try {
+                    var tokenPromise = window.auth.getToken();
+                    if (tokenPromise && typeof tokenPromise.then === 'function') {
+                        tokenPromise.then(function(t) {
+                            if (t) {
+                                fetchTrackingData(url, { 'Accept': 'application/json', 'Authorization': 'Bearer ' + t });
+                            } else {
+                                fetchTrackingData(url, headers);
+                            }
+                        }).catch(function() {
+                            fetchTrackingData(url, headers);
+                        });
+                        return;
+                    }
+                } catch (e) {
+                    // Auth not ready
+                }
+            }
+
+            fetchTrackingData(url, headers);
+        }
+
+        function fetchTrackingData(url, headers) {
+            fetch(url, { headers: headers })
+                .then(function(response) {
+                    if (response.status === 401 || response.status === 403) {
+                        showError(tr('tracking_error_unauthorized'));
+                        // Show email row for unauthenticated lookup
+                        document.getElementById('trackingSearch').style.display = '';
+                        document.getElementById('trackingEmailRow').classList.remove('hidden');
+                        return null;
+                    }
+                    if (response.status === 404) {
+                        showError(tr('tracking_error_notfound'));
+                        document.getElementById('trackingSearch').style.display = '';
+                        return null;
+                    }
+                    if (!response.ok) {
+                        showError(tr('tracking_error_generic'));
+                        document.getElementById('trackingSearch').style.display = '';
+                        return null;
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data) {
+                        renderTracking(data);
+                    }
+                })
+                .catch(function(err) {
+                    console.error('[tracking] Load error:', err);
+                    showError(tr('tracking_error_generic'));
+                    document.getElementById('trackingSearch').style.display = '';
+                });
+        }
+
+        // ── Search form handler ──
+        function setupSearchForm() {
+            var searchBtn = document.getElementById('trackingSearchBtn');
+            var input = document.getElementById('trackingInput');
+            var emailInput = document.getElementById('trackingEmailInput');
+
+            function doSearch() {
+                var query = (input.value || '').trim();
+                var email = (emailInput.value || '').trim();
+                if (!query) {
+                    input.focus();
+                    return;
+                }
+                // Update URL without reload
+                var newUrl = window.location.pathname + '?q=' + encodeURIComponent(query);
+                if (email) newUrl += '&email=' + encodeURIComponent(email);
+                if (lang !== 'fr') newUrl += '&lang=' + lang;
+                window.history.replaceState(null, '', newUrl);
+
+                loadTracking(query, email);
+            }
+
+            searchBtn.addEventListener('click', doSearch);
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+            });
+            emailInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+            });
+
+            // Show email row when input is not an order ID (might need email for security)
+            input.addEventListener('input', function() {
+                var val = (input.value || '').trim();
+                var emailRow = document.getElementById('trackingEmailRow');
+                if (val && !/^ECL-/i.test(val) && !/^[0-9a-f]{8}-/i.test(val)) {
+                    emailRow.classList.remove('hidden');
+                } else {
+                    emailRow.classList.add('hidden');
+                }
+            });
+        }
+
+        // ── Retry link ──
+        function setupRetryLink() {
+            var retryLink = document.getElementById('trackingRetryLink');
+            if (!retryLink) return;
+            retryLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentQuery) {
+                    loadTracking(currentQuery, currentEmail);
+                } else {
+                    document.getElementById('trackingError').style.display = 'none';
+                    document.getElementById('trackingSearch').style.display = '';
+                    document.getElementById('trackingInput').focus();
+                }
+            });
+        }
+
+        // ── Init ──
+        function init() {
+            detectLang();
+            applyTranslations();
+            setupSearchForm();
+            setupCopyButton();
+            setupRetryLink();
+
+            // Check URL params for auto-search
+            var params = new URLSearchParams(window.location.search);
+            var orderId = params.get('order') || params.get('orderId') || params.get('q') || '';
+            var trackingNum = params.get('tracking') || params.get('trackingNumber') || '';
+            var email = params.get('email') || '';
+            var query = orderId || trackingNum;
+
+            if (query) {
+                // Pre-fill the input
+                document.getElementById('trackingInput').value = query;
+                if (email) {
+                    document.getElementById('trackingEmailInput').value = email;
+                    document.getElementById('trackingEmailRow').classList.remove('hidden');
+                }
+                loadTracking(query, email);
+
+                // Auto-refresh every 5 minutes (only if we have a query)
+                refreshTimer = setInterval(function() {
+                    loadTracking(query, email);
+                }, 5 * 60 * 1000);
+            }
+            // Otherwise, just show the search form (default state)
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            if (refreshTimer) clearInterval(refreshTimer);
+        });
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+    <script src="../js/auth.js?v=2" defer></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="../js/push.js" defer></script>
+</body>
+</html>

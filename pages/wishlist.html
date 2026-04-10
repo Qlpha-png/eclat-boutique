@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vos produits favoris - ÉCLAT Beauté & Wellness Premium">
-    <title>Mes Favoris - ÉCLAT</title>
+    <title>Ma liste de souhaits - ÉCLAT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -14,63 +14,444 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
-        .wl-page { max-width:960px; margin:0 auto; padding:40px 24px 80px; min-height:60vh; }
-        .wl-header { text-align:center; margin-bottom:40px; }
-        .wl-header h1 { font-family:var(--font-display); font-size:2rem; margin-bottom:8px; }
-        .wl-header p { color:var(--color-text-light); font-size:0.9rem; }
-        .wl-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:20px; }
+        /* ---- Wishlist Page ---- */
+        .wl-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            min-height: 60vh;
+        }
+        .wl-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .wl-header h1 {
+            font-family: 'Playfair Display', var(--font-display, serif);
+            font-size: 2.2rem;
+            color: #2d2926;
+            margin-bottom: 8px;
+        }
+        .wl-header p {
+            color: var(--color-text-light, #8c8480);
+            font-size: 0.9rem;
+        }
+
+        /* ---- Product Grid ---- */
+        .wl-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1024px) {
+            .wl-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .wl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .wl-header h1 { font-size: 1.7rem; }
+        }
+        @media (max-width: 420px) {
+            .wl-page { padding: 24px 16px 60px; }
+            .wl-grid { gap: 12px; }
+        }
+
+        /* ---- Product Card ---- */
         .wl-card {
-            background:var(--color-white); border:1px solid var(--color-border); border-radius:var(--radius-md);
-            overflow:hidden; transition:var(--transition); position:relative;
+            background: #fff;
+            border: 1px solid var(--color-border, #e8e4e0);
+            border-radius: var(--radius-md, 12px);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 1;
         }
-        .wl-card:hover { box-shadow:var(--shadow-md); border-color:transparent; }
-        .wl-card img { width:100%; aspect-ratio:1; object-fit:contain; background:var(--color-bg-alt); padding:12px; }
-        .wl-card-info { padding:14px 16px; }
-        .wl-card-name { font-weight:600; font-size:0.9rem; margin-bottom:4px; color:var(--color-text); }
-        .wl-card-price { font-weight:700; color:var(--color-primary); font-size:1rem; margin-bottom:10px; }
-        .wl-card-actions { display:flex; gap:8px; }
-        .wl-card-actions .btn { flex:1; font-size:0.8rem; padding:8px 12px; text-align:center; }
+        .wl-card:hover {
+            box-shadow: 0 8px 24px rgba(45,41,38,0.10);
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+        .wl-card.fade-out {
+            opacity: 0;
+            transform: scale(0.92) translateY(8px);
+            transition: all 0.35s ease;
+        }
+        .wl-card-img {
+            position: relative;
+            background: #f3efe9;
+        }
+        .wl-card-img img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: contain;
+            padding: 16px;
+            display: block;
+        }
+
+        /* ---- Remove (Heart) Button ---- */
         .wl-remove {
-            position:absolute; top:8px; right:8px; background:var(--color-white); border:1px solid var(--color-border);
-            border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center;
-            cursor:pointer; font-size:14px; transition:var(--transition); z-index:2;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            border: 1px solid var(--color-border, #e8e4e0);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 2;
+            padding: 0;
         }
-        .wl-remove:hover { background:#fee2e2; border-color:#fca5a5; }
-        .wl-empty { text-align:center; padding:60px 20px; }
-        .wl-empty p { color:var(--color-text-light); margin-bottom:20px; font-size:1rem; }
+        .wl-remove svg {
+            width: 18px;
+            height: 18px;
+            fill: #e74c3c;
+            stroke: #e74c3c;
+            transition: all 0.2s ease;
+        }
+        .wl-remove:hover {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            transform: scale(1.1);
+        }
+        .wl-remove:hover svg {
+            fill: #dc2626;
+            stroke: #dc2626;
+        }
+
+        /* ---- Card Info ---- */
+        .wl-card-info {
+            padding: 14px 16px 18px;
+        }
+        .wl-card-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2d2926;
+            margin-bottom: 6px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .wl-card-price {
+            font-weight: 700;
+            color: #c9a87c;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+        .wl-card-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .wl-card-actions .wl-btn {
+            flex: 1;
+            font-size: 0.8rem;
+            padding: 9px 12px;
+            text-align: center;
+            border-radius: var(--radius-sm, 8px);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Inter', var(--font-body, sans-serif);
+            border: none;
+            line-height: 1.3;
+        }
+        .wl-btn-cart {
+            background: #2d2926;
+            color: #fff;
+        }
+        .wl-btn-cart:hover {
+            background: #c9a87c;
+        }
+        .wl-btn-cart.added {
+            background: #22c55e;
+        }
+
+        /* ---- Empty State ---- */
+        .wl-empty {
+            text-align: center;
+            padding: 80px 20px;
+            display: none;
+        }
+        .wl-empty-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: #f3efe9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wl-empty-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: #c9a87c;
+            fill: none;
+        }
+        .wl-empty h2 {
+            font-family: 'Playfair Display', var(--font-display, serif);
+            font-size: 1.5rem;
+            color: #2d2926;
+            margin-bottom: 12px;
+        }
+        .wl-empty p {
+            color: var(--color-text-light, #8c8480);
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        .wl-empty .wl-cta {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #2d2926;
+            color: #fff;
+            border-radius: var(--radius-sm, 8px);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
+        }
+        .wl-empty .wl-cta:hover {
+            background: #c9a87c;
+        }
     </style>
 </head>
-<body style="background:var(--color-bg);">
+<body style="background:#faf8f5;">
 
-    <nav class="navbar">
+    <!-- Top Banner -->
+    <div class="top-banner" id="topBanner">Livraison offerte d&egrave;s 49&euro; | Paiement s&eacute;curis&eacute; Stripe</div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">ÉCLAT</a>
-            <div class="nav-actions">
-                <a href="../index.html" style="font-size:0.85rem;color:var(--color-text-light);text-decoration:none;">Retour boutique</a>
+            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html">Accueil</a>
+                <a href="../index.html#produits">Boutique</a>
+                <a href="diagnostic.html">Diagnostic</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
             </div>
+            <div class="nav-actions">
+                <a href="account.html" class="cart-btn" title="Mon compte">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="wishlist.html" class="cart-btn" title="Wishlist" style="position:relative;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    <span id="wishlistCount" style="position:absolute;top:-4px;right:-6px;background:#c9a87c;color:#fff;font-size:0.65rem;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:700;"></span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
+    <!-- Wishlist Content -->
     <div class="wl-page">
         <div class="wl-header">
-            <h1>Mes Favoris</h1>
+            <h1 id="wlTitle">Ma liste de souhaits</h1>
             <p id="wlCount"></p>
         </div>
         <div id="wlGrid" class="wl-grid"></div>
-        <div id="wlEmpty" class="wl-empty" style="display:none;">
-            <p>Vous n'avez pas encore de favoris.</p>
-            <a href="../index.html" class="btn btn-primary">Découvrir nos produits</a>
+        <div id="wlEmpty" class="wl-empty">
+            <div class="wl-empty-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h2 id="wlEmptyTitle">Votre liste de souhaits est vide</h2>
+            <p id="wlEmptyDesc">D&eacute;couvrez nos soins et technologies beaut&eacute; premium et ajoutez vos favoris ici.</p>
+            <a href="../index.html#produits" class="wl-cta" id="wlEmptyCta">D&eacute;couvrir nos produits</a>
         </div>
     </div>
 
-    <script src="../js/products.js"></script>
-    <script src="../js/wishlist.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;">
+                <div class="footer-col">
+                    <h3 class="footer-logo">&Eacute;CLAT</h3>
+                    <p>Beaut&eacute; &amp; Wellness Premium</p>
+                    <p style="font-size:.85rem;color:var(--color-text-light);margin-top:8px;">Des soins s&eacute;lectionn&eacute;s pour leur efficacit&eacute; prouv&eacute;e. Programme fid&eacute;lit&eacute; &Eacute;clats, livraison suivie, satisfait ou rembours&eacute;.</p>
+                    <div style="margin-top:16px;">
+                        <a href="diagnostic.html" style="color:var(--color-secondary);font-weight:600;font-size:.85rem;text-decoration:none;">Mon diagnostic beaut&eacute; gratuit &rarr;</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Boutique</h4>
+                    <ul>
+                        <li><a href="../index.html#produits">Tous les produits</a></li>
+                        <li><a href="../index.html#bestsellers">Best-sellers</a></li>
+                        <li><a href="category.html?cat=visage">Soins visage</a></li>
+                        <li><a href="category.html?cat=corps">Soins corps</a></li>
+                        <li><a href="../index.html#packs">Coffrets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Service Client</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="livraison.html">Livraison</a></li>
+                        <li><a href="retours.html">Retours</a></li>
+                        <li><a href="tracking.html">Suivi de commande</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="support.html">Support &amp; Tickets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ressources</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog Beaut&eacute;</a></li>
+                        <li><a href="guide-beaute.html">Guide Scientifique</a></li>
+                        <li><a href="diagnostic.html">Diagnostic IA</a></li>
+                        <li><a href="routine-builder.html">Routine Builder</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>L&eacute;gal</h4>
+                    <ul>
+                        <li><a href="cgv.html">CGV</a></li>
+                        <li><a href="mentions-legales.html">Mentions l&eacute;gales</a></li>
+                        <li><a href="confidentialite.html">Confidentialit&eacute;</a></li>
+                        <li><a href="retractation.html">Droit de r&eacute;tractation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--color-border);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;">
+                <span style="font-size:.75rem;color:var(--color-text-light);margin-right:8px;">Paiement s&eacute;curis&eacute;</span>
+                <span class="payment-badge">Visa</span>
+                <span class="payment-badge">Mastercard</span>
+                <span class="payment-badge">CB</span>
+                <span class="payment-badge">PayPal</span>
+                <span class="payment-badge">Apple Pay</span>
+                <span class="payment-badge">Google Pay</span>
+            </div>
+            <div class="footer-bottom" style="margin-top:16px;">
+                <p>&copy; 2026 &Eacute;CLAT &mdash; Maison &Eacute;clat, micro-entreprise. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/products.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/wishlist.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
+    <script src="../js/products-i18n-en.js" defer></script>
+    <script src="../js/products-i18n-es.js" defer></script>
+    <script src="../js/products-i18n-de.js" defer></script>
+    <script src="../js/products-i18n.js" defer></script>
+    <script src="../js/themes.js" defer></script>
+
     <script>
+    (function() {
+        'use strict';
+
+        // ---- i18n strings for this page ----
+        var PAGE_I18N = {
+            fr: {
+                title: 'Ma liste de souhaits',
+                emptyTitle: 'Votre liste de souhaits est vide',
+                emptyDesc: 'D\u00e9couvrez nos soins et technologies beaut\u00e9 premium et ajoutez vos favoris ici.',
+                emptyCta: 'D\u00e9couvrir nos produits',
+                countSingle: '1 produit sauvegard\u00e9',
+                countPlural: '{n} produits sauvegard\u00e9s',
+                addToCart: 'Ajouter au panier',
+                added: 'Ajout\u00e9 !',
+                removeLabel: 'Retirer des favoris',
+                backShop: 'Retour boutique'
+            },
+            en: {
+                title: 'My Wishlist',
+                emptyTitle: 'Your wishlist is empty',
+                emptyDesc: 'Explore our premium beauty care and tech, and save your favourites here.',
+                emptyCta: 'Browse products',
+                countSingle: '1 saved product',
+                countPlural: '{n} saved products',
+                addToCart: 'Add to cart',
+                added: 'Added!',
+                removeLabel: 'Remove from wishlist',
+                backShop: 'Back to shop'
+            },
+            es: {
+                title: 'Mi lista de deseos',
+                emptyTitle: 'Tu lista de deseos est\u00e1 vac\u00eda',
+                emptyDesc: 'Descubre nuestros cuidados y tecnolog\u00edas beauty premium y guarda tus favoritos aqu\u00ed.',
+                emptyCta: 'Descubrir productos',
+                countSingle: '1 producto guardado',
+                countPlural: '{n} productos guardados',
+                addToCart: 'A\u00f1adir al carrito',
+                added: '\u00a1A\u00f1adido!',
+                removeLabel: 'Quitar de favoritos',
+                backShop: 'Volver a la tienda'
+            },
+            de: {
+                title: 'Meine Wunschliste',
+                emptyTitle: 'Deine Wunschliste ist leer',
+                emptyDesc: 'Entdecke unsere Premium-Pflegeprodukte und Beauty-Technologien und speichere deine Favoriten hier.',
+                emptyCta: 'Produkte entdecken',
+                countSingle: '1 gespeichertes Produkt',
+                countPlural: '{n} gespeicherte Produkte',
+                addToCart: 'In den Warenkorb',
+                added: 'Hinzugef\u00fcgt!',
+                removeLabel: 'Von Wunschliste entfernen',
+                backShop: 'Zur\u00fcck zum Shop'
+            }
+        };
+
+        function getLang() {
+            return (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+        }
+
+        function pt(key) {
+            var lang = getLang();
+            var dict = PAGE_I18N[lang] || PAGE_I18N.fr;
+            return dict[key] || PAGE_I18N.fr[key] || key;
+        }
+
+        // ---- Helpers ----
+
+        function escapeHTML(str) {
+            var d = document.createElement('div');
+            d.textContent = str || '';
+            return d.innerHTML;
+        }
+
+        function getProductName(product) {
+            var lang = getLang();
+            if (typeof getProductText === 'function') {
+                var name = getProductText(product.id, 'name', lang);
+                if (name) return name;
+            }
+            return product.name;
+        }
+
+        function formatPrice(price) {
+            return price.toFixed(2).replace('.', ',') + ' \u20ac';
+        }
+
+        // ---- Render ----
+
         function renderWishlist() {
+            if (typeof window.Wishlist === 'undefined' || typeof window.PRODUCTS === 'undefined') return;
+
             var ids = Wishlist.getAll();
             var grid = document.getElementById('wlGrid');
             var empty = document.getElementById('wlEmpty');
             var countEl = document.getElementById('wlCount');
+
+            // Apply i18n to static elements
+            document.getElementById('wlTitle').textContent = pt('title');
+            document.getElementById('wlEmptyTitle').textContent = pt('emptyTitle');
+            document.getElementById('wlEmptyDesc').textContent = pt('emptyDesc');
+            document.getElementById('wlEmptyCta').textContent = pt('emptyCta');
+            document.title = pt('title') + ' - \u00c9CLAT';
 
             if (ids.length === 0) {
                 grid.style.display = 'none';
@@ -81,60 +462,125 @@
 
             grid.style.display = 'grid';
             empty.style.display = 'none';
-            countEl.textContent = ids.length + ' produit' + (ids.length > 1 ? 's' : '') + ' sauvegardé' + (ids.length > 1 ? 's' : '');
+            countEl.textContent = ids.length === 1
+                ? pt('countSingle')
+                : pt('countPlural').replace('{n}', ids.length);
 
             var html = '';
             for (var i = 0; i < ids.length; i++) {
-                var product = PRODUCTS.find(function(p) { return p.id === ids[i]; });
+                var product = null;
+                for (var j = 0; j < PRODUCTS.length; j++) {
+                    if (String(PRODUCTS[j].id) === String(ids[i])) {
+                        product = PRODUCTS[j];
+                        break;
+                    }
+                }
                 if (!product) continue;
-                html += '<div class="wl-card">' +
-                    '<button class="wl-remove" onclick="removeAndRefresh(' + product.id + ')" aria-label="Retirer">&times;</button>' +
-                    '<a href="product.html?id=' + product.id + '">' +
-                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy">' +
-                    '</a>' +
+
+                var pName = getProductName(product);
+
+                html += '<div class="wl-card" data-id="' + product.id + '">' +
+                    '<div class="wl-card-img">' +
+                        '<button class="wl-remove" data-remove-id="' + product.id + '" aria-label="' + escapeHTML(pt('removeLabel')) + '">' +
+                            '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>' +
+                        '</button>' +
+                        '<a href="product.html?id=' + product.id + '">' +
+                            '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy">' +
+                        '</a>' +
+                    '</div>' +
                     '<div class="wl-card-info">' +
-                        '<div class="wl-card-name">' + escapeHTML(product.name) + '</div>' +
-                        '<div class="wl-card-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
+                        '<a href="product.html?id=' + product.id + '" style="text-decoration:none;color:inherit;">' +
+                            '<div class="wl-card-name">' + escapeHTML(pName) + '</div>' +
+                        '</a>' +
+                        '<div class="wl-card-price">' + formatPrice(product.price) + '</div>' +
                         '<div class="wl-card-actions">' +
-                            '<a href="product.html?id=' + product.id + '" class="btn" style="border:1px solid var(--color-border);background:var(--color-white);color:var(--color-text);">Voir</a>' +
-                            '<button class="btn btn-primary" onclick="addToCartFromWL(' + product.id + ')">Ajouter au panier</button>' +
+                            '<a href="../index.html?produit=' + product.id + '" class="wl-btn wl-btn-cart" data-cart-id="' + product.id + '">' + escapeHTML(pt('addToCart')) + '</a>' +
                         '</div>' +
                     '</div>' +
                 '</div>';
             }
             grid.innerHTML = html;
-        }
 
-        function escapeHTML(str) {
-            var d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
-        }
-
-        function removeAndRefresh(id) {
-            Wishlist.toggle(id);
-            renderWishlist();
-        }
-
-        function addToCartFromWL(id) {
-            var product = PRODUCTS.find(function(p) { return p.id === id; });
-            if (!product) return;
-            var cart = [];
-            try { cart = JSON.parse(localStorage.getItem('eclat_cart')) || []; } catch(e) {}
-            var inCart = cart.find(function(item) { return item.id === id; });
-            if (inCart) { inCart.qty += 1; } else {
-                cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });
+            // Attach remove handlers with fade animation
+            var removeButtons = grid.querySelectorAll('.wl-remove[data-remove-id]');
+            for (var k = 0; k < removeButtons.length; k++) {
+                removeButtons[k].addEventListener('click', handleRemove);
             }
-            localStorage.setItem('eclat_cart', JSON.stringify(cart));
-            var btn = event.target;
-            btn.textContent = 'Ajout\u00e9 !';
-            btn.style.background = '#22c55e';
-            setTimeout(function() { btn.textContent = 'Ajouter au panier'; btn.style.background = ''; }, 1500);
         }
 
-        renderWishlist();
+        function handleRemove(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var btn = e.currentTarget;
+            var id = btn.getAttribute('data-remove-id');
+            var card = btn.closest('.wl-card');
+
+            if (card) {
+                card.classList.add('fade-out');
+                setTimeout(function() {
+                    Wishlist.toggle(id);
+                    renderWishlist();
+                }, 350);
+            } else {
+                Wishlist.toggle(id);
+                renderWishlist();
+            }
+        }
+
+        // ---- Mobile menu toggle ----
+        function initMobileMenu() {
+            var btn = document.getElementById('mobileMenuBtn');
+            var links = document.getElementById('navLinks');
+            if (btn && links) {
+                btn.addEventListener('click', function() {
+                    links.classList.toggle('active');
+                    btn.classList.toggle('active');
+                });
+            }
+        }
+
+        // ---- Init on DOMContentLoaded ----
+        function init() {
+            initMobileMenu();
+
+            // Wait for deferred scripts to load (products, wishlist, i18n)
+            var attempts = 0;
+            var maxAttempts = 50;
+            var interval = setInterval(function() {
+                attempts++;
+                if (typeof window.Wishlist !== 'undefined' && typeof window.PRODUCTS !== 'undefined') {
+                    clearInterval(interval);
+                    renderWishlist();
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    // Show empty state as fallback
+                    document.getElementById('wlEmpty').style.display = 'block';
+                }
+            }, 60);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // Re-render on wishlist changes (e.g. from other tabs)
+        document.addEventListener('eclat:wishlist:change', function() {
+            if (typeof window.PRODUCTS !== 'undefined') {
+                renderWishlist();
+            }
+        });
+
+        // Re-render when language changes
+        window.addEventListener('eclat:lang:change', function() {
+            if (typeof window.PRODUCTS !== 'undefined' && typeof window.Wishlist !== 'undefined') {
+                renderWishlist();
+            }
+        });
+    })();
     </script>
-    <script src="../js/themes.js" defer></script>
+
     <script src="../js/auth.js?v=2" defer></script>
     <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
     <script src="../js/push.js" defer></script>

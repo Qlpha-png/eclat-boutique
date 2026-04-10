@@ -1,187 +1,253 @@
-// ============================
-// ÉCLAT — Wishlist (localStorage + Supabase sync)
-// ============================
-var Wishlist = (function() {
+(function() {
     'use strict';
 
+    // ============================
+    // ECLAT Beaute — Wishlist
+    // Guest: localStorage | Auth: Supabase /api/wishlist sync
+    // ============================
+
     var STORAGE_KEY = 'eclat_wishlist';
-    var listeners = [];
+
+    // ---- localStorage helpers ----
 
     function getLocal() {
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-        catch(e) { return []; }
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+            return [];
+        }
     }
 
     function saveLocal(ids) {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(ids)); } catch(e) {}
-        notifyListeners();
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+        } catch (e) { /* quota exceeded — silent */ }
     }
 
-    function notifyListeners() {
-        var ids = getLocal();
-        for (var i = 0; i < listeners.length; i++) {
-            try { listeners[i](ids); } catch(e) {}
-        }
-    }
+    // ---- Auth helpers ----
 
-    function onChange(fn) { listeners.push(fn); }
-
-    function has(productId) {
-        return getLocal().indexOf(Number(productId)) !== -1;
-    }
-
-    function toggle(productId) {
-        productId = Number(productId);
-        var ids = getLocal();
-        var idx = ids.indexOf(productId);
-        if (idx === -1) {
-            ids.push(productId);
-            syncAdd(productId);
-        } else {
-            ids.splice(idx, 1);
-            syncRemove(productId);
-        }
-        saveLocal(ids);
-        return idx === -1; // true = added
-    }
-
-    function getAll() { return getLocal(); }
-
-    function count() { return getLocal().length; }
-
-    // Supabase sync (best-effort, non-blocking)
     function getAuthToken() {
         try {
             var session = JSON.parse(localStorage.getItem('sb-session'));
-            return session && session.access_token ? session.access_token : null;
-        } catch(e) { return null; }
+            return (session && session.access_token) ? session.access_token : null;
+        } catch (e) {
+            return null;
+        }
     }
 
-    function syncAdd(productId) {
+    function authHeaders() {
         var token = getAuthToken();
-        if (!token) return;
+        if (!token) return null;
+        return {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        };
+    }
+
+    // ---- Supabase API (best-effort, non-blocking) ----
+
+    function apiGet() {
+        var headers = authHeaders();
+        if (!headers) return Promise.resolve(null);
+        return fetch('/api/wishlist', {
+            method: 'GET',
+            headers: headers
+        }).then(function(r) {
+            return r.ok ? r.json() : null;
+        }).catch(function() {
+            return null;
+        });
+    }
+
+    function apiPost(productId) {
+        var headers = authHeaders();
+        if (!headers) return;
         fetch('/api/wishlist', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            headers: headers,
             body: JSON.stringify({ productId: productId })
         }).catch(function() {});
     }
 
-    function syncRemove(productId) {
-        var token = getAuthToken();
-        if (!token) return;
+    function apiDelete(productId) {
+        var headers = authHeaders();
+        if (!headers) return;
         fetch('/api/wishlist', {
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            headers: headers,
             body: JSON.stringify({ productId: productId })
         }).catch(function() {});
     }
 
-    // Sync localStorage → Supabase au login
-    function syncToServer() {
-        var token = getAuthToken();
-        if (!token) return;
-        var ids = getLocal();
-        if (ids.length === 0) return;
+    function apiBulkPost(ids) {
+        var headers = authHeaders();
+        if (!headers) return;
         fetch('/api/wishlist', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+            headers: headers,
             body: JSON.stringify({ productIds: ids, bulk: true })
         }).catch(function() {});
     }
 
-    // Load from server (on login)
-    function syncFromServer() {
-        var token = getAuthToken();
-        if (!token) return;
-        fetch('/api/wishlist', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        })
-        .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
-        .then(function(data) {
-            if (data && data.items && data.items.length > 0) {
-                var local = getLocal();
-                var serverIds = data.items.map(function(item) { return item.product_id; });
-                // Merge: union of local + server
-                var merged = local.slice();
-                for (var i = 0; i < serverIds.length; i++) {
-                    if (merged.indexOf(serverIds[i]) === -1) merged.push(serverIds[i]);
-                }
-                saveLocal(merged);
-                // Push merged back to server
-                if (merged.length > local.length) syncToServer();
-            }
-        })
-        .catch(function() {});
+    // ---- UI helpers ----
+
+    function dispatchChange() {
+        var evt;
+        try {
+            evt = new CustomEvent('eclat:wishlist:change', {
+                detail: { items: getLocal(), count: getLocal().length }
+            });
+        } catch (e) {
+            evt = document.createEvent('CustomEvent');
+            evt.initCustomEvent('eclat:wishlist:change', true, true, {
+                items: getLocal(),
+                count: getLocal().length
+            });
+        }
+        document.dispatchEvent(evt);
     }
 
-    // Render heart button HTML
-    function heartHTML(productId, size) {
-        size = size || 20;
-        var filled = has(productId);
-        return '<button class="wishlist-heart' + (filled ? ' active' : '') + '" data-wishlist-id="' + productId + '" ' +
-            'onclick="event.stopPropagation();event.preventDefault();Wishlist.toggle(' + productId + ');Wishlist.updateHearts();" ' +
-            'aria-label="' + (filled ? 'Retirer des favoris' : 'Ajouter aux favoris') + '" ' +
-            'style="background:none;border:none;cursor:pointer;padding:4px;font-size:' + size + 'px;line-height:1;transition:transform 0.2s;">' +
-            (filled ? '\u2764\uFE0F' : '\uD83E\uDD0D') +
-            '</button>';
-    }
-
-    // Update all hearts on page
-    function updateHearts() {
-        var hearts = document.querySelectorAll('[data-wishlist-id]');
+    function updateHeartIcons() {
+        var hearts = document.querySelectorAll('.wishlist-heart[data-product-id]');
         for (var i = 0; i < hearts.length; i++) {
-            var id = Number(hearts[i].getAttribute('data-wishlist-id'));
-            var filled = has(id);
-            hearts[i].classList.toggle('active', filled);
-            hearts[i].innerHTML = filled ? '\u2764\uFE0F' : '\uD83E\uDD0D';
-            hearts[i].setAttribute('aria-label', filled ? 'Retirer des favoris' : 'Ajouter aux favoris');
-            // Pop animation
-            hearts[i].style.transform = 'scale(1.3)';
-            (function(el) {
-                setTimeout(function() { el.style.transform = 'scale(1)'; }, 200);
-            })(hearts[i]);
+            var pid = hearts[i].getAttribute('data-product-id');
+            if (Wishlist.has(pid)) {
+                hearts[i].classList.add('active');
+            } else {
+                hearts[i].classList.remove('active');
+            }
         }
-        updateBadge();
     }
 
-    // Update navbar badge
     function updateBadge() {
-        var badge = document.getElementById('wishlistBadge');
-        if (badge) {
-            var c = count();
-            badge.textContent = c;
-            badge.style.display = c > 0 ? 'flex' : 'none';
-        }
+        var badge = document.getElementById('wishlistCount');
+        if (!badge) return;
+        var c = Wishlist.getCount();
+        badge.textContent = c > 0 ? c : '';
+        badge.style.display = c > 0 ? 'inline-flex' : 'none';
     }
 
-    // Init
-    function init() {
-        updateBadge();
-        // Sync from server if logged in
-        if (getAuthToken()) {
-            syncFromServer();
+    function showToast(msg) {
+        if (typeof window.showToast === 'function') {
+            window.showToast(msg);
+            return;
         }
+        var el = document.createElement('div');
+        el.textContent = msg;
+        el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
+            'background:#2d2926;color:#fff;padding:10px 24px;border-radius:8px;' +
+            'font-size:0.85rem;z-index:99999;opacity:0;transition:opacity 0.3s;';
+        document.body.appendChild(el);
+        requestAnimationFrame(function() { el.style.opacity = '1'; });
+        setTimeout(function() {
+            el.style.opacity = '0';
+            setTimeout(function() { el.remove(); }, 300);
+        }, 2500);
     }
 
-    return {
-        toggle: toggle,
-        has: has,
-        getAll: getAll,
-        count: count,
-        heartHTML: heartHTML,
-        updateHearts: updateHearts,
-        updateBadge: updateBadge,
-        onChange: onChange,
-        syncToServer: syncToServer,
-        syncFromServer: syncFromServer,
-        init: init
+    // ---- Core Wishlist object ----
+
+    var Wishlist = {
+
+        toggle: function(productId) {
+            productId = String(productId);
+            var ids = getLocal();
+            var idx = ids.indexOf(productId);
+            var added;
+
+            if (idx === -1) {
+                ids.push(productId);
+                added = true;
+                apiPost(productId);
+                showToast('Ajout\u00e9 aux favoris \u2764');
+            } else {
+                ids.splice(idx, 1);
+                added = false;
+                apiDelete(productId);
+                showToast('Retir\u00e9 des favoris');
+            }
+
+            saveLocal(ids);
+            updateHeartIcons();
+            updateBadge();
+            dispatchChange();
+            return added;
+        },
+
+        has: function(productId) {
+            return getLocal().indexOf(String(productId)) !== -1;
+        },
+
+        getAll: function() {
+            return getLocal();
+        },
+
+        getCount: function() {
+            return getLocal().length;
+        },
+
+        sync: function() {
+            // Merge localStorage wishlist into server on login
+            var localIds = getLocal();
+            return apiGet().then(function(data) {
+                var serverIds = [];
+                if (data && data.items && data.items.length > 0) {
+                    for (var i = 0; i < data.items.length; i++) {
+                        serverIds.push(String(data.items[i].product_id));
+                    }
+                }
+
+                // Union merge: local + server, deduplicated
+                var merged = localIds.slice();
+                for (var j = 0; j < serverIds.length; j++) {
+                    if (merged.indexOf(serverIds[j]) === -1) {
+                        merged.push(serverIds[j]);
+                    }
+                }
+
+                saveLocal(merged);
+
+                // Push the full merged set back to server
+                if (merged.length > 0) {
+                    apiBulkPost(merged);
+                }
+
+                updateHeartIcons();
+                updateBadge();
+                dispatchChange();
+
+                return merged;
+            }).catch(function() {
+                return localIds;
+            });
+        },
+
+        // Re-expose UI updaters for external use
+        updateHearts: updateHeartIcons,
+        updateBadge: updateBadge
     };
-})();
 
-// Auto-init
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() { Wishlist.init(); });
-} else {
-    Wishlist.init();
-}
+    // ---- Init ----
+
+    function init() {
+        updateHeartIcons();
+        updateBadge();
+
+        // If user is authenticated, run a sync
+        if (getAuthToken()) {
+            Wishlist.sync();
+        }
+    }
+
+    // Expose globally
+    window.Wishlist = Wishlist;
+
+    // Auto-init
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();

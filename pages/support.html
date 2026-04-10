@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Tickets &mdash; &Eacute;CLAT</title>
+    <meta name="description" content="Contactez le support ÉCLAT. Créez un ticket, suivez vos demandes en cours. Réponse garantie sous 24h.">
+    <link rel="canonical" href="https://maison-eclat.shop/pages/support.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
+    <style>
+        /* ===== Support Page Layout ===== */
+        .support-page { max-width: 880px; margin: 40px auto; padding: 0 24px 80px; }
+        .support-page h1 { font-family: var(--font-display, 'Playfair Display', serif); font-size: 2.2rem; margin-bottom: 8px; text-align: center; color: var(--color-primary, #2d2926); }
+        .support-subtitle { text-align: center; color: var(--color-text-light, #777); margin-bottom: 36px; font-size: 0.95rem; }
+
+        /* ===== Tabs ===== */
+        .support-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 2px solid var(--color-border, #e5e1dc); }
+        .support-tab { flex: 1; padding: 14px 20px; text-align: center; font-weight: 600; font-size: 0.92rem; cursor: pointer; background: none; border: none; color: var(--color-text-light, #777); transition: all 0.25s ease; border-bottom: 3px solid transparent; margin-bottom: -2px; font-family: var(--font-body, 'Inter', sans-serif); }
+        .support-tab:hover { color: var(--color-secondary, #c9a87c); }
+        .support-tab.active { color: var(--color-secondary, #c9a87c); border-bottom-color: var(--color-secondary, #c9a87c); }
+        .support-tab-panel { display: none; animation: fadePanel 0.35s ease; }
+        .support-tab-panel.active { display: block; }
+        @keyframes fadePanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== Form ===== */
+        .support-form { max-width: 620px; margin: 0 auto; }
+        .support-field { margin-bottom: 20px; }
+        .support-field label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; color: var(--color-text, #2d2926); }
+        .support-field label .required { color: #e74c3c; margin-left: 2px; }
+        .support-field select,
+        .support-field input,
+        .support-field textarea {
+            width: 100%; padding: 12px 16px; border: 1px solid var(--color-border, #e5e1dc);
+            border-radius: 8px; font-size: 0.92rem; font-family: var(--font-body, 'Inter', sans-serif);
+            background: var(--color-white, #fff); color: var(--color-text, #2d2926);
+            transition: border-color 0.25s, box-shadow 0.25s; box-sizing: border-box;
+        }
+        .support-field select:focus,
+        .support-field input:focus,
+        .support-field textarea:focus { outline: none; border-color: var(--color-secondary, #c9a87c); box-shadow: 0 0 0 3px rgba(201,168,124,0.12); }
+        .support-field textarea { min-height: 140px; resize: vertical; }
+        .support-field .field-hint { font-size: 0.8rem; color: var(--color-text-light, #777); margin-top: 4px; }
+
+        .support-submit { display: block; width: 100%; padding: 14px 24px; background: var(--color-secondary, #c9a87c); color: #fff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s; font-family: var(--font-body, 'Inter', sans-serif); }
+        .support-submit:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,168,124,0.3); }
+        .support-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* ===== Success ===== */
+        .support-success { text-align: center; padding: 48px 24px; }
+        .support-success .check-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: #d1fae5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #065f46; }
+        .support-success h2 { font-family: var(--font-display, 'Playfair Display', serif); font-size: 1.5rem; margin-bottom: 12px; color: var(--color-primary, #2d2926); }
+        .support-success .ref-code { display: inline-block; background: var(--color-bg-alt, #f3efe9); padding: 12px 28px; border-radius: 8px; font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; margin: 16px 0; color: var(--color-secondary, #c9a87c); border: 1px solid var(--color-border, #e5e1dc); }
+        .support-success p { color: var(--color-text-light, #777); font-size: 0.92rem; line-height: 1.7; }
+        .support-success .btn-back { display: inline-block; margin-top: 20px; padding: 10px 24px; background: var(--color-secondary, #c9a87c); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; font-family: var(--font-body, 'Inter', sans-serif); transition: all 0.25s; }
+        .support-success .btn-back:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* ===== Ticket List ===== */
+        .tickets-empty { text-align: center; padding: 48px 24px; color: var(--color-text-light, #777); }
+        .tickets-empty p { margin-bottom: 16px; font-size: 0.95rem; }
+        .tickets-login-prompt { text-align: center; padding: 48px 24px; }
+        .tickets-login-prompt p { color: var(--color-text-light, #777); margin-bottom: 16px; }
+        .tickets-login-prompt a { color: var(--color-secondary, #c9a87c); font-weight: 600; text-decoration: none; }
+        .tickets-login-prompt a:hover { text-decoration: underline; }
+
+        .ticket-card { border: 1px solid var(--color-border, #e5e1dc); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.3s; background: var(--color-white, #fff); }
+        .ticket-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .ticket-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; background: var(--color-white, #fff); gap: 12px; flex-wrap: wrap; transition: background 0.2s; }
+        .ticket-header:hover { background: var(--color-bg-alt, #f3efe9); }
+        .ticket-ref { font-weight: 700; font-size: 0.88rem; color: var(--color-secondary, #c9a87c); min-width: 90px; }
+        .ticket-subject { flex: 1; font-weight: 600; font-size: 0.9rem; color: var(--color-text, #2d2926); min-width: 120px; }
+        .ticket-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .ticket-cat { font-size: 0.78rem; color: var(--color-text-light, #777); }
+        .ticket-date { font-size: 0.78rem; color: var(--color-text-light, #777); }
+        .ticket-arrow { transition: transform 0.3s; font-size: 0.9rem; color: var(--color-secondary, #c9a87c); }
+        .ticket-card.open .ticket-arrow { transform: rotate(180deg); }
+
+        /* ===== Status Badges ===== */
+        .status-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .status-open { background: #dbeafe; color: #1e40af; }
+        .status-in_progress { background: #fed7aa; color: #c2410c; }
+        .status-waiting_customer { background: #fef3c7; color: #a16207; }
+        .status-resolved { background: #d1fae5; color: #065f46; }
+        .status-closed { background: #e5e7eb; color: #4b5563; }
+
+        /* ===== Priority Badges ===== */
+        .priority-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .priority-low { background: #f0fdf4; color: #166534; }
+        .priority-normal { background: #eff6ff; color: #1e40af; }
+        .priority-high { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+        .priority-urgent { background: #7f1d1d; color: #fff; animation: urgentPulse 2s ease-in-out infinite; }
+        @keyframes urgentPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
+
+        /* ===== Ticket Detail / Thread ===== */
+        .ticket-detail { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+        .ticket-detail-inner { padding: 0 20px 20px; border-top: 1px solid var(--color-border, #e5e1dc); }
+        .ticket-card.open .ticket-detail { max-height: 3000px; }
+        .ticket-card.open .ticket-header { background: var(--color-bg-alt, #f3efe9); }
+
+        .ticket-info-bar { display: flex; gap: 16px; flex-wrap: wrap; padding: 12px 0; margin-bottom: 8px; border-bottom: 1px solid var(--color-border, #e5e1dc); }
+        .ticket-info-item { font-size: 0.8rem; color: var(--color-text-light, #777); }
+        .ticket-info-item strong { color: var(--color-text, #2d2926); }
+
+        .thread-messages { margin-top: 16px; position: relative; }
+        .thread-messages::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: var(--color-border, #e5e1dc); z-index: 0; }
+
+        .thread-msg { padding: 14px 18px; border-radius: 12px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.7; position: relative; margin-left: 34px; transition: transform 0.2s; }
+        .thread-msg::before { content: ''; position: absolute; left: -26px; top: 16px; width: 10px; height: 10px; border-radius: 50%; z-index: 1; }
+        .thread-msg:hover { transform: translateX(2px); }
+        .thread-msg.from-customer { background: var(--color-bg-alt, #f3efe9); border-left: 3px solid var(--color-secondary, #c9a87c); }
+        .thread-msg.from-customer::before { background: var(--color-secondary, #c9a87c); }
+        .thread-msg.from-support { background: #f0fdf4; border-left: 3px solid #22c55e; }
+        .thread-msg.from-support::before { background: #22c55e; }
+        .thread-msg-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.78rem; color: var(--color-text-light, #777); }
+        .thread-msg-sender { font-weight: 700; color: var(--color-text, #2d2926); }
+        .thread-msg-text { white-space: pre-wrap; word-break: break-word; }
+
+        .thread-reply { margin-top: 20px; margin-left: 34px; }
+        .thread-reply textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--color-border, #e5e1dc); border-radius: 8px; font-size: 0.88rem; font-family: var(--font-body, 'Inter', sans-serif); min-height: 70px; resize: vertical; box-sizing: border-box; transition: border-color 0.25s, box-shadow 0.25s; }
+        .thread-reply textarea:focus { outline: none; border-color: var(--color-secondary, #c9a87c); box-shadow: 0 0 0 3px rgba(201,168,124,0.12); }
+        .thread-reply-actions { display: flex; justify-content: flex-end; margin-top: 10px; }
+        .thread-reply button { padding: 10px 24px; background: var(--color-secondary, #c9a87c); color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; white-space: nowrap; font-family: var(--font-body, 'Inter', sans-serif); transition: all 0.25s; }
+        .thread-reply button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .thread-reply button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .thread-closed-msg { text-align: center; color: var(--color-text-light, #777); font-size: 0.85rem; margin-top: 16px; margin-left: 34px; padding: 12px 16px; background: var(--color-bg-alt, #f3efe9); border-radius: 8px; border: 1px dashed var(--color-border, #e5e1dc); }
+
+        /* ===== Loading & Error ===== */
+        .support-loading { text-align: center; padding: 40px; color: var(--color-text-light, #777); }
+        .support-loading-spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--color-border, #e5e1dc); border-top-color: var(--color-secondary, #c9a87c); border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .support-error { background: #fef2f2; color: #b91c1c; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; margin-bottom: 16px; display: none; border: 1px solid #fecaca; animation: fadePanel 0.3s ease; }
+
+        /* ===== Info Cards (top) ===== */
+        .support-info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .support-info-card { background: var(--color-white, #fff); border: 1px solid var(--color-border, #e5e1dc); border-radius: 12px; padding: 20px; text-align: center; transition: box-shadow 0.3s, transform 0.3s; }
+        .support-info-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .support-info-card .info-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+        .support-info-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; color: var(--color-text, #2d2926); }
+        .support-info-card p { font-size: 0.8rem; color: var(--color-text-light, #777); margin: 0; line-height: 1.4; }
+
+        /* ===== Footer ===== */
+        .support-footer { background: var(--color-bg-alt, #f3efe9); border-top: 1px solid var(--color-border, #e5e1dc); padding: 40px 24px 24px; margin-top: 60px; }
+        .support-footer-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+        .support-footer h3 { font-family: var(--font-display, 'Playfair Display', serif); font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 8px; color: var(--color-primary, #2d2926); }
+        .support-footer p { font-size: 0.85rem; color: var(--color-text-light, #777); line-height: 1.6; margin: 0; }
+        .support-footer h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 12px; color: var(--color-text, #2d2926); }
+        .support-footer ul { list-style: none; padding: 0; margin: 0; }
+        .support-footer ul li { margin-bottom: 6px; }
+        .support-footer ul li a { font-size: 0.85rem; color: var(--color-text-light, #777); text-decoration: none; transition: color 0.2s; }
+        .support-footer ul li a:hover { color: var(--color-secondary, #c9a87c); }
+        .support-footer-bottom { max-width: 880px; margin: 20px auto 0; padding-top: 16px; border-top: 1px solid var(--color-border, #e5e1dc); text-align: center; font-size: 0.78rem; color: var(--color-text-light, #777); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .support-info-cards { grid-template-columns: 1fr; }
+            .support-footer-inner { grid-template-columns: 1fr; gap: 24px; }
+        }
+        @media (max-width: 600px) {
+            .support-page { padding: 0 16px 60px; }
+            .support-page h1 { font-size: 1.7rem; }
+            .support-tabs { flex-direction: column; gap: 0; }
+            .support-tab { border-bottom: 1px solid var(--color-border, #e5e1dc); margin-bottom: 0; }
+            .support-tab.active { border-bottom-color: var(--color-secondary, #c9a87c); }
+            .ticket-header { padding: 12px 14px; flex-direction: column; align-items: flex-start; gap: 8px; }
+            .ticket-meta { width: 100%; justify-content: flex-start; gap: 8px; }
+            .thread-messages::before { left: 10px; }
+            .thread-msg { margin-left: 24px; padding: 12px 14px; }
+            .thread-msg::before { left: -20px; width: 8px; height: 8px; }
+            .thread-reply { margin-left: 24px; }
+            .thread-reply-actions { justify-content: stretch; }
+            .thread-reply button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; <span id="navBack">Retour boutique</span></a>
+        </div>
+    </nav>
+
+    <div class="support-page">
+        <h1 id="supportTitle">Support &amp; Tickets</h1>
+        <p class="support-subtitle" id="supportSubtitle">Besoin d'aide ? Cr&eacute;ez un ticket ou suivez vos demandes.</p>
+
+        <!-- Info Cards -->
+        <div class="support-info-cards">
+            <div class="support-info-card">
+                <span class="info-icon">&#9993;</span>
+                <h3 id="infoCardTitle1">R&eacute;ponse rapide</h3>
+                <p id="infoCardText1">Nous r&eacute;pondons sous 24h maximum &agrave; toutes vos demandes.</p>
+            </div>
+            <div class="support-info-card">
+                <span class="info-icon">&#128274;</span>
+                <h3 id="infoCardTitle2">Suivi s&eacute;curis&eacute;</h3>
+                <p id="infoCardText2">Chaque ticket re&ccedil;oit une r&eacute;f&eacute;rence unique pour un suivi optimal.</p>
+            </div>
+            <div class="support-info-card">
+                <span class="info-icon">&#128172;</span>
+                <h3 id="infoCardTitle3">Historique complet</h3>
+                <p id="infoCardText3">Retrouvez tous vos &eacute;changes dans un fil de conversation clair.</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="support-tabs" id="supportTabs">
+            <button class="support-tab active" data-tab="new" id="tabNew">Nouveau ticket</button>
+            <button class="support-tab" data-tab="list" id="tabList">Mes tickets <span id="ticketCount" style="display:none;background:var(--color-secondary,#c9a87c);color:#fff;font-size:0.7rem;padding:1px 7px;border-radius:10px;margin-left:6px;"></span></button>
+        </div>
+
+        <!-- Error banner -->
+        <div class="support-error" id="supportError"></div>
+
+        <!-- TAB 1: New Ticket -->
+        <div class="support-tab-panel active" id="panelNew">
+            <form class="support-form" id="ticketForm" autocomplete="off">
+                <div class="support-field">
+                    <label id="labelCategory">Cat&eacute;gorie <span class="required">*</span></label>
+                    <select id="ticketCategory" required>
+                        <option value="" id="optDefault">-- Choisir --</option>
+                        <option value="order" id="optOrder">Commande</option>
+                        <option value="product" id="optProduct">Produit</option>
+                        <option value="return" id="optReturn">Retour</option>
+                        <option value="delivery" id="optDelivery">Livraison</option>
+                        <option value="payment" id="optPayment">Paiement</option>
+                        <option value="other" id="optOther">Autre</option>
+                    </select>
+                </div>
+
+                <div class="support-field">
+                    <label id="labelOrder">Num&eacute;ro de commande</label>
+                    <input type="text" id="ticketOrder" placeholder="Ex: ORD-XXXXX">
+                    <div class="field-hint" id="hintOrder">Facultatif, mais acc&eacute;l&egrave;re le traitement</div>
+                </div>
+
+                <div class="support-field">
+                    <label id="labelSubject">Sujet <span class="required">*</span></label>
+                    <input type="text" id="ticketSubject" required maxlength="255">
+                </div>
+
+                <div class="support-field">
+                    <label id="labelMessage">Message <span class="required">*</span></label>
+                    <textarea id="ticketMessage" required maxlength="5000"></textarea>
+                </div>
+
+                <div class="support-field" id="emailField" style="display:none;">
+                    <label id="labelEmail">Email <span class="required">*</span></label>
+                    <input type="email" id="ticketEmail" required>
+                    <div class="field-hint" id="hintEmail">Pour recevoir les r&eacute;ponses &agrave; votre demande</div>
+                </div>
+
+                <div class="support-field" id="nameField" style="display:none;">
+                    <label id="labelName">Nom</label>
+                    <input type="text" id="ticketName" maxlength="255">
+                    <div class="field-hint" id="hintName">Facultatif</div>
+                </div>
+
+                <button type="submit" class="support-submit" id="btnSubmit">Envoyer ma demande</button>
+            </form>
+
+            <!-- Success state -->
+            <div class="support-success" id="ticketSuccess" style="display:none;">
+                <div class="check-icon">&#10003;</div>
+                <h2 id="successTitle">Demande envoy&eacute;e !</h2>
+                <p id="successText">Votre ticket a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s. Conservez cette r&eacute;f&eacute;rence :</p>
+                <div class="ref-code" id="successRef"></div>
+                <p id="successDelay">Nous vous r&eacute;pondrons sous 24h maximum.</p>
+                <button class="btn-back" id="btnNewTicket">Cr&eacute;er un autre ticket</button>
+            </div>
+        </div>
+
+        <!-- TAB 2: My Tickets -->
+        <div class="support-tab-panel" id="panelList">
+            <div class="support-loading" id="ticketsLoading" style="display:none;">
+                <span class="support-loading-spinner"></span> <span id="loadingText">Chargement...</span>
+            </div>
+            <div class="tickets-login-prompt" id="ticketsLoginPrompt" style="display:none;">
+                <p id="loginPromptText">Connectez-vous pour voir vos tickets.</p>
+                <a href="login.html" id="loginPromptLink">Se connecter</a>
+            </div>
+            <div class="tickets-empty" id="ticketsEmpty" style="display:none;">
+                <p id="emptyText">Vous n'avez aucun ticket pour le moment.</p>
+                <button class="support-submit" style="max-width:300px;margin:0 auto;" id="btnCreateFirst">Cr&eacute;er un ticket</button>
+            </div>
+            <div id="ticketsList"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="support-footer">
+        <div class="support-footer-inner">
+            <div>
+                <h3>&Eacute;CLAT</h3>
+                <p>Beaut&eacute; &amp; Wellness Premium</p>
+                <p style="margin-top:8px;">Des soins s&eacute;lectionn&eacute;s pour leur efficacit&eacute; prouv&eacute;e. Programme fid&eacute;lit&eacute; &Eacute;clats, livraison suivie, satisfait ou rembours&eacute;.</p>
+            </div>
+            <div>
+                <h4 id="footerServiceTitle">Service Client</h4>
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html" id="footerDelivery">Livraison</a></li>
+                    <li><a href="retours.html" id="footerReturns">Retours</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 id="footerLegalTitle">L&eacute;gal</h4>
+                <ul>
+                    <li><a href="cgv.html">CGV</a></li>
+                    <li><a href="mentions-legales.html" id="footerMentions">Mentions l&eacute;gales</a></li>
+                    <li><a href="confidentialite.html" id="footerPrivacy">Confidentialit&eacute;</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="support-footer-bottom">
+            &copy; 2026 &Eacute;CLAT &mdash; Maison &Eacute;clat, micro-entreprise. Tous droits r&eacute;serv&eacute;s.
+        </div>
+    </footer>
+
+    <script src="../js/products.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/i18n.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/themes.js" defer></script>
+    <script src="../js/auth.js" defer></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ======================================
+        // i18n Translations — FR, EN, ES, DE
+        // ======================================
+        var T = {
+            fr: {
+                page_title: 'Support & Tickets',
+                page_subtitle: "Besoin d'aide ? Cr\u00e9ez un ticket ou suivez vos demandes.",
+                nav_back: 'Retour boutique',
+                tab_new: 'Nouveau ticket',
+                tab_list: 'Mes tickets',
+                label_category: 'Cat\u00e9gorie',
+                label_order: 'Num\u00e9ro de commande',
+                label_subject: 'Sujet',
+                label_message: 'Message',
+                label_email: 'Email',
+                label_name: 'Nom',
+                hint_order: 'Facultatif, mais acc\u00e9l\u00e8re le traitement',
+                hint_email: 'Pour recevoir les r\u00e9ponses \u00e0 votre demande',
+                hint_name: 'Facultatif',
+                opt_default: '-- Choisir --',
+                opt_order: 'Commande',
+                opt_product: 'Produit',
+                opt_return: 'Retour',
+                opt_delivery: 'Livraison',
+                opt_payment: 'Paiement',
+                opt_other: 'Autre',
+                btn_submit: 'Envoyer ma demande',
+                btn_sending: 'Envoi en cours...',
+                success_title: 'Demande envoy\u00e9e !',
+                success_text: 'Votre ticket a \u00e9t\u00e9 cr\u00e9\u00e9 avec succ\u00e8s. Conservez cette r\u00e9f\u00e9rence :',
+                success_delay: 'Nous vous r\u00e9pondrons sous 24h maximum.',
+                btn_new_ticket: 'Cr\u00e9er un autre ticket',
+                loading: 'Chargement...',
+                login_prompt: 'Connectez-vous pour voir vos tickets.',
+                login_link: 'Se connecter',
+                empty_text: "Vous n'avez aucun ticket pour le moment.",
+                btn_create_first: 'Cr\u00e9er un ticket',
+                reply_placeholder: 'Votre r\u00e9ponse...',
+                btn_reply: 'R\u00e9pondre',
+                btn_replying: 'Envoi...',
+                ticket_closed: 'Ce ticket est ferm\u00e9. Vous ne pouvez plus y r\u00e9pondre.',
+                status_open: 'Ouvert',
+                status_in_progress: 'En cours',
+                status_waiting_customer: 'En attente',
+                status_resolved: 'R\u00e9solu',
+                status_closed: 'Ferm\u00e9',
+                cat_order: 'Commande',
+                cat_product: 'Produit',
+                cat_return: 'Retour',
+                cat_delivery: 'Livraison',
+                cat_payment: 'Paiement',
+                cat_other: 'Autre',
+                priority_low: 'Basse',
+                priority_normal: 'Normale',
+                priority_high: 'Haute',
+                priority_urgent: 'Urgente',
+                sender_customer: 'Vous',
+                sender_support: '\u00c9CLAT Support',
+                error_fields: 'Veuillez remplir tous les champs obligatoires.',
+                error_generic: 'Une erreur est survenue. Veuillez r\u00e9essayer.',
+                error_empty_reply: 'Veuillez saisir un message.',
+                info_card1_title: 'R\u00e9ponse rapide',
+                info_card1_text: 'Nous r\u00e9pondons sous 24h maximum \u00e0 toutes vos demandes.',
+                info_card2_title: 'Suivi s\u00e9curis\u00e9',
+                info_card2_text: 'Chaque ticket re\u00e7oit une r\u00e9f\u00e9rence unique pour un suivi optimal.',
+                info_card3_title: 'Historique complet',
+                info_card3_text: 'Retrouvez tous vos \u00e9changes dans un fil de conversation clair.',
+                detail_created: 'Cr\u00e9\u00e9 le',
+                detail_updated: 'Mis \u00e0 jour',
+                detail_priority: 'Priorit\u00e9',
+                detail_order: 'Commande',
+                footer_service: 'Service Client',
+                footer_legal: 'L\u00e9gal',
+                footer_delivery: 'Livraison',
+                footer_returns: 'Retours',
+                footer_mentions: 'Mentions l\u00e9gales',
+                footer_privacy: 'Confidentialit\u00e9'
+            },
+            en: {
+                page_title: 'Support & Tickets',
+                page_subtitle: 'Need help? Create a ticket or track your requests.',
+                nav_back: 'Back to shop',
+                tab_new: 'New ticket',
+                tab_list: 'My tickets',
+                label_category: 'Category',
+                label_order: 'Order number',
+                label_subject: 'Subject',
+                label_message: 'Message',
+                label_email: 'Email',
+                label_name: 'Name',
+                hint_order: 'Optional, but speeds up processing',
+                hint_email: 'To receive replies to your request',
+                hint_name: 'Optional',
+                opt_default: '-- Select --',
+                opt_order: 'Order',
+                opt_product: 'Product',
+                opt_return: 'Return',
+                opt_delivery: 'Delivery',
+                opt_payment: 'Payment',
+                opt_other: 'Other',
+                btn_submit: 'Send my request',
+                btn_sending: 'Sending...',
+                success_title: 'Request sent!',
+                success_text: 'Your ticket has been created. Keep this reference:',
+                success_delay: 'We will respond within 24 hours.',
+                btn_new_ticket: 'Create another ticket',
+                loading: 'Loading...',
+                login_prompt: 'Log in to view your tickets.',
+                login_link: 'Log in',
+                empty_text: 'You have no tickets yet.',
+                btn_create_first: 'Create a ticket',
+                reply_placeholder: 'Your reply...',
+                btn_reply: 'Reply',
+                btn_replying: 'Sending...',
+                ticket_closed: 'This ticket is closed. You can no longer reply.',
+                status_open: 'Open',
+                status_in_progress: 'In progress',
+                status_waiting_customer: 'Waiting',
+                status_resolved: 'Resolved',
+                status_closed: 'Closed',
+                cat_order: 'Order',
+                cat_product: 'Product',
+                cat_return: 'Return',
+                cat_delivery: 'Delivery',
+                cat_payment: 'Payment',
+                cat_other: 'Other',
+                priority_low: 'Low',
+                priority_normal: 'Normal',
+                priority_high: 'High',
+                priority_urgent: 'Urgent',
+                sender_customer: 'You',
+                sender_support: '\u00c9CLAT Support',
+                error_fields: 'Please fill in all required fields.',
+                error_generic: 'An error occurred. Please try again.',
+                error_empty_reply: 'Please enter a message.',
+                info_card1_title: 'Fast response',
+                info_card1_text: 'We respond within 24 hours to all your requests.',
+                info_card2_title: 'Secure tracking',
+                info_card2_text: 'Each ticket receives a unique reference for optimal tracking.',
+                info_card3_title: 'Complete history',
+                info_card3_text: 'Find all your exchanges in a clear conversation thread.',
+                detail_created: 'Created',
+                detail_updated: 'Updated',
+                detail_priority: 'Priority',
+                detail_order: 'Order',
+                footer_service: 'Customer Service',
+                footer_legal: 'Legal',
+                footer_delivery: 'Delivery',
+                footer_returns: 'Returns',
+                footer_mentions: 'Legal notices',
+                footer_privacy: 'Privacy'
+            },
+            es: {
+                page_title: 'Soporte & Tickets',
+                page_subtitle: '\u00bfNecesitas ayuda? Crea un ticket o sigue tus solicitudes.',
+                nav_back: 'Volver a la tienda',
+                tab_new: 'Nuevo ticket',
+                tab_list: 'Mis tickets',
+                label_category: 'Categor\u00eda',
+                label_order: 'N\u00famero de pedido',
+                label_subject: 'Asunto',
+                label_message: 'Mensaje',
+                label_email: 'Correo electr\u00f3nico',
+                label_name: 'Nombre',
+                hint_order: 'Opcional, pero acelera el procesamiento',
+                hint_email: 'Para recibir respuestas a tu solicitud',
+                hint_name: 'Opcional',
+                opt_default: '-- Elegir --',
+                opt_order: 'Pedido',
+                opt_product: 'Producto',
+                opt_return: 'Devoluci\u00f3n',
+                opt_delivery: 'Entrega',
+                opt_payment: 'Pago',
+                opt_other: 'Otro',
+                btn_submit: 'Enviar mi solicitud',
+                btn_sending: 'Enviando...',
+                success_title: '\u00a1Solicitud enviada!',
+                success_text: 'Tu ticket ha sido creado. Conserva esta referencia:',
+                success_delay: 'Te responderemos en un m\u00e1ximo de 24 horas.',
+                btn_new_ticket: 'Crear otro ticket',
+                loading: 'Cargando...',
+                login_prompt: 'Inicia sesi\u00f3n para ver tus tickets.',
+                login_link: 'Iniciar sesi\u00f3n',
+                empty_text: 'No tienes tickets por el momento.',
+                btn_create_first: 'Crear un ticket',
+                reply_placeholder: 'Tu respuesta...',
+                btn_reply: 'Responder',
+                btn_replying: 'Enviando...',
+                ticket_closed: 'Este ticket est\u00e1 cerrado. Ya no puedes responder.',
+                status_open: 'Abierto',
+                status_in_progress: 'En curso',
+                status_waiting_customer: 'En espera',
+                status_resolved: 'Resuelto',
+                status_closed: 'Cerrado',
+                cat_order: 'Pedido',
+                cat_product: 'Producto',
+                cat_return: 'Devoluci\u00f3n',
+                cat_delivery: 'Entrega',
+                cat_payment: 'Pago',
+                cat_other: 'Otro',
+                priority_low: 'Baja',
+                priority_normal: 'Normal',
+                priority_high: 'Alta',
+                priority_urgent: 'Urgente',
+                sender_customer: 'T\u00fa',
+                sender_support: '\u00c9CLAT Soporte',
+                error_fields: 'Por favor, completa todos los campos obligatorios.',
+                error_generic: 'Ocurri\u00f3 un error. Int\u00e9ntalo de nuevo.',
+                error_empty_reply: 'Por favor, escribe un mensaje.',
+                info_card1_title: 'Respuesta r\u00e1pida',
+                info_card1_text: 'Respondemos en un m\u00e1ximo de 24 horas a todas tus solicitudes.',
+                info_card2_title: 'Seguimiento seguro',
+                info_card2_text: 'Cada ticket recibe una referencia \u00fanica para un seguimiento \u00f3ptimo.',
+                info_card3_title: 'Historial completo',
+                info_card3_text: 'Encuentra todos tus intercambios en un hilo de conversaci\u00f3n claro.',
+                detail_created: 'Creado',
+                detail_updated: 'Actualizado',
+                detail_priority: 'Prioridad',
+                detail_order: 'Pedido',
+                footer_service: 'Atenci\u00f3n al cliente',
+                footer_legal: 'Legal',
+                footer_delivery: 'Entrega',
+                footer_returns: 'Devoluciones',
+                footer_mentions: 'Aviso legal',
+                footer_privacy: 'Privacidad'
+            },
+            de: {
+                page_title: 'Support & Tickets',
+                page_subtitle: 'Brauchen Sie Hilfe? Erstellen Sie ein Ticket oder verfolgen Sie Ihre Anfragen.',
+                nav_back: 'Zur\u00fcck zum Shop',
+                tab_new: 'Neues Ticket',
+                tab_list: 'Meine Tickets',
+                label_category: 'Kategorie',
+                label_order: 'Bestellnummer',
+                label_subject: 'Betreff',
+                label_message: 'Nachricht',
+                label_email: 'E-Mail',
+                label_name: 'Name',
+                hint_order: 'Optional, beschleunigt aber die Bearbeitung',
+                hint_email: 'Um Antworten auf Ihre Anfrage zu erhalten',
+                hint_name: 'Optional',
+                opt_default: '-- W\u00e4hlen --',
+                opt_order: 'Bestellung',
+                opt_product: 'Produkt',
+                opt_return: 'R\u00fccksendung',
+                opt_delivery: 'Lieferung',
+                opt_payment: 'Zahlung',
+                opt_other: 'Sonstiges',
+                btn_submit: 'Anfrage senden',
+                btn_sending: 'Wird gesendet...',
+                success_title: 'Anfrage gesendet!',
+                success_text: 'Ihr Ticket wurde erstellt. Bewahren Sie diese Referenz auf:',
+                success_delay: 'Wir antworten innerhalb von 24 Stunden.',
+                btn_new_ticket: 'Weiteres Ticket erstellen',
+                loading: 'Laden...',
+                login_prompt: 'Melden Sie sich an, um Ihre Tickets zu sehen.',
+                login_link: 'Anmelden',
+                empty_text: 'Sie haben derzeit keine Tickets.',
+                btn_create_first: 'Ticket erstellen',
+                reply_placeholder: 'Ihre Antwort...',
+                btn_reply: 'Antworten',
+                btn_replying: 'Senden...',
+                ticket_closed: 'Dieses Ticket ist geschlossen. Sie k\u00f6nnen nicht mehr antworten.',
+                status_open: 'Offen',
+                status_in_progress: 'In Bearbeitung',
+                status_waiting_customer: 'Wartend',
+                status_resolved: 'Gel\u00f6st',
+                status_closed: 'Geschlossen',
+                cat_order: 'Bestellung',
+                cat_product: 'Produkt',
+                cat_return: 'R\u00fccksendung',
+                cat_delivery: 'Lieferung',
+                cat_payment: 'Zahlung',
+                cat_other: 'Sonstiges',
+                priority_low: 'Niedrig',
+                priority_normal: 'Normal',
+                priority_high: 'Hoch',
+                priority_urgent: 'Dringend',
+                sender_customer: 'Sie',
+                sender_support: '\u00c9CLAT Support',
+                error_fields: 'Bitte f\u00fcllen Sie alle Pflichtfelder aus.',
+                error_generic: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.',
+                error_empty_reply: 'Bitte geben Sie eine Nachricht ein.',
+                info_card1_title: 'Schnelle Antwort',
+                info_card1_text: 'Wir antworten innerhalb von 24 Stunden auf alle Ihre Anfragen.',
+                info_card2_title: 'Sichere Verfolgung',
+                info_card2_text: 'Jedes Ticket erh\u00e4lt eine eindeutige Referenz f\u00fcr optimale Nachverfolgung.',
+                info_card3_title: 'Vollst\u00e4ndiger Verlauf',
+                info_card3_text: 'Finden Sie alle Ihre Austausche in einem klaren Gespr\u00e4chsverlauf.',
+                detail_created: 'Erstellt am',
+                detail_updated: 'Aktualisiert',
+                detail_priority: 'Priorit\u00e4t',
+                detail_order: 'Bestellung',
+                footer_service: 'Kundendienst',
+                footer_legal: 'Rechtliches',
+                footer_delivery: 'Lieferung',
+                footer_returns: 'R\u00fccksendungen',
+                footer_mentions: 'Impressum',
+                footer_privacy: 'Datenschutz'
+            }
+        };
+
+        function tr(key) {
+            var lang = window.currentLang || document.documentElement.lang || 'fr';
+            return (T[lang] || T.fr)[key] || T.fr[key] || key;
+        }
+
+        // ======================================
+        // DOM References
+        // ======================================
+        var tabNew = document.getElementById('tabNew');
+        var tabList = document.getElementById('tabList');
+        var panelNew = document.getElementById('panelNew');
+        var panelList = document.getElementById('panelList');
+        var ticketForm = document.getElementById('ticketForm');
+        var ticketSuccess = document.getElementById('ticketSuccess');
+        var supportError = document.getElementById('supportError');
+        var ticketsLoading = document.getElementById('ticketsLoading');
+        var ticketsLoginPrompt = document.getElementById('ticketsLoginPrompt');
+        var ticketsEmpty = document.getElementById('ticketsEmpty');
+        var ticketsList = document.getElementById('ticketsList');
+        var ticketCount = document.getElementById('ticketCount');
+
+        var _isSignedIn = false;
+        var _token = null;
+        var _userEmail = null;
+
+        // ======================================
+        // API Base
+        // ======================================
+        var API_BASE = '/api/tickets';
+
+        // ======================================
+        // Tab Switching
+        // ======================================
+        function switchTab(tab) {
+            var tabs = document.querySelectorAll('.support-tab');
+            var panels = document.querySelectorAll('.support-tab-panel');
+            for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
+            for (var j = 0; j < panels.length; j++) { panels[j].classList.remove('active'); }
+
+            if (tab === 'list') {
+                tabList.classList.add('active');
+                panelList.classList.add('active');
+                loadTickets();
+            } else {
+                tabNew.classList.add('active');
+                panelNew.classList.add('active');
+            }
+        }
+
+        tabNew.addEventListener('click', function() { switchTab('new'); });
+        tabList.addEventListener('click', function() { switchTab('list'); });
+
+        // ======================================
+        // Error Display
+        // ======================================
+        function showError(msg) {
+            supportError.textContent = msg;
+            supportError.style.display = 'block';
+            supportError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(function() { supportError.style.display = 'none'; }, 6000);
+        }
+
+        // ======================================
+        // Apply i18n to Static Elements
+        // ======================================
+        function applyI18n() {
+            document.getElementById('supportTitle').textContent = tr('page_title');
+            document.getElementById('supportSubtitle').textContent = tr('page_subtitle');
+            document.getElementById('navBack').textContent = tr('nav_back');
+            tabNew.childNodes[0].textContent = tr('tab_new');
+
+            document.getElementById('labelCategory').innerHTML = tr('label_category') + ' <span class="required">*</span>';
+            document.getElementById('labelOrder').textContent = tr('label_order');
+            document.getElementById('labelSubject').innerHTML = tr('label_subject') + ' <span class="required">*</span>';
+            document.getElementById('labelMessage').innerHTML = tr('label_message') + ' <span class="required">*</span>';
+            document.getElementById('labelEmail').innerHTML = tr('label_email') + ' <span class="required">*</span>';
+            document.getElementById('labelName').textContent = tr('label_name');
+            document.getElementById('hintOrder').textContent = tr('hint_order');
+            document.getElementById('hintEmail').textContent = tr('hint_email');
+            document.getElementById('hintName').textContent = tr('hint_name');
+
+            document.getElementById('optDefault').textContent = tr('opt_default');
+            document.getElementById('optOrder').textContent = tr('opt_order');
+            document.getElementById('optProduct').textContent = tr('opt_product');
+            document.getElementById('optReturn').textContent = tr('opt_return');
+            document.getElementById('optDelivery').textContent = tr('opt_delivery');
+            document.getElementById('optPayment').textContent = tr('opt_payment');
+            document.getElementById('optOther').textContent = tr('opt_other');
+
+            document.getElementById('btnSubmit').textContent = tr('btn_submit');
+            document.getElementById('successTitle').textContent = tr('success_title');
+            document.getElementById('successText').textContent = tr('success_text');
+            document.getElementById('successDelay').textContent = tr('success_delay');
+            document.getElementById('btnNewTicket').textContent = tr('btn_new_ticket');
+
+            document.getElementById('loginPromptText').textContent = tr('login_prompt');
+            document.getElementById('loginPromptLink').textContent = tr('login_link');
+            document.getElementById('emptyText').textContent = tr('empty_text');
+            document.getElementById('btnCreateFirst').textContent = tr('btn_create_first');
+
+            // Info cards
+            document.getElementById('infoCardTitle1').textContent = tr('info_card1_title');
+            document.getElementById('infoCardText1').textContent = tr('info_card1_text');
+            document.getElementById('infoCardTitle2').textContent = tr('info_card2_title');
+            document.getElementById('infoCardText2').textContent = tr('info_card2_text');
+            document.getElementById('infoCardTitle3').textContent = tr('info_card3_title');
+            document.getElementById('infoCardText3').textContent = tr('info_card3_text');
+
+            // Footer
+            document.getElementById('footerServiceTitle').textContent = tr('footer_service');
+            document.getElementById('footerLegalTitle').textContent = tr('footer_legal');
+            document.getElementById('footerDelivery').textContent = tr('footer_delivery');
+            document.getElementById('footerReturns').textContent = tr('footer_returns');
+            document.getElementById('footerMentions').textContent = tr('footer_mentions');
+            document.getElementById('footerPrivacy').textContent = tr('footer_privacy');
+        }
+
+        // ======================================
+        // Utilities
+        // ======================================
+        function fmtDate(iso) {
+            if (!iso) return '';
+            var d = new Date(iso);
+            var lang = window.currentLang || 'fr';
+            var locale = lang === 'de' ? 'de-DE' : lang === 'es' ? 'es-ES' : lang === 'en' ? 'en-GB' : 'fr-FR';
+            return d.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+                   ' ' + d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function statusLabel(status) {
+            return tr('status_' + status) || status;
+        }
+
+        function catLabel(cat) {
+            return tr('cat_' + cat) || cat;
+        }
+
+        function priorityLabel(p) {
+            return tr('priority_' + p) || p;
+        }
+
+        function escHtml(str) {
+            if (!str) return '';
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+
+        // ======================================
+        // Submit New Ticket
+        // ======================================
+        ticketForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            var category = document.getElementById('ticketCategory').value;
+            var subject = document.getElementById('ticketSubject').value.trim();
+            var message = document.getElementById('ticketMessage').value.trim();
+            var orderId = document.getElementById('ticketOrder').value.trim();
+            var email = document.getElementById('ticketEmail').value.trim();
+            var name = document.getElementById('ticketName').value.trim();
+
+            if (!category || !subject || !message) {
+                showError(tr('error_fields'));
+                return;
+            }
+            if (!_isSignedIn && !email) {
+                showError(tr('error_fields'));
+                return;
+            }
+
+            var btn = document.getElementById('btnSubmit');
+            btn.disabled = true;
+            btn.textContent = tr('btn_sending');
+
+            var headers = { 'Content-Type': 'application/json' };
+            if (_token) headers['Authorization'] = 'Bearer ' + _token;
+
+            try {
+                var body = {
+                    category: category,
+                    subject: subject,
+                    message: message
+                };
+                if (email) body.email = email;
+                if (name) body.name = name;
+                if (orderId) body.orderId = orderId;
+
+                var resp = await fetch(API_BASE, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(body)
+                });
+
+                var data = await resp.json();
+
+                if (!resp.ok) {
+                    showError(data.error || tr('error_generic'));
+                    btn.disabled = false;
+                    btn.textContent = tr('btn_submit');
+                    return;
+                }
+
+                // Show success
+                ticketForm.style.display = 'none';
+                ticketSuccess.style.display = 'block';
+                document.getElementById('successRef').textContent = data.ticket.ticket_ref;
+                ticketForm.reset();
+            } catch (err) {
+                showError(tr('error_generic'));
+            }
+
+            btn.disabled = false;
+            btn.textContent = tr('btn_submit');
+        });
+
+        // New ticket button (from success)
+        document.getElementById('btnNewTicket').addEventListener('click', function() {
+            ticketSuccess.style.display = 'none';
+            ticketForm.style.display = 'block';
+        });
+
+        // Create first ticket button
+        document.getElementById('btnCreateFirst').addEventListener('click', function() {
+            switchTab('new');
+        });
+
+        // ======================================
+        // Load Tickets List
+        // ======================================
+        async function loadTickets() {
+            if (!_isSignedIn) {
+                ticketsLoginPrompt.style.display = 'block';
+                ticketsLoading.style.display = 'none';
+                ticketsEmpty.style.display = 'none';
+                ticketsList.innerHTML = '';
+                return;
+            }
+
+            ticketsLoginPrompt.style.display = 'none';
+            ticketsLoading.style.display = 'block';
+            document.getElementById('loadingText').textContent = tr('loading');
+            ticketsEmpty.style.display = 'none';
+            ticketsList.innerHTML = '';
+
+            try {
+                var resp = await fetch(API_BASE, {
+                    headers: { 'Authorization': 'Bearer ' + _token }
+                });
+
+                if (!resp.ok) {
+                    ticketsLoading.style.display = 'none';
+                    showError(tr('error_generic'));
+                    return;
+                }
+
+                var data = await resp.json();
+                var tickets = data.tickets || [];
+
+                ticketsLoading.style.display = 'none';
+
+                // Update ticket count badge
+                if (tickets.length > 0) {
+                    ticketCount.textContent = tickets.length;
+                    ticketCount.style.display = 'inline';
+                } else {
+                    ticketCount.style.display = 'none';
+                }
+
+                if (tickets.length === 0) {
+                    ticketsEmpty.style.display = 'block';
+                    return;
+                }
+
+                renderTicketList(tickets);
+            } catch (err) {
+                ticketsLoading.style.display = 'none';
+                showError(tr('error_generic'));
+            }
+        }
+
+        // ======================================
+        // Render Ticket List
+        // ======================================
+        function renderTicketList(tickets) {
+            ticketsList.innerHTML = '';
+
+            for (var i = 0; i < tickets.length; i++) {
+                var t = tickets[i];
+                var card = document.createElement('div');
+                card.className = 'ticket-card';
+                card.setAttribute('data-ref', t.ticket_ref);
+
+                var priorityHtml = '';
+                if (t.priority && t.priority !== 'normal') {
+                    priorityHtml = '<span class="priority-badge priority-' + escHtml(t.priority) + '">' + priorityLabel(t.priority) + '</span>';
+                }
+
+                card.innerHTML =
+                    '<div class="ticket-header">' +
+                        '<span class="ticket-ref">' + escHtml(t.ticket_ref) + '</span>' +
+                        '<span class="ticket-subject">' + escHtml(t.subject) + '</span>' +
+                        '<div class="ticket-meta">' +
+                            '<span class="ticket-cat">' + catLabel(t.category) + '</span>' +
+                            priorityHtml +
+                            '<span class="status-badge status-' + escHtml(t.status) + '">' + statusLabel(t.status) + '</span>' +
+                            '<span class="ticket-date">' + fmtDate(t.created_at) + '</span>' +
+                            '<span class="ticket-arrow">&#9660;</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="ticket-detail">' +
+                        '<div class="ticket-detail-inner">' +
+                            '<div class="thread-messages" id="thread-' + escHtml(t.ticket_ref) + '">' +
+                                '<div class="support-loading"><span class="support-loading-spinner"></span> ' + tr('loading') + '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+
+                ticketsList.appendChild(card);
+            }
+
+            // Click to expand
+            var headers = ticketsList.querySelectorAll('.ticket-header');
+            for (var j = 0; j < headers.length; j++) {
+                headers[j].addEventListener('click', handleTicketClick);
+            }
+        }
+
+        // ======================================
+        // Handle Ticket Card Click (Expand/Collapse)
+        // ======================================
+        function handleTicketClick(e) {
+            var card = e.currentTarget.parentElement;
+            var ref = card.getAttribute('data-ref');
+            var wasOpen = card.classList.contains('open');
+
+            // Close all
+            var allCards = document.querySelectorAll('.ticket-card');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('open');
+            }
+
+            if (!wasOpen) {
+                card.classList.add('open');
+                loadTicketDetail(ref);
+            }
+        }
+
+        // ======================================
+        // Load Ticket Detail (Messages Timeline)
+        // ======================================
+        async function loadTicketDetail(ref) {
+            var threadEl = document.getElementById('thread-' + ref);
+            if (!threadEl) return;
+
+            threadEl.innerHTML = '<div class="support-loading"><span class="support-loading-spinner"></span> ' + tr('loading') + '</div>';
+
+            try {
+                var resp = await fetch(API_BASE + '?ticketRef=' + encodeURIComponent(ref), {
+                    headers: { 'Authorization': 'Bearer ' + _token }
+                });
+
+                if (!resp.ok) {
+                    threadEl.innerHTML = '<p style="color:#b91c1c;text-align:center;padding:16px;">' + tr('error_generic') + '</p>';
+                    return;
+                }
+
+                var data = await resp.json();
+                var ticket = data.ticket;
+                var messages = ticket.messages || [];
+                var isClosed = ticket.status === 'closed' || ticket.status === 'resolved';
+
+                // Ticket info bar
+                var infoHtml = '<div class="ticket-info-bar">';
+                infoHtml += '<span class="ticket-info-item"><strong>' + tr('detail_created') + ':</strong> ' + fmtDate(ticket.created_at) + '</span>';
+                if (ticket.updated_at && ticket.updated_at !== ticket.created_at) {
+                    infoHtml += '<span class="ticket-info-item"><strong>' + tr('detail_updated') + ':</strong> ' + fmtDate(ticket.updated_at) + '</span>';
+                }
+                infoHtml += '<span class="ticket-info-item"><strong>' + tr('detail_priority') + ':</strong> <span class="priority-badge priority-' + escHtml(ticket.priority || 'normal') + '">' + priorityLabel(ticket.priority || 'normal') + '</span></span>';
+                if (ticket.order_id) {
+                    infoHtml += '<span class="ticket-info-item"><strong>' + tr('detail_order') + ':</strong> ' + escHtml(ticket.order_id) + '</span>';
+                }
+                infoHtml += '</div>';
+
+                // Messages timeline
+                var html = infoHtml;
+                html += '<div class="thread-messages">';
+                for (var i = 0; i < messages.length; i++) {
+                    var msg = messages[i];
+                    var isCustomer = msg.from === 'customer';
+                    html += '<div class="thread-msg ' + (isCustomer ? 'from-customer' : 'from-support') + '" style="animation-delay:' + (i * 0.08) + 's;">' +
+                        '<div class="thread-msg-header">' +
+                            '<span class="thread-msg-sender">' + (isCustomer ? tr('sender_customer') : tr('sender_support')) + '</span>' +
+                            '<span>' + fmtDate(msg.date) + '</span>' +
+                        '</div>' +
+                        '<div class="thread-msg-text">' + escHtml(msg.message) + '</div>' +
+                    '</div>';
+                }
+                html += '</div>';
+
+                if (isClosed) {
+                    html += '<div class="thread-closed-msg">' + tr('ticket_closed') + '</div>';
+                } else {
+                    html += '<div class="thread-reply">' +
+                        '<textarea placeholder="' + escHtml(tr('reply_placeholder')) + '" id="reply-' + escHtml(ref) + '"></textarea>' +
+                        '<div class="thread-reply-actions">' +
+                            '<button onclick="window._replyTicket(\'' + escHtml(ref) + '\')">' + tr('btn_reply') + '</button>' +
+                        '</div>' +
+                    '</div>';
+                }
+
+                threadEl.innerHTML = html;
+            } catch (err) {
+                threadEl.innerHTML = '<p style="color:#b91c1c;text-align:center;padding:16px;">' + tr('error_generic') + '</p>';
+            }
+        }
+
+        // ======================================
+        // Reply to a Ticket
+        // ======================================
+        window._replyTicket = async function(ref) {
+            var textarea = document.getElementById('reply-' + ref);
+            if (!textarea) return;
+
+            var message = textarea.value.trim();
+            if (!message) {
+                showError(tr('error_empty_reply'));
+                return;
+            }
+
+            var btn = textarea.parentElement.nextElementSibling
+                ? textarea.parentElement.nextElementSibling.querySelector('button')
+                : textarea.closest('.thread-reply').querySelector('button');
+            if (!btn) btn = textarea.parentElement.querySelector('button');
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = tr('btn_replying');
+            }
+
+            try {
+                var resp = await fetch(API_BASE, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + _token
+                    },
+                    body: JSON.stringify({
+                        ticketRef: ref,
+                        message: message
+                    })
+                });
+
+                if (!resp.ok) {
+                    var errData = await resp.json();
+                    showError(errData.error || tr('error_generic'));
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.textContent = tr('btn_reply');
+                    }
+                    return;
+                }
+
+                // Reload the thread
+                loadTicketDetail(ref);
+            } catch (err) {
+                showError(tr('error_generic'));
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = tr('btn_reply');
+                }
+            }
+        };
+
+        // ======================================
+        // Auth Integration
+        // ======================================
+        function waitForAuth(cb) {
+            if (window.auth && window.auth._ready) { cb(); return; }
+            if (window.auth) { window.auth.onReady(cb); return; }
+            document.addEventListener('DOMContentLoaded', function() {
+                if (window.auth) { window.auth.onReady(cb); }
+                else { setTimeout(function() { if (window.auth) window.auth.onReady(cb); else cb(); }, 1500); }
+            });
+        }
+
+        // ======================================
+        // Language Change Listener
+        // ======================================
+        function setupLangListener() {
+            // Re-apply i18n when language changes (if i18n.js fires an event)
+            document.addEventListener('langChanged', function() {
+                applyI18n();
+            });
+            // Also watch for window.currentLang changes
+            var _lastLang = window.currentLang || 'fr';
+            setInterval(function() {
+                var cur = window.currentLang || 'fr';
+                if (cur !== _lastLang) {
+                    _lastLang = cur;
+                    applyI18n();
+                }
+            }, 1000);
+        }
+
+        // ======================================
+        // Init
+        // ======================================
+        function init() {
+            applyI18n();
+            setupLangListener();
+
+            waitForAuth(async function() {
+                if (window.auth && window.auth.isSignedIn()) {
+                    _isSignedIn = true;
+                    _token = await window.auth.getToken();
+                    _userEmail = window.auth.getUser() ? window.auth.getUser().email : null;
+
+                    // Hide email/name fields for signed-in users
+                    document.getElementById('emailField').style.display = 'none';
+                    document.getElementById('nameField').style.display = 'none';
+                    document.getElementById('ticketEmail').removeAttribute('required');
+
+                    if (_userEmail) {
+                        document.getElementById('ticketEmail').value = _userEmail;
+                    }
+                } else {
+                    _isSignedIn = false;
+                    // Show email/name fields for guests
+                    document.getElementById('emailField').style.display = 'block';
+                    document.getElementById('nameField').style.display = 'block';
+                    document.getElementById('ticketEmail').setAttribute('required', 'required');
+                }
+
+                // Check URL params for auto-opening a tab or ticket
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('tab') === 'list') {
+                    switchTab('list');
+                }
+                if (params.get('ref')) {
+                    switchTab('list');
+                }
+            });
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

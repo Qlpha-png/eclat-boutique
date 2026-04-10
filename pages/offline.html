@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hors-ligne - ÉCLAT</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-            background: #faf8f5;
-            color: #2d2926;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 24px;
-            text-align: center;
-        }
-        .offline-card {
-            max-width: 400px;
-        }
-        .offline-icon {
-            font-size: 4rem;
-            margin-bottom: 24px;
-        }
-        h1 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-        p {
-            color: #6b6560;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: #2d2926;
-            color: #fff;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-        }
-        .btn:hover { background: #1a1714; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hors-ligne - ECLAT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#faf8f5;color:#2d2926;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.offline-container{max-width:480px}
+.logo{font-family:Georgia,serif;font-size:2.5rem;font-weight:700;letter-spacing:4px;margin-bottom:32px;color:#2d2926}
+.icon{font-size:64px;margin-bottom:24px;line-height:1}
+h1{font-family:Georgia,serif;font-size:1.5rem;margin-bottom:12px;color:#2d2926}
+p{color:#6b6560;line-height:1.7;margin-bottom:24px;font-size:0.95rem}
+.btn{display:inline-block;padding:14px 32px;background:#2d2926;color:#fff;border:none;border-radius:30px;font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s;font-family:inherit}
+.btn:hover{background:#c9a87c}
+.tips{margin-top:40px;padding:24px;background:#f3efe9;border-radius:12px;text-align:left}
+.tips h3{font-family:Georgia,serif;font-size:1rem;margin-bottom:12px;color:#c9a87c}
+.tips ul{list-style:none;padding:0}
+.tips li{font-size:0.85rem;color:#6b6560;margin-bottom:8px;padding-left:20px;position:relative;line-height:1.6}
+.tips li::before{content:"\2713";position:absolute;left:0;color:#c9a87c;font-weight:700}
+.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+</style>
 </head>
 <body>
-    <div class="offline-card">
-        <div class="offline-icon">&#128268;</div>
-        <h1>Vous êtes hors-ligne</h1>
-        <p>Pas de connexion internet pour le moment. Reconnectez-vous pour continuer votre shopping beauté.</p>
-        <button class="btn" onclick="window.location.reload()">Réessayer</button>
+<div class="offline-container">
+    <div class="logo">ECLAT</div>
+    <div class="icon">&#127760;</div>
+    <h1>Vous &ecirc;tes hors-ligne</h1>
+    <p>Pas de connexion Internet d&eacute;tect&eacute;e. V&eacute;rifiez votre connexion Wi-Fi ou donn&eacute;es mobiles et r&eacute;essayez.</p>
+    <button class="btn" onclick="location.reload()">R&eacute;essayer</button>
+    <div class="tips">
+        <h3>En attendant...</h3>
+        <ul>
+            <li>Votre panier est sauvegard&eacute; localement</li>
+            <li>Vos pr&eacute;f&eacute;rences et favoris sont conserv&eacute;s</li>
+            <li>Le site se rechargera automatiquement &agrave; la reconnexion</li>
+        </ul>
     </div>
+    <p class="pulse" style="margin-top:24px;font-size:0.8rem;color:#c9a87c;">En attente de connexion...</p>
+</div>
+<script>
+window.addEventListener("online", function() { location.reload(); });
+</script>
 </body>
 </html>

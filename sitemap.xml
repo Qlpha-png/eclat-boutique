@@ -1,223 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- Homepage -->
     <url>
         <loc>https://maison-eclat.shop/</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/?lang=de"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/"/>
     </url>
+
+    <!-- Pages principales -->
     <url>
         <loc>https://maison-eclat.shop/pages/diagnostic.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/diagnostic.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/diagnostic.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/diagnostic.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/diagnostic.html?lang=de"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/guide-beaute.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/blog.html</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <!-- Product Pages -->
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=1</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=2</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=3</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=4</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=5</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=6</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=7</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=8</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=9</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=10</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=11</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=12</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=13</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=14</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/product.html?id=15</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/a-propos.html</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/guide-beaute.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/guide-beaute.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/guide-beaute.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/guide-beaute.html?lang=de"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/routine-builder.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/routine-builder.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/routine-builder.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/routine-builder.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/routine-builder.html?lang=de"/>
     </url>
-    <!-- Blog Articles -->
     <url>
-        <loc>https://maison-eclat.shop/pages/blog/masque-led-guide.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <loc>https://maison-eclat.shop/pages/a-propos.html</loc>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/a-propos.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/a-propos.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/a-propos.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/a-propos.html?lang=de"/>
+    </url>
+
+    <!-- Blog -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/blog.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/blog.html?lang=de"/>
+    </url>
+
+    <!-- Category page -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/category.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/category.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/category.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/category.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/category.html?lang=de"/>
+    </url>
+
+    <!-- Product Pages (priority 0.7) -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=1</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=1"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=1&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=1&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=1&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=2</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=2"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=2&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=2&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=2&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=3</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=3"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=3&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=3&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=3&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=4</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=4"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=4&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=4&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=4&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=5</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=5"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=5&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=5&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=5&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=6</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=6"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=6&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=6&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=6&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=7</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=7"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=7&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=7&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=7&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=8</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=8"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=8&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=8&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=8&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=9</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=9"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=9&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=9&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=9&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=10</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=10"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=10&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=10&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=10&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=11</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=11"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=11&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=11&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=11&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=12</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=12"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=12&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=12&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=12&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=13</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=13"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=13&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=13&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=13&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=14</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=14"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=14&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=14&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=14&amp;lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/product.html?id=15</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html?id=15"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?id=15&amp;lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?id=15&amp;lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?id=15&amp;lang=de"/>
+    </url>
+
+    <!-- Blog Articles (priority 0.5) -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/masque-led-guide.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/masque-led-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/masque-led-guide.html?lang=en"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/blog/routine-skincare-matin.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/routine-skincare-matin.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/routine-skincare-matin.html?lang=en"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/blog/jade-roller-vs-gua-sha.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/jade-roller-vs-gua-sha.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/jade-roller-vs-gua-sha.html?lang=en"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/blog/vitamine-c-skincare.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/vitamine-c-skincare.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/vitamine-c-skincare.html?lang=en"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/blog/k-beauty-tendances-2026.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/k-beauty-tendances-2026.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/k-beauty-tendances-2026.html?lang=en"/>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/blog/derma-roller-erreurs.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/derma-roller-erreurs.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/derma-roller-erreurs.html?lang=en"/>
     </url>
-    <!-- Account & Auth (noindex but in sitemap for crawl budget) -->
-    <url>
-        <loc>https://maison-eclat.shop/pages/login.html</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://maison-eclat.shop/pages/register.html</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    <!-- Info Pages -->
+
+    <!-- Info Pages (priority 0.8) -->
     <url>
         <loc>https://maison-eclat.shop/pages/faq.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/faq.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/faq.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/faq.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/faq.html?lang=de"/>
+    </url>
+    <url>
+        <loc>https://maison-eclat.shop/pages/contact.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/livraison.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/retours.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
+    </url>
+
+    <!-- Account & Auth (low priority) -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/login.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://maison-eclat.shop/pages/contact.html</loc>
-        <lastmod>2026-04-09</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <loc>https://maison-eclat.shop/pages/register.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
+
+    <!-- Legal pages -->
     <url>
         <loc>https://maison-eclat.shop/pages/cgv.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/mentions-legales.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://maison-eclat.shop/pages/confidentialite.html</loc>
-        <lastmod>2026-04-09</lastmod>
+        <lastmod>2026-04-10</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
+    </url>
+
+    <!-- Wishlist -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/wishlist.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
     </url>
 </urlset>

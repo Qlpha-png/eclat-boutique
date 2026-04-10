@@ -120,6 +120,10 @@
     <script src="../js/products.js"></script>
     <script src="../js/cart.js"></script>
     <script src="../js/i18n.js"></script>
+    <script src="../js/products-i18n-en.js"></script>
+    <script src="../js/products-i18n-es.js"></script>
+    <script src="../js/products-i18n-de.js"></script>
+    <script src="../js/products-i18n.js"></script>
     <script>
     (function() {
         var params = new URLSearchParams(window.location.search);
@@ -146,10 +150,13 @@
             outils: { title: 'Outils Beaut\u00e9', desc: 'Accessoires et appareils de soin haute technologie.' }
         };
 
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
         var meta = CATEGORY_META[cat] || { title: 'Tous les produits', desc: 'D\u00e9couvrez notre collection compl\u00e8te.' };
-        document.getElementById('catTitle').textContent = meta.title;
+        // Use translated category label if available
+        var catTitle = (typeof getCategoryText === 'function' && cat) ? getCategoryText(cat, lang) : meta.title;
+        document.getElementById('catTitle').textContent = catTitle;
         document.getElementById('catDesc').textContent = meta.desc;
-        document.getElementById('pageTitle').textContent = meta.title + ' - \u00c9CLAT';
+        document.getElementById('pageTitle').textContent = catTitle + ' - \u00c9CLAT';
         document.getElementById('pageDesc').content = meta.desc;
 
         // Set filter values from URL
@@ -167,6 +174,21 @@
                 { '@type': 'ListItem', position: 3, name: meta.title }
             ]
         });
+
+        // Populate subcategory pills
+        if (cat && typeof PRODUCTS !== 'undefined') {
+            var subcats = {};
+            PRODUCTS.filter(function(p) { return p.category === cat; }).forEach(function(p) {
+                if (p.subcategory) subcats[p.subcategory] = (subcats[p.subcategory] || 0) + 1;
+            });
+            var subcatEl = document.getElementById('catSubcats');
+            var baseUrl = '/pages/category.html?cat=' + encodeURIComponent(cat);
+            subcatEl.innerHTML = '<a href="' + baseUrl + '" class="' + (!subcat ? 'active' : '') + '">Tous</a>' +
+                Object.keys(subcats).map(function(s) {
+                    return '<a href="' + baseUrl + '&sub=' + encodeURIComponent(s) + '" class="' + (subcat === s ? 'active' : '') + '">' +
+                        s.charAt(0).toUpperCase() + s.slice(1) + ' (' + subcats[s] + ')</a>';
+                }).join('');
+        }
 
         function loadProducts() {
             var grid = document.getElementById('catGrid');
@@ -192,6 +214,14 @@
                 // Fallback local
                 var filtered = typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
                 if (cat) filtered = filtered.filter(function(p) { return p.category === cat; });
+                if (subcat) filtered = filtered.filter(function(p) { return p.subcategory && p.subcategory.toLowerCase() === subcat.toLowerCase(); });
+                if (gender) filtered = filtered.filter(function(p) { return p.gender === gender || p.gender === 'unisex'; });
+                if (concern) filtered = filtered.filter(function(p) { return p.concerns && p.concerns.indexOf(concern) !== -1; });
+                // Sort
+                if (sort === 'price_asc') filtered.sort(function(a,b) { return a.price - b.price; });
+                else if (sort === 'price_desc') filtered.sort(function(a,b) { return b.price - a.price; });
+                else if (sort === 'newest') filtered.sort(function(a,b) { return (b.id || 0) - (a.id || 0); });
+                else filtered.sort(function(a,b) { return (b.bestseller ? 1 : 0) - (a.bestseller ? 1 : 0); });
                 renderGrid(filtered, filtered.length, 1);
             });
         }
@@ -208,13 +238,15 @@
             grid.innerHTML = products.map(function(p) {
                 var img = Array.isArray(p.images) && p.images[0] ? p.images[0] : (p.image || '');
                 var oldPrice = p.compare_at_price || p.oldPrice;
-                return '<div class="cat-card" onclick="window.location.href=\'/pages/product.html?id=' + p.id + '\'">' +
+                var pName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
+                var pDesc = (typeof getProductText === 'function') ? (getProductText(p.id, 'description', lang) || p.description) : p.description;
+                return '<div class="cat-card" data-product-id="' + p.id + '" onclick="window.location.href=\'/pages/product.html?id=' + p.id + '\'">' +
                     '<div class="cat-card-img">' +
-                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(p.name) + '" loading="lazy">' +
+                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" loading="lazy">' +
                     (p.badge ? '<span class="cat-card-badge">' + escapeHTML(p.badge) + '</span>' : '') +
                     '</div>' +
                     '<div class="cat-card-info">' +
-                    '<div class="cat-card-name">' + escapeHTML(p.name) + '</div>' +
+                    '<div class="cat-card-name">' + escapeHTML(pName) + '</div>' +
                     '<div class="cat-card-price">' + formatPrice(p.price) +
                     (oldPrice ? '<span class="old">' + formatPrice(oldPrice) + '</span>' : '') +
                     '</div></div>' +

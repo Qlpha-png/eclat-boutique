@@ -171,6 +171,8 @@ CREATE TABLE IF NOT EXISTS orders (
     fulfillment_status VARCHAR(30) DEFAULT 'pending' CHECK (fulfillment_status IN ('pending', 'auto_fulfilled', 'manual', 'failed')),
     fulfillment_id VARCHAR(200), -- ID commande fournisseur
     notes TEXT,
+    tracking_cache JSONB,              -- Cache des événements CJ (évite spam API)
+    tracking_cache_at TIMESTAMPTZ,     -- Date du dernier cache tracking
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );

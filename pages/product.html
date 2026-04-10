@@ -8,6 +8,14 @@
     <meta property="og:type" content="product">
     <meta property="og:locale" content="fr_FR">
     <meta name="robots" content="index, follow">
+
+    <!-- Hreflang: International SEO (dynamic for product pages) -->
+    <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html">
+    <link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/product.html?lang=en">
+    <link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/product.html?lang=es">
+    <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?lang=de">
+    <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/product.html">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -69,6 +77,22 @@
         @keyframes spin { to { transform:rotate(360deg); } }
     </style>
     <script id="productSchema" type="application/ld+json"></script>
+    <!-- Dynamically update hreflang with product ID -->
+    <script>
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var pid = params.get('id');
+        if (pid) {
+            var hreflangs = document.querySelectorAll('link[hreflang]');
+            hreflangs.forEach(function(link) {
+                var href = link.getAttribute('href');
+                var url = new URL(href);
+                url.searchParams.set('id', pid);
+                link.setAttribute('href', url.toString());
+            });
+        }
+    })();
+    </script>
 </head>
 <body style="background:var(--color-bg);">
     <nav class="navbar">
@@ -100,6 +124,11 @@
     </div>
 
     <script src="../js/products.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/products-i18n-en.js"></script>
+    <script src="../js/products-i18n-es.js"></script>
+    <script src="../js/products-i18n-de.js"></script>
+    <script src="../js/products-i18n.js"></script>
     <script src="../js/wishlist.js"></script>
     <script src="../js/social-share.js"></script>
     <script src="../js/recently-viewed.js"></script>
@@ -108,8 +137,11 @@
     <script>
         var catLabels = {
             visage: 'Soins visage', soin: 'Skincare', corps: 'Corps & fitness',
-            outils: 'Outils beaut\u00e9', aromatherapie: 'Bien-\u00eatre'
+            outils: 'Outils beaut\u00e9', aromatherapie: 'Bien-\u00eatre',
+            cheveux: 'Cheveux', ongles: 'Ongles', homme: 'Homme',
+            accessoire: 'Accessoires'
         };
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
         var guideMap = {
             1:'led', 2:'guasha', 3:'ultrasons', 4:'ultrasons', 5:'cryo',
             6:'ems', 7:'led', 8:'vitc', 9:'collagene', 10:'collagene',
@@ -130,26 +162,87 @@
         if (!product) {
             document.getElementById('ppImage').innerHTML = '<p style="padding:40px;text-align:center;">Produit introuvable</p>';
         } else {
-            // Set page meta
-            document.title = escapeHTML(product.name) + ' - \u00c9CLAT';
-            document.getElementById('pageDesc').setAttribute('content', product.description);
+            // Translated product fields
+            var pName = (typeof getProductText === 'function') ? getProductText(product.id, 'name', lang) : product.name;
+            var pDesc = (typeof getProductText === 'function') ? getProductText(product.id, 'description', lang) : product.description;
+            var pFeatures = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'features', lang) : null;
+            var pSpecs = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'specs', lang) : null;
+            var pHowTo = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'howTo', lang) : null;
+            var pCatLabel = (typeof getCategoryText === 'function') ? getCategoryText(product.category, lang) : (catLabels[product.category] || product.category);
+            // Use translated if available, fallback to FR original
+            if (!pName) pName = product.name;
+            if (!pDesc) pDesc = product.description;
+            if (!pFeatures || !pFeatures.length) pFeatures = product.features;
+            if (!pHowTo) pHowTo = product.howTo;
 
-            // Set JSON-LD Product schema
-            document.getElementById('productSchema').textContent = JSON.stringify({
+            // Set page meta
+            document.title = escapeHTML(pName) + ' - \u00c9CLAT';
+            document.getElementById('pageDesc').setAttribute('content', pDesc);
+
+            // Set JSON-LD Product schema (enriched with sku, brand, aggregateRating, offers)
+            var productSchemaData = {
                 "@context": "https://schema.org",
                 "@type": "Product",
-                "name": product.name,
-                "description": product.description,
+                "name": pName,
+                "description": pDesc,
                 "image": product.image,
-                "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+                "sku": "ECLAT-" + String(product.id).padStart(4, '0'),
+                "mpn": "ECLAT-" + String(product.id).padStart(4, '0'),
+                "brand": {
+                    "@type": "Brand",
+                    "name": "\u00c9CLAT",
+                    "url": "https://maison-eclat.shop"
+                },
+                "category": catLabels[product.category] || product.category,
                 "offers": {
                     "@type": "Offer",
                     "price": product.price.toFixed(2),
                     "priceCurrency": "EUR",
                     "availability": "https://schema.org/InStock",
-                    "url": "https://maison-eclat.shop/pages/product.html?id=" + product.id
-                }
-            });
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "url": "https://maison-eclat.shop/pages/product.html?id=" + product.id,
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Maison \u00c9clat"
+                    },
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": "FR"
+                        },
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 1,
+                                "maxValue": 3,
+                                "unitCode": "DAY"
+                            },
+                            "transitTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 7,
+                                "maxValue": 14,
+                                "unitCode": "DAY"
+                            }
+                        },
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": "0",
+                            "currency": "EUR"
+                        }
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "FR",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail"
+                    }
+                },
+                "aggregateRating": undefined
+            };
+            document.getElementById('productSchema').textContent = JSON.stringify(productSchemaData);
 
             // BreadcrumbList schema
             var breadcrumbScript = document.createElement('script');
@@ -160,7 +253,7 @@
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "\u00c9CLAT", "item": "https://maison-eclat.shop/" },
                     { "@type": "ListItem", "position": 2, "name": "Produits", "item": "https://maison-eclat.shop/#produits" },
-                    { "@type": "ListItem", "position": 3, "name": product.name, "item": "https://maison-eclat.shop/pages/product.html?id=" + product.id }
+                    { "@type": "ListItem", "position": 3, "name": pName, "item": "https://maison-eclat.shop/pages/product.html?id=" + product.id }
                 ]
             });
             document.head.appendChild(breadcrumbScript);
@@ -202,7 +295,7 @@
 
             // Render image
             document.getElementById('ppImage').innerHTML =
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '">';
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '">';
 
             // Render info
             var guide = guideMap[product.id];
@@ -210,13 +303,14 @@
                 ? '<div class="pp-guide"><a href="guide-beaute.html#' + guide + '">Lire l\'\u00e9tude scientifique \u2192</a></div>'
                 : '';
 
-            // Build specs HTML
+            // Build specs HTML — use translated specs if available
             var specsHTML = '';
-            if (product.specs) {
+            var displaySpecs = (pSpecs && typeof pSpecs === 'object' && Object.keys(pSpecs).length > 0) ? pSpecs : product.specs;
+            if (displaySpecs) {
                 specsHTML = '<div class="pp-section"><h2>Sp\u00e9cifications techniques</h2><dl class="pp-specs">';
                 var specLabels = { puissance:'Puissance', longueurs:'Longueurs d\'onde', batterie:'Batterie', poids:'Poids', materiau:'Mat\u00e9riau', dimensions:'Dimensions', entretien:'Entretien', frequence:'Fr\u00e9quence', modes:'Modes', etancheite:'\u00c9tanch\u00e9it\u00e9', tetes:'T\u00eates', vitesse:'Vitesse', technologie:'Technologie', particules:'Particules', reservoir:'R\u00e9servoir', autonomie:'Autonomie', concentration:'Concentration', ph:'pH', contenance:'Contenance', conservation:'Conservation', temperature:'Temp\u00e9rature', rotation:'Rotation', contenu:'Contenu', duree_pose:'Dur\u00e9e de pose', type:'Type', purete:'Puret\u00e9', extraction:'Extraction', zones:'Zones', reutilisable:'R\u00e9utilisable', duree:'Dur\u00e9e', parfum:'Parfum', capacite:'Capacit\u00e9', couverture:'Couverture', bruit:'Bruit', arret:'Arr\u00eat auto', longueur:'Longueur' };
-                for (var key in product.specs) {
-                    specsHTML += '<dt>' + (specLabels[key] || key) + '</dt><dd>' + escapeHTML(product.specs[key]) + '</dd>';
+                for (var key in displaySpecs) {
+                    specsHTML += '<dt>' + (specLabels[key] || key) + '</dt><dd>' + escapeHTML(displaySpecs[key]) + '</dd>';
                 }
                 specsHTML += '</dl></div>';
             }
@@ -234,21 +328,22 @@
                 }
             }
 
-            // Build how-to HTML
+            // Build how-to HTML — use translated howTo if available
             var howToHTML = '';
-            if (product.howTo) {
-                howToHTML = '<div class="pp-section"><h2>Mode d\'emploi</h2><div class="pp-howto">' + escapeHTML(product.howTo) + '</div></div>';
+            var displayHowTo = pHowTo || product.howTo;
+            if (displayHowTo) {
+                howToHTML = '<div class="pp-section"><h2>Mode d\'emploi</h2><div class="pp-howto">' + escapeHTML(displayHowTo) + '</div></div>';
             }
 
             document.getElementById('ppInfo').innerHTML =
-                '<div class="pp-category">' + (catLabels[product.category] || product.category) + '</div>' +
-                '<h1 class="pp-name">' + escapeHTML(product.name) + '</h1>' +
-                '<div class="pp-rating">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5</span></div>' +
-                (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: product.name + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
+                '<div class="pp-category">' + escapeHTML(pCatLabel) + '</div>' +
+                '<h1 class="pp-name">' + escapeHTML(pName) + '</h1>' +
+                (product.reviews > 0 ? '<div class="pp-rating">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5 (' + product.reviews + ' avis)</span></div>' : '<div class="pp-rating" style="font-size:0.9rem;color:var(--color-text-light);">Aucun avis &mdash; <a href="#ppReviews" style="color:var(--color-secondary);text-decoration:underline;">Soyez le premier !</a></div>') +
+                (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: pName + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
-                '<p class="pp-desc">' + escapeHTML(product.description) + '</p>' +
+                '<p class="pp-desc">' + escapeHTML(pDesc) + '</p>' +
                 guideHTML +
-                '<ul class="pp-features">' + product.features.map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') + '</ul>' +
+                '<ul class="pp-features">' + (pFeatures || product.features || []).map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') + '</ul>' +
                 '<div class="pp-trust">' +
                     '<span><span aria-hidden="true">&#128666;</span> Livraison suivie</span>' +
                     '<span><span aria-hidden="true">&#128260;</span> Satisfait 30j</span>' +
@@ -340,9 +435,10 @@
                 document.getElementById('ppCrossSell').innerHTML =
                     '<div class="pp-cross-sell"><h2>Compl\u00e8te ta routine</h2><div class="pp-cs-grid">' +
                     related.map(function(p){
+                        var csName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
                         return '<a href="product.html?id='+p.id+'" class="pp-cs-card">' +
-                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.name)+'" loading="lazy">' +
-                            '<div class="pp-cs-name">'+escapeHTML(p.name)+'</div>' +
+                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(csName)+'" loading="lazy">' +
+                            '<div class="pp-cs-name">'+escapeHTML(csName)+'</div>' +
                             '<div class="pp-cs-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div>' +
                         '</a>';
                     }).join('') +
@@ -362,7 +458,7 @@
 
             // Sticky add-to-cart bar (appears when CTA scrolls out of view)
             var stickyBar = document.getElementById('stickyATC');
-            document.getElementById('stickyName').textContent = product.name;
+            document.getElementById('stickyName').textContent = pName;
             document.getElementById('stickyPrice').textContent = product.price.toFixed(2).replace('.',',') + ' \u20ac';
             document.getElementById('stickyBtn').href = '../index.html?produit=' + product.id;
 
@@ -410,12 +506,37 @@
                 }
                 html += '</div></div>';
 
-                // Enrich JSON-LD with aggregateRating
+                // Enrich JSON-LD with real aggregateRating and review data from API
                 var schema = document.getElementById('productSchema');
                 if (schema && product) {
                     try {
                         var ld = JSON.parse(schema.textContent);
-                        ld.aggregateRating = { "@type": "AggregateRating", ratingValue: agg.average, reviewCount: agg.count };
+                        ld.aggregateRating = {
+                            "@type": "AggregateRating",
+                            "ratingValue": agg.average,
+                            "bestRating": 5,
+                            "worstRating": 1,
+                            "reviewCount": agg.count
+                        };
+                        // Add individual reviews to schema (max 5 for performance)
+                        if (reviews.length > 0) {
+                            ld.review = reviews.slice(0, 5).map(function(r) {
+                                return {
+                                    "@type": "Review",
+                                    "reviewRating": {
+                                        "@type": "Rating",
+                                        "ratingValue": r.rating,
+                                        "bestRating": 5
+                                    },
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": r.name || "Client v\u00e9rifi\u00e9"
+                                    },
+                                    "datePublished": r.created_at ? r.created_at.split('T')[0] : "",
+                                    "reviewBody": r.comment || ""
+                                };
+                            });
+                        }
                         schema.textContent = JSON.stringify(ld);
                     } catch(e) {}
                 }

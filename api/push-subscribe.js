@@ -1,57 +1,57 @@
-/**
- * /api/push-subscribe — Gestion des abonnements push
- * POST : s'abonner (auth requis)
- * DELETE : se désabonner
- */
-const { getSupabase, verifyAuth } = require('./_middleware/auth');
-const { applyRateLimit } = require('./_middleware/rateLimit');
+// ============================
+// ECLAT - Push Subscribe API
+// POST /api/push-subscribe - Save push subscription
+// ============================
+// SQL:
+// CREATE TABLE IF NOT EXISTS push_subscriptions (
+//   id SERIAL PRIMARY KEY,
+//   user_id UUID REFERENCES auth.users(id),
+//   endpoint TEXT UNIQUE NOT NULL,
+//   keys_p256dh TEXT NOT NULL,
+//   keys_auth TEXT NOT NULL,
+//   created_at TIMESTAMPTZ DEFAULT NOW()
+// );
 
-module.exports = async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, DELETE, OPTIONS');
+const { createClient } = require('@supabase/supabase-js');
+const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_SERVICE_KEY || '');
+
+module.exports = async (req, res) => {
+    var allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    var origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) !== -1) res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     if (req.method === 'OPTIONS') return res.status(200).end();
-    if (applyRateLimit(req, res, 'authenticated')) return;
+    if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
-    var sb = getSupabase();
-    var auth = await verifyAuth(req);
-    if (!auth) return res.status(401).json({ error: 'Authentification requise' });
-
-    // POST — subscribe
-    if (req.method === 'POST') {
-        var sub = req.body || {};
-        if (!sub.endpoint || !sub.keys || !sub.keys.p256dh || !sub.keys.auth) {
-            return res.status(400).json({ error: 'Subscription invalide (endpoint + keys requis)' });
+    try {
+        var body = req.body || {};
+        var subscription = body.subscription;
+        if (!subscription || !subscription.endpoint || !subscription.keys) {
+            return res.status(400).json({ error: 'Invalid subscription' });
         }
 
-        var { error } = await sb.from('push_subscriptions').upsert({
-            user_id: auth.userId,
-            endpoint: sub.endpoint,
-            keys_p256dh: sub.keys.p256dh,
-            keys_auth: sub.keys.auth,
+        // Optional auth
+        var userId = null;
+        var authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+            var token = authHeader.replace('Bearer ', '');
+            var { data: { user } } = await supabase.auth.getUser(token);
+            if (user) userId = user.id;
+        }
+
+        // Upsert subscription
+        var { error } = await supabase.from('push_subscriptions').upsert({
+            user_id: userId,
+            endpoint: subscription.endpoint,
+            keys_p256dh: subscription.keys.p256dh,
+            keys_auth: subscription.keys.auth,
             created_at: new Date().toISOString()
         }, { onConflict: 'endpoint' });
 
-        if (error) {
-            console.error('[push-subscribe POST]', error.message);
-            return res.status(500).json({ error: 'Erreur serveur' });
-        }
-        return res.status(200).json({ ok: true });
+        if (error) return res.status(500).json({ error: error.message });
+        return res.status(201).json({ success: true });
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
     }
-
-    // DELETE — unsubscribe
-    if (req.method === 'DELETE') {
-        var body = req.body || {};
-        if (!body.endpoint) return res.status(400).json({ error: 'endpoint requis' });
-
-        await sb.from('push_subscriptions')
-            .delete()
-            .eq('user_id', auth.userId)
-            .eq('endpoint', body.endpoint)
-            .catch(function() {});
-
-        return res.status(200).json({ ok: true });
-    }
-
-    return res.status(405).json({ error: 'Method not allowed' });
 };

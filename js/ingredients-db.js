@@ -1,269 +1,806 @@
 // ============================
-// ÉCLAT — Base de données ingrédients & matériaux
-// Données : EWG Skin Deep, CIR, INCIDecoder
+// ECLAT Beaute — Base de donnees ingredients INCI
+// Sources : EWG Skin Deep, CIR (Cosmetic Ingredient Review), INCIDecoder
+// Format : safety | score | category | origin | description_fr | description_en | ewg_score
 // ============================
 
 var INGREDIENTS_DB = {
 
     // ═══════════════════════════════════════════════════
-    // INGRÉDIENTS COSMÉTIQUES (INCI)
+    // SOLVANTS / BASE
     // ═══════════════════════════════════════════════════
 
     "Aqua": {
-        safety: "excellent", score: 100, ewg: 1,
-        category: "solvent", origin: "natural",
-        fr: "Eau purifiée — base universelle de toute formulation cosmétique. Totalement sûre.",
-        en: "Purified water — universal base for all cosmetic formulations. Completely safe."
+        safety: "excellent",
+        score: 100,
+        category: "solvent",
+        origin: "natural",
+        description_fr: "Eau purifiee — base universelle de toute formulation cosmetique. Totalement sure.",
+        description_en: "Purified water — universal base for all cosmetic formulations. Completely safe.",
+        ewg_score: 1
     },
-    "Ethyl Ascorbic Acid": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "antioxidant", origin: "synthetic",
-        fr: "Forme stabilisée de Vitamine C à 20%. Puissant antioxydant qui stimule la production de collagène, éclaircit le teint et protège des radicaux libres. Études cliniques prouvées.",
-        en: "Stabilized form of Vitamin C at 20%. Powerful antioxidant that boosts collagen production, brightens skin tone and protects against free radicals."
-    },
-    "Hyaluronic Acid": {
-        safety: "excellent", score: 98, ewg: 1,
-        category: "humectant", origin: "synthetic",
-        fr: "Acide hyaluronique — retient jusqu'à 1000x son poids en eau. Hydrate, repulpe et lisse les ridules. Naturellement présent dans la peau.",
-        en: "Hyaluronic acid — holds up to 1000x its weight in water. Hydrates, plumps and smooths fine lines. Naturally present in skin."
-    },
-    "Sodium Hyaluronate": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "humectant", origin: "synthetic",
-        fr: "Sel de sodium de l'acide hyaluronique. Molécule plus petite = pénétration plus profonde. Hydratation longue durée.",
-        en: "Sodium salt of hyaluronic acid. Smaller molecule = deeper penetration. Long-lasting hydration."
-    },
-    "Glycerin": {
-        safety: "excellent", score: 98, ewg: 1,
-        category: "humectant", origin: "natural",
-        fr: "Glycérine végétale — humectant naturel qui attire l'eau dans la peau. Protège la barrière cutanée. Ingrédient le plus utilisé en cosmétique après l'eau.",
-        en: "Vegetable glycerin — natural humectant that draws water into skin. Protects skin barrier. Most used cosmetic ingredient after water."
+
+    // ═══════════════════════════════════════════════════
+    // VITAMINES
+    // ═══════════════════════════════════════════════════
+
+    "Retinol": {
+        safety: "moderate",
+        score: 73,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Vitamine A pure — gold standard anti-age. Accelere le renouvellement cellulaire, reduit rides et taches. Peut etre irritant, eviter pendant la grossesse.",
+        description_en: "Pure Vitamin A — gold standard for anti-aging. Accelerates cell renewal, reduces wrinkles and dark spots. Can be irritating, avoid during pregnancy.",
+        ewg_score: 4
     },
     "Niacinamide": {
-        safety: "excellent", score: 96, ewg: 1,
-        category: "active", origin: "synthetic",
-        fr: "Vitamine B3 — réduit les pores, uniformise le teint, renforce la barrière cutanée, anti-inflammatoire. L'actif polyvalent par excellence.",
-        en: "Vitamin B3 — minimizes pores, evens skin tone, strengthens skin barrier, anti-inflammatory. The ultimate multi-tasking active."
+        safety: "excellent",
+        score: 96,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Vitamine B3 — reduit les pores, unifie le teint, renforce la barriere cutanee. Actif polyvalent anti-inflammatoire.",
+        description_en: "Vitamin B3 — minimizes pores, evens skin tone, strengthens skin barrier. Multi-tasking anti-inflammatory active.",
+        ewg_score: 1
     },
     "Tocopherol": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "antioxidant", origin: "natural",
-        fr: "Vitamine E naturelle — antioxydant puissant qui protège les cellules. Nourrit, apaise, accélère la cicatrisation.",
-        en: "Natural Vitamin E — powerful antioxidant that protects cells. Nourishes, soothes, accelerates healing."
+        safety: "excellent",
+        score: 97,
+        category: "vitamin",
+        origin: "natural",
+        description_fr: "Vitamine E naturelle — antioxydant puissant qui protege les cellules. Nourrit, apaise, accelere la cicatrisation.",
+        description_en: "Natural Vitamin E — powerful antioxidant that protects cells. Nourishes, soothes, accelerates healing.",
+        ewg_score: 1
     },
-    "Ferulic Acid": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "antioxidant", origin: "natural",
-        fr: "Acide férulique — booste l'efficacité des vitamines C et E de 8x (étude Duke University). Antioxydant et protecteur solaire naturel.",
-        en: "Ferulic acid — boosts vitamin C and E efficacy by 8x (Duke University study). Antioxidant and natural sun protector."
+    "Ascorbic Acid": {
+        safety: "excellent",
+        score: 94,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Vitamine C pure (acide L-ascorbique). Antioxydant puissant, eclaircit le teint, stimule le collagene. Instable a l'air libre.",
+        description_en: "Pure Vitamin C (L-ascorbic acid). Powerful antioxidant, brightens skin, stimulates collagen. Unstable when exposed to air.",
+        ewg_score: 1
     },
-    "Aloe Barbadensis Leaf Extract": {
-        safety: "excellent", score: 98, ewg: 1,
-        category: "soothing", origin: "natural",
-        fr: "Extrait d'Aloe Vera — apaise, hydrate, anti-inflammatoire. Utilisé depuis l'Antiquité pour ses propriétés cicatrisantes.",
-        en: "Aloe Vera extract — soothes, hydrates, anti-inflammatory. Used since antiquity for its healing properties."
+    "Ethyl Ascorbic Acid": {
+        safety: "excellent",
+        score: 95,
+        category: "antioxidant",
+        origin: "synthetic",
+        description_fr: "Forme stabilisee de Vitamine C. Puissant antioxydant qui illumine le teint et reduit les taches.",
+        description_en: "Stabilized form of Vitamin C. Powerful antioxidant that brightens skin and reduces dark spots.",
+        ewg_score: 1
     },
-    "Hydrolyzed Collagen": {
-        safety: "excellent", score: 94, ewg: 1,
-        category: "anti-aging", origin: "natural",
-        fr: "Collagène marin hydrolysé — peptides qui repulpent et raffermissent la peau. Améliore l'élasticité et réduit les rides.",
-        en: "Hydrolyzed marine collagen — peptides that plump and firm skin. Improves elasticity and reduces wrinkles."
+    "Panthenol": {
+        safety: "excellent",
+        score: 97,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Provitamine B5 — hydrate en profondeur, apaise les irritations, accelere la reparation cutanee. Tres bien tolere.",
+        description_en: "Provitamin B5 — deeply hydrates, soothes irritation, accelerates skin repair. Very well tolerated.",
+        ewg_score: 1
+    },
+    "Tocopheryl Acetate": {
+        safety: "excellent",
+        score: 95,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Forme stabilisee de Vitamine E. Antioxydant, protege contre les UV et la pollution. Plus stable que le tocopherol pur.",
+        description_en: "Stabilized form of Vitamin E. Antioxidant, protects against UV and pollution. More stable than pure tocopherol.",
+        ewg_score: 1
     },
     "Retinyl Palmitate": {
-        safety: "good", score: 82, ewg: 4,
-        category: "anti-aging", origin: "synthetic",
-        fr: "Forme douce de Vitamine A (rétinol). Stimule le renouvellement cellulaire, lisse les rides. Plus doux que le rétinol pur.",
-        en: "Gentle form of Vitamin A (retinol). Stimulates cell renewal, smooths wrinkles. Gentler than pure retinol."
+        safety: "good",
+        score: 78,
+        category: "vitamin",
+        origin: "synthetic",
+        description_fr: "Forme douce de retinol (Vitamine A). Stimule le renouvellement cellulaire avec moins d'irritation que le retinol pur.",
+        description_en: "Gentle form of retinol (Vitamin A). Stimulates cell renewal with less irritation than pure retinol.",
+        ewg_score: 4
     },
-    "Retinol": {
-        safety: "good", score: 80, ewg: 4,
-        category: "anti-aging", origin: "synthetic",
-        fr: "Vitamine A pure — le gold standard anti-âge. Accélère le renouvellement cellulaire, réduit rides et taches. Peut être irritant au début.",
-        en: "Pure Vitamin A — the gold standard for anti-aging. Accelerates cell renewal, reduces wrinkles and dark spots. Can be irritating initially."
+
+    // ═══════════════════════════════════════════════════
+    // ACIDES
+    // ═══════════════════════════════════════════════════
+
+    "Hyaluronic Acid": {
+        safety: "excellent",
+        score: 98,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "Acide hyaluronique — retient jusqu'a 1000x son poids en eau. Hydrate, repulpe et lisse les ridules.",
+        description_en: "Hyaluronic acid — holds up to 1000x its weight in water. Hydrates, plumps and smooths fine lines.",
+        ewg_score: 1
     },
-    "Gold (CI 77480)": {
-        safety: "excellent", score: 90, ewg: 1,
-        category: "luxe", origin: "mineral",
-        fr: "Or colloïdal — propriétés antioxydantes, améliore la microcirculation. Ingrédient premium utilisé en cosmétique de luxe.",
-        en: "Colloidal gold — antioxidant properties, improves microcirculation. Premium ingredient used in luxury cosmetics."
+    "Sodium Hyaluronate": {
+        safety: "excellent",
+        score: 97,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "Sel de sodium de l'acide hyaluronique. Molecule plus petite pour une penetration plus profonde.",
+        description_en: "Sodium salt of hyaluronic acid. Smaller molecule for deeper penetration.",
+        ewg_score: 1
     },
-    "Centella Asiatica Extract": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "soothing", origin: "natural",
-        fr: "Centella Asiatica (Cica) — star de la K-beauty. Répare, apaise, anti-inflammatoire. Stimule la production de collagène naturel.",
-        en: "Centella Asiatica (Cica) — K-beauty star ingredient. Repairs, soothes, anti-inflammatory. Stimulates natural collagen production."
+    "Salicylic Acid": {
+        safety: "good",
+        score: 82,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Acide salicylique (BHA) — exfoliant qui penetre les pores, anti-inflammatoire. Ideal pour peaux grasses et acneiques.",
+        description_en: "Salicylic acid (BHA) — exfoliant that penetrates pores, anti-inflammatory. Ideal for oily and acne-prone skin.",
+        ewg_score: 3
     },
-    "Adenosine": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "anti-aging", origin: "synthetic",
-        fr: "Adénosine — anti-rides prouvé cliniquement. Lisse les ridules, améliore l'élasticité. Reconnu par l'UE comme actif anti-âge.",
-        en: "Adenosine — clinically proven anti-wrinkle. Smooths fine lines, improves elasticity. EU-recognized anti-aging active."
+    "Glycolic Acid": {
+        safety: "good",
+        score: 80,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Acide glycolique (AHA) — exfoliant chimique le plus efficace. Lisse le grain de peau, estompe les taches. Peut etre irritant a forte concentration.",
+        description_en: "Glycolic acid (AHA) — most effective chemical exfoliant. Smooths skin texture, fades dark spots. Can be irritating at high concentrations.",
+        ewg_score: 4
     },
-    "Allantoin": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "soothing", origin: "synthetic",
-        fr: "Allantoïne — apaise les irritations, accélère la régénération cellulaire. Très bien toléré, même sur peaux ultra-sensibles.",
-        en: "Allantoin — soothes irritation, accelerates cell regeneration. Very well tolerated, even on ultra-sensitive skin."
+    "Lactic Acid": {
+        safety: "good",
+        score: 83,
+        category: "active",
+        origin: "natural",
+        description_fr: "Acide lactique (AHA) — exfoliant doux derive du lait. Hydrate tout en exfoliant. Ideal pour peaux sensibles.",
+        description_en: "Lactic acid (AHA) — gentle milk-derived exfoliant. Hydrates while exfoliating. Ideal for sensitive skin.",
+        ewg_score: 3
     },
-    "Hydrolyzed Hyaluronic Acid": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "humectant", origin: "synthetic",
-        fr: "Acide hyaluronique fragmenté en micro-aiguilles. Pénètre plus profondément que l'HA classique pour une hydratation intense.",
-        en: "Hyaluronic acid fragmented into micro-needles. Penetrates deeper than standard HA for intense hydration."
+    "Mandelic Acid": {
+        safety: "good",
+        score: 85,
+        category: "active",
+        origin: "natural",
+        description_fr: "Acide mandelique (AHA) — derive de l'amande amere. Exfoliant doux a grosses molecules, ideal peaux sensibles et foncees.",
+        description_en: "Mandelic acid (AHA) — derived from bitter almonds. Gentle large-molecule exfoliant, ideal for sensitive and dark skin.",
+        ewg_score: 2
+    },
+    "Ferulic Acid": {
+        safety: "excellent",
+        score: 95,
+        category: "antioxidant",
+        origin: "natural",
+        description_fr: "Acide ferulique — booste l'efficacite des vitamines C et E de 8x. Antioxydant et photoprotecteur naturel.",
+        description_en: "Ferulic acid — boosts vitamin C and E efficacy by 8x. Antioxidant and natural photoprotector.",
+        ewg_score: 1
+    },
+    "Stearic Acid": {
+        safety: "excellent",
+        score: 92,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Acide stearique — acide gras naturel. Emollient, stabilise les emulsions, adoucit la peau.",
+        description_en: "Stearic acid — natural fatty acid. Emollient, stabilizes emulsions, softens skin.",
+        ewg_score: 1
+    },
+    "Citric Acid": {
+        safety: "excellent",
+        score: 90,
+        category: "active",
+        origin: "natural",
+        description_fr: "Acide citrique — ajuste le pH des formulations. Exfoliant leger, antioxydant naturel derive des agrumes.",
+        description_en: "Citric acid — adjusts formulation pH. Mild exfoliant, natural antioxidant derived from citrus.",
+        ewg_score: 2
+    },
+
+    // ═══════════════════════════════════════════════════
+    // ACTIFS
+    // ═══════════════════════════════════════════════════
+
+    "Hydrolyzed Collagen": {
+        safety: "excellent",
+        score: 94,
+        category: "active",
+        origin: "natural",
+        description_fr: "Collagene hydrolyse — peptides qui repulpent et raffermissent la peau. Ameliore l'elasticite.",
+        description_en: "Hydrolyzed collagen — peptides that plump and firm skin. Improves elasticity.",
+        ewg_score: 1
+    },
+    "Palmitoyl Tripeptide-1": {
+        safety: "excellent",
+        score: 93,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Peptide de synthese — stimule la production de collagene et d'acide hyaluronique. Anti-rides prouve cliniquement.",
+        description_en: "Synthetic peptide — stimulates collagen and hyaluronic acid production. Clinically proven anti-wrinkle.",
+        ewg_score: 1
     },
     "Acetyl Hexapeptide-8": {
-        safety: "excellent", score: 93, ewg: 1,
-        category: "anti-aging", origin: "synthetic",
-        fr: "Argireline — le 'Botox en crème'. Peptide qui détend les micro-contractions musculaires pour lisser les rides d'expression.",
-        en: "Argireline — 'Botox in a cream'. Peptide that relaxes micro-muscle contractions to smooth expression lines."
+        safety: "excellent",
+        score: 93,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Argireline — peptide qui detend les micro-contractions musculaires pour lisser les rides d'expression.",
+        description_en: "Argireline — peptide that relaxes micro-muscle contractions to smooth expression lines.",
+        ewg_score: 1
+    },
+    "Ceramide NP": {
+        safety: "excellent",
+        score: 96,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Ceramide NP — lipide identique a la peau. Repare et renforce la barriere cutanee, retient l'hydratation.",
+        description_en: "Ceramide NP — skin-identical lipid. Repairs and strengthens the skin barrier, retains moisture.",
+        ewg_score: 1
+    },
+    "Allantoin": {
+        safety: "excellent",
+        score: 97,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Allantoine — apaise les irritations, accelere la regeneration cellulaire. Tres bien tolere, meme sur peaux ultra-sensibles.",
+        description_en: "Allantoin — soothes irritation, accelerates cell regeneration. Very well tolerated, even on ultra-sensitive skin.",
+        ewg_score: 1
+    },
+    "Centella Asiatica Extract": {
+        safety: "excellent",
+        score: 97,
+        category: "active",
+        origin: "natural",
+        description_fr: "Centella Asiatica (Cica) — repare, apaise, anti-inflammatoire. Stimule la production de collagene naturel.",
+        description_en: "Centella Asiatica (Cica) — repairs, soothes, anti-inflammatory. Stimulates natural collagen production.",
+        ewg_score: 1
+    },
+    "Arbutin": {
+        safety: "good",
+        score: 88,
+        category: "active",
+        origin: "natural",
+        description_fr: "Arbutine — derive de la busserole. Inhibe la tyrosinase pour eclaircir les taches pigmentaires sans irritation.",
+        description_en: "Arbutin — derived from bearberry. Inhibits tyrosinase to lighten pigmentation spots without irritation.",
+        ewg_score: 1
+    },
+    "Alpha-Arbutin": {
+        safety: "good",
+        score: 89,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Alpha-arbutine — forme plus stable et efficace de l'arbutine. Agent depigmentant doux et sur.",
+        description_en: "Alpha-arbutin — more stable and effective form of arbutin. Gentle and safe depigmenting agent.",
+        ewg_score: 1
+    },
+    "Adenosine": {
+        safety: "excellent",
+        score: 95,
+        category: "active",
+        origin: "synthetic",
+        description_fr: "Adenosine — anti-rides prouve cliniquement. Lisse les ridules, ameliore l'elasticite. Reconnu par l'UE.",
+        description_en: "Adenosine — clinically proven anti-wrinkle. Smooths fine lines, improves elasticity. EU-recognized.",
+        ewg_score: 1
+    },
+    "Bakuchiol": {
+        safety: "excellent",
+        score: 92,
+        category: "active",
+        origin: "natural",
+        description_fr: "Bakuchiol — alternative vegetale au retinol. Anti-age, antioxydant, sans irritation. Compatible grossesse.",
+        description_en: "Bakuchiol — plant-based retinol alternative. Anti-aging, antioxidant, non-irritating. Pregnancy-safe.",
+        ewg_score: 1
+    },
+
+    // ═══════════════════════════════════════════════════
+    // NATURELS / EXTRAITS VEGETAUX
+    // ═══════════════════════════════════════════════════
+
+    "Aloe Barbadensis Leaf Extract": {
+        safety: "excellent",
+        score: 98,
+        category: "active",
+        origin: "natural",
+        description_fr: "Extrait d'Aloe Vera — apaise, hydrate, anti-inflammatoire. Proprietes cicatrisantes reconnues depuis l'Antiquite.",
+        description_en: "Aloe Vera extract — soothes, hydrates, anti-inflammatory. Healing properties recognized since antiquity.",
+        ewg_score: 1
     },
     "Rosa Canina Seed Oil": {
-        safety: "excellent", score: 99, ewg: 1,
-        category: "emollient", origin: "natural",
-        fr: "Huile de Rose Musquée pure — trésor naturel riche en oméga 3, 6 et 9. Régénère, atténue cicatrices et vergetures, anti-rides naturel.",
-        en: "Pure Rosehip Oil — natural treasure rich in omega 3, 6 and 9. Regenerates, fades scars and stretch marks, natural anti-wrinkle."
+        safety: "excellent",
+        score: 99,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Huile de Rose Musquee — riche en omega 3, 6, 9. Regenere, attenue cicatrices et vergetures.",
+        description_en: "Rosehip Seed Oil — rich in omega 3, 6, 9. Regenerates, fades scars and stretch marks.",
+        ewg_score: 1
+    },
+    "Simmondsia Chinensis Seed Oil": {
+        safety: "excellent",
+        score: 97,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Huile de Jojoba — cire liquide biomimetique proche du sebum humain. Regule la production de sebum, nourrit sans graisser.",
+        description_en: "Jojoba Oil — biomimetic liquid wax close to human sebum. Regulates sebum production, nourishes without greasiness.",
+        ewg_score: 1
+    },
+    "Melaleuca Alternifolia Leaf Oil": {
+        safety: "moderate",
+        score: 72,
+        category: "active",
+        origin: "natural",
+        description_fr: "Huile essentielle d'Arbre a The — antibacterien et antifongique puissant. Peut etre irritant pur, utiliser dilue.",
+        description_en: "Tea Tree Essential Oil — powerful antibacterial and antifungal. Can be irritating undiluted, use diluted.",
+        ewg_score: 4
+    },
+    "Camellia Sinensis Leaf Extract": {
+        safety: "excellent",
+        score: 96,
+        category: "antioxidant",
+        origin: "natural",
+        description_fr: "Extrait de The Vert — riche en catechines (EGCG). Antioxydant puissant, protege contre les radicaux libres et la pollution.",
+        description_en: "Green Tea Extract — rich in catechins (EGCG). Powerful antioxidant, protects against free radicals and pollution.",
+        ewg_score: 1
+    },
+    "Squalane": {
+        safety: "excellent",
+        score: 98,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Squalane — derive de l'olive ou de la canne a sucre. Emollient leger, identique au sebum. Hydrate sans obstruer les pores.",
+        description_en: "Squalane — derived from olive or sugarcane. Lightweight emollient, identical to sebum. Moisturizes without clogging pores.",
+        ewg_score: 1
+    },
+    "Butyrospermum Parkii Butter": {
+        safety: "excellent",
+        score: 98,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Beurre de Karite — riche en vitamines A, E, F. Nourrit intensement, protege et repare la barriere cutanee.",
+        description_en: "Shea Butter — rich in vitamins A, E, F. Intensely nourishes, protects and repairs the skin barrier.",
+        ewg_score: 1
+    },
+    "Argania Spinosa Kernel Oil": {
+        safety: "excellent",
+        score: 97,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Huile d'Argan — tresor marocain riche en vitamine E et acides gras. Anti-age, nourrit peau et cheveux.",
+        description_en: "Argan Oil — Moroccan treasure rich in vitamin E and fatty acids. Anti-aging, nourishes skin and hair.",
+        ewg_score: 1
+    },
+    "Chamomilla Recutita Extract": {
+        safety: "excellent",
+        score: 96,
+        category: "active",
+        origin: "natural",
+        description_fr: "Extrait de Camomille — apaisant, anti-inflammatoire, antioxydant. Ideal pour les peaux sensibles et reactives.",
+        description_en: "Chamomile Extract — soothing, anti-inflammatory, antioxidant. Ideal for sensitive and reactive skin.",
+        ewg_score: 1
     },
 
     // ═══════════════════════════════════════════════════
-    // MATÉRIAUX APPAREILS & OUTILS
+    // HUMECTANTS
     // ═══════════════════════════════════════════════════
 
-    "Silicone médical hypoallergénique": {
-        safety: "excellent", score: 96, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Silicone de grade médical — hypoallergénique, utilisé en chirurgie et prothèses. Contact peau sûr et durable.",
-        en: "Medical-grade silicone — hypoallergenic, used in surgery and prosthetics. Safe and durable skin contact."
+    "Glycerin": {
+        safety: "excellent",
+        score: 98,
+        category: "humectant",
+        origin: "natural",
+        description_fr: "Glycerine vegetale — humectant naturel qui attire l'eau dans la peau. Protege la barriere cutanee.",
+        description_en: "Vegetable glycerin — natural humectant that draws water into skin. Protects the skin barrier.",
+        ewg_score: 1
     },
-    "Silicone alimentaire": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Silicone de qualité alimentaire — sans BPA, approuvé FDA pour le contact alimentaire et cutané.",
-        en: "Food-grade silicone — BPA-free, FDA-approved for food and skin contact."
+    "Propylene Glycol": {
+        safety: "moderate",
+        score: 68,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "Propylene glycol — humectant et solvant synthetique. Peut causer des irritations chez les peaux sensibles a forte concentration.",
+        description_en: "Propylene glycol — synthetic humectant and solvent. Can cause irritation on sensitive skin at high concentrations.",
+        ewg_score: 3
     },
-    "LED SMD haute efficacité": {
-        safety: "excellent", score: 94, ewg: 1,
-        category: "technology", origin: "synthetic",
-        fr: "Diodes LED à montage en surface — lumière thérapeutique sans UV. Technologie utilisée en dermatologie professionnelle.",
-        en: "Surface-mounted LED diodes — therapeutic light without UV. Technology used in professional dermatology."
+    "Butylene Glycol": {
+        safety: "good",
+        score: 82,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "Butylene glycol — humectant synthetique leger. Ameliore la penetration des actifs, texture legere.",
+        description_en: "Butylene glycol — lightweight synthetic humectant. Enhances active ingredient penetration, light texture.",
+        ewg_score: 1
     },
-    "Quartz rose 100% naturel (SiO₂ + traces Ti, Mn)": {
-        safety: "excellent", score: 100, ewg: 1,
-        category: "mineral", origin: "natural",
-        fr: "Quartz rose naturel — minéral pur (dioxyde de silicium). Utilisé en lithothérapie depuis des millénaires. Inerte et non toxique.",
-        en: "Natural rose quartz — pure mineral (silicon dioxide). Used in crystal therapy for millennia. Inert and non-toxic."
+    "Urea": {
+        safety: "excellent",
+        score: 90,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "Uree — facteur naturel d'hydratation (NMF). Humectant puissant, exfoliant doux a haute concentration.",
+        description_en: "Urea — natural moisturizing factor (NMF). Powerful humectant, gentle exfoliant at high concentrations.",
+        ewg_score: 1
     },
-    "Acier inoxydable 304 (qualité médicale)": {
-        safety: "excellent", score: 96, ewg: 1,
-        category: "material", origin: "mineral",
-        fr: "Acier inox 304 — grade médical utilisé en instruments chirurgicaux. Résistant à la corrosion, hypoallergénique.",
-        en: "304 stainless steel — medical grade used in surgical instruments. Corrosion-resistant, hypoallergenic."
+    "Betaine": {
+        safety: "excellent",
+        score: 94,
+        category: "humectant",
+        origin: "natural",
+        description_fr: "Betaine — derive de la betterave sucriere. Humectant naturel, anti-irritant, protege contre la deshydratation.",
+        description_en: "Betaine — derived from sugar beet. Natural humectant, anti-irritant, protects against dehydration.",
+        ewg_score: 1
     },
-    "Acier inoxydable": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "material", origin: "mineral",
-        fr: "Acier inoxydable — alliage résistant à la corrosion. Contact peau sûr, facile à nettoyer.",
-        en: "Stainless steel — corrosion-resistant alloy. Safe skin contact, easy to clean."
+
+    // ═══════════════════════════════════════════════════
+    // CONSERVATEURS
+    // ═══════════════════════════════════════════════════
+
+    "Phenoxyethanol": {
+        safety: "moderate",
+        score: 65,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Phenoxyethanol — conservateur cosmetique courant. Limite a 1% en UE. Peut etre irritant a forte dose.",
+        description_en: "Phenoxyethanol — common cosmetic preservative. Limited to 1% in EU. Can be irritating at high doses.",
+        ewg_score: 4
     },
-    "ABS sans BPA": {
-        safety: "excellent", score: 92, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Plastique ABS sans bisphénol A — résistant, léger, approuvé pour le contact cutané. Standard industrie cosmétique.",
-        en: "BPA-free ABS plastic — durable, lightweight, approved for skin contact. Cosmetic industry standard."
+    "Benzisothiazolinone": {
+        safety: "caution",
+        score: 40,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Benzisothiazolinone (BIT) — conservateur puissant mais allergisant reconnu. Interdit dans les produits sans rincage en UE.",
+        description_en: "Benzisothiazolinone (BIT) — powerful preservative but known allergen. Banned in EU leave-on products.",
+        ewg_score: 7
     },
-    "ABS médical": {
-        safety: "excellent", score: 93, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "ABS de grade médical — plastique premium utilisé dans les dispositifs médicaux. Sans phtalates ni BPA.",
-        en: "Medical-grade ABS — premium plastic used in medical devices. Phthalate and BPA-free."
+    "Sodium Benzoate": {
+        safety: "good",
+        score: 80,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Benzoate de sodium — conservateur derive de l'acide benzoique. Considere comme l'un des conservateurs les plus surs.",
+        description_en: "Sodium benzoate — preservative derived from benzoic acid. Considered one of the safest preservatives.",
+        ewg_score: 3
     },
-    "ABS alimentaire": {
-        safety: "excellent", score: 92, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "ABS de qualité alimentaire — approuvé pour le contact avec les aliments et la peau. Sans substances nocives.",
-        en: "Food-grade ABS — approved for food and skin contact. Free of harmful substances."
+    "Potassium Sorbate": {
+        safety: "good",
+        score: 85,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Sorbate de potassium — conservateur doux aussi utilise en alimentaire. Bien tolere, faible risque allergique.",
+        description_en: "Potassium sorbate — gentle preservative also used in food. Well tolerated, low allergy risk.",
+        ewg_score: 3
     },
-    "ABS haute température": {
-        safety: "excellent", score: 91, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "ABS résistant haute température — plastique technique pour appareils à vapeur. Sans dégazage nocif.",
-        en: "High-temperature ABS — technical plastic for steam devices. No harmful off-gassing."
+    "Ethylhexylglycerin": {
+        safety: "good",
+        score: 84,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Ethylhexylglycerin — booster de conservateur, deodorant. Alternative douce aux parabenes. Bonne tolerance cutanee.",
+        description_en: "Ethylhexylglycerin — preservative booster, deodorant. Gentle alternative to parabens. Good skin tolerance.",
+        ewg_score: 1
     },
-    "Gel cryogénique non toxique": {
-        safety: "excellent", score: 93, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Gel de refroidissement non toxique — conserve le froid longtemps. Scellé, aucun contact direct avec la peau.",
-        en: "Non-toxic cooling gel — retains cold for long periods. Sealed, no direct skin contact."
+
+    // ═══════════════════════════════════════════════════
+    // TENSIOACTIFS
+    // ═══════════════════════════════════════════════════
+
+    "Sodium Lauryl Sulfate": {
+        safety: "caution",
+        score: 35,
+        category: "surfactant",
+        origin: "synthetic",
+        description_fr: "SLS — tensioactif agressif qui peut dessecher et irriter la peau. Detruit la barriere lipidique. A eviter sur peaux sensibles.",
+        description_en: "SLS — harsh surfactant that can dry and irritate skin. Destroys lipid barrier. Avoid on sensitive skin.",
+        ewg_score: 5
     },
-    "Nylon Dupont": {
-        safety: "excellent", score: 90, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Nylon Dupont — fibre synthétique premium pour brossage doux. Ultra-souple, n'irrite pas la peau.",
-        en: "Dupont nylon — premium synthetic fiber for gentle brushing. Ultra-soft, non-irritating to skin."
+    "Sodium Laureth Sulfate": {
+        safety: "moderate",
+        score: 55,
+        category: "surfactant",
+        origin: "synthetic",
+        description_fr: "SLES — tensioactif moins agressif que le SLS mais peut contenir des traces de 1,4-dioxane. Moussant courant.",
+        description_en: "SLES — less harsh than SLS but may contain traces of 1,4-dioxane. Common foaming agent.",
+        ewg_score: 4
     },
-    "électrodes acier inoxydable 316L": {
-        safety: "excellent", score: 97, ewg: 1,
-        category: "material", origin: "mineral",
-        fr: "Acier 316L — le meilleur grade pour implants médicaux et bijoux hypoallergéniques. Zéro nickel libéré.",
-        en: "316L steel — the best grade for medical implants and hypoallergenic jewelry. Zero nickel release."
+    "Cocamidopropyl Betaine": {
+        safety: "good",
+        score: 80,
+        category: "surfactant",
+        origin: "natural",
+        description_fr: "Cocamidopropyl betaine — tensioactif doux derive de l'huile de coco. Moussant leger, bien tolere.",
+        description_en: "Cocamidopropyl betaine — gentle surfactant derived from coconut oil. Light foam, well tolerated.",
+        ewg_score: 4
     },
-    "Céramique piézoélectrique": {
-        safety: "excellent", score: 94, ewg: 1,
-        category: "technology", origin: "mineral",
-        fr: "Céramique piézoélectrique — génère des vibrations ultrasoniques. Technologie utilisée en médecine et industrie.",
-        en: "Piezoelectric ceramic — generates ultrasonic vibrations. Technology used in medicine and industry."
+    "Decyl Glucoside": {
+        safety: "excellent",
+        score: 92,
+        category: "surfactant",
+        origin: "natural",
+        description_fr: "Decyl glucoside — tensioactif ultra-doux derive du sucre et de la noix de coco. Biodegradable, ideal peaux sensibles.",
+        description_en: "Decyl glucoside — ultra-gentle surfactant derived from sugar and coconut. Biodegradable, ideal for sensitive skin.",
+        ewg_score: 1
     },
-    "PP alimentaire": {
-        safety: "excellent", score: 93, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Polypropylène alimentaire — plastique le plus sûr (code recyclage 5). Résistant à la chaleur, sans BPA.",
-        en: "Food-grade polypropylene — safest plastic (recycling code 5). Heat-resistant, BPA-free."
+
+    // ═══════════════════════════════════════════════════
+    // EMOLLIENTS / OCCLUSIFS
+    // ═══════════════════════════════════════════════════
+
+    "Dimethicone": {
+        safety: "good",
+        score: 78,
+        category: "emollient",
+        origin: "synthetic",
+        description_fr: "Dimethicone — silicone qui lisse et protege la peau. Occlusif, donne un toucher soyeux. Non comedogene.",
+        description_en: "Dimethicone — silicone that smooths and protects skin. Occlusive, gives silky feel. Non-comedogenic.",
+        ewg_score: 3
     },
-    "Verre borosilicate": {
-        safety: "excellent", score: 99, ewg: 1,
-        category: "material", origin: "mineral",
-        fr: "Verre borosilicate — même verre que Pyrex. Résistant thermiquement, chimiquement inerte. Matériau premium.",
-        en: "Borosilicate glass — same glass as Pyrex. Thermally resistant, chemically inert. Premium material."
+    "Cyclopentasiloxane": {
+        safety: "moderate",
+        score: 65,
+        category: "emollient",
+        origin: "synthetic",
+        description_fr: "Cyclomethicone (D5) — silicone volatile qui s'evapore. Donne un toucher sec. Debats environnementaux en cours.",
+        description_en: "Cyclomethicone (D5) — volatile silicone that evaporates. Gives dry touch. Ongoing environmental debates.",
+        ewg_score: 3
     },
-    "Poudre de fer": {
-        safety: "excellent", score: 88, ewg: 1,
-        category: "thermal", origin: "mineral",
-        fr: "Poudre de fer — réagit avec l'oxygène pour produire une chaleur douce et constante. Contenue dans un sachet scellé, aucun contact peau.",
-        en: "Iron powder — reacts with oxygen to produce gentle, constant heat. Contained in a sealed pouch, no skin contact."
+    "Cetearyl Alcohol": {
+        safety: "excellent",
+        score: 93,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Alcool cetearylique — alcool gras (non desechant). Emollient, epaississant, adoucit et stabilise les formulations.",
+        description_en: "Cetearyl alcohol — fatty alcohol (non-drying). Emollient, thickener, softens and stabilizes formulations.",
+        ewg_score: 1
     },
-    "Charbon actif": {
-        safety: "excellent", score: 95, ewg: 1,
-        category: "purifying", origin: "natural",
-        fr: "Charbon actif — purifiant naturel qui absorbe les impuretés. Utilisé en médecine, cosmétique et filtration d'eau.",
-        en: "Activated charcoal — natural purifier that absorbs impurities. Used in medicine, cosmetics and water filtration."
+    "Caprylic/Capric Triglyceride": {
+        safety: "excellent",
+        score: 95,
+        category: "emollient",
+        origin: "natural",
+        description_fr: "Triglyceride d'acide caprylique/caprique — derive de l'huile de coco. Emollient leger, hydrate sans graisser.",
+        description_en: "Caprylic/capric triglyceride — derived from coconut oil. Lightweight emollient, hydrates without greasiness.",
+        ewg_score: 1
     },
-    "Parfum lavande naturelle": {
-        safety: "good", score: 85, ewg: 3,
-        category: "fragrance", origin: "natural",
-        fr: "Essence naturelle de lavande — aromathérapie relaxante. Peut provoquer des réactions chez les peaux très sensibles aux huiles essentielles.",
-        en: "Natural lavender essence — relaxing aromatherapy. May cause reactions in skin very sensitive to essential oils."
+    "Isopropyl Myristate": {
+        safety: "moderate",
+        score: 62,
+        category: "emollient",
+        origin: "synthetic",
+        description_fr: "Myristate d'isopropyle — emollient synthetique, ameliore la penetration. Potentiellement comedogene.",
+        description_en: "Isopropyl myristate — synthetic emollient, enhances penetration. Potentially comedogenic.",
+        ewg_score: 3
     },
-    "Satin polyester (anti-frizz)": {
-        safety: "excellent", score: 91, ewg: 1,
-        category: "textile", origin: "synthetic",
-        fr: "Satin polyester — surface lisse qui réduit la friction et les frisottis. N'absorbe pas l'hydratation des cheveux.",
-        en: "Polyester satin — smooth surface that reduces friction and frizz. Doesn't absorb hair moisture."
+
+    // ═══════════════════════════════════════════════════
+    // MINERAUX / FILTRES
+    // ═══════════════════════════════════════════════════
+
+    "Titanium Dioxide": {
+        safety: "good",
+        score: 75,
+        category: "mineral",
+        origin: "mineral",
+        description_fr: "Dioxyde de titane — filtre UV mineral physique. Protege contre UVA/UVB. Debats sur les nanoparticules.",
+        description_en: "Titanium dioxide — physical mineral UV filter. Protects against UVA/UVB. Debates on nanoparticles.",
+        ewg_score: 2
     },
-    "Mousse à mémoire de forme": {
-        safety: "excellent", score: 90, ewg: 1,
-        category: "material", origin: "synthetic",
-        fr: "Mousse viscoélastique — s'adapte à la forme de la tête pour un confort optimal pendant le sommeil.",
-        en: "Memory foam — conforms to head shape for optimal comfort during sleep."
+    "Zinc Oxide": {
+        safety: "excellent",
+        score: 88,
+        category: "mineral",
+        origin: "mineral",
+        description_fr: "Oxyde de zinc — filtre UV mineral a large spectre. Apaisant, antibacterien, ideal peaux sensibles et bebe.",
+        description_en: "Zinc oxide — broad-spectrum mineral UV filter. Soothing, antibacterial, ideal for sensitive skin and babies.",
+        ewg_score: 2
     },
-    "circuit imprimé sans BPA": {
-        safety: "excellent", score: 90, ewg: 1,
-        category: "technology", origin: "synthetic",
-        fr: "Circuit électronique sans bisphénol A — composant technique protégé, aucun contact direct avec la peau.",
-        en: "BPA-free printed circuit board — protected technical component, no direct skin contact."
+    "Mica": {
+        safety: "good",
+        score: 82,
+        category: "mineral",
+        origin: "mineral",
+        description_fr: "Mica — mineral naturel qui donne un fini nacre et lumineux. Utilise en maquillage et soins. Attention sourcing ethique.",
+        description_en: "Mica — natural mineral that gives pearly, luminous finish. Used in makeup and skincare. Ethical sourcing concerns.",
+        ewg_score: 3
     },
-    "Fil métallique flexible": {
-        safety: "excellent", score: 89, ewg: 1,
-        category: "material", origin: "mineral",
-        fr: "Fil métallique gainé — flexible et résistant, enrobé pour éviter tout contact métal-cheveux.",
-        en: "Coated metal wire — flexible and durable, coated to prevent metal-hair contact."
+    "Iron Oxides": {
+        safety: "excellent",
+        score: 90,
+        category: "mineral",
+        origin: "mineral",
+        description_fr: "Oxydes de fer — pigments mineraux (CI 77491, 77492, 77499). Colorants surs utilises en maquillage.",
+        description_en: "Iron oxides — mineral pigments (CI 77491, 77492, 77499). Safe colorants used in makeup.",
+        ewg_score: 1
+    },
+    "Kaolin": {
+        safety: "excellent",
+        score: 94,
+        category: "mineral",
+        origin: "mineral",
+        description_fr: "Kaolin — argile blanche douce. Absorbe l'exces de sebum sans dessecher. Ideal pour masques purifiants.",
+        description_en: "Kaolin — gentle white clay. Absorbs excess sebum without drying. Ideal for purifying masks.",
+        ewg_score: 1
+    },
+
+    // ═══════════════════════════════════════════════════
+    // FRAGRANCES
+    // ═══════════════════════════════════════════════════
+
+    "Parfum": {
+        safety: "caution",
+        score: 40,
+        category: "fragrance",
+        origin: "synthetic",
+        description_fr: "Parfum/Fragrance — melange non divulgue de molecules odorantes. Peut contenir des allergenes. Premiere cause d'allergie cosmetique.",
+        description_en: "Parfum/Fragrance — undisclosed mix of scent molecules. May contain allergens. Leading cause of cosmetic allergy.",
+        ewg_score: 8
+    },
+    "Linalool": {
+        safety: "moderate",
+        score: 65,
+        category: "fragrance",
+        origin: "natural",
+        description_fr: "Linalool — compose aromatique naturel (lavande). Allergene a declaration obligatoire en UE. Risque modere.",
+        description_en: "Linalool — natural aromatic compound (lavender). Mandatory allergen disclosure in EU. Moderate risk.",
+        ewg_score: 5
+    },
+    "Limonene": {
+        safety: "moderate",
+        score: 62,
+        category: "fragrance",
+        origin: "natural",
+        description_fr: "Limonene — compose aromatique des agrumes. Allergene a declaration obligatoire en UE. Peut s'oxyder et devenir irritant.",
+        description_en: "Limonene — citrus aromatic compound. Mandatory allergen disclosure in EU. Can oxidize and become irritating.",
+        ewg_score: 6
+    },
+
+    // ═══════════════════════════════════════════════════
+    // EPAISSISSANTS / STABILISANTS
+    // ═══════════════════════════════════════════════════
+
+    "Carbomer": {
+        safety: "excellent",
+        score: 90,
+        category: "thickener",
+        origin: "synthetic",
+        description_fr: "Carbomer — polymere epaississant synthetique. Donne la texture gel. Inerte, non irritant, largement utilise.",
+        description_en: "Carbomer — synthetic thickening polymer. Creates gel texture. Inert, non-irritating, widely used.",
+        ewg_score: 1
+    },
+    "Xanthan Gum": {
+        safety: "excellent",
+        score: 95,
+        category: "thickener",
+        origin: "natural",
+        description_fr: "Gomme xanthane — epaississant naturel produit par fermentation. Stabilise les emulsions, texture agreable.",
+        description_en: "Xanthan gum — natural thickener produced by fermentation. Stabilizes emulsions, pleasant texture.",
+        ewg_score: 1
+    },
+    "Hydroxyethylcellulose": {
+        safety: "excellent",
+        score: 92,
+        category: "thickener",
+        origin: "natural",
+        description_fr: "Hydroxyethylcellulose — derive de cellulose vegetale. Epaississant et stabilisant naturel, tres bien tolere.",
+        description_en: "Hydroxyethylcellulose — derived from plant cellulose. Natural thickener and stabilizer, very well tolerated.",
+        ewg_score: 1
+    },
+
+    // ═══════════════════════════════════════════════════
+    // ANTIOXYDANTS
+    // ═══════════════════════════════════════════════════
+
+    "Resveratrol": {
+        safety: "excellent",
+        score: 94,
+        category: "antioxidant",
+        origin: "natural",
+        description_fr: "Resveratrol — polyphenol du raisin. Antioxydant puissant, anti-age, protege contre le stress oxydatif.",
+        description_en: "Resveratrol — grape polyphenol. Powerful antioxidant, anti-aging, protects against oxidative stress.",
+        ewg_score: 1
+    },
+    "Ubiquinone": {
+        safety: "excellent",
+        score: 93,
+        category: "antioxidant",
+        origin: "synthetic",
+        description_fr: "Coenzyme Q10 — antioxydant cellulaire qui decline avec l'age. Energise les cellules, reduit les rides.",
+        description_en: "Coenzyme Q10 — cellular antioxidant that declines with age. Energizes cells, reduces wrinkles.",
+        ewg_score: 1
+    },
+
+    // ═══════════════════════════════════════════════════
+    // SOLVANTS
+    // ═══════════════════════════════════════════════════
+
+    "Alcohol Denat.": {
+        safety: "moderate",
+        score: 55,
+        category: "solvent",
+        origin: "synthetic",
+        description_fr: "Alcool denature — solvant qui seche vite. Desechant et irritant a forte concentration. Detruit la barriere cutanee.",
+        description_en: "Denatured alcohol — fast-drying solvent. Drying and irritating at high concentrations. Destroys skin barrier.",
+        ewg_score: 4
+    },
+    "Isopropyl Alcohol": {
+        safety: "moderate",
+        score: 50,
+        category: "solvent",
+        origin: "synthetic",
+        description_fr: "Alcool isopropylique — solvant desinfectant. Tres desechant, irritant. A eviter dans les soins quotidiens.",
+        description_en: "Isopropyl alcohol — disinfecting solvent. Very drying, irritating. Avoid in daily skincare.",
+        ewg_score: 4
+    },
+    "Ceteareth-20": {
+        safety: "moderate",
+        score: 60,
+        category: "emollient",
+        origin: "synthetic",
+        description_fr: "Ceteareth-20 — emulsifiant ethoxyle. Peut contenir des traces de 1,4-dioxane. Irritation possible.",
+        description_en: "Ceteareth-20 — ethoxylated emulsifier. May contain traces of 1,4-dioxane. Possible irritation.",
+        ewg_score: 4
+    },
+
+    // ═══════════════════════════════════════════════════
+    // DIVERS
+    // ═══════════════════════════════════════════════════
+
+    "Acrylates/C10-30 Alkyl Acrylate Crosspolymer": {
+        safety: "good",
+        score: 83,
+        category: "thickener",
+        origin: "synthetic",
+        description_fr: "Polymere acrylique reticule — epaississant et stabilisant d'emulsion. Inerte, non absorbable par la peau.",
+        description_en: "Cross-linked acrylic polymer — emulsion thickener and stabilizer. Inert, not absorbed by skin.",
+        ewg_score: 1
+    },
+    "Disodium EDTA": {
+        safety: "good",
+        score: 78,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "EDTA disodique — agent chelateur qui stabilise les formulations. Ameliore l'efficacite des conservateurs. Debats sur biodegradabilite.",
+        description_en: "Disodium EDTA — chelating agent that stabilizes formulations. Enhances preservative efficacy. Biodegradability debates.",
+        ewg_score: 1
+    },
+    "Sodium PCA": {
+        safety: "excellent",
+        score: 95,
+        category: "humectant",
+        origin: "synthetic",
+        description_fr: "PCA de sodium — composant naturel du NMF (facteur naturel d'hydratation). Humectant puissant et bien tolere.",
+        description_en: "Sodium PCA — natural component of NMF (natural moisturizing factor). Powerful and well-tolerated humectant.",
+        ewg_score: 1
+    },
+    "Aloe Barbadensis Leaf Juice": {
+        safety: "excellent",
+        score: 97,
+        category: "active",
+        origin: "natural",
+        description_fr: "Jus de feuille d'Aloe Vera — hydratant, apaisant, cicatrisant. Plus concentre que l'extrait.",
+        description_en: "Aloe Vera leaf juice — hydrating, soothing, healing. More concentrated than extract.",
+        ewg_score: 1
+    },
+    "Sodium Hydroxide": {
+        safety: "moderate",
+        score: 58,
+        category: "solvent",
+        origin: "synthetic",
+        description_fr: "Hydroxyde de sodium (soude) — ajuste le pH des formulations. Corrosif pur mais totalement sur aux faibles concentrations cosmetiques.",
+        description_en: "Sodium hydroxide (lye) — adjusts formulation pH. Corrosive pure but completely safe at low cosmetic concentrations.",
+        ewg_score: 3
+    },
+    "Triethanolamine": {
+        safety: "moderate",
+        score: 55,
+        category: "solvent",
+        origin: "synthetic",
+        description_fr: "Triethanolamine (TEA) — ajusteur de pH et emulsifiant. Peut former des nitrosamines. Limite en concentration par l'UE.",
+        description_en: "Triethanolamine (TEA) — pH adjuster and emulsifier. Can form nitrosamines. Concentration limited by EU.",
+        ewg_score: 5
+    },
+    "BHT": {
+        safety: "caution",
+        score: 42,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "Hydroxytoluene butyle — antioxydant synthetique controversie. Perturbateur endocrinien suspecte selon certaines etudes.",
+        description_en: "Butylated hydroxytoluene — controversial synthetic antioxidant. Suspected endocrine disruptor according to some studies.",
+        ewg_score: 6
+    },
+    "Methylisothiazolinone": {
+        safety: "caution",
+        score: 30,
+        category: "preservative",
+        origin: "synthetic",
+        description_fr: "MIT — conservateur hautement allergisant. Interdit dans les cosmetiques sans rincage en UE depuis 2016. A eviter.",
+        description_en: "MIT — highly sensitizing preservative. Banned in EU leave-on cosmetics since 2016. Avoid.",
+        ewg_score: 7
     }
 };
+
+// Expose globally
+window.INGREDIENTS_DB = INGREDIENTS_DB;

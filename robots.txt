@@ -1,9 +1,24 @@
+# robots.txt - Maison ECLAT (maison-eclat.shop)
+# Last updated: 2026-04-10
+
 User-agent: *
 Allow: /
+
+# Restricted areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /pages/admin.html
 Disallow: /pages/checkout.html
 Disallow: /pages/success.html
-Disallow: /pages/admin.html
 Disallow: /pages/account.html
-Disallow: /api/
+Disallow: /pages/offline.html
+Disallow: /node_modules/
+Disallow: /sql/
+Disallow: /scripts/
+Disallow: /supabase/
 
+# Sitemap location
 Sitemap: https://maison-eclat.shop/sitemap.xml
+
+# Crawl-delay (optional, polite)
+Crawl-delay: 1

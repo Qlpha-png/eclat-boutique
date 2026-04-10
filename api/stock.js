@@ -1,44 +1,100 @@
 /**
- * GET /api/stock?productId=X — Stock temps réel depuis inventory
- * Public, cache court (5min)
+ * GET /api/stock?productId=X — Vérification stock temps réel
+ * Public, pas d'auth requise, cache 5 minutes
+ * Modèle dropshipping : si produit absent de la table inventory, on assume en stock (CJ gère)
+ *
+ * SQL Schema:
+ * CREATE TABLE inventory (
+ *     id SERIAL PRIMARY KEY,
+ *     product_id INTEGER NOT NULL UNIQUE,
+ *     quantity INTEGER NOT NULL DEFAULT 0,
+ *     low_threshold INTEGER NOT NULL DEFAULT 5,
+ *     updated_at TIMESTAMPTZ DEFAULT NOW()
+ * );
+ * CREATE INDEX idx_inventory_product_id ON inventory(product_id);
  */
-const { getSupabase } = require('./_middleware/auth');
-const { applyRateLimit } = require('./_middleware/rateLimit');
+const { createClient } = require('@supabase/supabase-js');
 
-module.exports = async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+var ALLOWED_ORIGINS = [
+    'https://maison-eclat.shop',
+    'https://www.maison-eclat.shop',
+    'http://localhost:3000',
+    'http://localhost:5173'
+];
+
+var _supabase = null;
+
+function getSupabase() {
+    if (!_supabase) {
+        var url = process.env.SUPABASE_URL;
+        var key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        if (!url || !key) {
+            throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set');
+        }
+        _supabase = createClient(url, key);
+    }
+    return _supabase;
+}
+
+function setCors(req, res) {
+    var origin = req.headers.origin || '';
+    if (ALLOWED_ORIGINS.indexOf(origin) !== -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') return res.status(200).end();
-    if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-    if (applyRateLimit(req, res, 'public')) return;
+    res.setHeader('Vary', 'Origin');
+}
 
-    var productId = parseInt(req.query.productId);
-    if (!productId) return res.status(400).json({ error: 'productId requis' });
+module.exports = async function handler(req, res) {
+    setCors(req, res);
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
+    if (req.method !== 'GET') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    var productId = req.query.productId;
+    if (!productId) {
+        return res.status(400).json({ error: 'productId requis' });
+    }
+
+    var parsedId = parseInt(productId, 10);
+    if (isNaN(parsedId) || parsedId <= 0) {
+        return res.status(400).json({ error: 'productId invalide' });
+    }
 
     try {
         var sb = getSupabase();
         var { data: inv, error } = await sb
             .from('inventory')
-            .select('stock_quantity, reserved_quantity, low_stock_threshold')
-            .eq('product_id', productId)
+            .select('quantity, low_threshold')
+            .eq('product_id', parsedId)
             .single();
 
+        // Produit absent de inventory = dropshipping, CJ gère le stock
         if (error || !inv) {
-            // Pas d'entrée inventory = stock non géré, considérer en stock
             res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
-            return res.status(200).json({ available: true, quantity: null, low: false });
+            return res.status(200).json({
+                available: true,
+                quantity: null,
+                low: false
+            });
         }
 
-        var available = inv.stock_quantity - inv.reserved_quantity;
-        var isLow = available > 0 && available <= inv.low_stock_threshold;
+        var qty = inv.quantity;
+        var threshold = inv.low_threshold != null ? inv.low_threshold : 5;
+        var available = qty > 0;
+        var low = qty > 0 && qty <= threshold;
 
         res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
         return res.status(200).json({
-            available: available > 0,
-            quantity: available,
-            low: isLow,
-            threshold: inv.low_stock_threshold
+            available: available,
+            quantity: qty,
+            low: low
         });
     } catch (err) {
         console.error('[stock]', err.message);

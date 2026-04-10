@@ -1,107 +1,260 @@
 // ============================
-// ÉCLAT — Animations & Micro-interactions
-// Intersection Observer, pas de librairie
+// ECLAT Beaute — Scroll Animations
+// IntersectionObserver, zero libraries
+// Respects prefers-reduced-motion
 // ============================
 (function() {
     'use strict';
 
-    // ——— Fade-in au scroll ———
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('anim-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    // ---------- Reduced motion check ----------
 
-    function initAnimations() {
-        document.querySelectorAll('.anim-fade-up, .anim-fade-in, .anim-fade-scale, .anim-stagger').forEach(function(el) {
-            observer.observe(el);
-        });
-
-        // Stagger children
-        document.querySelectorAll('.anim-stagger-children').forEach(function(parent) {
-            var children = parent.children;
-            for (var i = 0; i < children.length; i++) {
-                children[i].classList.add('anim-fade-up');
-                children[i].style.transitionDelay = (i * 0.08) + 's';
-                observer.observe(children[i]);
-            }
-        });
+    var prefersReduced = false;
+    try {
+        prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (e) {
+        // matchMedia not supported, assume no preference
     }
 
-    // ——— Counter animation ———
-    window.animateCounter = function(el, target, duration) {
-        duration = duration || 1500;
-        var start = 0;
+    // ---------- State ----------
+
+    var fadeObserver = null;
+    var counterObserver = null;
+    var staggerObserver = null;
+    var initialized = false;
+
+    // ---------- Debounced observer factory ----------
+    // Wraps IntersectionObserver callback in a requestAnimationFrame debounce
+
+    function createDebouncedObserver(callback, options) {
+        if (typeof IntersectionObserver === 'undefined') return null;
+
+        var pending = false;
+        var pendingEntries = [];
+
+        var observer = new IntersectionObserver(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+                pendingEntries.push(entries[i]);
+            }
+            if (!pending) {
+                pending = true;
+                requestAnimationFrame(function() {
+                    callback(pendingEntries, observer);
+                    pendingEntries = [];
+                    pending = false;
+                });
+            }
+        }, options || {});
+
+        return observer;
+    }
+
+    // ---------- Fade-up animations ----------
+
+    function initFadeUp() {
+        var elements = document.querySelectorAll('.anim-fade-up');
+        if (!elements.length) return;
+
+        // Apply initial hidden state
+        for (var i = 0; i < elements.length; i++) {
+            if (prefersReduced) {
+                // Show immediately, no animation
+                elements[i].style.opacity = '1';
+                elements[i].style.transform = 'none';
+            } else {
+                elements[i].style.opacity = '0';
+                elements[i].style.transform = 'translateY(24px)';
+                elements[i].style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }
+        }
+
+        if (prefersReduced) return;
+
+        fadeObserver = createDebouncedObserver(function(entries, obs) {
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) {
+                    var el = entries[i].target;
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                    obs.unobserve(el);
+                }
+            }
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        if (!fadeObserver) return;
+        for (var j = 0; j < elements.length; j++) {
+            fadeObserver.observe(elements[j]);
+        }
+    }
+
+    // ---------- Counter animations ----------
+
+    function animateCounter(el, target, duration) {
+        duration = duration || 1400;
+
+        if (prefersReduced) {
+            el.textContent = target.toLocaleString('fr-FR');
+            return;
+        }
+
         var startTime = null;
 
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
             var progress = Math.min((timestamp - startTime) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            // ease-out cubic
+            var eased = 1 - Math.pow(1 - progress, 3);
             var current = Math.floor(eased * target);
             el.textContent = current.toLocaleString('fr-FR');
-            if (progress < 1) requestAnimationFrame(step);
-            else el.textContent = target.toLocaleString('fr-FR');
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = target.toLocaleString('fr-FR');
+            }
         }
 
         requestAnimationFrame(step);
-    };
-
-    // ——— Counter observer ———
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var target = parseInt(entry.target.dataset.count) || 0;
-                animateCounter(entry.target, target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
+    }
 
     function initCounters() {
-        document.querySelectorAll('[data-count]').forEach(function(el) {
-            counterObserver.observe(el);
-        });
+        var elements = document.querySelectorAll('.anim-counter');
+        if (!elements.length) return;
+
+        if (prefersReduced) {
+            for (var i = 0; i < elements.length; i++) {
+                var val = parseInt(elements[i].getAttribute('data-target'), 10) || 0;
+                elements[i].textContent = val.toLocaleString('fr-FR');
+            }
+            return;
+        }
+
+        counterObserver = createDebouncedObserver(function(entries, obs) {
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) {
+                    var el = entries[i].target;
+                    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+                    animateCounter(el, target);
+                    obs.unobserve(el);
+                }
+            }
+        }, { threshold: 0.3 });
+
+        if (!counterObserver) return;
+        for (var j = 0; j < elements.length; j++) {
+            counterObserver.observe(elements[j]);
+        }
     }
 
-    // ——— Product card hover tilt ———
-    function initTilt() {
-        document.querySelectorAll('.product-card, .cat-card').forEach(function(card) {
-            card.addEventListener('mousemove', function(e) {
-                var rect = card.getBoundingClientRect();
-                var x = (e.clientX - rect.left) / rect.width - 0.5;
-                var y = (e.clientY - rect.top) / rect.height - 0.5;
-                card.style.transform = 'perspective(600px) rotateY(' + (x * 4) + 'deg) rotateX(' + (-y * 4) + 'deg) translateY(-4px)';
-            });
-            card.addEventListener('mouseleave', function() {
-                card.style.transform = '';
-            });
-        });
+    // ---------- Stagger animations ----------
+
+    function initStagger() {
+        var containers = document.querySelectorAll('.anim-stagger');
+        if (!containers.length) return;
+
+        for (var c = 0; c < containers.length; c++) {
+            var children = containers[c].children;
+            for (var i = 0; i < children.length; i++) {
+                if (prefersReduced) {
+                    children[i].style.opacity = '1';
+                    children[i].style.transform = 'none';
+                } else {
+                    children[i].style.opacity = '0';
+                    children[i].style.transform = 'translateY(20px)';
+                    children[i].style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    children[i].style.transitionDelay = (i * 0.08) + 's';
+                }
+            }
+        }
+
+        if (prefersReduced) return;
+
+        staggerObserver = createDebouncedObserver(function(entries, obs) {
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].isIntersecting) {
+                    var container = entries[i].target;
+                    var kids = container.children;
+                    for (var k = 0; k < kids.length; k++) {
+                        kids[k].style.opacity = '1';
+                        kids[k].style.transform = 'translateY(0)';
+                    }
+                    obs.unobserve(container);
+                }
+            }
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        if (!staggerObserver) return;
+        for (var j = 0; j < containers.length; j++) {
+            staggerObserver.observe(containers[j]);
+        }
     }
 
-    // ——— Smooth page load ———
-    document.body.classList.add('page-loaded');
+    // ---------- Product card hover (add/remove CSS class) ----------
 
-    // ——— Init ———
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            initAnimations();
-            initCounters();
-            setTimeout(initTilt, 500);
-        });
-    } else {
-        initAnimations();
+    function initProductHover() {
+        var cards = document.querySelectorAll('.product-card');
+        if (!cards.length) return;
+
+        for (var i = 0; i < cards.length; i++) {
+            (function(card) {
+                card.addEventListener('mouseenter', function() {
+                    card.classList.add('eclat-hover-elevated');
+                });
+                card.addEventListener('mouseleave', function() {
+                    card.classList.remove('eclat-hover-elevated');
+                });
+            })(cards[i]);
+        }
+
+        // Inject the elevation class style once
+        if (!document.getElementById('eclat-hover-style')) {
+            var style = document.createElement('style');
+            style.id = 'eclat-hover-style';
+            style.textContent = '.eclat-hover-elevated{box-shadow:0 8px 28px rgba(0,0,0,0.12) !important;' +
+                'transform:translateY(-3px) !important;transition:box-shadow 0.25s ease,transform 0.25s ease !important;}';
+            document.head.appendChild(style);
+        }
+    }
+
+    // ---------- Main init ----------
+
+    function init() {
+        if (initialized) return;
+        initialized = true;
+
+        initFadeUp();
         initCounters();
-        setTimeout(initTilt, 500);
+        initStagger();
+        initProductHover();
+
+        // Mark body as loaded for optional CSS transitions
+        if (document.body) {
+            document.body.classList.add('page-loaded');
+        }
     }
 
-    // Re-init after dynamic content load
-    window.reinitAnimations = function() {
-        initAnimations();
-        initCounters();
-        initTilt();
+    // ---------- Reinit for dynamic content ----------
+
+    function reinit() {
+        initialized = false;
+        init();
+    }
+
+    // ---------- Expose ----------
+
+    window.EclatAnimations = {
+        init: init,
+        reinit: reinit,
+        animateCounter: animateCounter
     };
+
+    // Also keep legacy compat
+    window.animateCounter = animateCounter;
+    window.reinitAnimations = reinit;
+
+    // ---------- Auto-init ----------
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();

@@ -16,15 +16,15 @@ const TRANSLATIONS = {
         nav_guarantees: 'Garanties',
 
         // Hero
-        hero_tag: 'Soins & outils haut de gamme',
-        hero_title: 'La beauté qui se voit.',
-        hero_title_em: 'La science qui le prouve.',
-        hero_desc: 'Des technologies professionnelles, documentées par des études cliniques. Sélectionnées pour leur efficacité, pas pour leur packaging.',
-        hero_cta1: 'Trouver ma routine',
-        hero_cta2: 'Découvrir la collection',
-        hero_stat1: 'Fondé sur la science',
-        hero_stat2: 'Efficacité testée',
-        hero_stat3: 'Satisfait ou remboursé',
+        hero_tag: '\u2728 Plus de 500 soins s\u00e9lectionn\u00e9s',
+        hero_title: 'Votre beaut\u00e9,',
+        hero_title_em: 'sublim\u00e9e par la science.',
+        hero_desc: 'Technologies professionnelles et soins premium s\u00e9lectionn\u00e9s pour leur efficacit\u00e9 prouv\u00e9e. Livraison suivie, retours gratuits 30j.',
+        hero_cta1: '\uD83D\uDD2C Trouver ma routine',
+        hero_cta2: '\u2728 Composer ma routine',
+        hero_stat1: '500+',
+        hero_stat2: '4.8',
+        hero_stat3: '30j',
         brands_bar_title: 'Ils nous font confiance — Nos marques partenaires',
 
         // Trust
@@ -43,9 +43,14 @@ const TRANSLATIONS = {
         section_products_desc: 'Chaque produit est sélectionné pour son efficacité prouvée et sa qualité premium.',
         filter_all: 'Tous',
         filter_face: 'Visage',
-        filter_care: 'Soins',
+        filter_care: 'Sérums & Soins',
+        filter_body: 'Corps',
+        filter_hair: 'Cheveux',
+        filter_nails: 'Ongles',
+        filter_men: 'Homme',
         filter_tools: 'Outils',
         filter_aroma: 'Bien-être',
+        filter_accessories: 'Accessoires',
         filter_brands: 'Grandes Marques',
         filter_perfumes: 'Parfums',
         btn_add_cart: 'Ajouter au panier',
@@ -64,10 +69,10 @@ const TRANSLATIONS = {
         section_best_tag: 'Les plus aimés',
         section_best_title: 'Nos best-sellers',
 
-        // Reviews
-        section_reviews_tag: 'Avis clients',
-        section_reviews_title: 'Elles adorent ÉCLAT',
-        section_reviews_desc: 'Nos engagements pour votre satisfaction',
+        // Garanties
+        section_reviews_tag: 'Nos garanties',
+        section_reviews_title: 'Des engagements concrets',
+        section_reviews_desc: 'Pas de promesses en l\'air \u2014 des garanties v\u00e9rifiables.',
 
         // Newsletter
         newsletter_title: '-10% sur votre première commande',
@@ -187,15 +192,15 @@ const TRANSLATIONS = {
         nav_packs: 'Bundles',
         nav_guarantees: 'Guarantees',
 
-        hero_tag: 'Premium skincare & tools',
-        hero_title: 'Beauty you can see.',
-        hero_title_em: 'Science that proves it.',
-        hero_desc: 'Professional technologies, backed by clinical studies. Selected for their efficacy, not their packaging.',
-        hero_cta1: 'Find my routine',
-        hero_cta2: 'Discover the collection',
-        hero_stat1: 'Science-backed',
-        hero_stat2: 'Tested efficacy',
-        hero_stat3: 'Satisfied or refunded',
+        hero_tag: '\u2728 500+ curated beauty products',
+        hero_title: 'Your beauty,',
+        hero_title_em: 'elevated by science.',
+        hero_desc: 'Professional technologies and premium skincare selected for proven efficacy. Tracked shipping, free 30-day returns.',
+        hero_cta1: '\uD83D\uDD2C Find my routine',
+        hero_cta2: '\u2728 Build my routine',
+        hero_stat1: '500+',
+        hero_stat2: '4.8',
+        hero_stat3: '30d',
         brands_bar_title: 'Trusted by the best — Our partner brands',
 
         trust1_title: 'Fast shipping',
@@ -212,9 +217,14 @@ const TRANSLATIONS = {
         section_products_desc: 'Each product is selected for its proven effectiveness and premium quality.',
         filter_all: 'All',
         filter_face: 'Face',
-        filter_care: 'Skincare',
+        filter_care: 'Serums & Care',
+        filter_body: 'Body',
+        filter_hair: 'Hair',
+        filter_nails: 'Nails',
+        filter_men: 'Men',
         filter_tools: 'Tools',
         filter_aroma: 'Wellness',
+        filter_accessories: 'Accessories',
         filter_brands: 'Top Brands',
         filter_perfumes: 'Perfumes',
         btn_add_cart: 'Add to cart',
@@ -348,15 +358,15 @@ const TRANSLATIONS = {
         nav_packs: 'Packs',
         nav_guarantees: 'Garantías',
 
-        hero_tag: 'Cuidados y herramientas premium',
-        hero_title: 'Belleza que se ve.',
-        hero_title_em: 'Ciencia que lo demuestra.',
-        hero_desc: 'Tecnologías profesionales, respaldadas por estudios clínicos. Seleccionadas por su eficacia, no por su packaging.',
-        hero_cta1: 'Encontrar mi rutina',
-        hero_cta2: 'Descubrir la colección',
-        hero_stat1: 'Basado en la ciencia',
-        hero_stat2: 'Eficacia probada',
-        hero_stat3: 'Satisfecho o reembolsado',
+        hero_tag: '\u2728 M\u00e1s de 500 productos seleccionados',
+        hero_title: 'Tu belleza,',
+        hero_title_em: 'sublimada por la ciencia.',
+        hero_desc: 'Tecnolog\u00edas profesionales y cuidados premium seleccionados por su eficacia probada. Env\u00edo con seguimiento, devoluci\u00f3n gratuita 30d.',
+        hero_cta1: '\uD83D\uDD2C Encontrar mi rutina',
+        hero_cta2: '\u2728 Crear mi rutina',
+        hero_stat1: '500+',
+        hero_stat2: '4.8',
+        hero_stat3: '30d',
         brands_bar_title: 'Confían en nosotros — Nuestras marcas asociadas',
 
         trust1_title: 'Envío rápido',
@@ -373,9 +383,14 @@ const TRANSLATIONS = {
         section_products_desc: 'Cada producto es seleccionado por su eficacia probada y su calidad premium.',
         filter_all: 'Todos',
         filter_face: 'Rostro',
-        filter_care: 'Cuidados',
+        filter_care: 'Sérums & Cuidados',
+        filter_body: 'Cuerpo',
+        filter_hair: 'Cabello',
+        filter_nails: 'Uñas',
+        filter_men: 'Hombre',
         filter_tools: 'Herramientas',
         filter_aroma: 'Bienestar',
+        filter_accessories: 'Accesorios',
         filter_brands: 'Grandes Marcas',
         filter_perfumes: 'Perfumes',
         btn_add_cart: 'Añadir al carrito',
@@ -509,15 +524,15 @@ const TRANSLATIONS = {
         nav_packs: 'Sets',
         nav_guarantees: 'Garantien',
 
-        hero_tag: 'Premium-Pflege & Werkzeuge',
-        hero_title: 'Schönheit, die man sieht.',
-        hero_title_em: 'Wissenschaft, die es beweist.',
-        hero_desc: 'Professionelle Technologien, durch klinische Studien belegt. Ausgewählt nach Wirksamkeit, nicht nach Verpackung.',
-        hero_cta1: 'Meine Routine finden',
-        hero_cta2: 'Kollektion entdecken',
-        hero_stat1: 'Wissenschaftlich fundiert',
-        hero_stat2: 'Getestete Wirksamkeit',
-        hero_stat3: 'Zufrieden oder Geld zurück',
+        hero_tag: '\u2728 \u00dcber 500 ausgew\u00e4hlte Produkte',
+        hero_title: 'Ihre Sch\u00f6nheit,',
+        hero_title_em: 'veredelt durch Wissenschaft.',
+        hero_desc: 'Professionelle Technologien und Premium-Pflege, ausgew\u00e4hlt f\u00fcr nachgewiesene Wirksamkeit. Versand mit Tracking, 30 Tage R\u00fcckgabe.',
+        hero_cta1: '\uD83D\uDD2C Meine Routine finden',
+        hero_cta2: '\u2728 Routine zusammenstellen',
+        hero_stat1: '500+',
+        hero_stat2: '4.8',
+        hero_stat3: '30T',
         brands_bar_title: 'Vertrauenswürdig — Unsere Partnermarken',
 
         trust1_title: 'Schneller Versand',
@@ -534,9 +549,14 @@ const TRANSLATIONS = {
         section_products_desc: 'Jedes Produkt wird nach nachgewiesener Wirksamkeit und Premium-Qualität ausgewählt.',
         filter_all: 'Alle',
         filter_face: 'Gesicht',
-        filter_care: 'Pflege',
+        filter_care: 'Seren & Pflege',
+        filter_body: 'Körper',
+        filter_hair: 'Haare',
+        filter_nails: 'Nägel',
+        filter_men: 'Herren',
         filter_tools: 'Werkzeuge',
         filter_aroma: 'Aromatherapie',
+        filter_accessories: 'Zubehör',
         filter_brands: 'Top Marken',
         filter_perfumes: 'Parfüms',
         btn_add_cart: 'In den Warenkorb',
@@ -714,8 +734,13 @@ function applyTranslations() {
         '.filter-btn[data-category="all"]': 'filter_all',
         '.filter-btn[data-category="visage"]': 'filter_face',
         '.filter-btn[data-category="soin"]': 'filter_care',
+        '.filter-btn[data-category="corps"]': 'filter_body',
+        '.filter-btn[data-category="cheveux"]': 'filter_hair',
+        '.filter-btn[data-category="ongles"]': 'filter_nails',
+        '.filter-btn[data-category="homme"]': 'filter_men',
         '.filter-btn[data-category="outils"]': 'filter_tools',
         '.filter-btn[data-category="aromatherapie"]': 'filter_aroma',
+        '.filter-btn[data-category="accessoire"]': 'filter_accessories',
         '.filter-btn[data-category="marques"]': 'filter_brands',
         '.filter-btn[data-category="parfums"]': 'filter_perfumes',
 
@@ -772,13 +797,24 @@ function applyTranslations() {
         heroH1.innerHTML = t('hero_title') + '<br><em>' + t('hero_title_em') + '</em>';
     }
 
-    // Hero stats
+    // Hero stats — new format: stat-number + label span
     const stats = document.querySelectorAll('.hero-stats .stat:not(.live-stat)');
     const statKeys = ['hero_stat1', 'hero_stat2', 'hero_stat3'];
+    const statLabels = {
+        fr: ['Produits premium', 'Note moyenne', 'Satisfait ou rembours\u00e9'],
+        en: ['Premium products', 'Average rating', 'Satisfied or refunded'],
+        es: ['Productos premium', 'Nota media', 'Satisfecho o reembolsado'],
+        de: ['Premium-Produkte', 'Durchschnittsbewertung', 'Zufrieden oder Geld zur\u00fcck']
+    };
+    var labels = statLabels[currentLang] || statLabels.fr;
     stats.forEach((stat, i) => {
         if (statKeys[i]) {
-            const span = stat.querySelector('span:not(.stat-icon)');
-            if (span) span.textContent = t(statKeys[i]);
+            var numEl = stat.querySelector('.stat-number');
+            if (numEl) numEl.textContent = t(statKeys[i]);
+            // Update label span (last child text node)
+            var spans = stat.querySelectorAll('span');
+            if (spans.length > 1) spans[spans.length - 1].textContent = labels[i];
+            else if (spans.length === 1 && !numEl) spans[0].textContent = t(statKeys[i]);
         }
     });
 

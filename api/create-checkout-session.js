@@ -95,19 +95,49 @@ module.exports = async (req, res) => {
             });
         }
 
+        // Déterminer la locale selon la langue du client
+        const langMap = { fr: 'fr', en: 'en', es: 'es', de: 'de' };
+        const clientLang = req.body.lang || 'fr';
+        const stripeLocale = langMap[clientLang] || 'fr';
+
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            // Apple Pay, Google Pay, Link (Stripe wallet) — auto-détecté par Stripe
+            payment_method_types: ['card', 'link'],
             line_items,
             mode: 'payment',
-            success_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/success.html`,
-            cancel_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/checkout.html`,
+            success_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/checkout.html?cancelled=1`,
             allow_promotion_codes: true,
             phone_number_collection: { enabled: true },
-            locale: 'fr',
+            locale: stripeLocale,
             shipping_address_collection: {
                 allowed_countries: ['FR', 'BE', 'CH', 'LU', 'DE', 'ES', 'IT', 'NL', 'PT', 'AT', 'IE', 'GB'],
             },
             customer_email: customer_email || undefined,
+            // Metadata pour tracking et factures
+            metadata: {
+                source: 'eclat-website',
+                lang: clientLang,
+                items_count: String(items.length),
+                total_eur: String(itemsTotal.toFixed(2))
+            },
+            // Expiration 30 minutes (anti-fraude)
+            expires_at: Math.floor(Date.now() / 1000) + 1800,
+            // Consentement RGPD — ne pas stocker automatiquement
+            consent_collection: {
+                terms_of_service: 'required'
+            },
+            custom_text: {
+                terms_of_service_acceptance: {
+                    message: clientLang === 'fr'
+                        ? 'J\'accepte les [Conditions Générales de Vente](https://maison-eclat.shop/pages/cgv.html) et la [Politique de Confidentialité](https://maison-eclat.shop/pages/confidentialite.html).'
+                        : clientLang === 'en'
+                        ? 'I agree to the [Terms of Service](https://maison-eclat.shop/pages/cgv.html) and [Privacy Policy](https://maison-eclat.shop/pages/confidentialite.html).'
+                        : clientLang === 'es'
+                        ? 'Acepto las [Condiciones Generales](https://maison-eclat.shop/pages/cgv.html) y la [Política de Privacidad](https://maison-eclat.shop/pages/confidentialite.html).'
+                        : 'Ich akzeptiere die [AGB](https://maison-eclat.shop/pages/cgv.html) und die [Datenschutzrichtlinie](https://maison-eclat.shop/pages/confidentialite.html).'
+                }
+            }
         });
 
         return res.status(200).json({ url: session.url });
