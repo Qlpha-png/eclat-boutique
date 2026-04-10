@@ -292,6 +292,11 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     Newsletter
                 </a>
+                <div class="nav-section">Catalogue</div>
+                <a href="#" data-tab="import">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Import Produits
+                </a>
                 <div class="nav-section">Site</div>
                 <a href="../index.html" target="_blank">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -794,6 +799,24 @@
                     </div>
                 </div>
 
+                <!-- Tab Import Produits -->
+                <div class="tab-panel" id="tab-import" style="display:none;">
+                    <div style="margin-bottom:20px;">
+                        <h3 style="margin-bottom:8px;">Recherche Fournisseurs</h3>
+                        <p style="color:var(--text-dim);font-size:.85rem;">Cherchez des produits chez CJDropshipping et importez-les dans votre catalogue.</p>
+                    </div>
+                    <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+                        <select id="importSupplier" style="padding:10px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.85rem;">
+                            <option value="cj">CJDropshipping</option>
+                            <option value="all">Tous fournisseurs</option>
+                        </select>
+                        <input type="text" id="importSearch" placeholder="Ex: serum vitamine c, masque LED..." style="flex:1;min-width:240px;padding:10px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.85rem;">
+                        <button class="btn btn-gold" onclick="searchSupplier()" id="importSearchBtn">Rechercher</button>
+                    </div>
+                    <div id="importResults" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;"></div>
+                    <div id="importStatus" style="margin-top:16px;font-size:.85rem;color:var(--text-dim);"></div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -971,7 +994,7 @@
         }
 
         // ── Tab Navigation ──
-        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', products: 'Produits', reviews: 'Avis', returns: 'Retours', loyalty: '\u00c9conomie \u00c9clats', promos: 'Codes promo', newsletter: 'Newsletter' };
+        var tabTitles = { dashboard: 'Dashboard', orders: 'Commandes', customers: 'Clients', products: 'Produits', reviews: 'Avis', returns: 'Retours', loyalty: '\u00c9conomie \u00c9clats', promos: 'Codes promo', newsletter: 'Newsletter', import: 'Import Produits' };
         var reviewsPage = 1;
         var returnsPage = 1;
         var newsletterPage = 1;
@@ -1764,8 +1787,94 @@
                 btn.addEventListener('click', function() { onPageChange(parseInt(this.getAttribute('data-page'))); });
             });
         }
+        // ── Import Fournisseurs ──
+        window.searchSupplier = async function() {
+            var q = document.getElementById('importSearch').value.trim();
+            if (!q) return;
+            var supplier = document.getElementById('importSupplier').value;
+            var btn = document.getElementById('importSearchBtn');
+            var results = document.getElementById('importResults');
+            var status = document.getElementById('importStatus');
+
+            btn.disabled = true; btn.textContent = 'Recherche...';
+            results.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;"><div class="spinner" style="margin:0 auto;"></div></div>';
+
+            try {
+                var res = await fetch('/api/admin/supplier-search?q=' + encodeURIComponent(q) + '&supplier=' + supplier, {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                var data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Erreur');
+
+                if (!data.results || data.results.length === 0) {
+                    results.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);padding:40px;">Aucun r\u00e9sultat.</p>';
+                    status.textContent = '';
+                    return;
+                }
+
+                status.textContent = data.results.length + ' produit(s) trouv\u00e9(s)';
+                results.innerHTML = data.results.map(function(p, idx) {
+                    var margin = p.price > 0 ? Math.round((1 - p.price / (p.price * 2.5)) * 100) : 0;
+                    return '<div style="background:var(--surface-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">' +
+                        (p.image ? '<img src="' + p.image + '" style="width:100%;height:180px;object-fit:cover;" loading="lazy">' : '<div style="height:180px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;color:var(--text-muted);">Pas d\'image</div>') +
+                        '<div style="padding:12px;">' +
+                        '<div style="font-weight:600;font-size:.85rem;margin-bottom:4px;line-height:1.3;max-height:2.6em;overflow:hidden;">' + (p.name || '').substring(0, 80) + '</div>' +
+                        '<div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;">' +
+                        '<span style="color:var(--gold);font-weight:700;">' + (p.price > 0 ? p.price.toFixed(2) + ' \u20ac' : 'N/A') + '</span>' +
+                        '<span style="font-size:.75rem;color:var(--text-dim);">' + (p.supplier || '').toUpperCase() + '</span></div>' +
+                        '<div style="font-size:.75rem;color:var(--text-dim);margin-bottom:8px;">Vente sugg. : ' + (p.price * 2.5).toFixed(2) + ' \u20ac (marge ~' + margin + '%)</div>' +
+                        '<button class="btn btn-gold" style="width:100%;padding:8px;font-size:.8rem;" onclick="importProduct(' + idx + ')">Importer</button>' +
+                        '</div></div>';
+                }).join('');
+
+                window._importResults = data.results;
+            } catch(e) {
+                results.innerHTML = '<p style="grid-column:1/-1;color:var(--red);">' + e.message + '</p>';
+            } finally {
+                btn.disabled = false; btn.textContent = 'Rechercher';
+            }
+        };
+
+        window.importProduct = async function(idx) {
+            var p = window._importResults && window._importResults[idx];
+            if (!p) return;
+
+            var nameFr = prompt('Nom en fran\u00e7ais :', p.name);
+            if (!nameFr) return;
+            var category = prompt('Cat\u00e9gorie (visage, corps, cheveux, ongles, homme, bienetre, maquillage, voyage, accessoires) :', 'visage');
+            if (!category) return;
+
+            try {
+                var res = await fetch('/api/admin/supplier-import', {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        supplier: p.supplier,
+                        supplierId: p.supplierId,
+                        name: nameFr,
+                        description: '',
+                        price: p.price * 2.5,
+                        supplierPrice: p.price,
+                        category: category,
+                        images: p.images && p.images.length > 0 ? p.images : (p.image ? [p.image] : []),
+                        gender: 'unisex'
+                    })
+                });
+                var data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Erreur');
+                alert('Produit import\u00e9 ! ID: ' + (data.product ? data.product.id : '') + '. Activez-le dans l\'onglet Produits.');
+            } catch(e) {
+                alert('Erreur: ' + e.message);
+            }
+        };
+
+        document.getElementById('importSearch').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') window.searchSupplier();
+        });
+
     })();
     </script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="../js/push.js" defer></script>
 </body>
 </html>

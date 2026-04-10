@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Catégorie - ÉCLAT</title>
+    <meta name="description" id="pageDesc" content="Découvrez notre sélection beauté premium">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
+    <style>
+        .cat-hero { background:linear-gradient(135deg,var(--color-primary),#1a1714); color:#fff; padding:60px 24px 40px; text-align:center; }
+        .cat-hero h1 { font-family:var(--font-display); font-size:2.4rem; margin-bottom:8px; }
+        .cat-hero p { opacity:.7; max-width:600px; margin:0 auto; line-height:1.6; }
+        .cat-container { max-width:1200px; margin:0 auto; padding:32px 24px 80px; }
+        .cat-filters { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; align-items:center; }
+        .cat-filters select { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-family:var(--font-body); font-size:.85rem; background:#fff; }
+        .cat-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:24px; }
+        .cat-card { background:#fff; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border); transition:all .3s; cursor:pointer; }
+        .cat-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+        .cat-card img { width:100%; height:260px; object-fit:cover; }
+        .cat-card-info { padding:16px; }
+        .cat-card-name { font-weight:600; margin-bottom:4px; font-size:.95rem; }
+        .cat-card-price { color:var(--color-secondary); font-weight:700; font-size:1.1rem; }
+        .cat-card-price .old { text-decoration:line-through; color:var(--color-text-light); font-size:.85rem; font-weight:400; margin-left:8px; }
+        .cat-card-badge { position:absolute; top:12px; left:12px; background:var(--color-secondary); color:#fff; font-size:.7rem; padding:4px 10px; border-radius:20px; font-weight:600; text-transform:uppercase; }
+        .cat-card-img { position:relative; }
+        .cat-card-btn { display:block; width:100%; padding:10px; background:var(--color-primary); color:#fff; border:none; font-weight:600; font-size:.85rem; cursor:pointer; transition:background .2s; }
+        .cat-card-btn:hover { background:var(--color-secondary); }
+        .cat-pagination { display:flex; justify-content:center; gap:8px; margin-top:40px; }
+        .cat-pagination button { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); background:#fff; cursor:pointer; font-size:.85rem; }
+        .cat-pagination button.active { background:var(--color-primary); color:#fff; border-color:var(--color-primary); }
+        .cat-pagination button:disabled { opacity:.4; cursor:default; }
+        .cat-skeleton { background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:var(--radius-md); height:360px; }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        .cat-count { font-size:.85rem; color:var(--color-text-light); margin-bottom:16px; }
+        .cat-subcats { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+        .cat-subcats a { padding:6px 16px; border-radius:20px; font-size:.8rem; background:var(--color-bg-alt); color:var(--color-text); text-decoration:none; transition:all .2s; }
+        .cat-subcats a:hover, .cat-subcats a.active { background:var(--color-primary); color:#fff; }
+        @media(max-width:768px) {
+            .cat-hero h1 { font-size:1.8rem; }
+            .cat-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }
+            .cat-card img { height:180px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (inclus dynamiquement ou copié) -->
+    <div class="top-banner" id="topBanner">Livraison offerte d&egrave;s 49&euro; | Paiement s&eacute;curis&eacute; Stripe</div>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">&Eacute;CLAT</a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Accueil</a>
+                <a href="/#products">Boutique</a>
+                <a href="/pages/diagnostic.html">Diagnostic</a>
+                <a href="/pages/blog.html">Blog</a>
+                <a href="/pages/contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="/pages/account.html" class="cart-btn" title="Mon compte">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/pages/wishlist.html" class="cart-btn" title="Wishlist" style="position:relative;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="cat-hero">
+        <h1 id="catTitle">Chargement...</h1>
+        <p id="catDesc"></p>
+    </div>
+
+    <div class="cat-container">
+        <div class="cat-subcats" id="catSubcats"></div>
+
+        <div class="cat-filters">
+            <select id="sortSelect">
+                <option value="popular">Populaires</option>
+                <option value="newest">Nouveaut&eacute;s</option>
+                <option value="price_asc">Prix croissant</option>
+                <option value="price_desc">Prix d&eacute;croissant</option>
+                <option value="score">Clean Beauty Score</option>
+            </select>
+            <select id="genderSelect">
+                <option value="">Tous</option>
+                <option value="femme">Femme</option>
+                <option value="homme">Homme</option>
+                <option value="unisex">Unisexe</option>
+            </select>
+            <select id="concernSelect">
+                <option value="">Toutes pr&eacute;occupations</option>
+                <option value="acne">Acn&eacute;</option>
+                <option value="aging">Anti-&acirc;ge</option>
+                <option value="hydration">Hydratation</option>
+                <option value="glow">&Eacute;clat</option>
+                <option value="dark-spots">Taches</option>
+                <option value="pores">Pores</option>
+                <option value="redness">Rougeurs</option>
+            </select>
+        </div>
+
+        <div class="cat-count" id="catCount"></div>
+        <div class="cat-grid" id="catGrid"></div>
+        <div class="cat-pagination" id="catPagination"></div>
+    </div>
+
+    <!-- BreadcrumbList JSON-LD -->
+    <script type="application/ld+json" id="breadcrumbLD">{}</script>
+
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var cat = params.get('cat') || '';
+        var subcat = params.get('sub') || '';
+        var page = parseInt(params.get('page')) || 1;
+        var sort = params.get('sort') || 'popular';
+        var gender = params.get('gender') || '';
+        var concern = params.get('concern') || '';
+
+        var CATEGORY_META = {
+            visage: { title: 'Soins Visage', desc: 'Masques LED, gua sha, s\u00e9rums et plus pour une peau rayonnante.' },
+            corps: { title: 'Soins Corps', desc: 'Gommages, huiles, massages et anti-cellulite pour un corps sublime.' },
+            cheveux: { title: 'Cheveux', desc: 'Brosses, s\u00e9rums capillaires et accessoires coiffure tendance.' },
+            ongles: { title: 'Ongles', desc: 'Vernis, nail art, outils et lampes UV pour des ongles parfaits.' },
+            homme: { title: 'Homme', desc: 'Grooming, barbe et skincare sp\u00e9cialement con\u00e7us pour les hommes.' },
+            bienetre: { title: 'Bien-\u00eatre', desc: 'Aromath\u00e9rapie, massage et relaxation pour votre bien-\u00eatre.' },
+            maquillage: { title: 'Maquillage Outils', desc: 'Pinceaux, \u00e9ponges et rangement pour un maquillage pro.' },
+            voyage: { title: 'Voyage', desc: 'Minis, kits et trousses parfaits pour voyager l\u00e9ger.' },
+            accessoires: { title: 'Accessoires', desc: 'Miroirs LED, rangement beaut\u00e9 et headbands tendance.' },
+            coffrets: { title: 'Coffrets & Sets', desc: 'Gift sets et bundles th\u00e9matiques pour offrir ou se faire plaisir.' },
+            aromatherapie: { title: 'Bien-\u00eatre', desc: 'Diffuseurs, huiles essentielles et relaxation.' },
+            soin: { title: 'Skincare', desc: 'S\u00e9rums, cr\u00e8mes et soins pour une peau parfaite.' },
+            outils: { title: 'Outils Beaut\u00e9', desc: 'Accessoires et appareils de soin haute technologie.' }
+        };
+
+        var meta = CATEGORY_META[cat] || { title: 'Tous les produits', desc: 'D\u00e9couvrez notre collection compl\u00e8te.' };
+        document.getElementById('catTitle').textContent = meta.title;
+        document.getElementById('catDesc').textContent = meta.desc;
+        document.getElementById('pageTitle').textContent = meta.title + ' - \u00c9CLAT';
+        document.getElementById('pageDesc').content = meta.desc;
+
+        // Set filter values from URL
+        document.getElementById('sortSelect').value = sort;
+        document.getElementById('genderSelect').value = gender;
+        document.getElementById('concernSelect').value = concern;
+
+        // BreadcrumbList
+        document.getElementById('breadcrumbLD').textContent = JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+                { '@type': 'ListItem', position: 1, name: '\u00c9CLAT', item: 'https://maison-eclat.shop' },
+                { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://maison-eclat.shop/#products' },
+                { '@type': 'ListItem', position: 3, name: meta.title }
+            ]
+        });
+
+        function loadProducts() {
+            var grid = document.getElementById('catGrid');
+            grid.innerHTML = '<div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div>';
+
+            var sort = document.getElementById('sortSelect').value;
+            var gender = document.getElementById('genderSelect').value;
+            var concern = document.getElementById('concernSelect').value;
+
+            // Try API first, fallback to local PRODUCTS
+            var apiUrl = '/api/products-catalog?page=' + page + '&limit=24&sort=' + sort;
+            if (cat) apiUrl += '&category=' + encodeURIComponent(cat);
+            if (subcat) apiUrl += '&subcategory=' + encodeURIComponent(subcat);
+            if (gender) apiUrl += '&gender=' + encodeURIComponent(gender);
+            if (concern) apiUrl += '&concern=' + encodeURIComponent(concern);
+
+            fetch(apiUrl).then(function(r) {
+                if (!r.ok) throw new Error('API error');
+                return r.json();
+            }).then(function(data) {
+                renderGrid(data.products, data.total, data.totalPages);
+            }).catch(function() {
+                // Fallback local
+                var filtered = typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
+                if (cat) filtered = filtered.filter(function(p) { return p.category === cat; });
+                renderGrid(filtered, filtered.length, 1);
+            });
+        }
+
+        function renderGrid(products, total, totalPages) {
+            var grid = document.getElementById('catGrid');
+            document.getElementById('catCount').textContent = total + ' produit' + (total > 1 ? 's' : '');
+
+            if (!products || products.length === 0) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--color-text-light);padding:40px;">Aucun produit dans cette cat\u00e9gorie.</p>';
+                return;
+            }
+
+            grid.innerHTML = products.map(function(p) {
+                var img = Array.isArray(p.images) && p.images[0] ? p.images[0] : (p.image || '');
+                var oldPrice = p.compare_at_price || p.oldPrice;
+                return '<div class="cat-card" onclick="window.location.href=\'/pages/product.html?id=' + p.id + '\'">' +
+                    '<div class="cat-card-img">' +
+                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(p.name) + '" loading="lazy">' +
+                    (p.badge ? '<span class="cat-card-badge">' + escapeHTML(p.badge) + '</span>' : '') +
+                    '</div>' +
+                    '<div class="cat-card-info">' +
+                    '<div class="cat-card-name">' + escapeHTML(p.name) + '</div>' +
+                    '<div class="cat-card-price">' + formatPrice(p.price) +
+                    (oldPrice ? '<span class="old">' + formatPrice(oldPrice) + '</span>' : '') +
+                    '</div></div>' +
+                    '<button class="cat-card-btn" onclick="event.stopPropagation();addToCart(' + p.id + ')">Ajouter au panier</button>' +
+                    '</div>';
+            }).join('');
+
+            // Pagination
+            var pag = document.getElementById('catPagination');
+            if (totalPages > 1) {
+                var html = '';
+                html += '<button ' + (page <= 1 ? 'disabled' : 'onclick="goPage(' + (page-1) + ')"') + '>&laquo;</button>';
+                for (var i = 1; i <= Math.min(totalPages, 5); i++) {
+                    html += '<button class="' + (i === page ? 'active' : '') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+                }
+                if (totalPages > 5) html += '<button disabled>...</button><button onclick="goPage(' + totalPages + ')">' + totalPages + '</button>';
+                html += '<button ' + (page >= totalPages ? 'disabled' : 'onclick="goPage(' + (page+1) + ')"') + '>&raquo;</button>';
+                pag.innerHTML = html;
+            } else {
+                pag.innerHTML = '';
+            }
+        }
+
+        function escapeHTML(s) { if (typeof s !== 'string') return s; var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+        function formatPrice(p) { return parseFloat(p).toFixed(2).replace('.', ',') + ' \u20ac'; }
+
+        window.goPage = function(p) {
+            page = p;
+            var url = new URL(window.location);
+            url.searchParams.set('page', p);
+            window.history.pushState({}, '', url);
+            loadProducts();
+            window.scrollTo(0, 0);
+        };
+
+        // Filter change handlers
+        document.getElementById('sortSelect').onchange = function() { page = 1; loadProducts(); };
+        document.getElementById('genderSelect').onchange = function() { page = 1; loadProducts(); };
+        document.getElementById('concernSelect').onchange = function() { page = 1; loadProducts(); };
+
+        loadProducts();
+    })();
+    </script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script src="../js/push.js" defer></script>
+</body>
+</html>

@@ -122,3 +122,47 @@ self.addEventListener('fetch', function(event) {
         })
     );
 });
+
+// ============================
+// Push Notifications
+// ============================
+self.addEventListener('push', function(event) {
+    var data = { title: 'ÉCLAT Beauté', body: 'Nouvelle notification', icon: '/images/icon-192.png', badge: '/images/icon-192.png' };
+    try {
+        if (event.data) data = Object.assign(data, event.data.json());
+    } catch(e) {}
+
+    var options = {
+        body: data.body || '',
+        icon: data.icon || '/images/icon-192.png',
+        badge: data.badge || '/images/icon-192.png',
+        vibrate: [100, 50, 100],
+        data: { url: data.url || '/' },
+        actions: data.actions || []
+    };
+
+    event.waitUntil(
+        self.registration.showNotification(data.title || 'ÉCLAT Beauté', options)
+    );
+});
+
+self.addEventListener('notificationclick', function(event) {
+    event.notification.close();
+    var url = (event.notification.data && event.notification.data.url) || '/';
+
+    // Handle action buttons
+    if (event.action === 'open') url = event.notification.data.url || '/';
+    if (event.action === 'dismiss') return;
+
+    event.waitUntil(
+        clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(clientList) {
+            for (var i = 0; i < clientList.length; i++) {
+                if (clientList[i].url.includes(self.location.origin) && 'focus' in clientList[i]) {
+                    clientList[i].navigate(url);
+                    return clientList[i].focus();
+                }
+            }
+            return clients.openWindow(url);
+        })
+    );
+});
