@@ -91,7 +91,16 @@
             console.warn('[login] SUPABASE_ANON_KEY manquante');
         }
 
-        var sb = SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+        if (typeof window.supabase === 'undefined') {
+            var errEl = document.getElementById('authError');
+            if (errEl) {
+                errEl.textContent = 'Erreur de chargement. Veuillez rafra\u00eechir la page (Ctrl+Maj+R).';
+                errEl.style.display = 'block';
+            }
+            console.error('[login] Supabase CDN failed to load');
+        }
+
+        var sb = (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
         if (sb) {
             var redirect = new URLSearchParams(window.location.search).get('redirect') || 'account.html';

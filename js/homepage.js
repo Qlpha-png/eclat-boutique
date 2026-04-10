@@ -8,21 +8,13 @@
     'use strict';
 
     // --- Hero Slider ---
-    // Images par slide : [main, left, right] — IDs produits
-    var heroImageSets = [
-        [1, 2, 3],   // Lancement : Masque LED, Gua Sha, Scrubber
-        [8, 10, 4],  // Promo : Sérum VitC, Coffret, Brosse
-        [5, 7, 6],   // Diagnostic : Ice Roller, Steamer, V-Line
-        [14, 9, 11]  // Éclats : Diffuseur, Patchs, Huile
+    // Images lifestyle Unsplash (gratuites, usage commercial)
+    var heroImages = [
+        'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80'
     ];
-
-    function getProductImage(id) {
-        if (typeof PRODUCTS === 'undefined') return '';
-        for (var i = 0; i < PRODUCTS.length; i++) {
-            if (PRODUCTS[i].id === id) return PRODUCTS[i].image || '';
-        }
-        return '';
-    }
 
     var heroSlides = [
         {
@@ -31,7 +23,7 @@
             desc: '500+ soins s\u00e9lectionn\u00e9s. Chaque ingr\u00e9dient analys\u00e9. Livraison suivie en Europe.',
             btn1: { text: '\uD83D\uDD2C Trouver ma routine', href: 'pages/diagnostic.html' },
             btn2: { text: '\u2728 Composer ma routine', href: '#routine-composer' },
-            bg: 'linear-gradient(135deg, #faf8f5 0%, #f3efe9 100%)'
+            bg: 'linear-gradient(135deg, #fff5f8 0%, #fce8ef 50%, #fdf5f0 100%)'
         },
         {
             tag: '-10% sur tout',
@@ -39,8 +31,7 @@
             desc: 'Votre premi\u00e8re commande \u00e0 prix r\u00e9duit. Sans minimum d\'achat. Cumulable avec les coffrets.',
             btn1: { text: '\uD83C\uDF81 Voir les coffrets', href: '#packs' },
             btn2: { text: '\uD83D\uDED2 Voir la boutique', href: '#produits' },
-            bg: 'linear-gradient(135deg, #2d2926 0%, #3d3530 100%)',
-            dark: true
+            bg: 'linear-gradient(135deg, #f8f0e8 0%, #f0e4d4 50%, #faf5f0 100%)'
         },
         {
             tag: 'Diagnostic IA',
@@ -48,16 +39,15 @@
             desc: '4 questions, 2 minutes. Notre IA analyse votre peau et recommande les produits adapt\u00e9s.',
             btn1: { text: '\uD83E\uDDD2 Faire le diagnostic', href: 'pages/diagnostic.html' },
             btn2: { text: '\uD83D\uDCD6 Guide beaut\u00e9', href: 'pages/guide-beaute.html' },
-            bg: 'linear-gradient(135deg, #f3efe9 0%, #e8e4de 100%)'
+            bg: 'linear-gradient(135deg, #f5f0f8 0%, #ece4f0 50%, #faf5fa 100%)'
         },
         {
             tag: 'Programme \u00c9clats',
             title: 'Chaque achat<br><em>vous r\u00e9compense</em>',
             desc: 'Gagnez des \u00c9clats \u00e0 chaque commande. 4 paliers, coffre du jour, d\u00e9fis hebdo.',
             btn1: { text: '\uD83D\uDC8E D\u00e9couvrir', href: 'pages/loyalty.html' },
-            btn2: { text: '\uD83D\uDCDD Cr\u00e9er un compte', href: 'pages/account.html' },
-            bg: 'linear-gradient(135deg, #2d2926 0%, #1a1714 100%)',
-            dark: true
+            btn2: { text: '\uD83D\uDCDD Cr\u00e9er un compte', href: 'pages/register.html' },
+            bg: 'linear-gradient(135deg, #fdf5f0 0%, #fce8e0 50%, #f5ebe4 100%)'
         }
     ];
 
@@ -141,31 +131,19 @@
                     '<a href="' + slide.btn2.href + '" class="btn ' + (slide.dark ? 'btn-outline-light' : 'btn-outline') + '">' + slide.btn2.text + '</a>';
             }
 
-            // Update colors
-            if (slide.dark) {
-                heroContent.style.color = '#fff';
-                if (tag) tag.style.color = 'var(--color-secondary)';
-                if (h1) h1.style.color = '#fff';
-                if (p) p.style.color = 'rgba(255,255,255,.7)';
-            } else {
-                heroContent.style.color = '';
-                if (tag) tag.style.color = '';
-                if (h1) h1.style.color = '';
-                if (p) p.style.color = '';
-            }
+            // Colors — all slides now use light backgrounds
+            heroContent.style.color = '';
+            if (tag) tag.style.color = '';
+            if (h1) h1.style.color = '';
+            if (p) p.style.color = '';
 
             // Background
             heroSection.style.background = slide.bg;
 
-            // Perks visibility (hide on dark slides)
+            // Perks visibility
             var perks = heroContent.querySelector('.hero-perks');
             if (perks) {
-                perks.style.display = (idx === 0 || !slide.dark) ? '' : 'none';
-                if (slide.dark && perks.style.display !== 'none') {
-                    perks.querySelectorAll('span').forEach(function(s) { s.style.background = 'rgba(255,255,255,.1)'; s.style.color = 'rgba(255,255,255,.7)'; });
-                } else {
-                    perks.querySelectorAll('span').forEach(function(s) { s.style.background = ''; s.style.color = ''; });
-                }
+                perks.style.display = idx === 0 ? '' : 'none';
             }
 
             // Fade in
@@ -173,20 +151,15 @@
             heroContent.style.transform = 'translateY(0)';
         }, 300);
 
-        // Update hero images (fade transition)
-        var heroVisual = document.querySelector('.hero-visual');
-        if (heroVisual && heroImageSets[idx]) {
-            heroVisual.style.opacity = '0';
-            heroVisual.style.transition = 'opacity 0.4s ease';
+        // Update hero image (single lifestyle image, fade transition)
+        var heroImg = document.getElementById('heroMainImg');
+        if (heroImg && heroImages[idx]) {
+            heroImg.style.opacity = '0';
             setTimeout(function() {
-                var ids = heroImageSets[idx];
-                var mainEl = document.getElementById('heroImgMain');
-                var leftEl = document.getElementById('heroImg1');
-                var rightEl = document.getElementById('heroImg3');
-                if (mainEl) { var mImg = mainEl.querySelector('img'); if (mImg) mImg.src = getProductImage(ids[0]); }
-                if (leftEl) { var lImg = leftEl.querySelector('img'); if (lImg) lImg.src = getProductImage(ids[1]); }
-                if (rightEl) { var rImg = rightEl.querySelector('img'); if (rImg) rImg.src = getProductImage(ids[2]); }
-                heroVisual.style.opacity = '1';
+                heroImg.src = heroImages[idx];
+                heroImg.onload = function() { heroImg.style.opacity = '1'; };
+                // Fallback if image cached
+                setTimeout(function() { heroImg.style.opacity = '1'; }, 200);
             }, 350);
         }
 
