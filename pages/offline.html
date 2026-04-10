@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors-ligne - ÉCLAT</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+            background: #faf8f5;
+            color: #2d2926;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            text-align: center;
+        }
+        .offline-card {
+            max-width: 400px;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #6b6560;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #2d2926;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .btn:hover { background: #1a1714; }
+    </style>
+</head>
+<body>
+    <div class="offline-card">
+        <div class="offline-icon">&#128268;</div>
+        <h1>Vous êtes hors-ligne</h1>
+        <p>Pas de connexion internet pour le moment. Reconnectez-vous pour continuer votre shopping beauté.</p>
+        <button class="btn" onclick="window.location.reload()">Réessayer</button>
+    </div>
+</body>
+</html>

@@ -12,6 +12,8 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
     <style>
         .legal-page { max-width: 800px; margin: 40px auto; padding: 0 24px 80px; }
         .legal-page h1 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 32px; }
@@ -78,5 +80,6 @@
     </div>
     <script src="../js/themes.js" defer></script>
     <script src="../js/auth.js?v=2" defer></script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>

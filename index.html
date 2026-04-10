@@ -27,9 +27,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/themes.css">
-
+    <!-- Critical CSS (above-the-fold) -->
+    <style>
+    :root{--color-primary:#2d2926;--color-secondary:#c9a87c;--color-accent:#e8c8a0;--color-bg:#faf8f5;--color-bg-alt:#f3efe9;--color-white:#fff;--color-text:#2d2926;--color-text-light:#6b6560;--color-border:#e8e4de;--color-success:#4caf50;--color-error:#e74c3c;--color-star:#f0b429;--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--radius-xl:30px;--shadow-sm:0 2px 8px rgba(45,41,38,.06);--shadow-md:0 4px 20px rgba(45,41,38,.1);--shadow-lg:0 8px 40px rgba(45,41,38,.12);--transition:all .3s cubic-bezier(.4,0,.2,1)}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.6;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto;display:block}button{cursor:pointer;border:none;background:none;font-family:inherit}input{font-family:inherit}.container{max-width:1200px;margin:0 auto;padding:0 24px}.top-banner{background:var(--color-primary);color:var(--color-white);text-align:center;padding:10px 16px;font-size:.8rem;letter-spacing:.5px}.navbar{position:sticky;top:0;z-index:1000;background:rgba(250,248,245,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--color-border);transition:var(--transition)}.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px}.logo{font-family:var(--font-display);font-size:1.8rem;font-weight:700;letter-spacing:3px;color:var(--color-primary)}.nav-links{display:flex;gap:32px}.nav-links a{font-size:.9rem;font-weight:500;color:var(--color-text-light);transition:var(--transition);position:relative}.nav-actions{display:flex;align-items:center;gap:16px}.cart-btn{position:relative;color:var(--color-primary);transition:var(--transition);padding:8px}.cart-count{position:absolute;top:0;right:0;background:var(--color-secondary);color:var(--color-white);font-size:.65rem;font-weight:600;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}.mobile-menu-btn{display:none;flex-direction:column;gap:5px;padding:8px}.mobile-menu-btn span{width:24px;height:2px;background:var(--color-primary);border-radius:2px;transition:var(--transition)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;font-size:.9rem;font-weight:600;border-radius:var(--radius-xl);transition:var(--transition);letter-spacing:.3px}.btn-primary{background:var(--color-primary);color:var(--color-white)}.btn-outline{border:2px solid var(--color-primary);color:var(--color-primary);background:transparent}.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 110px);align-items:center;padding:60px 24px;max-width:1200px;margin:0 auto;gap:60px}.hero h1{font-family:var(--font-display);font-size:3.5rem;line-height:1.15;margin-bottom:20px;color:var(--color-primary)}.hero h1 em{color:var(--color-secondary);font-style:italic}.hero-content>p{font-size:1.1rem;color:var(--color-text-light);margin-bottom:32px;max-width:480px;line-height:1.7}.hero-buttons{display:flex;gap:16px;margin-bottom:48px;flex-wrap:wrap}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px}.hero-circle{width:400px;height:480px;border-radius:4px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}.hero-circle img{width:100%;height:100%;object-fit:cover}.loyalty-widget{display:flex;align-items:center;gap:5px;padding:6px 14px;background:linear-gradient(135deg,rgba(201,168,124,.15),rgba(201,168,124,.05));border:1px solid rgba(201,168,124,.3);border-radius:20px;text-decoration:none;transition:all .2s;cursor:pointer}.lw-eclats{font-size:.85rem;font-weight:700;color:var(--color-secondary)}.lw-label{font-size:.7rem;color:var(--color-text-light)}@media(max-width:768px){.hero{grid-template-columns:1fr;min-height:auto;padding:30px 16px;gap:30px;text-align:center}.hero h1{font-size:2.2rem}.nav-links{display:none}.mobile-menu-btn{display:flex}.hero-visual{min-height:300px}.hero-circle{width:280px;height:340px}}
+    </style>
+    <!-- Full CSS (async load) -->
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    <link rel="stylesheet" href="css/themes.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/themes.css"></noscript>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
 
     <!-- Structured Data for Google -->
     <script type="application/ld+json">
@@ -480,12 +488,12 @@
     <script src="js/search.js" defer></script>
     <script src="js/automation.js" defer></script>
     <script src="js/products-i18n.js" defer></script>
-    <script src="js/chatbot.js" defer></script>
+    <script src="js/chatbot.js" defer fetchpriority="low"></script>
     <script src="js/themes.js" defer></script>
-    <script src="js/social-proof.js" defer></script>
+    <script src="js/social-proof.js" defer fetchpriority="low"></script>
     <script src="js/loyalty-bar.js" defer></script>
     <script src="js/auth.js?v=2" defer></script>
-    <script src="js/analytics.js" defer></script>
+    <script src="js/analytics.js" defer fetchpriority="low"></script>
     <script src="js/init.js" defer></script>
     <script>
         // Bundle add-to-cart — ajoute UN article coffret au prix réel du bundle
@@ -517,5 +525,6 @@
     <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>

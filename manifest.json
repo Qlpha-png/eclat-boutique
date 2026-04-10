@@ -1,0 +1,26 @@
+{
+    "name": "ÉCLAT — Beauté & Wellness Premium",
+    "short_name": "ÉCLAT",
+    "description": "Boutique beauté premium. Soins visage, outils wellness, routines personnalisées.",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#2d2926",
+    "background_color": "#faf8f5",
+    "lang": "fr",
+    "orientation": "portrait-primary",
+    "categories": ["shopping", "beauty"],
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232d2926' width='100' height='100' rx='20'/><text y='.9em' x='.15em' font-size='70'>%E2%9C%A8</text></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%232d2926' width='512' height='512' rx='100'/><text y='.88em' x='.12em' font-size='360'>%E2%9C%A8</text></svg>",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

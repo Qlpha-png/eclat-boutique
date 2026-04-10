@@ -11,6 +11,8 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
 </head>
 <body style="background: var(--color-bg);">
     <nav class="navbar">
@@ -95,5 +97,6 @@
     <script src="../js/themes.js" defer></script>
     <script src="../js/auth.js?v=2" defer></script>
     <script src="../js/reward-wheel.js" defer></script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </body>
 </html>
