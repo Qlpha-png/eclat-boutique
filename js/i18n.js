@@ -97,7 +97,8 @@ const TRANSLATIONS = {
 
         // Footer
         footer_shop: 'Boutique',
-        footer_help: 'Aide',
+        footer_help: 'Service Client',
+        footer_resources: 'Ressources',
         footer_legal: 'Légal',
         footer_rights: '© 2026 ÉCLAT. Tous droits réservés.',
 
@@ -265,7 +266,8 @@ const TRANSLATIONS = {
         banner_text: 'Free shipping over €29 • 30-day money-back guarantee • Secure payment',
 
         footer_shop: 'Shop',
-        footer_help: 'Help',
+        footer_help: 'Customer Service',
+        footer_resources: 'Resources',
         footer_legal: 'Legal',
         footer_rights: '© 2026 ÉCLAT. All rights reserved.',
 
@@ -431,7 +433,8 @@ const TRANSLATIONS = {
         banner_text: 'Envío gratis a partir de 29€ • Satisfecho o reembolsado 30d • Pago seguro',
 
         footer_shop: 'Tienda',
-        footer_help: 'Ayuda',
+        footer_help: 'Atención al Cliente',
+        footer_resources: 'Recursos',
         footer_legal: 'Legal',
         footer_rights: '© 2026 ÉCLAT. Todos los derechos reservados.',
 
@@ -597,7 +600,8 @@ const TRANSLATIONS = {
         banner_text: 'Kostenloser Versand ab 29€ • 30 Tage Geld-zurück • Sichere Zahlung',
 
         footer_shop: 'Shop',
-        footer_help: 'Hilfe',
+        footer_help: 'Kundenservice',
+        footer_resources: 'Ressourcen',
         footer_legal: 'Rechtliches',
         footer_rights: '© 2026 ÉCLAT. Alle Rechte vorbehalten.',
 
@@ -773,7 +777,8 @@ function applyTranslations() {
         // Footer
         '.footer-grid .footer-col:nth-child(2) h4': 'footer_shop',
         '.footer-grid .footer-col:nth-child(3) h4': 'footer_help',
-        '.footer-grid .footer-col:nth-child(4) h4': 'footer_legal',
+        '.footer-grid .footer-col:nth-child(4) h4': 'footer_resources',
+        '.footer-grid .footer-col:nth-child(5) h4': 'footer_legal',
         '.footer-bottom p': 'footer_rights'
     };
 

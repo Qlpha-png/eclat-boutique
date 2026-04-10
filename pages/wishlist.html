@@ -28,7 +28,7 @@
         .wl-header h1 {
             font-family: 'Playfair Display', var(--font-display, serif);
             font-size: 2.2rem;
-            color: #2d2926;
+            color: var(--color-primary, #2d2926);
             margin-bottom: 8px;
         }
         .wl-header p {
@@ -76,7 +76,7 @@
         }
         .wl-card-img {
             position: relative;
-            background: #f3efe9;
+            background: var(--color-bg-alt, #f3efe9);
         }
         .wl-card-img img {
             width: 100%;
@@ -128,7 +128,7 @@
         .wl-card-name {
             font-weight: 600;
             font-size: 0.9rem;
-            color: #2d2926;
+            color: var(--color-primary, #2d2926);
             margin-bottom: 6px;
             line-height: 1.3;
             display: -webkit-box;
@@ -138,7 +138,7 @@
         }
         .wl-card-price {
             font-weight: 700;
-            color: #c9a87c;
+            color: var(--color-secondary, #c9a87c);
             font-size: 1.05rem;
             margin-bottom: 12px;
         }
@@ -162,11 +162,11 @@
             line-height: 1.3;
         }
         .wl-btn-cart {
-            background: #2d2926;
-            color: #fff;
+            background: var(--color-primary, #2d2926);
+            color: var(--color-white, #fff);
         }
         .wl-btn-cart:hover {
-            background: #c9a87c;
+            background: var(--color-secondary, #c9a87c);
         }
         .wl-btn-cart.added {
             background: #22c55e;
@@ -182,7 +182,7 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 24px;
-            background: #f3efe9;
+            background: var(--color-bg-alt, #f3efe9);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -191,13 +191,13 @@
         .wl-empty-icon svg {
             width: 36px;
             height: 36px;
-            stroke: #c9a87c;
+            stroke: var(--color-secondary, #c9a87c);
             fill: none;
         }
         .wl-empty h2 {
             font-family: 'Playfair Display', var(--font-display, serif);
             font-size: 1.5rem;
-            color: #2d2926;
+            color: var(--color-primary, #2d2926);
             margin-bottom: 12px;
         }
         .wl-empty p {
@@ -212,8 +212,8 @@
         .wl-empty .wl-cta {
             display: inline-block;
             padding: 12px 32px;
-            background: #2d2926;
-            color: #fff;
+            background: var(--color-primary, #2d2926);
+            color: var(--color-white, #fff);
             border-radius: var(--radius-sm, 8px);
             text-decoration: none;
             font-weight: 600;
@@ -221,11 +221,11 @@
             transition: background 0.2s ease;
         }
         .wl-empty .wl-cta:hover {
-            background: #c9a87c;
+            background: var(--color-secondary, #c9a87c);
         }
     </style>
 </head>
-<body style="background:#faf8f5;">
+<body style="background:var(--color-bg, #faf8f5);">
 
     <!-- Top Banner -->
     <div class="top-banner" id="topBanner">Livraison offerte d&egrave;s 49&euro; | Paiement s&eacute;curis&eacute; Stripe</div>
@@ -247,7 +247,7 @@
                 </a>
                 <a href="wishlist.html" class="cart-btn" title="Wishlist" style="position:relative;">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                    <span id="wishlistCount" style="position:absolute;top:-4px;right:-6px;background:#c9a87c;color:#fff;font-size:0.65rem;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:700;"></span>
+                    <span id="wishlistCount" style="position:absolute;top:-4px;right:-6px;background:var(--color-secondary);color:var(--color-white);font-size:0.65rem;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:700;"></span>
                 </a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>

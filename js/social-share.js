@@ -7,18 +7,11 @@
     // WhatsApp, Facebook, X/Twitter, Copy Link, Native Share
     // ============================
 
-    // ---- ECLAT theme colours ----
-    var COLORS = {
-        whatsapp:  '#25d366',
-        facebook:  '#1877f2',
-        twitter:   '#000000',
-        copy:      '#6b6560',
-        native:    '#c9a87c',
-        bg:        'var(--color-white,#fff)',
-        border:    'var(--color-border,#e8e4de)'
-    };
-
-    var BTN_SIZE = 32;
+    var SITE_URL = 'https://maison-eclat.shop';
+    var BTN_SIZE = 36;
+    var POPUP_W  = 600;
+    var POPUP_H  = 400;
+    var CSS_ID   = 'eclat-social-share-css';
 
     // ---- SVG icons (inline, no external deps) ----
 
@@ -47,30 +40,50 @@
             '</svg>'
     };
 
-    // ---- Shared inline styles ----
+    // ---- Brand colours per platform ----
 
-    function btnStyle(color) {
-        return 'display:inline-flex;align-items:center;justify-content:center;' +
-            'width:' + BTN_SIZE + 'px;height:' + BTN_SIZE + 'px;' +
-            'border-radius:50%;border:1px solid ' + COLORS.border + ';' +
-            'background:' + COLORS.bg + ';color:' + color + ';' +
-            'cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;' +
-            'text-decoration:none;padding:0;font-size:0;line-height:0;';
-    }
+    var BRAND_COLORS = {
+        whatsapp: '#25d366',
+        facebook: '#1877f2',
+        twitter:  '#000000',
+        copy:     'var(--color-text-light, #6b6560)',
+        native:   'var(--color-secondary, #c9a87c)'
+    };
 
-    var HOVER_CSS_ID = 'eclat-social-share-styles';
+    // ---- Inject CSS (once) ----
 
-    function injectStyles() {
-        if (document.getElementById(HOVER_CSS_ID)) return;
+    function injectCSS() {
+        if (document.getElementById(CSS_ID)) return;
         var style = document.createElement('style');
-        style.id = HOVER_CSS_ID;
+        style.id = CSS_ID;
         style.textContent =
-            '.eclat-share-btn:hover{transform:scale(1.12);box-shadow:0 2px 8px rgba(0,0,0,0.12);}' +
-            '.eclat-share-btn:active{transform:scale(0.95);}';
+            '.eclat-share-wrap{display:flex;gap:8px;margin:16px 0;align-items:center;flex-wrap:wrap;}' +
+            '.eclat-share-label{font-size:0.75rem;color:var(--color-text-light,#6b6560);margin-right:4px;font-weight:500;letter-spacing:0.3px;}' +
+            '.eclat-share-btn{' +
+                'display:inline-flex;align-items:center;justify-content:center;' +
+                'width:' + BTN_SIZE + 'px;height:' + BTN_SIZE + 'px;' +
+                'border-radius:50%;border:1px solid var(--color-border,#e8e4de);' +
+                'background:var(--color-white,#fff);' +
+                'cursor:pointer;padding:0;font-size:0;line-height:0;' +
+                'transition:transform 0.15s ease,box-shadow 0.15s ease,border-color 0.15s ease;' +
+                'text-decoration:none;' +
+            '}' +
+            '.eclat-share-btn:hover{' +
+                'transform:scale(1.12);' +
+                'box-shadow:0 2px 8px rgba(0,0,0,0.1);' +
+                'border-color:var(--color-secondary,#c9a87c);' +
+            '}' +
+            '.eclat-share-btn:active{transform:scale(0.95);}' +
+            '.eclat-share-toast{' +
+                'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
+                'background:#2d2926;color:#fff;padding:10px 24px;border-radius:8px;' +
+                'font-size:0.85rem;z-index:99999;opacity:0;transition:opacity 0.3s;' +
+                'pointer-events:none;' +
+            '}';
         document.head.appendChild(style);
     }
 
-    // ---- Toast helper (reuses site toast if available) ----
+    // ---- Toast ----
 
     function showToast(msg) {
         if (typeof window.showToast === 'function') {
@@ -78,15 +91,15 @@
             return;
         }
         var el = document.createElement('div');
+        el.className = 'eclat-share-toast';
         el.textContent = msg;
-        el.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
-            'background:#2d2926;color:#fff;padding:10px 24px;border-radius:8px;' +
-            'font-size:0.85rem;z-index:99999;opacity:0;transition:opacity 0.3s;';
         document.body.appendChild(el);
         requestAnimationFrame(function() { el.style.opacity = '1'; });
         setTimeout(function() {
             el.style.opacity = '0';
-            setTimeout(function() { el.remove(); }, 300);
+            setTimeout(function() {
+                if (el.parentNode) el.parentNode.removeChild(el);
+            }, 300);
         }, 2500);
     }
 
@@ -107,7 +120,7 @@
     function fallbackCopy(url) {
         var input = document.createElement('input');
         input.value = url;
-        input.style.cssText = 'position:fixed;left:-9999px;';
+        input.style.cssText = 'position:fixed;left:-9999px;opacity:0;';
         document.body.appendChild(input);
         input.select();
         try { document.execCommand('copy'); } catch (e) { /* silent */ }
@@ -123,141 +136,256 @@
         }
     }
 
-    // ---- Detect mobile (rough check for native share priority) ----
+    // ---- Open popup (600x400) ----
 
-    function isMobile() {
-        return /Android|iPhone|iPad|iPod|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    function openPopup(url) {
+        var left = Math.round((screen.width - POPUP_W) / 2);
+        var top  = Math.round((screen.height - POPUP_H) / 2);
+        var features = 'width=' + POPUP_W + ',height=' + POPUP_H +
+            ',left=' + left + ',top=' + top +
+            ',menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+        window.open(url, 'eclat_share', features);
     }
 
-    // ---- Build share buttons for a container ----
+    // ---- Build share URL helpers ----
 
-    function buildButtons(container) {
-        var pageTitle = container.getAttribute('data-title') || document.title || '';
-        var pageUrl   = container.getAttribute('data-url')   || window.location.href;
-        var encodedUrl   = encodeURIComponent(pageUrl);
-        var encodedText  = encodeURIComponent(pageTitle + ' ' + pageUrl);
-        var encodedTitle = encodeURIComponent(pageTitle);
+    function whatsappURL(text) {
+        return 'https://wa.me/?text=' + encodeURIComponent(text);
+    }
 
-        // On mobile with native share support, show only the native share button
-        var hasNativeShare = (typeof navigator !== 'undefined' && typeof navigator.share === 'function');
-        var useMobileNative = hasNativeShare && isMobile();
+    function facebookURL(pageUrl) {
+        return 'https://facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+    }
 
-        var wrapper = document.createElement('div');
-        wrapper.style.cssText = 'display:flex;gap:8px;align-items:center;flex-wrap:wrap;';
+    function twitterURL(pageUrl, text) {
+        return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl) +
+            '&text=' + encodeURIComponent(text);
+    }
 
-        if (useMobileNative) {
-            // Single native share button replaces all others on mobile
-            var nBtn = document.createElement('button');
-            nBtn.className = 'eclat-share-btn';
-            nBtn.setAttribute('type', 'button');
-            nBtn.setAttribute('aria-label', 'Partager');
-            nBtn.setAttribute('title', 'Partager');
-            nBtn.style.cssText = btnStyle(COLORS.native);
-            nBtn.innerHTML = ICONS.native;
-            nBtn.addEventListener('click', function() {
-                nativeShare(pageTitle, pageUrl);
-            });
-            wrapper.appendChild(nBtn);
-        } else {
-            // WhatsApp
-            var waLink = document.createElement('a');
-            waLink.href = 'https://wa.me/?text=' + encodedText;
-            waLink.target = '_blank';
-            waLink.rel = 'noopener noreferrer';
-            waLink.className = 'eclat-share-btn';
-            waLink.setAttribute('aria-label', 'Partager sur WhatsApp');
-            waLink.setAttribute('title', 'WhatsApp');
-            waLink.style.cssText = btnStyle(COLORS.whatsapp);
-            waLink.innerHTML = ICONS.whatsapp;
-            wrapper.appendChild(waLink);
+    // ---- Create a single button ----
 
-            // Facebook
-            var fbLink = document.createElement('a');
-            fbLink.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
-            fbLink.target = '_blank';
-            fbLink.rel = 'noopener noreferrer';
-            fbLink.className = 'eclat-share-btn';
-            fbLink.setAttribute('aria-label', 'Partager sur Facebook');
-            fbLink.setAttribute('title', 'Facebook');
-            fbLink.style.cssText = btnStyle(COLORS.facebook);
-            fbLink.innerHTML = ICONS.facebook;
-            wrapper.appendChild(fbLink);
+    function createBtn(type, ariaLabel, title, color, icon, onClick) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'eclat-share-btn';
+        btn.setAttribute('aria-label', ariaLabel);
+        btn.setAttribute('title', title);
+        btn.style.color = color;
+        btn.innerHTML = icon;
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            onClick();
+        });
+        return btn;
+    }
 
-            // X / Twitter
-            var twLink = document.createElement('a');
-            twLink.href = 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedTitle;
-            twLink.target = '_blank';
-            twLink.rel = 'noopener noreferrer';
-            twLink.className = 'eclat-share-btn';
-            twLink.setAttribute('aria-label', 'Partager sur X');
-            twLink.setAttribute('title', 'X (Twitter)');
-            twLink.style.cssText = btnStyle(COLORS.twitter);
-            twLink.innerHTML = ICONS.twitter;
-            wrapper.appendChild(twLink);
+    // ---- Build buttons container ----
+    // opts: { title: string, url: string, size?: number }
 
-            // Copy link
-            var cpBtn = document.createElement('button');
-            cpBtn.className = 'eclat-share-btn';
-            cpBtn.setAttribute('type', 'button');
-            cpBtn.setAttribute('aria-label', 'Copier le lien');
-            cpBtn.setAttribute('title', 'Copier le lien');
-            cpBtn.style.cssText = btnStyle(COLORS.copy);
-            cpBtn.innerHTML = ICONS.copy;
-            cpBtn.addEventListener('click', function() {
-                copyLink(pageUrl);
-            });
-            wrapper.appendChild(cpBtn);
+    function buildButtonsDOM(opts) {
+        var shareTitle = opts.title || document.title || '';
+        var shareUrl   = opts.url   || window.location.href;
+        var shareText  = shareTitle + ' ' + shareUrl;
+        var hasNativeShare = (typeof navigator.share === 'function');
 
-            // Native share fallback on desktop if browser supports it
-            if (hasNativeShare) {
-                var nBtn2 = document.createElement('button');
-                nBtn2.className = 'eclat-share-btn';
-                nBtn2.setAttribute('type', 'button');
-                nBtn2.setAttribute('aria-label', 'Partager');
-                nBtn2.setAttribute('title', 'Partager');
-                nBtn2.style.cssText = btnStyle(COLORS.native);
-                nBtn2.innerHTML = ICONS.native;
-                nBtn2.addEventListener('click', function() {
-                    nativeShare(pageTitle, pageUrl);
-                });
-                wrapper.appendChild(nBtn2);
-            }
+        var container = document.createElement('div');
+
+        // "Partager" label
+        var label = document.createElement('span');
+        label.className = 'eclat-share-label';
+        label.textContent = 'Partager';
+        container.appendChild(label);
+
+        // Buttons row
+        var row = document.createElement('div');
+        row.className = 'eclat-share-wrap';
+
+        // WhatsApp
+        row.appendChild(createBtn(
+            'whatsapp', 'Partager sur WhatsApp', 'WhatsApp',
+            BRAND_COLORS.whatsapp, ICONS.whatsapp,
+            function() { openPopup(whatsappURL(shareText)); }
+        ));
+
+        // Facebook
+        row.appendChild(createBtn(
+            'facebook', 'Partager sur Facebook', 'Facebook',
+            BRAND_COLORS.facebook, ICONS.facebook,
+            function() { openPopup(facebookURL(shareUrl)); }
+        ));
+
+        // Twitter / X
+        row.appendChild(createBtn(
+            'twitter', 'Partager sur X', 'X (Twitter)',
+            BRAND_COLORS.twitter, ICONS.twitter,
+            function() { openPopup(twitterURL(shareUrl, shareTitle)); }
+        ));
+
+        // Copy link
+        row.appendChild(createBtn(
+            'copy', 'Copier le lien', 'Copier le lien',
+            BRAND_COLORS.copy, ICONS.copy,
+            function() { copyLink(shareUrl); }
+        ));
+
+        // Native share — only if browser supports it, otherwise hidden
+        if (hasNativeShare) {
+            row.appendChild(createBtn(
+                'native', 'Partager', 'Partager',
+                BRAND_COLORS.native, ICONS.native,
+                function() { nativeShare(shareTitle, shareUrl); }
+            ));
         }
 
-        container.innerHTML = '';
-        container.appendChild(wrapper);
+        container.appendChild(row);
+        return container;
     }
 
-    // ---- SocialShare public API ----
+    // ---- renderButtons: returns HTML string (for inline embedding in product page) ----
+    // opts: { title: string, url?: string, size?: number }
 
-    var SocialShare = {
+    function renderButtons(opts) {
+        opts = opts || {};
+        var shareTitle = opts.title || document.title || '';
+        var shareUrl   = opts.url   || window.location.href;
+        var id = 'eclat-share-' + Math.random().toString(36).substr(2, 8);
 
-        init: function() {
-            injectStyles();
+        // We return a placeholder div; after DOM update we populate it
+        setTimeout(function() {
+            var el = document.getElementById(id);
+            if (!el) return;
+            var dom = buildButtonsDOM({ title: shareTitle, url: shareUrl });
+            el.appendChild(dom);
+        }, 0);
 
-            var containers = document.querySelectorAll('.social-share-container');
-            for (var i = 0; i < containers.length; i++) {
-                buildButtons(containers[i]);
-            }
-        },
+        return '<div id="' + id + '"></div>';
+    }
 
-        // Expose utilities for manual use
+    // ---- Auto-insert on product pages ----
+
+    function shareProduct() {
+        var path = window.location.pathname;
+        if (path.indexOf('product.html') === -1) return;
+
+        // Look for pp-actions or pp-info (product page selectors)
+        var anchor = document.querySelector('.pp-actions');
+        if (!anchor) anchor = document.querySelector('.pp-info');
+        if (!anchor) anchor = document.getElementById('ppInfo');
+        if (!anchor) return;
+
+        // Already inserted?
+        if (anchor.parentNode && anchor.parentNode.querySelector('.eclat-share-product')) return;
+
+        // Gather product info from page
+        var nameEl = document.querySelector('.pp-name');
+        var priceEl = document.querySelector('.pp-price');
+        var productName = nameEl ? nameEl.textContent.trim() : '';
+        var productPrice = priceEl ? priceEl.textContent.trim() : '';
+        var shareTitle = productName;
+        if (productPrice) {
+            shareTitle += ' - ' + productPrice;
+        }
+        shareTitle += ' | \u00c9CLAT Beaut\u00e9';
+        var shareUrl = window.location.href;
+
+        var wrapper = document.createElement('div');
+        wrapper.className = 'eclat-share-product';
+        var dom = buildButtonsDOM({ title: shareTitle, url: shareUrl });
+        wrapper.appendChild(dom);
+
+        // Insert after the anchor element
+        if (anchor.nextSibling) {
+            anchor.parentNode.insertBefore(wrapper, anchor.nextSibling);
+        } else {
+            anchor.parentNode.appendChild(wrapper);
+        }
+    }
+
+    // ---- Auto-insert on blog pages ----
+
+    function shareArticle() {
+        var path = window.location.pathname;
+        if (path.indexOf('/blog/') === -1) return;
+
+        // Find the article element
+        var article = document.querySelector('article.article-page') ||
+                      document.querySelector('article') ||
+                      document.querySelector('.article-page');
+        if (!article) return;
+
+        // Already inserted?
+        if (article.querySelector('.eclat-share-article')) return;
+
+        // Get article title
+        var h1 = article.querySelector('h1');
+        var articleTitle = h1 ? h1.textContent.trim() : document.title;
+        var shareUrl = window.location.href;
+
+        var wrapper = document.createElement('div');
+        wrapper.className = 'eclat-share-article';
+        wrapper.style.cssText = 'margin-top:32px;padding-top:24px;border-top:1px solid var(--color-border,#e8e4de);';
+        var dom = buildButtonsDOM({ title: articleTitle, url: shareUrl });
+        wrapper.appendChild(dom);
+
+        // Insert before article-nav if present, otherwise at the end of article
+        var nav = article.querySelector('.article-nav');
+        if (nav) {
+            article.insertBefore(wrapper, nav);
+        } else {
+            article.appendChild(wrapper);
+        }
+    }
+
+    // ---- Init ----
+
+    function init() {
+        injectCSS();
+
+        // Auto-insert on product pages
+        shareProduct();
+
+        // Auto-insert on blog pages
+        shareArticle();
+
+        // Also handle any manual .social-share-container elements
+        var containers = document.querySelectorAll('.social-share-container');
+        for (var i = 0; i < containers.length; i++) {
+            if (containers[i].getAttribute('data-eclat-share-init')) continue;
+            containers[i].setAttribute('data-eclat-share-init', '1');
+
+            var title = containers[i].getAttribute('data-title') || document.title || '';
+            var url   = containers[i].getAttribute('data-url')   || window.location.href;
+            var dom   = buildButtonsDOM({ title: title, url: url });
+            containers[i].innerHTML = '';
+            containers[i].appendChild(dom);
+        }
+    }
+
+    // ---- Public API ----
+
+    var EclatShare = {
+        init: init,
+        shareProduct: shareProduct,
+        shareArticle: shareArticle,
+        renderButtons: renderButtons,
         copyLink: copyLink,
         nativeShare: nativeShare
     };
 
-    // ---- Expose globally ----
+    // Expose globally
+    window.EclatShare = EclatShare;
 
-    window.SocialShare = SocialShare;
+    // Backward compatibility (product page uses SocialShare.renderButtons)
+    window.SocialShare = EclatShare;
 
-    // ---- Auto-init on DOMContentLoaded ----
+    // ---- Auto-init ----
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            SocialShare.init();
+            EclatShare.init();
         });
     } else {
-        SocialShare.init();
+        EclatShare.init();
     }
 
 })();
