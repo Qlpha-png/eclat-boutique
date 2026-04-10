@@ -85,6 +85,7 @@
             <div class="pp-info" id="ppInfo"></div>
         </div>
         <div id="ppCrossSell"></div>
+        <div id="ppReviews" class="pp-reviews-section" style="max-width:800px;margin:32px auto 0;"></div>
     </div>
 
     <!-- Sticky add-to-cart bar -->
@@ -99,6 +100,7 @@
     </div>
 
     <script src="../js/products.js"></script>
+    <script src="../js/wishlist.js"></script>
     <script src="../js/ingredients-db.js"></script>
     <script src="../js/clean-beauty.js"></script>
     <script>
@@ -146,6 +148,52 @@
                     "url": "https://maison-eclat.shop/pages/product.html?id=" + product.id
                 }
             });
+
+            // BreadcrumbList schema
+            var breadcrumbScript = document.createElement('script');
+            breadcrumbScript.type = 'application/ld+json';
+            breadcrumbScript.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "\u00c9CLAT", "item": "https://maison-eclat.shop/" },
+                    { "@type": "ListItem", "position": 2, "name": "Produits", "item": "https://maison-eclat.shop/#produits" },
+                    { "@type": "ListItem", "position": 3, "name": product.name, "item": "https://maison-eclat.shop/pages/product.html?id=" + product.id }
+                ]
+            });
+            document.head.appendChild(breadcrumbScript);
+
+            // Stock & delivery estimation
+            (function() {
+                var sdEl = document.getElementById('ppStockDelivery');
+                if (!sdEl) return;
+                // Delivery estimate: J+7 to J+14
+                var now = new Date();
+                var d1 = new Date(now.getTime() + 7 * 86400000);
+                var d2 = new Date(now.getTime() + 14 * 86400000);
+                var opts = { day: 'numeric', month: 'long' };
+                var deliveryHTML = '<div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--color-text);margin-bottom:8px;">' +
+                    '<span style="color:#16a34a;">&#128666;</span> Commandez aujourd\'hui, recevez entre le <strong>' +
+                    d1.toLocaleDateString('fr-FR', opts) + '</strong> et le <strong>' + d2.toLocaleDateString('fr-FR', opts) + '</strong></div>';
+                sdEl.innerHTML = deliveryHTML + '<div id="ppStockIndicator"></div>';
+
+                fetch('/api/stock?productId=' + product.id)
+                    .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+                    .then(function(data) {
+                        var el = document.getElementById('ppStockIndicator');
+                        if (!el) return;
+                        if (!data.available) {
+                            el.innerHTML = '<div style="font-size:0.85rem;color:#dc2626;font-weight:600;padding:8px 12px;background:#fef2f2;border-radius:8px;">Rupture de stock</div>';
+                            var atcBtn = document.querySelector('.pp-actions .btn-primary');
+                            if (atcBtn) { atcBtn.style.opacity = '0.5'; atcBtn.style.pointerEvents = 'none'; atcBtn.textContent = 'Indisponible'; }
+                        } else if (data.low) {
+                            el.innerHTML = '<div style="font-size:0.85rem;color:#ea580c;font-weight:600;">Plus que ' + data.quantity + ' en stock !</div>';
+                        } else if (data.quantity !== null) {
+                            el.innerHTML = '<div style="font-size:0.85rem;color:#16a34a;">En stock</div>';
+                        }
+                    })
+                    .catch(function() {});
+            })();
 
             // Render image
             document.getElementById('ppImage').innerHTML =
@@ -200,9 +248,11 @@
                     '<span><span aria-hidden="true">&#128260;</span> Satisfait 30j</span>' +
                     '<span><span aria-hidden="true">&#128274;</span> Paiement s\u00e9curis\u00e9</span>' +
                 '</div>' +
-                '<div class="pp-actions">' +
-                    '<a href="../index.html?produit=' + product.id + '" class="btn btn-primary">Ajouter au panier</a>' +
+                '<div class="pp-actions" style="display:flex;gap:12px;align-items:center;">' +
+                    '<a href="../index.html?produit=' + product.id + '" class="btn btn-primary" style="flex:1;">Ajouter au panier</a>' +
+                    (typeof Wishlist !== 'undefined' ? Wishlist.heartHTML(product.id, 26) : '') +
                 '</div>' +
+                '<div id="ppStockDelivery"></div>' +
                 '<div class="pp-badges">' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Cruelty-free</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' +
@@ -306,6 +356,158 @@
                 }, {threshold:0});
                 observer.observe(mainCTA);
             }
+
+            // Load reviews
+            loadReviews(product.id, product);
+        }
+
+        function loadReviews(productId, product) {
+            var container = document.getElementById('ppReviews');
+            if (!container) return;
+
+            fetch('/api/reviews?productId=' + productId)
+                .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+                .then(function(data) { renderReviews(container, data, productId, product); })
+                .catch(function() {
+                    // Fallback: show form only
+                    renderReviews(container, { reviews: [], aggregate: { average: 0, count: 0, distribution: {5:0,4:0,3:0,2:0,1:0} } }, productId, product);
+                });
+        }
+
+        function renderReviews(container, data, productId, product) {
+            var agg = data.aggregate;
+            var reviews = data.reviews || [];
+            var stars = function(n) { var s = ''; for (var i = 1; i <= 5; i++) s += '<span style="color:' + (i <= n ? '#f59e0b' : '#d1d5db') + ';">\u2605</span>'; return s; };
+
+            var html = '<div style="padding:24px 0;">';
+            html += '<h2 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:20px;">Avis clients</h2>';
+
+            // Aggregate
+            if (agg.count > 0) {
+                html += '<div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;flex-wrap:wrap;">';
+                html += '<div style="text-align:center;"><div style="font-size:2.4rem;font-weight:700;color:var(--color-primary);">' + agg.average + '</div><div style="font-size:1.1rem;">' + stars(Math.round(agg.average)) + '</div><div style="font-size:0.8rem;color:var(--color-text-light);">' + agg.count + ' avis</div></div>';
+                html += '<div style="flex:1;min-width:180px;">';
+                for (var s = 5; s >= 1; s--) {
+                    var pct = agg.count > 0 ? Math.round((agg.distribution[s] || 0) / agg.count * 100) : 0;
+                    html += '<div style="display:flex;align-items:center;gap:8px;font-size:0.78rem;margin-bottom:3px;"><span style="width:16px;text-align:right;">' + s + '</span><div style="flex:1;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:#f59e0b;border-radius:3px;"></div></div><span style="width:28px;color:var(--color-text-light);">' + pct + '%</span></div>';
+                }
+                html += '</div></div>';
+
+                // Enrich JSON-LD with aggregateRating
+                var schema = document.getElementById('productSchema');
+                if (schema && product) {
+                    try {
+                        var ld = JSON.parse(schema.textContent);
+                        ld.aggregateRating = { "@type": "AggregateRating", ratingValue: agg.average, reviewCount: agg.count };
+                        schema.textContent = JSON.stringify(ld);
+                    } catch(e) {}
+                }
+            }
+
+            // Review list
+            if (reviews.length > 0) {
+                html += '<div style="display:flex;flex-direction:column;gap:16px;">';
+                for (var i = 0; i < reviews.length; i++) {
+                    var r = reviews[i];
+                    var dateStr = new Date(r.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+                    html += '<div style="padding:16px;background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);">';
+                    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
+                    html += '<div>' + stars(r.rating);
+                    if (r.verified) html += ' <span style="font-size:0.72rem;padding:2px 8px;background:#dcfce7;color:#16a34a;border-radius:10px;font-weight:600;">Achat v\u00e9rifi\u00e9</span>';
+                    html += '</div>';
+                    html += '<span style="font-size:0.75rem;color:var(--color-text-light);">' + dateStr + '</span>';
+                    html += '</div>';
+                    if (r.title) html += '<div style="font-weight:600;margin-bottom:4px;">' + escapeHTML(r.title) + '</div>';
+                    html += '<p style="font-size:0.88rem;color:var(--color-text);line-height:1.6;margin:0;">' + escapeHTML(r.body) + '</p>';
+                    if (r.photos && r.photos.length > 0) {
+                        html += '<div style="display:flex;gap:8px;margin-top:10px;">';
+                        for (var p = 0; p < r.photos.length; p++) {
+                            html += '<img src="' + escapeHTML(r.photos[p]) + '" alt="Photo avis" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border);cursor:pointer;" onclick="window.open(this.src)">';
+                        }
+                        html += '</div>';
+                    }
+                    html += '</div>';
+                }
+                html += '</div>';
+            } else {
+                html += '<p style="color:var(--color-text-light);font-size:0.9rem;text-align:center;padding:16px 0;">Aucun avis pour le moment. Soyez le premier !</p>';
+            }
+
+            // Submit form CTA
+            html += '<div style="text-align:center;margin-top:24px;">';
+            html += '<button onclick="toggleReviewForm()" class="btn btn-primary" style="font-size:0.85rem;">Laisser un avis (+15 \u00c9clats)</button>';
+            html += '</div>';
+
+            // Hidden form
+            html += '<div id="reviewFormWrap" style="display:none;margin-top:20px;padding:24px;background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);">';
+            html += '<h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:16px;">Votre avis</h3>';
+            html += '<div id="reviewFormMsg" style="display:none;padding:12px;border-radius:8px;margin-bottom:12px;font-size:0.85rem;"></div>';
+            html += '<div style="margin-bottom:12px;"><label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Note</label><div id="reviewStars" style="font-size:1.8rem;cursor:pointer;">';
+            for (var j = 1; j <= 5; j++) {
+                html += '<span data-star="' + j + '" style="color:#d1d5db;" onmouseover="hoverStar(' + j + ')" onmouseout="resetStars()" onclick="selectStar(' + j + ')">\u2605</span>';
+            }
+            html += '</div></div>';
+            html += '<div style="margin-bottom:12px;"><label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Titre (optionnel)</label><input type="text" id="reviewTitle" maxlength="200" style="width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:8px;font-family:inherit;font-size:0.9rem;box-sizing:border-box;"></div>';
+            html += '<div style="margin-bottom:12px;"><label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Votre avis</label><textarea id="reviewBody" rows="4" maxlength="2000" style="width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:8px;font-family:inherit;font-size:0.9rem;resize:vertical;box-sizing:border-box;" placeholder="Partagez votre exp\u00e9rience avec ce produit..."></textarea></div>';
+            html += '<div style="margin-bottom:16px;"><label style="font-size:0.78rem;color:var(--color-text-light);display:flex;align-items:center;gap:6px;"><input type="checkbox" id="reviewConsent"> J\'autorise \u00c9CLAT \u00e0 publier cet avis (RGPD Art. 6)</label></div>';
+            html += '<button onclick="submitReview(' + productId + ')" class="btn btn-primary" style="width:100%;">Envoyer mon avis</button>';
+            html += '</div>';
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        var selectedRating = 0;
+        function hoverStar(n) {
+            var spans = document.querySelectorAll('#reviewStars span');
+            for (var i = 0; i < spans.length; i++) spans[i].style.color = (i < n) ? '#f59e0b' : '#d1d5db';
+        }
+        function resetStars() { hoverStar(selectedRating); }
+        function selectStar(n) { selectedRating = n; hoverStar(n); }
+
+        function toggleReviewForm() {
+            var wrap = document.getElementById('reviewFormWrap');
+            if (wrap) wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitReview(productId) {
+            var msg = document.getElementById('reviewFormMsg');
+            if (!selectedRating) { showMsg(msg, 'Veuillez s\u00e9lectionner une note.', '#fef2f2', '#dc2626'); return; }
+            var body = (document.getElementById('reviewBody').value || '').trim();
+            if (!body) { showMsg(msg, 'Veuillez \u00e9crire votre avis.', '#fef2f2', '#dc2626'); return; }
+            var consent = document.getElementById('reviewConsent');
+            if (!consent || !consent.checked) { showMsg(msg, 'Veuillez accepter la publication (RGPD).', '#fef2f2', '#dc2626'); return; }
+
+            var token = null;
+            try { var s = JSON.parse(localStorage.getItem('sb-session')); token = s && s.access_token; } catch(e) {}
+            if (!token) { showMsg(msg, 'Connectez-vous pour laisser un avis.', '#fef2f2', '#dc2626'); return; }
+
+            var title = (document.getElementById('reviewTitle').value || '').trim();
+
+            fetch('/api/reviews', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+                body: JSON.stringify({ productId: productId, rating: selectedRating, title: title, body: body, photos: [] })
+            })
+            .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+            .then(function(res) {
+                if (res.ok) {
+                    showMsg(msg, res.data.message + (res.data.verified ? ' (Achat v\u00e9rifi\u00e9 \u2713)' : '') + ' +' + res.data.eclatsEarned + ' \u00c9clats !', '#f0fdf4', '#16a34a');
+                    document.getElementById('reviewBody').value = '';
+                    document.getElementById('reviewTitle').value = '';
+                    selectedRating = 0; resetStars();
+                } else {
+                    showMsg(msg, res.data.error || 'Erreur', '#fef2f2', '#dc2626');
+                }
+            })
+            .catch(function() { showMsg(msg, 'Erreur de connexion.', '#fef2f2', '#dc2626'); });
+        }
+
+        function showMsg(el, text, bg, color) {
+            el.textContent = text;
+            el.style.background = bg;
+            el.style.color = color;
+            el.style.display = 'block';
         }
     </script>
     <script src="../js/themes.js" defer></script>

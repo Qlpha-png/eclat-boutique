@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vos produits favoris - ÉCLAT Beauté & Wellness Premium">
+    <title>Mes Favoris - ÉCLAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2d2926">
+    <style>
+        .wl-page { max-width:960px; margin:0 auto; padding:40px 24px 80px; min-height:60vh; }
+        .wl-header { text-align:center; margin-bottom:40px; }
+        .wl-header h1 { font-family:var(--font-display); font-size:2rem; margin-bottom:8px; }
+        .wl-header p { color:var(--color-text-light); font-size:0.9rem; }
+        .wl-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:20px; }
+        .wl-card {
+            background:var(--color-white); border:1px solid var(--color-border); border-radius:var(--radius-md);
+            overflow:hidden; transition:var(--transition); position:relative;
+        }
+        .wl-card:hover { box-shadow:var(--shadow-md); border-color:transparent; }
+        .wl-card img { width:100%; aspect-ratio:1; object-fit:contain; background:var(--color-bg-alt); padding:12px; }
+        .wl-card-info { padding:14px 16px; }
+        .wl-card-name { font-weight:600; font-size:0.9rem; margin-bottom:4px; color:var(--color-text); }
+        .wl-card-price { font-weight:700; color:var(--color-primary); font-size:1rem; margin-bottom:10px; }
+        .wl-card-actions { display:flex; gap:8px; }
+        .wl-card-actions .btn { flex:1; font-size:0.8rem; padding:8px 12px; text-align:center; }
+        .wl-remove {
+            position:absolute; top:8px; right:8px; background:var(--color-white); border:1px solid var(--color-border);
+            border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center;
+            cursor:pointer; font-size:14px; transition:var(--transition); z-index:2;
+        }
+        .wl-remove:hover { background:#fee2e2; border-color:#fca5a5; }
+        .wl-empty { text-align:center; padding:60px 20px; }
+        .wl-empty p { color:var(--color-text-light); margin-bottom:20px; font-size:1rem; }
+    </style>
+</head>
+<body style="background:var(--color-bg);">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">ÉCLAT</a>
+            <div class="nav-actions">
+                <a href="../index.html" style="font-size:0.85rem;color:var(--color-text-light);text-decoration:none;">Retour boutique</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wl-page">
+        <div class="wl-header">
+            <h1>Mes Favoris</h1>
+            <p id="wlCount"></p>
+        </div>
+        <div id="wlGrid" class="wl-grid"></div>
+        <div id="wlEmpty" class="wl-empty" style="display:none;">
+            <p>Vous n'avez pas encore de favoris.</p>
+            <a href="../index.html" class="btn btn-primary">Découvrir nos produits</a>
+        </div>
+    </div>
+
+    <script src="../js/products.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script>
+        function renderWishlist() {
+            var ids = Wishlist.getAll();
+            var grid = document.getElementById('wlGrid');
+            var empty = document.getElementById('wlEmpty');
+            var countEl = document.getElementById('wlCount');
+
+            if (ids.length === 0) {
+                grid.style.display = 'none';
+                empty.style.display = 'block';
+                countEl.textContent = '';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            empty.style.display = 'none';
+            countEl.textContent = ids.length + ' produit' + (ids.length > 1 ? 's' : '') + ' sauvegardé' + (ids.length > 1 ? 's' : '');
+
+            var html = '';
+            for (var i = 0; i < ids.length; i++) {
+                var product = PRODUCTS.find(function(p) { return p.id === ids[i]; });
+                if (!product) continue;
+                html += '<div class="wl-card">' +
+                    '<button class="wl-remove" onclick="removeAndRefresh(' + product.id + ')" aria-label="Retirer">&times;</button>' +
+                    '<a href="product.html?id=' + product.id + '">' +
+                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy">' +
+                    '</a>' +
+                    '<div class="wl-card-info">' +
+                        '<div class="wl-card-name">' + escapeHTML(product.name) + '</div>' +
+                        '<div class="wl-card-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
+                        '<div class="wl-card-actions">' +
+                            '<a href="product.html?id=' + product.id + '" class="btn" style="border:1px solid var(--color-border);background:var(--color-white);color:var(--color-text);">Voir</a>' +
+                            '<button class="btn btn-primary" onclick="addToCartFromWL(' + product.id + ')">Ajouter au panier</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            }
+            grid.innerHTML = html;
+        }
+
+        function escapeHTML(str) {
+            var d = document.createElement('div');
+            d.textContent = str;
+            return d.innerHTML;
+        }
+
+        function removeAndRefresh(id) {
+            Wishlist.toggle(id);
+            renderWishlist();
+        }
+
+        function addToCartFromWL(id) {
+            var product = PRODUCTS.find(function(p) { return p.id === id; });
+            if (!product) return;
+            var cart = [];
+            try { cart = JSON.parse(localStorage.getItem('eclat_cart')) || []; } catch(e) {}
+            var inCart = cart.find(function(item) { return item.id === id; });
+            if (inCart) { inCart.qty += 1; } else {
+                cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });
+            }
+            localStorage.setItem('eclat_cart', JSON.stringify(cart));
+            var btn = event.target;
+            btn.textContent = 'Ajout\u00e9 !';
+            btn.style.background = '#22c55e';
+            setTimeout(function() { btn.textContent = 'Ajouter au panier'; btn.style.background = ''; }, 1500);
+        }
+
+        renderWishlist();
+    </script>
+    <script src="../js/themes.js" defer></script>
+    <script src="../js/auth.js?v=2" defer></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

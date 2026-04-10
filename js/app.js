@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productsGrid.innerHTML = filtered.map(product => `
             <div class="product-card fade-in" data-id="${product.id}">
-                <div class="product-image" onclick="openModal(${product.id})" style="cursor:pointer;">
+                <div class="product-image" onclick="openModal(${product.id})" style="cursor:pointer;position:relative;">
                     <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
                     ${product.badge ? `<span class="product-badge badge-${product.badge}">${
                         product.badge === 'new' ? t('badge_new') :
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         product.badge === 'lancement' ? t('badge_lancement') :
                         product.badge === 'marque' ? (escapeHTML(product.name.split(' — ')[0]) || 'Marque') : t('badge_bestseller')
                     }</span>` : ''}
+                    ${typeof Wishlist !== 'undefined' ? `<span style="position:absolute;top:8px;right:8px;z-index:2;">${Wishlist.heartHTML(product.id, 22)}</span>` : ''}
                 </div>
                 <div class="product-info">
                     <div class="product-category">${getCategoryLabel(product.category)}</div>
