@@ -9,12 +9,12 @@
 
     // --- Design tokens ---
     var COLORS = {
-        primary: '#2d2926',
-        secondary: '#c9a87c',
-        bg: '#faf8f5',
-        border: '#e8e4de',
-        white: '#ffffff',
-        textLight: '#6b6560',
+        primary: 'var(--color-primary,#2d2926)',
+        secondary: 'var(--color-secondary,#c9a87c)',
+        bg: 'var(--color-bg,#faf8f5)',
+        border: 'var(--color-border,#e8e4de)',
+        white: 'var(--color-white,#ffffff)',
+        textLight: 'var(--color-text-light,#6b6560)',
         success: '#2d7d46',
         overlay: 'rgba(0,0,0,0.45)'
     };

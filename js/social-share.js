@@ -76,7 +76,7 @@
             '.eclat-share-btn:active{transform:scale(0.95);}' +
             '.eclat-share-toast{' +
                 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);' +
-                'background:#2d2926;color:#fff;padding:10px 24px;border-radius:8px;' +
+                'background:var(--color-primary,#2d2926);color:var(--color-white,#fff);padding:10px 24px;border-radius:8px;' +
                 'font-size:0.85rem;z-index:99999;opacity:0;transition:opacity 0.3s;' +
                 'pointer-events:none;' +
             '}';

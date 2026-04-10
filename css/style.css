@@ -1384,8 +1384,8 @@ input { font-family: inherit; }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
     margin-bottom: 40px;
 }
 
@@ -1439,12 +1439,87 @@ input { font-family: inherit; }
 }
 
 .payment-badge {
-    background: rgba(255,255,255,0.1);
-    padding: 6px 12px;
+    background: rgba(255,255,255,0.12);
+    padding: 6px 14px;
     border-radius: var(--radius-sm);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: 0.02em;
+}
+
+/* --- Footer Trust Zone --- */
+.footer-trust {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-trust-icons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.footer-trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    min-width: 90px;
+}
+
+.footer-trust-item svg {
+    color: var(--color-secondary);
+    opacity: 0.9;
+}
+
+.footer-trust-item span {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.footer-payments {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-payments-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+@media (max-width: 480px) {
+    .footer-trust-icons {
+        gap: 20px;
+    }
+    .footer-trust-item {
+        min-width: 70px;
+    }
+    .footer-trust-item svg {
+        width: 22px;
+        height: 22px;
+    }
+    .footer-trust-item span {
+        font-size: 0.65rem;
+    }
+    .footer-payments {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 
 /* --- Cart Sidebar --- */
@@ -1872,7 +1947,7 @@ input { font-family: inherit; }
     }
 
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .modal-grid {

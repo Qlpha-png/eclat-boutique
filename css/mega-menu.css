@@ -1,0 +1,420 @@
+/* ============================
+   ECLAT Beaute - Mega Menu Professional
+   Desktop: full-width hover dropdown
+   Mobile: accordion with expand/collapse
+   ============================ */
+
+/* --- Mega Menu Container --- */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--color-white, #ffffff);
+    border-top: 3px solid var(--color-secondary, #c9a87c);
+    box-shadow: var(--shadow-lg, 0 8px 40px rgba(45,41,38,0.12));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.3s;
+    z-index: 1050;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.mega-menu.mega-menu--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* --- Inner Layout --- */
+.mega-menu-inner {
+    display: flex;
+    gap: 32px;
+    padding: 28px 24px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Categories Grid (left side, ~75%) --- */
+.mega-menu-categories {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* --- Category Column --- */
+.mega-menu-col {
+    padding: 12px 14px;
+    border-radius: var(--radius-md, 12px);
+    transition: background 0.2s ease;
+}
+
+.mega-menu-col:hover {
+    background: var(--color-bg, #faf8f5);
+}
+
+/* Category Header (icon + label) */
+.mega-menu-col__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary, #2d2926);
+    text-decoration: none;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color-border, #e8e4de);
+    transition: color 0.2s ease;
+}
+
+.mega-menu-col__header:hover {
+    color: var(--color-secondary, #c9a87c);
+}
+
+.mega-menu-col__icon {
+    font-size: 1.15rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(201,168,124,0.12), rgba(201,168,124,0.04));
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+/* Subcategory Links */
+.mega-menu-col__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mega-menu-col__links li {
+    margin: 0;
+}
+
+.mega-menu-col__links a {
+    display: block;
+    padding: 4px 0;
+    font-size: 0.82rem;
+    color: var(--color-text-light, #6b6560);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    line-height: 1.6;
+}
+
+.mega-menu-col__links a:hover {
+    color: var(--color-secondary, #c9a87c);
+    padding-left: 4px;
+}
+
+/* --- View All link inside category --- */
+.mega-menu-col__viewall {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-secondary, #c9a87c);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mega-menu-col__viewall:hover {
+    color: var(--color-primary, #2d2926);
+}
+
+/* --- Featured Product (right side, ~25%) --- */
+.mega-menu-featured {
+    width: 260px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(201,168,124,0.08), rgba(201,168,124,0.02));
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid rgba(201,168,124,0.18);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.mega-menu-featured__badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-secondary, #c9a87c);
+    background: rgba(201,168,124,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.mega-menu-featured__img {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-md, 12px);
+    object-fit: cover;
+    background: var(--color-bg, #faf8f5);
+    border: 1px solid var(--color-border, #e8e4de);
+}
+
+.mega-menu-featured__name {
+    font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary, #2d2926);
+    line-height: 1.3;
+}
+
+.mega-menu-featured__price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-secondary, #c9a87c);
+}
+
+.mega-menu-featured__cta {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-white, #ffffff);
+    background: var(--color-primary, #2d2926);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.mega-menu-featured__cta:hover {
+    background: var(--color-secondary, #c9a87c);
+    transform: translateY(-1px);
+}
+
+/* --- Boutique nav item needs relative positioning --- */
+.nav-links li.mega-menu-trigger {
+    position: relative;
+}
+
+/* Small indicator arrow on the Boutique link
+   Override .nav-links a::after underline from style.css */
+.mega-menu-trigger > a::after {
+    content: '';
+    display: inline-block;
+    position: static;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    background: none;
+    bottom: auto;
+    left: auto;
+    transition: transform 0.2s ease;
+}
+
+.mega-menu-trigger.mega-menu-trigger--active > a::after {
+    transform: rotate(180deg);
+}
+
+
+/* ============================================
+   TABLET: 2 columns for categories
+   ============================================ */
+@media (max-width: 1024px) {
+    .mega-menu-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mega-menu-featured {
+        width: 220px;
+    }
+}
+
+
+/* ============================================
+   MOBILE: Accordion style
+   ============================================ */
+@media (max-width: 768px) {
+    /* Override desktop absolute positioning */
+    .mega-menu {
+        position: static;
+        border-top: none;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: var(--color-bg, #faf8f5);
+        border-radius: 0;
+    }
+
+    .mega-menu.mega-menu--open {
+        max-height: 2200px;
+        overflow-y: auto;
+    }
+
+    /* Stack layout vertically */
+    .mega-menu-inner {
+        flex-direction: column;
+        padding: 12px 16px 16px;
+        gap: 0;
+    }
+
+    /* Categories: single column list */
+    .mega-menu-categories {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Each category becomes an accordion item */
+    .mega-menu-col {
+        padding: 0;
+        border-radius: 0;
+        border-bottom: 1px solid var(--color-border, #e8e4de);
+    }
+
+    .mega-menu-col:hover {
+        background: transparent;
+    }
+
+    .mega-menu-col__header {
+        padding: 14px 4px;
+        margin-bottom: 0;
+        border-bottom: none;
+        cursor: pointer;
+        position: relative;
+    }
+
+    /* Chevron for mobile accordion */
+    .mega-menu-col__header::after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid var(--color-text-light, #6b6560);
+        border-bottom: 2px solid var(--color-text-light, #6b6560);
+        transform: rotate(45deg);
+        transition: transform 0.25s ease;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .mega-menu-col.mega-menu-col--expanded .mega-menu-col__header::after {
+        transform: rotate(-135deg);
+    }
+
+    /* Subcategory list: hidden by default on mobile */
+    .mega-menu-col__links {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    padding 0.35s ease;
+        padding: 0 4px;
+    }
+
+    .mega-menu-col.mega-menu-col--expanded .mega-menu-col__links {
+        max-height: 500px;
+        padding: 0 4px 14px;
+    }
+
+    .mega-menu-col__links a {
+        padding: 8px 12px;
+        font-size: 0.88rem;
+    }
+
+    .mega-menu-col__viewall {
+        display: none;
+    }
+
+    /* Featured section: compact on mobile */
+    .mega-menu-featured {
+        width: 100%;
+        flex-direction: row;
+        gap: 16px;
+        text-align: left;
+        padding: 16px;
+        margin-top: 12px;
+    }
+
+    .mega-menu-featured__img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .mega-menu-featured__content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+    }
+
+    .mega-menu-featured__badge {
+        font-size: 0.62rem;
+    }
+
+    .mega-menu-featured__name {
+        font-size: 0.88rem;
+    }
+
+    .mega-menu-featured__cta {
+        padding: 6px 16px;
+        font-size: 0.75rem;
+    }
+}
+
+
+/* ============================================
+   ANIMATIONS & POLISH
+   ============================================ */
+
+/* Stagger effect on category columns appearing */
+.mega-menu--open .mega-menu-col {
+    animation: megaMenuFadeIn 0.3s ease both;
+}
+
+.mega-menu--open .mega-menu-col:nth-child(1) { animation-delay: 0s; }
+.mega-menu--open .mega-menu-col:nth-child(2) { animation-delay: 0.03s; }
+.mega-menu--open .mega-menu-col:nth-child(3) { animation-delay: 0.06s; }
+.mega-menu--open .mega-menu-col:nth-child(4) { animation-delay: 0.09s; }
+.mega-menu--open .mega-menu-col:nth-child(5) { animation-delay: 0.12s; }
+.mega-menu--open .mega-menu-col:nth-child(6) { animation-delay: 0.15s; }
+.mega-menu--open .mega-menu-col:nth-child(7) { animation-delay: 0.18s; }
+.mega-menu--open .mega-menu-col:nth-child(8) { animation-delay: 0.21s; }
+.mega-menu--open .mega-menu-col:nth-child(9) { animation-delay: 0.24s; }
+
+.mega-menu--open .mega-menu-featured {
+    animation: megaMenuFadeIn 0.35s ease 0.15s both;
+}
+
+@keyframes megaMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disable stagger on mobile (accordion handles its own transitions) */
+@media (max-width: 768px) {
+    .mega-menu--open .mega-menu-col,
+    .mega-menu--open .mega-menu-featured {
+        animation: none;
+    }
+}

@@ -15,22 +15,22 @@
         card: 'background:linear-gradient(135deg,rgba(201,168,124,0.07),rgba(255,255,255,0.95));' +
             'border:1px solid rgba(201,168,124,0.2);border-radius:16px;padding:28px 24px;text-align:center;',
         title: 'font-family:Playfair Display,Georgia,serif;font-size:1.15rem;font-weight:600;' +
-            'color:#2d2926;margin:0 0 6px 0;',
-        subtitle: 'font-size:0.84rem;color:#888;margin:0 0 20px 0;line-height:1.5;',
+            'color:var(--color-primary,#2d2926);margin:0 0 6px 0;',
+        subtitle: 'font-size:0.84rem;color:var(--color-text-light,#6b6560);margin:0 0 20px 0;line-height:1.5;',
         group: 'margin-bottom:18px;',
-        label: 'display:block;font-size:0.85rem;font-weight:600;color:#2d2926;margin-bottom:10px;',
+        label: 'display:block;font-size:0.85rem;font-weight:600;color:var(--color-primary,#2d2926);margin-bottom:10px;',
         btnRow: 'display:flex;gap:8px;flex-wrap:wrap;justify-content:center;',
-        btn: 'padding:8px 18px;border:1.5px solid #ddd;border-radius:22px;font-size:0.82rem;' +
-            'cursor:pointer;background:#fff;color:#555;transition:all 0.2s;font-family:inherit;' +
+        btn: 'padding:8px 18px;border:1.5px solid var(--color-border,#e8e4de);border-radius:22px;font-size:0.82rem;' +
+            'cursor:pointer;background:var(--color-white,#fff);color:var(--color-text-light,#6b6560);transition:all 0.2s;font-family:inherit;' +
             'outline:none;',
-        btnHover: 'border-color:#c9a87c;color:#c9a87c;',
-        btnSelected: 'background:#c9a87c;color:#fff;border-color:#c9a87c;',
-        saveBtn: 'margin-top:20px;padding:11px 36px;background:#c9a87c;color:#fff;border:none;' +
+        btnHover: 'border-color:var(--color-secondary,#c9a87c);color:var(--color-secondary,#c9a87c);',
+        btnSelected: 'background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);border-color:var(--color-secondary,#c9a87c);',
+        saveBtn: 'margin-top:20px;padding:11px 36px;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);border:none;' +
             'border-radius:22px;font-weight:600;font-size:0.86rem;cursor:pointer;' +
             'transition:all 0.2s;font-family:inherit;opacity:0.4;pointer-events:none;',
         saveBtnActive: 'opacity:1;pointer-events:auto;',
-        saveBtnHover: 'background:#b8956b;',
-        success: 'text-align:center;padding:20px;color:#c9a87c;font-weight:600;font-size:0.95rem;'
+        saveBtnHover: 'background:var(--color-secondary,#c9a87c);filter:brightness(0.9);',
+        success: 'text-align:center;padding:20px;color:var(--color-secondary,#c9a87c);font-weight:600;font-size:0.95rem;'
     };
 
     // ---------- Quiz questions ----------
@@ -144,8 +144,8 @@
 
                         btn.addEventListener('mouseenter', function() {
                             if (!btn.getAttribute('data-selected')) {
-                                btn.style.borderColor = '#c9a87c';
-                                btn.style.color = '#c9a87c';
+                                btn.style.borderColor = 'var(--color-secondary,#c9a87c)';
+                                btn.style.color = 'var(--color-secondary,#c9a87c)';
                             }
                         });
                         btn.addEventListener('mouseleave', function() {
@@ -200,12 +200,12 @@
 
             saveBtn.addEventListener('mouseenter', function() {
                 if (gender && interest) {
-                    saveBtn.style.background = '#b8956b';
+                    saveBtn.style.background = 'var(--color-secondary,#c9a87c)'; saveBtn.style.filter = 'brightness(0.9)';
                 }
             });
             saveBtn.addEventListener('mouseleave', function() {
                 if (gender && interest) {
-                    saveBtn.style.background = '#c9a87c';
+                    saveBtn.style.background = 'var(--color-secondary,#c9a87c)'; saveBtn.style.filter = 'none';
                 }
             });
 

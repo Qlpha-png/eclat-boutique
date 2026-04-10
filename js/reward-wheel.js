@@ -44,7 +44,7 @@
 
         // Titre
         container.innerHTML = '<h2 style="color:var(--color-secondary);font-family:\'Playfair Display\',serif;font-size:1.8rem;margin-bottom:8px;">F\u00e9licitations !</h2>' +
-            '<p style="color:#ccc;font-size:0.95rem;margin-bottom:24px;">Tournez la roue pour découvrir votre récompense</p>';
+            '<p style="color:var(--color-text-light,#6b6560);font-size:0.95rem;margin-bottom:24px;">Tournez la roue pour découvrir votre récompense</p>';
 
         // Canvas roue
         var canvasWrap = document.createElement('div');
@@ -178,8 +178,8 @@
         result.innerHTML = '<div style="background:var(--color-primary);border:2px solid var(--color-secondary);border-radius:16px;padding:24px;animation:wheelPop 0.5s ease;">' +
             '<div style="font-size:2rem;margin-bottom:8px;">\uD83C\uDF89</div>' +
             '<h3 style="color:var(--color-secondary);font-size:1.3rem;margin-bottom:8px;">Vous avez gagn\u00e9 !</h3>' +
-            '<div style="font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:16px;">' + seg.label + '</div>' +
-            '<p style="color:#999;font-size:0.85rem;">La récompense sera appliquée automatiquement.</p>' +
+            '<div style="font-size:1.5rem;font-weight:700;color:var(--color-white,#fff);margin-bottom:16px;">' + seg.label + '</div>' +
+            '<p style="color:var(--color-text-light,#6b6560);font-size:0.85rem;">La récompense sera appliquée automatiquement.</p>' +
             '</div>';
 
         // Bouton fermer

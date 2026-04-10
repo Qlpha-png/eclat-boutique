@@ -350,7 +350,7 @@
         html += 'width:' + diameter + 'px;';
         html += 'height:' + diameter + 'px;';
         html += 'border-radius:50%;';
-        html += 'background:conic-gradient(' + color + ' 0deg,' + color + ' ' + gradientAngle + 'deg,#e8e4de ' + gradientAngle + 'deg,#e8e4de 360deg);';
+        html += 'background:conic-gradient(' + color + ' 0deg,' + color + ' ' + gradientAngle + 'deg,var(--color-border,#e8e4de) ' + gradientAngle + 'deg,var(--color-border,#e8e4de) 360deg);';
         html += 'font-family:inherit;';
         html += '">';
 
@@ -361,7 +361,7 @@
         html += 'width:' + innerDiameter + 'px;';
         html += 'height:' + innerDiameter + 'px;';
         html += 'border-radius:50%;';
-        html += 'background:#fff;';
+        html += 'background:var(--color-white,#fff);';
         html += 'display:flex;';
         html += 'flex-direction:column;';
         html += 'align-items:center;';
@@ -382,7 +382,7 @@
         html += '<span class="cb-badge-score" style="';
         html += 'font-size:' + scoreFontSize + ';';
         html += 'font-weight:600;';
-        html += 'color:#2d2926;';
+        html += 'color:var(--color-primary,#2d2926);';
         html += 'line-height:1;';
         html += 'margin-top:1px;';
         html += '">' + score + '/100</span>';
@@ -391,7 +391,7 @@
         if (isLarge) {
             html += '<span class="cb-badge-label" style="';
             html += 'font-size:' + labelFontSize + ';';
-            html += 'color:#6b6560;';
+            html += 'color:var(--color-text-light,#6b6560);';
             html += 'line-height:1;';
             html += 'margin-top:2px;';
             html += 'max-width:' + Math.round(innerDiameter * 0.85) + 'px;';

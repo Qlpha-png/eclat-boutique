@@ -140,7 +140,7 @@
             var displayName = (profile && profile.first_name) || (user.user_metadata && user.user_metadata.first_name) || user.email || '?';
             var initial = displayName[0].toUpperCase();
 
-            btn.innerHTML = '<span style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary,#c9a87c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">' + initial + '</span>';
+            btn.innerHTML = '<span style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">' + initial + '</span>';
             btn.onclick = function(e) {
                 e.stopPropagation();
                 toggleAccountDropdown();
