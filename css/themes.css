@@ -78,6 +78,26 @@
 [data-theme="rose"] .footer {
     background: #4a2040;
 }
+[data-theme="rose"] .top-banner {
+    background: linear-gradient(90deg, #d4648a, #e88aab);
+}
+[data-theme="rose"] .product-card {
+    border-color: #f0d0dc;
+}
+[data-theme="rose"] .product-card:hover {
+    border-color: #d4648a;
+    box-shadow: 0 4px 20px rgba(212, 100, 138, .12);
+}
+[data-theme="rose"] .cart-drawer {
+    border-left-color: #f0d0dc;
+}
+[data-theme="rose"] .btn-outline {
+    border-color: #d4648a;
+    color: #d4648a;
+}
+[data-theme="rose"] .section-tag {
+    color: #d4648a;
+}
 
 /* ── Nature ── */
 [data-theme="nature"] {

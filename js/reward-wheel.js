@@ -43,7 +43,7 @@
         container.style.cssText = 'text-align:center;max-width:400px;width:90%;';
 
         // Titre
-        container.innerHTML = '<h2 style="color:#c9a87c;font-family:\'Playfair Display\',serif;font-size:1.8rem;margin-bottom:8px;">Félicitations !</h2>' +
+        container.innerHTML = '<h2 style="color:var(--color-secondary);font-family:\'Playfair Display\',serif;font-size:1.8rem;margin-bottom:8px;">F\u00e9licitations !</h2>' +
             '<p style="color:#ccc;font-size:0.95rem;margin-bottom:24px;">Tournez la roue pour découvrir votre récompense</p>';
 
         // Canvas roue
@@ -57,7 +57,7 @@
 
         // Flèche indicateur
         var arrow = document.createElement('div');
-        arrow.style.cssText = 'position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:24px solid #c9a87c;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5));';
+        arrow.style.cssText = 'position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:24px solid var(--color-secondary);z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5));';
 
         canvasWrap.appendChild(canvas);
         canvasWrap.appendChild(arrow);
@@ -66,7 +66,7 @@
         // Bouton spin
         var spinBtn = document.createElement('button');
         spinBtn.textContent = 'Tourner la roue';
-        spinBtn.style.cssText = 'background:linear-gradient(135deg,#c9a87c,#e8d5b5);color:#1a1a1a;border:none;padding:16px 40px;border-radius:30px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform 0.2s;';
+        spinBtn.style.cssText = 'background:linear-gradient(135deg,var(--color-secondary),var(--color-accent));color:var(--color-primary);border:none;padding:16px 40px;border-radius:30px;font-size:1.1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform 0.2s;';
         spinBtn.onmouseover = function() { this.style.transform = 'scale(1.05)'; };
         spinBtn.onmouseout = function() { this.style.transform = 'scale(1)'; };
         container.appendChild(spinBtn);
@@ -175,9 +175,9 @@
 
         var result = document.getElementById('wheelResult');
         result.style.display = 'block';
-        result.innerHTML = '<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:2px solid #c9a87c;border-radius:16px;padding:24px;animation:wheelPop 0.5s ease;">' +
-            '<div style="font-size:2rem;margin-bottom:8px;">🎉</div>' +
-            '<h3 style="color:#c9a87c;font-size:1.3rem;margin-bottom:8px;">Vous avez gagné !</h3>' +
+        result.innerHTML = '<div style="background:var(--color-primary);border:2px solid var(--color-secondary);border-radius:16px;padding:24px;animation:wheelPop 0.5s ease;">' +
+            '<div style="font-size:2rem;margin-bottom:8px;">\uD83C\uDF89</div>' +
+            '<h3 style="color:var(--color-secondary);font-size:1.3rem;margin-bottom:8px;">Vous avez gagn\u00e9 !</h3>' +
             '<div style="font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:16px;">' + seg.label + '</div>' +
             '<p style="color:#999;font-size:0.85rem;">La récompense sera appliquée automatiquement.</p>' +
             '</div>';
@@ -185,7 +185,7 @@
         // Bouton fermer
         var closeBtn = document.createElement('button');
         closeBtn.textContent = 'Continuer mes achats';
-        closeBtn.style.cssText = 'margin-top:16px;background:transparent;border:1px solid #c9a87c;color:#c9a87c;padding:12px 32px;border-radius:25px;font-size:0.9rem;cursor:pointer;font-family:inherit;';
+        closeBtn.style.cssText = 'margin-top:16px;background:transparent;border:1px solid var(--color-secondary);color:var(--color-secondary);padding:12px 32px;border-radius:25px;font-size:0.9rem;cursor:pointer;font-family:inherit;';
         closeBtn.onclick = function() {
             overlay.style.opacity = '0';
             setTimeout(function() { overlay.remove(); }, 500);

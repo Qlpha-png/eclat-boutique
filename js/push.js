@@ -207,8 +207,8 @@
         var banner = document.createElement('div');
         banner.id = BANNER_ID;
         banner.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);' +
-            'z-index:10000;background:linear-gradient(135deg,#2d2926 0%,#1a1714 100%);' +
-            'color:#fff;padding:18px 22px;border-radius:14px;' +
+            'z-index:10000;background:var(--color-primary);' +
+            'color:var(--color-white);padding:18px 22px;border-radius:14px;' +
             'box-shadow:0 10px 40px rgba(0,0,0,0.2),0 2px 8px rgba(0,0,0,0.08);' +
             'display:flex;align-items:center;gap:16px;max-width:460px;width:calc(100% - 32px);' +
             'font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;' +
@@ -233,16 +233,16 @@
         // Accept button
         var acceptBtn = document.createElement('button');
         acceptBtn.type = 'button';
-        acceptBtn.style.cssText = 'background:#c9a87c;color:#fff;border:none;padding:10px 18px;' +
+        acceptBtn.style.cssText = 'background:var(--color-secondary);color:#fff;border:none;padding:10px 18px;' +
             'border-radius:10px;font-weight:600;font-size:0.82rem;cursor:pointer;' +
             'white-space:nowrap;transition:background 0.2s;font-family:inherit;';
         acceptBtn.textContent = 'Oui, m\'alerter';
 
         acceptBtn.addEventListener('mouseenter', function() {
-            acceptBtn.style.background = '#b8956b';
+            acceptBtn.style.background = 'var(--color-accent)';
         });
         acceptBtn.addEventListener('mouseleave', function() {
-            acceptBtn.style.background = '#c9a87c';
+            acceptBtn.style.background = 'var(--color-secondary)';
         });
 
         // Decline button
