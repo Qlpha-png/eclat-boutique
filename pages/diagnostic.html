@@ -70,6 +70,7 @@
         .routine-total .total-savings { color:var(--color-secondary); font-weight:600; }
         .routine-total .btn { margin-top:16px; display:inline-block; }
         .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+        @keyframes spin { to { transform:rotate(360deg); } }
     </style>
 </head>
 <body style="background:var(--color-bg);">
@@ -200,6 +201,17 @@
         <!-- Result -->
         <div class="diag-result" id="diagResult">
             <h2>Votre routine personnalisée</h2>
+            <div id="aiAnalysis" style="display:none;padding:20px 24px;background:linear-gradient(135deg,rgba(201,168,124,0.08),rgba(201,168,124,0.02));border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:24px;line-height:1.7;font-size:0.93rem;color:var(--color-text);position:relative;">
+                <div style="font-weight:600;font-size:0.8rem;color:var(--color-secondary);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                    <span style="width:8px;height:8px;background:var(--color-secondary);border-radius:50%;display:inline-block;"></span>
+                    Analyse personnalisée par IA
+                </div>
+                <div id="aiAnalysisText"></div>
+            </div>
+            <div id="aiAnalysisLoader" style="display:none;text-align:center;padding:16px;margin-bottom:16px;">
+                <div style="display:inline-block;width:24px;height:24px;border:3px solid var(--color-border);border-top-color:var(--color-secondary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+                <p style="font-size:0.82rem;color:var(--color-text-light);margin-top:8px;">Analyse de votre profil en cours...</p>
+            </div>
             <p id="diagSummary"></p>
             <div id="routineSteps"></div>
             <div class="routine-total" id="routineTotal"></div>
@@ -242,6 +254,13 @@
         function showResult() {
             const concern = answers[2];
             const budget = answers[3];
+
+            // Sauvegarder le diagnostic en localStorage pour product-recommendation
+            var diagData = { skinType: answers[1], concern: answers[2], budget: answers[3], age: answers[4], date: new Date().toISOString() };
+            try { localStorage.setItem('eclat_diagnostic', JSON.stringify(diagData)); } catch(e) {}
+
+            // Lancer l'analyse IA en parallèle
+            fetchAIAnalysis(diagData);
 
             const routines = {
                 acne: {
@@ -374,6 +393,30 @@
             }
             localStorage.setItem('eclat_cart', JSON.stringify(existing));
             window.location.href = '../index.html?openCart=1';
+        }
+
+        function fetchAIAnalysis(diagData) {
+            var loader = document.getElementById('aiAnalysisLoader');
+            var box = document.getElementById('aiAnalysis');
+            var textEl = document.getElementById('aiAnalysisText');
+            loader.style.display = 'block';
+
+            fetch('/api/diagnostic-ai', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ skinType: diagData.skinType, concern: diagData.concern, budget: diagData.budget, age: diagData.age, lang: 'fr' })
+            })
+            .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+            .then(function(data) {
+                loader.style.display = 'none';
+                if (data && data.analysis) {
+                    textEl.textContent = data.analysis;
+                    box.style.display = 'block';
+                }
+            })
+            .catch(function() {
+                loader.style.display = 'none';
+            });
         }
 
         function addAllToCart() {

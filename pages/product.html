@@ -66,6 +66,7 @@
             .pp-grid { grid-template-columns:1fr; gap:24px; }
             .pp-name { font-size:1.5rem; }
         }
+        @keyframes spin { to { transform:rotate(360deg); } }
     </style>
     <script id="productSchema" type="application/ld+json"></script>
 </head>
@@ -98,6 +99,8 @@
     </div>
 
     <script src="../js/products.js"></script>
+    <script src="../js/ingredients-db.js"></script>
+    <script src="../js/clean-beauty.js"></script>
     <script>
         var catLabels = {
             visage: 'Soins visage', soin: 'Skincare', corps: 'Corps & fitness',
@@ -165,10 +168,17 @@
                 specsHTML += '</dl></div>';
             }
 
-            // Build ingredients HTML
+            // Build ingredients HTML with Clean Beauty Score
             var ingredientsHTML = '';
             if (product.ingredients) {
-                ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(product.ingredients) + '</div></div>';
+                if (window.CleanBeauty && window.INGREDIENTS_DB) {
+                    var cbResult = CleanBeauty.renderSection(product);
+                    ingredientsHTML = cbResult.html;
+                    // Bind tooltips after DOM update
+                    setTimeout(function() { CleanBeauty.bindTooltips(cbResult.result); }, 100);
+                } else {
+                    ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(product.ingredients) + '</div></div>';
+                }
             }
 
             // Build how-to HTML
@@ -201,7 +211,65 @@
                 '</div>' +
                 howToHTML +
                 specsHTML +
-                ingredientsHTML;
+                ingredientsHTML +
+                '<div id="ppWhyForYou"></div>';
+
+            // "Pourquoi ce produit pour vous" — personnalisé si diagnostic fait
+            (function() {
+                var diag;
+                try { diag = JSON.parse(localStorage.getItem('eclat_diagnostic')); } catch(e) {}
+                var container = document.getElementById('ppWhyForYou');
+                if (!container) return;
+
+                if (!diag || !diag.skinType || !diag.concern) {
+                    // Pas de diagnostic → CTA vers diagnostic
+                    container.innerHTML = '<div class="pp-section" style="text-align:center;padding:24px;background:linear-gradient(135deg,rgba(201,168,124,0.06),transparent);border:1px dashed var(--color-border);border-radius:var(--radius-md);">' +
+                        '<h2 style="font-size:1.1rem;margin-bottom:8px;">Ce produit est-il fait pour vous ?</h2>' +
+                        '<p style="font-size:0.85rem;color:var(--color-text-light);margin-bottom:16px;">Faites votre diagnostic beaut\u00e9 gratuit en 60 secondes pour d\u00e9couvrir si ce produit correspond \u00e0 votre peau.</p>' +
+                        '<a href="diagnostic.html" class="btn btn-primary" style="font-size:0.85rem;">Faire mon diagnostic</a>' +
+                    '</div>';
+                    return;
+                }
+
+                // Diagnostic existant → appel IA
+                var skinLabels = { dry:'S\u00e8che', oily:'Grasse', combo:'Mixte', sensitive:'Sensible' };
+                var concernLabels = { acne:'Acn\u00e9 & imperfections', aging:'Anti-\u00e2ge & fermet\u00e9', glow:'\u00c9clat & teint', hydration:'Hydratation' };
+                container.innerHTML = '<div class="pp-section">' +
+                    '<h2>Pourquoi ce produit pour vous ?</h2>' +
+                    '<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">' +
+                        '<span style="font-size:0.78rem;padding:4px 10px;background:rgba(201,168,124,0.12);border-radius:12px;color:var(--color-secondary);font-weight:600;">Peau ' + (skinLabels[diag.skinType] || diag.skinType) + '</span>' +
+                        '<span style="font-size:0.78rem;padding:4px 10px;background:rgba(201,168,124,0.12);border-radius:12px;color:var(--color-secondary);font-weight:600;">' + (concernLabels[diag.concern] || diag.concern) + '</span>' +
+                    '</div>' +
+                    '<div id="ppRecoLoader" style="text-align:center;padding:12px;"><div style="display:inline-block;width:20px;height:20px;border:2px solid var(--color-border);border-top-color:var(--color-secondary);border-radius:50%;animation:spin 0.8s linear infinite;"></div></div>' +
+                    '<div id="ppRecoText" style="display:none;line-height:1.7;font-size:0.9rem;color:var(--color-text);"></div>' +
+                '</div>';
+
+                fetch('/api/product-recommendation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        productName: product.name,
+                        productDescription: product.description || '',
+                        productIngredients: product.ingredients || '',
+                        skinType: diag.skinType,
+                        concern: diag.concern,
+                        lang: 'fr'
+                    })
+                })
+                .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+                .then(function(data) {
+                    document.getElementById('ppRecoLoader').style.display = 'none';
+                    if (data && data.recommendation) {
+                        var el = document.getElementById('ppRecoText');
+                        el.textContent = data.recommendation;
+                        el.style.display = 'block';
+                    }
+                })
+                .catch(function() {
+                    document.getElementById('ppRecoLoader').style.display = 'none';
+                });
+            })();
+
             // Cross-sell: related products
             var crossSellMap = {
                 1:[8,3], 2:[5,6], 3:[8,4], 4:[3,8], 5:[2,9],
