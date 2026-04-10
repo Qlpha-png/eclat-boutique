@@ -4,7 +4,7 @@
  * POST : ajouter un produit (ou bulk sync)
  * DELETE : retirer un produit
  */
-const { getSupabase, getUser } = require('./_middleware/auth');
+const { getSupabase, verifyAuth } = require('./_middleware/auth');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 
 module.exports = async function handler(req, res) {
@@ -15,14 +15,14 @@ module.exports = async function handler(req, res) {
     if (applyRateLimit(req, res, 'authenticated')) return;
 
     var sb = getSupabase();
-    var user = await getUser(req, sb);
-    if (!user) return res.status(401).json({ error: 'Authentification requise' });
+    var auth = await verifyAuth(req);
+    if (!auth) return res.status(401).json({ error: 'Authentification requise' });
 
     // Get customer_id from auth_id
     var { data: customer } = await sb
         .from('customers')
         .select('id')
-        .eq('auth_id', user.id)
+        .eq('auth_id', auth.userId)
         .single();
 
     if (!customer) return res.status(404).json({ error: 'Profil client introuvable' });

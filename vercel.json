@@ -5,7 +5,9 @@
         "formats": ["image/avif", "image/webp"],
         "minimumCacheTTL": 86400
     },
-    "crons": [],
+    "crons": [
+        { "path": "/api/email-sequence", "schedule": "0 */1 * * *" }
+    ],
     "headers": [
         {
             "source": "/(.*)",
