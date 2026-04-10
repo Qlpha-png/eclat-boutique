@@ -11635,14 +11635,15 @@ const PRODUCT_ROUTINE_MAP = {
 };
 
 // ========== PROXY IMAGES CJ CDN ==========
-// CJ Dropshipping CDN bloque le hotlinking navigateur.
-// On proxifie via wsrv.nl (CDN gratuit, fetch côté serveur, conversion WebP).
+// CJ Dropshipping CDN bloque TOUT hotlinking (navigateur + proxy connus).
+// On proxifie via notre propre /api/img sur Vercel (fetch serveur, cache CDN 30j).
 // Appliqué ICI dans products.js pour que TOUTES les pages en bénéficient.
 (function() {
+    var BASE = (typeof window !== 'undefined' && window.location.pathname.indexOf('/pages/') !== -1) ? '../' : '/';
     function proxyUrl(url) {
         if (!url || typeof url !== 'string') return url;
         if (url.indexOf('cjdropshipping.com') !== -1) {
-            return 'https://wsrv.nl/?url=' + encodeURIComponent(url) + '&w=600&output=webp&q=80';
+            return BASE + 'api/img?url=' + encodeURIComponent(url);
         }
         return url;
     }
