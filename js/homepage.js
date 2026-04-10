@@ -8,6 +8,22 @@
     'use strict';
 
     // --- Hero Slider ---
+    // Images par slide : [main, left, right] — IDs produits
+    var heroImageSets = [
+        [1, 2, 3],   // Lancement : Masque LED, Gua Sha, Scrubber
+        [8, 10, 4],  // Promo : Sérum VitC, Coffret, Brosse
+        [5, 7, 6],   // Diagnostic : Ice Roller, Steamer, V-Line
+        [14, 9, 11]  // Éclats : Diffuseur, Patchs, Huile
+    ];
+
+    function getProductImage(id) {
+        if (typeof PRODUCTS === 'undefined') return '';
+        for (var i = 0; i < PRODUCTS.length; i++) {
+            if (PRODUCTS[i].id === id) return PRODUCTS[i].image || '';
+        }
+        return '';
+    }
+
     var heroSlides = [
         {
             tag: 'Lancement 2026',
@@ -156,6 +172,23 @@
             heroContent.style.opacity = '1';
             heroContent.style.transform = 'translateY(0)';
         }, 300);
+
+        // Update hero images (fade transition)
+        var heroVisual = document.querySelector('.hero-visual');
+        if (heroVisual && heroImageSets[idx]) {
+            heroVisual.style.opacity = '0';
+            heroVisual.style.transition = 'opacity 0.4s ease';
+            setTimeout(function() {
+                var ids = heroImageSets[idx];
+                var mainEl = document.getElementById('heroImgMain');
+                var leftEl = document.getElementById('heroImg1');
+                var rightEl = document.getElementById('heroImg3');
+                if (mainEl) { var mImg = mainEl.querySelector('img'); if (mImg) mImg.src = getProductImage(ids[0]); }
+                if (leftEl) { var lImg = leftEl.querySelector('img'); if (lImg) lImg.src = getProductImage(ids[1]); }
+                if (rightEl) { var rImg = rightEl.querySelector('img'); if (rImg) rImg.src = getProductImage(ids[2]); }
+                heroVisual.style.opacity = '1';
+            }, 350);
+        }
 
         // Update dots
         var dots = heroSection.querySelectorAll('.hero-dot');

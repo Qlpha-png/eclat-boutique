@@ -8,6 +8,8 @@ var _currentProductsPage = 1;
 var _currentFilteredList = [];
 var _currentCategory = 'all';
 
+// Note: imgProxy() et le proxying CJ CDN sont dans products.js (chargé avant)
+
 function escapeHTML(str) {
     if (typeof str !== 'string') return str;
     var div = document.createElement('div');
