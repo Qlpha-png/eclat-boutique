@@ -218,6 +218,20 @@
         </div>
     </section>
 
+    <!-- Recently Viewed -->
+    <div id="recentlyViewedHome" class="container" style="display:none;padding:24px 0;"></div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof RecentlyViewed === 'undefined') return;
+        var items = RecentlyViewed.getAll();
+        if (items.length >= 2) {
+            var el = document.getElementById('recentlyViewedHome');
+            el.innerHTML = RecentlyViewed.renderSection();
+            el.style.display = 'block';
+        }
+    });
+    </script>
+
     <!-- Products Section -->
     <section class="products-section" id="produits">
         <div class="container">
@@ -489,6 +503,8 @@
     <script src="js/products.js" defer></script>
     <script src="js/cart.js" defer></script>
     <script src="js/wishlist.js" defer></script>
+    <script src="js/recently-viewed.js" defer></script>
+    <script src="js/social-share.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/smart-features.js" defer></script>

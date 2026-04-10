@@ -13,11 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!filterArea) return;
 
     // Textes multilingues pour les filtres
+    // Mapping produit → préoccupations peau
+    const CONCERN_MAP = {
+        1:['acne','aging','glow'], 2:['glow','aging'], 3:['acne','pores'], 4:['acne','pores'],
+        5:['puffiness','redness'], 6:['puffiness','redness'], 7:['hydration','pores'],
+        8:['glow','aging','dark-spots'], 9:['puffiness','hydration'], 10:['aging','hydration'],
+        11:['aging','hydration','scars'], 12:['aging'], 13:['relaxation','hydration'],
+        14:['relaxation'], 15:['relaxation','aging']
+    };
+
     const FL = {
-        fr: { search: 'Rechercher un produit...', price: 'Prix', allPrices: 'Tous les prix', under15: 'Moins de 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Plus de 40€', rating: 'Note minimum', allRatings: 'Toutes les notes', sort: 'Trier par', popular: 'Popularité', priceAsc: 'Prix croissant', priceDesc: 'Prix décroissant', bestRating: 'Meilleures notes', mostReviews: "Plus d'avis", newest: 'Nouveautés', products: 'produits', product: 'produit' },
-        en: { search: 'Search a product...', price: 'Price', allPrices: 'All prices', under15: 'Under 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Over 40€', rating: 'Min rating', allRatings: 'All ratings', sort: 'Sort by', popular: 'Popularity', priceAsc: 'Price: low to high', priceDesc: 'Price: high to low', bestRating: 'Best rated', mostReviews: 'Most reviews', newest: 'Newest', products: 'products', product: 'product' },
-        es: { search: 'Buscar producto...', price: 'Precio', allPrices: 'Todos los precios', under15: 'Menos de 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Más de 40€', rating: 'Nota mínima', allRatings: 'Todas las notas', sort: 'Ordenar', popular: 'Popularidad', priceAsc: 'Precio ascendente', priceDesc: 'Precio descendente', bestRating: 'Mejor valorados', mostReviews: 'Más opiniones', newest: 'Novedades', products: 'productos', product: 'producto' },
-        de: { search: 'Produkt suchen...', price: 'Preis', allPrices: 'Alle Preise', under15: 'Unter 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Über 40€', rating: 'Mindestbewertung', allRatings: 'Alle Bewertungen', sort: 'Sortieren', popular: 'Beliebtheit', priceAsc: 'Preis aufsteigend', priceDesc: 'Preis absteigend', bestRating: 'Bestbewertet', mostReviews: 'Meiste Bewertungen', newest: 'Neuheiten', products: 'Produkte', product: 'Produkt' }
+        fr: { search: 'Rechercher un produit...', price: 'Prix', allPrices: 'Tous les prix', under15: 'Moins de 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Plus de 40€', rating: 'Note minimum', allRatings: 'Toutes les notes', sort: 'Trier par', popular: 'Popularité', priceAsc: 'Prix croissant', priceDesc: 'Prix décroissant', bestRating: 'Meilleures notes', mostReviews: "Plus d'avis", newest: 'Nouveautés', products: 'produits', product: 'produit', concern: 'Préoccupation', allConcerns: 'Toutes' },
+        en: { search: 'Search a product...', price: 'Price', allPrices: 'All prices', under15: 'Under 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Over 40€', rating: 'Min rating', allRatings: 'All ratings', sort: 'Sort by', popular: 'Popularity', priceAsc: 'Price: low to high', priceDesc: 'Price: high to low', bestRating: 'Best rated', mostReviews: 'Most reviews', newest: 'Newest', products: 'products', product: 'product', concern: 'Concern', allConcerns: 'All' },
+        es: { search: 'Buscar producto...', price: 'Precio', allPrices: 'Todos los precios', under15: 'Menos de 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Más de 40€', rating: 'Nota mínima', allRatings: 'Todas las notas', sort: 'Ordenar', popular: 'Popularidad', priceAsc: 'Precio ascendente', priceDesc: 'Precio descendente', bestRating: 'Mejor valorados', mostReviews: 'Más opiniones', newest: 'Novedades', products: 'productos', product: 'producto', concern: 'Preocupación', allConcerns: 'Todas' },
+        de: { search: 'Produkt suchen...', price: 'Preis', allPrices: 'Alle Preise', under15: 'Unter 15€', f1525: '15€ - 25€', f2540: '25€ - 40€', over40: 'Über 40€', rating: 'Mindestbewertung', allRatings: 'Alle Bewertungen', sort: 'Sortieren', popular: 'Beliebtheit', priceAsc: 'Preis aufsteigend', priceDesc: 'Preis absteigend', bestRating: 'Bestbewertet', mostReviews: 'Meiste Bewertungen', newest: 'Neuheiten', products: 'Produkte', product: 'Produkt', concern: 'Hautproblem', allConcerns: 'Alle' }
     };
     const fl = () => FL[(typeof currentLang !== 'undefined') ? currentLang : 'fr'] || FL.fr;
 
@@ -57,6 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 </select>
             </div>
             <div class="filter-group">
+                <label>${f.concern}</label>
+                <select id="filterConcern">
+                    <option value="all">${f.allConcerns}</option>
+                    <option value="acne">${{fr:'Acné',en:'Acne',es:'Acné',de:'Akne'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Acné'}</option>
+                    <option value="aging">${{fr:'Anti-âge',en:'Anti-aging',es:'Anti-edad',de:'Anti-Aging'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Anti-âge'}</option>
+                    <option value="glow">${{fr:'Éclat',en:'Glow',es:'Luminosidad',de:'Glow'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Éclat'}</option>
+                    <option value="hydration">${{fr:'Hydratation',en:'Hydration',es:'Hidratación',de:'Feuchtigkeit'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Hydratation'}</option>
+                    <option value="pores">${{fr:'Pores',en:'Pores',es:'Poros',de:'Poren'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Pores'}</option>
+                    <option value="puffiness">${{fr:'Poches & cernes',en:'Puffiness',es:'Ojeras',de:'Schwellungen'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Poches'}</option>
+                    <option value="relaxation">${{fr:'Bien-être',en:'Wellness',es:'Bienestar',de:'Wellness'}[(typeof currentLang!=='undefined')?currentLang:'fr']||'Bien-être'}</option>
+                </select>
+            </div>
+            <div class="filter-group">
                 <label>${f.sort}</label>
                 <select id="filterSort">
                     <option value="popular">${f.popular}</option>
@@ -89,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const priceRange = document.getElementById('filterPrice').value;
         const minRating = parseFloat(document.getElementById('filterRating').value);
         const sortBy = document.getElementById('filterSort').value;
+        const concernFilter = document.getElementById('filterConcern') ? document.getElementById('filterConcern').value : 'all';
 
         let filtered = PRODUCTS.filter(product => {
             // Recherche texte
@@ -107,6 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Filtre note
             if (minRating > 0 && product.rating < minRating) return false;
+
+            // Filtre préoccupation
+            if (concernFilter !== 'all') {
+                const concerns = CONCERN_MAP[product.id] || [];
+                if (concerns.indexOf(concernFilter) === -1) return false;
+            }
 
             // Filtre catégorie active
             const activeCategory = document.querySelector('.filter-btn.active')?.dataset.category;
@@ -204,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('filterPrice')?.addEventListener('change', applyFilters);
         document.getElementById('filterRating')?.addEventListener('change', applyFilters);
         document.getElementById('filterSort')?.addEventListener('change', applyFilters);
+        document.getElementById('filterConcern')?.addEventListener('change', applyFilters);
     }
     bindFilterEvents();
 

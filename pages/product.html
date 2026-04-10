@@ -101,6 +101,8 @@
 
     <script src="../js/products.js"></script>
     <script src="../js/wishlist.js"></script>
+    <script src="../js/social-share.js"></script>
+    <script src="../js/recently-viewed.js"></script>
     <script src="../js/ingredients-db.js"></script>
     <script src="../js/clean-beauty.js"></script>
     <script>
@@ -162,6 +164,9 @@
                 ]
             });
             document.head.appendChild(breadcrumbScript);
+
+            // Track recently viewed
+            if (typeof RecentlyViewed !== 'undefined') RecentlyViewed.add(product);
 
             // Stock & delivery estimation
             (function() {
@@ -239,6 +244,7 @@
                 '<div class="pp-category">' + (catLabels[product.category] || product.category) + '</div>' +
                 '<h1 class="pp-name">' + escapeHTML(product.name) + '</h1>' +
                 '<div class="pp-rating">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5</span></div>' +
+                (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: product.name + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
                 '<p class="pp-desc">' + escapeHTML(product.description) + '</p>' +
                 guideHTML +
@@ -341,6 +347,17 @@
                         '</a>';
                     }).join('') +
                     '</div></div>';
+            }
+
+            // Recently viewed section
+            if (typeof RecentlyViewed !== 'undefined') {
+                var rvHTML = RecentlyViewed.renderSection(product.id);
+                if (rvHTML) {
+                    var rvDiv = document.createElement('div');
+                    rvDiv.style.cssText = 'max-width:800px;margin:0 auto;';
+                    rvDiv.innerHTML = rvHTML;
+                    document.getElementById('ppCrossSell').after(rvDiv);
+                }
             }
 
             // Sticky add-to-cart bar (appears when CTA scrolls out of view)
