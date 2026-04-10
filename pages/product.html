@@ -295,7 +295,7 @@
 
             // Render image
             document.getElementById('ppImage').innerHTML =
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '">';
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" referrerpolicy="no-referrer">';
 
             // Render info
             var guide = guideMap[product.id];
@@ -437,7 +437,7 @@
                     related.map(function(p){
                         var csName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
                         return '<a href="product.html?id='+p.id+'" class="pp-cs-card">' +
-                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(csName)+'" loading="lazy">' +
+                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(csName)+'" loading="lazy" referrerpolicy="no-referrer">' +
                             '<div class="pp-cs-name">'+escapeHTML(csName)+'</div>' +
                             '<div class="pp-cs-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div>' +
                         '</a>';

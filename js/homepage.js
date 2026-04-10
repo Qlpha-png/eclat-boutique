@@ -193,7 +193,7 @@
             html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:#fff;border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';
             html += badgeHTML;
-            html += '<img src="' + p.image + '" alt="' + pName.replace(/"/g, '') + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
+            html += '<img src="' + p.image + '" alt="' + pName.replace(/"/g, '') + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
             html += '</div>';
             html += '<div style="padding:12px;">';
             html += '<div style="font-size:.75rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + (p.category || '') + '</div>';

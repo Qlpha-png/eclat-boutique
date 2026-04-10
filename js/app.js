@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         return '<div class="product-card fade-in" data-id="' + product.id + '" data-product-id="' + product.id + '">' +
             '<div class="product-image" onclick="openModal(' + product.id + ')" style="cursor:pointer;position:relative;">' +
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'has-fallback\');this.parentElement.innerHTML+=\'<div class=fallback-label>' + escapeHTML(pName) + '</div>\';">' +
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'has-fallback\');this.parentElement.innerHTML+=\'<div class=fallback-label>' + escapeHTML(pName) + '</div>\';">' +
                 badgeHTML + wishHTML +
             '</div>' +
             '<div class="product-info">' +
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var rank = isRealData ? (idx + 1) : (product.bestsellerRank || (idx + 1));
                 return '<div class="bestseller-card fade-in">' +
                     '<div class="bestseller-image">' +
-                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" onerror="this.style.display=\'none\';">' +
+                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';">' +
                         '<div class="bestseller-rank">#' + rank + '</div>' +
                     '</div>' +
                     '<div class="bestseller-info">' +
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modalContent.innerHTML =
             '<div class="modal-grid">' +
-                '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '"></div>' +
+                '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" referrerpolicy="no-referrer"></div>' +
                 '<div class="modal-details">' +
                     '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
                     '<h2 class="product-name" id="modalTitle">' + escapeHTML(pName) + '</h2>' +
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const itemsHTML = cart.items.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy"></div>
+                <div class="cart-item-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" referrerpolicy="no-referrer"></div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${escapeHTML(item.name)}</div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h4>${t('cart_cross_sell')}</h4>
             ${suggestions.map(p => `
                 <div class="cross-sell-item">
-                    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">
+                    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" referrerpolicy="no-referrer">
                     <div class="cross-sell-info">
                         <div class="cs-name">${escapeHTML(p.name)}</div>
                         <div class="cs-price">${formatPrice(p.price)}</div>

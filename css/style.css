@@ -98,6 +98,7 @@ input { font-family: inherit; }
     align-items: center;
     justify-content: space-between;
     height: 70px;
+    gap: 32px;
 }
 
 .logo {
