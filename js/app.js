@@ -232,40 +232,84 @@ document.addEventListener('DOMContentLoaded', function() {
         renderPage(products, 1, true);
     };
 
-    // --- Bestsellers ---
+    // --- Bestsellers / Sélection (automatique : vrais bestsellers quand il y a des ventes) ---
     function renderBestsellers() {
         if (!bestsellerShowcase) return;
-        var bestsellers = PRODUCTS
-            .filter(function(p) { return p.bestseller; })
-            .sort(function(a, b) { return a.bestsellerRank - b.bestsellerRank; });
 
-        bestsellerShowcase.innerHTML = bestsellers.map(function(product) {
-            return '<div class="bestseller-card fade-in">' +
-                '<div class="bestseller-image">' +
-                    '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" onerror="this.style.display=\'none\';">' +
-                    '<div class="bestseller-rank">#' + product.bestsellerRank + '</div>' +
-                '</div>' +
-                '<div class="bestseller-info">' +
-                    '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
-                    '<h3 class="product-name">' + escapeHTML(product.name) + '</h3>' +
-                    '<p class="product-desc">' + escapeHTML(product.description).substring(0, 120) + '...</p>' +
-                    (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ')</span></div>' : '') +
-                    '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
-                        (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
-                    '</div>' +
-                    '<div class="product-actions" style="margin-top:12px">' +
-                        '<button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button>' +
-                        '<button class="btn btn-outline btn-sm" onclick="openModal(' + product.id + ')">' + t('btn_details') + '</button>' +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-        }).join('');
+        // Phase 1 : essayer de charger les VRAIS bestsellers depuis l'API
+        fetchRealBestsellers(function(realBestsellers) {
+            var products;
+            var isRealData = false;
 
-        requestAnimationFrame(function() {
-            document.querySelectorAll('.bestseller-card.fade-in').forEach(function(el, i) {
-                setTimeout(function() { el.classList.add('visible'); }, i * 150);
+            if (realBestsellers && realBestsellers.length >= 3) {
+                // VRAIS bestsellers depuis les commandes
+                products = realBestsellers;
+                isRealData = true;
+                // Mettre à jour les titres
+                var tagEl = document.getElementById('bestsellerTag');
+                var titleEl = document.getElementById('bestsellerTitle');
+                var descEl = document.getElementById('bestsellerDesc');
+                if (tagEl) tagEl.textContent = 'Les plus achet\u00e9s';
+                if (titleEl) titleEl.textContent = 'Nos best-sellers';
+                if (descEl) descEl.textContent = 'Les produits les plus command\u00e9s par nos clients.';
+            } else {
+                // Pas encore de ventes — montrer notre sélection éditoriale
+                products = PRODUCTS
+                    .filter(function(p) { return p.bestseller; })
+                    .sort(function(a, b) { return (a.bestsellerRank || 999) - (b.bestsellerRank || 999); });
+            }
+
+            bestsellerShowcase.innerHTML = products.map(function(product, idx) {
+                var rank = isRealData ? (idx + 1) : (product.bestsellerRank || (idx + 1));
+                return '<div class="bestseller-card fade-in">' +
+                    '<div class="bestseller-image">' +
+                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(product.name) + '" loading="lazy" onerror="this.style.display=\'none\';">' +
+                        '<div class="bestseller-rank">#' + rank + '</div>' +
+                    '</div>' +
+                    '<div class="bestseller-info">' +
+                        '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                        '<h3 class="product-name">' + escapeHTML(product.name) + '</h3>' +
+                        '<p class="product-desc">' + escapeHTML(product.description).substring(0, 120) + '...</p>' +
+                        (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ')</span></div>' : '') +
+                        '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
+                            (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
+                        '</div>' +
+                        '<div class="product-actions" style="margin-top:12px">' +
+                            '<button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button>' +
+                            '<button class="btn btn-outline btn-sm" onclick="openModal(' + product.id + ')">' + t('btn_details') + '</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+            requestAnimationFrame(function() {
+                document.querySelectorAll('.bestseller-card.fade-in').forEach(function(el, i) {
+                    setTimeout(function() { el.classList.add('visible'); }, i * 150);
+                });
             });
         });
+    }
+
+    // Charger les vrais bestsellers depuis l'API (basé sur les commandes réelles)
+    function fetchRealBestsellers(callback) {
+        try {
+            fetch('/api/frequently-bought?top=6')
+                .then(function(res) { return res.ok ? res.json() : null; })
+                .then(function(data) {
+                    if (data && data.bestsellers && data.bestsellers.length >= 3) {
+                        // Mapper les IDs vers les produits
+                        var mapped = data.bestsellers.map(function(bs) {
+                            return PRODUCTS.find(function(p) { return p.id === bs.product_id; });
+                        }).filter(Boolean);
+                        callback(mapped.length >= 3 ? mapped : null);
+                    } else {
+                        callback(null);
+                    }
+                })
+                .catch(function() { callback(null); });
+        } catch(e) {
+            callback(null);
+        }
     }
 
     // --- Category Filter ---

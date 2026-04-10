@@ -1,11 +1,15 @@
 // ============================
 // ÉCLAT — Social Proof Notifications
-// Affiche des notifications de ventes récentes pour créer l'urgence
-// Basé sur des données simulées réalistes
+// DÉSACTIVÉ : Directive Omnibus interdit les faux achats
+// Sera réactivé avec des VRAIS achats depuis l'API quand on aura des clients
 // ============================
 
 (function() {
     'use strict';
+
+    // DÉSACTIVÉ tant qu'il n'y a pas de vrais clients
+    // Les fausses notifications d'achat sont illégales (Directive Omnibus EU 2019/2161)
+    return;
 
     // Ne pas afficher sur admin, checkout, success
     var path = window.location.pathname;

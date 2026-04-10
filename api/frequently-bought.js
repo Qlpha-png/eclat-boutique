@@ -72,12 +72,50 @@ module.exports = async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée' });
 
-    var productId = parseInt(req.query.productId);
-    if (!productId || isNaN(productId)) {
-        return res.status(400).json({ error: 'productId requis (entier)' });
+    var supabase = getSupabase();
+
+    // ========== Mode "top bestsellers" : GET /api/frequently-bought?top=6 ==========
+    var topN = parseInt(req.query.top);
+    if (topN && !isNaN(topN) && topN > 0 && topN <= 20) {
+        try {
+            // Requête : top N produits les plus commandés (par quantité totale)
+            var { data: topProducts, error: topErr } = await supabase
+                .rpc('get_bestsellers', { limit_count: topN });
+
+            if (topErr || !topProducts || topProducts.length === 0) {
+                // Fallback SQL direct si la fonction RPC n'existe pas
+                var { data: topDirect, error: topDirectErr } = await supabase
+                    .from('order_items')
+                    .select('product_id, quantity')
+                    .order('quantity', { ascending: false });
+
+                if (!topDirectErr && topDirect && topDirect.length > 0) {
+                    // Agrégation côté client
+                    var counts = {};
+                    topDirect.forEach(function(item) {
+                        counts[item.product_id] = (counts[item.product_id] || 0) + item.quantity;
+                    });
+                    var sorted = Object.keys(counts).sort(function(a, b) { return counts[b] - counts[a]; }).slice(0, topN);
+                    var bestsellers = sorted.map(function(pid) { return { product_id: parseInt(pid), total_sold: counts[pid] }; });
+                    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=300');
+                    return res.status(200).json({ bestsellers: bestsellers, source: 'orders' });
+                }
+                // Aucune commande = pas de bestsellers
+                return res.status(200).json({ bestsellers: [], source: 'none' });
+            }
+
+            res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=300');
+            return res.status(200).json({ bestsellers: topProducts, source: 'rpc' });
+        } catch(e) {
+            return res.status(200).json({ bestsellers: [], source: 'error' });
+        }
     }
 
-    var supabase = getSupabase();
+    // ========== Mode co-occurrence : GET /api/frequently-bought?productId=X ==========
+    var productId = parseInt(req.query.productId);
+    if (!productId || isNaN(productId)) {
+        return res.status(400).json({ error: 'productId ou top requis' });
+    }
 
     try {
         // ========== 1. Vérifier le cache (24h) ==========
