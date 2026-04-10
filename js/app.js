@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var rank = isRealData ? (idx + 1) : (product.bestsellerRank || (idx + 1));
                 var pName = (typeof getProductText === 'function') ? (getProductText(product.id, 'name', (typeof currentLang !== 'undefined' ? currentLang : 'fr')) || product.name) : product.name;
                 return '<div style="min-width:220px;max-width:220px;flex-shrink:0;background:var(--color-white,#fff);border-radius:12px;border:1px solid var(--color-border,#e8e4de);overflow:hidden;cursor:pointer;transition:all .3s;" onclick="openModal(' + product.id + ')">' +
-                    '<div style="position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,#f5f0eb,#ede4da);">' +
+                    '<div style="position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,var(--color-bg-alt,#f3efe9),var(--color-accent,#e8d5b5));">' +
                         '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
                         '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary,#c9a87c);color:#fff;font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:700;">#' + rank + '</span>' +
                     '</div>' +

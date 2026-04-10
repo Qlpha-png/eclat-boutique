@@ -182,7 +182,7 @@
 
         var dropdown = document.createElement('div');
         dropdown.id = 'accountDropdown';
-        dropdown.style.cssText = 'position:absolute;top:100%;right:0;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);padding:8px 0;min-width:220px;z-index:10000;border:1px solid rgba(0,0,0,0.08);';
+        dropdown.style.cssText = 'position:absolute;top:100%;right:0;background:var(--color-white,#fff);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);padding:8px 0;min-width:220px;z-index:10000;border:1px solid var(--color-border,#e8e4de);';
 
         var items = [
             { icon: '👤', label: tr('profile'), href: prefix + 'account.html' },
@@ -195,7 +195,7 @@
             items.push({ icon: '⚙️', label: tr('admin'), href: prefix + 'admin.html' });
         }
 
-        var html = '<div style="padding:12px 16px;border-bottom:1px solid #eee;">';
+        var html = '<div style="padding:12px 16px;border-bottom:1px solid var(--color-border,#e8e4de);">';
         html += '<strong style="font-size:0.9rem;">' + name + '</strong>';
         if (tier) {
             html += '<div style="font-size:0.75rem;color:var(--color-secondary,#c9a87c);margin-top:2px;">' + tier + (profile && profile.loyalty_points != null ? ' — ' + profile.loyalty_points + ' pts' : '') + '</div>';
@@ -203,9 +203,9 @@
         html += '</div>';
 
         for (var i = 0; i < items.length; i++) {
-            html += '<a href="' + items[i].href + '" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#333;font-size:0.85rem;transition:background 0.15s;" onmouseover="this.style.background=\'#f5f5f5\'" onmouseout="this.style.background=\'transparent\'">' + items[i].icon + ' ' + items[i].label + '</a>';
+            html += '<a href="' + items[i].href + '" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:var(--color-primary,#2d2926);font-size:0.85rem;transition:background 0.15s;" onmouseover="this.style.background=\'var(--color-bg-alt,#f3efe9)\'" onmouseout="this.style.background=\'transparent\'">' + items[i].icon + ' ' + items[i].label + '</a>';
         }
-        html += '<div style="border-top:1px solid #eee;margin-top:4px;padding-top:4px;"><a href="#" id="logoutLink" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#e74c3c;font-size:0.85rem;" onmouseover="this.style.background=\'#f5f5f5\'" onmouseout="this.style.background=\'transparent\'">🚪 ' + tr('logout') + '</a></div>';
+        html += '<div style="border-top:1px solid var(--color-border,#e8e4de);margin-top:4px;padding-top:4px;"><a href="#" id="logoutLink" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#e74c3c;font-size:0.85rem;" onmouseover="this.style.background=\'var(--color-bg-alt,#f3efe9)\'" onmouseout="this.style.background=\'transparent\'">🚪 ' + tr('logout') + '</a></div>';
 
         dropdown.innerHTML = html;
         btn.style.position = 'relative';

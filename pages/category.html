@@ -15,34 +15,34 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
-        .cat-hero { background:linear-gradient(135deg,var(--color-primary),#1a1714); color:#fff; padding:60px 24px 40px; text-align:center; }
+        .cat-hero { background:linear-gradient(135deg,var(--color-primary),#1a1714); color:var(--color-white); padding:60px 24px 40px; text-align:center; }
         .cat-hero h1 { font-family:var(--font-display); font-size:2.4rem; margin-bottom:8px; }
         .cat-hero p { opacity:.7; max-width:600px; margin:0 auto; line-height:1.6; }
         .cat-container { max-width:1200px; margin:0 auto; padding:32px 24px 80px; }
         .cat-filters { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; align-items:center; }
-        .cat-filters select { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-family:var(--font-body); font-size:.85rem; background:#fff; }
+        .cat-filters select { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); font-family:var(--font-body); font-size:.85rem; background:var(--color-white); }
         .cat-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:24px; }
-        .cat-card { background:#fff; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border); transition:all .3s; cursor:pointer; }
+        .cat-card { background:var(--color-white); border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border); transition:all .3s; cursor:pointer; }
         .cat-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
         .cat-card img { width:100%; height:260px; object-fit:cover; }
         .cat-card-info { padding:16px; }
         .cat-card-name { font-weight:600; margin-bottom:4px; font-size:.95rem; }
         .cat-card-price { color:var(--color-secondary); font-weight:700; font-size:1.1rem; }
         .cat-card-price .old { text-decoration:line-through; color:var(--color-text-light); font-size:.85rem; font-weight:400; margin-left:8px; }
-        .cat-card-badge { position:absolute; top:12px; left:12px; background:var(--color-secondary); color:#fff; font-size:.7rem; padding:4px 10px; border-radius:20px; font-weight:600; text-transform:uppercase; }
+        .cat-card-badge { position:absolute; top:12px; left:12px; background:var(--color-secondary); color:var(--color-white); font-size:.7rem; padding:4px 10px; border-radius:20px; font-weight:600; text-transform:uppercase; }
         .cat-card-img { position:relative; }
-        .cat-card-btn { display:block; width:100%; padding:10px; background:var(--color-primary); color:#fff; border:none; font-weight:600; font-size:.85rem; cursor:pointer; transition:background .2s; }
+        .cat-card-btn { display:block; width:100%; padding:10px; background:var(--color-primary); color:var(--color-white); border:none; font-weight:600; font-size:.85rem; cursor:pointer; transition:background .2s; }
         .cat-card-btn:hover { background:var(--color-secondary); }
         .cat-pagination { display:flex; justify-content:center; gap:8px; margin-top:40px; }
-        .cat-pagination button { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); background:#fff; cursor:pointer; font-size:.85rem; }
-        .cat-pagination button.active { background:var(--color-primary); color:#fff; border-color:var(--color-primary); }
+        .cat-pagination button { padding:8px 16px; border:1px solid var(--color-border); border-radius:var(--radius-sm); background:var(--color-white); cursor:pointer; font-size:.85rem; }
+        .cat-pagination button.active { background:var(--color-primary); color:var(--color-white); border-color:var(--color-primary); }
         .cat-pagination button:disabled { opacity:.4; cursor:default; }
         .cat-skeleton { background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:var(--radius-md); height:360px; }
         @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
         .cat-count { font-size:.85rem; color:var(--color-text-light); margin-bottom:16px; }
         .cat-subcats { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
         .cat-subcats a { padding:6px 16px; border-radius:20px; font-size:.8rem; background:var(--color-bg-alt); color:var(--color-text); text-decoration:none; transition:all .2s; }
-        .cat-subcats a:hover, .cat-subcats a.active { background:var(--color-primary); color:#fff; }
+        .cat-subcats a:hover, .cat-subcats a.active { background:var(--color-primary); color:var(--color-white); }
         @media(max-width:768px) {
             .cat-hero h1 { font-size:1.8rem; }
             .cat-grid { grid-template-columns:repeat(2, 1fr); gap:12px; }

@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <button class="chat-close" id="chatClose">&times;</button>
             </div>
-            <div id="chatAiBadge" style="display:none;padding:6px 16px;background:linear-gradient(135deg,#1a1520,#2d1f3d);text-align:center;font-size:0.7rem;color:#c9a87c;letter-spacing:0.5px;border-bottom:1px solid rgba(201,168,124,0.2);">
+            <div id="chatAiBadge" style="display:none;padding:6px 16px;background:linear-gradient(135deg,#1a1520,#2d1f3d);text-align:center;font-size:0.7rem;color:var(--color-secondary,#c9a87c);letter-spacing:0.5px;border-bottom:1px solid rgba(201,168,124,0.2);">
                 <span id="chatTierBadge"></span>
             </div>
             <div class="chat-messages" id="chatMessages"></div>
@@ -336,9 +336,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (eclats < 200) {
                     setTimeout(() => {
                         addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;margin:-4px 0;font-size:0.82rem;">' +
-                            '<strong style="color:#c9a87c;">Passez en mode IA</strong><br>' +
-                            '<span style="color:#999;">Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle. ' +
-                            'Vous avez <strong style="color:#c9a87c;">' + eclats + '/200</strong> \u00c9clats.</span>' +
+                            '<strong style="color:var(--color-secondary,#c9a87c);">Passez en mode IA</strong><br>' +
+                            '<span style="color:var(--color-text-light,#6b6560);">Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle. ' +
+                            'Vous avez <strong style="color:var(--color-secondary,#c9a87c);">' + eclats + '/200</strong> \u00c9clats.</span>' +
                         '</div>', 'bot');
                     }, 1500);
                 }
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tierBadge.innerHTML = '\u2728 Mode IA &bull; Palier ' + aiTier;
             }
             if (avatar) {
-                avatar.style.background = 'linear-gradient(135deg,#c9a87c,#e8d5b5)';
+                avatar.style.background = 'linear-gradient(135deg,var(--color-secondary,#c9a87c),var(--color-accent,#e8d5b5))';
                 avatar.innerHTML = '\u2728';
             }
             if (status) status.textContent = 'IA active';
@@ -497,24 +497,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleAiError(data, lang) {
         if (data.upgrade === 'login') {
             addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
-                '<strong style="color:#c9a87c;">Connectez-vous</strong><br>' +
-                '<span style="color:#999;">Cr\u00e9ez un compte gratuit pour acc\u00e9der \u00e0 votre conseill\u00e8re beaut\u00e9 IA.</span><br>' +
-                '<a href="pages/register.html" style="color:#c9a87c;font-weight:600;font-size:0.8rem;">Cr\u00e9er mon compte \u2192</a></div>', 'bot');
+                '<strong style="color:var(--color-secondary,#c9a87c);">Connectez-vous</strong><br>' +
+                '<span style="color:var(--color-text-light,#6b6560);">Cr\u00e9ez un compte gratuit pour acc\u00e9der \u00e0 votre conseill\u00e8re beaut\u00e9 IA.</span><br>' +
+                '<a href="pages/register.html" style="color:var(--color-secondary,#c9a87c);font-weight:600;font-size:0.8rem;">Cr\u00e9er mon compte \u2192</a></div>', 'bot');
             aiMode = false;
             return;
         }
         if (data.upgrade === 'eclats') {
             addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
-                '<strong style="color:#c9a87c;">D\u00e9bloquez l\'IA beauté</strong><br>' +
-                '<span style="color:#999;">Encore ' + (data.needed - data.current) + ' \u00c9clats pour atteindre le palier ' + data.tierName + ' et acc\u00e9der \u00e0 l\'IA.</span></div>', 'bot');
+                '<strong style="color:var(--color-secondary,#c9a87c);">D\u00e9bloquez l\'IA beauté</strong><br>' +
+                '<span style="color:var(--color-text-light,#6b6560);">Encore ' + (data.needed - data.current) + ' \u00c9clats pour atteindre le palier ' + data.tierName + ' et acc\u00e9der \u00e0 l\'IA.</span></div>', 'bot');
             aiMode = false;
             return;
         }
         if (data.upgrade === 'tier') {
             addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
-                '<strong style="color:#c9a87c;">Limite mensuelle atteinte</strong><br>' +
-                '<span style="color:#999;">' + data.used + '/' + data.limit + ' messages utilis\u00e9s ce mois. ' +
-                'Passez au palier <strong style="color:#c9a87c;">' + (data.nextTier || 'sup\u00e9rieur') + '</strong> pour plus de messages !</span></div>', 'bot');
+                '<strong style="color:var(--color-secondary,#c9a87c);">Limite mensuelle atteinte</strong><br>' +
+                '<span style="color:var(--color-text-light,#6b6560);">' + data.used + '/' + data.limit + ' messages utilis\u00e9s ce mois. ' +
+                'Passez au palier <strong style="color:var(--color-secondary,#c9a87c);">' + (data.nextTier || 'sup\u00e9rieur') + '</strong> pour plus de messages !</span></div>', 'bot');
             aiMode = false;
             // Fallback sur mots-clés
             const result = getResponse(aiHistory[aiHistory.length - 1]?.content || '', 'fr');
@@ -523,9 +523,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (data.upgrade === 'purchase') {
             addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;font-size:0.82rem;">' +
-                '<strong style="color:#c9a87c;">Budget IA atteint</strong><br>' +
-                '<span style="color:#999;">Faites un achat pour d\u00e9bloquer plus de conversations IA !</span><br>' +
-                '<a href="index.html" style="color:#c9a87c;font-weight:600;font-size:0.8rem;">Voir nos produits \u2192</a></div>', 'bot');
+                '<strong style="color:var(--color-secondary,#c9a87c);">Budget IA atteint</strong><br>' +
+                '<span style="color:var(--color-text-light,#6b6560);">Faites un achat pour d\u00e9bloquer plus de conversations IA !</span><br>' +
+                '<a href="index.html" style="color:var(--color-secondary,#c9a87c);font-weight:600;font-size:0.8rem;">Voir nos produits \u2192</a></div>', 'bot');
             aiMode = false;
             return;
         }

@@ -196,7 +196,7 @@
             if (p.badge === 'best') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary);color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">Best-seller</span>';
             if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#4caf50;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">Nouveau</span>';
 
-            html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:#fff;border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
+            html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';
             html += badgeHTML;
             html += '<img src="' + p.image + '" alt="' + pName.replace(/"/g, '') + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
@@ -365,8 +365,8 @@
 
         var searchHTML = '<div id="navSearchBar" class="nav-search" style="flex:1;max-width:400px;margin:0 24px;position:relative;">';
         searchHTML += '<input type="search" id="navSearchInput" placeholder="Rechercher un produit..." style="width:100%;padding:10px 40px 10px 16px;border:1px solid var(--color-border);border-radius:var(--radius-xl);font-size:.85rem;font-family:var(--font-body);background:var(--color-bg-alt);transition:all .3s;outline:none;" onfocus="this.style.borderColor=\'var(--color-secondary)\';this.style.boxShadow=\'0 0 0 3px rgba(201,168,124,.15)\'" onblur="this.style.borderColor=\'\';this.style.boxShadow=\'\'">';
-        searchHTML += '<button onclick="executeNavSearch()" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);padding:6px 12px;background:var(--color-secondary);border:none;border-radius:20px;cursor:pointer;color:#fff;font-size:.8rem;font-weight:600;">\uD83D\uDD0D</button>';
-        searchHTML += '<div id="navSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-md);margin-top:4px;max-height:320px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1000;"></div>';
+        searchHTML += '<button onclick="executeNavSearch()" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);padding:6px 12px;background:var(--color-secondary);border:none;border-radius:20px;cursor:pointer;color:var(--color-white,#fff);font-size:.8rem;font-weight:600;">\uD83D\uDD0D</button>';
+        searchHTML += '<div id="navSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-white,#fff);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-top:4px;max-height:320px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1000;"></div>';
         searchHTML += '</div>';
 
         navLinks.insertAdjacentHTML('afterend', searchHTML);
@@ -524,11 +524,11 @@
         } else {
             // No data — show CTA to start diagnostic
             section.style.display = '';
-            container.innerHTML = '<div style="background:linear-gradient(135deg,var(--color-primary),#3d3530);border-radius:var(--radius-lg);padding:40px;text-align:center;color:#fff;">' +
+            container.innerHTML = '<div style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary));border-radius:var(--radius-lg);padding:40px;text-align:center;color:var(--color-white,#fff);">' +
                 '<div style="font-size:3rem;margin-bottom:12px;">&#129302;</div>' +
                 '<h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:8px;">Votre espace personnalis\u00e9 vous attend</h3>' +
                 '<p style="color:rgba(255,255,255,.7);font-size:.9rem;max-width:500px;margin:0 auto 20px;">Faites notre diagnostic IA gratuit en 2 minutes. Votre page d\'accueil s\'adaptera \u00e0 votre profil unique.</p>' +
-                '<a href="pages/diagnostic.html" class="btn" style="background:var(--color-secondary);color:#fff;padding:14px 32px;font-size:.95rem;">&#129302; Mon diagnostic gratuit &rarr;</a>' +
+                '<a href="pages/diagnostic.html" class="btn" style="background:var(--color-secondary);color:var(--color-white,#fff);padding:14px 32px;font-size:.95rem;">&#129302; Mon diagnostic gratuit &rarr;</a>' +
                 '</div>';
         }
     }
