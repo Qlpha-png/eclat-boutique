@@ -1894,7 +1894,7 @@ input { font-family: inherit; }
 
     .hero-content > p { margin: 0 auto 32px; }
     .hero-buttons { justify-content: center; }
-    .hero-stats { justify-content: center; }
+    .hero-perks { justify-content: center; }
 
     .hero-visual {
         min-height: 300px;
@@ -3434,5 +3434,86 @@ input { font-family: inherit; }
     }
     .carousel-card img {
         height: 150px !important;
+    }
+}
+
+/* --- Products Toolbar (tri, recherche, filtres) --- */
+.products-toolbar select {
+    transition: all 0.2s;
+}
+.products-toolbar select:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(201,168,124,0.15);
+}
+.products-toolbar input:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(201,168,124,0.15);
+}
+@media (max-width: 640px) {
+    .products-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .products-toolbar input[type="search"] {
+        width: 100% !important;
+    }
+    .products-toolbar > div {
+        width: 100%;
+        justify-content: space-between !important;
+    }
+}
+
+/* --- Trust Bar compact --- */
+.trust-bar span {
+    white-space: nowrap;
+}
+@media (max-width: 640px) {
+    .trust-bar .container {
+        gap: 12px !important;
+    }
+    .trust-bar span {
+        font-size: 0.7rem !important;
+    }
+}
+
+/* --- AI Personalization Section --- */
+#pourVous .section-header h2 {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --- Hero improvements for professional look --- */
+.hero {
+    overflow: hidden;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.hero-product {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+}
+.hero-product:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 12px 48px rgba(45,41,38,0.2) !important;
+}
+.hero-perks {
+    margin-top: 24px;
+}
+.hero-perks span {
+    transition: all 0.2s;
+}
+.hero-perks span:hover {
+    background: var(--color-secondary) !important;
+    color: var(--color-white) !important;
+}
+
+/* --- Category cards mobile fix --- */
+@media (max-width: 768px) {
+    .categories-visual div[style*="grid-template-columns:repeat(4"] {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }

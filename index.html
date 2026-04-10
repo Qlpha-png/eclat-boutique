@@ -512,6 +512,30 @@
                 <button class="filter-btn" data-category="accessoire">Accessoires</button>
             </div>
 
+            <!-- Toolbar: Search + Sort + Count (comme Amazon/Sephora) -->
+            <div class="products-toolbar" style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0;flex-wrap:wrap;">
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                    <input type="search" id="catalogSearch" placeholder="Rechercher dans le catalogue..." style="padding:8px 16px;border:1px solid var(--color-border);border-radius:var(--radius-xl);font-size:.85rem;font-family:var(--font-body);width:240px;outline:none;transition:all .3s;" onfocus="this.style.borderColor='var(--color-secondary)'" onblur="this.style.borderColor=''">
+                    <select id="priceRange" style="padding:8px 12px;border:1px solid var(--color-border);border-radius:var(--radius-sm);font-size:.85rem;font-family:var(--font-body);background:#fff;cursor:pointer;">
+                        <option value="all">Tous les prix</option>
+                        <option value="0-10">Moins de 10&euro;</option>
+                        <option value="10-20">10&euro; - 20&euro;</option>
+                        <option value="20-50">20&euro; - 50&euro;</option>
+                        <option value="50+">Plus de 50&euro;</option>
+                    </select>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <span id="searchCount" style="font-size:.82rem;color:var(--color-text-light);white-space:nowrap;"></span>
+                    <select id="productSort" style="padding:8px 12px;border:1px solid var(--color-border);border-radius:var(--radius-sm);font-size:.85rem;font-family:var(--font-body);background:#fff;cursor:pointer;">
+                        <option value="popular">Popularit&eacute;</option>
+                        <option value="newest">Nouveaut&eacute;s</option>
+                        <option value="price-asc">Prix croissant</option>
+                        <option value="price-desc">Prix d&eacute;croissant</option>
+                        <option value="name-asc">Nom A-Z</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Products Grid -->
             <div class="products-grid" id="productsGrid">
                 <!-- Products will be injected by JS -->

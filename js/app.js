@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
                     '<h3 class="product-name">' + escapeHTML(product.name) + '</h3>' +
                     '<p class="product-desc">' + escapeHTML(product.description).substring(0, 120) + '...</p>' +
-                    '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5</span></div>' +
+                    (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ')</span></div>' : '') +
                     '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
                         (product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '') +
                     '</div>' +
@@ -285,9 +285,90 @@ document.addEventListener('DOMContentLoaded', function() {
             if (concernEl) concernEl.value = 'all';
             var sortEl = document.getElementById('filterSort');
             if (sortEl) sortEl.value = 'popular';
-            renderProducts(btn.dataset.category);
+            applyAllFilters();
         });
     });
+
+    // --- Sort, Price Range, Catalog Search (comme Amazon/Sephora) ---
+    function applyAllFilters() {
+        var filtered;
+        if (_currentCategory === 'all') {
+            filtered = PRODUCTS.slice();
+        } else {
+            filtered = PRODUCTS.filter(function(p) { return p.category === _currentCategory; });
+        }
+
+        // Price range filter
+        var priceRange = document.getElementById('priceRange');
+        if (priceRange && priceRange.value !== 'all') {
+            var range = priceRange.value;
+            filtered = filtered.filter(function(p) {
+                if (range === '0-10') return p.price < 10;
+                if (range === '10-20') return p.price >= 10 && p.price < 20;
+                if (range === '20-50') return p.price >= 20 && p.price < 50;
+                if (range === '50+') return p.price >= 50;
+                return true;
+            });
+        }
+
+        // Catalog search (inline)
+        var catalogSearch = document.getElementById('catalogSearch');
+        if (catalogSearch && catalogSearch.value.trim().length >= 2) {
+            var q = catalogSearch.value.trim().toLowerCase();
+            filtered = filtered.filter(function(p) {
+                return p.name.toLowerCase().indexOf(q) !== -1 ||
+                    (p.description && p.description.toLowerCase().indexOf(q) !== -1) ||
+                    (p.category && p.category.toLowerCase().indexOf(q) !== -1);
+            });
+        }
+
+        // Sort
+        var sortEl = document.getElementById('productSort');
+        var sortVal = sortEl ? sortEl.value : 'popular';
+        if (sortVal === 'price-asc') {
+            filtered.sort(function(a, b) { return a.price - b.price; });
+        } else if (sortVal === 'price-desc') {
+            filtered.sort(function(a, b) { return b.price - a.price; });
+        } else if (sortVal === 'newest') {
+            filtered.sort(function(a, b) { return b.id - a.id; });
+        } else if (sortVal === 'name-asc') {
+            filtered.sort(function(a, b) { return a.name.localeCompare(b.name); });
+        } else {
+            // Popular = bestsellers first, then by badge
+            filtered.sort(function(a, b) {
+                if (a.bestseller && !b.bestseller) return -1;
+                if (!a.bestseller && b.bestseller) return 1;
+                if (a.badge === 'best' && b.badge !== 'best') return -1;
+                if (a.badge !== 'best' && b.badge === 'best') return 1;
+                return 0;
+            });
+        }
+
+        _currentFilteredList = filtered;
+        _currentProductsPage = 1;
+        renderPage(filtered, 1, true);
+    }
+
+    // Expose for external use
+    window.applyAllFilters = applyAllFilters;
+
+    // Bind sort/price/search controls
+    var sortSelect = document.getElementById('productSort');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() { applyAllFilters(); });
+    }
+    var priceSelect = document.getElementById('priceRange');
+    if (priceSelect) {
+        priceSelect.addEventListener('change', function() { applyAllFilters(); });
+    }
+    var catalogSearchInput = document.getElementById('catalogSearch');
+    if (catalogSearchInput) {
+        var _catalogDebounce = null;
+        catalogSearchInput.addEventListener('input', function() {
+            clearTimeout(_catalogDebounce);
+            _catalogDebounce = setTimeout(function() { applyAllFilters(); }, 250);
+        });
+    }
 
     // --- Modal ---
     var productGuideMap = {
@@ -329,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<div class="modal-details">' +
                     '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
                     '<h2 class="product-name" id="modalTitle">' + escapeHTML(pName) + '</h2>' +
-                    '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5</span></div>' +
+                    (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ' avis)</span></div>' : '<div style="font-size:.85rem;color:var(--color-text-light);margin-bottom:8px;">Aucun avis pour le moment</div>') +
                     '<p class="product-description">' + escapeHTML(pDesc) + '</p>' +
                     guideLink +
                     '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span>' +
