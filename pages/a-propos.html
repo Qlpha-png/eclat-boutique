@@ -65,6 +65,17 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"AboutPage","mainEntity":{"@type":"Organization","name":"ÉCLAT","description":"Marque beauté française fondée sur la science et la transparence","url":"https://maison-eclat.shop","foundingDate":"2026","email":"contact@maison-eclat.shop"}}
     </script>
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://maison-eclat.shop/"},
+            {"@type": "ListItem", "position": 2, "name": "\u00c0 propos", "item": "https://maison-eclat.shop/pages/a-propos.html"}
+        ]
+    }
+    </script>
 </head>
 <body style="background:var(--color-bg);">
     <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
@@ -181,6 +192,7 @@
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/i18n.js?v=5" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
+<script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
 <script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
 </body>

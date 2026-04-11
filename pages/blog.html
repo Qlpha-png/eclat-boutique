@@ -339,6 +339,17 @@
             .blog-card .bc-thumb { aspect-ratio: 2/1; }
         }
     </style>
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://maison-eclat.shop/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://maison-eclat.shop/pages/blog.html"}
+        ]
+    }
+    </script>
 </head>
 <body style="background: var(--color-bg);">
 
@@ -721,6 +732,7 @@
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/i18n.js?v=5" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
+<script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
 <script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
 </body>

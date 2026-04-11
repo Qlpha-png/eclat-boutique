@@ -92,13 +92,13 @@ module.exports = async function handler(req, res) {
         const chestAvailable = profile.last_chest_open !== today;
         const checkinAvailable = profile.last_checkin !== today;
 
-        // Streak multiplier
+        // V3 — Streak multiplier (doit correspondre à checkin.js STREAK_MULTIPLIERS)
         const streakDays = profile.streak_days || 0;
         let streakMultiplier = 1.0;
-        if (streakDays >= 30) streakMultiplier = 2.0;
-        else if (streakDays >= 21) streakMultiplier = 1.8;
-        else if (streakDays >= 14) streakMultiplier = 1.5;
-        else if (streakDays >= 7) streakMultiplier = 1.2;
+        if (streakDays >= 30) streakMultiplier = 1.3;
+        else if (streakDays >= 21) streakMultiplier = 1.2;
+        else if (streakDays >= 14) streakMultiplier = 1.15;
+        else if (streakDays >= 7) streakMultiplier = 1.1;
 
         // Referral code
         let referralCode = profile.referral_code;

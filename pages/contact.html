@@ -46,6 +46,17 @@
         .contact-card p { font-size: 0.85rem; color: var(--color-text-light); margin: 0; }
         .contact-card a { color: var(--color-secondary); font-weight: 600; }
     </style>
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://maison-eclat.shop/"},
+            {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://maison-eclat.shop/pages/contact.html"}
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
@@ -172,6 +183,7 @@
 </main>
 <script src="../js/i18n.js?v=5" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
+<script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
 <script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
 </body>

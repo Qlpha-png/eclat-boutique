@@ -164,10 +164,11 @@ function getNextCheckinTime() {
 }
 
 async function checkTierUpgrade(sb, userId, totalEclats, currentTier) {
+    // V3 — Tiers rehaussés (doit correspondre à profile.js)
     const TIERS = [
-        { key: 'diamant', threshold: 1000 },
-        { key: 'prestige', threshold: 500 },
-        { key: 'lumiere', threshold: 200 },
+        { key: 'diamant', threshold: 1500 },
+        { key: 'prestige', threshold: 750 },
+        { key: 'lumiere', threshold: 300 },
         { key: 'eclat', threshold: 0 }
     ];
 

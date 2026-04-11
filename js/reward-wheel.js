@@ -8,13 +8,14 @@
     'use strict';
 
     // Segments de la roue (probabilités pondérées)
+    // V3 — Rewards roue post-achat rebalancés
     var SEGMENTS = [
-        { label: '+10 Éclats', color: '#c9a87c', weight: 40, reward: { type: 'eclats', value: 10 } },
+        { label: '+5 Éclats', color: '#c9a87c', weight: 45, reward: { type: 'eclats', value: 5 } },
         { label: '-5% prochain achat', color: '#2d1f3d', weight: 25, reward: { type: 'discount', value: 5 } },
-        { label: '+25 Éclats', color: '#1a4d2e', weight: 15, reward: { type: 'eclats', value: 25 } },
-        { label: 'Livraison offerte', color: '#1a3a5c', weight: 10, reward: { type: 'shipping', value: 0 } },
-        { label: '+50 Éclats', color: '#5c1a3a', weight: 8, reward: { type: 'eclats', value: 50 } },
-        { label: '-15% EXCLUSIF', color: '#8b6914', weight: 2, reward: { type: 'discount', value: 15 } }
+        { label: '+10 Éclats', color: '#1a4d2e', weight: 15, reward: { type: 'eclats', value: 10 } },
+        { label: 'Livraison offerte', color: '#1a3a5c', weight: 8, reward: { type: 'shipping', value: 0 } },
+        { label: '+20 Éclats', color: '#5c1a3a', weight: 5, reward: { type: 'eclats', value: 20 } },
+        { label: '-10% EXCLUSIF', color: '#8b6914', weight: 2, reward: { type: 'discount', value: 10 } }
     ];
 
     // Choisir un segment par poids

@@ -6,11 +6,12 @@
 (function() {
     'use strict';
 
+    // V3 — Tiers rehaussés (doit correspondre à profile.js)
     var TIERS = [
         { name: 'Éclat', min: 0, color: '#c9a87c' },
-        { name: 'Lumière', min: 200, color: '#e8d5b5', perk: 'IA beauté' },
-        { name: 'Prestige', min: 500, color: '#d4af37', perk: 'IA experte + 50 msg' },
-        { name: 'Diamant', min: 1000, color: '#b9f2ff', perk: 'IA illimitée + VIP' }
+        { name: 'Lumière', min: 300, color: '#e8d5b5', perk: 'IA beauté' },
+        { name: 'Prestige', min: 750, color: '#d4af37', perk: 'IA experte + 50 msg' },
+        { name: 'Diamant', min: 1500, color: '#b9f2ff', perk: 'IA illimitée + VIP' }
     ];
 
     function init() {
@@ -154,10 +155,12 @@
         setTimeout(function() { fomo.style.transform = 'translateY(0)'; }, 3000);
     }
 
+    // V3 — Multiplicateurs streak (doit correspondre à checkin.js)
     function getMultiplier(streak) {
-        if (streak >= 6) return '3.0';
-        if (streak >= 3) return '2.0';
-        if (streak >= 2) return '1.5';
+        if (streak >= 30) return '1.3';
+        if (streak >= 21) return '1.2';
+        if (streak >= 14) return '1.15';
+        if (streak >= 7) return '1.1';
         return '1.0';
     }
 
