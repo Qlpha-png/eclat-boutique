@@ -27,7 +27,7 @@
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=16">
+    <link rel="stylesheet" href="../css/style.css?v=17">
     <link rel="stylesheet" href="../css/themes.css?v=3">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
@@ -109,19 +109,21 @@
             line-height: 1.7;
         }
         .loyalty-hero-value {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-block;
+            text-align: center;
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-md);
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--color-primary);
+            line-height: 1.8;
+            max-width: 480px;
         }
         .loyalty-hero-value span {
             color: var(--color-secondary);
+            white-space: nowrap;
         }
 
         /* --- Section Titles --- */
@@ -507,6 +509,11 @@
             .loyalty-hero h1 {
                 font-size: 1.7rem;
             }
+            .loyalty-hero-value {
+                font-size: 0.82rem;
+                padding: 12px 18px;
+                max-width: 340px;
+            }
             .loyalty-footer .footer-grid {
                 grid-template-columns: 1fr;
             }
@@ -562,7 +569,8 @@
                 Le programme &Eacute;clats est enti&egrave;rement gratuit et accessible d&egrave;s la cr&eacute;ation de votre compte.
             </p>
             <div class="loyalty-hero-value">
-                <span>1&euro;</span> d&eacute;pens&eacute; = <span>10 &Eacute;clats</span> gagn&eacute;s &nbsp;&bull;&nbsp; 1 &Eacute;clat = <span>0,06&euro;</span> de r&eacute;duction
+                <span>1&euro;</span> d&eacute;pens&eacute; = <span>10 &Eacute;clats</span> gagn&eacute;s<br>
+                1 &Eacute;clat = <span>0,06&euro;</span> de r&eacute;duction
             </div>
         </section>
 

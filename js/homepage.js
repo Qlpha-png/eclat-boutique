@@ -85,17 +85,9 @@
         var heroContent = document.querySelector('.hero-content');
         if (!heroContent) return;
 
-        // Inject slider dots
+        // Use pre-rendered dots from HTML (CLS fix: avoid DOM injection)
         var heroSection = document.querySelector('.hero');
         if (!heroSection) return;
-
-        var dotsHTML = '<div class="hero-dots" style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;">';
-        for (var i = 0; i < heroSlides.length; i++) {
-            dotsHTML += '<button class="hero-dot' + (i === 0 ? ' active' : '') + '" data-slide="' + i + '" style="width:12px;height:12px;border-radius:50%;border:2px solid var(--color-secondary);background:' + (i === 0 ? 'var(--color-secondary)' : 'transparent') + ';cursor:pointer;transition:all .3s;padding:0;" aria-label="Slide ' + (i + 1) + '"></button>';
-        }
-        dotsHTML += '</div>';
-        heroSection.style.position = 'relative';
-        heroSection.insertAdjacentHTML('beforeend', dotsHTML);
 
         // Dot click handlers
         var dots = heroSection.querySelectorAll('.hero-dot');
@@ -195,7 +187,6 @@
         var dots = heroSection.querySelectorAll('.hero-dot');
         dots.forEach(function(dot, i) {
             dot.classList.toggle('active', i === idx);
-            dot.style.background = i === idx ? 'var(--color-secondary)' : 'transparent';
         });
     }
 

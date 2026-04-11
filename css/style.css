@@ -3,6 +3,24 @@
    Main Stylesheet
    ============================ */
 
+/* CLS fix: fallback font metrics matching to reduce font swap layout shift */
+@font-face {
+    font-family: 'Inter Fallback';
+    src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 107%;
+}
+@font-face {
+    font-family: 'Playfair Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    ascent-override: 85%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 112%;
+}
+
 /* --- CSS Variables --- */
 :root {
     --color-primary: #2d2926;
@@ -19,8 +37,8 @@
     --color-success: #2e7d32;
     --color-error: #c62828;
     --color-star: #876c04;
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Playfair Display', 'Playfair Fallback', Georgia, serif;
+    --font-body: 'Inter', 'Inter Fallback', -apple-system, BlinkMacSystemFont, sans-serif;
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
@@ -755,6 +773,7 @@ input { font-family: inherit; }
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 28px;
+    min-height: 400px; /* CLS fix: reserve space for JS-injected products */
 }
 
 /* --- Product Card --- */
@@ -1234,6 +1253,7 @@ input { font-family: inherit; }
 
 .bestseller-showcase {
     margin-top: 16px;
+    min-height: 280px; /* CLS fix: reserve space for JS-injected content */
 }
 
 /* Hide scrollbar on carousel tracks */
@@ -2472,6 +2492,7 @@ input { font-family: inherit; }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    min-height: 280px; /* CLS fix: reserve space for JS-injected bundles */
 }
 
 .bundle-card {
@@ -3838,7 +3859,42 @@ input { font-family: inherit; }
 .hero-content {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.hero-dots button:hover {
+.hero-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    min-height: 48px; /* CLS fix: reserve space matching touch target */
+}
+.hero-dot {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.hero-dot::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-secondary);
+    background: transparent;
+    transition: all 0.3s;
+}
+.hero-dot.active::after {
+    background: var(--color-secondary);
+    transform: scale(1.2);
+}
+.hero-dot:hover::after {
     transform: scale(1.3);
 }
 .btn-secondary {
@@ -3875,8 +3931,24 @@ input { font-family: inherit; }
 }
 
 /* --- Product Carousels (Amazon/Sephora style) --- */
+/* CLS fix: reserve space for dynamically injected carousel sections */
+#homepageCarousels {
+    min-height: 400px;
+}
+@media (max-width: 768px) {
+    #homepageCarousels {
+        min-height: 320px;
+    }
+}
+
 .homepage-carousel-section {
     overflow: hidden;
+    min-height: 360px; /* CLS fix */
+}
+@media (max-width: 768px) {
+    .homepage-carousel-section {
+        min-height: 300px;
+    }
 }
 .carousel-track {
     scrollbar-width: none;
@@ -3958,7 +4030,11 @@ input { font-family: inherit; }
 /* --- Hero improvements for professional look --- */
 .hero {
     overflow: hidden;
+    position: relative;
+    padding-bottom: 48px; /* CLS fix: reserve space for dots */
 }
+
+/* CLS fix: min-height on hero-dots already defined above (~L3862) */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -3988,20 +4064,54 @@ input { font-family: inherit; }
 
 /* --- Performance: content-visibility for off-screen sections --- */
 /* Skips rendering of sections far below fold, massive perf gain on 14k+ page */
-.categories-visual,
-.ai-personalization,
-.bestsellers-section,
-.products-section,
-.homepage-carousel-section,
-.bundles-section,
-.newsletter-section,
-.recently-viewed-section,
-.routine-section,
-.reviews-section,
-.social-proof-section,
+/* CLS fix: per-section contain-intrinsic-size to match actual rendered heights */
+.categories-visual {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 280px;
+}
+.ai-personalization {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 200px;
+}
+.bestsellers-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 380px;
+}
+.products-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+.homepage-carousel-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 360px;
+}
+.bundles-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 350px;
+}
+.newsletter-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+}
+.recently-viewed-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+}
+.routine-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+}
+.reviews-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
+}
+.social-proof-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 200px;
+}
 .footer {
     content-visibility: auto;
-    contain-intrinsic-size: auto 500px;
+    contain-intrinsic-size: auto 400px;
 }
 
 /* --- Hover effects (replaces inline onmouseover/onmouseout) --- */
@@ -4771,7 +4881,7 @@ input { font-family: inherit; }
     align-items: center;
     gap: 6px;
     font-size: .8rem;
-    color: var(--color-text-light);
+    color: var(--color-text);
     background: var(--color-bg-alt);
     padding: 6px 14px;
     border-radius: 20px;
@@ -5065,7 +5175,7 @@ input { font-family: inherit; }
 @media (max-width: 768px) {
     .hero {
         min-height: auto;
-        padding: 20px 16px;
+        padding: 20px 16px 48px; /* CLS fix: bottom padding for dots */
         gap: 16px;
     }
     .hero h1 {
