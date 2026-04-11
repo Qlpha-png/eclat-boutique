@@ -1056,12 +1056,19 @@
                         container.innerHTML = orders.map(function(o) {
                             var s = statusMap[o.status] || { label: o.status, color: '#888' };
                             var date = new Date(o.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-                            var trackLink = '<a href="tracking.html?order=' + o.id + '" style="font-size:0.78rem;color:var(--color-secondary);font-weight:600;text-decoration:none;">Suivre le colis &rarr;</a>';
-                            return '<div class="order-row" style="cursor:pointer;" onclick="window.location.href=\'tracking.html?order=' + o.id + '\'">' +
-                                '<div><strong>' + (o.order_number || o.id.substring(0, 8)) + '</strong><br><span style="font-size:0.8rem;color:var(--color-text-light);">' + date + '</span></div>' +
+                            var safeId = escapeHTML(String(o.id));
+                            var trackLink = '<a href="tracking.html?order=' + encodeURIComponent(o.id) + '" style="font-size:0.78rem;color:var(--color-secondary);font-weight:600;text-decoration:none;">Suivre le colis &rarr;</a>';
+                            return '<div class="order-row" style="cursor:pointer;" data-order-id="' + safeId + '">' +
+                                '<div><strong>' + escapeHTML(o.order_number || o.id.substring(0, 8)) + '</strong><br><span style="font-size:0.8rem;color:var(--color-text-light);">' + escapeHTML(date) + '</span></div>' +
                                 '<div style="text-align:right;"><span style="color:' + s.color + ';font-weight:600;font-size:0.8rem;">' + s.label + '</span><br><strong>' + parseFloat(o.total).toFixed(2) + ' \u20ac</strong><br>' + trackLink + '</div>' +
                             '</div>';
                         }).join('');
+                        // Bind click events (safer than inline onclick)
+                        container.querySelectorAll('.order-row[data-order-id]').forEach(function(row) {
+                            row.addEventListener('click', function() {
+                                window.location.href = 'tracking.html?order=' + encodeURIComponent(this.dataset.orderId);
+                            });
+                        });
                     }
                 } catch(e) {
                     console.warn('[account] Orders load error:', e.message);

@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="eim-offer">
                         <strong>${xt.offer}</strong>
                         <p>${xt.with}</p>
-                        <div class="eim-code" onclick="navigator.clipboard.writeText('RESTEZ15'); this.innerHTML='${xt.copied}'">RESTEZ15</div>
+                        <div class="eim-code" onclick="navigator.clipboard.writeText('RESTEZ15'); this.textContent='${xt.copied}'">RESTEZ15</div>
                     </div>
                     <p class="eim-expire">${xt.expire}</p>
                     <a href="#produits" class="btn btn-primary btn-full" onclick="this.closest('.exit-intent-overlay').remove()">${xt.cta}</a>
