@@ -6,9 +6,13 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
+function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
 const supabase = createClient(
     process.env.SUPABASE_URL || '',
-    process.env.SUPABASE_SERVICE_KEY || ''
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 );
 
 module.exports = async (req, res) => {
@@ -54,9 +58,9 @@ module.exports = async (req, res) => {
 
         // Adresse client
         const addr = order.shipping_details || order.customer_details || {};
-        const customerName = addr.name || user.user_metadata?.full_name || user.email;
+        const customerName = escapeHtml(addr.name || user.user_metadata?.full_name || user.email);
         const customerAddr = addr.address ?
-            [addr.address.line1, addr.address.line2, addr.address.postal_code + ' ' + addr.address.city, addr.address.country].filter(Boolean).join('<br>') :
+            [addr.address.line1, addr.address.line2, addr.address.postal_code + ' ' + addr.address.city, addr.address.country].filter(Boolean).map(escapeHtml).join('<br>') :
             '';
 
         // Items
@@ -65,7 +69,7 @@ module.exports = async (req, res) => {
             const unitPrice = item.price || item.unit_amount / 100;
             const lineTotal = unitPrice * qty;
             return `<tr>
-                <td style="padding:10px 12px;border-bottom:1px solid #e8e4de;">${item.product_name || item.description || 'Produit'}</td>
+                <td style="padding:10px 12px;border-bottom:1px solid #e8e4de;">${escapeHtml(item.product_name || item.description || 'Produit')}</td>
                 <td style="padding:10px 12px;border-bottom:1px solid #e8e4de;text-align:center;">${qty}</td>
                 <td style="padding:10px 12px;border-bottom:1px solid #e8e4de;text-align:right;">${unitPrice.toFixed(2).replace('.', ',')} &euro;</td>
                 <td style="padding:10px 12px;border-bottom:1px solid #e8e4de;text-align:right;font-weight:600;">${lineTotal.toFixed(2).replace('.', ',')} &euro;</td>

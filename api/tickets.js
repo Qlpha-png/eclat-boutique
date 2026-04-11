@@ -5,9 +5,13 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
+function escapeHtml(str) {
+    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
 const supabase = createClient(
     process.env.SUPABASE_URL || '',
-    process.env.SUPABASE_SERVICE_KEY || ''
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 );
 
 // Table SQL à créer :
@@ -170,8 +174,8 @@ module.exports = async (req, res) => {
                             '<h1 style="font-family:Georgia,serif;color:#2d2926;letter-spacing:3px;">ÉCLAT</h1>' +
                             '<p>Bonjour,</p>' +
                             '<p>Votre demande a bien été enregistrée sous la référence <strong>' + ticketRef + '</strong>.</p>' +
-                            '<p>Catégorie : ' + category + '</p>' +
-                            '<p>Sujet : ' + subject + '</p>' +
+                            '<p>Catégorie : ' + escapeHtml(category) + '</p>' +
+                            '<p>Sujet : ' + escapeHtml(subject) + '</p>' +
                             '<p>Nous vous répondrons sous 24h maximum.</p>' +
                             '<p style="color:#c9a87c;font-weight:600;">L\'équipe ÉCLAT</p></div>'
                     })
@@ -191,8 +195,8 @@ module.exports = async (req, res) => {
                         html: '<p><strong>Nouveau ticket SAV</strong></p>' +
                             '<p>Ref: ' + ticketRef + '</p>' +
                             '<p>Client: ' + ticketEmail + '</p>' +
-                            '<p>Catégorie: ' + category + '</p>' +
-                            '<p>Message: ' + message.substring(0, 500) + '</p>'
+                            '<p>Catégorie: ' + escapeHtml(category) + '</p>' +
+                            '<p>Message: ' + escapeHtml(message.substring(0, 500)) + '</p>'
                     })
                 }).catch(function() {});
             }

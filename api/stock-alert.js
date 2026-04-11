@@ -185,8 +185,12 @@ async function handleSubscribe(req, res) {
  */
 async function handleProcessAlerts(req, res) {
     var CRON_SECRET = process.env.CRON_SECRET || '';
-    if (CRON_SECRET && req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
-        return res.status(401).json({ error: 'Unauthorized' });
+    if (!CRON_SECRET) {
+        console.error('[stock-alert] CRON_SECRET not configured');
+        return res.status(500).json({ error: 'Service indisponible' });
+    }
+    if (req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
+        return res.status(403).json({ error: 'Non autorisé' });
     }
 
     if (!RESEND_KEY) {

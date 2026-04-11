@@ -114,12 +114,14 @@ module.exports = async function(req, res) {
 
     // ── Sécurité webhook : vérifier la clé CJ ──
     var cjWebhookKey = process.env.CJ_WEBHOOK_KEY || '';
-    if (cjWebhookKey) {
-        var providedKey = req.headers['x-cj-webhook-key'] || req.query.key || '';
-        if (providedKey !== cjWebhookKey) {
-            console.error('[TRACKING-WH] Invalid webhook key');
-            return res.status(401).json({ error: 'Unauthorized' });
-        }
+    if (!cjWebhookKey) {
+        console.error('[TRACKING-WH] CJ_WEBHOOK_KEY not configured');
+        return res.status(500).json({ error: 'Service indisponible' });
+    }
+    var providedKey = req.headers['x-cj-webhook-key'] || req.query.key || '';
+    if (providedKey !== cjWebhookKey) {
+        console.error('[TRACKING-WH] Invalid webhook key');
+        return res.status(403).json({ error: 'Non autorisé' });
     }
 
     // ── Parser le body ──

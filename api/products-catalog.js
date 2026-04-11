@@ -42,7 +42,9 @@ module.exports = async function handler(req, res) {
 
         // Recherche texte
         if (q) {
-            query = query.or('name.ilike.%' + q + '%,description.ilike.%' + q + '%,tagline.ilike.%' + q + '%');
+            // Remove any characters that could break the Supabase filter syntax
+            var sanitizedQ = q.replace(/[^a-zA-Z0-9\s\u00C0-\u024F\u0300-\u036f'-]/g, '');
+            query = query.or('name.ilike.%' + sanitizedQ + '%,description.ilike.%' + sanitizedQ + '%,tagline.ilike.%' + sanitizedQ + '%');
         }
 
         // Tri

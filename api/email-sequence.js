@@ -86,8 +86,12 @@ function getSupabase() {
 
 module.exports = async function handler(req, res) {
     // Auth cron
-    if (CRON_SECRET && req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
-        return res.status(401).json({ error: 'Unauthorized' });
+    if (!CRON_SECRET) {
+        console.error('[email-sequence] CRON_SECRET not configured');
+        return res.status(500).json({ error: 'Service indisponible' });
+    }
+    if (req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
+        return res.status(403).json({ error: 'Non autorisé' });
     }
     if (req.method !== 'GET' && req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });

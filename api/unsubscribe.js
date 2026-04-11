@@ -7,12 +7,19 @@ const { getSupabase } = require('./_middleware/auth');
 
 // Génère un token de désabonnement (utilisé dans les emails)
 function generateUnsubToken(email) {
-    const secret = process.env.UNSUBSCRIBE_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || 'eclat-unsub-secret';
+    const secret = process.env.UNSUBSCRIBE_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!secret) throw new Error('No HMAC secret configured');
     return crypto.createHmac('sha256', secret).update(email.toLowerCase()).digest('hex').slice(0, 32);
 }
 
 module.exports = async function handler(req, res) {
     if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+    const secret = process.env.UNSUBSCRIBE_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!secret) {
+        console.error('[unsubscribe] No HMAC secret configured');
+        return res.status(500).json({ error: 'Service indisponible' });
+    }
 
     const { email, token } = req.query;
 

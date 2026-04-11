@@ -13,7 +13,7 @@
 // );
 
 const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_SERVICE_KEY || '');
+const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_SERVICE_ROLE_KEY || '');
 
 module.exports = async (req, res) => {
     var allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];

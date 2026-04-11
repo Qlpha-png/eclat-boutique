@@ -3,6 +3,8 @@ const Stripe = require('stripe');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 const { checkFraud } = require('./_middleware/fraud');
 
+const SITE_URL = 'https://maison-eclat.shop';
+
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
     const origin = req.headers.origin;
@@ -106,8 +108,8 @@ module.exports = async (req, res) => {
             payment_method_types: ['card', 'link'],
             line_items,
             mode: 'payment',
-            success_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/success.html?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.origin || 'https://maison-eclat.shop'}/pages/checkout.html?cancelled=1`,
+            success_url: `${SITE_URL}/pages/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${SITE_URL}/pages/checkout.html?cancelled=1`,
             allow_promotion_codes: true,
             phone_number_collection: { enabled: true },
             locale: stripeLocale,
