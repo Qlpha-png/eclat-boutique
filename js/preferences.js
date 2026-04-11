@@ -24,8 +24,8 @@
             'cursor:pointer;background:var(--color-white,#fff);color:var(--color-text-light,#6b6560);transition:all 0.2s;font-family:inherit;' +
             'outline:none;',
         btnHover: 'border-color:var(--color-secondary,#c9a87c);color:var(--color-secondary,#c9a87c);',
-        btnSelected: 'background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);border-color:var(--color-secondary,#c9a87c);',
-        saveBtn: 'margin-top:20px;padding:11px 36px;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);border:none;' +
+        btnSelected: 'background:var(--color-secondary,#c9a87c);color:var(--color-primary,#2d2926);border-color:var(--color-secondary,#c9a87c);',
+        saveBtn: 'margin-top:20px;padding:11px 36px;background:var(--color-secondary,#c9a87c);color:var(--color-primary,#2d2926);border:none;' +
             'border-radius:22px;font-weight:600;font-size:0.86rem;cursor:pointer;' +
             'transition:all 0.2s;font-family:inherit;opacity:0.4;pointer-events:none;',
         saveBtnActive: 'opacity:1;pointer-events:auto;',

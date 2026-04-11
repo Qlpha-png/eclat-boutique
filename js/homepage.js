@@ -227,7 +227,7 @@
             var badgeBestText = (typeof t === 'function') ? t('badge_bestseller') : 'Best-seller';
             var badgeNewText = (typeof t === 'function') ? t('badge_new') : 'Nouveau';
             if (p.badge === 'best') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary);color:var(--color-primary,#2d2926);font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeBestText + '</span>';
-            if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#4caf50;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeNewText + '</span>';
+            if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#2e7d32;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeNewText + '</span>';
 
             html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" data-action="open-modal" data-pid="' + p.id + '">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';
@@ -400,7 +400,7 @@
         toggleBtn.id = 'navSearchToggle';
         toggleBtn.className = 'cart-btn';
         toggleBtn.setAttribute('aria-label', 'Rechercher');
-        toggleBtn.style.cssText = 'background:var(--color-secondary);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:#fff;transition:all .2s;border:none;cursor:pointer;';
+        toggleBtn.style.cssText = 'background:var(--color-secondary);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--color-primary,#2d2926);transition:all .2s;border:none;cursor:pointer;';
         toggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
         navActions.insertBefore(toggleBtn, navActions.firstChild);
 
@@ -612,7 +612,7 @@
                 '<div style="width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l.146.146A3.004 3.004 0 0118 19.5H6a3.004 3.004 0 01-1.682-2.314l.146-.146z"/></svg></div>' +
                 '<h3 id="diagCTATitle" style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:8px;">' + (typeof t === "function" ? t('diag_cta_title') : 'D\u00e9couvrez votre routine id\u00e9ale') + '</h3>' +
                 '<p id="diagCTADesc" style="color:rgba(255,255,255,.7);font-size:.9rem;max-width:500px;margin:0 auto 24px;">' + (typeof t === "function" ? t('diag_cta_desc') : 'R\u00e9pondez \u00e0 4 questions en 2 minutes. Notre IA cr\u00e9e une routine personnalis\u00e9e pour votre type de peau.') + '</p>' +
-                '<a href="pages/diagnostic.html" class="btn" id="diagCTABtn" style="background:var(--color-secondary);color:var(--color-white,#fff);padding:14px 36px;font-size:.95rem;border-radius:30px;">' + (typeof t === "function" ? t('diag_cta_btn') : 'Trouver ma routine \u2192') + '</a>' +
+                '<a href="pages/diagnostic.html" class="btn" id="diagCTABtn" style="background:var(--color-secondary);color:var(--color-primary,#2d2926);padding:14px 36px;font-size:.95rem;border-radius:30px;">' + (typeof t === "function" ? t('diag_cta_btn') : 'Trouver ma routine \u2192') + '</a>' +
                 '</div>';
         }
     }

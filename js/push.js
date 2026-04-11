@@ -233,7 +233,7 @@
         // Accept button
         var acceptBtn = document.createElement('button');
         acceptBtn.type = 'button';
-        acceptBtn.style.cssText = 'background:var(--color-secondary);color:var(--color-white,#fff);border:none;padding:10px 18px;' +
+        acceptBtn.style.cssText = 'background:var(--color-secondary);color:var(--color-primary,#2d2926);border:none;padding:10px 18px;' +
             'border-radius:10px;font-weight:600;font-size:0.82rem;cursor:pointer;' +
             'white-space:nowrap;transition:background 0.2s;font-family:inherit;';
         acceptBtn.textContent = 'Oui, m\'alerter';
