@@ -7,82 +7,81 @@ const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
 // ══════════════════════════════════════════════════════════════
-// POOLS ÉCONOMIE V2 — Rebalancé par analyse économique
-// Objectif : coffre = petit plaisir quotidien (2-5 Éclats/jour max)
-// Les achats doivent rester la source PRINCIPALE d'Éclats (80%+)
-// Ancienne version : 20-145 Éclats/jour GRATUITS → économie cassée
-// Nouvelle version : 2-5 Éclats/jour → engagement sans hémorragie
-// Plus de discount/shipping gratuits dans le coffre (réservé aux achats)
+// POOLS ÉCONOMIE V3 — Rebalancé pour équilibre économique
+// Objectif : coffre = petit plaisir quotidien (~1 Éclat/jour tier Éclat)
+// V2 : 2-5/jour (71/mois tier Éclat = 3.55€) → trop généreux
+// V3 : 1-2/jour (33/mois tier Éclat = 1.25€) → engagement sans hémorragie
+// Slots réduits : Éclat/Lumière = 1, Prestige/Diamant = 2
 // ══════════════════════════════════════════════════════════════
 const CHEST_POOLS = {
     eclat: {
-        slots: 2,
+        slots: 1,
         pool: [
             { rarity: 'commun', prob: 0.75, rewards: [
                 { type: 'eclats', min: 1, max: 1 }
             ]},
             { rarity: 'peu_commun', prob: 0.20, rewards: [
-                { type: 'eclats', min: 1, max: 2 }
+                { type: 'eclats', min: 1, max: 1 }
             ]},
             { rarity: 'rare', prob: 0.04, rewards: [
-                { type: 'eclats', min: 2, max: 3 }
+                { type: 'eclats', min: 2, max: 2 }
             ]},
             { rarity: 'exclusif', prob: 0.01, rewards: [
-                { type: 'eclats', min: 3, max: 5 }
+                { type: 'eclats', min: 3, max: 3 }
             ]}
         ]
     },
     lumiere: {
-        slots: 2,
+        slots: 1,
         pool: [
             { rarity: 'commun', prob: 0.70, rewards: [
-                { type: 'eclats', min: 1, max: 2 }
+                { type: 'eclats', min: 1, max: 1 }
             ]},
             { rarity: 'peu_commun', prob: 0.23, rewards: [
-                { type: 'eclats', min: 2, max: 3 }
+                { type: 'eclats', min: 1, max: 2 }
             ]},
             { rarity: 'rare', prob: 0.06, rewards: [
-                { type: 'eclats', min: 3, max: 4 }
+                { type: 'eclats', min: 2, max: 3 }
             ]},
             { rarity: 'exclusif', prob: 0.01, rewards: [
-                { type: 'eclats', min: 4, max: 6 }
+                { type: 'eclats', min: 3, max: 3 }
             ]}
         ]
     },
     prestige: {
-        slots: 3,
+        slots: 2,
         pool: [
             { rarity: 'commun', prob: 0.65, rewards: [
-                { type: 'eclats', min: 1, max: 2 }
+                { type: 'eclats', min: 1, max: 1 }
             ]},
             { rarity: 'peu_commun', prob: 0.27, rewards: [
-                { type: 'eclats', min: 2, max: 3 }
+                { type: 'eclats', min: 1, max: 2 }
             ]},
             { rarity: 'rare', prob: 0.06, rewards: [
-                { type: 'eclats', min: 3, max: 5 }
+                { type: 'eclats', min: 2, max: 3 }
             ]},
             { rarity: 'exclusif', prob: 0.02, rewards: [
-                { type: 'eclats', min: 5, max: 8 }
+                { type: 'eclats', min: 3, max: 5 }
             ]}
         ]
     },
     diamant: {
-        slots: 3,
+        slots: 2,
         pool: [
             { rarity: 'commun', prob: 0.60, rewards: [
-                { type: 'eclats', min: 1, max: 2 }
+                { type: 'eclats', min: 1, max: 1 }
             ]},
             { rarity: 'peu_commun', prob: 0.28, rewards: [
-                { type: 'eclats', min: 2, max: 4 }
+                { type: 'eclats', min: 1, max: 2 }
             ]},
             { rarity: 'rare', prob: 0.08, rewards: [
-                { type: 'eclats', min: 4, max: 6 }
+                { type: 'eclats', min: 2, max: 4 }
             ]},
             { rarity: 'exclusif', prob: 0.03, rewards: [
-                { type: 'eclats', min: 6, max: 10 }
+                { type: 'eclats', min: 3, max: 6 }
             ]},
             { rarity: 'legendaire', prob: 0.01, rewards: [
-                { type: 'eclats', min: 10, max: 15 }
+                { type: 'eclats', min: 5, max: 8 }
             ]}
         ]
     }

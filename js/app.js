@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Count display
-        var countText = products.length + ' ' + (products.length > 1 ? t('products_count') || 'produits' : t('product_count') || 'produit');
+        var countText = products.length + ' ' + (products.length > 1 ? 'produits' : 'produit');
         var countEl = document.getElementById('searchCount');
         if (countEl) countEl.textContent = countText;
 

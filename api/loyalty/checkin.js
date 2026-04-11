@@ -7,24 +7,25 @@ const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
 // ══════════════════════════════════════════════════════════════
-// ÉCONOMIE V2 — Check-in = petit bonus quotidien
-// Max 2 Éclats/jour = 60/mois = 1.20€ de valeur gratuite max
-// Ancien : 2-10/jour = 60-300/mois = 3.60-18€ → trop généreux
+// ÉCONOMIE V3 — Check-in = 1 Éclat fixe/jour, pas de bonus streak
+// Max 30 Éclats/mois = 1.14€ de valeur gratuite
+// V2 : 47/mois = 2.35€ → encore trop, le streak ne doit pas gonfler le gratuit
+// Le streak récompense les ACHETEURS via le multiplicateur (max 1.3x)
 // ══════════════════════════════════════════════════════════════
 const STREAK_REWARDS = [
-    { minDays: 30, eclats: 2 },
-    { minDays: 14, eclats: 2 },
+    { minDays: 30, eclats: 1 },
+    { minDays: 14, eclats: 1 },
     { minDays: 7, eclats: 1 },
     { minDays: 0, eclats: 1 }
 ];
 
 // Multiplicateur d'achat basé sur le streak
 // Les vrais bonus vont aux ACHETEURS, pas aux visiteurs
-// Plafonné à 1.5x (ancien : 2.0x) pour contrôler l'inflation
+// Plafonné à 1.3x (V2 : 1.5x) pour contrôler l'inflation
 const STREAK_MULTIPLIERS = [
-    { minDays: 30, mult: 1.5 },
-    { minDays: 21, mult: 1.3 },
-    { minDays: 14, mult: 1.2 },
+    { minDays: 30, mult: 1.3 },
+    { minDays: 21, mult: 1.2 },
+    { minDays: 14, mult: 1.15 },
     { minDays: 7, mult: 1.1 },
     { minDays: 0, mult: 1.0 }
 ];

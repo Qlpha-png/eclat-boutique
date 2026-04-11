@@ -29,8 +29,10 @@ var ALLOWED_ORIGINS = [
     'https://maison-eclat.shop'
 ];
 
-var ECLATS_REVIEW = 15;
-var ECLATS_REVIEW_WITH_PHOTOS = 25;
+// ÉCONOMIE V3 — Reviews rewards réduits (V2: 15/25, V3: 8/12)
+var ECLATS_REVIEW = 8;
+var ECLATS_REVIEW_WITH_PHOTOS = 12;
+var MAX_REVIEWS_PER_MONTH = 4;
 var MIN_TEXT_LENGTH = 10;
 var MAX_TEXT_LENGTH = 2000;
 var MAX_PHOTOS = 3;
@@ -214,6 +216,29 @@ module.exports = async function handler(req, res) {
                 return res.status(409).json({ error: 'Vous avez déjà laissé un avis pour ce produit' });
             }
 
+            // V3 — Limite mensuelle anti-farming : max 4 avis/mois
+            var monthStart = new Date();
+            monthStart.setDate(1);
+            monthStart.setHours(0, 0, 0, 0);
+            var { data: monthReviews, error: monthErr } = await supabase
+                .from('reviews')
+                .select('id', { count: 'exact', head: true })
+                .eq('user_id', userId)
+                .gte('created_at', monthStart.toISOString());
+
+            if (!monthErr && monthReviews !== null) {
+                var monthCount = typeof monthReviews === 'number' ? monthReviews : (monthReviews.length || 0);
+            }
+            var { count: reviewCount } = await supabase
+                .from('reviews')
+                .select('id', { count: 'exact', head: true })
+                .eq('user_id', userId)
+                .gte('created_at', monthStart.toISOString());
+
+            if (reviewCount >= MAX_REVIEWS_PER_MONTH) {
+                return res.status(429).json({ error: 'Limite de ' + MAX_REVIEWS_PER_MONTH + ' avis par mois atteinte. Revenez le mois prochain !' });
+            }
+
             // Vérifier achat dans order_items
             var verifiedPurchase = false;
             var { data: orderItems, error: oiErr } = await supabase
@@ -258,7 +283,7 @@ module.exports = async function handler(req, res) {
 
             if (insertErr) throw insertErr;
 
-            // Récompenser en Éclats : +15 pour un avis, +25 si photos
+            // Récompenser en Éclats : +8 pour un avis, +12 si photos (V3)
             var eclatsAwarded = validPhotos.length > 0 ? ECLATS_REVIEW_WITH_PHOTOS : ECLATS_REVIEW;
 
             var { error: eclatsErr } = await supabase

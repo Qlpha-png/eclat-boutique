@@ -394,7 +394,7 @@ const TRANSLATIONS = {
 
         // Referral
         acc_referral_title: 'Parrainage',
-        acc_referral_desc: 'Partagez votre code. Votre filleul re\u00e7oit 50 \u00c9clats de bienvenue, et vous gagnez 100 \u00c9clats !',
+        acc_referral_desc: 'Partagez votre code. Votre filleul re\u00e7oit 10 \u00c9clats de bienvenue, et vous gagnez 20 \u00c9clats quand il commande (min. 20\u20ac) !',
         acc_referral_copy: 'Copier le code',
         acc_referral_copied: 'Copi\u00e9 !',
 

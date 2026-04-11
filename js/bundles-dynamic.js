@@ -159,8 +159,8 @@
                 html += '</div>';
             }
 
-            // Valeur Éclats gagnés (1 Éclat = 0,06€)
-            var eclatValue = 0.06;
+            // Valeur Éclats gagnés (1 Éclat = 0,04€ — Économie V3)
+            var eclatValue = 0.04;
             var rewardValue = (totalEclats * eclatValue).toFixed(2).replace('.', ',');
             html += '<div class="bundle-eclats-price">';
             html += '\u2728 = ' + rewardValue + '\u00a0\u20ac de r\u00e9compenses fid\u00e9lit\u00e9';

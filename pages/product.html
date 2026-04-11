@@ -18,7 +18,7 @@
     <meta name="twitter:description" id="twDesc" content="">
     <meta name="twitter:image" id="twImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
     <link rel="canonical" id="canonicalLink" href="https://maison-eclat.shop/pages/product.html">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
     <!-- Hreflang: International SEO (dynamic for product pages) -->
     <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html">
@@ -88,6 +88,8 @@
             .pp-grid { grid-template-columns:1fr; gap:24px; }
             .pp-name { font-size:1.5rem; }
         }
+        .pp-floating-review { position:fixed; right:20px; bottom:80px; z-index:999; background:var(--color-secondary,#c9a87c); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.3rem; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,0.18); transition:all 0.3s ease; display:flex; align-items:center; justify-content:center; text-decoration:none; opacity:1; }
+        .pp-floating-review:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,0.25); }
         @keyframes spin { to { transform:rotate(360deg); } }
     </style>
     <script id="productSchema" type="application/ld+json"></script>
@@ -127,9 +129,13 @@
             <div class="pp-image" id="ppImage"></div>
             <div class="pp-info" id="ppInfo"></div>
         </div>
+        <div id="ppReviews" class="pp-reviews-section" style="max-width:800px;margin:32px auto 0;background:linear-gradient(135deg,rgba(201,168,124,0.04),rgba(245,241,235,0.5));border:1.5px solid rgba(201,168,124,0.18);border-radius:var(--radius-lg);padding:0 24px;"></div>
         <div id="ppCrossSell"></div>
-        <div id="ppReviews" class="pp-reviews-section" style="max-width:800px;margin:32px auto 0;"></div>
+        <div id="ppTechnical" style="max-width:800px;margin:0 auto;"></div>
     </div>
+
+    <!-- Floating review anchor -->
+    <a href="#ppReviews" class="pp-floating-review" id="floatingReviewBtn" title="Voir les avis clients" aria-label="Voir les avis clients">&#9733;</a>
 
     <!-- Sticky add-to-cart bar -->
     <div class="sticky-atc" id="stickyATC" style="display:none;">
@@ -442,8 +448,7 @@
                 if (window.CleanBeauty && window.INGREDIENTS_DB) {
                     var cbResult = CleanBeauty.renderSection(cbProduct);
                     ingredientsHTML = cbResult.html;
-                    // Bind tooltips after DOM update
-                    setTimeout(function() { CleanBeauty.bindTooltips(cbResult.result); }, 100);
+                    // Tooltips will be bound after techContainer DOM update below
                 } else {
                     ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(productIngredients) + '</div></div>';
                 }
@@ -484,11 +489,17 @@
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> Garantie 30j</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Retour gratuit 14j</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> SAV r\u00e9actif</div>' +
-                '</div>' +
-                howToHTML +
-                specsHTML +
-                ingredientsHTML +
-                '<div id="ppWhyForYou"></div>';
+                '</div>';
+
+            // Render technical sections in dedicated container below reviews & cross-sell
+            var techContainer = document.getElementById('ppTechnical');
+            if (techContainer) {
+                techContainer.innerHTML = howToHTML + specsHTML + ingredientsHTML + '<div id="ppWhyForYou"></div>';
+                // Bind CleanBeauty tooltips now that DOM is updated
+                if (cbResult && cbResult.result && window.CleanBeauty) {
+                    setTimeout(function() { CleanBeauty.bindTooltips(cbResult.result); }, 100);
+                }
+            }
 
             // "Pourquoi ce produit pour vous" — personnalisé si diagnostic fait
             (function() {
@@ -593,6 +604,17 @@
                     stickyBar.style.display = entries[0].isIntersecting ? 'none' : 'block';
                 }, {threshold:0});
                 observer.observe(mainCTA);
+            }
+
+            // Hide floating review button when reviews section is visible
+            var floatingBtn = document.getElementById('floatingReviewBtn');
+            var reviewsEl = document.getElementById('ppReviews');
+            if (floatingBtn && reviewsEl) {
+                var reviewObserver = new IntersectionObserver(function(entries){
+                    floatingBtn.style.opacity = entries[0].isIntersecting ? '0' : '1';
+                    floatingBtn.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
+                }, {threshold:0.2});
+                reviewObserver.observe(reviewsEl);
             }
 
             // Load reviews
@@ -780,6 +802,7 @@
 </main>
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
+<script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
 </body>
 </html>

@@ -7,14 +7,15 @@ const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
 // ══════════════════════════════════════════════════════════════
-// ÉCONOMIE V2 — Parrainage rebalancé
-// Ancien : 75+30 = 105 Éclats = 6.30€ par referral → farming facile
-// Nouveau : 25+10 = 35 Éclats = 2.10€ → acceptable car acquisition client
-// Le parrain reçoit ses Éclats seulement après le 1er ACHAT du filleul
+// ÉCONOMIE V3 — Parrainage rebalancé
+// V2 : 25+10 = 35 Éclats, max 5/mois = 175 max
+// V3 : 20+10 = 30 Éclats, max 3/mois = 90 max
+// Condition : filleul doit faire un achat de 20€+ minimum
 // ══════════════════════════════════════════════════════════════
-const REFERRAL_REWARD_PARRAIN = 25;
+const REFERRAL_REWARD_PARRAIN = 20;
 const REFERRAL_REWARD_FILLEUL = 10;
-const MAX_REFERRALS_PER_MONTH = 5;
+const MAX_REFERRALS_PER_MONTH = 3;
+const MIN_FILLEUL_ORDER_AMOUNT = 20;
 
 module.exports = async function handler(req, res) {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];

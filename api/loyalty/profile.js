@@ -6,11 +6,16 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
+// ══════════════════════════════════════════════════════════════
+// ÉCONOMIE V3 — Tiers rehaussés, multiplicateurs réduits
+// V2 : 200/500/1000 avec 1.3/1.6/2.0x → trop facile de monter + inflation
+// V3 : 300/750/1500 avec 1.2/1.4/1.7x → faut acheter pour monter
+// ══════════════════════════════════════════════════════════════
 const TIER_THRESHOLDS = [
-    { key: 'diamant', threshold: 1000, label: 'Diamant', multiplier: 2.0 },
-    { key: 'prestige', threshold: 500, label: 'Prestige', multiplier: 1.6 },
-    { key: 'lumiere', threshold: 200, label: 'Lumi\u00e8re', multiplier: 1.3 },
-    { key: 'eclat', threshold: 0, label: '\u00c9clat', multiplier: 1.0 }
+    { key: 'diamant', threshold: 1500, label: 'Diamant', multiplier: 1.7 },
+    { key: 'prestige', threshold: 750, label: 'Prestige', multiplier: 1.4 },
+    { key: 'lumiere', threshold: 300, label: 'Lumière', multiplier: 1.2 },
+    { key: 'eclat', threshold: 0, label: 'Éclat', multiplier: 1.0 }
 ];
 
 module.exports = async function handler(req, res) {

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
     <title>Mon compte - &Eacute;CLAT</title>
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="noindex, nofollow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="preconnect" href="https://cf.cjdropshipping.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
@@ -360,7 +360,7 @@
                 <div class="account-section" id="tab-referral">
                     <div class="account-card">
                         <h3 id="accReferralTitle">Parrainage</h3>
-                        <p style="font-size:0.9rem;color:var(--color-text-light);" id="accReferralDesc">Partagez votre code. Votre filleul re&ccedil;oit 50 &Eacute;clats de bienvenue, et vous gagnez 100 &Eacute;clats !</p>
+                        <p style="font-size:0.9rem;color:var(--color-text-light);" id="accReferralDesc">Partagez votre code. Votre filleul re&ccedil;oit 10 &Eacute;clats de bienvenue, et vous gagnez 20 &Eacute;clats quand il commande (min. 20&euro;) !</p>
                         <div class="referral-box">
                             <div class="referral-code" id="referralCode">---</div>
                             <button class="copy-btn" id="copyRefBtn"><span id="accReferralCopy">Copier le code</span></button>
@@ -382,7 +382,7 @@
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
                                     </button>
                                 </div>
-                                <p class="share-incentive">Partage ton code et gagne 25 &Eacute;clats par filleul !</p>
+                                <p class="share-incentive">Partage ton code et gagne 20 &Eacute;clats par filleul !</p>
                             </div>
                         </div>
                     </div>
@@ -854,8 +854,8 @@
             function renderChallenges(challenges) {
                 var el = document.getElementById('challengesList');
                 // Si pas de défis depuis l'API, générer des défis hebdo par défaut
-                // ── ÉCONOMIE ÉCLATS V2 ──
-                // 1 Éclat ≈ 0.05€ | 60 Éclats = -3€ | Max gratuit/semaine ≈ 8 Éclats (0.40€)
+                // ── ÉCONOMIE ÉCLATS V3 ──
+                // 1 Éclat ≈ 0.038€ | 80 Éclats = -3€ | Max gratuit/mois ≈ 130 Éclats (4.94€)
                 // Les défis gratuits = la carotte (engagement) - petits montants
                 // Les vrais Éclats viennent des ACHATS (1€ = 1 Éclat × multiplicateur)
                 // Objectif : 80%+ des Éclats proviennent des achats
@@ -1687,6 +1687,7 @@
 </main>
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
+<script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
 </body>
 </html>
