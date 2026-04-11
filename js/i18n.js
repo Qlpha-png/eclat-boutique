@@ -218,8 +218,8 @@ const TRANSLATIONS = {
 
         // Routine composer
         routine_tag: '\u2728 Composez votre routine',
-        routine_title: 'Votre routine personnalis\u00e9e en 4 minutes',
-        routine_desc: '2 questions sur votre peau, puis choisissez vos produits \u00e0 chaque \u00e9tape. L\u2019IA personnalise les conseils selon votre profil.',
+        routine_title: 'Votre routine personnalis\u00e9e sur mesure',
+        routine_desc: 'R\u00e9pondez \u00e0 quelques questions, puis choisissez vos produits \u00e0 chaque \u00e9tape. L\u2019IA personnalise les conseils selon votre profil.',
         routine_step1: '1. Nettoyage',
         routine_step1_desc: 'Brosses soniques, scrubbers, vapeur',
         routine_step2: '2. Soin cibl\u00e9',
@@ -612,8 +612,8 @@ const TRANSLATIONS = {
 
         // Routine composer
         routine_tag: '\u2728 Build your routine',
-        routine_title: 'Your personalised routine in 4 minutes',
-        routine_desc: '2 questions about your skin, then choose your products at each step. AI tailors the tips to your profile.',
+        routine_title: 'Your personalised routine, tailored to you',
+        routine_desc: 'Answer a few questions, then choose your products at each step. AI tailors the tips to your profile.',
         routine_step1: '1. Cleansing',
         routine_step1_desc: 'Sonic brushes, scrubbers, steamers',
         routine_step2: '2. Targeted care',
@@ -999,8 +999,8 @@ const TRANSLATIONS = {
 
         // Routine composer
         routine_tag: '\u2728 Compone tu rutina',
-        routine_title: 'Tu rutina personalizada en 4 minutos',
-        routine_desc: '2 preguntas sobre tu piel, luego elige tus productos en cada paso. La IA adapta los consejos a tu perfil.',
+        routine_title: 'Tu rutina personalizada a medida',
+        routine_desc: 'Responde algunas preguntas, luego elige tus productos en cada paso. La IA adapta los consejos a tu perfil.',
         routine_step1: '1. Limpieza',
         routine_step1_desc: 'Cepillos s\u00f3nicos, scrubbers, vaporizadores',
         routine_step2: '2. Cuidado espec\u00edfico',
@@ -1386,8 +1386,8 @@ const TRANSLATIONS = {
 
         // Routine composer
         routine_tag: '\u2728 Stellen Sie Ihre Routine zusammen',
-        routine_title: 'Ihre personalisierte Routine in 4 Minuten',
-        routine_desc: '2 Fragen zu Ihrer Haut, dann w\u00e4hlen Sie Ihre Produkte. KI passt die Tipps an Ihr Profil an.',
+        routine_title: 'Ihre ma\u00dfgeschneiderte Routine',
+        routine_desc: 'Beantworten Sie ein paar Fragen, dann w\u00e4hlen Sie Ihre Produkte. KI passt die Tipps an Ihr Profil an.',
         routine_step1: '1. Reinigung',
         routine_step1_desc: 'Sonic-B\u00fcrsten, Scrubber, Dampf',
         routine_step2: '2. Gezielte Pflege',
