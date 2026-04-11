@@ -474,4 +474,104 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/clean-beauty-guide.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/clean-beauty-guide.html?lang=en"/>
     </url>
+
+    <!-- Blog: Luminothérapie LED Visage -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/luminotherapie-led-visage.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/luminotherapie-led-visage.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/luminotherapie-led-visage.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Cryothérapie Visage Maison -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/cryotherapie-visage-maison.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/cryotherapie-visage-maison.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/cryotherapie-visage-maison.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Bakuchiol vs Rétinol -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/bakuchiol-vs-retinol.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/bakuchiol-vs-retinol.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/bakuchiol-vs-retinol.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Skin Cycling Routine -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/skin-cycling-routine.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/skin-cycling-routine.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/skin-cycling-routine.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Glass Skin Routine -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/glass-skin-routine.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/glass-skin-routine.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/glass-skin-routine.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Enlever les Cernes Naturellement -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/enlever-cernes-naturellement.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/enlever-cernes-naturellement.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/enlever-cernes-naturellement.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Taches Brunes Traitement Naturel -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/taches-brunes-traitement-naturel.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/taches-brunes-traitement-naturel.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/taches-brunes-traitement-naturel.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Resserrer les Pores du Visage -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/resserrer-pores-visage.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/resserrer-pores-visage.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/resserrer-pores-visage.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Stimuler le Collagène Naturellement -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/stimuler-collagene-naturellement.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/stimuler-collagene-naturellement.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/stimuler-collagene-naturellement.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Gua Sha Visage Guide -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/gua-sha-visage-guide.html</loc>
+        <lastmod>2026-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/gua-sha-visage-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/gua-sha-visage-guide.html?lang=en"/>
+    </url>
 </urlset>
