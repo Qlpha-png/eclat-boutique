@@ -8,6 +8,16 @@ module.exports = async (req, res) => {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
+    // AUTH REQUIRED — prevent use as SMS spam relay
+    const authHeader = req.headers.authorization || '';
+    const cronSecret = process.env.CRON_SECRET || '';
+    const adminKey = process.env.ADMIN_API_KEY || '';
+    const isCron = cronSecret && authHeader === 'Bearer ' + cronSecret;
+    const isAdmin = adminKey && authHeader === 'Bearer ' + adminKey;
+    if (!isCron && !isAdmin) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
+
     const apiKey = process.env.BREVO_API_KEY;
     if (!apiKey) {
         console.log('[SMS] BREVO_API_KEY non configurée — SMS ignoré');

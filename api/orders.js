@@ -16,11 +16,11 @@ module.exports = async (req, res) => {
     if (applyRateLimit(req, res, 'public')) return;
     if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
-    // Authentification simple par clé admin
+    // Authentification admin — FAIL CLOSED (refuse si clé non configurée)
     const adminKey = process.env.ADMIN_API_KEY || '';
     const authHeader = req.headers.authorization || '';
 
-    if (adminKey && authHeader !== `Bearer ${adminKey}`) {
+    if (!adminKey || authHeader !== `Bearer ${adminKey}`) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 

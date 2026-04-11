@@ -180,7 +180,7 @@ async function sendEmail(to, template, resendApiKey) {
     }
 }
 
-// API endpoint
+// API endpoint — INTERNAL ONLY (requires admin or cron auth)
 module.exports = async (req, res) => {
     const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
     const origin = req.headers.origin;
@@ -190,6 +190,17 @@ module.exports = async (req, res) => {
 
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+    // AUTH REQUIRED — prevent use as spam relay
+    const authHeader = req.headers.authorization || '';
+    const cronSecret = process.env.CRON_SECRET || '';
+    const adminKey = process.env.ADMIN_API_KEY || '';
+    const isCron = cronSecret && authHeader === 'Bearer ' + cronSecret;
+    const isAdmin = adminKey && authHeader === 'Bearer ' + adminKey;
+    const isWebhook = req.headers['stripe-signature']; // Called from webhook pipeline
+    if (!isCron && !isAdmin && !isWebhook) {
+        return res.status(401).json({ error: 'Authentication required' });
+    }
 
     const resendApiKey = process.env.RESEND_API_KEY || '';
     if (!resendApiKey) {

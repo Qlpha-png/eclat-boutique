@@ -25,7 +25,8 @@ module.exports = async (req, res) => {
 
     const secretKey = (process.env.STRIPE_SECRET_KEY || '').trim();
     if (!secretKey) {
-        return res.status(500).json({ error: 'STRIPE_SECRET_KEY not set', debug: 'env missing' });
+        console.error('[checkout] STRIPE_SECRET_KEY not configured');
+        return res.status(500).json({ error: 'Service de paiement temporairement indisponible' });
     }
 
     // Check key format
@@ -142,10 +143,9 @@ module.exports = async (req, res) => {
 
         return res.status(200).json({ url: session.url });
     } catch (error) {
+        console.error('[checkout] Stripe error:', error.message, error.type, error.code);
         return res.status(500).json({
-            error: error.message,
-            type: error.type || 'unknown',
-            code: error.code || 'unknown'
+            error: 'Erreur lors de la création du paiement. Réessayez.'
         });
     }
 };

@@ -8,7 +8,9 @@ const { verifyAuth, getSupabase } = require('./_middleware/auth');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 
 module.exports = async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    var allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    var origin = req.headers.origin || '';
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigins.indexOf(origin) !== -1 ? origin : allowedOrigins[0]);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     if (req.method === 'OPTIONS') return res.status(200).end();

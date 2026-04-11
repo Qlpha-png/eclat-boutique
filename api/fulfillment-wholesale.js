@@ -114,6 +114,13 @@ module.exports = async (req, res) => {
 
     if (req.method === 'OPTIONS') return res.status(200).end();
 
+    // Auth admin — FAIL CLOSED
+    const adminKey = process.env.ADMIN_API_KEY || '';
+    const authHeader = req.headers.authorization || '';
+    if (!adminKey || authHeader !== `Bearer ${adminKey}`) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
     const apiKey = process.env.BIGBUY_API_KEY || '';
 
     if (req.method === 'POST') {

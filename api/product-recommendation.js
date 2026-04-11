@@ -157,17 +157,12 @@ async function incrementRateLimit(sb, identifier) {
             })
             .catch(function() {});
 
-        // Simple upsert avec increment via SQL
-        await sb.rpc('exec_sql', {
-            query: "INSERT INTO recommendation_rate_limit (identifier, request_date, request_count) VALUES ('" + identifier + "', '" + today + "', 1) ON CONFLICT (identifier, request_date) DO UPDATE SET request_count = recommendation_rate_limit.request_count + 1"
-        }).catch(function() {
-            // Dernier fallback : simple upsert
-            sb.from('recommendation_rate_limit').upsert({
-                identifier: identifier,
-                request_date: today,
-                request_count: 1
-            }, { onConflict: 'identifier,request_date' }).catch(function() {});
-        });
+        // Safe upsert via Supabase client (NO raw SQL — prevent injection)
+        await sb.from('recommendation_rate_limit').upsert({
+            identifier: String(identifier).replace(/[^a-zA-Z0-9.:_-]/g, '').substring(0, 45),
+            request_date: today,
+            request_count: 1
+        }, { onConflict: 'identifier,request_date', ignoreDuplicates: false }).catch(function() {});
     }
 }
 
