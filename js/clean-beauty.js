@@ -578,7 +578,7 @@
 
                     // Backdrop
                     var backdrop = document.createElement('div');
-                    backdrop.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:10000;';
+                    backdrop.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:9800;';
                     backdrop.onclick = function() { backdrop.remove(); tooltip.remove(); };
 
                     document.body.appendChild(backdrop);

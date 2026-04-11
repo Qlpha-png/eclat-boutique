@@ -65,6 +65,9 @@
     --color-text: #4a2040;
     --color-text-light: #8a6070;
     --color-border: #f0d0dc;
+    --shadow-sm: 0 2px 8px rgba(212,100,138,0.08);
+    --shadow-md: 0 4px 20px rgba(212,100,138,0.12);
+    --shadow-lg: 0 8px 40px rgba(212,100,138,0.16);
 }
 [data-theme="rose"] .hero {
     background: linear-gradient(135deg, #fce8ef 0%, #f8d0dc 50%, #fff5f8 100%);
@@ -110,6 +113,9 @@
     --color-text: #2d3b2d;
     --color-text-light: #5a6e55;
     --color-border: #d0deca;
+    --shadow-sm: 0 2px 8px rgba(107,143,94,0.08);
+    --shadow-md: 0 4px 20px rgba(107,143,94,0.12);
+    --shadow-lg: 0 8px 40px rgba(107,143,94,0.16);
 }
 [data-theme="nature"] .hero {
     background: linear-gradient(135deg, #e8f0e4 0%, #d0deca 50%, #f5f8f2 100%);

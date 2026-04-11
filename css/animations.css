@@ -112,7 +112,7 @@
     border-radius: var(--radius-xl);
     font-size: 0.85rem;
     font-weight: 500;
-    z-index: 10000;
+    z-index: 9995;
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;

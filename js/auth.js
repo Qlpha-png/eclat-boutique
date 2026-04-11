@@ -182,7 +182,7 @@
 
         var dropdown = document.createElement('div');
         dropdown.id = 'accountDropdown';
-        dropdown.style.cssText = 'position:absolute;top:100%;right:0;background:var(--color-white,#fff);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);padding:8px 0;min-width:220px;z-index:10000;border:1px solid var(--color-border,#e8e4de);';
+        dropdown.style.cssText = 'position:absolute;top:100%;right:0;background:var(--color-white,#fff);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);padding:8px 0;min-width:220px;z-index:9200;border:1px solid var(--color-border,#e8e4de);';
 
         var items = [
             { icon: '👤', label: tr('profile'), href: prefix + 'account.html' },

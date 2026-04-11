@@ -207,7 +207,7 @@
         var banner = document.createElement('div');
         banner.id = BANNER_ID;
         banner.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);' +
-            'z-index:10000;background:var(--color-primary);' +
+            'z-index:9920;background:var(--color-primary);' +
             'color:var(--color-white);padding:18px 22px;border-radius:14px;' +
             'box-shadow:0 10px 40px rgba(0,0,0,0.2),0 2px 8px rgba(0,0,0,0.08);' +
             'display:flex;align-items:center;gap:16px;max-width:460px;width:calc(100% - 32px);' +
