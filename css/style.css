@@ -4158,6 +4158,9 @@ input { font-family: inherit; }
     padding: 12px;
 }
 
+/* WCAG target-size: ensure diagnostic dots meet 24px minimum even before async CSS loads */
+.rb-diag-dot { min-width: 32px; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+
 /* ============================
    Extracted inline styles — index.html audit cleanup
    ============================ */
