@@ -67,42 +67,82 @@ module.exports = async function handler(req, res) {
 
     // ========== GET — avis approuvés (public) ==========
     if (req.method === 'GET') {
-        var productId = parseInt(req.query.productId);
-        if (!productId || isNaN(productId)) {
-            return res.status(400).json({ error: 'productId requis (entier)' });
+        try {
+            var productId = parseInt(req.query.productId);
+            var isHomepage = req.query.homepage === '1';
+            var limit = parseInt(req.query.limit) || 50;
+
+            // Homepage mode: return latest reviews across all products
+            if (isHomepage) {
+                var { data: homeReviews, error: homeErr } = await supabase
+                    .from('reviews')
+                    .select('rating, text, author_name, verified_purchase, photos, created_at, product_id')
+                    .eq('approved', true)
+                    .order('created_at', { ascending: false })
+                    .limit(limit);
+
+                if (homeErr) {
+                    console.error('[reviews GET homepage]', homeErr.message);
+                    // Return empty instead of 500 — table may not exist yet
+                    return res.status(200).json({ reviews: [], count: 0 });
+                }
+
+                res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+                return res.status(200).json({
+                    reviews: homeReviews || [],
+                    count: (homeReviews || []).length
+                });
+            }
+
+            // Product mode: require productId
+            if (!productId || isNaN(productId)) {
+                return res.status(400).json({ error: 'productId requis (entier)' });
+            }
+
+            var { data: reviews, error: listErr } = await supabase
+                .from('reviews')
+                .select('rating, text, author_name, verified_purchase, photos, created_at')
+                .eq('product_id', productId)
+                .eq('approved', true)
+                .order('created_at', { ascending: false });
+
+            if (listErr) {
+                console.error('[reviews GET]', listErr.message);
+                // Return empty instead of 500 — table may not exist yet
+                return res.status(200).json({
+                    average: 0, count: 0,
+                    distribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+                    reviews: []
+                });
+            }
+
+            var list = reviews || [];
+            var count = list.length;
+            var sum = 0;
+            var distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+            for (var i = 0; i < count; i++) {
+                sum += list[i].rating;
+                distribution[list[i].rating] = (distribution[list[i].rating] || 0) + 1;
+            }
+
+            var average = count > 0 ? Math.round((sum / count) * 10) / 10 : 0;
+
+            res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+            return res.status(200).json({
+                average: average,
+                count: count,
+                distribution: distribution,
+                reviews: list
+            });
+        } catch (err) {
+            console.error('[reviews GET error]', err.message);
+            return res.status(200).json({
+                average: 0, count: 0,
+                distribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+                reviews: []
+            });
         }
-
-        var { data: reviews, error: listErr } = await supabase
-            .from('reviews')
-            .select('rating, text, author_name, verified_purchase, photos, created_at')
-            .eq('product_id', productId)
-            .eq('approved', true)
-            .order('created_at', { ascending: false });
-
-        if (listErr) {
-            console.error('[reviews GET]', listErr.message);
-            return res.status(500).json({ error: 'Erreur serveur' });
-        }
-
-        var list = reviews || [];
-        var count = list.length;
-        var sum = 0;
-        var distribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-
-        for (var i = 0; i < count; i++) {
-            sum += list[i].rating;
-            distribution[list[i].rating] = (distribution[list[i].rating] || 0) + 1;
-        }
-
-        var average = count > 0 ? Math.round((sum / count) * 10) / 10 : 0;
-
-        res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
-        return res.status(200).json({
-            average: average,
-            count: count,
-            distribution: distribution,
-            reviews: list
-        });
     }
 
     // ========== POST — soumettre un avis (auth requis) ==========

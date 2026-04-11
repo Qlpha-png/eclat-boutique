@@ -354,4 +354,36 @@
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
+
+    <!-- Loyalty -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/loyalty.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Retractation -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/retractation.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- Support -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/support.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Tracking -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/tracking.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
 </urlset>

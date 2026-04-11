@@ -128,6 +128,17 @@
             }
             html += '</div>';
 
+            // Éclats bonus — bundles earn x2 Éclats vs individual
+            var baseEclats = Math.floor(bun.price);
+            var bonusEclats = baseEclats; // x2 total
+            var totalEclats = baseEclats + bonusEclats;
+
+            html += '<div class="bundle-eclats-badge">';
+            html += '<span class="bundle-eclats-icon">\u2728</span>';
+            html += '<span class="bundle-eclats-value">+' + totalEclats + ' \u00c9clats</span>';
+            html += '<span class="bundle-eclats-bonus">(x2 bonus coffret)</span>';
+            html += '</div>';
+
             // Pricing
             html += '<div class="bundle-pricing-dynamic">';
             if (vb.savings > 0.5) {
@@ -144,6 +155,15 @@
                 html += ' \u2022 Livraison offerte';
                 html += '</div>';
             }
+
+            // Éclats price (pour membres fidélité)
+            var eclatValue = 0.06; // 1 Éclat = 0.06€
+            var eclatDiscount = totalEclats * eclatValue;
+            var priceWithEclats = Math.max(bun.price - eclatDiscount, bun.price * 0.85);
+            html += '<div class="bundle-eclats-price">';
+            html += '\u2728 Avec vos \u00c9clats : <strong>' + formatPrice(Math.round(priceWithEclats * 100) / 100) + '</strong>';
+            html += '</div>';
+
             html += '</div>';
 
             // CTA
@@ -158,7 +178,7 @@
         grid.classList.add('bundles-grid-dynamic');
     }
 
-    // Carousel scroll functionality
+    // Carousel with lateral arrows
     function initCarousel() {
         var section = document.querySelector('.bundles-section');
         if (!section) return;
@@ -166,27 +186,123 @@
         var grid = section.querySelector('.bundles-grid');
         if (!grid) return;
 
-        // Add scroll arrows if content overflows
-        var existingNav = section.querySelector('.bundles-carousel-nav');
-        if (existingNav) existingNav.remove();
+        // Remove old nav in header if exists
+        var oldNav = section.querySelector('.bundles-carousel-nav');
+        if (oldNav) oldNav.remove();
 
-        var nav = document.createElement('div');
-        nav.className = 'bundles-carousel-nav';
-        nav.innerHTML = '<button class="bundles-arrow bundles-arrow-left" data-action="scroll-bundles" data-dir="-1" aria-label="Pr\u00e9c\u00e9dent">\u2190</button>'
-            + '<button class="bundles-arrow bundles-arrow-right" data-action="scroll-bundles" data-dir="1" aria-label="Suivant">\u2192</button>';
+        // Wrap grid in carousel wrapper if not already
+        if (!grid.parentElement.classList.contains('bundles-carousel-wrapper')) {
+            var wrapper = document.createElement('div');
+            wrapper.className = 'bundles-carousel-wrapper';
+            grid.parentElement.insertBefore(wrapper, grid);
+            wrapper.appendChild(grid);
 
-        var header = section.querySelector('.section-header');
-        if (header) header.appendChild(nav);
+            // Add lateral arrows
+            var leftArrow = document.createElement('button');
+            leftArrow.className = 'bundles-arrow bundles-arrow--left bundles-arrow--hidden';
+            leftArrow.setAttribute('data-action', 'scroll-bundles');
+            leftArrow.setAttribute('data-dir', '-1');
+            leftArrow.setAttribute('aria-label', 'Coffrets pr\u00e9c\u00e9dents');
+            leftArrow.innerHTML = '\u2039';
+
+            var rightArrow = document.createElement('button');
+            rightArrow.className = 'bundles-arrow bundles-arrow--right';
+            rightArrow.setAttribute('data-action', 'scroll-bundles');
+            rightArrow.setAttribute('data-dir', '1');
+            rightArrow.setAttribute('aria-label', 'Coffrets suivants');
+            rightArrow.innerHTML = '\u203A';
+
+            wrapper.appendChild(leftArrow);
+            wrapper.appendChild(rightArrow);
+
+            // Add dots indicator
+            var cards = grid.querySelectorAll('.bundle-card-dynamic');
+            if (cards.length > 1) {
+                var dotsDiv = document.createElement('div');
+                dotsDiv.className = 'bundles-dots';
+                for (var d = 0; d < cards.length; d++) {
+                    var dot = document.createElement('button');
+                    dot.className = 'bundles-dot' + (d === 0 ? ' bundles-dot--active' : '');
+                    dot.setAttribute('data-action', 'scroll-bundle-dot');
+                    dot.setAttribute('data-index', d);
+                    dot.setAttribute('aria-label', 'Coffret ' + (d + 1));
+                    dotsDiv.appendChild(dot);
+                }
+                wrapper.appendChild(dotsDiv);
+            }
+        }
+
+        // Update arrow visibility on scroll
+        updateArrows(grid);
+        grid.addEventListener('scroll', function() { updateArrows(grid); });
+        window.addEventListener('resize', function() { updateArrows(grid); });
     }
 
-    // Scroll handler
+    function updateArrows(grid) {
+        var wrapper = grid.parentElement;
+        if (!wrapper) return;
+        var leftBtn = wrapper.querySelector('.bundles-arrow--left');
+        var rightBtn = wrapper.querySelector('.bundles-arrow--right');
+        if (!leftBtn || !rightBtn) return;
+
+        var scrollLeft = grid.scrollLeft;
+        var maxScroll = grid.scrollWidth - grid.clientWidth;
+
+        // Left arrow: hidden if at start
+        if (scrollLeft <= 10) {
+            leftBtn.classList.add('bundles-arrow--hidden');
+        } else {
+            leftBtn.classList.remove('bundles-arrow--hidden');
+        }
+
+        // Right arrow: hidden if at end
+        if (scrollLeft >= maxScroll - 10) {
+            rightBtn.classList.add('bundles-arrow--hidden');
+        } else {
+            rightBtn.classList.remove('bundles-arrow--hidden');
+        }
+
+        // Update dots
+        var dots = wrapper.querySelectorAll('.bundles-dot');
+        if (dots.length > 0) {
+            var cards = grid.querySelectorAll('.bundle-card-dynamic');
+            var cardW = cards.length > 0 ? cards[0].offsetWidth + 20 : 320; // width + gap
+            var activeIndex = Math.round(scrollLeft / cardW);
+            if (activeIndex >= dots.length) activeIndex = dots.length - 1;
+            if (activeIndex < 0) activeIndex = 0;
+            for (var di = 0; di < dots.length; di++) {
+                if (di === activeIndex) {
+                    dots[di].classList.add('bundles-dot--active');
+                } else {
+                    dots[di].classList.remove('bundles-dot--active');
+                }
+            }
+        }
+    }
+
+    // Scroll handler — smooth scroll one card width
     document.addEventListener('click', function(e) {
-        var target = e.target.closest('[data-action="scroll-bundles"]');
-        if (!target) return;
-        var dir = parseInt(target.getAttribute('data-dir'), 10);
-        var grid = document.querySelector('.bundles-grid');
-        if (grid) {
-            grid.scrollBy({ left: dir * 340, behavior: 'smooth' });
+        // Arrow click
+        var arrowTarget = e.target.closest('[data-action="scroll-bundles"]');
+        if (arrowTarget) {
+            var dir = parseInt(arrowTarget.getAttribute('data-dir'), 10);
+            var grid = document.querySelector('.bundles-grid');
+            if (grid) {
+                grid.scrollBy({ left: dir * 320, behavior: 'smooth' });
+            }
+            return;
+        }
+        // Dot click
+        var dotTarget = e.target.closest('[data-action="scroll-bundle-dot"]');
+        if (dotTarget) {
+            var idx = parseInt(dotTarget.getAttribute('data-index'), 10);
+            var grid2 = document.querySelector('.bundles-grid');
+            if (grid2) {
+                var cards = grid2.querySelectorAll('.bundle-card-dynamic');
+                if (cards[idx]) {
+                    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                }
+            }
         }
     });
 

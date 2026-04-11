@@ -11360,15 +11360,24 @@ const PRODUCTS = [
 ];
 
 const BUNDLES = [
-    { key: 'eclat', name: 'Coffret Routine Éclat', productIds: [5, 8, 2], price: 24.90 },
-    { key: 'antiage', name: 'Coffret Routine Anti-Âge', productIds: [1, 154, 10], price: 49.90 },
-    { key: 'glow', name: 'Coffret Routine Glow', productIds: [8, 11, 9], price: 29.90 },
+    // Éclat: 7.90+14.90+9.90=32.70 → 24.90 (-24%, économie 7.80€)
+    { key: 'eclat', name: 'Routine Éclat', productIds: [5, 8, 2], price: 24.90 },
+    // Anti-Âge: 39.90+14.90+12.90=67.70 → 49.90 (-26%, économie 17.80€)
+    { key: 'antiage', name: 'Routine Anti-Âge', productIds: [1, 154, 10], price: 49.90 },
+    // Glow: 14.90+14.90+9.90=39.70 → 29.90 (-25%, économie 9.80€)
+    { key: 'glow', name: 'Routine Glow', productIds: [8, 11, 9], price: 29.90 },
+    // Hydra: 12.90+9.90+9.90=32.70 → 24.90 (-24%, économie 7.80€)
     { key: 'hydra', name: 'Coffret Hydratation Intense', productIds: [162, 29, 20], price: 24.90 },
-    { key: 'barbe', name: 'Coffret Gentleman Barbe', productIds: [329, 332], price: 22.90 },
-    { key: 'nails', name: 'Coffret Nail Pro', productIds: [307, 304, 316], price: 39.90 },
-    { key: 'cheveux', name: 'Coffret Cheveux Soyeux', productIds: [222, 221, 223], price: 22.90 },
-    { key: 'spa', name: 'Coffret SPA Maison', productIds: [434, 419, 13], price: 29.90 },
-    { key: 'corps', name: 'Coffret Corps Complet', productIds: [195, 183, 184], price: 19.90 },
+    // Barbe: 22.90+14.90=37.80 → 29.90 (-21%, économie 7.90€)
+    { key: 'barbe', name: 'Coffret Gentleman Barbe', productIds: [329, 332], price: 29.90 },
+    // Nails: 24.90+6.90+44.90=76.70 → 59.90 (-22%, économie 16.80€)
+    { key: 'nails', name: 'Coffret Nail Pro', productIds: [307, 304, 316], price: 59.90 },
+    // Cheveux: 7.90+27.90+7.90=43.70 → 34.90 (-20%, économie 8.80€)
+    { key: 'cheveux', name: 'Coffret Cheveux Soyeux', productIds: [222, 221, 223], price: 34.90 },
+    // SPA: 19.90+19.90+9.90=49.70 → 39.90 (-20%, économie 9.80€)
+    { key: 'spa', name: 'Coffret SPA Maison', productIds: [434, 419, 13], price: 39.90 },
+    // Corps: 7.90+8.90+39.90=56.70 → 44.90 (-21%, économie 11.80€)
+    { key: 'corps', name: 'Coffret Corps Complet', productIds: [195, 183, 184], price: 44.90 },
 ];
 
 const ROUTINE_STEPS = [
