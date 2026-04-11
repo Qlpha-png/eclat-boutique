@@ -4761,7 +4761,7 @@ const PRODUCTS = [
     {
         id: 295,
         name: 'Chouchou en Satin',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 11.90,
         oldPrice: null,
@@ -4775,7 +4775,7 @@ const PRODUCTS = [
     {
         id: 296,
         name: 'Chouchou en Satin N°2',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 4.90,
         oldPrice: null,
@@ -4789,7 +4789,7 @@ const PRODUCTS = [
     {
         id: 297,
         name: 'Chouchou en Satin N°3',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 6.90,
         oldPrice: null,
@@ -4803,7 +4803,7 @@ const PRODUCTS = [
     {
         id: 298,
         name: 'Chouchou en Satin Perle',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 4.90,
         oldPrice: null,
@@ -4817,7 +4817,7 @@ const PRODUCTS = [
     {
         id: 448,
         name: 'Chouchou en Satin N°4',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 6.90,
         oldPrice: null,
@@ -4831,7 +4831,7 @@ const PRODUCTS = [
     {
         id: 452,
         name: 'Chouchou en Satin N°5',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 4.90,
         oldPrice: null,
@@ -4845,7 +4845,7 @@ const PRODUCTS = [
     {
         id: 456,
         name: 'Chouchou en Satin 100Pcs',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'chouchou',
         price: 4.90,
         oldPrice: null,
@@ -4859,7 +4859,7 @@ const PRODUCTS = [
     {
         id: 460,
         name: 'Pince à Cheveux',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'pince-cheveux',
         price: 4.90,
         oldPrice: null,
@@ -4873,7 +4873,7 @@ const PRODUCTS = [
     {
         id: 464,
         name: 'Bonnet en Satin Naturel',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -4888,7 +4888,7 @@ const PRODUCTS = [
     {
         id: 468,
         name: 'Bonnet en Satin Naturel Naturel',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -4903,7 +4903,7 @@ const PRODUCTS = [
     {
         id: 472,
         name: 'Bonnet en Satin Naturel N°2',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -4974,7 +4974,7 @@ const PRODUCTS = [
     {
         id: 488,
         name: 'Bonnet en Satin Naturel N°3',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -5003,7 +5003,7 @@ const PRODUCTS = [
     {
         id: 494,
         name: 'Bonnet en Satin Naturel N°4',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -5032,7 +5032,7 @@ const PRODUCTS = [
     {
         id: 500,
         name: 'Bandeau Cheveux',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bandeau',
         price: 7.90,
         oldPrice: null,
@@ -5046,7 +5046,7 @@ const PRODUCTS = [
     {
         id: 503,
         name: 'Bonnet en Satin Naturel N°5',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 22.90,
         oldPrice: null,
@@ -5061,7 +5061,7 @@ const PRODUCTS = [
     {
         id: 506,
         name: 'Bonnet en Satin',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 4.90,
         oldPrice: null,
@@ -5075,7 +5075,7 @@ const PRODUCTS = [
     {
         id: 509,
         name: 'Bonnet en Satin N°2',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 4.90,
         oldPrice: null,
@@ -5089,7 +5089,7 @@ const PRODUCTS = [
     {
         id: 511,
         name: 'Bonnet en Satin N°3',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 4.90,
         oldPrice: null,
@@ -5103,7 +5103,7 @@ const PRODUCTS = [
     {
         id: 513,
         name: 'Bonnet en Satin Naturel Pro',
-        category: 'cheveux',
+        category: 'accessoire',
         subcategory: 'bonnet-satin',
         price: 24.90,
         oldPrice: null,

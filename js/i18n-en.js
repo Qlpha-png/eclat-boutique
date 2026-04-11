@@ -7,6 +7,7 @@ window.ECLAT_I18N_EN = {
         nav_reviews: 'Reviews',
         nav_story: 'Our story',
         nav_loyalty: 'Benefits',
+        nav_blog: 'Blog',
         nav_guide: 'Beauty Guide',
         nav_packs: 'Bundles',
         nav_guarantees: 'Guarantees',

@@ -11,6 +11,7 @@ const TRANSLATIONS = {
         nav_reviews: 'Avis',
         nav_story: 'Notre histoire',
         nav_loyalty: 'Avantages',
+        nav_blog: 'Blog',
         nav_guide: 'Guide Beaut\u00e9',
         nav_packs: 'Coffrets',
         nav_guarantees: 'Garanties',
@@ -488,13 +489,14 @@ function applyTranslations() {
         // Top banner
         '.top-banner p': 'banner_text',
 
-        // Nav links (4 items: Produits, Coffrets, Garanties, Guide)
+        // Nav links (7 items: Produits, Coffrets, Garanties, Blog, Guide, À propos, Mon compte)
         '.nav-links li:nth-child(1) a': 'nav_products',
         '.nav-links li:nth-child(2) a': 'nav_packs',
         '.nav-links li:nth-child(3) a': 'nav_guarantees',
-        '.nav-links li:nth-child(4) a': 'nav_guide',
-        '.nav-links li:nth-child(5) a': 'nav_about',
-        '.nav-links li:nth-child(6) a': 'nav_account',
+        '.nav-links li:nth-child(4) a': 'nav_blog',
+        '.nav-links li:nth-child(5) a': 'nav_guide',
+        '.nav-links li:nth-child(6) a': 'nav_about',
+        '.nav-links li:nth-child(7) a': 'nav_account',
 
         // Hero — TOUT
         '.hero-tag': 'hero_tag',
