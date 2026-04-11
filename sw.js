@@ -3,7 +3,7 @@
 // Cache-first assets, network-first API/HTML
 // ============================
 
-var CACHE_NAME = 'eclat-v31';
+var CACHE_NAME = 'eclat-v32';
 // Core app shell only — other assets cached on first use via fetch handler
 var PRECACHE = [
     '/',
@@ -14,7 +14,7 @@ var PRECACHE = [
     '/css/animations.css?v=3',
     '/js/app.js?v=7',
     '/js/cart.js?v=2',
-    '/js/i18n.js?v=6',
+    '/js/i18n.js?v=7',
     '/js/init.js',
     '/js/auth.js?v=3',
     '/js/themes.js?v=3',
