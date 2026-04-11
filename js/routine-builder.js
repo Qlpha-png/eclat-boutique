@@ -655,12 +655,18 @@
 
     // ---- Initialize ----
     function init() {
-        // Restore saved profile
+        // Restore saved profile — if complete, skip to routine phase
         try {
             var saved = localStorage.getItem('eclat_skin_profile');
             if (saved) {
                 var parsed = JSON.parse(saved);
-                if (parsed && typeof parsed === 'object') skinProfile = parsed;
+                if (parsed && typeof parsed === 'object') {
+                    skinProfile = parsed;
+                    // If all questions answered, go straight to routine
+                    if (answeredCount() === QUESTIONS.length) {
+                        phase = 'routine';
+                    }
+                }
             }
         } catch(ex) {}
 
