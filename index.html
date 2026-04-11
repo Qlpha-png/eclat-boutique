@@ -40,8 +40,8 @@
 .hero-content,.hero-visual,.section-header{opacity:1!important;transform:none!important}.anim-fade-up{opacity:1!important;transform:none!important}.anim-fade-scale{opacity:1!important;transform:none!important}.anim-stagger>*{opacity:1!important;transform:none!important}
     </style>
     <!-- Full CSS (async load) -->
-    <link rel="stylesheet" href="css/style.css?v=6" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/style.css?v=6"></noscript>
+    <link rel="stylesheet" href="css/style.css?v=8" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/style.css?v=8"></noscript>
     <link rel="stylesheet" href="css/themes.css?v=2" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/themes.css?v=2"></noscript>
     <link rel="stylesheet" href="css/animations.css?v=3" media="print" onload="this.media='all'">
@@ -552,87 +552,36 @@
         </div>
     </section>
 
-    <!-- Bundles / Coffrets -->
+    <!-- Bundles / Coffrets — Rendu dynamique depuis BUNDLES[] -->
     <section class="bundles-section" id="packs">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Nos packs</span>
-                <h2>Économisez avec nos coffrets</h2>
-                <p>Des routines complètes à prix réduit. Jusqu'à -30% par rapport aux produits individuels.</p>
+            <div class="section-header" style="position:relative;">
+                <span class="section-tag">Nos coffrets</span>
+                <h2>&Eacute;conomisez avec nos coffrets</h2>
+                <p>Routines compl&egrave;tes &agrave; prix r&eacute;duit. Jusqu'&agrave; -30%. Tous les produits inclus, livraison offerte.</p>
             </div>
             <div class="bundles-grid">
-                <div class="bundle-card">
-                    <div class="bundle-icon">&#10024;</div>
-                    <h3 class="bundle-name">Routine &Eacute;clat</h3>
-                    <p class="bundle-products">Ice Roller Cryo + S&eacute;rum Vitamine C 20% + Gua Sha Quartz Rose</p>
-                    <div class="bundle-pricing">
-                        <span class="bundle-old-price">32,70 &euro;</span>
-                        <span class="bundle-price">24,90 &euro;</span>
-                    </div>
-                    <div class="bundle-savings">&Eacute;conomisez 7,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="eclat">Ajouter au panier</button>
-                </div>
-                <div class="bundle-card featured">
-                    <div class="bundle-icon">&#128081;</div>
-                    <h3 class="bundle-name">Routine Anti-&Acirc;ge</h3>
-                    <p class="bundle-products">Masque LED Pro 7 Couleurs + S&eacute;rum Vitamine C 20% + Masque Collag&egrave;ne Lifting</p>
-                    <div class="bundle-pricing">
-                        <span class="bundle-old-price">67,70 &euro;</span>
-                        <span class="bundle-price">49,90 &euro;</span>
-                    </div>
-                    <div class="bundle-savings">&Eacute;conomisez 17,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="antiage">Ajouter au panier</button>
-                </div>
-                <div class="bundle-card">
-                    <div class="bundle-icon">&#127800;</div>
-                    <h3 class="bundle-name">Routine Glow</h3>
-                    <p class="bundle-products">S&eacute;rum Vitamine C 20% + Huile Rose Musqu&eacute;e + Patchs Yeux Collag&egrave;ne</p>
-                    <div class="bundle-pricing">
-                        <span class="bundle-old-price">39,70 &euro;</span>
-                        <span class="bundle-price">29,90 &euro;</span>
-                    </div>
-                    <div class="bundle-savings">&Eacute;conomisez 9,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="glow">Ajouter au panier</button>
-                </div>
+                <!-- JS renders all bundles dynamically from BUNDLES array -->
             </div>
         </div>
     </section>
 
 
 
-    <!-- Routine Composer — Section interactive (force ÉCLAT : IA + diagnostic) -->
-    <section id="routine-composer" style="padding:56px 0;background:var(--color-bg-alt,#f3efe9);">
+    <!-- Routine Builder — Section interactive avec vrais produits -->
+    <section id="routine-composer" class="routine-composer-section" style="padding:56px 0;background:var(--color-bg-alt,#f3efe9);">
         <div class="container">
             <div style="text-align:center;margin-bottom:32px;">
-                <span id="routineTag" style="display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--color-secondary,#c9a87c);font-weight:600;margin-bottom:8px;">&#10024; Notre force : l'IA</span>
-                <h2 id="routineTitle" style="font-family:'Playfair Display',Georgia,serif;font-size:2rem;color:var(--color-primary,#2d2926);margin-bottom:8px;">Votre routine personnalis&eacute;e</h2>
-                <p id="routineDesc" style="font-size:.9rem;color:var(--color-text-light,#6b6560);max-width:500px;margin:0 auto;">L'IA analyse votre peau et compose la routine id&eacute;ale. Unique en France.</p>
+                <span id="routineTag" style="display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--color-secondary,#c9a87c);font-weight:600;margin-bottom:8px;">&#10024; Composez votre routine</span>
+                <h2 id="routineTitle" style="font-family:'Playfair Display',Georgia,serif;font-size:2rem;color:var(--color-primary,#2d2926);margin-bottom:8px;">Votre routine personnalis&eacute;e en 4 minutes</h2>
+                <p id="routineDesc" style="font-size:.9rem;color:var(--color-text-light,#6b6560);max-width:580px;margin:0 auto;">2 questions sur votre peau, puis choisissez vos produits &agrave; chaque &eacute;tape. L&rsquo;IA personnalise les conseils selon votre profil.</p>
             </div>
-            <div id="routineGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px;">
-                <a href="#produits" data-action="filter-category" data-filter="visage" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
-                    <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F9F4;</div>
-                    <div id="routineStep1" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">1. Nettoyage</div>
-                    <div id="routineStep1Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">Brosses soniques, scrubbers, vapeur</div>
-                </a>
-                <a href="#produits" data-action="filter-category" data-filter="soin" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
-                    <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F48E;</div>
-                    <div id="routineStep2" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">2. Soin cibl&eacute;</div>
-                    <div id="routineStep2Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">S&eacute;rums, patchs, masques actifs</div>
-                </a>
-                <a href="#produits" data-action="filter-category" data-filter="outils" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
-                    <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x2728;</div>
-                    <div id="routineStep3" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">3. Outils beaut&eacute;</div>
-                    <div id="routineStep3Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">LED, Gua Sha, rollers, EMS</div>
-                </a>
-                <a href="#produits" data-action="filter-category" data-filter="corps" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
-                    <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F33F;</div>
-                    <div id="routineStep4" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">4. Hydratation</div>
-                    <div id="routineStep4Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">Huiles, cr&egrave;mes, brumes</div>
-                </a>
-            </div>
-            <div style="text-align:center;">
-                <a href="pages/diagnostic.html" class="btn btn-primary" id="routineDiagBtn" style="font-size:1rem;padding:16px 36px;border-radius:30px;">&#10024; Trouver ma routine id&eacute;ale &rarr;</a>
-                <p id="routineSubtext" style="font-size:.78rem;color:var(--color-text-light,#6b6560);margin-top:8px;">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
+            <!-- JS renders the dynamic routine builder here -->
+            <div id="routineBuilder"></div>
+            <div style="text-align:center;margin-top:28px;">
+                <p style="font-size:.85rem;color:var(--color-text-light,#6b6560);margin-bottom:12px;">Pas s&ucirc;re de vos choix ?</p>
+                <a href="pages/diagnostic.html" class="btn btn-outline" id="routineDiagBtn" style="font-size:.9rem;padding:14px 32px;border-radius:30px;">&#10024; Laissez l'IA choisir pour vous &rarr;</a>
+                <p id="routineSubtext" style="font-size:.75rem;color:var(--color-text-light,#6b6560);margin-top:8px;">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
             </div>
         </div>
     </section>
@@ -872,7 +821,7 @@
     <script src="js/wishlist.js?v=3" defer></script>
     <script src="js/recently-viewed.js?v=2" defer></script>
     <script src="js/social-share.js?v=2" defer></script>
-    <script src="js/i18n.js?v=5" defer></script>
+    <script src="js/i18n.js?v=6" defer></script>
     <script src="js/app.js?v=5" defer></script>
     <script src="js/smart-features.js?v=3" defer></script>
     <script src="js/search.js?v=2" defer></script>
@@ -969,6 +918,8 @@
     <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
+<script src="js/routine-builder.js?v=3" defer></script>
+<script src="js/bundles-dynamic.js?v=1" defer></script>
 <script src="js/homepage.js?v=8" defer></script>
 <script src="js/mega-menu.js" defer></script>
 <script src="js/animations.js" defer></script>

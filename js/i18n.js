@@ -217,9 +217,9 @@ const TRANSLATIONS = {
         section_best_desc: 'Une s\u00e9lection de produits que nous recommandons. Les best-sellers appara\u00eetront ici automatiquement d\u00e8s les premi\u00e8res commandes.',
 
         // Routine composer
-        routine_tag: '\u2728 Notre force : l\'IA',
-        routine_title: 'Votre routine personnalis\u00e9e',
-        routine_desc: 'L\'IA analyse votre peau et compose la routine id\u00e9ale. Unique en France.',
+        routine_tag: '\u2728 Composez votre routine',
+        routine_title: 'Votre routine personnalis\u00e9e en 4 minutes',
+        routine_desc: '2 questions sur votre peau, puis choisissez vos produits \u00e0 chaque \u00e9tape. L\u2019IA personnalise les conseils selon votre profil.',
         routine_step1: '1. Nettoyage',
         routine_step1_desc: 'Brosses soniques, scrubbers, vapeur',
         routine_step2: '2. Soin cibl\u00e9',
@@ -611,9 +611,9 @@ const TRANSLATIONS = {
         section_best_desc: 'A selection of products we recommend. Best-sellers will appear here automatically after the first orders.',
 
         // Routine composer
-        routine_tag: '\u2728 Our strength: AI',
-        routine_title: 'Your personalized routine',
-        routine_desc: 'AI analyzes your skin and creates the ideal routine. Unique in Europe.',
+        routine_tag: '\u2728 Build your routine',
+        routine_title: 'Your personalised routine in 4 minutes',
+        routine_desc: '2 questions about your skin, then choose your products at each step. AI tailors the tips to your profile.',
         routine_step1: '1. Cleansing',
         routine_step1_desc: 'Sonic brushes, scrubbers, steamers',
         routine_step2: '2. Targeted care',
@@ -998,9 +998,9 @@ const TRANSLATIONS = {
         section_best_desc: 'Una selecci\u00f3n de productos que recomendamos. Los m\u00e1s vendidos aparecer\u00e1n aqu\u00ed autom\u00e1ticamente.',
 
         // Routine composer
-        routine_tag: '\u2728 Nuestra fuerza: la IA',
-        routine_title: 'Tu rutina personalizada',
-        routine_desc: 'La IA analiza tu piel y crea la rutina ideal. \u00danico en Europa.',
+        routine_tag: '\u2728 Compone tu rutina',
+        routine_title: 'Tu rutina personalizada en 4 minutos',
+        routine_desc: '2 preguntas sobre tu piel, luego elige tus productos en cada paso. La IA adapta los consejos a tu perfil.',
         routine_step1: '1. Limpieza',
         routine_step1_desc: 'Cepillos s\u00f3nicos, scrubbers, vaporizadores',
         routine_step2: '2. Cuidado espec\u00edfico',
@@ -1385,9 +1385,9 @@ const TRANSLATIONS = {
         section_best_desc: 'Eine Auswahl von Produkten, die wir empfehlen. Bestseller erscheinen hier automatisch nach den ersten Bestellungen.',
 
         // Routine composer
-        routine_tag: '\u2728 Unsere St\u00e4rke: KI',
-        routine_title: 'Ihre personalisierte Routine',
-        routine_desc: 'KI analysiert Ihre Haut und erstellt die ideale Routine. Einzigartig in Europa.',
+        routine_tag: '\u2728 Stellen Sie Ihre Routine zusammen',
+        routine_title: 'Ihre personalisierte Routine in 4 Minuten',
+        routine_desc: '2 Fragen zu Ihrer Haut, dann w\u00e4hlen Sie Ihre Produkte. KI passt die Tipps an Ihr Profil an.',
         routine_step1: '1. Reinigung',
         routine_step1_desc: 'Sonic-B\u00fcrsten, Scrubber, Dampf',
         routine_step2: '2. Gezielte Pflege',
@@ -1669,14 +1669,7 @@ function applyTranslations() {
         '#routineTag': 'routine_tag',
         '#routineTitle': 'routine_title',
         '#routineDesc': 'routine_desc',
-        '#routineStep1': 'routine_step1',
-        '#routineStep1Desc': 'routine_step1_desc',
-        '#routineStep2': 'routine_step2',
-        '#routineStep2Desc': 'routine_step2_desc',
-        '#routineStep3': 'routine_step3',
-        '#routineStep3Desc': 'routine_step3_desc',
-        '#routineStep4': 'routine_step4',
-        '#routineStep4Desc': 'routine_step4_desc',
+        // Old routine step IDs removed — steps are now rendered dynamically by routine-builder.js
         '#routineSubtext': 'routine_subtext',
 
         // Unique section
