@@ -39,8 +39,8 @@
     <link rel="preconnect" href="https://cf.cjdropshipping.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=optional" rel="stylesheet"></noscript>
     <!-- Critical CSS (above-the-fold) -->
     <style>
     /* CLS fix: fallback font metrics matching to reduce font swap layout shift */
@@ -52,13 +52,13 @@
 /* CLS fix: reserve space for dynamic sections */
 .products-section{min-height:600px}.categories-visual{min-height:280px}.bestsellers-section{min-height:380px}.bundles-section{min-height:350px}.homepage-carousel-section{min-height:360px}.ai-personalization{min-height:200px}#homepageCarousels{min-height:400px}.products-grid{min-height:400px}.bestseller-showcase{min-height:280px}.bundles-grid{min-height:280px}
 /* CLS fix: hero dots placeholder space */
-.hero{position:relative;padding-bottom:48px}.hero-dots{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;min-height:48px}
+.hero{position:relative;padding-bottom:48px;overflow:hidden}.hero-dots{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;min-height:48px}
 /* CLS fix: mobile section heights */
 @media(max-width:768px){.products-section{min-height:400px}.categories-visual{min-height:240px}.bestsellers-section{min-height:300px}.bundles-section{min-height:300px}.homepage-carousel-section{min-height:300px}#homepageCarousels{min-height:320px}.products-grid{min-height:300px}}
     </style>
     <!-- Full CSS (async load) -->
-    <link rel="stylesheet" href="css/style.css?v=17" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/style.css?v=17"></noscript>
+    <link rel="stylesheet" href="css/style.css?v=18" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/style.css?v=18"></noscript>
     <link rel="stylesheet" href="css/themes.css?v=3" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/themes.css?v=3"></noscript>
     <link rel="stylesheet" href="css/animations.css?v=3" media="print" onload="this.media='all'">
@@ -586,7 +586,7 @@
         <div class="container promo-banner-inner">
             <div>
                 <span class="promo-offer-tag">Offre de lancement</span>
-                <h3 class="promo-offer-title">-10% avec le code <strong>BIENVENUE10</strong></h3>
+                <h2 class="promo-offer-title">-10% avec le code <strong>BIENVENUE10</strong></h2>
                 <p class="promo-offer-desc">Valable sur tout le site, sans minimum d'achat.</p>
             </div>
             <a href="#produits" class="btn promo-offer-btn">Voir la boutique</a>
@@ -698,7 +698,7 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Boutique</h4>
+                    <h3 class="footer-col-heading">Boutique</h3>
                     <ul>
                         <li><a href="#produits" id="fl_all">Tous les produits</a></li>
                         <li><a href="#bestsellers" id="fl_best">Best-sellers</a></li>
@@ -708,7 +708,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Service Client</h4>
+                    <h3 class="footer-col-heading">Service Client</h3>
                     <ul>
                         <li><a href="pages/faq.html">FAQ</a></li>
                         <li><a href="pages/livraison.html" id="fl_ship">Livraison</a></li>
@@ -719,7 +719,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Ressources</h4>
+                    <h3 class="footer-col-heading">Ressources</h3>
                     <ul>
                         <li><a href="pages/blog.html" id="fl_blog">Blog Beaut&eacute;</a></li>
                         <li><a href="pages/guide-beaute.html" id="fl_guide">Guide Scientifique</a></li>
@@ -728,7 +728,7 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>L&eacute;gal</h4>
+                    <h3 class="footer-col-heading">L&eacute;gal</h3>
                     <ul>
                         <li><a href="pages/cgv.html" id="fl_cgv">CGV</a></li>
                         <li><a href="pages/mentions-legales.html" id="fl_legal">Mentions l&eacute;gales</a></li>
@@ -960,7 +960,7 @@
     </script>
 
     <!-- Floating CTA button (appears on scroll past hero) -->
-    <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
+    <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
 <script src="js/routine-builder.js?v=3" defer fetchpriority="low"></script>

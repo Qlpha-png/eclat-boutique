@@ -724,6 +724,7 @@ input { font-family: inherit; }
         flex-shrink: 0;
         padding: 10px 18px;
         font-size: 0.82rem;
+        min-height: 48px;
     }
 
     /* Filters toggle on mobile */
@@ -1532,7 +1533,8 @@ input { font-family: inherit; }
     margin-bottom: 12px;
 }
 
-.footer-col h4 {
+.footer-col h4,
+.footer-col-heading {
     color: var(--color-white);
     font-size: 0.9rem;
     font-weight: 600;
@@ -1632,7 +1634,7 @@ input { font-family: inherit; }
 
 .footer-payments-label {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.7);
     margin-right: 8px;
     font-weight: 500;
 }
@@ -4905,7 +4907,7 @@ input { font-family: inherit; }
     align-items: center;
     gap: 6px;
     font-size: .8rem;
-    color: var(--color-text-light);
+    color: var(--color-text);
     font-weight: 500;
 }
 
@@ -5135,7 +5137,7 @@ input { font-family: inherit; }
 /* Footer description and links */
 .footer-desc {
     font-size: .85rem;
-    color: var(--color-text-light);
+    color: rgba(255,255,255,0.7);
     margin-top: 8px;
 }
 .footer-diag-wrap { margin-top: 16px; }
@@ -5148,7 +5150,7 @@ input { font-family: inherit; }
 .footer-siret {
     font-size: .7rem;
     margin-top: 4px;
-    opacity: .5;
+    color: rgba(255,255,255,0.6);
 }
 
 /* Cart footer hidden by default */
@@ -5414,8 +5416,8 @@ html, body {
     .footer-col a {
         display: inline-block;
         padding: 8px 0;
-        min-height: 44px;
-        line-height: 28px;
+        min-height: 48px;
+        line-height: 32px;
     }
 }
 
