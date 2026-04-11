@@ -33,6 +33,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
+        html { scroll-behavior: smooth; }
         .product-page { max-width:1000px; margin:40px auto; padding:0 24px 80px; }
         .pp-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
         .pp-image { border-radius:var(--radius-lg); overflow:hidden; background:var(--color-bg-alt); }
@@ -457,7 +458,7 @@
                 '<div class="pp-category">' + escapeHTML(pCatLabel) + '</div>' +
                 '<h1 class="pp-name">' + escapeHTML(pName) + '</h1>' +
                 '<div style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--color-text-light);margin:-8px 0 4px;"><span>' + prodOrigin.flag + '</span> <span>' + escapeHTML(prodOrigin.text) + '</span></div>' +
-                (product.reviews > 0 ? '<div class="pp-rating">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5 (' + product.reviews + ' avis)</span></div>' : '<div class="pp-rating" style="font-size:0.9rem;color:var(--color-text-light);">Aucun avis &mdash; <a href="#ppReviews" style="color:var(--color-secondary);text-decoration:underline;">Soyez le premier !</a></div>') +
+                (product.reviews > 0 ? '<div class="pp-rating"><a href="#ppReviews" style="text-decoration:none;color:inherit;cursor:pointer;">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5 (' + product.reviews + ' avis) \u2193</span></a></div>' : '<div class="pp-rating" style="font-size:0.9rem;color:var(--color-text-light);">Aucun avis &mdash; <a href="#ppReviews" style="color:var(--color-secondary);text-decoration:underline;font-weight:600;">Soyez le premier \u00e0 donner votre avis !</a></div>') +
                 (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: pName + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
                 '<p class="pp-desc">' + escapeHTML(pDesc) + '</p>' +
@@ -472,6 +473,7 @@
                     '<a href="../index.html?produit=' + product.id + '" class="btn btn-primary" style="flex:1;">Ajouter au panier</a>' +
                     (typeof Wishlist !== 'undefined' ? Wishlist.heartHTML(product.id, 26) : '') +
                 '</div>' +
+                '<a href="#ppReviews" onclick="setTimeout(function(){toggleReviewForm()},400)" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;padding:10px 16px;background:linear-gradient(135deg,rgba(201,168,124,0.1),rgba(201,168,124,0.05));border:1px solid var(--color-secondary);border-radius:var(--radius-md);text-decoration:none;color:var(--color-secondary-text);font-size:0.85rem;font-weight:600;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.background=\'rgba(201,168,124,0.18)\'" onmouseout="this.style.background=\'linear-gradient(135deg,rgba(201,168,124,0.1),rgba(201,168,124,0.05))\'"><span style="font-size:1.1rem;">\u2605</span> Laisser un avis (+15 \u00c9clats)</a>' +
                 '<div id="ppStockDelivery"></div>' +
                 '<div class="pp-badges">' +
                     ((details.features || product.features || []).indexOf('Certifi\u00e9 CE') !== -1 ? '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' : '') +
