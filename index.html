@@ -387,9 +387,9 @@
                 <a href="#routine-composer" class="btn btn-outline">&#10024; Composer ma routine</a>
             </div>
             <div class="hero-perks" style="display:flex;gap:16px;flex-wrap:wrap;">
-                <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
-                <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128260; Retours 30j</span>
-                <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;" data-i18n="hero_perk_diag">&#10024; Diagnostic personnalis&eacute;</span>
+                <span id="heroPerkShip" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
+                <span id="heroPerkReturn" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128260; Retours 30j</span>
+                <span id="heroPerkDiag" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#10024; Diagnostic personnalis&eacute;</span>
             </div>
         </div>
         <div class="hero-visual">
@@ -405,11 +405,11 @@
     <!-- Trust Bar — compact 1-ligne (comme Amazon/Sephora) -->
     <div class="trust-bar" style="background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:12px 0;">
         <div class="container" style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center;">
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128666; Livraison suivie 7-14j</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128274; Paiement Stripe s&eacute;curis&eacute;</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#8634; Retours 30 jours</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#10024; Diagnostic personnalis&eacute;</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#127467;&#127479; Entreprise fran&ccedil;aise</span>
+            <span id="tbShip" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128666; Livraison suivie 7-14j</span>
+            <span id="tbPay" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128274; Paiement Stripe s&eacute;curis&eacute;</span>
+            <span id="tbReturn" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#8634; Retours 30 jours</span>
+            <span id="tbDiag" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#10024; Diagnostic personnalis&eacute;</span>
+            <span id="tbEu" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#127467;&#127479; Entreprise fran&ccedil;aise</span>
         </div>
     </div>
 
@@ -919,7 +919,7 @@
     <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic beaut&eacute; gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
-<script src="js/homepage.js?v=4" defer></script>
+<script src="js/homepage.js?v=5" defer></script>
 <script src="js/mega-menu.js" defer></script>
 <script src="js/animations.js" defer></script>
 <script src="js/preferences.js" defer></script>

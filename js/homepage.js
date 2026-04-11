@@ -16,40 +16,59 @@
         'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80'
     ];
 
-    var heroSlides = [
-        {
-            tag: 'Lancement 2026',
-            title: 'Votre beaut\u00e9,<br><em>sublim\u00e9e par la science.</em>',
-            desc: '500+ soins s\u00e9lectionn\u00e9s. Chaque ingr\u00e9dient analys\u00e9. Livraison suivie en Europe.',
-            btn1: { text: '\uD83D\uDD2C Trouver ma routine', href: 'pages/diagnostic.html' },
-            btn2: { text: '\u2728 Composer ma routine', href: '#routine-composer' },
-            bg: 'linear-gradient(135deg, #fff5f8 0%, #fce8ef 50%, #fdf5f0 100%)'
-        },
-        {
-            tag: '-10% sur tout',
-            title: 'Code <em>BIENVENUE10</em>',
-            desc: 'Votre premi\u00e8re commande \u00e0 prix r\u00e9duit. Sans minimum d\'achat. Cumulable avec les coffrets.',
-            btn1: { text: '\uD83C\uDF81 Voir les coffrets', href: '#packs' },
-            btn2: { text: '\uD83D\uDED2 Voir la boutique', href: '#produits' },
-            bg: 'linear-gradient(135deg, #f8f0e8 0%, #f0e4d4 50%, #faf5f0 100%)'
-        },
-        {
-            tag: 'Diagnostic IA',
-            title: 'Trouvez votre<br><em>routine id\u00e9ale</em>',
-            desc: '4 questions, 2 minutes. Notre IA analyse votre peau et recommande les produits adapt\u00e9s.',
-            btn1: { text: '\uD83E\uDDD2 Faire le diagnostic', href: 'pages/diagnostic.html' },
-            btn2: { text: '\uD83D\uDCD6 Guide beaut\u00e9', href: 'pages/guide-beaute.html' },
-            bg: 'linear-gradient(135deg, #f5f0f8 0%, #ece4f0 50%, #faf5fa 100%)'
-        },
-        {
-            tag: 'Programme \u00c9clats',
-            title: 'Chaque achat<br><em>vous r\u00e9compense</em>',
-            desc: 'Gagnez des \u00c9clats \u00e0 chaque commande. 4 paliers, coffre du jour, d\u00e9fis hebdo.',
-            btn1: { text: '\uD83D\uDC8E D\u00e9couvrir', href: 'pages/loyalty.html' },
-            btn2: { text: '\uD83D\uDCDD Cr\u00e9er un compte', href: 'pages/register.html' },
-            bg: 'linear-gradient(135deg, #fdf5f0 0%, #fce8e0 50%, #f5ebe4 100%)'
-        }
+    // Hero slide texts — i18n 4 langues
+    var HERO_TEXTS = {
+        fr: [
+            { tag: 'Lancement 2026', title: 'Votre beaut\u00e9,<br><em>sublim\u00e9e par la science.</em>', desc: '500+ soins s\u00e9lectionn\u00e9s. Chaque ingr\u00e9dient analys\u00e9. Livraison suivie en Europe.', btn1: '\uD83D\uDD2C Trouver ma routine', btn2: '\u2728 Composer ma routine' },
+            { tag: '-10% sur tout', title: 'Code <em>BIENVENUE10</em>', desc: 'Votre premi\u00e8re commande \u00e0 prix r\u00e9duit. Sans minimum d\'achat. Cumulable avec les coffrets.', btn1: '\uD83C\uDF81 Voir les coffrets', btn2: '\uD83D\uDED2 Voir la boutique' },
+            { tag: 'Diagnostic IA', title: 'Trouvez votre<br><em>routine id\u00e9ale</em>', desc: '4 questions, 2 minutes. Notre IA analyse votre peau et recommande les produits adapt\u00e9s.', btn1: '\uD83E\uDDD2 Faire le diagnostic', btn2: '\uD83D\uDCD6 Guide beaut\u00e9' },
+            { tag: 'Programme \u00c9clats', title: 'Chaque achat<br><em>vous r\u00e9compense</em>', desc: 'Gagnez des \u00c9clats \u00e0 chaque commande. 4 paliers, coffre du jour, d\u00e9fis hebdo.', btn1: '\uD83D\uDC8E D\u00e9couvrir', btn2: '\uD83D\uDCDD Cr\u00e9er un compte' }
+        ],
+        en: [
+            { tag: 'Launch 2026', title: 'Your beauty,<br><em>elevated by science.</em>', desc: '500+ curated products. Every ingredient analyzed. Tracked shipping across Europe.', btn1: '\uD83D\uDD2C Find my routine', btn2: '\u2728 Build my routine' },
+            { tag: '-10% on everything', title: 'Code <em>BIENVENUE10</em>', desc: 'Your first order at a reduced price. No minimum purchase. Stackable with bundles.', btn1: '\uD83C\uDF81 View bundles', btn2: '\uD83D\uDED2 Browse shop' },
+            { tag: 'AI Diagnostic', title: 'Find your<br><em>ideal routine</em>', desc: '4 questions, 2 minutes. Our AI analyzes your skin and recommends the right products.', btn1: '\uD83E\uDDD2 Take the diagnostic', btn2: '\uD83D\uDCD6 Beauty guide' },
+            { tag: '\u00c9clats Program', title: 'Every purchase<br><em>earns rewards</em>', desc: 'Earn \u00c9clats on every order. 4 tiers, daily chest, weekly challenges.', btn1: '\uD83D\uDC8E Discover', btn2: '\uD83D\uDCDD Create an account' }
+        ],
+        es: [
+            { tag: 'Lanzamiento 2026', title: 'Tu belleza,<br><em>sublimada por la ciencia.</em>', desc: '500+ productos seleccionados. Cada ingrediente analizado. Env\u00edo con seguimiento en Europa.', btn1: '\uD83D\uDD2C Encontrar mi rutina', btn2: '\u2728 Crear mi rutina' },
+            { tag: '-10% en todo', title: 'C\u00f3digo <em>BIENVENUE10</em>', desc: 'Tu primer pedido a precio reducido. Sin m\u00ednimo de compra. Acumulable con packs.', btn1: '\uD83C\uDF81 Ver packs', btn2: '\uD83D\uDED2 Ver tienda' },
+            { tag: 'Diagn\u00f3stico IA', title: 'Encuentra tu<br><em>rutina ideal</em>', desc: '4 preguntas, 2 minutos. Nuestra IA analiza tu piel y recomienda los productos adecuados.', btn1: '\uD83E\uDDD2 Hacer el diagn\u00f3stico', btn2: '\uD83D\uDCD6 Gu\u00eda belleza' },
+            { tag: 'Programa \u00c9clats', title: 'Cada compra<br><em>te recompensa</em>', desc: 'Gana \u00c9clats con cada pedido. 4 niveles, cofre diario, desaf\u00edos semanales.', btn1: '\uD83D\uDC8E Descubrir', btn2: '\uD83D\uDCDD Crear una cuenta' }
+        ],
+        de: [
+            { tag: 'Launch 2026', title: 'Ihre Sch\u00f6nheit,<br><em>veredelt durch Wissenschaft.</em>', desc: '\u00dcber 500 ausgew\u00e4hlte Produkte. Jede Zutat analysiert. Versand mit Tracking in Europa.', btn1: '\uD83D\uDD2C Meine Routine finden', btn2: '\u2728 Routine zusammenstellen' },
+            { tag: '-10% auf alles', title: 'Code <em>BIENVENUE10</em>', desc: 'Ihre erste Bestellung zum reduzierten Preis. Kein Mindestbestellwert. Mit Sets kombinierbar.', btn1: '\uD83C\uDF81 Sets ansehen', btn2: '\uD83D\uDED2 Shop durchst\u00f6bern' },
+            { tag: 'KI-Diagnose', title: 'Finden Sie Ihre<br><em>ideale Routine</em>', desc: '4 Fragen, 2 Minuten. Unsere KI analysiert Ihre Haut und empfiehlt die passenden Produkte.', btn1: '\uD83E\uDDD2 Diagnose machen', btn2: '\uD83D\uDCD6 Beauty-Guide' },
+            { tag: '\u00c9clats-Programm', title: 'Jeder Einkauf<br><em>wird belohnt</em>', desc: 'Sammeln Sie \u00c9clats bei jeder Bestellung. 4 Stufen, t\u00e4gliche Truhe, w\u00f6chentliche Herausforderungen.', btn1: '\uD83D\uDC8E Entdecken', btn2: '\uD83D\uDCDD Konto erstellen' }
+        ]
+    };
+
+    // Slide structure (non-text properties)
+    var heroSlidesMeta = [
+        { btn1Href: 'pages/diagnostic.html', btn2Href: '#routine-composer', bg: 'linear-gradient(135deg, #fff5f8 0%, #fce8ef 50%, #fdf5f0 100%)' },
+        { btn1Href: '#packs', btn2Href: '#produits', bg: 'linear-gradient(135deg, #f8f0e8 0%, #f0e4d4 50%, #faf5f0 100%)' },
+        { btn1Href: 'pages/diagnostic.html', btn2Href: 'pages/guide-beaute.html', bg: 'linear-gradient(135deg, #f5f0f8 0%, #ece4f0 50%, #faf5fa 100%)' },
+        { btn1Href: 'pages/loyalty.html', btn2Href: 'pages/register.html', bg: 'linear-gradient(135deg, #fdf5f0 0%, #fce8e0 50%, #f5ebe4 100%)' }
     ];
+
+    function getHeroSlides() {
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+        var texts = HERO_TEXTS[lang] || HERO_TEXTS.fr;
+        return texts.map(function(t, i) {
+            var meta = heroSlidesMeta[i];
+            return {
+                tag: t.tag,
+                title: t.title,
+                desc: t.desc,
+                btn1: { text: t.btn1, href: meta.btn1Href },
+                btn2: { text: t.btn2, href: meta.btn2Href },
+                bg: meta.bg
+            };
+        });
+    }
+
+    var heroSlides = getHeroSlides();
 
     var currentSlide = 0;
     var slideInterval = null;
@@ -110,6 +129,7 @@
         if (!heroContent || !heroSection) return;
 
         currentSlide = idx;
+        heroSlides = getHeroSlides();
         var slide = heroSlides[idx];
 
         // Fade out
@@ -193,8 +213,10 @@
             }
             var priceStr = p.price.toFixed(2).replace('.', ',') + ' \u20ac';
             var badgeHTML = '';
-            if (p.badge === 'best') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary);color:var(--color-white,#fff);font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">Best-seller</span>';
-            if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#4caf50;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">Nouveau</span>';
+            var badgeBestText = (typeof t === 'function') ? t('badge_bestseller') : 'Best-seller';
+            var badgeNewText = (typeof t === 'function') ? t('badge_new') : 'Nouveau';
+            if (p.badge === 'best') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary);color:var(--color-white,#fff);font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeBestText + '</span>';
+            if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#4caf50;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeNewText + '</span>';
 
             html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';

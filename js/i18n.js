@@ -286,7 +286,20 @@ const TRANSLATIONS = {
         fl_cgv: 'CGV',
         fl_legal: 'Mentions l\u00e9gales',
         fl_privacy: 'Confidentialit\u00e9',
-        fl_retract: 'Droit de r\u00e9tractation'
+        fl_retract: 'Droit de r\u00e9tractation',
+        fl_cookies: 'G\u00e9rer les cookies',
+
+        // Hero perks
+        hero_perk_ship: '\uD83D\uDE9A Livraison offerte d\u00e8s 29\u20ac',
+        hero_perk_return: '\uD83D\uDD04 Retours 30j',
+        hero_perk_diag: '\u2728 Diagnostic personnalis\u00e9',
+
+        // Trust bar
+        tb_ship: '\uD83D\uDE9A Livraison suivie 7-14j',
+        tb_pay: '\uD83D\uDD12 Paiement Stripe s\u00e9curis\u00e9',
+        tb_return: '\u21BA Retours 30 jours',
+        tb_diag: '\u2728 Diagnostic personnalis\u00e9',
+        tb_eu: '\uD83C\uddEB\uD83C\udDF7 Entreprise fran\u00e7aise'
     },
 
     en: {
@@ -560,7 +573,20 @@ const TRANSLATIONS = {
         fl_cgv: 'Terms & Conditions',
         fl_legal: 'Legal notices',
         fl_privacy: 'Privacy policy',
-        fl_retract: 'Right of withdrawal'
+        fl_retract: 'Right of withdrawal',
+        fl_cookies: 'Manage cookies',
+
+        // Hero perks
+        hero_perk_ship: '\uD83D\uDE9A Free shipping over \u20ac29',
+        hero_perk_return: '\uD83D\uDD04 30-day returns',
+        hero_perk_diag: '\u2728 Personalized diagnostic',
+
+        // Trust bar
+        tb_ship: '\uD83D\uDE9A Tracked shipping 7-14 days',
+        tb_pay: '\uD83D\uDD12 Secure Stripe payment',
+        tb_return: '\u21BA 30-day returns',
+        tb_diag: '\u2728 Personalized diagnostic',
+        tb_eu: '\uD83C\uddEB\uD83C\udDF7 French company'
     },
 
     es: {
@@ -834,7 +860,20 @@ const TRANSLATIONS = {
         fl_cgv: 'Condiciones generales',
         fl_legal: 'Aviso legal',
         fl_privacy: 'Pol\u00edtica de privacidad',
-        fl_retract: 'Derecho de desistimiento'
+        fl_retract: 'Derecho de desistimiento',
+        fl_cookies: 'Gestionar cookies',
+
+        // Hero perks
+        hero_perk_ship: '\uD83D\uDE9A Env\u00edo gratis desde 29\u20ac',
+        hero_perk_return: '\uD83D\uDD04 Devoluciones 30d',
+        hero_perk_diag: '\u2728 Diagn\u00f3stico personalizado',
+
+        // Trust bar
+        tb_ship: '\uD83D\uDE9A Env\u00edo con seguimiento 7-14d',
+        tb_pay: '\uD83D\uDD12 Pago seguro con Stripe',
+        tb_return: '\u21BA Devoluciones 30 d\u00edas',
+        tb_diag: '\u2728 Diagn\u00f3stico personalizado',
+        tb_eu: '\uD83C\uddEB\uD83C\udDF7 Empresa francesa'
     },
 
     de: {
@@ -1108,7 +1147,20 @@ const TRANSLATIONS = {
         fl_cgv: 'AGB',
         fl_legal: 'Impressum',
         fl_privacy: 'Datenschutz',
-        fl_retract: 'Widerrufsrecht'
+        fl_retract: 'Widerrufsrecht',
+        fl_cookies: 'Cookies verwalten',
+
+        // Hero perks
+        hero_perk_ship: '\uD83D\uDE9A Kostenloser Versand ab 29\u20ac',
+        hero_perk_return: '\uD83D\uDD04 30 Tage R\u00fcckgabe',
+        hero_perk_diag: '\u2728 Personalisierte Diagnose',
+
+        // Trust bar
+        tb_ship: '\uD83D\uDE9A Versand mit Tracking 7-14T',
+        tb_pay: '\uD83D\uDD12 Sichere Stripe-Zahlung',
+        tb_return: '\u21BA 30 Tage R\u00fcckgabe',
+        tb_diag: '\u2728 Personalisierte Diagnose',
+        tb_eu: '\uD83C\uddEB\uD83C\udDF7 Franz\u00f6sisches Unternehmen'
     }
 };
 
@@ -1287,7 +1339,20 @@ function applyTranslations() {
         '#fl_cgv': 'fl_cgv',
         '#fl_legal': 'fl_legal',
         '#fl_privacy': 'fl_privacy',
-        '#fl_retract': 'fl_retract'
+        '#fl_retract': 'fl_retract',
+        '#cookieFooterLink': 'fl_cookies',
+
+        // Hero perks
+        '#heroPerkShip': 'hero_perk_ship',
+        '#heroPerkReturn': 'hero_perk_return',
+        '#heroPerkDiag': 'hero_perk_diag',
+
+        // Trust bar
+        '#tbShip': 'tb_ship',
+        '#tbPay': 'tb_pay',
+        '#tbReturn': 'tb_return',
+        '#tbDiag': 'tb_diag',
+        '#tbEu': 'tb_eu'
     };
 
     // innerHTML-based translations (trust badges have <br>)
@@ -1400,6 +1465,17 @@ function applyTranslations() {
     // Floating CTA
     var floatingCta = document.getElementById('floatingCTA');
     if (floatingCta) floatingCta.innerHTML = t('floating_cta');
+
+    // Update language selector toggle button
+    var langToggle = document.querySelector('.lang-toggle');
+    if (langToggle) {
+        var codeEl = langToggle.querySelector('.lang-code');
+        if (codeEl) codeEl.textContent = currentLang.toUpperCase();
+        // Update active state in dropdown
+        document.querySelectorAll('.lang-dropdown button').forEach(function(btn) {
+            btn.classList.toggle('active', btn.dataset.lang === currentLang);
+        });
+    }
 }
 
 // Auto-detect language on load
@@ -1413,7 +1489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.id = 'langSelector';
         wrapper.className = 'lang-selector';
         wrapper.innerHTML = '<button type="button" class="lang-toggle" aria-label="Langue">' +
-            '<span class="lang-flag">' + FLAGS[currentLang] + '</span>' +
+            '<svg class="lang-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>' +
             '<span class="lang-code">' + currentLang.toUpperCase() + '</span>' +
             '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>' +
         '</button>' +
@@ -1436,7 +1512,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', function() {
                 var lang = this.dataset.lang;
                 setLanguage(lang);
-                wrapper.querySelector('.lang-flag').textContent = FLAGS[lang];
                 wrapper.querySelector('.lang-code').textContent = lang.toUpperCase();
                 wrapper.querySelector('.lang-dropdown').style.display = 'none';
                 wrapper.querySelectorAll('.lang-dropdown button').forEach(function(b) { b.classList.remove('active'); });

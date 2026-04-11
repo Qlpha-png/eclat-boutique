@@ -733,6 +733,7 @@
                     textDecoration: 'none'
                 });
                 a.href = '#';
+                a.id = 'cookieFooterLink';
                 a.textContent = txt('footerLink');
                 a.onclick = function(e) {
                     e.preventDefault();
