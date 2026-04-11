@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="Soins visage, outils beauté, routines personnalisées. Livraison France offerte dès 39€.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=80">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://maison-eclat.shop">
+    <link rel="canonical" href="https://maison-eclat.shop/">
 
     <!-- Hreflang: International SEO -->
     <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/">
@@ -33,18 +33,22 @@
 
     <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <!-- Critical CSS (above-the-fold) -->
     <style>
-    :root{--color-primary:#2d2926;--color-secondary:#c9a87c;--color-accent:#e8c8a0;--color-bg:#faf8f5;--color-bg-alt:#f3efe9;--color-white:#fff;--color-text:#2d2926;--color-text-light:#5a534e;--color-border:#e8e4de;--color-success:#4caf50;--color-error:#e74c3c;--color-star:#f0b429;--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--radius-xl:30px;--shadow-sm:0 2px 8px rgba(45,41,38,.06);--shadow-md:0 4px 20px rgba(45,41,38,.1);--shadow-lg:0 8px 40px rgba(45,41,38,.12);--transition:all .3s cubic-bezier(.4,0,.2,1)}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.6;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto;display:block}button{cursor:pointer;border:none;background:none;font-family:inherit}input{font-family:inherit}.container{max-width:1200px;margin:0 auto;padding:0 24px}.top-banner{background:var(--color-primary);color:var(--color-white);text-align:center;padding:10px 16px;font-size:.8rem;letter-spacing:.5px}.navbar{position:sticky;top:0;z-index:1000;background:rgba(250,248,245,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--color-border);transition:var(--transition)}.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;gap:32px}.logo{font-family:var(--font-display);font-size:1.8rem;font-weight:700;letter-spacing:3px;color:var(--color-primary)}.nav-links{display:flex;gap:20px;flex-shrink:0}.nav-links li{white-space:nowrap;flex-shrink:0}.nav-links a{font-size:.85rem;font-weight:500;color:var(--color-text-light);transition:var(--transition);position:relative;white-space:nowrap}.nav-actions{display:flex;align-items:center;gap:16px}.cart-btn{position:relative;color:var(--color-primary);transition:var(--transition);padding:8px}.cart-count{position:absolute;top:0;right:0;background:var(--color-secondary);color:var(--color-white);font-size:.65rem;font-weight:600;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}.mobile-menu-btn{display:none;flex-direction:column;gap:5px;padding:8px}.mobile-menu-btn span{width:24px;height:2px;background:var(--color-primary);border-radius:2px;transition:var(--transition)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;font-size:.9rem;font-weight:600;border-radius:var(--radius-xl);transition:var(--transition);letter-spacing:.3px}.btn-primary{background:var(--color-primary);color:var(--color-white)}.btn-outline{border:2px solid var(--color-primary);color:var(--color-primary);background:transparent}.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 110px);align-items:center;padding:60px 24px;max-width:1200px;margin:0 auto;gap:60px}.hero h1{font-family:var(--font-display);font-size:3.5rem;line-height:1.15;margin-bottom:20px;color:var(--color-primary)}.hero h1 em{color:var(--color-secondary);font-style:italic}.hero-content>p{font-size:1.1rem;color:var(--color-text-light);margin-bottom:32px;max-width:480px;line-height:1.7}.hero-buttons{display:flex;gap:16px;margin-bottom:48px;flex-wrap:wrap}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px}.hero-img-wrapper{width:420px;height:420px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;overflow:hidden;box-shadow:0 20px 60px rgba(201,168,124,.2);position:relative;z-index:2;animation:heroFloat 6s ease-in-out infinite}.hero-img-wrapper img{width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}.hero-float{position:absolute;border-radius:50%;z-index:1}.hero-float-1{width:100px;height:100px;background:linear-gradient(135deg,var(--color-secondary),var(--color-accent));opacity:.2;top:20px;right:30px;animation:heroFloat 4s ease-in-out infinite reverse}.hero-float-2{width:60px;height:60px;background:var(--color-accent);opacity:.15;bottom:60px;left:10px;animation:heroFloat 5s ease-in-out 1s infinite}.hero-float-3{width:40px;height:40px;background:var(--color-secondary);opacity:.1;top:40%;right:10%;animation:heroFloat 3s ease-in-out 2s infinite reverse}.loyalty-widget{display:flex;align-items:center;gap:5px;padding:6px 14px;background:linear-gradient(135deg,rgba(201,168,124,.15),rgba(201,168,124,.05));border:1px solid rgba(201,168,124,.3);border-radius:20px;text-decoration:none;transition:all .2s;cursor:pointer}.lw-eclats{font-size:.85rem;font-weight:700;color:var(--color-secondary)}.lw-label{font-size:.7rem;color:var(--color-text-light)}@media(max-width:768px){.hero{grid-template-columns:1fr;min-height:auto;padding:30px 16px;gap:30px;text-align:center}.hero h1{font-size:2.2rem}.nav-links{display:none}.mobile-menu-btn{display:flex}.hero-visual{min-height:300px}.hero-img-wrapper{width:280px;height:280px}.hero-float{display:none}.hero-stats .stat{padding:10px 14px;min-width:80px}}@media(max-width:768px){#routineGrid{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:480px){#routineGrid{grid-template-columns:1fr!important}}
+    :root{--color-primary:#2d2926;--color-secondary:#c9a87c;--color-secondary-text:#8a6d3b;--color-accent:#e8c8a0;--color-bg:#faf8f5;--color-bg-alt:#f3efe9;--color-white:#fff;--color-text:#2d2926;--color-text-light:#5a534e;--color-border:#b0a89e;--color-success:#2e7d32;--color-error:#c62828;--color-star:#b8860b;--font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--radius-sm:8px;--radius-md:12px;--radius-lg:20px;--radius-xl:30px;--shadow-sm:0 2px 8px rgba(45,41,38,.06);--shadow-md:0 4px 20px rgba(45,41,38,.1);--shadow-lg:0 8px 40px rgba(45,41,38,.12);--transition:all .3s cubic-bezier(.4,0,.2,1)}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px;touch-action:manipulation}body{font-family:var(--font-body);color:var(--color-text);background-color:var(--color-bg);line-height:1.6;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto;display:block}button{cursor:pointer;border:none;background:none;font-family:inherit}input{font-family:inherit}.container{max-width:1200px;margin:0 auto;padding:0 24px}.top-banner{background:var(--color-primary);color:var(--color-white);text-align:center;padding:10px 16px;font-size:.8rem;letter-spacing:.5px}.navbar{position:sticky;top:0;z-index:1000;background:rgba(250,248,245,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--color-border);transition:var(--transition)}.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px;gap:32px}.logo{font-family:var(--font-display);font-size:1.8rem;font-weight:700;letter-spacing:3px;color:var(--color-primary)}.nav-links{display:flex;gap:20px;flex-shrink:0}.nav-links li{white-space:nowrap;flex-shrink:0}.nav-links a{font-size:.85rem;font-weight:500;color:var(--color-text-light);transition:var(--transition);position:relative;white-space:nowrap}.nav-actions{display:flex;align-items:center;gap:16px}.cart-btn{position:relative;color:var(--color-primary);transition:var(--transition);padding:8px}.cart-count{position:absolute;top:0;right:0;background:var(--color-secondary);color:var(--color-white);font-size:.65rem;font-weight:600;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}.mobile-menu-btn{display:none;flex-direction:column;gap:5px;padding:8px}.mobile-menu-btn span{width:24px;height:2px;background:var(--color-primary);border-radius:2px;transition:var(--transition)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;font-size:.9rem;font-weight:600;border-radius:var(--radius-xl);transition:var(--transition);letter-spacing:.3px}.btn-primary{background:var(--color-primary);color:var(--color-white)}.btn-outline{border:2px solid var(--color-primary);color:var(--color-primary);background:transparent}.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 110px);align-items:center;padding:60px 24px;max-width:1200px;margin:0 auto;gap:60px}.hero h1{font-family:var(--font-display);font-size:3.5rem;line-height:1.15;margin-bottom:20px;color:var(--color-primary)}.hero h1 em{color:var(--color-secondary-text);font-style:italic}.hero-content>p{font-size:1.1rem;color:var(--color-text-light);margin-bottom:32px;max-width:480px;line-height:1.7}.hero-buttons{display:flex;gap:16px;margin-bottom:48px;flex-wrap:wrap}.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:500px}.hero-img-wrapper{width:420px;height:420px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;overflow:hidden;box-shadow:0 20px 60px rgba(201,168,124,.2);position:relative;z-index:2;animation:heroFloat 6s ease-in-out infinite}.hero-img-wrapper img{width:100%;height:100%;object-fit:cover;transition:opacity .5s ease}@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}.hero-float{position:absolute;border-radius:50%;z-index:1}.hero-float-1{width:100px;height:100px;background:linear-gradient(135deg,var(--color-secondary),var(--color-accent));opacity:.2;top:20px;right:30px;animation:heroFloat 4s ease-in-out infinite reverse}.hero-float-2{width:60px;height:60px;background:var(--color-accent);opacity:.15;bottom:60px;left:10px;animation:heroFloat 5s ease-in-out 1s infinite}.hero-float-3{width:40px;height:40px;background:var(--color-secondary);opacity:.1;top:40%;right:10%;animation:heroFloat 3s ease-in-out 2s infinite reverse}.loyalty-widget{display:flex;align-items:center;gap:5px;padding:6px 14px;background:linear-gradient(135deg,rgba(201,168,124,.15),rgba(201,168,124,.05));border:1px solid rgba(201,168,124,.3);border-radius:20px;text-decoration:none;transition:all .2s;cursor:pointer}.lw-eclats{font-size:.85rem;font-weight:700;color:var(--color-secondary-text)}.lw-label{font-size:.7rem;color:var(--color-text-light)}@media(max-width:768px){.hero{grid-template-columns:1fr;min-height:auto;padding:30px 16px;gap:30px;text-align:center}.hero h1{font-size:2.2rem}.nav-links{display:none}.mobile-menu-btn{display:flex}.hero-visual{min-height:300px}.hero-img-wrapper{width:280px;height:280px}.hero-float{display:none}.hero-stats .stat{padding:10px 14px;min-width:80px}}@media(max-width:768px){#routineGrid{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:480px){#routineGrid{grid-template-columns:1fr!important}}
+.skip-to-content{position:absolute;top:-100px;left:16px;background:var(--color-primary);color:var(--color-white);padding:12px 24px;border-radius:var(--radius-sm);z-index:10000;font-weight:600;transition:top .2s}.skip-to-content:focus{top:8px}
 .hero-content,.hero-visual,.section-header{opacity:1!important;transform:none!important}.anim-fade-up{opacity:1!important;transform:none!important}.anim-fade-scale{opacity:1!important;transform:none!important}.anim-stagger>*{opacity:1!important;transform:none!important}
     </style>
     <!-- Full CSS (async load) -->
-    <link rel="stylesheet" href="css/style.css?v=11" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/style.css?v=11"></noscript>
+    <link rel="stylesheet" href="css/style.css?v=15" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/style.css?v=15"></noscript>
     <link rel="stylesheet" href="css/themes.css?v=2" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/themes.css?v=2"></noscript>
     <link rel="stylesheet" href="css/animations.css?v=3" media="print" onload="this.media='all'">
@@ -341,8 +345,12 @@
         <p>&#128666; Livraison offerte d&egrave;s 29&euro; &bull; &#128260; Satisfait ou rembours&eacute; 30j &bull; &#128274; Paiement s&eacute;curis&eacute;</p>
     </div>
 
+    <!-- Skip to content (accessibilité clavier) -->
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <header>
+    <nav class="navbar" id="navbar" aria-label="Navigation principale">
         <div class="nav-container">
             <a href="index.html" class="logo">&Eacute;CLAT</a>
             <ul class="nav-links" id="navLinks">
@@ -359,28 +367,31 @@
                     <span class="lw-label">Éclats</span>
                 </a>
                 <a href="pages/wishlist.html" class="cart-btn cart-btn--relative" aria-label="Favoris">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
                     </svg>
                     <span class="cart-count cart-count--hidden" id="wishlistBadge">0</span>
                 </a>
                 <button class="cart-btn" id="cartBtn" aria-label="Panier">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
                         <line x1="3" y1="6" x2="21" y2="6"/>
                         <path d="M16 10a4 4 0 01-8 0"/>
                     </svg>
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
                 </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
+    </header>
+
+    <main id="main-content">
 
     <!-- Hero Section — Premium beauty showcase -->
-    <section class="hero" id="main-content">
+    <section class="hero">
         <div class="hero-content">
             <span class="hero-tag">&#10024; Nouvelle marque fran&ccedil;aise — Lancement 2026</span>
             <h1>Votre beaut&eacute;,<br><em>sublim&eacute;e par la science.</em></h1>
@@ -503,7 +514,8 @@
                 <p>500+ soins s&eacute;lectionn&eacute;s. Filtrez par cat&eacute;gorie, prix ou pr&eacute;occupation.</p>
             </div>
 
-            <!-- Category Filter -->
+            <!-- Category Filter (sticky wrapper for Amazon/Uber Eats style tabs) -->
+            <div class="category-filter-sticky" id="categorySticky">
             <div class="category-filter">
                 <button class="filter-btn active" data-category="all">Tous</button>
                 <button class="filter-btn" data-category="visage">Soins visage</button>
@@ -516,6 +528,17 @@
                 <button class="filter-btn" data-category="aromatherapie">Bien-&ecirc;tre</button>
                 <button class="filter-btn" data-category="accessoire">Accessoires</button>
             </div>
+            </div>
+            <script>
+            (function() {
+                var sticky = document.getElementById('categorySticky');
+                if (!sticky) return;
+                var observer = new IntersectionObserver(function(entries) {
+                    sticky.classList.toggle('scrolled', !entries[0].isIntersecting);
+                }, { threshold: [1], rootMargin: '-71px 0px 0px 0px' });
+                observer.observe(sticky);
+            })();
+            </script>
 
             <!-- Filtres avancés injectés par search.js (recherche, tri, prix, préoccupation — i18n 4 langues) -->
 
@@ -645,6 +668,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer Pro -->
     <footer class="footer">
         <div class="container">
@@ -701,23 +726,23 @@
             <div class="footer-trust">
                 <div class="footer-trust-icons">
                     <div class="footer-trust-item">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
                         <span id="trustSsl">Paiement<br>s&eacute;curis&eacute; SSL</span>
                     </div>
                     <div class="footer-trust-item">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                         <span id="trustShip">Livraison<br>suivie France</span>
                     </div>
                     <div class="footer-trust-item">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
                         <span id="trustRefund">Satisfait ou<br>rembours&eacute; 30j</span>
                     </div>
                     <div class="footer-trust-item">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                         <span id="trustSupport">Support client<br>7j/7</span>
                     </div>
                     <div class="footer-trust-item">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         <span id="trustEu">Conforme<br>r&eacute;glementation UE</span>
                     </div>
                 </div>
@@ -745,15 +770,15 @@
 
     <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cartOverlay"></div>
-    <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-label="Panier">
         <div class="cart-header">
             <h3>Votre panier</h3>
-            <button class="cart-close" id="cartClose">&times;</button>
+            <button class="cart-close" id="cartClose" aria-label="Fermer le panier">&times;</button>
         </div>
         <div class="cart-items" id="cartItems">
             <div class="cart-empty" id="cartEmpty">
                 <p>Votre panier est vide</p>
-                <a href="#produits" class="btn btn-outline">D&eacute;couvrir nos produits</a>
+                <a href="#produits" class="btn btn-outline" data-action="close-cart-browse">D&eacute;couvrir nos produits</a>
             </div>
         </div>
         <div class="cart-footer cart-footer--hidden" id="cartFooter">
@@ -773,7 +798,7 @@
     <!-- Quick View Modal -->
     <div class="modal-overlay" id="modalOverlay"></div>
     <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" id="modalClose">&times;</button>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
         <div class="modal-content" id="modalContent"></div>
     </div>
 
@@ -825,9 +850,9 @@
     <script src="js/recently-viewed.js?v=2" defer></script>
     <script src="js/social-share.js?v=2" defer></script>
     <script src="js/i18n.js?v=6" defer></script>
-    <script src="js/app.js?v=5" defer></script>
+    <script src="js/app.js?v=6" defer></script>
     <script src="js/smart-features.js?v=3" defer></script>
-    <script src="js/search.js?v=2" defer></script>
+    <script src="js/search.js?v=3" defer></script>
     <script src="js/automation.js?v=2" defer></script>
     <script>
     // Lazy-load only the needed i18n translation file (~235-251KB each)

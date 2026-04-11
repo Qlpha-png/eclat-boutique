@@ -117,6 +117,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var bundleKey = target.getAttribute('data-bundle-key');
                 if (bundleKey && typeof convertToBundle === 'function') convertToBundle(bundleKey);
                 break;
+            case 'close-cart-browse':
+                // Close cart sidebar then scroll to products
+                if (typeof closeCart === 'function') closeCart();
+                setTimeout(function() {
+                    var section = document.getElementById('produits');
+                    if (section) section.scrollIntoView({ behavior: 'smooth' });
+                }, 200);
+                e.preventDefault();
+                break;
             case 'scroll-carousel':
                 var scTrackId = target.getAttribute('data-track');
                 var dir = parseInt(target.getAttribute('data-dir'), 10);
@@ -176,8 +185,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Mobile menu ---
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
+            var isOpen = navLinks.classList.contains('active');
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+            mobileMenuBtn.setAttribute('aria-label', !isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
         });
     }
 
@@ -187,6 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', function() {
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Ouvrir le menu');
             });
         });
     }
@@ -334,6 +348,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(function() { el.classList.add('visible'); }, i * 40);
             });
         });
+
+        // Auto-collapse on mobile after render
+        if (replace && window.innerWidth <= 768 && products.length > 4) {
+            applyProductsCollapse();
+        }
+    }
+
+    // Auto-collapse products grid on mobile with "Show more" button
+    function applyProductsCollapse() {
+        if (!productsGrid || window.innerWidth > 768) return;
+
+        // Add collapsed class
+        productsGrid.classList.add('products-grid--collapsed');
+
+        // Remove old show-more if exists
+        var oldShowMore = document.querySelector('.products-show-more');
+        if (oldShowMore) oldShowMore.remove();
+
+        // Add "Show more" button
+        var showMoreDiv = document.createElement('div');
+        showMoreDiv.className = 'products-show-more';
+        showMoreDiv.style.cssText = 'text-align:center;padding:20px 0;';
+        showMoreDiv.innerHTML = '<button class="btn btn-outline show-more-btn" id="showMoreProducts">Voir tous les produits ↓</button>';
+        productsGrid.parentNode.insertBefore(showMoreDiv, productsGrid.nextSibling);
+
+        document.getElementById('showMoreProducts').addEventListener('click', function() {
+            productsGrid.classList.remove('products-grid--collapsed');
+            showMoreDiv.style.display = 'none';
+        });
+    }
+
+    // Legacy wrapper
+    function setupProductsCollapse() {
+        applyProductsCollapse();
     }
 
     // Expose renderPage for search.js
@@ -560,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modalContent.innerHTML =
             '<div class="modal-grid">' +
-                '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" referrerpolicy="no-referrer"></div>' +
+                '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="400" height="400" loading="lazy" referrerpolicy="no-referrer"></div>' +
                 '<div class="modal-details">' +
                     '<div class="product-category" data-category-key="' + escapeHTML(product.category) + '">' + getCategoryLabel(product.category) + '</div>' +
                     '<h2 class="product-name" id="modalTitle">' + escapeHTML(pName) + '</h2>' +
@@ -598,12 +646,35 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modalTrigger) { modalTrigger.focus(); modalTrigger = null; }
     };
 
-    // Escape key closes modal
+    // Escape key closes modals + focus trap
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && productModal.classList.contains('active')) {
-            closeModal();
+        // ESC closes active panels
+        if (e.key === 'Escape') {
+            if (productModal && productModal.classList.contains('active')) { closeModal(); return; }
+            if (cartSidebar && cartSidebar.classList.contains('active')) { closeCart(); return; }
+        }
+        // Focus trap within product modal
+        if (e.key === 'Tab' && productModal && productModal.classList.contains('active')) {
+            trapFocus(productModal, e);
+            return;
+        }
+        // Focus trap within cart sidebar
+        if (e.key === 'Tab' && cartSidebar && cartSidebar.classList.contains('active')) {
+            trapFocus(cartSidebar, e);
         }
     });
+
+    function trapFocus(container, e) {
+        var focusable = container.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length === 0) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+            if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+    }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
@@ -613,12 +684,14 @@ document.addEventListener('DOMContentLoaded', function() {
         cartSidebar.classList.add('active');
         cartOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+        setTimeout(function() { if (cartClose) cartClose.focus(); }, 100);
     }
 
     function closeCart() {
         cartSidebar.classList.remove('active');
         cartOverlay.classList.remove('active');
         document.body.style.overflow = '';
+        if (cartBtn) cartBtn.focus();
     }
 
     cartBtn.addEventListener('click', openCart);
@@ -658,17 +731,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const itemsHTML = cart.items.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <div class="cart-item-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" referrerpolicy="no-referrer"></div>
+                <div class="cart-item-image"><img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" width="80" height="80" loading="lazy" referrerpolicy="no-referrer"></div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${escapeHTML(item.name)}</div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
                     <div class="cart-item-qty">
-                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty - 1}">-</button>
+                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty - 1}" aria-label="Réduire la quantité">-</button>
                         <span>${item.qty}</span>
-                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty + 1}">+</button>
+                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty + 1}" aria-label="Augmenter la quantité">+</button>
                     </div>
                 </div>
-                <button class="cart-item-remove" data-action="cart-remove" data-pid="${item.id}">&times;</button>
+                <button class="cart-item-remove" data-action="cart-remove" data-pid="${item.id}" aria-label="Retirer du panier">&times;</button>
             </div>
         `).join('');
 
@@ -872,6 +945,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existing) existing.remove();
         var toast = document.createElement('div');
         toast.className = 'toast ' + type;
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
         toast.textContent = message;
         document.body.appendChild(toast);
         requestAnimationFrame(function() { toast.classList.add('show'); });
@@ -918,6 +993,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Initialize ---
     renderProducts();
+    setupProductsCollapse();
     renderBestsellers();
     renderCart();
 });

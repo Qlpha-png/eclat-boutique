@@ -15,9 +15,19 @@
     <meta name="twitter:image" id="twImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
     <link rel="canonical" id="canonicalLink" href="https://maison-eclat.shop/pages/category.html">
     <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/category.html">
+    <link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/category.html?lang=en">
+    <link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/category.html?lang=es">
+    <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/category.html?lang=de">
+    <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/category.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=2">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="../css/style.css?v=12">
     <link rel="stylesheet" href="../css/themes.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
@@ -59,6 +69,7 @@
 </head>
 <body>
     <!-- Navbar (inclus dynamiquement ou copié) -->
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <div class="top-banner" id="topBanner">Livraison offerte d&egrave;s 49&euro; | Paiement s&eacute;curis&eacute; Stripe</div>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -78,10 +89,12 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
                 </a>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
+
+    <main id="main-content">
     <div class="cat-hero">
         <h1 id="catTitle">Chargement...</h1>
         <p id="catDesc"></p>
@@ -380,6 +393,7 @@
     })();
     </script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</main>
 <script src="../js/push.js?v=2" defer></script>
 </body>
 </html>

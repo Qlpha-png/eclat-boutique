@@ -3,10 +3,10 @@
 // Cache-first assets, network-first API/HTML
 // ============================
 
-var CACHE_NAME = 'eclat-v24';
+var CACHE_NAME = 'eclat-v27';
 var PRECACHE = [
     '/',
-    '/css/style.css?v=11',
+    '/css/style.css?v=15',
     '/css/themes.css?v=2',
     '/css/mega-menu.css?v=1',
     '/css/skeleton.css?v=1',
@@ -14,13 +14,13 @@ var PRECACHE = [
     '/js/products.js?v=2',
     '/js/cart.js?v=2',
     '/js/i18n.js?v=6',
-    '/js/app.js?v=5',
+    '/js/app.js?v=6',
     '/js/homepage.js?v=8',
     '/js/routine-builder.js?v=3',
     '/js/bundles-dynamic.js?v=4',
     '/js/smart-features.js?v=3',
     '/js/chatbot.js?v=5',
-    '/js/search.js?v=2',
+    '/js/search.js?v=3',
     '/js/animations.js',
     '/js/mega-menu.js',
     '/js/wishlist.js?v=3',
@@ -29,10 +29,15 @@ var PRECACHE = [
     '/js/clean-beauty.js?v=2',
     '/js/auth.js?v=3',
     '/js/cookie-consent.js',
-    '/js/recently-viewed.js?v=1',
-    '/js/social-share.js?v=1',
-    '/js/init.js?v=1',
-    '/js/themes.js?v=1',
+    '/js/recently-viewed.js?v=2',
+    '/js/social-share.js?v=2',
+    '/js/init.js',
+    '/js/themes.js?v=3',
+    '/js/automation.js?v=2',
+    '/js/analytics.js',
+    '/js/cart-recovery.js',
+    '/js/preferences.js',
+    '/js/push.js',
     '/pages/offline.html'
 ];
 

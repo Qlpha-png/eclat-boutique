@@ -10,13 +10,15 @@
 [data-theme="nuit"] {
     --color-primary: #e5e5e5;
     --color-secondary: #c9a87c;
+    --color-secondary-text: #d4b88c;
     --color-accent: #e8c8a0;
     --color-bg: #121212;
     --color-bg-alt: #1e1e1e;
     --color-white: #1a1a1a;
     --color-text: #e5e5e5;
     --color-text-light: #9a9590;
-    --color-border: #333330;
+    --color-border: #6a6a65;
+    --color-border-decorative: #333330;
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
     --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
     --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
@@ -58,13 +60,15 @@
 [data-theme="rose"] {
     --color-primary: #4a2040;
     --color-secondary: #d4648a;
+    --color-secondary-text: #a63d62;
     --color-accent: #f5b8cb;
     --color-bg: #fff5f8;
     --color-bg-alt: #fce8ef;
     --color-white: #ffffff;
     --color-text: #4a2040;
     --color-text-light: #8a6070;
-    --color-border: #f0d0dc;
+    --color-border: #a07080;
+    --color-border-decorative: #f0d0dc;
     --shadow-sm: 0 2px 8px rgba(212,100,138,0.08);
     --shadow-md: 0 4px 20px rgba(212,100,138,0.12);
     --shadow-lg: 0 8px 40px rgba(212,100,138,0.16);
@@ -96,23 +100,25 @@
 }
 [data-theme="rose"] .btn-outline {
     border-color: #d4648a;
-    color: #d4648a;
+    color: #a63d62;
 }
 [data-theme="rose"] .section-tag {
-    color: #d4648a;
+    color: #a63d62;
 }
 
 /* ── Nature ── */
 [data-theme="nature"] {
     --color-primary: #2d3b2d;
     --color-secondary: #6b8f5e;
+    --color-secondary-text: #4a6b3e;
     --color-accent: #a8c99b;
     --color-bg: #f5f8f2;
     --color-bg-alt: #e8f0e4;
     --color-white: #ffffff;
     --color-text: #2d3b2d;
     --color-text-light: #5a6e55;
-    --color-border: #d0deca;
+    --color-border: #708066;
+    --color-border-decorative: #d0deca;
     --shadow-sm: 0 2px 8px rgba(107,143,94,0.08);
     --shadow-md: 0 4px 20px rgba(107,143,94,0.12);
     --shadow-lg: 0 8px 40px rgba(107,143,94,0.16);
@@ -135,13 +141,15 @@
     [data-theme="auto"] {
         --color-primary: #e5e5e5;
         --color-secondary: #c9a87c;
+        --color-secondary-text: #d4b88c;
         --color-accent: #e8c8a0;
         --color-bg: #121212;
         --color-bg-alt: #1e1e1e;
         --color-white: #1a1a1a;
         --color-text: #e5e5e5;
         --color-text-light: #9a9590;
-        --color-border: #333330;
+        --color-border: #555550;
+        --color-border-decorative: #333330;
         --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
         --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
         --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);

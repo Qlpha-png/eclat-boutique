@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vos produits favoris - ÉCLAT Beauté & Wellness Premium">
     <title>Ma liste de souhaits - ÉCLAT</title>
+    <link rel="canonical" href="https://maison-eclat.shop/pages/wishlist.html">
+    <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/wishlist.html">
+    <link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/wishlist.html?lang=en">
+    <link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/wishlist.html?lang=es">
+    <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/wishlist.html?lang=de">
+    <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/wishlist.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=2">
+    <link rel="stylesheet" href="../css/style.css?v=12">
     <link rel="stylesheet" href="../css/themes.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
@@ -228,6 +237,7 @@
 <body style="background:var(--color-bg, #faf8f5);">
 
     <!-- Top Banner -->
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <div class="top-banner" id="topBanner">Livraison offerte d&egrave;s 49&euro; | Paiement s&eacute;curis&eacute; Stripe</div>
 
     <!-- Navbar -->
@@ -250,10 +260,12 @@
                     <span id="wishlistCount" style="position:absolute;top:-4px;right:-6px;background:var(--color-secondary);color:var(--color-white);font-size:0.65rem;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;font-weight:700;"></span>
                 </a>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
+
+    <main id="main-content">
     <!-- Wishlist Content -->
     <div class="wl-page">
         <div class="wl-header">
@@ -629,6 +641,7 @@
 
     <script src="../js/auth.js?v=2" defer></script>
     <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-    <script src="../js/push.js?v=2" defer></script>
+    </main>
+<script src="../js/push.js?v=2" defer></script>
 </body>
 </html>

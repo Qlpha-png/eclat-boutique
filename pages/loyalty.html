@@ -22,9 +22,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=2">
+    <link rel="stylesheet" href="../css/style.css?v=12">
     <link rel="stylesheet" href="../css/themes.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
@@ -513,6 +516,7 @@
 <body style="background:var(--color-bg);">
 
     <!-- Top Banner -->
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <div class="top-banner" data-i18n="top_banner">
         Livraison offerte d&egrave;s 49&euro; &mdash; Retours gratuits 30 jours
     </div>
@@ -538,16 +542,16 @@
                 </a>
                 <a href="../index.html#produits" class="cart-btn" aria-label="Panier">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-count" id="cartCount" aria-live="polite" aria-atomic="true">0</span>
                 </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="loyalty-page">
+    <main id="main-content" class="loyalty-page">
 
         <!-- Hero -->
         <section class="loyalty-hero">

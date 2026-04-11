@@ -157,9 +157,10 @@
             btn.onclick = function() { auth.signIn(); };
         }
 
-        var cartBtn = nav.querySelector('.cart-toggle') || nav.querySelector('[onclick*="cart"]');
-        if (cartBtn) {
-            cartBtn.parentNode.insertBefore(btn, cartBtn);
+        // Insert before wishlist/cart buttons (after language selector)
+        var insertRef = nav.querySelector('.cart-btn') || nav.querySelector('#cartBtn') || nav.querySelector('.mobile-menu-btn');
+        if (insertRef) {
+            insertRef.parentNode.insertBefore(btn, insertRef);
         } else {
             nav.appendChild(btn);
         }

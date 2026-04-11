@@ -77,6 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     searchHTML.innerHTML = buildFiltersHTML();
 
+    // Add mobile filter toggle button
+    if (window.innerWidth <= 768) {
+        var toggleBtn = document.createElement('button');
+        toggleBtn.className = 'filters-toggle-btn';
+        toggleBtn.id = 'filtersToggle';
+        toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M6 12h12M8 18h8"/></svg> Filtres & tri';
+        var filterRow = searchHTML.querySelector('.filter-row');
+        if (filterRow) {
+            filterRow.parentNode.insertBefore(toggleBtn, filterRow);
+            toggleBtn.addEventListener('click', function() {
+                filterRow.classList.toggle('filters-visible');
+                toggleBtn.textContent = filterRow.classList.contains('filters-visible') ? '✕ Masquer les filtres' : '☰ Filtres & tri';
+            });
+        }
+    }
+
     // Rebuild on language change
     var origSetLang = window.setLanguage;
     if (origSetLang) {

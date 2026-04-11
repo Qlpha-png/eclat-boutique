@@ -7,16 +7,18 @@
 :root {
     --color-primary: #2d2926;
     --color-secondary: #c9a87c;
+    --color-secondary-text: #8a6d3b;
     --color-accent: #e8c8a0;
     --color-bg: #faf8f5;
     --color-bg-alt: #f3efe9;
     --color-white: #ffffff;
     --color-text: #2d2926;
     --color-text-light: #5a534e;
-    --color-border: #e8e4de;
-    --color-success: #4caf50;
-    --color-error: #e74c3c;
-    --color-star: #f0b429;
+    --color-border: #8e857a;
+    --color-border-decorative: #b0a89e;
+    --color-success: #2e7d32;
+    --color-error: #c62828;
+    --color-star: #876c04;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --radius-sm: 8px;
@@ -82,7 +84,7 @@ input { font-family: inherit; }
     z-index: 1000;
     background: rgba(250, 248, 245, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border-decorative, var(--color-border));
     transition: var(--transition);
 }
 
@@ -174,7 +176,7 @@ input { font-family: inherit; }
 .lw-eclats {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
 }
 .lw-label {
     font-size: 0.7rem;
@@ -189,7 +191,7 @@ input { font-family: inherit; }
     padding: 8px;
 }
 
-.cart-btn:hover { color: var(--color-secondary); }
+.cart-btn:hover { color: var(--color-secondary-text); }
 
 .cart-count {
     position: absolute;
@@ -259,12 +261,12 @@ input { font-family: inherit; }
 }
 
 .btn-secondary {
-    background: var(--color-secondary);
+    background: #9a7a50;
     color: var(--color-white);
 }
 
 .btn-secondary:hover {
-    background: #b8975e;
+    background: #85693f;
     transform: translateY(-2px);
 }
 
@@ -308,7 +310,7 @@ input { font-family: inherit; }
 }
 
 .hero h1 em {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-style: italic;
 }
 
@@ -348,7 +350,7 @@ input { font-family: inherit; }
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     display: block;
     line-height: 1;
 }
@@ -594,7 +596,7 @@ input { font-family: inherit; }
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #a88a5c;
+    color: #8a6d3b;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 12px;
@@ -617,13 +619,52 @@ input { font-family: inherit; }
 .products-section {
     padding: 80px 0;
 }
+/* Anti-verticalité — sections compactes sur mobile */
+@media (max-width: 768px) {
+    .products-section,
+    .bestsellers-section,
+    .bundles-section,
+    .newsletter-section {
+        padding: 48px 0;
+    }
+    .categories-visual {
+        padding: 32px 0;
+    }
+    .section-header {
+        margin-bottom: 20px;
+    }
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    /* Filtres catégorie — scroll horizontal au lieu de wrap */
+    .category-filter {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 8px;
+        margin-left: -24px;
+        margin-right: -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .category-filter::-webkit-scrollbar { display: none; }
+    .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 10px 18px;
+    }
+}
 
 .category-filter {
     display: flex;
     justify-content: center;
     gap: 12px;
     margin-bottom: 40px;
-    flex-wrap: wrap;
+}
+@media (min-width: 769px) {
+    .category-filter { flex-wrap: wrap; }
 }
 
 .filter-btn {
@@ -641,6 +682,73 @@ input { font-family: inherit; }
     background: var(--color-primary);
     color: var(--color-white);
     border-color: var(--color-primary);
+}
+
+/* Mobile: category filter horizontal scroll — MUST come after base styles */
+@media (max-width: 768px) {
+    .category-filter {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 8px;
+        margin-left: -24px;
+        margin-right: -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-bottom: 16px;
+        gap: 8px;
+    }
+    .category-filter::-webkit-scrollbar { display: none; }
+    .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 10px 18px;
+        font-size: 0.82rem;
+    }
+
+    /* Filters toggle on mobile */
+    .advanced-filters .filter-row {
+        display: none;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .advanced-filters .filter-row.filters-visible {
+        display: flex;
+    }
+    .advanced-filters .filter-group {
+        min-width: 45%;
+        flex: unset;
+        width: 48%;
+    }
+    .filters-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        background: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--color-text);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    .filters-toggle-btn:hover {
+        border-color: var(--color-secondary);
+    }
+    .filters-toggle-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+@media (min-width: 769px) {
+    .filters-toggle-btn { display: none; }
 }
 
 .products-grid {
@@ -709,7 +817,7 @@ input { font-family: inherit; }
 }
 
 .badge-best {
-    background: var(--color-secondary);
+    background: #9a7a50;
     color: var(--color-white);
 }
 
@@ -772,7 +880,7 @@ input { font-family: inherit; }
     top: 50%;
     transform: translateY(-50%);
     font-size: 0.78rem;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
 }
 
@@ -907,7 +1015,7 @@ input { font-family: inherit; }
 }
 
 .brand-logo:hover {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
 }
 
 @media (max-width: 768px) {
@@ -985,7 +1093,7 @@ input { font-family: inherit; }
     font-size: 0.75rem; cursor: pointer; background: white; color: var(--color-text);
     transition: var(--transition); white-space: nowrap;
 }
-.chat-suggestion:hover { border-color: var(--color-secondary); color: var(--color-secondary); }
+.chat-suggestion:hover { border-color: var(--color-secondary); color: var(--color-secondary-text); }
 
 .chat-input-area {
     display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--color-border);
@@ -1059,7 +1167,7 @@ input { font-family: inherit; }
 
 .product-category {
     font-size: 0.75rem;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
@@ -1639,7 +1747,7 @@ input { font-family: inherit; }
 
 .cart-item-price {
     font-size: 0.85rem;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
 }
 
@@ -1845,7 +1953,7 @@ input { font-family: inherit; }
 .modal-guide-link {
     display: inline-block;
     font-size: 0.82rem;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     text-decoration: none;
     font-weight: 500;
     padding: 8px 0;
@@ -2144,7 +2252,7 @@ input { font-family: inherit; }
 }
 
 .cookie-content a {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     text-decoration: underline;
 }
 
@@ -2242,7 +2350,7 @@ input { font-family: inherit; }
 }
 
 .spp-text strong { color: var(--color-primary); }
-.spp-text em { color: var(--color-secondary); font-style: normal; font-weight: 600; }
+.spp-text em { color: var(--color-secondary-text); font-style: normal; font-weight: 600; }
 .spp-text small { color: var(--color-text-light); }
 
 .spp-close {
@@ -2772,7 +2880,7 @@ input { font-family: inherit; }
 
 .cross-sell-info .cs-price {
     font-size: 0.78rem;
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
 }
 
@@ -2815,7 +2923,7 @@ input { font-family: inherit; }
 }
 
 .rb-progress-text {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
     font-size: 0.85rem;
 }
@@ -2942,7 +3050,7 @@ input { font-family: inherit; }
 }
 
 .cr-tier.locked strong {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
 }
 
 /* =============================
@@ -2999,7 +3107,7 @@ input { font-family: inherit; }
 }
 
 .rv-price {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-size: 0.9rem;
 }
 
@@ -3115,7 +3223,7 @@ input { font-family: inherit; }
     display: inline-block;
     background: var(--color-bg-alt);
     border: 2px dashed var(--color-secondary);
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 3px;
@@ -3352,7 +3460,7 @@ input { font-family: inherit; }
 
 /* --- Focus Visible --- */
 :focus-visible {
-    outline: 2px solid var(--color-secondary);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -3363,7 +3471,7 @@ input { font-family: inherit; }
 [data-action]:focus-visible,
 .filter-btn:focus-visible,
 .bundle-cta-dynamic:focus-visible {
-    outline: 3px solid var(--color-secondary, #c9a87c);
+    outline: 3px solid var(--color-primary, #2d2926);
     outline-offset: 2px;
 }
 
@@ -3426,11 +3534,11 @@ input { font-family: inherit; }
 }
 .lang-dropdown button:hover {
     background: var(--color-bg-alt);
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
 }
 .lang-dropdown button.active {
     background: var(--color-bg-alt);
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
 }
 .lang-flag { font-size: 1.1em; line-height: 1; }
@@ -3451,7 +3559,7 @@ input { font-family: inherit; }
     margin-bottom: 8px;
 }
 .guarantee-link {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
 }
 
 /* --- Bundle CTA --- */
@@ -3503,10 +3611,29 @@ input { font-family: inherit; }
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* Sous-catégories — scroll horizontal sur mobile (anti-verticalité) */
 .cat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 16px;
+}
+@media (max-width: 768px) {
+    .cat-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        padding-bottom: 8px;
+    }
+    .cat-grid::-webkit-scrollbar { display: none; }
+    .cat-grid .cat-card {
+        min-width: 110px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        padding: 16px 12px;
+    }
 }
 .cat-card {
     display: flex;
@@ -4366,11 +4493,11 @@ input { font-family: inherit; }
     margin-bottom: 6px;
 }
 .rb-card-rating { font-size: 0.78rem; }
-.rb-stars { color: var(--color-star, #f0b429); letter-spacing: 1px; }
+.rb-stars { color: var(--color-star, #b8860b); letter-spacing: 1px; }
 .rb-card-price {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #8a6d3b);
 }
 .rb-card-feature {
     font-size: 0.75rem;
@@ -4733,7 +4860,7 @@ input { font-family: inherit; }
     margin-top: 4px;
 }
 .ai-section-link {
-    color: var(--color-secondary);
+    color: var(--color-secondary-text);
     font-weight: 600;
     text-decoration: underline;
 }
@@ -4927,6 +5054,131 @@ input { font-family: inherit; }
 }
 
 /* ============================
+   HOMEPAGE UX — Compact Mobile + Sticky Tabs + Show More
+   ============================ */
+
+/* 1. Compact Hero on Mobile */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 20px 16px;
+        gap: 16px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+    .hero-content > p {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+    .hero-buttons {
+        margin-bottom: 16px;
+    }
+    .hero-buttons .btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+    }
+    .hero-perks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .hero-perk {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+    .hero-visual {
+        min-height: 200px;
+    }
+    .hero-img-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* 2. Sticky category tabs — Amazon/Uber Eats style */
+.category-filter-sticky {
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    background: var(--color-bg);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border-decorative, var(--color-border));
+    margin-top: -1px;
+    transition: box-shadow 0.2s;
+}
+.category-filter-sticky.scrolled {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+@media (max-width: 768px) {
+    .category-filter-sticky {
+        top: 57px;
+    }
+}
+
+/* 3. Alternating section backgrounds for depth */
+.bestsellers-section {
+    background: var(--color-bg-alt);
+}
+.bundles-section {
+    background: var(--color-bg);
+}
+
+/* Carousel scrollbar hint — subtle gradient */
+.carousel-track::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--color-bg));
+    pointer-events: none;
+    z-index: 2;
+}
+.homepage-carousel-section .carousel-track::after {
+    background: linear-gradient(to right, transparent, var(--color-bg-alt));
+}
+
+/* 4. Products grid — limit height on mobile with "show more" */
+@media (max-width: 768px) {
+    .products-grid--collapsed {
+        max-height: 680px;
+        overflow: hidden;
+        position: relative;
+    }
+    .products-grid--collapsed::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to bottom, transparent, var(--color-bg));
+        pointer-events: none;
+    }
+    .products-show-more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        margin-top: -20px;
+        position: relative;
+        z-index: 2;
+    }
+    .products-show-more .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+@media (min-width: 769px) {
+    .products-show-more {
+        display: none;
+    }
+}
+
+/* ============================
    MOBILE CRITICAL FIXES (375px audit)
    ============================ */
 
@@ -4952,32 +5204,67 @@ html, body {
 /* 4. CRITIQUE — Nav-actions ne doit pas dépasser le viewport */
 @media (max-width: 768px) {
     .nav-actions {
-        gap: 8px;
+        gap: 2px;
         flex-shrink: 1;
         min-width: 0;
+        flex-wrap: nowrap;
     }
     .nav-actions .loyalty-widget {
         display: none;
     }
+    /* Sélecteur langue compact sur mobile */
+    .lang-selector {
+        margin-right: 0;
+    }
+    .lang-selector .lang-toggle {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+        border: none;
+        background: var(--color-bg-alt);
+        border-radius: 6px;
+    }
+    .lang-selector .lang-globe {
+        display: none;
+    }
+    .lang-selector .lang-toggle svg:last-child {
+        display: none;
+    }
+    /* Recherche mobile — masquer la barre (dispo dans le menu) */
+    #navSearchToggle {
+        display: none !important;
+    }
+    /* Bouton profil (injecté par auth.js) */
+    .nav-icon-btn {
+        min-width: 36px;
+        min-height: 36px;
+        padding: 4px !important;
+    }
+    .nav-icon-btn span {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 0.7rem !important;
+    }
     /* Hamburger visible et accessible */
     .mobile-menu-btn {
-        min-width: 44px;
-        min-height: 44px;
-        padding: 10px;
+        min-width: 40px;
+        min-height: 40px;
+        padding: 8px;
         justify-content: center;
         align-items: center;
     }
     /* Boutons cart/wishlist taille tactile */
     .cart-btn {
-        min-width: 44px;
-        min-height: 44px;
+        min-width: 40px;
+        min-height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 6px;
     }
     /* Navbar ne déborde pas */
-    .navbar .container {
-        gap: 8px;
+    .nav-container {
+        padding: 0 12px;
+        gap: 4px;
     }
 }
 
@@ -5044,5 +5331,71 @@ html, body {
     }
     .trust-bar-item {
         font-size: 0.7rem;
+    }
+}
+
+/* 11. iOS Safari — empêcher le zoom auto sur focus input (font-size < 16px) */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="search"],
+    input[type="password"],
+    input[type="url"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* 11b. Très petit écran (iPhone SE/Mini) — masquer sélecteur langue */
+@media (max-width: 400px) {
+    .lang-selector {
+        display: none !important;
+    }
+    .nav-container {
+        padding: 0 10px;
+    }
+}
+
+/* 12. Touch — supprime le délai 300ms sur mobile */
+html {
+    touch-action: manipulation;
+}
+
+/* 13. Focus visible — outline accessible mais pas intrusif */
+:focus-visible {
+    outline: 2px solid var(--color-secondary-text);
+    outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* 14. Skip-to-content pour navigation clavier */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    z-index: 10000;
+    font-weight: 600;
+    transition: top 0.2s;
+}
+.skip-to-content:focus {
+    top: 8px;
+}
+
+/* 15. Réduction mouvement pour utilisateurs sensibles */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
