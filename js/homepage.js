@@ -323,7 +323,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Populaire</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Tendances du moment</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselTendances"></div>';
             sectionsHTML += '</div></section>';
@@ -335,7 +335,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Nouveaut\u00e9s</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Vient d\'arriver</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselNouveautes"></div>';
             sectionsHTML += '</div></section>';
@@ -347,7 +347,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Soins visage</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Les essentiels du visage</h2></div>';
-            sectionsHTML += '<a href="pages/category.html?cat=visage" style="font-size:.85rem;color:var(--color-secondary);font-weight:600;">Voir la cat\u00e9gorie \u2192</a>';
+            sectionsHTML += '<a href="pages/category.html?cat=visage" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir la cat\u00e9gorie \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselVisage"></div>';
             sectionsHTML += '</div></section>';
@@ -359,7 +359,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Bon plan</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Petits prix, grands r\u00e9sultats</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselPetitPrix"></div>';
             sectionsHTML += '</div></section>';
@@ -371,7 +371,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Pour lui</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Grooming &amp; soins homme</h2></div>';
-            sectionsHTML += '<a href="pages/category.html?cat=homme" style="font-size:.85rem;color:var(--color-secondary);font-weight:600;">Voir la cat\u00e9gorie \u2192</a>';
+            sectionsHTML += '<a href="pages/category.html?cat=homme" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir la cat\u00e9gorie \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselHomme"></div>';
             sectionsHTML += '</div></section>';
@@ -514,7 +514,7 @@
             html += '<div style="font-weight:700;color:var(--color-secondary);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
             html += '</a>';
         }
-        html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';
+        html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';
 
         resultsDiv.innerHTML = html;
         resultsDiv.style.display = 'block';

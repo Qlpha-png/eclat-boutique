@@ -847,7 +847,7 @@ input { font-family: inherit; }
 
 .badge-lancement {
     background: linear-gradient(135deg, #e65100, #f57c00);
-    color: var(--color-white);
+    color: var(--color-primary);
 }
 
 .badge-marque {
@@ -1507,6 +1507,7 @@ input { font-family: inherit; }
 
 .newsletter-form .btn-primary {
     background: var(--color-secondary);
+    color: var(--color-primary);
     white-space: nowrap;
 }
 
@@ -2713,12 +2714,13 @@ input { font-family: inherit; }
 }
 .bundle-savings-dynamic {
     font-size: 0.72rem;
-    color: var(--color-success, #4caf50);
+    color: var(--color-success, #2e7d32);
     font-weight: 600;
     margin-bottom: 4px;
 }
 .bundle-pct {
-    background: rgba(76,175,80,0.1);
+    background: rgba(46,125,50,0.12);
+    color: #1b5e20;
     padding: 2px 6px;
     border-radius: 8px;
 }
@@ -4186,8 +4188,8 @@ input { font-family: inherit; }
     box-shadow: 0 2px 12px rgba(201,168,124,0.3);
 }
 .rb-diag-dot--done {
-    border-color: var(--color-success, #4caf50);
-    background: var(--color-success, #4caf50);
+    border-color: var(--color-success, #2e7d32);
+    background: var(--color-success, #2e7d32);
     color: #fff;
 }
 
@@ -4360,7 +4362,7 @@ input { font-family: inherit; }
     box-shadow: 0 4px 16px rgba(201,168,124,0.18);
 }
 .rb-tab--done {
-    border-color: var(--color-success, #4caf50);
+    border-color: var(--color-success, #2e7d32);
     background: linear-gradient(135deg, rgba(76,175,80,0.05), rgba(76,175,80,0.02));
 }
 .rb-tab--done.rb-tab--active {
@@ -4373,7 +4375,7 @@ input { font-family: inherit; }
     position: absolute;
     top: -6px;
     right: -6px;
-    background: var(--color-success, #4caf50);
+    background: var(--color-success, #2e7d32);
     color: #fff;
     width: 20px;
     height: 20px;
@@ -4992,7 +4994,7 @@ input { font-family: inherit; }
 }
 .promo-offer-btn {
     background: #c9a87c;
-    color: #fff;
+    color: var(--color-primary, #2d2926);
     padding: 12px 28px;
     white-space: nowrap;
 }
@@ -5014,7 +5016,7 @@ input { font-family: inherit; }
     font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
     font-weight: 600;
     margin-bottom: 8px;
 }
