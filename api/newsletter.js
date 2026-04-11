@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
 
     const { email, lang } = req.body;
 
-    if (!email || !email.includes('@')) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({ error: 'Email invalide' });
     }
 

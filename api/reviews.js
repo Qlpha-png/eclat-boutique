@@ -175,7 +175,7 @@ module.exports = async function handler(req, res) {
         // --- Validation ---
         var postProductId = parseInt(body.productId);
         var rating = parseInt(body.rating);
-        var text = (body.text || '').trim();
+        var text = (body.text || '').trim().replace(/[<>]/g, '');
         var photos = Array.isArray(body.photos) ? body.photos.slice(0, MAX_PHOTOS) : [];
 
         if (!postProductId || isNaN(postProductId)) {
