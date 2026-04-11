@@ -62,9 +62,8 @@
 /* CLS fix: mobile section heights */
 @media(max-width:768px){.products-section{min-height:400px}.categories-visual{min-height:240px}.bestsellers-section{min-height:300px}.bundles-section{min-height:300px}.homepage-carousel-section{min-height:300px}#homepageCarousels{min-height:320px}.products-grid{min-height:300px}}
     </style>
-    <!-- Full CSS (async — critical CSS above handles first render, content-visibility removed = no CLS) -->
-    <link rel="stylesheet" href="css/style.css?v=22" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="css/style.css?v=22"></noscript>
+    <!-- Full CSS (blocking — async causes CLS 1.776 despite no content-visibility) -->
+    <link rel="stylesheet" href="css/style.css?v=22">
     <link rel="stylesheet" href="css/themes.css?v=3" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/themes.css?v=3"></noscript>
     <link rel="stylesheet" href="css/animations.css?v=3" media="print" onload="this.media='all'">
