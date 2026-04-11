@@ -267,7 +267,26 @@ const TRANSLATIONS = {
         footer_trust_ship: 'Livraison<br>suivie France',
         footer_trust_refund: 'Satisfait ou<br>rembours\u00e9 30j',
         footer_trust_support: 'Support client<br>7j/7',
-        footer_trust_eu: 'Conforme<br>r\u00e9glementation UE'
+        footer_trust_eu: 'Conforme<br>r\u00e9glementation UE',
+
+        // Footer links
+        fl_all: 'Tous les produits',
+        fl_best: 'Best-sellers',
+        fl_face: 'Soins visage',
+        fl_body: 'Soins corps',
+        fl_sets: 'Coffrets',
+        fl_ship: 'Livraison',
+        fl_returns: 'Retours',
+        fl_track: 'Suivi de commande',
+        fl_support: 'Support & Tickets',
+        fl_blog: 'Blog Beaut\u00e9',
+        fl_guide: 'Guide Scientifique',
+        fl_diag: 'Diagnostic IA',
+        fl_routine: 'Routine Builder',
+        fl_cgv: 'CGV',
+        fl_legal: 'Mentions l\u00e9gales',
+        fl_privacy: 'Confidentialit\u00e9',
+        fl_retract: 'Droit de r\u00e9tractation'
     },
 
     en: {
@@ -522,7 +541,26 @@ const TRANSLATIONS = {
         footer_trust_ship: 'Tracked<br>shipping EU',
         footer_trust_refund: 'Satisfied or<br>refunded 30d',
         footer_trust_support: 'Customer support<br>7/7',
-        footer_trust_eu: 'EU regulation<br>compliant'
+        footer_trust_eu: 'EU regulation<br>compliant',
+
+        // Footer links
+        fl_all: 'All products',
+        fl_best: 'Best-sellers',
+        fl_face: 'Face care',
+        fl_body: 'Body care',
+        fl_sets: 'Bundles',
+        fl_ship: 'Shipping',
+        fl_returns: 'Returns',
+        fl_track: 'Order tracking',
+        fl_support: 'Support & Tickets',
+        fl_blog: 'Beauty Blog',
+        fl_guide: 'Science Guide',
+        fl_diag: 'AI Diagnostic',
+        fl_routine: 'Routine Builder',
+        fl_cgv: 'Terms & Conditions',
+        fl_legal: 'Legal notices',
+        fl_privacy: 'Privacy policy',
+        fl_retract: 'Right of withdrawal'
     },
 
     es: {
@@ -777,7 +815,26 @@ const TRANSLATIONS = {
         footer_trust_ship: 'Env\u00edo<br>con seguimiento',
         footer_trust_refund: 'Satisfecho o<br>reembolsado 30d',
         footer_trust_support: 'Atenci\u00f3n al cliente<br>7/7',
-        footer_trust_eu: 'Conforme<br>normativa UE'
+        footer_trust_eu: 'Conforme<br>normativa UE',
+
+        // Footer links
+        fl_all: 'Todos los productos',
+        fl_best: 'M\u00e1s vendidos',
+        fl_face: 'Cuidado facial',
+        fl_body: 'Cuidado corporal',
+        fl_sets: 'Packs',
+        fl_ship: 'Env\u00edo',
+        fl_returns: 'Devoluciones',
+        fl_track: 'Seguimiento de pedido',
+        fl_support: 'Soporte & Tickets',
+        fl_blog: 'Blog Belleza',
+        fl_guide: 'Gu\u00eda Cient\u00edfica',
+        fl_diag: 'Diagn\u00f3stico IA',
+        fl_routine: 'Creador de rutina',
+        fl_cgv: 'Condiciones generales',
+        fl_legal: 'Aviso legal',
+        fl_privacy: 'Pol\u00edtica de privacidad',
+        fl_retract: 'Derecho de desistimiento'
     },
 
     de: {
@@ -1032,7 +1089,26 @@ const TRANSLATIONS = {
         footer_trust_ship: 'Verfolgte<br>Lieferung EU',
         footer_trust_refund: 'Zufrieden oder<br>Geld zur\u00fcck 30T',
         footer_trust_support: 'Kundensupport<br>7/7',
-        footer_trust_eu: 'EU-Verordnung<br>konform'
+        footer_trust_eu: 'EU-Verordnung<br>konform',
+
+        // Footer links
+        fl_all: 'Alle Produkte',
+        fl_best: 'Bestseller',
+        fl_face: 'Gesichtspflege',
+        fl_body: 'K\u00f6rperpflege',
+        fl_sets: 'Sets',
+        fl_ship: 'Versand',
+        fl_returns: 'R\u00fccksendung',
+        fl_track: 'Bestellverfolgung',
+        fl_support: 'Support & Tickets',
+        fl_blog: 'Beauty-Blog',
+        fl_guide: 'Wissenschaftsguide',
+        fl_diag: 'KI-Diagnose',
+        fl_routine: 'Routine-Builder',
+        fl_cgv: 'AGB',
+        fl_legal: 'Impressum',
+        fl_privacy: 'Datenschutz',
+        fl_retract: 'Widerrufsrecht'
     }
 };
 
@@ -1192,7 +1268,26 @@ function applyTranslations() {
         '#footerTagline': 'footer_tagline',
         '#footerDesc': 'footer_description',
         '#footerDiagLink': 'footer_diag_link',
-        '#footerPayLabel': 'footer_pay_label'
+        '#footerPayLabel': 'footer_pay_label',
+
+        // Footer links
+        '#fl_all': 'fl_all',
+        '#fl_best': 'fl_best',
+        '#fl_face': 'fl_face',
+        '#fl_body': 'fl_body',
+        '#fl_sets': 'fl_sets',
+        '#fl_ship': 'fl_ship',
+        '#fl_returns': 'fl_returns',
+        '#fl_track': 'fl_track',
+        '#fl_support': 'fl_support',
+        '#fl_blog': 'fl_blog',
+        '#fl_guide': 'fl_guide',
+        '#fl_diag': 'fl_diag',
+        '#fl_routine': 'fl_routine',
+        '#fl_cgv': 'fl_cgv',
+        '#fl_legal': 'fl_legal',
+        '#fl_privacy': 'fl_privacy',
+        '#fl_retract': 'fl_retract'
     };
 
     // innerHTML-based translations (trust badges have <br>)
