@@ -256,7 +256,18 @@ const TRANSLATIONS = {
         loyalty_bar_fomo_cta: 'En profiter \u2192',
 
         // Floating CTA
-        floating_cta: '\u2728 Mon diagnostic gratuit'
+        floating_cta: '\u2728 Mon diagnostic gratuit',
+
+        // Footer
+        footer_tagline: 'Beaut\u00e9 & Wellness Premium',
+        footer_description: 'Des soins s\u00e9lectionn\u00e9s pour leur efficacit\u00e9 prouv\u00e9e. Programme fid\u00e9lit\u00e9 \u00c9clats, livraison suivie, satisfait ou rembours\u00e9.',
+        footer_diag_link: 'Mon diagnostic beaut\u00e9 gratuit \u2192',
+        footer_pay_label: 'Paiement 100% s\u00e9curis\u00e9',
+        footer_trust_ssl: 'Paiement<br>s\u00e9curis\u00e9 SSL',
+        footer_trust_ship: 'Livraison<br>suivie France',
+        footer_trust_refund: 'Satisfait ou<br>rembours\u00e9 30j',
+        footer_trust_support: 'Support client<br>7j/7',
+        footer_trust_eu: 'Conforme<br>r\u00e9glementation UE'
     },
 
     en: {
@@ -500,7 +511,18 @@ const TRANSLATIONS = {
         loyalty_bar_fomo_cta: 'Shop now \u2192',
 
         // Floating CTA
-        floating_cta: '\u2728 Free skin diagnostic'
+        floating_cta: '\u2728 Free skin diagnostic',
+
+        // Footer
+        footer_tagline: 'Beauty & Wellness Premium',
+        footer_description: 'Carefully selected skincare backed by science. \u00c9clats loyalty program, tracked shipping, satisfaction guaranteed.',
+        footer_diag_link: 'Free beauty diagnostic \u2192',
+        footer_pay_label: '100% secure payment',
+        footer_trust_ssl: 'Secure<br>SSL payment',
+        footer_trust_ship: 'Tracked<br>shipping EU',
+        footer_trust_refund: 'Satisfied or<br>refunded 30d',
+        footer_trust_support: 'Customer support<br>7/7',
+        footer_trust_eu: 'EU regulation<br>compliant'
     },
 
     es: {
@@ -744,7 +766,18 @@ const TRANSLATIONS = {
         loyalty_bar_fomo_cta: 'Aprovecha \u2192',
 
         // Floating CTA
-        floating_cta: '\u2728 Diagn\u00f3stico gratis'
+        floating_cta: '\u2728 Diagn\u00f3stico gratis',
+
+        // Footer
+        footer_tagline: 'Belleza & Bienestar Premium',
+        footer_description: 'Productos seleccionados por su eficacia demostrada. Programa de fidelidad \u00c9clats, env\u00edo con seguimiento, satisfecho o reembolsado.',
+        footer_diag_link: 'Diagn\u00f3stico de belleza gratis \u2192',
+        footer_pay_label: 'Pago 100% seguro',
+        footer_trust_ssl: 'Pago<br>seguro SSL',
+        footer_trust_ship: 'Env\u00edo<br>con seguimiento',
+        footer_trust_refund: 'Satisfecho o<br>reembolsado 30d',
+        footer_trust_support: 'Atenci\u00f3n al cliente<br>7/7',
+        footer_trust_eu: 'Conforme<br>normativa UE'
     },
 
     de: {
@@ -988,7 +1021,18 @@ const TRANSLATIONS = {
         loyalty_bar_fomo_cta: 'Jetzt shoppen \u2192',
 
         // Floating CTA
-        floating_cta: '\u2728 Gratis Hautdiagnose'
+        floating_cta: '\u2728 Gratis Hautdiagnose',
+
+        // Footer
+        footer_tagline: 'Beauty & Wellness Premium',
+        footer_description: 'Sorgf\u00e4ltig ausgew\u00e4hlte Pflege mit nachgewiesener Wirksamkeit. \u00c9clats-Treueprogramm, verfolgte Lieferung, Zufriedenheitsgarantie.',
+        footer_diag_link: 'Gratis Hautdiagnose \u2192',
+        footer_pay_label: '100% sichere Zahlung',
+        footer_trust_ssl: 'Sichere<br>SSL-Zahlung',
+        footer_trust_ship: 'Verfolgte<br>Lieferung EU',
+        footer_trust_refund: 'Zufrieden oder<br>Geld zur\u00fcck 30T',
+        footer_trust_support: 'Kundensupport<br>7/7',
+        footer_trust_eu: 'EU-Verordnung<br>konform'
     }
 };
 
@@ -1144,8 +1188,25 @@ function applyTranslations() {
         '.footer-grid .footer-col:nth-child(3) h4': 'footer_help',
         '.footer-grid .footer-col:nth-child(4) h4': 'footer_resources',
         '.footer-grid .footer-col:nth-child(5) h4': 'footer_legal',
-        '.footer-bottom p': 'footer_rights'
+        '.footer-bottom p': 'footer_rights',
+        '#footerTagline': 'footer_tagline',
+        '#footerDesc': 'footer_description',
+        '#footerDiagLink': 'footer_diag_link',
+        '#footerPayLabel': 'footer_pay_label'
     };
+
+    // innerHTML-based translations (trust badges have <br>)
+    var htmlMap = {
+        '#trustSsl': 'footer_trust_ssl',
+        '#trustShip': 'footer_trust_ship',
+        '#trustRefund': 'footer_trust_refund',
+        '#trustSupport': 'footer_trust_support',
+        '#trustEu': 'footer_trust_eu'
+    };
+    Object.entries(htmlMap).forEach(function(entry) {
+        var el = document.querySelector(entry[0]);
+        if (el) { var val = t(entry[1]); if (val) el.innerHTML = val; }
+    });
 
     Object.entries(map).forEach(([selector, key]) => {
         const el = document.querySelector(selector);
