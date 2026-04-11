@@ -102,8 +102,20 @@
 
         var sb = (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
+        // --- Sécurité: validation redirect pour éviter open redirect ---
+        function safeRedirect(url) {
+            var fallback = 'account.html';
+            if (!url) return fallback;
+            // Bloquer les URLs absolues, protocol-relative, et schemes dangereux
+            if (/^(https?:)?\/\//i.test(url) || /^[a-z]+:/i.test(url)) return fallback;
+            // Bloquer les data: URLs et javascript:
+            if (/^(data|javascript|vbscript):/i.test(url.trim())) return fallback;
+            // N'autoriser que les chemins relatifs simples
+            return url;
+        }
+
         if (sb) {
-            var redirect = new URLSearchParams(window.location.search).get('redirect') || 'account.html';
+            var redirect = safeRedirect(new URLSearchParams(window.location.search).get('redirect'));
 
             // Écouter les changements d'auth (gère la confirmation email via URL tokens)
             sb.auth.onAuthStateChange(function(event, session) {
@@ -146,8 +158,8 @@
                 return;
             }
 
-            var redirect = new URLSearchParams(window.location.search).get('redirect');
-            window.location.href = redirect || 'account.html';
+            var redirect = safeRedirect(new URLSearchParams(window.location.search).get('redirect'));
+            window.location.href = redirect;
         });
 
         // Mot de passe oublié

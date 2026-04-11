@@ -189,6 +189,14 @@
     <script src="../js/products.js?v=2" defer></script>
     <script src="../js/cart.js?v=2" defer></script>
     <script>
+        // --- Sécurité XSS ---
+        function escapeHTML(str) {
+            if (typeof str !== 'string') return '';
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
         function formatPrice(price) {
             return price.toFixed(2).replace('.', ',') + ' \u20ac';
         }
@@ -207,10 +215,10 @@
             checkoutItems.innerHTML = cart.items.map(item => `
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--color-border);">
                     <div style="display:flex;align-items:center;gap:12px;">
-                        <img src="${item.image}" alt="${item.name}" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
+                        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" style="width:48px;height:48px;object-fit:cover;border-radius:8px;">
                         <div>
-                            <div style="font-weight:600;font-size:0.9rem;">${item.name}</div>
-                            <div style="font-size:0.8rem;color:var(--color-text-light);">Qty: ${item.qty}</div>
+                            <div style="font-weight:600;font-size:0.9rem;">${escapeHTML(item.name)}</div>
+                            <div style="font-size:0.8rem;color:var(--color-text-light);">Qty: ${parseInt(item.qty) || 0}</div>
                         </div>
                     </div>
                     <strong>${formatPrice(item.price * item.qty)}</strong>
@@ -301,7 +309,8 @@
                     throw new Error(data.error || t('checkout_error'));
                 }
             } catch (error) {
-                alert(t('checkout_error_prefix') + ' : ' + error.message + '\n\n' + t('checkout_error_stripe'));
+                console.error('[checkout]', error.message);
+                alert(t('checkout_error_prefix') + '\n\n' + t('checkout_error_stripe'));
                 payBtn.disabled = false;
                 payBtn.innerHTML = '&#128274; <span data-i18n="checkout_pay">' + t('checkout_pay') + '</span>';
             }

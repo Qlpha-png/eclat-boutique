@@ -7,6 +7,14 @@
 (function() {
     'use strict';
 
+    // --- Sécurité XSS ---
+    function escapeHTML(str) {
+        if (typeof str !== 'string') return '';
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     // ── Config Supabase (public, safe to embed) ──
     var SUPABASE_URL = 'https://omysrhwpyexlcgwyiigq.supabase.co';
     var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9teXNyaHdweWV4bGNnd3lpaWdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NzE5MjUsImV4cCI6MjA5MTI0NzkyNX0.SG-q9sE-jNgDm1rCezj84cNIUbphziDAnh6EtuGiIpM';
@@ -138,7 +146,7 @@
             var profile = auth.getProfile();
             var user = auth.getUser();
             var displayName = (profile && profile.first_name) || (user.user_metadata && user.user_metadata.first_name) || user.email || '?';
-            var initial = displayName[0].toUpperCase();
+            var initial = escapeHTML(displayName[0].toUpperCase());
 
             btn.innerHTML = '<span style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.85rem;">' + initial + '</span>';
             btn.onclick = function(e) {
@@ -168,7 +176,8 @@
 
         var profile = auth.getProfile();
         var user = auth.getUser();
-        var name = (profile && profile.first_name) || (user.user_metadata && user.user_metadata.first_name) || user.email.split('@')[0];
+        var rawName = (profile && profile.first_name) || (user.user_metadata && user.user_metadata.first_name) || user.email.split('@')[0];
+        var name = escapeHTML(rawName);
 
         var isInPages = window.location.pathname.includes('/pages/');
         var prefix = isInPages ? '' : 'pages/';
