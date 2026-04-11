@@ -1,12 +1,48 @@
 // ============================
 // ÉCLAT — Analytics & Event Tracking
+// Auto-loads GA4 with RGPD cookie consent
 // Compatible GA4 + Facebook Pixel (si configurés)
 // Fonctionne sans trackers (no-op si non configurés)
 // ============================
 
+var GA_ID = 'G-4FKZ0GTSG9';
+
 const Analytics = {
+    _gaLoaded: false,
+
+    // Load GA4 script if cookie consent for analytics is granted
+    _loadGA() {
+        if (this._gaLoaded) return;
+        // Check cookie consent from localStorage (set by cookie-consent.js)
+        var consent = null;
+        try { consent = JSON.parse(localStorage.getItem('eclat_cookie_consent')); } catch(e) {}
+        if (!consent || !consent.analytics) return;
+
+        this._gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+        window.gtag = gtag;
+    },
+
     // Initialize — called once on page load
     init() {
+        // Load GA4 if consent given
+        this._loadGA();
+
+        // Listen for future consent changes
+        document.addEventListener('eclat:cookieconsent', function(e) {
+            if (e && e.detail && e.detail.analytics && !Analytics._gaLoaded) {
+                Analytics._loadGA();
+                Analytics.pageView();
+            }
+        });
+
         // Track page view
         this.pageView();
 
