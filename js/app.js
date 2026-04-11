@@ -17,6 +17,19 @@ function escapeHTML(str) {
     return div.innerHTML;
 }
 
+// Accessible announcements for screen readers (ARIA live region)
+function announceToScreenReader(message) {
+    var el = document.getElementById('a11yAnnouncer');
+    if (!el) return;
+    el.textContent = '';
+    setTimeout(function() { el.textContent = message; }, 100);
+}
+
+// Check prefers-reduced-motion
+function shouldReduceMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function getCategoryLabel(cat) {
     var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
     if (typeof getCategoryText === 'function') {
@@ -821,6 +834,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (product) {
             cart.add(product);
             showToast(t('toast_added').replace('{name}', product.name));
+            announceToScreenReader(escapeHTML(product.name) + ' ajouté au panier');
         }
     };
 

@@ -9,16 +9,16 @@
 /* ── Nuit ── */
 [data-theme="nuit"] {
     --color-primary: #e5e5e5;
-    --color-secondary: #c9a87c;
-    --color-secondary-text: #d4b88c;
+    --color-secondary: #d4b88c;
+    --color-secondary-text: #e0c8a0;
     --color-accent: #e8c8a0;
     --color-bg: #121212;
     --color-bg-alt: #1e1e1e;
     --color-white: #1a1a1a;
-    --color-text: #e5e5e5;
-    --color-text-light: #9a9590;
-    --color-border: #6a6a65;
-    --color-border-decorative: #333330;
+    --color-text: #ebebeb;
+    --color-text-light: #b0aaa5;
+    --color-border: #7a7a75;
+    --color-border-decorative: #3a3a37;
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
     --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
     --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
@@ -147,8 +147,8 @@
         --color-bg-alt: #1e1e1e;
         --color-white: #1a1a1a;
         --color-text: #e5e5e5;
-        --color-text-light: #9a9590;
-        --color-border: #555550;
+        --color-text-light: #b0aaa5;
+        --color-border: #7a7a75;
         --color-border-decorative: #333330;
         --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
         --shadow-md: 0 4px 20px rgba(0,0,0,0.3);

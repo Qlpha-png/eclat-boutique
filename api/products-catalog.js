@@ -10,7 +10,11 @@ module.exports = async function handler(req, res) {
     if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
     if (applyRateLimit(req, res, 'public')) return;
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    var origin = req.headers.origin || '';
+    var ALLOWED_ORIGINS = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    if (ALLOWED_ORIGINS.indexOf(origin) !== -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
 
     var sb = getSupabase();

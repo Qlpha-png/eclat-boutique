@@ -57,7 +57,12 @@ function isPrivateIP(ip) {
 
 module.exports = async function handler(req, res) {
     // CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    var origin = req.headers.origin || '';
+    var ALLOWED_ORIGINS = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    if (ALLOWED_ORIGINS.indexOf(origin) !== -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (applyRateLimit(req, res, 'api')) return;
 

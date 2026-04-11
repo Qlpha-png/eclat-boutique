@@ -3995,7 +3995,11 @@ input { font-family: inherit; }
 .homepage-carousel-section,
 .bundles-section,
 .newsletter-section,
-.recently-viewed-section {
+.recently-viewed-section,
+.routine-section,
+.reviews-section,
+.social-proof-section,
+.footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 500px;
 }
