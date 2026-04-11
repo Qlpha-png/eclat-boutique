@@ -143,7 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Text search
             if (searchTerm) {
-                var searchIn = (product.name + ' ' + product.description + ' ' + product.category + ' ' + (product.subcategory || '')).toLowerCase();
+                var _det = (typeof PRODUCT_DETAILS !== 'undefined' && PRODUCT_DETAILS[product.id]) || {};
+                var searchIn = (product.name + ' ' + (_det.description || product.description || '') + ' ' + product.category + ' ' + (product.subcategory || '')).toLowerCase();
                 if (searchIn.indexOf(searchTerm) === -1) return false;
             }
 

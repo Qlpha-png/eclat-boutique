@@ -139,6 +139,7 @@
     </div>
 
     <script src="../js/products.js?v=2"></script>
+    <script src="../js/products-details.js?v=1"></script>
     <script src="../js/i18n.js?v=5"></script>
     <script>
     // Lazy-load only the needed i18n translation file (~235-251KB each)
@@ -244,18 +245,21 @@
         if (!product) {
             document.getElementById('ppImage').innerHTML = '<p style="padding:40px;text-align:center;">Produit introuvable</p>';
         } else {
+            // Merge detail fields from split file (lazy-loaded) with fallback
+            var details = (typeof PRODUCT_DETAILS !== 'undefined' && PRODUCT_DETAILS[product.id]) || {};
+
             // Translated product fields
             var pName = (typeof getProductText === 'function') ? getProductText(product.id, 'name', lang) : product.name;
-            var pDesc = (typeof getProductText === 'function') ? getProductText(product.id, 'description', lang) : product.description;
+            var pDesc = (typeof getProductText === 'function') ? getProductText(product.id, 'description', lang) : (details.description || product.description);
             var pFeatures = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'features', lang) : null;
             var pSpecs = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'specs', lang) : null;
             var pHowTo = (typeof getProductText === 'function' && lang !== 'fr') ? getProductText(product.id, 'howTo', lang) : null;
             var pCatLabel = (typeof getCategoryText === 'function') ? getCategoryText(product.category, lang) : (catLabels[product.category] || product.category);
-            // Use translated if available, fallback to FR original
+            // Use translated if available, fallback to details then product
             if (!pName) pName = product.name;
-            if (!pDesc) pDesc = product.description;
-            if (!pFeatures || !pFeatures.length) pFeatures = product.features;
-            if (!pHowTo) pHowTo = product.howTo;
+            if (!pDesc) pDesc = details.description || product.description;
+            if (!pFeatures || !pFeatures.length) pFeatures = details.features || product.features;
+            if (!pHowTo) pHowTo = details.howTo || product.howTo;
 
             // Set page meta
             document.title = escapeHTML(pName) + ' - \u00c9CLAT';
@@ -415,7 +419,7 @@
 
             // Build specs HTML — use translated specs if available
             var specsHTML = '';
-            var displaySpecs = (pSpecs && typeof pSpecs === 'object' && Object.keys(pSpecs).length > 0) ? pSpecs : product.specs;
+            var displaySpecs = (pSpecs && typeof pSpecs === 'object' && Object.keys(pSpecs).length > 0) ? pSpecs : (details.specs || product.specs);
             if (displaySpecs) {
                 specsHTML = '<div class="pp-section"><h2>Sp\u00e9cifications techniques</h2><dl class="pp-specs">';
                 var specLabels = { puissance:'Puissance', longueurs:'Longueurs d\'onde', batterie:'Batterie', poids:'Poids', materiau:'Mat\u00e9riau', dimensions:'Dimensions', entretien:'Entretien', frequence:'Fr\u00e9quence', modes:'Modes', etancheite:'\u00c9tanch\u00e9it\u00e9', tetes:'T\u00eates', vitesse:'Vitesse', technologie:'Technologie', particules:'Particules', reservoir:'R\u00e9servoir', autonomie:'Autonomie', concentration:'Concentration', ph:'pH', contenance:'Contenance', conservation:'Conservation', temperature:'Temp\u00e9rature', rotation:'Rotation', contenu:'Contenu', duree_pose:'Dur\u00e9e de pose', type:'Type', purete:'Puret\u00e9', extraction:'Extraction', zones:'Zones', reutilisable:'R\u00e9utilisable', duree:'Dur\u00e9e', parfum:'Parfum', capacite:'Capacit\u00e9', couverture:'Couverture', bruit:'Bruit', arret:'Arr\u00eat auto', longueur:'Longueur' };
@@ -427,20 +431,23 @@
 
             // Build ingredients HTML with Clean Beauty Score
             var ingredientsHTML = '';
-            if (product.ingredients) {
+            var productIngredients = details.ingredients || product.ingredients;
+            if (productIngredients) {
+                // Build a product-like object with ingredients for CleanBeauty
+                var cbProduct = { id: product.id, ingredients: productIngredients, name: product.name, category: product.category };
                 if (window.CleanBeauty && window.INGREDIENTS_DB) {
-                    var cbResult = CleanBeauty.renderSection(product);
+                    var cbResult = CleanBeauty.renderSection(cbProduct);
                     ingredientsHTML = cbResult.html;
                     // Bind tooltips after DOM update
                     setTimeout(function() { CleanBeauty.bindTooltips(cbResult.result); }, 100);
                 } else {
-                    ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(product.ingredients) + '</div></div>';
+                    ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(productIngredients) + '</div></div>';
                 }
             }
 
             // Build how-to HTML — use translated howTo if available
             var howToHTML = '';
-            var displayHowTo = pHowTo || product.howTo;
+            var displayHowTo = pHowTo || details.howTo || product.howTo;
             if (displayHowTo) {
                 howToHTML = '<div class="pp-section"><h2>Mode d\'emploi</h2><div class="pp-howto">' + escapeHTML(displayHowTo) + '</div></div>';
             }
@@ -456,7 +463,7 @@
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
                 '<p class="pp-desc">' + escapeHTML(pDesc) + '</p>' +
                 guideHTML +
-                '<ul class="pp-features">' + (pFeatures || product.features || []).map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') + '</ul>' +
+                '<ul class="pp-features">' + (pFeatures || details.features || product.features || []).map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') + '</ul>' +
                 '<div class="pp-trust">' +
                     '<span><span aria-hidden="true">&#128666;</span> Livraison suivie</span>' +
                     '<span><span aria-hidden="true">&#128260;</span> Satisfait 30j</span>' +
@@ -468,7 +475,7 @@
                 '</div>' +
                 '<div id="ppStockDelivery"></div>' +
                 '<div class="pp-badges">' +
-                    (product.features && product.features.indexOf('Certifi\u00e9 CE') !== -1 ? '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' : '') +
+                    ((details.features || product.features || []).indexOf('Certifi\u00e9 CE') !== -1 ? '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' : '') +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> Garantie 30j</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Retour gratuit 14j</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> SAV r\u00e9actif</div>' +
@@ -513,8 +520,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         productName: product.name,
-                        productDescription: product.description || '',
-                        productIngredients: product.ingredients || '',
+                        productDescription: details.description || product.description || '',
+                        productIngredients: details.ingredients || product.ingredients || '',
                         skinType: diag.skinType,
                         concern: diag.concern,
                         lang: 'fr'

@@ -607,13 +607,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var product = PRODUCTS.find(function(p) { return p.id === productId; });
         if (!product) return;
 
+        // Merge detail fields from split file (lazy-loaded) with fallback to inline
+        var details = (typeof PRODUCT_DETAILS !== 'undefined' && PRODUCT_DETAILS[product.id]) || {};
+
         modalTrigger = document.activeElement;
         var guide = productGuideMap[product.id];
         var guideLink = guide ? '<a href="pages/guide-beaute.html#' + guide.section + '" class="modal-guide-link">Lire l\'&eacute;tude scientifique : ' + guide.label + ' &rarr;</a>' : '';
         var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
         var pName = (typeof getProductText === 'function') ? (getProductText(product.id, 'name', lang) || product.name) : product.name;
-        var pDesc = (typeof getProductText === 'function') ? (getProductText(product.id, 'description', lang) || product.description) : product.description;
-        var features = product.features || [];
+        var pDesc = (typeof getProductText === 'function') ? (getProductText(product.id, 'description', lang) || details.description || product.description) : (details.description || product.description);
+        var features = details.features || product.features || [];
         if (typeof getProductText === 'function' && lang !== 'fr') {
             var trFeatures = getProductText(product.id, 'features', lang);
             if (trFeatures && trFeatures.length) features = trFeatures;

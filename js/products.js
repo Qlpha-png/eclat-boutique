@@ -15,6 +15,7 @@
 
 const PRODUCTS = [
 
+
     // ═══════════════════════════════════════════════════════
     //  SOINS VISAGE — Appareils & outils
     // ═══════════════════════════════════════════════════════
@@ -29,16 +30,8 @@ const PRODUCTS = [
         badge: "best",
         rating: 4.9,
         reviews: 0,
-        description: "Le soin en institut, chez vous. 7 longueurs d'onde ciblées : rouge anti-âge, bleue anti-acné, verte anti-taches. Résultats visibles dès 14 jours d'utilisation régulière.",
-        features: ["7 longueurs d'onde thérapeutiques", "Timer automatique 15 min", "Rechargeable USB", "Silicone hypoallergénique", "Certifié CE", "Résultats en 14 jours"],
-        specs: { puissance: '10-30 mW/cm²', longueurs: '415nm, 520nm, 590nm, 630nm, 660nm, 850nm, 940nm', batterie: 'Li-ion 1200mAh, 5 séances/charge', poids: '180g', materiau: 'Silicone médical + LED SMD' },
-        ingredients: 'Silicone médical hypoallergénique, LED SMD haute efficacité, circuit imprimé sans BPA',
-        howTo: '1. Nettoyez le visage et appliquez votre sérum. 2. Posez le masque et choisissez la couleur (rouge: anti-âge, bleu: anti-acné, vert: teint). 3. Séance de 15 min, 3-4x/semaine. 4. Résultats visibles dès 14 jours.',
         bestseller: true,
-        bestsellerRank: 1,
-        supplier: 'cj',
-        cjProductId: '2512020745411613700',
-        cjVariantId: '2512020745411614100'
+        bestsellerRank: 1
     },
 
     {
@@ -51,16 +44,8 @@ const PRODUCTS = [
         badge: "best",
         rating: 4.8,
         reviews: 0,
-        description: "Le geste beauté ancestral en quartz rose véritable. Forme cœur ergonomique qui épouse les contours du visage. Stimule la circulation, dégonfle, sculpte l'ovale naturellement.",
-        features: ["Quartz rose véritable", "Forme cœur ergonomique", "Stimule la circulation", "Dégonfle le visage", "Sculpte l'ovale", "Chaque pierre est unique"],
-        specs: { materiau: 'Quartz rose naturel, grade A', dimensions: '10 x 6 cm', poids: '65g', entretien: 'Rincer à l\'eau tiède après usage' },
-        ingredients: 'Quartz rose 100% naturel (SiO₂ + traces Ti, Mn)',
-        howTo: '1. Appliquez huile ou sérum sur le visage. 2. Mouvements du centre vers l\'extérieur, toujours vers le haut. 3. Cou → menton → joues → front. 4. 5 min/jour suffisent.',
         bestseller: true,
-        bestsellerRank: 2,
-        supplier: 'cj',
-        cjProductId: '2602120829411639000',
-        cjVariantId: '2602120829411639400'
+        bestsellerRank: 2
     },
 
     {
@@ -73,15 +58,7 @@ const PRODUCTS = [
         badge: "lancement",
         rating: 4.7,
         reviews: 0,
-        description: "Nettoyage professionnel en 3 minutes. 28 000 vibrations/sec. Désincruste les pores, exfolie en douceur, fait pénétrer vos sérums 5x mieux. Rechargeable USB.",
-        features: ["28 000 vibrations/sec", "3 modes : nettoyage, lifting, absorption", "Acier inoxydable médical", "Rechargeable USB", "Étanche IPX5", "Résultats immédiats"],
-        specs: { frequence: '28 000 Hz', modes: 'Nettoyage / Lifting / Absorption', batterie: 'Li-ion, 2h d\'autonomie', etancheite: 'IPX5', materiau: 'Acier inoxydable 304 médical' },
-        ingredients: 'Acier inoxydable 304 (qualité médicale), ABS sans BPA',
-        howTo: '1. Humidifiez le visage. 2. Mode nettoyage : passez sur la zone T 2-3 min. 3. Mode absorption : appliquez sérum puis passez la spatule. 4. Nettoyez après usage.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1900541186889875458',
-        cjVariantId: '1900541187347054594'
+        bestseller: false
     },
 
     {
@@ -94,15 +71,7 @@ const PRODUCTS = [
         badge: "lancement",
         rating: 4.6,
         reviews: 0,
-        description: "L'alternative accessible aux brosses à 200€+. 5 têtes interchangeables pour un nettoyage complet. Waterproof, douce pour les peaux sensibles.",
-        features: ["5 têtes interchangeables", "Waterproof", "Nettoyage en profondeur", "Douce pour peaux sensibles", "Rechargeable", "Longue autonomie"],
-        specs: { tetes: '5 (nettoyage, exfoliation, massage, éponge, silicone)', vitesse: '2 vitesses réglables', batterie: 'Li-ion, 60 jours d\'autonomie', etancheite: 'IPX7' },
-        ingredients: 'Silicone alimentaire, nylon Dupont, ABS sans BPA',
-        howTo: '1. Humidifiez la tête et le visage. 2. Appliquez nettoyant. 3. Mouvements circulaires doux, 30 sec/zone. 4. Rincez la tête après usage.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1990665069449302017',
-        cjVariantId: '1990665069533188098'
+        bestseller: false
     },
 
     {
@@ -115,16 +84,8 @@ const PRODUCTS = [
         badge: "best",
         rating: 4.8,
         reviews: 0,
-        description: "Le geste viral du matin. Moule à glace + roller : remplissez, congelez, massez. Dégonfle les poches, resserre les pores, apaise les rougeurs en 2 min.",
-        features: ["Moule à glace intégré", "Tête rotative 360°", "Dégonfle en 2 min", "Resserre les pores", "Soulage les rougeurs", "Réutilisable à l'infini"],
-        specs: { materiau: 'ABS + gel cryo', temperature: '-5°C à -10°C congelé', rotation: '360° multi-axe', poids: '95g' },
-        ingredients: 'Gel cryogénique non toxique, ABS alimentaire, acier inoxydable',
-        howTo: '1. Remplissez le moule d\'eau. 2. Congelez 4-6h. 3. Massez le visage en mouvements ascendants, 2 min. 4. Idéal le matin au réveil.',
         bestseller: true,
-        bestsellerRank: 3,
-        supplier: 'cj',
-        cjProductId: '2508010604181617000',
-        cjVariantId: '2508010604181617800'
+        bestsellerRank: 3
     },
 
     {
@@ -137,15 +98,7 @@ const PRODUCTS = [
         badge: "new",
         rating: 4.7,
         reviews: 0,
-        description: "Le secret K-beauty pour un visage sculpté. Roller électrique V-Shape avec micro-courant EMS. Reproduit le drainage lymphatique professionnel. Tonifie et affine.",
-        features: ["EMS micro-courant", "Design V-Shape", "Drainage lymphatique", "Tonifie et affine", "Rechargeable", "Résultats en 2-4 sem"],
-        specs: { technologie: 'EMS micro-courant 350µA', modes: '5 niveaux d\'intensité', batterie: 'Li-ion USB, 30 jours', poids: '48g' },
-        ingredients: 'ABS médical, électrodes acier inoxydable 316L',
-        howTo: '1. Appliquez gel conducteur ou sérum. 2. Placez le roller sur la mâchoire. 3. Remontez vers les oreilles, 5 min/côté. 4. Nettoyez après usage.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601270627311614800',
-        cjVariantId: '2601270627311615200'
+        bestseller: false
     },
 
     {
@@ -158,15 +111,7 @@ const PRODUCTS = [
         badge: "new",
         rating: 4.7,
         reviews: 0,
-        description: "Le spa à domicile. Vapeur nano-ionique qui ouvre les pores en douceur. Hydrate en profondeur, prépare la peau aux soins. Portable et rechargeable.",
-        features: ["Vapeur nano-ionique", "Hydratation profonde", "Ouvre les pores", "Portable rechargeable", "Prépare aux soins", "Design compact"],
-        specs: { technologie: 'Nano-ionisation ultrasonique', particules: '0,3 µm (pénétration profonde)', reservoir: '30 ml', autonomie: '15 min de vapeur continue' },
-        ingredients: 'ABS haute température, céramique piézoélectrique, réservoir PP alimentaire',
-        howTo: '1. Remplissez le réservoir d\'eau distillée. 2. Visage à 20 cm, 5-10 min. 3. La vapeur ouvre les pores et prépare la peau. 4. Appliquez sérum immédiatement après.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039619420008083458',
-        cjVariantId: '2039619420209410049'
+        bestseller: false
     },
 
     // ═══════════════════════════════════════════════════════
@@ -183,16 +128,8 @@ const PRODUCTS = [
         badge: "best",
         rating: 4.9,
         reviews: 0,
-        description: "L'actif n°1 en skincare mondial. Vitamine C stabilisée 20% pour un teint éclatant. Anti-rides, anti-taches, booste le collagène. Résultats visibles en 21 jours.",
-        features: ["Vitamine C stabilisée 20%", "Anti-rides + anti-taches", "Booste le collagène", "Flacon 30ml", "Tous types de peau", "Résultats en 21 jours"],
-        specs: { concentration: 'Vitamine C 20% (acide éthyl ascorbique)', ph: '5.0-6.0 (compatible peau)', contenance: '30 ml', conservation: '12 mois après ouverture' },
-        ingredients: 'Aqua, Ethyl Ascorbic Acid (20%), Hyaluronic Acid, Glycerin, Niacinamide, Tocopherol (Vit E), Ferulic Acid, Aloe Barbadensis Leaf Extract',
-        howTo: '1. Sur peau propre et légèrement humide. 2. 4-5 gouttes, tapotez sur visage et cou. 3. Attendez 1-2 min. 4. Appliquez hydratant puis SPF le matin.',
         bestseller: true,
-        bestsellerRank: 4,
-        supplier: 'cj',
-        cjProductId: '2603300928441600800',
-        cjVariantId: '2603300928441601200'
+        bestsellerRank: 4
     },
 
     {
@@ -205,15 +142,7 @@ const PRODUCTS = [
         badge: "lancement",
         rating: 4.7,
         reviews: 0,
-        description: "60 patchs collagène pour 1 mois de soins. Dégonfle les poches, estompe les cernes, hydrate le contour des yeux. Résultat visible dès la 1ère pose.",
-        features: ["Collagène marin concentré", "Acide hyaluronique", "60 patchs (1 mois)", "Effet frais immédiat", "Résultat 1ère pose", "Peaux sensibles OK"],
-        specs: { contenu: '60 patchs (30 paires)', duree_pose: '20-30 min', conservation: 'Pot hermétique, 6 mois après ouverture' },
-        ingredients: 'Aqua, Hydrolyzed Collagen, Sodium Hyaluronate, Gold (CI 77480), Glycerin, Retinyl Palmitate, Aloe Barbadensis',
-        howTo: '1. Nettoyez le contour des yeux. 2. Appliquez un patch sous chaque œil. 3. Laissez poser 20-30 min. 4. Retirez et tapotez le sérum restant.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603301345481600700',
-        cjVariantId: '2603301345481601100'
+        bestseller: false
     },
 
     {
@@ -226,15 +155,7 @@ const PRODUCTS = [
         badge: "new",
         rating: 4.9,
         reviews: 0,
-        description: "Le masque lifting qui a explosé TikTok. Collagène compact qui adhère parfaitement au visage. Effet tenseur immédiat, repulpe et lisse. 4 masques par boîte.",
-        features: ["Collagène compact lifting", "Effet tenseur immédiat", "Repulpe et lisse", "4 masques/boîte", "Adhère parfaitement", "Usage hebdomadaire"],
-        specs: { contenu: '4 masques compacts', duree_pose: '15-20 min', type: 'Hydrogel collagène compressé' },
-        ingredients: 'Hydrolyzed Collagen, Hyaluronic Acid, Niacinamide, Centella Asiatica Extract, Adenosine, Allantoin',
-        howTo: '1. Nettoyez et tonifiez le visage. 2. Dépliez le masque et appliquez. 3. Laissez 15-20 min. 4. Retirez et massez le sérum restant. 1x/semaine.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060437251602800',
-        cjVariantId: '2604060437251603100'
+        bestseller: false
     },
 
     {
@@ -247,15 +168,7 @@ const PRODUCTS = [
         badge: "lancement",
         rating: 4.8,
         reviews: 0,
-        description: "Huile de rose musquée pure qui hydrate et régénère en profondeur. Riche en oméga naturels, elle atténue cicatrices et ridules. Le soin nocturne idéal.",
-        features: ["Rose musquée pure", "Hydrate en profondeur", "Régénère la peau", "Atténue cicatrices", "Anti-rides naturel", "Flacon 10ml concentré"],
-        specs: { purete: '100% huile de Rosa Canina', extraction: 'Pression à froid', contenance: '10 ml', conservation: '6 mois après ouverture' },
-        ingredients: 'Rosa Canina Seed Oil (100%), Tocopherol (Vitamine E naturelle)',
-        howTo: '1. Le soir, sur peau propre. 2. 3-4 gouttes dans la paume. 3. Chauffez entre les mains. 4. Pressez sur visage et cou. Idéal avant le sommeil.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2503141112311610800',
-        cjVariantId: '2503141112311611000'
+        bestseller: false
     },
 
     {
@@ -268,15 +181,7 @@ const PRODUCTS = [
         badge: "new",
         rating: 4.6,
         reviews: 0,
-        description: "Patchs micro-cristaux qui lissent les rides pendant le sommeil. Technologie hydrogel condensé qui délivre les actifs en profondeur. Résultat au réveil.",
-        features: ["Micro-cristaux actifs", "Technologie hydrogel", "Résultat au réveil", "Zones visage ciblées", "Réutilisable", "Sans chimie agressive"],
-        specs: { technologie: 'Micro-cristaux d\'acide hyaluronique', zones: 'Front, contour yeux, sillon nasogénien', reutilisable: 'Jusqu\'à 3 utilisations/patch' },
-        ingredients: 'Hydrolyzed Hyaluronic Acid (micro-needles), Acetyl Hexapeptide-8 (Argireline), Retinol, Adenosine',
-        howTo: '1. Nettoyez et séchez la zone. 2. Appliquez le patch sur la ride. 3. Pressez 30 sec. 4. Gardez toute la nuit. Résultat visible au réveil.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080834381636900',
-        cjVariantId: '2603080834381637200'
+        bestseller: false
     },
 
     // ═══════════════════════════════════════════════════════
@@ -293,15 +198,7 @@ const PRODUCTS = [
         badge: "new",
         rating: 4.8,
         reviews: 0,
-        description: "12 masques vapeur auto-chauffants pour un spa des yeux. Chaleur douce à 40°C qui soulage la fatigue écrans et favorise l'endormissement. Relaxation totale.",
-        features: ["Chaleur 40°C auto", "12 masques/boîte", "Soulage fatigue écrans", "Aide endormissement", "Usage unique hygiénique", "Relaxation SPA"],
-        specs: { contenu: '12 masques individuels', temperature: '40°C ± 2°C', duree: '15-20 min auto-chauffant', parfum: 'Lavande apaisante' },
-        ingredients: 'Poudre de fer, charbon actif, eau purifiée, parfum lavande naturelle (tissu non-tissé coton)',
-        howTo: '1. Ouvrez le sachet individuel. 2. La chaleur s\'active en 30 sec. 3. Posez sur les yeux fermés. 4. Relaxez 15-20 min. Idéal avant le sommeil.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2507200553561614700',
-        cjVariantId: '2507200553561616300'
+        bestseller: false
     },
 
     {
@@ -314,15 +211,7 @@ const PRODUCTS = [
         badge: "lancement",
         rating: 4.6,
         reviews: 0,
-        description: "Diffuseur ultrasonique en verre design. Brume aromatique fine + LED d'ambiance. Compatible toutes huiles essentielles. L'objet déco bien-être par excellence.",
-        features: ["Atomisation ultrasonique", "Design verre élégant", "LED d'ambiance", "Compatible huiles essentielles", "Ultra-silencieux", "Arrêt auto sécurité"],
-        specs: { capacite: '100 ml', couverture: '15-25 m²', bruit: '<30 dB', modes: 'Continu / Intermittent / LED 7 couleurs', arret: 'Auto quand vide' },
-        ingredients: 'Verre borosilicate, base céramique piézoélectrique, PP alimentaire',
-        howTo: '1. Remplissez d\'eau + 3-5 gouttes d\'huile essentielle. 2. Choisissez le mode. 3. La brume se diffuse en silence. 4. Nettoyez le réservoir chaque semaine.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602270733571636700',
-        cjVariantId: '2602270733571637400'
+        bestseller: false
     },
 
     {
@@ -336,15 +225,7 @@ const PRODUCTS = [
         badge: 'new',
         rating: 4.7,
         reviews: 0,
-        description: 'Boucles parfaites en dormant, sans abîmer vos cheveux. Set satin avec barre flexible octopus. Tous types de cheveux, toutes longueurs. Zéro dégât, 100% résultat.',
-        features: ['Satin anti-frizz', 'Boucles overnight', 'Toutes longueurs', 'Barre flexible octopus', 'Zéro dégât cheveux', '3 couleurs dispo'],
-        specs: { materiau: 'Satin 100% polyester, mousse mémoire', longueur: '90 cm', contenu: '1 barre + 2 pinces + 1 chouchou satin' },
-        ingredients: 'Satin polyester (anti-frizz), mousse à mémoire de forme, fil métallique flexible',
-        howTo: '1. Cheveux légèrement humides ou secs. 2. Placez la barre sur le sommet. 3. Enroulez les mèches autour. 4. Fixez avec les pinces. 5. Dormez. Résultat au réveil.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1481815597737185280',
-        cjVariantId: '1481815597804294144'
+        bestseller: false
     },
 
     // ═══════════════════════════════════════════════════════
@@ -367,15 +248,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 101,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '80 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Curcuma Longa Root Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042437432425881601',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -389,15 +263,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 26,
-        description: 'Sérum anti-âge global qui cible rides, relâchement et perte d\'éclat simultanément. Formule concentrée en actifs de nouvelle génération pour des résultats visibles dès 14 jours.',
-        features: ['Action anti-âge globale', 'Cible rides et relâchement', 'Actifs nouvelle génération', 'Résultats dès 14 jours', 'Tous types de peau'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090451561615200',
-        concerns: ['anti-age', 'rides'],
+        concerns: ['anti-age', 'rides']
     },
 
     {
@@ -411,15 +278,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 145,
-        description: 'Sérum aux peptides biomimétiques qui ciblent les rides d\'expression. Stimule le renouvellement naturel du collagène pour une peau plus ferme et plus rebondie au fil des jours.',
-        features: ['Peptides biomimétiques', 'Cible les rides d\'expression', 'Stimule le collagène naturel', 'Peau plus ferme jour après jour', 'Formule haute tolérance'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090412051634100',
-        concerns: ['fermete', 'rides'],
+        concerns: ['fermete', 'rides']
     },
 
     {
@@ -433,15 +293,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 81,
-        description: 'Sérum anti-âge global qui cible rides, relâchement et perte d\'éclat simultanément. Formule concentrée en actifs de nouvelle génération pour des résultats visibles dès 14 jours.',
-        features: ['Action anti-âge globale', 'Cible rides et relâchement', 'Actifs nouvelle génération', 'Résultats dès 14 jours', 'Tous types de peau'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080812051608000',
-        concerns: ['anti-age', 'rides'],
+        concerns: ['anti-age', 'rides']
     },
 
     {
@@ -455,15 +308,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 175,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080452281603100',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -477,15 +323,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.8,
         reviews: 104,
-        description: 'Sérum expert qui répond aux besoins essentiels de votre peau. Sa composition soigneusement élaborée allie efficacité et confort pour une beauté au naturel.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060454001604900',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -499,15 +338,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 191,
-        description: 'Sérum anti-âge global qui cible rides, relâchement et perte d\'éclat simultanément. Formule concentrée en actifs de nouvelle génération pour des résultats visibles dès 14 jours.',
-        features: ['Action anti-âge globale', 'Cible rides et relâchement', 'Actifs nouvelle génération', 'Résultats dès 14 jours', 'Tous types de peau'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040217421616800',
-        concerns: ['anti-age', 'rides'],
+        concerns: ['anti-age', 'rides']
     },
 
     {
@@ -521,15 +353,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.8,
         reviews: 56,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Centella Asiatica Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040211451618900',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -543,15 +368,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4,
         reviews: 39,
-        description: 'Le rétinol, actif star anti-âge, concentré dans une formule douce mais efficace. Corrige les imperfections, lisse le grain de peau et redonne de l\'éclat au teint terne.',
-        features: ['Rétinol pur concentré', 'Accélère le renouvellement cellulaire', 'Atténue rides et ridules', 'Unifie le teint', 'Sans parabènes'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Retinol, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040156581602400',
-        concerns: ['anti-age', 'rides'],
+        concerns: ['anti-age', 'rides']
     },
 
     {
@@ -565,15 +383,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 27,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031523461606000',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -587,15 +398,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 23,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031451021600300',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -609,15 +413,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 185,
-        description: 'Sérum au niacinamide (vitamine B3) qui resserre les pores, régule le sébum et unifie le teint. Convient particulièrement aux peaux mixtes à grasses sujettes aux imperfections.',
-        features: ['Niacinamide (Vitamine B3)', 'Resserre les pores visiblement', 'Régule la production de sébum', 'Unifie le teint', 'Idéal peaux mixtes à grasses'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031324011635800',
-        concerns: ['pores', 'acne'],
+        concerns: ['pores', 'acne']
     },
 
     {
@@ -631,15 +428,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 151,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031051311626100',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -653,15 +443,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 15,
-        description: 'Sérum au collagène marin qui renforce la structure de la peau, redonne fermeté et élasticité. Effet liftant visible dès les premières applications régulières.',
-        features: ['Collagène marin haute qualité', 'Renforce la structure cutanée', 'Effet liftant progressif', 'Redonne fermeté et élasticité', 'Pénétration optimale'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603311212161613300',
-        concerns: ['fermete', 'anti-age'],
+        concerns: ['fermete', 'anti-age']
     },
 
     {
@@ -675,15 +458,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 59,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310723151626700',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -697,15 +473,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.9,
         reviews: 69,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310407291627200',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -719,15 +488,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 54,
-        description: 'Sérum à l\'acide hyaluronique multi-poids moléculaires pour une hydratation sur 3 niveaux. Repulpe visiblement la peau, comble les ridules et crée un effet rebond immédiat.',
-        features: ['Acide hyaluronique multi-poids', 'Hydratation 3 niveaux de profondeur', 'Effet repulpant immédiat', 'Texture ultra-légère', 'Convient peaux sensibles'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur peau propre légèrement humide. 2. Appliquez 3-4 gouttes. 3. Tapotez pour favoriser la pénétration. 4. Suivre de votre crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090449591617400',
-        concerns: ['hydratation', 'rides'],
+        concerns: ['hydratation', 'rides']
     },
 
     {
@@ -741,15 +503,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 177,
-        description: 'Concentré hyaluronique haute performance qui attire et retient l\'eau dans les couches de l\'épiderme. Peau repulpée, lissée et confortablement hydratée toute la journée.',
-        features: ['Acide hyaluronique multi-poids', 'Hydratation 3 niveaux de profondeur', 'Effet repulpant immédiat', 'Texture ultra-légère', 'Convient peaux sensibles'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Curcuma Longa Root Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur peau propre légèrement humide. 2. Appliquez 3-4 gouttes. 3. Tapotez pour favoriser la pénétration. 4. Suivre de votre crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040146481620800',
-        concerns: ['hydratation', 'rides'],
+        concerns: ['hydratation', 'rides']
     },
 
     {
@@ -763,15 +518,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 189,
-        description: 'Sérum au collagène marin qui renforce la structure de la peau, redonne fermeté et élasticité. Effet liftant visible dès les premières applications régulières.',
-        features: ['Collagène marin haute qualité', 'Renforce la structure cutanée', 'Effet liftant progressif', 'Redonne fermeté et élasticité', 'Pénétration optimale'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603301343081629000',
-        concerns: ['fermete', 'anti-age'],
+        concerns: ['fermete', 'anti-age']
     },
 
     {
@@ -785,15 +533,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 62,
-        description: 'Sérum à la vitamine C stabilisée qui illumine le teint, atténue les taches pigmentaires et protège contre le stress oxydatif. Votre meilleur allié éclat au quotidien.',
-        features: ['Vitamine C stabilisée', 'Booste l\'éclat du teint', 'Protection antioxydante', 'Atténue les taches', 'Application matin recommandée'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le matin sur peau propre et sèche. 2. 3-4 gouttes sur visage et cou. 3. Tapotez délicatement. 4. Appliquez crème et protection solaire. 5. Conservez à l\'abri de la lumière.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603300928441600800',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -807,15 +548,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.9,
         reviews: 126,
-        description: 'Sérum expert qui répond aux besoins essentiels de votre peau. Sa composition soigneusement élaborée allie efficacité et confort pour une beauté au naturel.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603281305451627300',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -829,15 +563,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.3,
         reviews: 167,
-        description: 'Sérum au collagène marin qui renforce la structure de la peau, redonne fermeté et élasticité. Effet liftant visible dès les premières applications régulières.',
-        features: ['Collagène marin haute qualité', 'Renforce la structure cutanée', 'Effet liftant progressif', 'Redonne fermeté et élasticité', 'Pénétration optimale'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060437251602800',
-        concerns: ['fermete', 'anti-age'],
+        concerns: ['fermete', 'anti-age']
     },
 
     {
@@ -851,15 +578,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.5,
         reviews: 23,
-        description: 'Sérum aux peptides biomimétiques qui ciblent les rides d\'expression. Stimule le renouvellement naturel du collagène pour une peau plus ferme et plus rebondie au fil des jours.',
-        features: ['Peptides biomimétiques', 'Cible les rides d\'expression', 'Stimule le collagène naturel', 'Peau plus ferme jour après jour', 'Formule haute tolérance'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060435161614300',
-        concerns: ['fermete', 'rides'],
+        concerns: ['fermete', 'rides']
     },
 
     {
@@ -873,15 +593,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 15,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090408081627000',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -895,15 +608,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 121,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060452011617600',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -917,15 +623,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 125,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040358581624700',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -939,15 +638,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 34,
-        description: 'Sérum expert qui répond aux besoins essentiels de votre peau. Sa composition soigneusement élaborée allie efficacité et confort pour une beauté au naturel.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031332241617300',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -961,15 +653,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 37,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603280158001619800',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -983,15 +668,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 65,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Snail Secretion Filtrate, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512220519371625200',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1005,15 +683,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 145,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2037766339821154306',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -1027,15 +698,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 92,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2037761283313541122',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -1049,15 +713,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 134,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2037764087679721473',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -1071,15 +728,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 187,
-        description: 'Sérum éclat qui révèle la luminosité naturelle de votre peau. Sa formule enrichie en actifs antioxydants combat le teint terne et les irrégularités pigmentaires.',
-        features: ['Complexe anti-oxydant puissant', 'Révèle l\'éclat naturel', 'Combat le teint terne', 'Unifie les irrégularités', 'Résultats visibles en 14 jours'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260526181621100',
-        concerns: ['eclat', 'taches'],
+        concerns: ['eclat', 'taches']
     },
 
     {
@@ -1093,15 +743,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.2,
         reviews: 41,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1983828105044197377',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1115,15 +758,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 187,
-        description: 'Concentré d\'actifs puissants dans une formule légère et non grasse. Ce sérum s\'intègre parfaitement dans votre routine matin et soir pour une peau transformée.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604070433081631200',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1137,15 +773,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 155,
-        description: 'Sérum anti-âge global qui cible rides, relâchement et perte d\'éclat simultanément. Formule concentrée en actifs de nouvelle génération pour des résultats visibles dès 14 jours.',
-        features: ['Action anti-âge globale', 'Cible rides et relâchement', 'Actifs nouvelle génération', 'Résultats dès 14 jours', 'Tous types de peau'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Le soir, sur peau propre et sèche. 2. Appliquez 3-4 gouttes. 3. Tapotez délicatement. 4. Suivre d\'une crème hydratante. 5. Utilisez une protection solaire le matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601250246191606100',
-        concerns: ['anti-age', 'rides'],
+        concerns: ['anti-age', 'rides']
     },
 
     {
@@ -1159,15 +788,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 49,
-        description: 'Sérum visage haute performance qui apporte à votre peau les actifs ciblés dont elle a besoin. Texture fluide et légère, absorption rapide, résultats durables.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Sérum', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Nettoyez le visage. 2. Appliquez 3-4 gouttes. 3. Tapotez du bout des doigts. 4. Attendez 1-2 min puis crème. 5. Matin et/ou soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601030128521622400',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     // ——— SOINS VISAGE (152 produits) ———
@@ -1183,15 +805,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 109,
-        description: 'Soin ciblé contour des yeux qui décongestionne, estompe les cernes et lisse les ridules. Formule ultra-douce spécialement conçue pour la peau fine et fragile du regard.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Retinol, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604060446191638300',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -1205,15 +820,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 128,
-        description: 'Crème contour des yeux qui revitalise votre regard. Ses actifs décongestionnants et anti-cernes agissent en synergie pour des yeux visiblement reposés.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Retinol, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604041245251635500',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -1227,15 +835,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.6,
         reviews: 151,
-        description: 'Soin ciblé contour des yeux qui décongestionne, estompe les cernes et lisse les ridules. Formule ultra-douce spécialement conçue pour la peau fine et fragile du regard.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Retinol, Curcuma Longa Root Extract, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604040215181638300',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -1249,15 +850,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4,
         reviews: 42,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Sodium Hyaluronate, Centella Asiatica Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041067206251507713',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1271,15 +865,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.6,
         reviews: 146,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604070412191619000',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1293,15 +880,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.8,
         reviews: 67,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041063077086019585',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1315,15 +895,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 161,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041065895857246209',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1337,15 +910,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.7,
         reviews: 115,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041069471593680897',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1359,15 +925,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.6,
         reviews: 119,
-        description: 'Crème de nuit régénérante qui agit pendant votre sommeil. Répare les dommages de la journée et stimule le renouvellement cellulaire nocturne pour un réveil en beauté.',
-        features: ['Régénération nocturne active', 'Répare les dommages du jour', 'Texture riche et enveloppante', 'Renouvellement cellulaire boosté', 'Peau régénérée au réveil'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Le soir sur peau propre et tonifiée. 2. Appliquez généreusement. 3. Massez en mouvements ascendants. 4. Insistez sur zones sèches. 5. Laissez agir toute la nuit.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2603310855401610400',
-        concerns: ['reparation', 'anti-age'],
+        concerns: ['reparation', 'anti-age']
     },
 
     {
@@ -1381,15 +940,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.6,
         reviews: 74,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041051764603535361',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1403,15 +955,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 3.9,
         reviews: 18,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041053586069934081',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1425,15 +970,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4,
         reviews: 133,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Colloidal Gold, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041048471634493441',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -1447,15 +985,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.2,
         reviews: 27,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '50 g', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041071151789920257',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1469,15 +1000,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.2,
         reviews: 146,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604031213541602500',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1491,15 +1015,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 3.9,
         reviews: 18,
-        description: 'Baume à lèvres nourrissant qui hydrate, protège et répare les lèvres sèches ou gercées. Texture fondante au parfum délicat qui se porte aussi sous le rouge à lèvres.',
-        features: ['Hydratation intense longue durée', 'Répare lèvres gercées', 'Se porte sous rouge à lèvres', 'Format pratique à emporter', 'Texture fondante agréable'],
-        specs: { 'Type': 'Soin lèvres', 'Contenance': '10 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Cera Alba, Butyrospermum Parkii Butter, Ricinus Communis Seed Oil, Copernicia Cerifera Wax, Tocopheryl Acetate',
-        howTo: '1. Appliquez directement sur les lèvres. 2. Pour un soin intensif : couche épaisse au coucher. 3. Se porte sous le rouge à lèvres. 4. Réappliquez au besoin.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2603310728081631000',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1513,15 +1030,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.1,
         reviews: 90,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2603310538521623100',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1535,15 +1045,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 100,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2603310534401639400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1557,15 +1060,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.2,
         reviews: 36,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604100400091626200',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1579,15 +1075,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4,
         reviews: 180,
-        description: 'Soin ciblé contour des yeux qui décongestionne, estompe les cernes et lisse les ridules. Formule ultra-douce spécialement conçue pour la peau fine et fragile du regard.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Panax Ginseng Root Extract, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604090406311626100',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -1601,15 +1090,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.8,
         reviews: 31,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604031053101626600',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1623,15 +1105,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 159,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604090521401636900',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1645,15 +1120,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 3.8,
         reviews: 148,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604090436211627100',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -1667,15 +1135,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.1,
         reviews: 169,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604070419021606500',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1689,15 +1150,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.6,
         reviews: 28,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604070416561635800',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1711,15 +1165,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4,
         reviews: 103,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604060449561609000',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1733,15 +1180,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.4,
         reviews: 126,
-        description: 'Crème contour des yeux qui revitalise votre regard. Ses actifs décongestionnants et anti-cernes agissent en synergie pour des yeux visiblement reposés.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604060448111613900',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -1755,15 +1195,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.2,
         reviews: 95,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604060442321627400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1777,15 +1210,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.5,
         reviews: 18,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '50 g', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041057180363386881',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1799,15 +1225,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.8,
         reviews: 98,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '50 g', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2041064486263111681',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1821,15 +1240,8 @@ const PRODUCTS = [
         badge: 'Bestseller',
         rating: 4.7,
         reviews: 192,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: true,
-        supplier: 'cj',
-        cjProductId: '2604090409571627500',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1843,15 +1255,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 97,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039919354652151810',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1865,15 +1270,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 91,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039927309783027714',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1887,15 +1285,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 23,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039926044088881154',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1909,15 +1300,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 113,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039930974364626946',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1931,15 +1315,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 36,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039929289096056833',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1953,15 +1330,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 80,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100437581623400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1975,15 +1345,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 96,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100436001626800',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -1997,15 +1360,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 114,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100357361634400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2019,15 +1375,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.1,
         reviews: 108,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042500309077360641',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2041,15 +1390,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.8,
         reviews: 84,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090445331626900',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2063,15 +1405,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 173,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090401451619200',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2085,15 +1420,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 141,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080459481610900',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2107,15 +1435,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 23,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080438161608300',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2129,15 +1450,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.8,
         reviews: 109,
-        description: 'Crème contour des yeux qui revitalise votre regard. Ses actifs décongestionnants et anti-cernes agissent en synergie pour des yeux visiblement reposés.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080415551635800',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -2151,16 +1465,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 15,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071153581639100',
         concerns: ['hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -2174,15 +1481,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 112,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604070414231625600',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2196,15 +1496,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 145,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '60 g', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2041060755418927105',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2218,15 +1511,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 149,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060433201631000',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2240,15 +1526,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 34,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039619420008083458',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2262,15 +1541,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 179,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2038926965319266306',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2284,15 +1556,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 107,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2038924884550217729',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2306,15 +1571,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 166,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2037077549160878082',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2328,15 +1586,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.7,
         reviews: 112,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603230420031604700',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2350,15 +1601,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 134,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603210225521620800',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2372,15 +1616,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 135,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2034907422416474113',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2394,15 +1631,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.9,
         reviews: 100,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191244351632600',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2416,15 +1646,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 186,
-        description: 'Soin ciblé contour des yeux qui décongestionne, estompe les cernes et lisse les ridules. Formule ultra-douce spécialement conçue pour la peau fine et fragile du regard.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191217241615700',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -2438,15 +1661,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 153,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603180232241625400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2460,15 +1676,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 137,
-        description: 'Soin ciblé contour des yeux qui décongestionne, estompe les cernes et lisse les ridules. Formule ultra-douce spécialement conçue pour la peau fine et fragile du regard.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071137461632900',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -2482,15 +1691,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 51,
-        description: 'Crème contour des yeux qui revitalise votre regard. Ses actifs décongestionnants et anti-cernes agissent en synergie pour des yeux visiblement reposés.',
-        features: ['Formule spéciale zone fragile', 'Décongestionne cernes et poches', 'Lisse les ridules', 'Texture ultra-légère', 'Application matin et soir'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une petite quantité. 2. Tapotez délicatement autour de l\'œil. 3. Du coin interne vers l\'extérieur. 4. Ne tirez jamais la peau. 5. Matin et soir.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604070903441613900',
-        concerns: ['cernes', 'rides'],
+        concerns: ['cernes', 'rides']
     },
 
     {
@@ -2504,15 +1706,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 105,
-        description: 'Soin spécifique cou et décolleté qui raffermit et lisse cette zone souvent négligée. Formule anti-gravité qui redéfinit l\'ovale et atténue les lignes horizontales.',
-        features: ['Formule concentrée en actifs', 'Texture fluide non grasse', 'Absorption ultra-rapide', 'Compatible tous types de peau', 'Résultats visibles 2-4 semaines'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080559121601200',
-        concerns: ['fermete', 'anti-age'],
+        concerns: ['fermete', 'anti-age']
     },
 
     {
@@ -2526,15 +1721,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 76,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040720351611000',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2548,15 +1736,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 51,
-        description: 'Masque visage intense qui infuse votre peau d\'actifs concentrés en 15 minutes. Résultat immédiat : teint frais, peau repulpée et éclat visible dès la première utilisation.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040127041604200',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2570,15 +1751,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 82,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Colloidal Gold, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040122431614100',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2592,15 +1766,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 161,
-        description: 'Masque visage intense qui infuse votre peau d\'actifs concentrés en 15 minutes. Résultat immédiat : teint frais, peau repulpée et éclat visible dès la première utilisation.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031251431611100',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2614,15 +1781,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.6,
         reviews: 181,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604020607241624900',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -2636,15 +1796,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 106,
-        description: 'Masque visage intense qui infuse votre peau d\'actifs concentrés en 15 minutes. Résultat immédiat : teint frais, peau repulpée et éclat visible dès la première utilisation.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '60 g', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310725491615900',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2658,15 +1811,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.9,
         reviews: 103,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310531341636800',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2680,15 +1826,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.9,
         reviews: 152,
-        description: 'Masque visage intense qui infuse votre peau d\'actifs concentrés en 15 minutes. Résultat immédiat : teint frais, peau repulpée et éclat visible dès la première utilisation.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Colloidal Gold, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310528141627800',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2702,15 +1841,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 158,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603301345481600700',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -2724,15 +1856,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 126,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2038499015076524034',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -2746,15 +1871,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 139,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603290304181611000',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2768,15 +1886,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 62,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260722321638400',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -2790,15 +1901,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.3,
         reviews: 67,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603240408371627000',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -2812,15 +1916,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 143,
-        description: 'Masque visage intense qui infuse votre peau d\'actifs concentrés en 15 minutes. Résultat immédiat : teint frais, peau repulpée et éclat visible dès la première utilisation.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603230716501636200',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2834,15 +1931,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 82,
-        description: 'Gloss lèvres qui apporte un éclat miroir et un volume optique immédiat. Formule non collante enrichie en actifs hydratants pour des lèvres sublimées.',
-        features: ['Éclat miroir immédiat', 'Volume optique des lèvres', 'Non collant', 'Enrichi en actifs hydratants', 'Couleur translucide naturelle'],
-        specs: { 'Type': 'Soin lèvres', 'Contenance': '10 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Cera Alba, Butyrospermum Parkii Butter, Ricinus Communis Seed Oil, Copernicia Cerifera Wax, Tocopheryl Acetate',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603261347391600700',
-        concerns: ['eclat'],
+        concerns: ['eclat']
     },
 
     {
@@ -2856,15 +1946,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 82,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031256571614900',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -2878,15 +1961,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 144,
-        description: 'Masque soin qui offre un véritable bain de jeunesse à votre peau. Ses actifs haute concentration agissent en profondeur pour un coup d\'éclat instantané.',
-        features: ['Action express 15-20 min', 'Résultat dès la 1ère utilisation', 'Actifs haute concentration', '2-3 fois par semaine', 'Tous types de peau'],
-        specs: { 'Type': 'Masque', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': '2-3 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031152201608900',
-        concerns: ['hydratation', 'eclat'],
+        concerns: ['hydratation', 'eclat']
     },
 
     {
@@ -2900,15 +1976,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 160,
-        description: 'Nettoyant visage doux mais efficace qui élimine impuretés et excès de sébum sans perturber la barrière cutanée. Peau propre, fraîche et parfaitement préparée pour vos soins.',
-        features: ['Nettoyage profond mais doux', 'Respecte le film hydrolipidique', 'Élimine 99% des impuretés', 'Usage quotidien', 'pH neutre formule douce'],
-        specs: { 'Type': 'Nettoyant', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez le visage. 2. Faites mousser entre les mains. 3. Massez en cercles sur visage. 4. Insistez zone T. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604030813491611400',
-        concerns: ['nettoyage', 'pores'],
+        concerns: ['nettoyage', 'pores']
     },
 
     {
@@ -2922,15 +1991,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 62,
-        description: 'Gel nettoyant visage qui purifie en douceur tout en respectant l\'équilibre naturel de la peau. Mousse onctueuse qui laisse un fini frais et confortable.',
-        features: ['Nettoyage profond mais doux', 'Respecte le film hydrolipidique', 'Élimine 99% des impuretés', 'Usage quotidien', 'pH neutre formule douce'],
-        specs: { 'Type': 'Nettoyant', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez le visage. 2. Faites mousser entre les mains. 3. Massez en cercles sur visage. 4. Insistez zone T. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603301224271606300',
-        concerns: ['nettoyage', 'pores'],
+        concerns: ['nettoyage', 'pores']
     },
 
     {
@@ -2944,15 +2006,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.1,
         reviews: 95,
-        description: 'Nettoyant visage doux mais efficace qui élimine impuretés et excès de sébum sans perturber la barrière cutanée. Peau propre, fraîche et parfaitement préparée pour vos soins.',
-        features: ['Nettoyage profond mais doux', 'Respecte le film hydrolipidique', 'Élimine 99% des impuretés', 'Usage quotidien', 'pH neutre formule douce'],
-        specs: { 'Type': 'Nettoyant', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez le visage. 2. Faites mousser entre les mains. 3. Massez en cercles sur visage. 4. Insistez zone T. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060411141602100',
-        concerns: ['nettoyage', 'pores'],
+        concerns: ['nettoyage', 'pores']
     },
 
     {
@@ -2966,15 +2021,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 167,
-        description: 'Gel nettoyant visage qui purifie en douceur tout en respectant l\'équilibre naturel de la peau. Mousse onctueuse qui laisse un fini frais et confortable.',
-        features: ['Nettoyage profond mais doux', 'Respecte le film hydrolipidique', 'Élimine 99% des impuretés', 'Usage quotidien', 'pH neutre formule douce'],
-        specs: { 'Type': 'Nettoyant', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez le visage. 2. Faites mousser entre les mains. 3. Massez en cercles sur visage. 4. Insistez zone T. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310409421601900',
-        concerns: ['nettoyage', 'pores'],
+        concerns: ['nettoyage', 'pores']
     },
 
     {
@@ -2988,15 +2036,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 124,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090419211637100',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3010,15 +2051,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.9,
         reviews: 89,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042084382950342658',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3032,15 +2066,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 74,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071140221621000',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3054,15 +2081,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.2,
         reviews: 33,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604070422141638700',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3076,15 +2096,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.1,
         reviews: 170,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040357021627800',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -3098,15 +2111,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 121,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039233396665794561',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3120,15 +2126,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 24,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603300405091634300',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3142,15 +2141,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 147,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603280945431615600',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3164,15 +2156,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 138,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260802011612700',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3186,15 +2171,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.1,
         reviews: 51,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603240410341606300',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3208,15 +2186,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 167,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603240406041631200',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -3230,15 +2201,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 94,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603231150041603500',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3252,15 +2216,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 184,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220228561621100',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3274,15 +2231,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.3,
         reviews: 33,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603210801191637200',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3296,15 +2246,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 66,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603201250371637900',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3318,15 +2261,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 131,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603201247341606400',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3340,15 +2276,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 61,
-        description: 'Démaquillant doux qui dissout le maquillage même waterproof en un seul geste. Respecte la sensibilité de la peau et des yeux pour un nettoyage en toute sérénité.',
-        features: ['Dissout le maquillage waterproof', 'Formule douce sans alcool', 'Ne pique pas les yeux', 'Compatible peaux sensibles', 'Nettoyage en un geste'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imprégnez un coton. 2. Posez sur la zone maquillée. 3. Essuyez doucement. 4. Répétez si nécessaire. 5. Terminez par votre lotion tonique.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603201204201609600',
-        concerns: ['nettoyage'],
+        concerns: ['nettoyage']
     },
 
     {
@@ -3362,15 +2291,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 96,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071121461619100',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3384,15 +2306,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.6,
         reviews: 185,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2041055198681546753',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -3406,15 +2321,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.8,
         reviews: 112,
-        description: 'Masque yeux relaxant qui apaise la fatigue oculaire et hydrate la zone délicate du contour. Moment de détente et soin combinés pour un regard revitalisé.',
-        features: ['Apaise la fatigue oculaire', 'Hydrate la zone fragile', 'Moment détente et soin', 'Revitalise le regard', 'Utilisation relaxante'],
-        specs: { 'Type': 'Soin contour des yeux', 'Contenance': '15 ml', 'Zone': 'Contour des yeux', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Appliquez en couche uniforme sur visage propre. 2. Laissez poser 15-20 min. 3. Rincez à l\'eau tiède. 4. Terminez par sérum + crème. 5. 2-3 fois par semaine.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080834381636900',
-        concerns: ['cernes', 'fatigue'],
+        concerns: ['cernes', 'fatigue']
     },
 
     {
@@ -3428,15 +2336,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 190,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602190307541633400',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3450,15 +2351,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 120,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602070345221630300',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3472,15 +2366,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.8,
         reviews: 49,
-        description: 'Gloss lèvres qui apporte un éclat miroir et un volume optique immédiat. Formule non collante enrichie en actifs hydratants pour des lèvres sublimées.',
-        features: ['Éclat miroir immédiat', 'Volume optique des lèvres', 'Non collant', 'Enrichi en actifs hydratants', 'Couleur translucide naturelle'],
-        specs: { 'Type': 'Soin lèvres', 'Contenance': '10 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Cera Alba, Butyrospermum Parkii Butter, Ricinus Communis Seed Oil, Copernicia Cerifera Wax, Tocopheryl Acetate',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602070226081604900',
-        concerns: ['eclat'],
+        concerns: ['eclat']
     },
 
     {
@@ -3494,15 +2381,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 37,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602030718311612100',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3516,15 +2396,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 169,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601280858471601100',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3538,15 +2411,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 125,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601260633321610000',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3560,15 +2426,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.7,
         reviews: 137,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '200 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601210352151637000',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3582,15 +2441,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.9,
         reviews: 127,
-        description: 'Eau micellaire 3-en-1 qui démaquille, nettoie et tonifie en douceur. Les micelles capturent les impuretés comme un aimant sans rinçage nécessaire.',
-        features: ['3-en-1 : démaquille, nettoie, tonifie', 'Sans rinçage nécessaire', 'Micelles captent les impuretés', 'Ultra-doux même yeux sensibles', 'Grand format économique'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Imbibez un coton d\'eau micellaire. 2. Appliquez sur visage et yeux. 3. Pas besoin de frotter. 4. Répétez jusqu\'à ce que le coton soit propre. 5. Sans rinçage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601150743591629300',
-        concerns: ['nettoyage', 'sensibilite'],
+        concerns: ['nettoyage', 'sensibilite']
     },
 
     {
@@ -3604,15 +2456,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.1,
         reviews: 140,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080911521616600',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3626,15 +2471,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 69,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080442171637900',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3648,15 +2486,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 43,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071211111639800',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3670,15 +2501,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 29,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060412581630500',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3692,15 +2516,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.5,
         reviews: 71,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050437311617300',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3714,15 +2531,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 174,
-        description: 'Huile démaquillante qui se transforme en lait au contact de l\'eau. Dissout en profondeur le maquillage le plus tenace tout en nourrissant la peau.',
-        features: ['Transforme en lait au contact de l\'eau', 'Dissout le maquillage tenace', 'Nourrit la peau en même temps', 'Double nettoyage idéal', 'Fini propre sans film gras'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040150481630600',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -3736,15 +2546,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.9,
         reviews: 111,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604071157461622000',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3758,15 +2561,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 19,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050937551614800',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3780,15 +2576,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.6,
         reviews: 88,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040208461600600',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3802,15 +2591,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 126,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039609971412353025',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3824,15 +2606,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 123,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Colloidal Gold, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603300444031621700',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3846,15 +2621,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.8,
         reviews: 29,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603231106481613200',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3868,15 +2636,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 168,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220921251617400',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3890,15 +2651,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 95,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191251111624700',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3912,15 +2666,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 162,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181439521621600',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3934,15 +2681,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.3,
         reviews: 100,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181249161628600',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3956,15 +2696,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.5,
         reviews: 71,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181212281604400',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -3978,15 +2711,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.9,
         reviews: 111,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181204361619200',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -4000,15 +2726,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 179,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181132511602900',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -4022,15 +2741,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 125,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603050930521631100',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4044,15 +2756,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.1,
         reviews: 117,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603010939261627700',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4066,15 +2771,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 139,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603010629071631400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4088,15 +2786,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.3,
         reviews: 77,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602120937431636700',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4110,15 +2801,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 106,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602120141241600500',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4132,15 +2816,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 54,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602120118451601300',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4154,15 +2831,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 131,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602100241561632100',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4176,15 +2846,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 79,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Ascorbyl Glucoside, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602060958091602400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4198,15 +2861,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 16,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601220745141637000',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4220,15 +2876,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 27,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2008090338956062722',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4242,15 +2891,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 48,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Curcuma Longa Root Extract, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2008091977628422145',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4264,15 +2906,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 171,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2005942968413941762',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4286,15 +2921,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 98,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2004017345678192641',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4308,15 +2936,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 118,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2003764832127197185',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4330,15 +2951,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 56,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2003751531497238529',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4352,15 +2966,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 68,
-        description: 'Crème hydratante onctueuse qui nourrit la peau en profondeur. Sa texture fondante crée un bouclier protecteur tout en laissant la peau douce et veloutée sans film gras.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512220534411610700',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4374,15 +2981,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 147,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2002977689930031106',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4396,15 +2996,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 121,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2003043182641590273',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4418,15 +3011,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 40,
-        description: 'Exfoliant visage aux micro-grains naturels qui affine le grain de peau sans agresser. Élimine les cellules mortes pour révéler un teint lisse et lumineux.',
-        features: ['Micro-grains naturels', 'Affine le grain de peau', 'Élimine cellules mortes', 'Révèle l\'éclat', '1-2 fois par semaine'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512140321131620400',
-        concerns: ['eclat', 'pores'],
+        concerns: ['eclat', 'pores']
     },
 
     {
@@ -4440,15 +3026,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 151,
-        description: 'Protection solaire légère qui défend votre peau des rayons UVA/UVB tout en l\'hydratant. Texture invisible sans traces blanches, idéale comme base quotidienne.',
-        features: ['Protection UVA/UVB', 'Texture invisible non grasse', 'Zéro traces blanches', 'Base quotidienne idéale', 'Hydrate en même temps'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050441211618800',
-        concerns: ['protection', 'anti-age'],
+        concerns: ['protection', 'anti-age']
     },
 
     {
@@ -4462,15 +3041,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 191,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031233001607200',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     {
@@ -4484,15 +3056,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 106,
-        description: 'Lotion tonique qui rééquilibre le pH de la peau après le nettoyage et resserre les pores. Prépare idéalement la peau à recevoir vos soins pour une meilleure efficacité.',
-        features: ['Rééquilibre le pH', 'Resserre les pores', 'Prépare la peau aux soins', 'Complète le nettoyage', 'Hydratation première couche'],
-        specs: { 'Type': 'Soin', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cocamidopropyl Betaine, Glycerin, Sodium Cocoyl Isethionate, Acrylates Copolymer, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après nettoyage, imbibez un coton. 2. Passez sur tout le visage et le cou. 3. Ou appliquez à la main en tapotant. 4. Laissez absorber. 5. Enchaînez avec votre sérum.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031048151602200',
-        concerns: ['pores', 'eclat'],
+        concerns: ['pores', 'eclat']
     },
 
     {
@@ -4506,15 +3071,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 83,
-        description: 'Soin hydratant quotidien qui reconstitue la barrière cutanée. Enrichi en actifs nourrissants, il maintient l\'hydratation optimale de votre peau tout au long de la journée.',
-        features: ['Hydratation intense 24h', 'Texture fondante non grasse', 'Base idéale sous maquillage', 'Renforce la barrière cutanée', 'Testé dermatologiquement'],
-        specs: { 'Type': 'Crème', 'Contenance': '30 ml', 'Type de peau': 'Tous types', 'Utilisation': 'Matin et/ou soir', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310525151628400',
-        concerns: ['hydratation'],
+        concerns: ['hydratation']
     },
 
     // ——— SOINS CORPS (36 produits) ———
@@ -4530,15 +3088,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 143,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Retinol, Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050439341606700',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4552,15 +3103,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 157,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039891214447276033',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -4574,15 +3118,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.9,
         reviews: 61,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604030918131632400',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4596,15 +3133,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 118,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191219221614700',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4618,16 +3148,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 158,
-        description: 'Gel douche onctueux qui nettoie en douceur sans dessécher. Sa mousse crémeuse laisse la peau propre, douce et délicatement parfumée.',
-        features: ['Mousse onctueuse', 'Nettoyage doux sans dessécher', 'Respecte l\'hydratation naturelle', 'Parfum longue durée', 'Peau douce et propre'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603290420141605300',
         concerns: ['nettoyage', 'hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -4641,15 +3164,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 85,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090416461602800',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4663,15 +3179,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.9,
         reviews: 176,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080319211629800',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4685,15 +3194,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 108,
-        description: 'Crème corps riche et nourrissante qui répare les peaux les plus sèches. Laisse un film protecteur doux sans effet collant pour une peau souple et confortable.',
-        features: ['Nutrition intense peaux sèches', 'Film protecteur doux', 'Sans effet collant', 'Peau souple et confortable', 'Parfum délicat'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050435301616100',
-        concerns: ['hydratation', 'fermete'],
+        concerns: ['hydratation', 'fermete']
     },
 
     {
@@ -4707,15 +3209,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 17,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050433471635600',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4729,15 +3224,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 190,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604041241441638300',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4751,15 +3239,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 73,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040124351600801',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4773,15 +3254,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 169,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031336281632800',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4795,15 +3269,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.9,
         reviews: 174,
-        description: 'Gommage corps aux grains exfoliants naturels qui élimine cellules mortes et impuretés. Peau lisse, douce et préparée à absorber vos soins hydratants.',
-        features: ['Grains exfoliants naturels', 'Élimine cellules mortes', 'Stimule renouvellement cellulaire', 'Peau lisse et lumineuse', '1-2 fois par semaine'],
-        specs: { 'Type': 'Gommage', 'Contenance': '200 ml', 'Utilisation': '1-2 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Sous la douche, mouillez la peau. 2. Appliquez le gommage. 3. Massez en cercles. 4. Insistez coudes, genoux, pieds. 5. Rincez, puis hydratez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310411161607700',
-        concerns: ['eclat', 'cellulite'],
+        concerns: ['eclat', 'cellulite']
     },
 
     {
@@ -4817,15 +3284,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 92,
-        description: 'Gommage corps aux grains exfoliants naturels qui élimine cellules mortes et impuretés. Peau lisse, douce et préparée à absorber vos soins hydratants.',
-        features: ['Grains exfoliants naturels', 'Élimine cellules mortes', 'Stimule renouvellement cellulaire', 'Peau lisse et lumineuse', '1-2 fois par semaine'],
-        specs: { 'Type': 'Gommage', 'Contenance': '200 ml', 'Utilisation': '1-2 fois/semaine', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Sous la douche, mouillez la peau. 2. Appliquez le gommage. 3. Massez en cercles. 4. Insistez coudes, genoux, pieds. 5. Rincez, puis hydratez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2038812162420502529',
-        concerns: ['eclat', 'cellulite'],
+        concerns: ['eclat', 'cellulite']
     },
 
     {
@@ -4839,15 +3299,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 141,
-        description: 'Crème mains protectrice qui hydrate et répare les mains abîmées au quotidien. Absorption rapide sans résidu gras pour des mains douces à tout moment.',
-        features: ['Absorption rapide sans résidu', 'Protège et répare', 'Mains douces toute la journée', 'Format pratique sac à main', 'Hydratation profonde'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090443221633700',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4861,15 +3314,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 154,
-        description: 'Soin pieds intensif qui adoucit les callosités, hydrate les zones sèches et apaise les talons fendillés. Vos pieds retrouvent douceur et confort.',
-        features: ['Adoucit les callosités', 'Répare talons fendillés', 'Hydratation intensive pieds secs', 'Formule riche émolliente', 'Résultats en 7 jours'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042142143157465090',
-        concerns: ['hydratation', 'reparation'],
+        concerns: ['hydratation', 'reparation']
     },
 
     {
@@ -4883,15 +3329,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 191,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603190752381614700',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -4905,15 +3344,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 140,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512121204301605400',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -4927,15 +3359,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.9,
         reviews: 107,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1994735256685953025',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -4949,15 +3374,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 174,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1983833379322757122',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -4971,15 +3389,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 56,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1983802537277427713',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -4993,15 +3404,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 70,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510191259191613500',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5015,15 +3419,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 103,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510050610381615000',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5037,15 +3434,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 65,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510050607321625100',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5059,15 +3449,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.3,
         reviews: 46,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510050312541650800',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5081,15 +3464,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 30,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2509281025251620300',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5103,15 +3479,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 30,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '30 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2509151230251604500',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5125,15 +3494,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 131,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2509060412301615100',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5147,15 +3509,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.9,
         reviews: 185,
-        description: 'Soin anti-vergetures qui améliore l\'élasticité de la peau et atténue visiblement les stries existantes. Formule riche en actifs réparateurs pour les zones fragilisées.',
-        features: ['Améliore l\'élasticité cutanée', 'Atténue les stries existantes', 'Prévention et correction', 'Actifs réparateurs concentrés', 'Zones fragilisées ciblées'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2509050832001623700',
-        concerns: ['vergetures', 'fermete'],
+        concerns: ['vergetures', 'fermete']
     },
 
     {
@@ -5169,15 +3524,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 141,
-        description: 'Crème corps riche et nourrissante qui répare les peaux les plus sèches. Laisse un film protecteur doux sans effet collant pour une peau souple et confortable.',
-        features: ['Nutrition intense peaux sèches', 'Film protecteur doux', 'Sans effet collant', 'Peau souple et confortable', 'Parfum délicat'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Cetearyl Alcohol, Glycerin, Caprylic/Capric Triglyceride, Butyrospermum Parkii Butter, Dimethicone, Ceteareth-20, Tocopheryl Acetate, Panthenol, Carbomer, Phenoxyethanol',
-        howTo: '1. Prélevez une noisette. 2. Appliquez par touches sur visage. 3. Étalez en mouvements ascendants. 4. N\'oubliez pas cou et décolleté. 5. Laissez pénétrer avant maquillage.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604010504081634800',
-        concerns: ['hydratation', 'fermete'],
+        concerns: ['hydratation', 'fermete']
     },
 
     {
@@ -5191,15 +3539,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 111,
-        description: 'Gel douche onctueux qui nettoie en douceur sans dessécher. Sa mousse crémeuse laisse la peau propre, douce et délicatement parfumée.',
-        features: ['Mousse onctueuse', 'Nettoyage doux sans dessécher', 'Respecte l\'hydratation naturelle', 'Parfum longue durée', 'Peau douce et propre'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2033429922933813249',
-        concerns: ['nettoyage', 'hydratation'],
+        concerns: ['nettoyage', 'hydratation']
     },
 
     {
@@ -5213,15 +3554,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 154,
-        description: 'Soin minceur qui cible la cellulite et l\'aspect peau d\'orange. Active la microcirculation et favorise le drainage pour une silhouette visiblement affinée.',
-        features: ['Cible l\'aspect peau d\'orange', 'Active la microcirculation', 'Favorise le drainage', 'Silhouette affinée', 'Massage stimulant'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2003654635841581057',
-        concerns: ['cellulite', 'fermete'],
+        concerns: ['cellulite', 'fermete']
     },
 
     {
@@ -5235,15 +3569,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 64,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2008456575028609025',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -5257,15 +3584,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 138,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2007491518397181954',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -5279,15 +3599,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 21,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2007501088607727618',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     {
@@ -5301,15 +3614,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.6,
         reviews: 112,
-        description: 'Lait corporel fondant qui enveloppe la peau d\'une hydratation longue durée. Texture légère et non grasse qui pénètre rapidement pour une peau soyeuse et parfumée.',
-        features: ['Hydratation longue durée', 'Texture légère non grasse', 'Absorption rapide', 'Peau soyeuse parfumée', 'Usage quotidien après douche'],
-        specs: { 'Type': 'Soin corps', 'Contenance': '200 ml', 'Utilisation': 'Quotidien', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Cetearyl Alcohol, Helianthus Annuus Seed Oil, Butyrospermum Parkii Butter, Dimethicone, Panthenol, Tocopheryl Acetate, Phenoxyethanol',
-        howTo: '1. Après la douche sur peau humide. 2. Massez en mouvements circulaires. 3. Des pieds vers le haut. 4. Insistez zones sèches. 5. Quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2007507055528554497',
-        concerns: ['hydratation', 'secheresse'],
+        concerns: ['hydratation', 'secheresse']
     },
 
     // ——— CHEVEUX (102 produits) ———
@@ -5325,14 +3631,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 118,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042117831471972354',
+        bestseller: false
     },
 
     {
@@ -5346,14 +3645,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.9,
         reviews: 70,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039549419335053313',
+        bestseller: false
     },
 
     {
@@ -5367,15 +3659,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 82,
-        description: 'Masque capillaire réparateur intense qui reconstruit la fibre de l\'intérieur. Laissez poser 5 à 10 minutes pour des cheveux visiblement plus forts, brillants et souples.',
-        features: ['Réparation fibre en profondeur', 'Pose 5-10 minutes', 'Cheveux plus forts et brillants', 'Souplesse retrouvée', 'Soin hebdomadaire intensif'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Collagen, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez généreusement. 3. Peignez pour répartir. 4. Laissez 5-10 min. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2036751796664692737',
-        concerns: ['reparation', 'hydratation'],
+        concerns: ['reparation', 'hydratation']
     },
 
     {
@@ -5389,15 +3674,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 193,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Oryza Sativa Bran Extract, Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601190654201602300',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5411,15 +3689,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 146,
-        description: 'Sérum capillaire sans rinçage qui protège, lisse et fait briller. Quelques gouttes suffisent pour dompter les frisottis et apporter un éclat soyeux.',
-        features: ['Sans rinçage', 'Protection thermique', 'Discipline les frisottis', 'Éclat soyeux', 'Quelques gouttes suffisent'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur cheveux essorés ou secs. 2. 2-3 gouttes dans les paumes. 3. Appliquez sur longueurs et pointes. 4. Ne rincez pas. 5. Coiffez comme d\'habitude.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090438181609200',
-        concerns: ['brillance', 'reparation'],
+        concerns: ['brillance', 'reparation']
     },
 
     {
@@ -5433,15 +3704,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.6,
         reviews: 158,
-        description: 'Sérum capillaire sans rinçage qui protège, lisse et fait briller. Quelques gouttes suffisent pour dompter les frisottis et apporter un éclat soyeux.',
-        features: ['Sans rinçage', 'Protection thermique', 'Discipline les frisottis', 'Éclat soyeux', 'Quelques gouttes suffisent'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur cheveux essorés ou secs. 2. 2-3 gouttes dans les paumes. 3. Appliquez sur longueurs et pointes. 4. Ne rincez pas. 5. Coiffez comme d\'habitude.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080446231606800',
-        concerns: ['brillance', 'reparation'],
+        concerns: ['brillance', 'reparation']
     },
 
     {
@@ -5455,15 +3719,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 191,
-        description: 'Sérum capillaire sans rinçage qui protège, lisse et fait briller. Quelques gouttes suffisent pour dompter les frisottis et apporter un éclat soyeux.',
-        features: ['Sans rinçage', 'Protection thermique', 'Discipline les frisottis', 'Éclat soyeux', 'Quelques gouttes suffisent'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur cheveux essorés ou secs. 2. 2-3 gouttes dans les paumes. 3. Appliquez sur longueurs et pointes. 4. Ne rincez pas. 5. Coiffez comme d\'habitude.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080152191616300',
-        concerns: ['brillance', 'reparation'],
+        concerns: ['brillance', 'reparation']
     },
 
     {
@@ -5477,15 +3734,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 120,
-        description: 'Sérum capillaire sans rinçage qui protège, lisse et fait briller. Quelques gouttes suffisent pour dompter les frisottis et apporter un éclat soyeux.',
-        features: ['Sans rinçage', 'Protection thermique', 'Discipline les frisottis', 'Éclat soyeux', 'Quelques gouttes suffisent'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur cheveux essorés ou secs. 2. 2-3 gouttes dans les paumes. 3. Appliquez sur longueurs et pointes. 4. Ne rincez pas. 5. Coiffez comme d\'habitude.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080149411625100',
-        concerns: ['brillance', 'reparation'],
+        concerns: ['brillance', 'reparation']
     },
 
     {
@@ -5499,15 +3749,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 33,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2041745481528881154',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5521,15 +3764,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 23,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2041749369351593985',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5543,15 +3779,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.8,
         reviews: 192,
-        description: 'Sérum capillaire sans rinçage qui protège, lisse et fait briller. Quelques gouttes suffisent pour dompter les frisottis et apporter un éclat soyeux.',
-        features: ['Sans rinçage', 'Protection thermique', 'Discipline les frisottis', 'Éclat soyeux', 'Quelques gouttes suffisent'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Sur cheveux essorés ou secs. 2. 2-3 gouttes dans les paumes. 3. Appliquez sur longueurs et pointes. 4. Ne rincez pas. 5. Coiffez comme d\'habitude.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031444141634700',
-        concerns: ['brillance', 'reparation'],
+        concerns: ['brillance', 'reparation']
     },
 
     {
@@ -5565,15 +3794,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 95,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031442041634700',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -5587,15 +3809,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 126,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031159111610000',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5609,15 +3824,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 26,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080914461623500',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -5631,15 +3839,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 169,
-        description: 'Masque capillaire réparateur intense qui reconstruit la fibre de l\'intérieur. Laissez poser 5 à 10 minutes pour des cheveux visiblement plus forts, brillants et souples.',
-        features: ['Réparation fibre en profondeur', 'Pose 5-10 minutes', 'Cheveux plus forts et brillants', 'Souplesse retrouvée', 'Soin hebdomadaire intensif'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez généreusement. 3. Peignez pour répartir. 4. Laissez 5-10 min. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080450371614500',
-        concerns: ['reparation', 'hydratation'],
+        concerns: ['reparation', 'hydratation']
     },
 
     {
@@ -5653,15 +3854,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 111,
-        description: 'Soin capillaire profond qui restaure les cheveux abîmés par la chaleur, la coloration ou les agressions extérieures. Résultat dès la première application.',
-        features: ['Réparation fibre en profondeur', 'Pose 5-10 minutes', 'Cheveux plus forts et brillants', 'Souplesse retrouvée', 'Soin hebdomadaire intensif'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez généreusement. 3. Peignez pour répartir. 4. Laissez 5-10 min. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080448231605700',
-        concerns: ['reparation', 'hydratation'],
+        concerns: ['reparation', 'hydratation']
     },
 
     {
@@ -5675,15 +3869,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 161,
-        description: 'Masque capillaire réparateur intense qui reconstruit la fibre de l\'intérieur. Laissez poser 5 à 10 minutes pour des cheveux visiblement plus forts, brillants et souples.',
-        features: ['Réparation fibre en profondeur', 'Pose 5-10 minutes', 'Cheveux plus forts et brillants', 'Souplesse retrouvée', 'Soin hebdomadaire intensif'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez généreusement. 3. Peignez pour répartir. 4. Laissez 5-10 min. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050536011639400',
-        concerns: ['reparation', 'hydratation'],
+        concerns: ['reparation', 'hydratation']
     },
 
     {
@@ -5697,15 +3884,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 98,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603270323331601600',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5719,15 +3899,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.6,
         reviews: 133,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603231123031621600',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5741,15 +3914,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 183,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220857301613500',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5763,15 +3929,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 118,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220737081629800',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5785,15 +3944,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 170,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603210852411634200',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5807,15 +3959,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.3,
         reviews: 187,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603210539081602300',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5829,15 +3974,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 115,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603201212031622400',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5851,15 +3989,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.3,
         reviews: 62,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2034909090405842946',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5873,15 +4004,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 46,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191234431603200',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5895,15 +4019,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.2,
         reviews: 166,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603160536461637400',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5917,15 +4034,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 84,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080824481628700',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5939,15 +4049,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 176,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602230609021602100',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5961,15 +4064,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 141,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602141401501637800',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -5983,15 +4079,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 185,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602110250181600000',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6005,15 +4094,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 33,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602101041561603700',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6027,15 +4109,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.8,
         reviews: 134,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602101020061613900',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6049,15 +4124,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.5,
         reviews: 149,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220735111605100',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6071,15 +4139,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 112,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220715471633500',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6093,15 +4154,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 90,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080424521624700',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6115,15 +4169,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.7,
         reviews: 130,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603030655221633100',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6137,15 +4184,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 93,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601220728361612700',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6159,15 +4199,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 20,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512300339391605500',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6181,15 +4214,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 93,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512231137431618100',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6203,15 +4229,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 98,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512140706381626600',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6225,15 +4244,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 77,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512140702381630200',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6247,15 +4259,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 123,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512130950131617600',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6269,15 +4274,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.7,
         reviews: 17,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512120612421630700',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6291,15 +4289,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 49,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1994302556388360194',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6313,15 +4304,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.8,
         reviews: 60,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1994294020344938497',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6335,15 +4319,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 166,
-        description: 'Shampoing doux qui nettoie en profondeur sans agresser le cuir chevelu. Sa mousse onctueuse élimine impuretés et excès de sébum tout en respectant l\'hydratation naturelle.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2511100812531607800',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6357,15 +4334,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 51,
-        description: 'Shampoing professionnel qui purifie tout en préservant les huiles essentielles de vos cheveux. Cheveux propres, légers et faciles à coiffer.',
-        features: ['Mousse onctueuse doux', 'Respecte le cuir chevelu', 'Cheveux propres et légers', 'Sans sulfates agressifs', 'Parfum agréable longue durée'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Mouillez les cheveux. 2. Appliquez sur cuir chevelu. 3. Massez du bout des doigts en cercles. 4. Laissez 1-2 min. 5. Rincez soigneusement.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1986044561407590401',
-        concerns: ['nettoyage', 'volume'],
+        concerns: ['nettoyage', 'volume']
     },
 
     {
@@ -6379,15 +4349,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.1,
         reviews: 89,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510170232161606100',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6401,15 +4364,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 176,
-        description: 'Après-shampoing démêlant qui nourrit et protège de la racine aux pointes. Facilite le coiffage, réduit les frisottis et apporte brillance et douceur.',
-        features: ['Démêle sans alourdir', 'Nourrit racines aux pointes', 'Réduit les frisottis', 'Brillance et douceur', 'Facilite le coiffage'],
-        specs: { 'Type': 'Shampoing', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez sur longueurs et pointes. 3. Laissez 2-3 min. 4. Démêlez avec un peigne large. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510091156571636200',
-        concerns: ['hydratation', 'demeler'],
+        concerns: ['hydratation', 'demeler']
     },
 
     {
@@ -6423,15 +4379,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.3,
         reviews: 177,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260841191613000',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6445,15 +4394,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 64,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '30 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603090855481635100',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6467,15 +4409,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 97,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2029566753488007169',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6489,15 +4424,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 48,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603030621481612200',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6511,15 +4439,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.8,
         reviews: 40,
-        description: 'Masque capillaire réparateur intense qui reconstruit la fibre de l\'intérieur. Laissez poser 5 à 10 minutes pour des cheveux visiblement plus forts, brillants et souples.',
-        features: ['Réparation fibre en profondeur', 'Pose 5-10 minutes', 'Cheveux plus forts et brillants', 'Souplesse retrouvée', 'Soin hebdomadaire intensif'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Keratin, Aqua, Glycerin, Butylene Glycol, Trehalose, Sodium Hyaluronate, Betaine, Allantoin, Panthenol, Cellulose, Phenoxyethanol',
-        howTo: '1. Après shampoing, essorez. 2. Appliquez généreusement. 3. Peignez pour répartir. 4. Laissez 5-10 min. 5. Rincez abondamment.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602100806031627800',
-        concerns: ['reparation', 'hydratation'],
+        concerns: ['reparation', 'hydratation']
     },
 
     {
@@ -6533,15 +4454,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 31,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Hydrolyzed Keratin, Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601291001231623300',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6555,15 +4469,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 21,
-        description: 'Soin à la kératine qui reconstitue la structure interne du cheveu. Lisse les écailles, élimine les frisottis et apporte un effet miroir brillant et soyeux.',
-        features: ['Kératine pure reconstituante', 'Lisse les écailles', 'Élimine frisottis', 'Effet miroir brillant', 'Cheveux disciplinés'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601190737571616600',
-        concerns: ['lissage', 'reparation'],
+        concerns: ['lissage', 'reparation']
     },
 
     {
@@ -6577,15 +4484,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.5,
         reviews: 109,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601171011401602300',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6599,15 +4499,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 161,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604040152361632000',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6621,15 +4514,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 189,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Melaleuca Alternifolia Leaf Oil, Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031514441614200',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6643,15 +4529,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.1,
         reviews: 143,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604070904471614400',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6665,15 +4544,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 68,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603231120181608800',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6687,15 +4559,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 156,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603210743501634100',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6709,15 +4574,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 59,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603191221141616300',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6731,15 +4589,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 159,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181253421608800',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6753,15 +4604,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 62,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2034239808865079297',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6775,15 +4619,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.7,
         reviews: 166,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603170506031621900',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6797,15 +4634,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.9,
         reviews: 33,
-        description: 'Soin cuir chevelu qui rééquilibre, purifie et stimule la microcirculation. Environnement sain pour des cheveux plus forts qui poussent mieux.',
-        features: ['Rééquilibre le microbiome', 'Purifie et apaise', 'Stimule la microcirculation', 'Favorise la pousse', 'Environnement capillaire sain'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603050736271617900',
-        concerns: ['cuir-chevelu', 'pousse'],
+        concerns: ['cuir-chevelu', 'pousse']
     },
 
     {
@@ -6819,15 +4649,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 131,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090425381604200',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6841,15 +4664,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.8,
         reviews: 114,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060406041632100',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6863,15 +4679,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.8,
         reviews: 180,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220941441634400',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6885,15 +4694,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 108,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603121056011635900',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6907,15 +4709,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 133,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603120312381623200',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6929,15 +4724,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.7,
         reviews: 21,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603040512021618900',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6951,15 +4739,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.8,
         reviews: 102,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603030822441638600',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6973,15 +4754,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 137,
-        description: 'Soin sans rinçage qui protège les cheveux de la chaleur et des agressions quotidiennes. Nourrit les longueurs, scelle les pointes et facilite le coiffage.',
-        features: ['Protection chaleur et pollution', 'Nourrit les longueurs', 'Scelle les pointes', 'Facilite le coiffage', 'Léger sans alourdir'],
-        specs: { 'Type': 'Soin capillaire', 'Contenance': '250 ml', 'Type de cheveux': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Sodium Laureth Sulfate, Cocamidopropyl Betaine, Sodium Chloride, Glycol Distearate, Panthenol, Guar Hydroxypropyltrimonium Chloride, Citric Acid, Phenoxyethanol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603030712541601700',
-        concerns: ['hydratation', 'protection'],
+        concerns: ['hydratation', 'protection']
     },
 
     {
@@ -6995,14 +4769,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.9,
         reviews: 194,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602260745511624400',
+        bestseller: false
     },
 
     {
@@ -7016,14 +4783,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.7,
         reviews: 22,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602180926561615800',
+        bestseller: false
     },
 
     {
@@ -7037,14 +4797,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.1,
         reviews: 180,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602101008271623600',
+        bestseller: false
     },
 
     {
@@ -7058,14 +4811,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 144,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2511140925041601300',
+        bestseller: false
     },
 
     {
@@ -7079,14 +4825,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 109,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1613359011104043008',
+        bestseller: false
     },
 
     {
@@ -7100,14 +4839,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 136,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '93F45E21-28C5-4210-803E-ECF09AECBDA9',
+        bestseller: false
     },
 
     {
@@ -7121,14 +4853,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 67,
-        description: 'Chouchou en satin doux qui attache vos cheveux sans les casser ni les marquer. Le satin réduit les frictions et préserve l\'hydratation naturelle de la fibre capillaire.',
-        features: ['Satin anti-friction', 'Zéro casse cheveux', 'Pas de marques', 'Préserve l\'hydratation', 'Plusieurs coloris'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Matériau premium', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: 'BA10DF0F-1577-4D43-AA37-AFAB560F10AF',
+        bestseller: false
     },
 
     {
@@ -7142,14 +4867,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 190,
-        description: 'Pince à cheveux élégante et résistante qui maintient parfaitement votre coiffure. Matériau de qualité qui ne glisse pas et ne tire pas les cheveux.',
-        features: ['Matériau haute qualité', 'Maintien ferme et doux', 'Ne glisse pas', 'Ne tire pas les cheveux', 'Design élégant'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2511300625541611900',
+        bestseller: false
     },
 
     {
@@ -7163,15 +4881,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 99,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262418879205378',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7185,15 +4896,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 67,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262434666565634',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7207,15 +4911,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 88,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262450232307713',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7229,14 +4926,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.9,
         reviews: 18,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262272934203393',
+        bestseller: false
     },
 
     {
@@ -7250,14 +4940,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 105,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262306386870274',
+        bestseller: false
     },
 
     {
@@ -7271,14 +4954,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 164,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262322523459586',
+        bestseller: false
     },
 
     {
@@ -7292,14 +4968,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 81,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262289447178241',
+        bestseller: false
     },
 
     {
@@ -7313,15 +4982,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 137,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262402554974209',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7335,14 +4997,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.2,
         reviews: 178,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262354740588545',
+        bestseller: false
     },
 
     {
@@ -7356,15 +5011,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 69,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262466049028098',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7378,14 +5026,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 189,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1989262338521214977',
+        bestseller: false
     },
 
     {
@@ -7399,14 +5040,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 115,
-        description: 'Bandeau cheveux confortable et élastique qui maintient votre coiffure en place. Idéal pour le sport, le soin du visage ou comme accessoire mode au quotidien.',
-        features: ['Élastique confortable', 'Maintient la coiffure', 'Idéal sport et soins', 'Ne serre pas', 'Lavable en machine'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2511030703171651200',
+        bestseller: false
     },
 
     {
@@ -7420,15 +5054,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 71,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1976123765055021058',
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -7442,14 +5069,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 49,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2508160806231621200',
+        bestseller: false
     },
 
     {
@@ -7463,14 +5083,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 54,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2508120950191605000',
+        bestseller: false
     },
 
     {
@@ -7484,14 +5097,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 172,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2508120159291607400',
+        bestseller: false
     },
 
     {
@@ -7505,14 +5111,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.7,
         reviews: 42,
-        description: 'Bonnet en satin qui protège vos cheveux pendant la nuit. Réduit les frisottis, préserve votre coiffure et empêche la casse due aux frottements sur l\'oreiller.',
-        features: ['Protection nuit cheveux', 'Réduit les frisottis matin', 'Préserve la coiffure', 'Satin doux confortable', 'Élastique ajustable'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1938864354485166082',
+        bestseller: false
     },
 
     {
@@ -7526,14 +5125,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 124,
-        description: 'Bigoudi sans chaleur qui crée de belles boucles pendant la nuit sans abîmer les cheveux. Système simple et confortable pour un résultat wavy naturel au réveil.',
-        features: ['Boucles sans chaleur overnight', 'Zéro dégât sur les cheveux', 'Simple à utiliser', 'Résultat wavy naturel', 'Convient toutes longueurs'],
-        specs: { 'Type': 'Accessoire cheveux', 'Matériau': 'Satin polyester', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1926899118704214018',
+        bestseller: false
     },
 
     // ——— ONGLES (37 produits) ———
@@ -7549,14 +5141,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.1,
         reviews: 136,
-        description: 'Kit nail art pour exprimer votre créativité sur vos ongles. Motifs tendance et finition professionnelle pour des manucures uniques et personnalisées.',
-        features: ['Motifs tendance variés', 'Application précise facile', 'Finition professionnelle', 'Longue tenue', 'Créativité illimitée'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602222358441605800',
+        bestseller: false
     },
 
     {
@@ -7570,14 +5155,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 61,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602101053051600900',
+        bestseller: false
     },
 
     {
@@ -7591,14 +5169,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 132,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602101034381621300',
+        bestseller: false
     },
 
     {
@@ -7612,14 +5183,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 21,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602100853481624900',
+        bestseller: false
     },
 
     {
@@ -7633,14 +5197,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 122,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602090716221606700',
+        bestseller: false
     },
 
     {
@@ -7654,14 +5211,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 127,
-        description: 'Vernis gel semi-permanent longue tenue qui offre un fini brillant et résistant aux éclats pendant 2 à 3 semaines. Application facile, résultat salon.',
-        features: ['Tenue 2-3 semaines', 'Fini brillant résistant', 'Haute pigmentation', 'Catalyse sous lampe UV/LED', 'Large palette de couleurs'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260609441603500',
+        bestseller: false
     },
 
     {
@@ -7675,14 +5225,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 34,
-        description: 'Vernis gel semi-permanent longue tenue qui offre un fini brillant et résistant aux éclats pendant 2 à 3 semaines. Application facile, résultat salon.',
-        features: ['Tenue 2-3 semaines', 'Fini brillant résistant', 'Haute pigmentation', 'Catalyse sous lampe UV/LED', 'Large palette de couleurs'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603160544081614200',
+        bestseller: false
     },
 
     {
@@ -7696,14 +5239,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.9,
         reviews: 111,
-        description: 'Kit nail art pour exprimer votre créativité sur vos ongles. Motifs tendance et finition professionnelle pour des manucures uniques et personnalisées.',
-        features: ['Motifs tendance variés', 'Application précise facile', 'Finition professionnelle', 'Longue tenue', 'Créativité illimitée'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603160136081619300',
+        bestseller: false
     },
 
     {
@@ -7717,14 +5253,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.3,
         reviews: 95,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100433501612900',
+        bestseller: false
     },
 
     {
@@ -7738,14 +5267,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 167,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100428551609400',
+        bestseller: false
     },
 
     {
@@ -7759,14 +5281,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 27,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100159061633400',
+        bestseller: false
     },
 
     {
@@ -7780,14 +5295,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.5,
         reviews: 91,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604100153111628800',
+        bestseller: false
     },
 
     {
@@ -7801,14 +5309,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 32,
-        description: 'Kit nail art pour exprimer votre créativité sur vos ongles. Motifs tendance et finition professionnelle pour des manucures uniques et personnalisées.',
-        features: ['Motifs tendance variés', 'Application précise facile', 'Finition professionnelle', 'Longue tenue', 'Créativité illimitée'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604090151361604500',
+        bestseller: false
     },
 
     {
@@ -7822,14 +5323,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 47,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080444211603800',
+        bestseller: false
     },
 
     {
@@ -7843,14 +5337,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.9,
         reviews: 162,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050936231610500',
+        bestseller: false
     },
 
     {
@@ -7864,14 +5351,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 31,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031447041625600',
+        bestseller: false
     },
 
     {
@@ -7885,14 +5365,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 186,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604031059271610500',
+        bestseller: false
     },
 
     {
@@ -7906,14 +5379,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 173,
-        description: 'Lime à ongles professionnelle qui façonne et lisse les bords en douceur. Grains multiples pour un modelage précis et un fini parfait sans casse.',
-        features: ['Grains multiples précision', 'Modelage doux sans casse', 'Bord lisse impeccable', 'Qualité professionnelle', 'Lavable et réutilisable'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039984331318935553',
+        bestseller: false
     },
 
     {
@@ -7927,14 +5393,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 153,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603301336191621700',
+        bestseller: false
     },
 
     {
@@ -7948,14 +5407,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 176,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603300253351609800',
+        bestseller: false
     },
 
     {
@@ -7969,14 +5421,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 142,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603290427411627700',
+        bestseller: false
     },
 
     {
@@ -7990,14 +5435,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 45,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603290414411628400',
+        bestseller: false
     },
 
     {
@@ -8011,14 +5449,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 189,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260921471623400',
+        bestseller: false
     },
 
     {
@@ -8032,14 +5463,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 122,
-        description: 'Lampe UV/LED professionnelle pour catalyser vos vernis gel et semi-permanents. Timer intégré et puissance optimale pour une polymérisation parfaite et rapide.',
-        features: ['UV + LED double technologie', 'Timer 30/60/120 secondes', 'Polymérisation rapide', 'Compatible tous gels', 'Design compact portable'],
-        specs: { 'Type': 'Soin beauté', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre vernis gel. 2. Placez la main sous la lampe. 3. Réglez le timer. 4. Attendez la catalyse complète. 5. Répétez pour chaque couche.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603240733171602800',
+        bestseller: false
     },
 
     {
@@ -8053,14 +5477,7 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 72,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220830001635700',
+        bestseller: false
     },
 
     {
@@ -8074,14 +5491,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.8,
         reviews: 145,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2034197251896823809',
+        bestseller: false
     },
 
     {
@@ -8095,14 +5505,7 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 39,
-        description: 'Kit nail art pour exprimer votre créativité sur vos ongles. Motifs tendance et finition professionnelle pour des manucures uniques et personnalisées.',
-        features: ['Motifs tendance variés', 'Application précise facile', 'Finition professionnelle', 'Longue tenue', 'Créativité illimitée'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2041693951334182914',
+        bestseller: false
     },
 
     {
@@ -8116,14 +5519,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 96,
-        description: 'Accessoire manucure indispensable pour une routine ongles complète. Qualité professionnelle qui garantit des résultats impeccables à la maison.',
-        features: ['Qualité professionnelle', 'Indispensable manucure', 'Résultats salon à domicile', 'Durable et pratique', 'Kit complet'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603300407341635400',
+        bestseller: false
     },
 
     {
@@ -8137,14 +5533,7 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 73,
-        description: 'Accessoire manucure indispensable pour une routine ongles complète. Qualité professionnelle qui garantit des résultats impeccables à la maison.',
-        features: ['Qualité professionnelle', 'Indispensable manucure', 'Résultats salon à domicile', 'Durable et pratique', 'Kit complet'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603270318071601000',
+        bestseller: false
     },
 
     {
@@ -8158,14 +5547,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4,
         reviews: 170,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2038519325658099713',
+        bestseller: false
     },
 
     {
@@ -8179,14 +5561,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.9,
         reviews: 166,
-        description: 'Huile cuticules nourrissante qui adoucit et hydrate les cuticules sèches. Renforce les ongles fragiles et favorise une repousse saine.',
-        features: ['Huile nourrissante pure', 'Adoucit les cuticules', 'Renforce ongles fragiles', 'Favorise repousse saine', 'Applicateur précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Lavez avec un shampoing doux. 2. Essorez et appliquez le soin. 3. Répartissez uniformément. 4. Laissez poser selon indication. 5. Rincez et séchez.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603181237001605400',
+        bestseller: false
     },
 
     {
@@ -8200,14 +5575,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.5,
         reviews: 112,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602210257291617300',
+        bestseller: false
     },
 
     {
@@ -8221,14 +5589,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 164,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601130951111635400',
+        bestseller: false
     },
 
     {
@@ -8242,14 +5603,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 191,
-        description: 'Vernis à ongles haute pigmentation pour une couleur intense et une brillance miroir. Séchage rapide et formule résistante pour une manucure qui dure.',
-        features: ['Séchage rapide', 'Couleur intense couvrance', 'Brillance miroir', 'Résistant aux éclats', 'Pinceau précision'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Butyl Acetate, Ethyl Acetate, Nitrocellulose, Acetyl Tributyl Citrate, Isopropyl Alcohol',
-        howTo: '1. Préparez vos ongles. 2. Base coat + catalyse. 3. 1ère couche + catalyse. 4. 2ème couche + catalyse. 5. Top coat + catalyse. Nettoyez la couche collante.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601070344271637600',
+        bestseller: false
     },
 
     {
@@ -8263,14 +5617,7 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 180,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602231011191633400',
+        bestseller: false
     },
 
     {
@@ -8284,14 +5631,7 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 190,
-        description: 'Kit nail art pour exprimer votre créativité sur vos ongles. Motifs tendance et finition professionnelle pour des manucures uniques et personnalisées.',
-        features: ['Motifs tendance variés', 'Application précise facile', 'Finition professionnelle', 'Longue tenue', 'Créativité illimitée'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602230340011601500',
+        bestseller: false
     },
 
     {
@@ -8305,14 +5645,7 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 49,
-        description: 'Capsules press-on de qualité salon pour une manucure parfaite en quelques minutes. Faciles à poser et à retirer, design tendance et finition impeccable.',
-        features: ['Résultat salon immédiat', 'Facile à poser soi-même', 'Tailles multiples incluses', 'Design tendance', 'Retrait sans dommage'],
-        specs: { 'Type': 'Accessoire manucure', 'Alimentation': '-', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Choisissez la taille. 2. Nettoyez et séchez vos ongles. 3. Appliquez la colle ou l\'adhésif. 4. Pressez fermement 10-15 sec. 5. Limez si nécessaire.',
-        bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1675805863338057728',
+        bestseller: false
     },
 
     // ——— HOMME (43 produits) ———
@@ -8328,16 +5661,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 37,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603171109461632300',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8351,16 +5677,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 155,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603150724361611000',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8374,16 +5693,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 104,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039938541102952449',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8397,16 +5709,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 34,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603310416351636100',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8420,16 +5725,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 80,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603250253581632300',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8443,16 +5741,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 60,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2036027103917797378',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8466,16 +5757,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 168,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603130642531600800',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8489,16 +5773,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 44,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080439171601000',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8512,16 +5789,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.9,
         reviews: 81,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2029813797330907138',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8535,16 +5805,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 86,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603050357531619900',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8558,16 +5821,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.6,
         reviews: 43,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602190619481606200',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8581,16 +5837,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.2,
         reviews: 43,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602180624071610900',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8604,16 +5853,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 134,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602100832371624400',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8627,16 +5869,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 66,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2016397355171692546',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8650,16 +5885,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 72,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2014944811700752386',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8673,16 +5901,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 28,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2011694161509711873',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8696,16 +5917,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 167,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601130809181627800',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8719,16 +5933,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 121,
-        description: 'Kit barbe complet avec les essentiels pour un entretien quotidien professionnel. Huile, peigne et brosse réunis pour une barbe parfaitement soignée.',
-        features: ['Kit complet tout-en-un', 'Huile + peigne + brosse', 'Entretien professionnel', 'Barbe soignée facilement', 'Idéal coffret cadeau'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Nettoyez la barbe. 2. Appliquez l\'huile de barbe. 3. Brossez avec la brosse fournie. 4. Peignez pour discipliner. 5. Entretien quotidien.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601120303501611200',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8742,16 +5949,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 88,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510120900241614600',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8765,16 +5965,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 114,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2507010233231618600',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8788,16 +5981,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 61,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2506281143201625500',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8811,16 +5997,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 167,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2506271250421615300',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8834,16 +6013,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 122,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2410100243121609500',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8857,16 +6029,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.5,
         reviews: 164,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2406270322191612000',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8880,16 +6045,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.1,
         reviews: 90,
-        description: 'Après-rasage apaisant qui calme les irritations et hydrate la peau après le rasage. Sensation de fraîcheur immédiate et protection longue durée.',
-        features: ['Apaise instantanément', 'Calme les irritations', 'Hydrate après rasage', 'Sensation de fraîcheur', 'Peau douce sans rougeurs'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1786966277836255232',
         concerns: ['apaisement'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8903,16 +6061,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 102,
-        description: 'Crème visage homme légère et efficace qui s\'adapte aux besoins spécifiques de la peau masculine. Absorption rapide, fini mat et protection longue durée.',
-        features: ['Conçu pour peau masculine', 'Hydrate sans briller', 'Fini mat naturel', 'Absorption rapide', 'Protection quotidienne'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aloe Barbadensis Leaf Extract, Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Visage propre et sec. 2. Prélevez une noisette. 3. Appliquez en mouvements ascendants. 4. Matin et/ou soir. 5. Fini mat sans briller.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603280123291609900',
         concerns: ['hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8926,16 +6077,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 70,
-        description: 'Soin visage homme conçu pour la peau masculine plus épaisse et plus grasse. Hydrate sans briller, matifie sans dessécher et protège au quotidien.',
-        features: ['Conçu pour peau masculine', 'Hydrate sans briller', 'Fini mat naturel', 'Absorption rapide', 'Protection quotidienne'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Visage propre et sec. 2. Prélevez une noisette. 3. Appliquez en mouvements ascendants. 4. Matin et/ou soir. 5. Fini mat sans briller.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603170739021600700',
         concerns: ['hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8949,16 +6093,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 160,
-        description: 'Crème visage homme légère et efficace qui s\'adapte aux besoins spécifiques de la peau masculine. Absorption rapide, fini mat et protection longue durée.',
-        features: ['Conçu pour peau masculine', 'Hydrate sans briller', 'Fini mat naturel', 'Absorption rapide', 'Protection quotidienne'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Visage propre et sec. 2. Prélevez une noisette. 3. Appliquez en mouvements ascendants. 4. Matin et/ou soir. 5. Fini mat sans briller.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2030930326747516929',
         concerns: ['hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8972,16 +6109,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 18,
-        description: 'Soin visage homme conçu pour la peau masculine plus épaisse et plus grasse. Hydrate sans briller, matifie sans dessécher et protège au quotidien.',
-        features: ['Conçu pour peau masculine', 'Hydrate sans briller', 'Fini mat naturel', 'Absorption rapide', 'Protection quotidienne'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Visage propre et sec. 2. Prélevez une noisette. 3. Appliquez en mouvements ascendants. 4. Matin et/ou soir. 5. Fini mat sans briller.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603080810481617100',
         concerns: ['hydratation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -8995,16 +6125,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.7,
         reviews: 72,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603110723131600100',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9018,16 +6141,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.5,
         reviews: 37,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601140501121606500',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9041,16 +6157,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.2,
         reviews: 73,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512300615401614900',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9064,16 +6173,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 170,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512300343571612500',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9087,16 +6189,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 172,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512270754451638000',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9110,16 +6205,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 21,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512191249191610200',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9133,16 +6221,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 114,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2000447668315398146',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9156,16 +6237,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 84,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512140708231635100',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9179,16 +6253,9 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 110,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1990614483343814657',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9202,16 +6269,9 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 99,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510240147511647400',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9225,16 +6285,9 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 44,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1972214043355308034',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9248,16 +6301,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.7,
         reviews: 150,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1971116882772029442',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9271,16 +6317,9 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 136,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1966351387159355394',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -9294,16 +6333,9 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 87,
-        description: 'Kit de rasage qui assure un rasage précis et confortable. Prévient les coupures et les irritations pour une peau douce et sans rougeurs.',
-        features: ['Rasage précis confortable', 'Prévient les coupures', 'Protection anti-irritation', 'Mousse onctueuse', 'Peau lisse et nette'],
-        specs: { 'Type': 'Soin homme', 'Contenance': '50 ml', 'Type de peau': 'Tous types', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Argania Spinosa Kernel Oil, Simmondsia Chinensis Seed Oil, Prunus Amygdalus Dulcis Oil, Tocopheryl Acetate, Parfum',
-        howTo: '1. Après rasage, rincez à l\'eau fraîche. 2. Séchez en tapotant. 3. Appliquez une petite quantité. 4. Tapotez sur les zones rasées. 5. Laissez absorber.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2504100635021612000',
         concerns: ['entretien'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     // ——— OUTILS & APPAREILS BEAUTÉ (63 produits) ———
@@ -9319,15 +6351,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 77,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603220451061612000',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -9341,15 +6366,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 139,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080226511620100',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9363,15 +6381,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 150,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050940181630100',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -9385,15 +6396,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 80,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604050459421633800',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -9407,15 +6411,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 168,
-        description: 'Rouleau de jade qui masse et décongestionne le visage en douceur. Stimule le drainage lymphatique et booste la pénétration de vos sérums pour un teint lumineux.',
-        features: ['Jade naturel grade A', 'Double rouleau visage + yeux', 'Drainage lymphatique', 'Booste absorption sérums', 'Rituel beauté ancestral'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre sérum. 2. Roulez du centre vers l\'extérieur. 3. Mâchoire → joues → front. 4. Petit rouleau pour yeux. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603240958251621800',
-        concerns: ['anti-age', 'circulation'],
+        concerns: ['anti-age', 'circulation']
     },
 
     {
@@ -9429,15 +6426,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 51,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603200631531604100',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9451,15 +6441,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 75,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603160558121600200',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9473,15 +6456,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 74,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603090557481620700',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9495,15 +6471,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.7,
         reviews: 40,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602120838281634400',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9517,15 +6486,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 48,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602120829411639000',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9539,15 +6501,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4,
         reviews: 158,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602040153281635800',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9561,15 +6516,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.1,
         reviews: 95,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602020000191600700',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9583,15 +6531,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 124,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601260733001614600',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9605,15 +6546,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4,
         reviews: 154,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601120716021634400',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9627,15 +6561,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.5,
         reviews: 107,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512310146171618000',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9649,15 +6576,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 107,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2510120958361620200',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9671,15 +6591,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.8,
         reviews: 135,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2508270152151621900',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9693,15 +6606,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 97,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'Pierre naturelle', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2506160526111605300',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9715,15 +6621,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.7,
         reviews: 57,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2504190748471613300',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9737,15 +6636,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.2,
         reviews: 142,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2503310509191620200',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9759,15 +6651,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.3,
         reviews: 18,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2503180646471624800',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9781,15 +6666,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.9,
         reviews: 52,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2503110722171614800',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9803,15 +6681,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4,
         reviews: 182,
-        description: 'Gua Sha en pierre naturelle pour un rituel beauté ancestral. Stimule la circulation, draine les toxines et sculpte l\'ovale du visage en seulement 5 minutes par jour.',
-        features: ['Pierre naturelle véritable', 'Stimule circulation sanguine', 'Drainage lymphatique', 'Sculpte l\'ovale du visage', '5 min/jour suffisent'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'Pierre naturelle', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez sérum ou huile. 2. Tenez à 15° contre la peau. 3. Du centre vers l\'extérieur. 4. Mouvements ascendants cou → front. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1892390981062410241',
-        concerns: ['anti-age', 'drainage'],
+        concerns: ['anti-age', 'drainage']
     },
 
     {
@@ -9825,15 +6696,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.9,
         reviews: 106,
-        description: 'Appareil beauté innovant qui combine plusieurs technologies pour un soin professionnel à domicile. Résultats visibles dès les premières semaines d\'utilisation.',
-        features: ['Technologie professionnelle', 'Multi-fonctions beauté', 'Résultats visibles rapidement', 'Simple d\'utilisation', 'Design ergonomique'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2042074432686829569',
-        concerns: ['fermete'],
+        concerns: ['fermete']
     },
 
     {
@@ -9847,15 +6711,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 102,
-        description: 'Appareil beauté innovant qui combine plusieurs technologies pour un soin professionnel à domicile. Résultats visibles dès les premières semaines d\'utilisation.',
-        features: ['Technologie professionnelle', 'Multi-fonctions beauté', 'Résultats visibles rapidement', 'Simple d\'utilisation', 'Design ergonomique'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604080605491638100',
-        concerns: ['fermete'],
+        concerns: ['fermete']
     },
 
     {
@@ -9869,15 +6726,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 157,
-        description: 'Appareil beauté innovant qui combine plusieurs technologies pour un soin professionnel à domicile. Résultats visibles dès les premières semaines d\'utilisation.',
-        features: ['Technologie professionnelle', 'Multi-fonctions beauté', 'Résultats visibles rapidement', 'Simple d\'utilisation', 'Design ergonomique'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039892921907462146',
-        concerns: ['fermete'],
+        concerns: ['fermete']
     },
 
     {
@@ -9891,15 +6741,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.2,
         reviews: 33,
-        description: 'Masseur facial électrique qui tonifie et raffermit la peau. Micro-vibrations qui stimulent la circulation et réduisent visiblement l\'aspect relâché.',
-        features: ['Micro-vibrations tonifiantes', 'Raffermit les traits', 'Stimule la circulation', 'Réduit le relâchement', 'Rechargeable compact'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604010300411611100',
-        concerns: ['fermete', 'circulation'],
+        concerns: ['fermete', 'circulation']
     },
 
     {
@@ -9913,15 +6756,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 166,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039894014879199233',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -9935,15 +6771,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 63,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603021129361636500',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -9957,15 +6786,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 95,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602130633051614300',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -9979,15 +6801,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 162,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602100942401616300',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10001,15 +6816,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 157,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2016046579408277505',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10023,15 +6831,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 90,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'USB rechargeable', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2012365080403140609',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10045,15 +6846,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.3,
         reviews: 149,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603260910571620800',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10067,15 +6861,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 148,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603231235041639600',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10089,15 +6876,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.8,
         reviews: 41,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2034262753225895937',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10111,15 +6891,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 177,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601291242061601300',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10133,15 +6906,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.7,
         reviews: 68,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601280608221631300',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10155,15 +6921,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4,
         reviews: 28,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601260847071630200',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10177,15 +6936,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 189,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512310849411621800',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10199,15 +6951,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.6,
         reviews: 61,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512270858591621600',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10221,15 +6966,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.7,
         reviews: 151,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512260843511613200',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10243,15 +6981,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.9,
         reviews: 111,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512250925051601300',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10265,15 +6996,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.8,
         reviews: 73,
-        description: 'Aspirateur points noirs avec plusieurs niveaux d\'aspiration. Élimine points noirs, excès de sébum et impuretés pour des pores visiblement resserrés.',
-        features: ['Plusieurs niveaux aspiration', 'Têtes interchangeables', 'Élimine points noirs', 'Pores visiblement resserrés', 'Rechargeable USB'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Nettoyez et ouvrez les pores (vapeur). 2. Choisissez la tête adaptée. 3. Passez lentement sur la peau. 4. Max 3 sec par zone. 5. Lotion apaisante après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512250530311603100',
-        concerns: ['pores', 'points-noirs'],
+        concerns: ['pores', 'points-noirs']
     },
 
     {
@@ -10287,15 +7011,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.1,
         reviews: 38,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603130939341613000',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10309,15 +7026,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 151,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603090241521638200',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10331,15 +7041,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 73,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603030721051632300',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10353,15 +7056,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.4,
         reviews: 160,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601291246461620000',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10375,15 +7071,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4,
         reviews: 62,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601270627311614800',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10397,15 +7086,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4,
         reviews: 28,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601260842541627700',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10419,15 +7101,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.1,
         reviews: 118,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601211125551635100',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10441,15 +7116,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.4,
         reviews: 149,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'Acier inoxydable', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601160205451625700',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10463,15 +7131,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 29,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601120448011603500',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10485,15 +7146,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 92,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601030556591632500',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10507,15 +7161,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.5,
         reviews: 101,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601030235541622500',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10529,15 +7176,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4,
         reviews: 68,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512241245051620900',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10551,15 +7191,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 130,
-        description: 'Derma Roller à micro-aiguilles qui stimule la production naturelle de collagène. Améliore visiblement la texture de la peau et la pénétration de vos actifs.',
-        features: ['Micro-aiguilles précision', 'Stimule collagène naturel', 'Améliore texture de peau', 'Booste absorption actifs', 'Résultats progressifs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Désinfectez le roller. 2. Appliquez votre sérum. 3. Roulez 4-5 fois par zone. 4. Horizontal, vertical, diagonal. 5. Nettoyez le roller après.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2512240822541618500',
-        concerns: ['anti-age', 'cicatrices'],
+        concerns: ['anti-age', 'cicatrices']
     },
 
     {
@@ -10573,15 +7206,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.8,
         reviews: 88,
-        description: 'Ice Roller qui dégonfle, apaise et resserre les pores instantanément. Effet froid immédiat qui stimule la circulation et réduit visiblement les rougeurs.',
-        features: ['Effet froid instantané', 'Dégonfle et apaise', 'Resserre les pores', 'Stimule la circulation', 'Réduit les rougeurs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre sérum. 2. Roulez du centre vers l\'extérieur. 3. Mâchoire → joues → front. 4. Petit rouleau pour yeux. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603140524091622000',
-        concerns: ['poches', 'inflammation'],
+        concerns: ['poches', 'inflammation']
     },
 
     {
@@ -10595,15 +7221,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 3.9,
         reviews: 141,
-        description: 'Ice Roller qui dégonfle, apaise et resserre les pores instantanément. Effet froid immédiat qui stimule la circulation et réduit visiblement les rougeurs.',
-        features: ['Effet froid instantané', 'Dégonfle et apaise', 'Resserre les pores', 'Stimule la circulation', 'Réduit les rougeurs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre sérum. 2. Roulez du centre vers l\'extérieur. 3. Mâchoire → joues → front. 4. Petit rouleau pour yeux. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602231431291608300',
-        concerns: ['poches', 'inflammation'],
+        concerns: ['poches', 'inflammation']
     },
 
     {
@@ -10617,15 +7236,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 92,
-        description: 'Ice Roller qui dégonfle, apaise et resserre les pores instantanément. Effet froid immédiat qui stimule la circulation et réduit visiblement les rougeurs.',
-        features: ['Effet froid instantané', 'Dégonfle et apaise', 'Resserre les pores', 'Stimule la circulation', 'Réduit les rougeurs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre sérum. 2. Roulez du centre vers l\'extérieur. 3. Mâchoire → joues → front. 4. Petit rouleau pour yeux. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602222314581617800',
-        concerns: ['poches', 'inflammation'],
+        concerns: ['poches', 'inflammation']
     },
 
     {
@@ -10639,16 +7251,9 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 46,
-        description: 'Ice Roller qui dégonfle, apaise et resserre les pores instantanément. Effet froid immédiat qui stimule la circulation et réduit visiblement les rougeurs.',
-        features: ['Effet froid instantané', 'Dégonfle et apaise', 'Resserre les pores', 'Stimule la circulation', 'Réduit les rougeurs'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Appliquez votre sérum. 2. Roulez du centre vers l\'extérieur. 3. Mâchoire → joues → front. 4. Petit rouleau pour yeux. 5. 5 min/jour.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601280712081603200',
         concerns: ['poches', 'inflammation'],
-        gender: 'homme',
+        gender: 'homme'
     },
 
     {
@@ -10662,15 +7267,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 146,
-        description: 'Appareil beauté innovant qui combine plusieurs technologies pour un soin professionnel à domicile. Résultats visibles dès les premières semaines d\'utilisation.',
-        features: ['Technologie professionnelle', 'Multi-fonctions beauté', 'Résultats visibles rapidement', 'Simple d\'utilisation', 'Design ergonomique'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039979627085844481',
-        concerns: ['fermete'],
+        concerns: ['fermete']
     },
 
     {
@@ -10684,15 +7282,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.2,
         reviews: 163,
-        description: 'Brosse nettoyante vibrante qui nettoie 6 fois mieux qu\'un nettoyage manuel. Poils ultra-doux qui exfolient en douceur tout en massant le visage.',
-        features: ['6x plus efficace que les mains', 'Poils ultra-doux', 'Exfoliation et massage', 'Pores désincrustés', 'Étanche utilisation douche'],
-        specs: { 'Type': 'Appareil beauté', 'Matériau': 'ABS haute qualité', 'Alimentation': 'Manuel', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Lisez les instructions. 2. Testez sur une petite zone. 3. Appliquez selon recommandation. 4. Utilisez régulièrement. 5. Conservez à l\'abri de la chaleur.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2037134343656361986',
-        concerns: ['nettoyage', 'pores'],
+        concerns: ['nettoyage', 'pores']
     },
 
     // ——— BIEN-ÊTRE & AROMATHÉRAPIE (30 produits) ———
@@ -10708,15 +7299,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 105,
-        description: 'Huile essentielle pure et naturelle pour aromathérapie et bien-être. En diffusion, massage ou bain, profitez de ses vertus relaxantes et purifiantes.',
-        features: ['100% pure et naturelle', 'Diffusion / massage / bain', 'Vertus relaxantes', 'Qualité thérapeutique', 'Flacon avec compte-gouttes'],
-        specs: { 'Type': 'Bien-être', 'Contenance': '10 ml', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2604060600351639500',
-        concerns: ['relaxation'],
+        concerns: ['relaxation']
     },
 
     {
@@ -10730,15 +7314,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.1,
         reviews: 156,
-        description: 'Huile essentielle pure et naturelle pour aromathérapie et bien-être. En diffusion, massage ou bain, profitez de ses vertus relaxantes et purifiantes.',
-        features: ['100% pure et naturelle', 'Diffusion / massage / bain', 'Vertus relaxantes', 'Qualité thérapeutique', 'Flacon avec compte-gouttes'],
-        specs: { 'Type': 'Bien-être', 'Contenance': '10 ml', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Barbe propre et séchée. 2. 3-5 gouttes dans la paume. 3. Frottez et massez la barbe. 4. Peignez dans le sens du poil. 5. Quotidien matin.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2039682522253381634',
-        concerns: ['relaxation'],
+        concerns: ['relaxation']
     },
 
     {
@@ -10752,15 +7329,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.9,
         reviews: 185,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2511050407171606500',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10774,15 +7344,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.8,
         reviews: 193,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2409240334491613700',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10796,15 +7359,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.9,
         reviews: 35,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2406190149511614700',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10818,15 +7374,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.8,
         reviews: 176,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1691417721939959808',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10840,15 +7389,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.1,
         reviews: 131,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1673587645001244672',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10862,15 +7404,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.7,
         reviews: 181,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1623510562590175232',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10884,15 +7419,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.2,
         reviews: 80,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1469589635268218880',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10906,15 +7434,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.4,
         reviews: 178,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1425647899223658496',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10928,15 +7449,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.5,
         reviews: 144,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1405037936222801920',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10950,15 +7464,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.7,
         reviews: 50,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1402526907295207424',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10972,15 +7479,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.8,
         reviews: 78,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1399558740696502272',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -10994,15 +7494,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.3,
         reviews: 191,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1394496506270191616',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -11016,15 +7509,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.1,
         reviews: 90,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1392309296628371456',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -11038,15 +7524,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 3.9,
         reviews: 93,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1391964945255632896',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -11060,15 +7539,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 3.9,
         reviews: 65,
-        description: 'Diffuseur d\'huiles essentielles ultrasonique qui transforme votre intérieur en havre de paix. LED d\'ambiance, arrêt automatique et design décoratif.',
-        features: ['Ultrasonique silencieux', 'LED ambiance multicolore', 'Arrêt auto sécurité', 'Couvre 15-30 m²', 'Design déco élégant'],
-        specs: { 'Type': 'Diffuseur ultrasonique', 'Capacité': '300 ml', 'Surface': '15-30 m²', 'Alimentation': 'USB', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: '',
-        howTo: '1. Remplissez d\'eau. 2. Ajoutez 3-5 gouttes d\'HE. 3. Replacez le couvercle. 4. Allumez et choisissez le mode. 5. 30 min à 1h max.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '1385080961816989696',
-        concerns: ['relaxation', 'ambiance'],
+        concerns: ['relaxation', 'ambiance']
     },
 
     {
@@ -11082,15 +7554,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.7,
         reviews: 170,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2032371139745796098',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11104,15 +7569,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.7,
         reviews: 191,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Melaleuca Alternifolia Leaf Oil, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2603111138551636900',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11126,15 +7584,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 4.4,
         reviews: 147,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602190216551615600',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11148,15 +7599,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 3.9,
         reviews: 129,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602190200511600700',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11170,15 +7614,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.6,
         reviews: 27,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602190158221607100',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11192,15 +7629,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 174,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602180200361602700',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11214,15 +7644,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 4.4,
         reviews: 107,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2602090458001606500',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11236,15 +7659,8 @@ const PRODUCTS = [
         badge: 'Nouveau',
         rating: 4.4,
         reviews: 109,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Curcuma Longa Root Extract, Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601190729341632300',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11258,15 +7674,8 @@ const PRODUCTS = [
         badge: 'Exclusif',
         rating: 3.8,
         reviews: 173,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601180859321623200',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11280,15 +7689,8 @@ const PRODUCTS = [
         badge: 'Best-seller',
         rating: 4.6,
         reviews: 156,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601180806151618500',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11302,15 +7704,8 @@ const PRODUCTS = [
         badge: 'Tendance',
         rating: 4.3,
         reviews: 108,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601150740441632000',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11324,15 +7719,8 @@ const PRODUCTS = [
         badge: 'Top ventes',
         rating: 4.6,
         reviews: 60,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2601040908191611800',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
     {
@@ -11346,15 +7734,8 @@ const PRODUCTS = [
         badge: 'Coup de cœur',
         rating: 3.9,
         reviews: 26,
-        description: 'Bombe de bain effervescente qui colore l\'eau et libère des actifs hydratants et parfumés. Transforme votre bain quotidien en un moment de spa luxueux.',
-        features: ['Effervescence colorée', 'Actifs hydratants', 'Parfum relaxant', 'Ingrédients naturels', 'Idée cadeau parfaite'],
-        specs: { 'Type': 'Bombe de bain', 'Poids': '100 g', 'Ingrédients': 'Naturels', 'Marque': 'ÉCLAT Sélection' },
-        ingredients: 'Aqua, Glycerin, Propanediol, Niacinamide, Sodium Hyaluronate, Panthenol, Allantoin, Betaine, Carbomer, Tocopheryl Acetate, Phenoxyethanol, Ethylhexylglycerin',
-        howTo: '1. Faites couler un bain chaud. 2. Déposez la bombe dans l\'eau. 3. Admirez l\'effervescence. 4. Détendez-vous 20-30 min. 5. Rincez-vous en sortant.',
         bestseller: false,
-        supplier: 'cj',
-        cjProductId: '2007003979583500290',
-        concerns: ['relaxation', 'hydratation'],
+        concerns: ['relaxation', 'hydratation']
     },
 
 ];

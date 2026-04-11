@@ -511,8 +511,10 @@
             html += '<span class="rb-card-rating"><span class="rb-stars">' + renderStars(product.rating) + '</span> ' + product.rating + '</span>';
             html += '<span class="rb-card-price">' + formatPrice(product.price) + '</span>';
             html += '</div>';
-            if (product.features && product.features[0]) {
-                html += '<p class="rb-card-feature">\u2713 ' + escHTML(product.features[0]) + '</p>';
+            var _rbDet = (typeof PRODUCT_DETAILS !== 'undefined' && PRODUCT_DETAILS[product.id]) || {};
+            var _rbFeatures = _rbDet.features || product.features;
+            if (_rbFeatures && _rbFeatures[0]) {
+                html += '<p class="rb-card-feature">\u2713 ' + escHTML(_rbFeatures[0]) + '</p>';
             }
             html += '</div>';
 
