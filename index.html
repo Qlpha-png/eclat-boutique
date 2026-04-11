@@ -445,19 +445,19 @@
             </div>
             <!-- Row 2 : 4 petites catégories -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-                <a href="#produits" class="cat-card" data-cat="ongles" onclick="setTimeout(function(){var b=document.querySelector('[data-category=ongles]');if(b)b.click();},200)">
+                <a href="#produits" class="cat-card" data-cat="ongles" data-action="filter-category" data-filter="ongles">
                     <div class="cat-icon">&#x1F485;</div>
                     <span class="cat-label" data-cat-label="ongles">Ongles</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="outils" onclick="setTimeout(function(){var b=document.querySelector('[data-category=outils]');if(b)b.click();},200)">
+                <a href="#produits" class="cat-card" data-cat="outils" data-action="filter-category" data-filter="outils">
                     <div class="cat-icon">&#x2728;</div>
                     <span class="cat-label" data-cat-label="outils">Outils beaut&eacute;</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="aromatherapie" onclick="setTimeout(function(){var b=document.querySelector('[data-category=aromatherapie]');if(b)b.click();},200)">
+                <a href="#produits" class="cat-card" data-cat="aromatherapie" data-action="filter-category" data-filter="aromatherapie">
                     <div class="cat-icon">&#x1F33F;</div>
                     <span class="cat-label" data-cat-label="bienetre">Bien-&ecirc;tre</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="accessoire" onclick="setTimeout(function(){var b=document.querySelector('[data-category=accessoire]');if(b)b.click();},200)">
+                <a href="#produits" class="cat-card" data-cat="accessoire" data-action="filter-category" data-filter="accessoire">
                     <div class="cat-icon">&#x1F392;</div>
                     <span class="cat-label" data-cat-label="accessoires">Accessoires</span>
                 </a>
@@ -570,7 +570,7 @@
                         <span class="bundle-price">24,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 7,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('eclat')">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="eclat">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card featured">
                     <div class="bundle-icon">&#128081;</div>
@@ -581,7 +581,7 @@
                         <span class="bundle-price">49,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 17,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('antiage')">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="antiage">Ajouter au panier</button>
                 </div>
                 <div class="bundle-card">
                     <div class="bundle-icon">&#127800;</div>
@@ -592,7 +592,7 @@
                         <span class="bundle-price">29,90 &euro;</span>
                     </div>
                     <div class="bundle-savings">&Eacute;conomisez 9,80 &euro; &bull; Livraison offerte</div>
-                    <button class="btn btn-primary btn-full bundle-cta" onclick="addBundleToCart('glow')">Ajouter au panier</button>
+                    <button class="btn btn-primary btn-full bundle-cta" data-action="add-bundle" data-bundle-key="glow">Ajouter au panier</button>
                 </div>
             </div>
         </div>
@@ -609,22 +609,22 @@
                 <p id="routineDesc" style="font-size:.9rem;color:var(--color-text-light,#6b6560);max-width:500px;margin:0 auto;">L'IA analyse votre peau et compose la routine id&eacute;ale. Unique en France.</p>
             </div>
             <div id="routineGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px;">
-                <a href="#produits" onclick="setTimeout(function(){var b=document.querySelector('[data-category=visage]');if(b)b.click();},300)" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
+                <a href="#produits" data-action="filter-category" data-filter="visage" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
                     <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#fce4ec,#f8bbd0);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F9F4;</div>
                     <div id="routineStep1" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">1. Nettoyage</div>
                     <div id="routineStep1Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">Brosses soniques, scrubbers, vapeur</div>
                 </a>
-                <a href="#produits" onclick="setTimeout(function(){var b=document.querySelector('[data-category=soin]');if(b)b.click();},300)" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
+                <a href="#produits" data-action="filter-category" data-filter="soin" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
                     <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F48E;</div>
                     <div id="routineStep2" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">2. Soin cibl&eacute;</div>
                     <div id="routineStep2Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">S&eacute;rums, patchs, masques actifs</div>
                 </a>
-                <a href="#produits" onclick="setTimeout(function(){var b=document.querySelector('[data-category=outils]');if(b)b.click();},300)" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
+                <a href="#produits" data-action="filter-category" data-filter="outils" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
                     <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x2728;</div>
                     <div id="routineStep3" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">3. Outils beaut&eacute;</div>
                     <div id="routineStep3Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">LED, Gua Sha, rollers, EMS</div>
                 </a>
-                <a href="#produits" onclick="setTimeout(function(){var b=document.querySelector('[data-category=corps]');if(b)b.click();},300)" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
+                <a href="#produits" data-action="filter-category" data-filter="corps" style="display:block;background:#fff;border-radius:16px;padding:28px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(45,41,38,.06);border:2px solid transparent;transition:all .3s;">
                     <div style="width:56px;height:56px;margin:0 auto 12px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">&#x1F33F;</div>
                     <div id="routineStep4" style="font-family:'Playfair Display',Georgia,serif;font-size:1rem;font-weight:600;margin-bottom:4px;color:var(--color-primary,#2d2926);">4. Hydratation</div>
                     <div id="routineStep4Desc" style="font-size:.8rem;color:var(--color-text-light,#6b6560);line-height:1.4;">Huiles, cr&egrave;mes, brumes</div>

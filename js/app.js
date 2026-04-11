@@ -152,6 +152,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 var navSR = document.getElementById('navSearchResults');
                 if (navSR) navSR.style.display = 'none';
                 break;
+            case 'filter-category':
+                var filterCat = target.getAttribute('data-filter');
+                if (filterCat) {
+                    setTimeout(function() {
+                        var btn = document.querySelector('[data-category=' + filterCat + ']');
+                        if (btn) btn.click();
+                    }, 200);
+                }
+                break;
+            case 'add-bundle':
+                var bKey = target.getAttribute('data-bundle-key');
+                if (bKey && typeof addBundleToCart === 'function') addBundleToCart(bKey);
+                break;
         }
     });
 
