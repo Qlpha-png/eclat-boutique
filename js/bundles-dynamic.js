@@ -235,7 +235,9 @@
         }
 
         // Update arrow visibility on scroll
-        updateArrows(grid);
+        // Delay initial check — grid layout not computed yet at this point
+        setTimeout(function() { updateArrows(grid); }, 100);
+        setTimeout(function() { updateArrows(grid); }, 500);
         grid.addEventListener('scroll', function() { updateArrows(grid); });
         window.addEventListener('resize', function() { updateArrows(grid); });
     }
