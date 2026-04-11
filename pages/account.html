@@ -681,7 +681,23 @@
             // === CHALLENGES ===
             function renderChallenges(challenges) {
                 var el = document.getElementById('challengesList');
-                if (!challenges.length) { el.innerHTML = '<p style="color:var(--color-text-light);font-size:0.85rem;">Aucun d\u00e9fi actif cette semaine.</p>'; return; }
+                // Si pas de défis depuis l'API, générer des défis hebdo par défaut
+                if (!challenges || !challenges.length) {
+                    var weekNum = Math.ceil((new Date() - new Date(new Date().getFullYear(),0,1)) / 604800000);
+                    var defaultChallenges = [
+                        { icon: '\uD83D\uDED2', title: 'Premi\u00e8re commande', description: 'Passez votre premi\u00e8re commande cette semaine', reward: 50, progress: 0, target: 1, completed: false },
+                        { icon: '\u2B50', title: 'Check-in 3 jours', description: 'Connectez-vous 3 jours de suite', reward: 20, progress: 0, target: 3, completed: false },
+                        { icon: '\uD83D\uDC96', title: 'Wishlist +3', description: 'Ajoutez 3 produits \u00e0 votre liste de souhaits', reward: 10, progress: 0, target: 3, completed: false },
+                        { icon: '\uD83D\uDD2C', title: 'Diagnostic beaut\u00e9', description: 'Faites votre diagnostic personnalis\u00e9', reward: 30, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83D\uDCAC', title: 'Premier avis', description: 'Laissez un avis sur un produit', reward: 25, progress: 0, target: 1, completed: false }
+                    ];
+                    // Rotate 3 challenges per week
+                    var start = (weekNum * 3) % defaultChallenges.length;
+                    challenges = [];
+                    for (var i = 0; i < 3; i++) {
+                        challenges.push(defaultChallenges[(start + i) % defaultChallenges.length]);
+                    }
+                }
                 el.innerHTML = challenges.map(function(c) {
                     var pct = c.target > 0 ? Math.min(100, Math.round((c.progress / c.target) * 100)) : 0;
                     var done = c.completed;

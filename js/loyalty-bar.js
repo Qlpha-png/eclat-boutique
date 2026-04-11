@@ -78,9 +78,15 @@
             if (prog) prog.style.width = Math.min(progress, 100) + '%';
         }, 2500);
 
-        // Fermer
+        // Fermer (persiste pour la session — revient le lendemain)
+        var barDismissKey = 'eclat_bar_dismissed_' + new Date().toDateString();
+        if (localStorage.getItem(barDismissKey)) {
+            bar.remove();
+            return;
+        }
         document.getElementById('loyaltyBarClose').addEventListener('click', function() {
             bar.style.transform = 'translateY(100%)';
+            localStorage.setItem(barDismissKey, '1');
             setTimeout(function() { bar.remove(); }, 500);
         });
 

@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="chat-header-info">
                     <div class="chat-avatar" id="chatAvatar">E</div>
                     <div>
-                        <strong>Conseill&egrave;re &Eacute;CLAT</strong>
+                        <strong id="chatTitle">Conseill&egrave;re &Eacute;CLAT</strong>
                         <span class="chat-status" id="chatStatus">En ligne</span>
                     </div>
                 </div>
@@ -312,6 +312,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function initChat() {
         const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
         const kb = KB[lang] || KB.fr;
+
+        // Traduire le titre et statut du chatbot
+        var chatTitles = { fr: 'Conseillère ÉCLAT', en: 'ÉCLAT Advisor', es: 'Asesora ÉCLAT', de: 'ÉCLAT Beraterin' };
+        var chatStatuses = { fr: 'En ligne', en: 'Online', es: 'En línea', de: 'Online' };
+        var titleEl = document.getElementById('chatTitle');
+        var statusEl = document.getElementById('chatStatus');
+        if (titleEl) titleEl.textContent = chatTitles[lang] || chatTitles.fr;
+        if (statusEl) statusEl.textContent = chatStatuses[lang] || chatStatuses.fr;
 
         // Vérifier si l'utilisateur a accès au mode IA
         checkAiAccess();
