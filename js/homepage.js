@@ -363,9 +363,9 @@
         var navLinks = navContainer.querySelector('.nav-links');
         if (!navLinks) return;
 
-        var searchHTML = '<div id="navSearchBar" class="nav-search" style="flex:1;max-width:400px;margin:0 24px;position:relative;">';
-        searchHTML += '<input type="search" id="navSearchInput" placeholder="Rechercher un produit..." style="width:100%;padding:10px 40px 10px 16px;border:1px solid var(--color-border);border-radius:var(--radius-xl);font-size:.85rem;font-family:var(--font-body);background:var(--color-bg-alt);transition:all .3s;outline:none;" onfocus="this.style.borderColor=\'var(--color-secondary)\';this.style.boxShadow=\'0 0 0 3px rgba(201,168,124,.15)\'" onblur="this.style.borderColor=\'\';this.style.boxShadow=\'\'">';
-        searchHTML += '<button onclick="executeNavSearch()" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);padding:6px 12px;background:var(--color-secondary);border:none;border-radius:20px;cursor:pointer;color:var(--color-white,#fff);font-size:.8rem;font-weight:600;">\uD83D\uDD0D</button>';
+        var searchHTML = '<div id="navSearchBar" class="nav-search" style="flex:1;max-width:520px;margin:0 24px;position:relative;">';
+        searchHTML += '<input type="search" id="navSearchInput" placeholder="Rechercher un produit, une routine, un ingr\u00e9dient..." style="width:100%;padding:13px 50px 13px 20px;border:2px solid var(--color-border);border-radius:var(--radius-xl);font-size:.95rem;font-family:var(--font-body);background:var(--color-bg-alt);transition:all .3s;outline:none;" onfocus="this.style.borderColor=\'var(--color-secondary)\';this.style.boxShadow=\'0 0 0 4px rgba(201,168,124,.15)\'" onblur="this.style.borderColor=\'\';this.style.boxShadow=\'\'">';
+        searchHTML += '<button onclick="executeNavSearch()" style="position:absolute;right:5px;top:50%;transform:translateY(-50%);padding:8px 14px;background:var(--color-secondary);border:none;border-radius:20px;cursor:pointer;color:var(--color-white,#fff);font-size:.85rem;font-weight:600;">\uD83D\uDD0D</button>';
         searchHTML += '<div id="navSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-white,#fff);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-top:4px;max-height:320px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1000;"></div>';
         searchHTML += '</div>';
 

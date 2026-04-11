@@ -355,10 +355,10 @@
                 '</div>' +
                 '<div id="ppStockDelivery"></div>' +
                 '<div class="pp-badges">' +
-                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Cruelty-free</div>' +
-                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' +
-                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#ff9800;"></span> \u00c9co-emballage</div>' +
+                    (product.features && product.features.indexOf('Certifi\u00e9 CE') !== -1 ? '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' : '') +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> Garantie 30j</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Retour gratuit 14j</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> SAV r\u00e9actif</div>' +
                 '</div>' +
                 howToHTML +
                 specsHTML +

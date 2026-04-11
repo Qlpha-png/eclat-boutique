@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 cruelty: {
                     match: ['cruelty', 'animaux', 'vegan', 'test animal', 'éthique'],
-                    answer: '<strong>Aucun test sur les animaux</strong>, jamais. Tous nos produits et fournisseurs respectent une politique stricte cruelty-free à chaque étape.',
-                    followUp: ['Nos garanties', 'Best-sellers ?', 'Faire le diagnostic']
+                    answer: 'Conformément à la réglementation européenne (Règlement CE 1223/2009), <strong>les tests cosmétiques sur animaux sont interdits dans l\'UE</strong>. Nos fournisseurs sont tenus de respecter cette législation. Pour chaque produit, consultez le <strong>Clean Beauty Score</strong> qui analyse la composition INCI en détail.',
+                    followUp: ['Nos garanties', 'Clean Beauty Score', 'Faire le diagnostic']
                 },
                 science: {
                     match: ['science', 'étude', 'preuve', 'clinique', 'pubmed', 'recherche'],

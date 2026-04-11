@@ -3431,8 +3431,8 @@ input { font-family: inherit; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .nav-search {
-        max-width: 260px !important;
-        margin: 0 12px !important;
+        max-width: 340px !important;
+        margin: 0 16px !important;
     }
 }
 

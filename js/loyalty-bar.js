@@ -99,7 +99,7 @@
         // Créer un bandeau FOMO subtil en haut
         var fomo = document.createElement('div');
         fomo.id = 'fomoBar';
-        fomo.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:7500;background:linear-gradient(90deg,var(--color-secondary),var(--color-accent));padding:8px 20px;text-align:center;font-family:Inter,sans-serif;font-size:0.8rem;color:var(--color-primary);font-weight:600;transform:translateY(-100%);transition:transform 0.4s ease;';
+        fomo.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:7500;background:var(--color-primary, #2d2926);padding:10px 20px;text-align:center;font-family:Inter,sans-serif;font-size:0.82rem;color:var(--color-white, #ffffff);font-weight:600;transform:translateY(-100%);transition:transform 0.4s ease;letter-spacing:0.3px;';
 
         // Expiration à minuit
         var now = new Date();
@@ -109,8 +109,8 @@
         var hours = Math.floor(remaining / 3600000);
         var mins = Math.floor((remaining % 3600000) / 60000);
 
-        fomo.innerHTML = '\u2728 Vos \u00c9clats valent double aujourd\u0027hui ! <strong>Expire dans ' + hours + 'h' + String(mins).padStart(2, '0') + '</strong> \u2014 <a href="index.html#products" style="color:var(--color-primary);text-decoration:underline;">En profiter</a> ' +
-            '<button onclick="this.parentElement.style.transform=\'translateY(-100%)\';localStorage.setItem(\'' + fomoKey + '\',1);" style="background:none;border:none;color:var(--color-primary);cursor:pointer;font-size:1rem;position:absolute;right:12px;top:50%;transform:translateY(-50%);">\u00d7</button>';
+        fomo.innerHTML = '\u2728 Vos \u00c9clats valent double aujourd\u0027hui ! <strong style="color:var(--color-secondary, #c9a87c);">Expire dans ' + hours + 'h' + String(mins).padStart(2, '0') + '</strong> \u2014 <a href="index.html#products" style="color:var(--color-secondary, #c9a87c);text-decoration:underline;font-weight:700;">En profiter \u2192</a> ' +
+            '<button onclick="this.parentElement.style.transform=\'translateY(-100%)\';localStorage.setItem(\'' + fomoKey + '\',1);" style="background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.1rem;position:absolute;right:12px;top:50%;transform:translateY(-50%);">\u00d7</button>';
 
         document.body.appendChild(fomo);
         setTimeout(function() { fomo.style.transform = 'translateY(0)'; }, 3000);

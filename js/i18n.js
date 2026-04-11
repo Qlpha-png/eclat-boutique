@@ -179,7 +179,8 @@ const TRANSLATIONS = {
         trust_modal_refund: 'Satisfait ou rembours\u00e9 30j',
         trust_modal_secure: 'Paiement s\u00e9curis\u00e9',
         popup_code_toast: 'Code BIENVENUE10 activ\u00e9 ! V\u00e9rifiez votre email.',
-        btn_details: 'D\u00e9tails'
+        btn_details: 'D\u00e9tails',
+        btn_full_details: 'Voir la fiche compl\u00e8te'
     },
 
     en: {
@@ -346,7 +347,8 @@ const TRANSLATIONS = {
         trust_modal_refund: '30-day money-back guarantee',
         trust_modal_secure: 'Secure payment',
         popup_code_toast: 'Code BIENVENUE10 activated! Check your email.',
-        btn_details: 'Details'
+        btn_details: 'Details',
+        btn_full_details: 'View full details'
     },
 
     es: {
@@ -513,7 +515,8 @@ const TRANSLATIONS = {
         trust_modal_refund: 'Satisfecho o reembolsado 30d',
         trust_modal_secure: 'Pago seguro',
         popup_code_toast: '\u00a1C\u00f3digo BIENVENUE10 activado! Revisa tu email.',
-        btn_details: 'Detalles'
+        btn_details: 'Detalles',
+        btn_full_details: 'Ver ficha completa'
     },
 
     de: {
@@ -680,7 +683,8 @@ const TRANSLATIONS = {
         trust_modal_refund: '30 Tage Geld-zur\u00fcck-Garantie',
         trust_modal_secure: 'Sichere Zahlung',
         popup_code_toast: 'Code BIENVENUE10 aktiviert! Pr\u00fcfen Sie Ihre E-Mail.',
-        btn_details: 'Details'
+        btn_details: 'Details',
+        btn_full_details: 'Alle Details ansehen'
     }
 };
 
