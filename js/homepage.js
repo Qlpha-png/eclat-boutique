@@ -434,7 +434,11 @@
         }).slice(0, 8);
 
         if (results.length === 0) {
-            resultsDiv.innerHTML = '<div style="padding:16px;text-align:center;color:var(--color-text-light);font-size:.85rem;">Aucun r\u00e9sultat pour "' + query + '"</div>';
+            var noRes = document.createElement('div');
+            noRes.style.cssText = 'padding:16px;text-align:center;color:var(--color-text-light);font-size:.85rem;';
+            noRes.textContent = 'Aucun r\u00e9sultat pour "' + query + '"';
+            resultsDiv.innerHTML = '';
+            resultsDiv.appendChild(noRes);
             resultsDiv.style.display = 'block';
             return;
         }

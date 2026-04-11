@@ -138,6 +138,20 @@
         .chat-locked .lock-icon{font-size:40px;opacity:0.6;}
         .chat-locked p{font-size:0.85rem;color:var(--color-text-light);margin:0;}
         .chat-locked .lock-cta{font-size:0.8rem;color:#7c3aed;font-weight:600;}
+        /* === Preferences === */
+        .pref-select{width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:0.9rem;font-family:var(--font-body);background:var(--color-white);color:var(--color-text);box-sizing:border-box;appearance:auto;}
+        .pref-select:focus{outline:none;border-color:var(--color-secondary);}
+        .pref-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--color-border);border-radius:20px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;background:var(--color-white);user-select:none;}
+        .pref-chip input{display:none;}
+        .pref-chip:has(input:checked){background:var(--color-secondary);color:var(--color-white);border-color:var(--color-secondary);}
+        .pref-toggle{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.9rem;user-select:none;}
+        .pref-toggle input{width:18px;height:18px;accent-color:var(--color-secondary);}
+        .display-theme-btn{width:36px;height:36px;border-radius:50%;border:2px solid var(--color-border);cursor:pointer;transition:all 0.2s;}
+        .display-theme-btn:hover{transform:scale(1.15);}
+        .display-theme-btn.active{border-color:var(--color-secondary);box-shadow:0 0 0 2px var(--color-secondary);}
+        .display-lang-btn{padding:8px 18px;border:1px solid var(--color-border);border-radius:20px;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all 0.2s;background:var(--color-white);font-family:var(--font-body);}
+        .display-lang-btn:hover{border-color:var(--color-secondary);}
+        .display-lang-btn.active{background:var(--color-secondary);color:var(--color-white);border-color:var(--color-secondary);}
         @media(max-width:480px){
             .chat-panel{right:8px;left:8px;width:auto;bottom:88px;max-height:70vh;}
         }
@@ -162,7 +176,9 @@
                 <button data-tab="profile">Mon profil</button>
                 <button data-tab="orders">Mes commandes</button>
                 <button data-tab="loyalty">Mes &Eacute;clats</button>
+                <button data-tab="preferences">Mes pr&eacute;f&eacute;rences</button>
                 <button data-tab="referral">Parrainage</button>
+                <button data-tab="display">Affichage</button>
                 <button data-tab="privacy">Mes donn&eacute;es (RGPD)</button>
                 <button class="logout-btn" id="logoutBtn">D&eacute;connexion</button>
             </div>
@@ -315,6 +331,95 @@
                     </div>
                 </div>
 
+                <!-- Preferences beaute -->
+                <div class="account-section" id="tab-preferences">
+                    <div class="account-card">
+                        <h3 id="accPrefsTitle">Mes pr&eacute;f&eacute;rences beaut&eacute;</h3>
+                        <p style="font-size:0.85rem;color:var(--color-text-light);margin-bottom:20px;" id="accPrefsDesc">Personnalisez votre exp&eacute;rience pour des recommandations sur mesure.</p>
+                        <form id="prefsForm">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                                <div class="form-group">
+                                    <label id="accSkinTypeLabel">Type de peau</label>
+                                    <select id="prefSkinType" class="pref-select">
+                                        <option value="">—</option>
+                                        <option value="normal" id="optSkinNormal">Normale</option>
+                                        <option value="dry" id="optSkinDry">S&egrave;che</option>
+                                        <option value="oily" id="optSkinOily">Grasse</option>
+                                        <option value="combination" id="optSkinCombi">Mixte</option>
+                                        <option value="sensitive" id="optSkinSensitive">Sensible</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label id="accConcernLabel">Pr&eacute;occupation principale</label>
+                                    <select id="prefConcern" class="pref-select">
+                                        <option value="">—</option>
+                                        <option value="acne" id="optConcernAcne">Acn&eacute;</option>
+                                        <option value="aging" id="optConcernAging">Anti-&acirc;ge</option>
+                                        <option value="hydration" id="optConcernHydration">Hydratation</option>
+                                        <option value="radiance" id="optConcernRadiance">&Eacute;clat</option>
+                                        <option value="dark_spots" id="optConcernSpots">Taches brunes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label id="accAgeLabel">Tranche d'&acirc;ge</label>
+                                    <select id="prefAge" class="pref-select">
+                                        <option value="">—</option>
+                                        <option value="18-25">18-25</option>
+                                        <option value="26-35">26-35</option>
+                                        <option value="36-45">36-45</option>
+                                        <option value="46-55">46-55</option>
+                                        <option value="56+">56+</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label id="accGenderLabel">Produits pour</label>
+                                    <select id="prefGender" class="pref-select">
+                                        <option value="all" id="optGenderAll">Tous</option>
+                                        <option value="femme" id="optGenderFemme">Femme</option>
+                                        <option value="homme" id="optGenderHomme">Homme</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top:16px;">
+                                <label id="accCatsLabel">Cat&eacute;gories pr&eacute;f&eacute;r&eacute;es</label>
+                                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;" id="prefCatsContainer">
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="visage"><span id="chipVisage">Visage</span></label>
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="corps"><span id="chipCorps">Corps</span></label>
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="cheveux"><span id="chipCheveux">Cheveux</span></label>
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="ongles"><span id="chipOngles">Ongles</span></label>
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="outils"><span id="chipOutils">Outils</span></label>
+                                    <label class="pref-chip"><input type="checkbox" name="cat" value="bienetre"><span id="chipBienetre">Bien-&ecirc;tre</span></label>
+                                </div>
+                            </div>
+                            <hr style="margin:24px 0;border:none;border-top:1px solid var(--color-border);">
+                            <h3 id="accNlPrefsTitle" style="margin-bottom:12px;">Pr&eacute;f&eacute;rences newsletter</h3>
+                            <div style="display:flex;flex-direction:column;gap:10px;">
+                                <label class="pref-toggle"><input type="checkbox" id="nlNewProducts" checked><span id="nlNewLabel">Nouveaux produits</span></label>
+                                <label class="pref-toggle"><input type="checkbox" id="nlPromotions" checked><span id="nlPromoLabel">Promotions</span></label>
+                                <label class="pref-toggle"><input type="checkbox" id="nlTips" checked><span id="nlTipsLabel">Conseils beaut&eacute;</span></label>
+                                <label class="pref-toggle"><input type="checkbox" id="nlLoyalty" checked><span id="nlLoyaltyLabel">Fid&eacute;lit&eacute; &amp; r&eacute;compenses</span></label>
+                            </div>
+                            <button type="submit" class="save-btn" style="margin-top:20px;">Enregistrer</button>
+                            <span id="prefsMsg" style="margin-left:12px;font-size:0.85rem;"></span>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Display settings -->
+                <div class="account-section" id="tab-display">
+                    <div class="account-card">
+                        <h3 id="accDisplayTitle">Affichage &amp; personnalisation</h3>
+                        <div class="form-group" style="margin-top:16px;">
+                            <label id="accThemeLabel">Th&egrave;me visuel</label>
+                            <div style="display:flex;gap:12px;margin-top:8px;" id="displayThemeDots"></div>
+                        </div>
+                        <div class="form-group">
+                            <label id="accLangLabel">Langue</label>
+                            <div style="display:flex;gap:8px;margin-top:8px;" id="displayLangBtns"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- RGPD / Mes données -->
                 <div class="account-section" id="tab-privacy">
                     <div class="account-card">
@@ -341,6 +446,8 @@
         </div>
     </div>
 
+    <script src="../js/i18n.js?v=5" defer></script>
+    <script src="../js/themes.js?v=2" defer></script>
     <script src="../js/auth.js?v=2" defer></script>
     <script>
     (function() {
@@ -995,9 +1102,109 @@
                 });
             });
 
+            // === PREFERENCES BEAUTY ===
+            (async function loadPrefs() {
+                try {
+                    var { data: prefs } = await auth._supabase
+                        .from('profiles')
+                        .select('skin_type, main_concern, age_range, gender_pref, fav_categories, nl_new_products, nl_promotions, nl_tips, nl_loyalty')
+                        .eq('id', user.id)
+                        .single();
+                    if (prefs) {
+                        if (prefs.skin_type) document.getElementById('prefSkinType').value = prefs.skin_type;
+                        if (prefs.main_concern) document.getElementById('prefConcern').value = prefs.main_concern;
+                        if (prefs.age_range) document.getElementById('prefAge').value = prefs.age_range;
+                        if (prefs.gender_pref) document.getElementById('prefGender').value = prefs.gender_pref;
+                        if (prefs.fav_categories && Array.isArray(prefs.fav_categories)) {
+                            prefs.fav_categories.forEach(function(c) {
+                                var cb = document.querySelector('#prefCatsContainer input[value="' + c + '"]');
+                                if (cb) cb.checked = true;
+                            });
+                        }
+                        if (prefs.nl_new_products === false) document.getElementById('nlNewProducts').checked = false;
+                        if (prefs.nl_promotions === false) document.getElementById('nlPromotions').checked = false;
+                        if (prefs.nl_tips === false) document.getElementById('nlTips').checked = false;
+                        if (prefs.nl_loyalty === false) document.getElementById('nlLoyalty').checked = false;
+                    }
+                } catch(e) {}
+            })();
+
+            document.getElementById('prefsForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                var msg = document.getElementById('prefsMsg');
+                msg.textContent = 'Enregistrement...';
+                msg.style.color = 'var(--color-text-light)';
+                var cats = [];
+                document.querySelectorAll('#prefCatsContainer input:checked').forEach(function(cb) { cats.push(cb.value); });
+                var updates = {
+                    skin_type: document.getElementById('prefSkinType').value || null,
+                    main_concern: document.getElementById('prefConcern').value || null,
+                    age_range: document.getElementById('prefAge').value || null,
+                    gender_pref: document.getElementById('prefGender').value || 'all',
+                    fav_categories: cats,
+                    nl_new_products: document.getElementById('nlNewProducts').checked,
+                    nl_promotions: document.getElementById('nlPromotions').checked,
+                    nl_tips: document.getElementById('nlTips').checked,
+                    nl_loyalty: document.getElementById('nlLoyalty').checked,
+                    updated_at: new Date().toISOString()
+                };
+                try {
+                    var { error } = await auth._supabase.from('profiles').update(updates).eq('id', user.id);
+                    if (error) throw error;
+                    msg.textContent = '\u2705 Pr\u00e9f\u00e9rences enregistr\u00e9es !';
+                    msg.style.color = '#16a34a';
+                    // Also save to localStorage for offline/homepage personalization
+                    localStorage.setItem('eclat_beauty_prefs', JSON.stringify(updates));
+                    setTimeout(function() { msg.textContent = ''; }, 3000);
+                } catch(err) {
+                    msg.textContent = 'Erreur : ' + (err.message || 'inconnu');
+                    msg.style.color = '#e74c3c';
+                }
+            });
+
+            // === DISPLAY SETTINGS ===
+            var themes = [
+                { key: 'eclat', label: '\u00c9clat', bg: 'linear-gradient(135deg, #faf8f5, #c9a87c)' },
+                { key: 'nuit', label: 'Nuit', bg: 'linear-gradient(135deg, #121212, #2d1f3d)' },
+                { key: 'rose', label: 'Ros\u00e9', bg: 'linear-gradient(135deg, #fff5f8, #d4648a)' },
+                { key: 'nature', label: 'Nature', bg: 'linear-gradient(135deg, #f5f8f2, #6b8f5e)' },
+                { key: 'auto', label: 'Auto', bg: 'linear-gradient(135deg, #faf8f5 50%, #121212 50%)' }
+            ];
+            var currentTheme = localStorage.getItem('eclat_theme') || 'eclat';
+            var themeContainer = document.getElementById('displayThemeDots');
+            themeContainer.innerHTML = themes.map(function(t) {
+                return '<button type="button" class="display-theme-btn' + (t.key === currentTheme ? ' active' : '') + '" data-theme="' + t.key + '" title="' + t.label + '" style="background:' + t.bg + ';"></button>';
+            }).join('');
+            themeContainer.addEventListener('click', function(e) {
+                var btn = e.target.closest('.display-theme-btn');
+                if (!btn) return;
+                var theme = btn.dataset.theme;
+                if (window.eclat_setTheme) window.eclat_setTheme(theme);
+                themeContainer.querySelectorAll('.display-theme-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.theme === theme); });
+            });
+
+            var langs = [
+                { key: 'fr', label: 'FR' },
+                { key: 'en', label: 'EN' },
+                { key: 'es', label: 'ES' },
+                { key: 'de', label: 'DE' }
+            ];
+            var currentLangVal = localStorage.getItem('eclat_lang') || 'fr';
+            var langContainer = document.getElementById('displayLangBtns');
+            langContainer.innerHTML = langs.map(function(l) {
+                return '<button type="button" class="display-lang-btn' + (l.key === currentLangVal ? ' active' : '') + '" data-lang="' + l.key + '">' + l.label + '</button>';
+            }).join('');
+            langContainer.addEventListener('click', function(e) {
+                var btn = e.target.closest('.display-lang-btn');
+                if (!btn) return;
+                var lang = btn.dataset.lang;
+                if (typeof setLanguage === 'function') setLanguage(lang);
+                langContainer.querySelectorAll('.display-lang-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.lang === lang); });
+            });
+
             // Deep link support (#fidelite, #commandes, etc.)
             var hash = window.location.hash.replace('#', '');
-            var hashMap = { fidelite: 'loyalty', eclats: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral', rgpd: 'privacy', donnees: 'privacy' };
+            var hashMap = { fidelite: 'loyalty', eclats: 'loyalty', commandes: 'orders', favoris: 'wishlist', profil: 'profile', parrainage: 'referral', rgpd: 'privacy', donnees: 'privacy', preferences: 'preferences', affichage: 'display' };
             if (hashMap[hash]) {
                 var tabBtn = document.querySelector('[data-tab="' + hashMap[hash] + '"]');
                 if (tabBtn) tabBtn.click();

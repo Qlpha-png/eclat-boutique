@@ -399,10 +399,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function sanitizeChatHtml(str) {
+        // Allow only safe tags: b, i, em, strong, br, a (with href sanitization)
+        var div = document.createElement('div');
+        div.textContent = str;
+        var safe = div.innerHTML;
+        // Re-enable only safe formatting tags
+        safe = safe.replace(/&lt;(\/?(b|i|em|strong|br)\s*\/?)&gt;/gi, '<$1>');
+        // Re-enable links but only with https
+        safe = safe.replace(/&lt;a href=&quot;(https:\/\/[^&"]+)&quot;&gt;/gi, '<a href="$1" target="_blank" rel="noopener noreferrer">');
+        safe = safe.replace(/&lt;\/a&gt;/gi, '</a>');
+        return safe;
+    }
+
     function addMessage(text, sender) {
         const msg = document.createElement('div');
         msg.className = `chat-msg chat-${sender}`;
-        msg.innerHTML = text;
+        if (sender === 'user') {
+            msg.textContent = text; // User messages: ALWAYS textContent (anti-XSS)
+        } else {
+            msg.innerHTML = sanitizeChatHtml(text); // Bot messages: sanitized HTML
+        }
         chatMessages.appendChild(msg);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -412,9 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
             chatSuggestions.innerHTML = '';
             return;
         }
-        chatSuggestions.innerHTML = suggestions.map(s =>
-            `<button class="chat-suggestion">${s}</button>`
-        ).join('');
+        chatSuggestions.innerHTML = suggestions.map(s => {
+            var tmp = document.createElement('span');
+            tmp.textContent = s;
+            return '<button class="chat-suggestion">' + tmp.innerHTML + '</button>';
+        }).join('');
         chatSuggestions.querySelectorAll('.chat-suggestion').forEach(btn => {
             btn.addEventListener('click', () => {
                 chatInput.value = btn.textContent;
