@@ -151,6 +151,11 @@
         };
 
         var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+        // Coffrets = bundles sur la page d'accueil, pas des produits individuels
+        if (cat === 'coffrets') {
+            window.location.href = '/index.html#packs';
+            return;
+        }
         var meta = CATEGORY_META[cat] || { title: 'Tous les produits', desc: 'D\u00e9couvrez notre collection compl\u00e8te.' };
         // Use translated category label if available
         var catTitle = (typeof getCategoryText === 'function' && cat) ? getCategoryText(cat, lang) : meta.title;

@@ -6,21 +6,26 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
-// Éclats par palier de streak
+// ══════════════════════════════════════════════════════════════
+// ÉCONOMIE V2 — Check-in = petit bonus quotidien
+// Max 2 Éclats/jour = 60/mois = 1.20€ de valeur gratuite max
+// Ancien : 2-10/jour = 60-300/mois = 3.60-18€ → trop généreux
+// ══════════════════════════════════════════════════════════════
 const STREAK_REWARDS = [
-    { minDays: 30, eclats: 10 },
-    { minDays: 21, eclats: 8 },
-    { minDays: 14, eclats: 5 },
-    { minDays: 7, eclats: 5 },
-    { minDays: 0, eclats: 2 }
+    { minDays: 30, eclats: 2 },
+    { minDays: 14, eclats: 2 },
+    { minDays: 7, eclats: 1 },
+    { minDays: 0, eclats: 1 }
 ];
 
 // Multiplicateur d'achat basé sur le streak
+// Les vrais bonus vont aux ACHETEURS, pas aux visiteurs
+// Plafonné à 1.5x (ancien : 2.0x) pour contrôler l'inflation
 const STREAK_MULTIPLIERS = [
-    { minDays: 30, mult: 2.0 },
-    { minDays: 21, mult: 1.8 },
-    { minDays: 14, mult: 1.5 },
-    { minDays: 7, mult: 1.2 },
+    { minDays: 30, mult: 1.5 },
+    { minDays: 21, mult: 1.3 },
+    { minDays: 14, mult: 1.2 },
+    { minDays: 7, mult: 1.1 },
     { minDays: 0, mult: 1.0 }
 ];
 

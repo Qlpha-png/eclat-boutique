@@ -342,11 +342,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const profile = window.auth.getProfile();
                 const eclats = (profile && profile.eclats) || 0;
                 if (eclats < 200) {
+                    var upgradeTexts = {
+                        fr: { title: 'Passez en mode IA', text: 'Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle.', have: 'Vous avez' },
+                        en: { title: 'Switch to AI mode', text: 'Reach 200 \u00c9clats to unlock your personal AI beauty advisor.', have: 'You have' },
+                        es: { title: 'Activa el modo IA', text: 'Alcanza 200 \u00c9clats para desbloquear tu asesora de belleza IA personal.', have: 'Tienes' },
+                        de: { title: 'KI-Modus aktivieren', text: 'Erreichen Sie 200 \u00c9clats, um Ihre pers\u00f6nliche KI-Beauty-Beraterin freizuschalten.', have: 'Sie haben' }
+                    };
+                    var ut = upgradeTexts[lang] || upgradeTexts.fr;
                     setTimeout(() => {
                         addMessage('<div style="background:linear-gradient(135deg,#1a1520,#2d1f3d);border:1px solid rgba(201,168,124,0.3);border-radius:10px;padding:12px;margin:-4px 0;font-size:0.82rem;">' +
-                            '<strong style="color:var(--color-secondary,#c9a87c);">Passez en mode IA</strong><br>' +
-                            '<span style="color:var(--color-text-light,#6b6560);">Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle. ' +
-                            'Vous avez <strong style="color:var(--color-secondary,#c9a87c);">' + eclats + '/200</strong> \u00c9clats.</span>' +
+                            '<strong style="color:var(--color-secondary,#c9a87c);">' + ut.title + '</strong><br>' +
+                            '<span style="color:var(--color-text-light,#6b6560);">' + ut.text + ' ' +
+                            ut.have + ' <strong style="color:var(--color-secondary,#c9a87c);">' + eclats + '/200</strong> \u00c9clats.</span>' +
                         '</div>', 'bot');
                     }, 1500);
                 }

@@ -101,13 +101,39 @@ module.exports = async function handler(req, res) {
         });
     }
 
-    // ── Limite 5% CA ──
+    // ── PROTECTION CRITIQUE : IA jamais gratuite sans achat ──
     const totalSpent = parseFloat(profile.total_spent) || 0;
     const costPerMsg = 0.001;
-    if (totalSpent > 0 && (aiTotal * costPerMsg) >= (totalSpent * 0.05)) {
+
+    // RÈGLE #1 : Au moins 1 achat confirmé requis pour utiliser l'IA
+    // Empêche l'abus via Éclats gratuits (check-in, coffre, défis)
+    if (totalSpent <= 0) {
+        return res.status(403).json({
+            error: 'no_purchase',
+            upgrade: 'purchase',
+            message: 'Faites votre premier achat pour débloquer l\'IA beauté.'
+        });
+    }
+
+    // RÈGLE #2 : Coût IA plafonné à 5% du CA client (on gagne TOUJOURS)
+    // Ex: client 100€ → max 5€ d'IA = 5000 messages Haiku
+    // Diamant avec Sonnet (~0.003€/msg) : client 100€ → max ~1666 messages
+    if ((aiTotal * costPerMsg) >= (totalSpent * 0.05)) {
         return res.status(429).json({
             error: 'budget',
             upgrade: 'purchase'
+        });
+    }
+
+    // RÈGLE #3 : Cap absolu par mois même pour gros clients
+    // Empêche un client Diamant (illimité) de coûter trop
+    const absoluteMonthCap = 200; // max 200 msgs/mois même Diamant = 0.20-0.60€/mois
+    if (monthUsed >= absoluteMonthCap) {
+        return res.status(429).json({
+            error: 'limit',
+            upgrade: 'purchase',
+            limit: absoluteMonthCap,
+            used: monthUsed
         });
     }
 

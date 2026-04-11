@@ -213,7 +213,50 @@ const TRANSLATIONS = {
         diag_routine_btn: '\u2728 Trouver ma routine id\u00e9ale \u2192',
 
         // Bestsellers
-        section_best_desc: 'Une s\u00e9lection de produits que nous recommandons. Les best-sellers appara\u00eetront ici automatiquement d\u00e8s les premi\u00e8res commandes.'
+        section_best_desc: 'Une s\u00e9lection de produits que nous recommandons. Les best-sellers appara\u00eetront ici automatiquement d\u00e8s les premi\u00e8res commandes.',
+
+        // Routine composer
+        routine_tag: '\u2728 Notre force : l\'IA',
+        routine_title: 'Votre routine personnalis\u00e9e',
+        routine_desc: 'L\'IA analyse votre peau et compose la routine id\u00e9ale. Unique en France.',
+        routine_step1: '1. Nettoyage',
+        routine_step1_desc: 'Brosses soniques, scrubbers, vapeur',
+        routine_step2: '2. Soin cibl\u00e9',
+        routine_step2_desc: 'S\u00e9rums, patchs, masques actifs',
+        routine_step3: '3. Outils beaut\u00e9',
+        routine_step3_desc: 'LED, Gua Sha, rollers, EMS',
+        routine_step4: '4. Hydratation',
+        routine_step4_desc: 'Huiles, cr\u00e8mes, brumes',
+        routine_subtext: '2 minutes, 4 questions. L\'IA cr\u00e9e votre routine sur mesure.',
+
+        // Unique section
+        unique_tag: 'Ce qui nous rend uniques',
+        unique_title: 'Ce qu\'aucun autre site ne fait',
+        unique_ai_title: 'IA personnalis\u00e9e',
+        unique_ai_desc: 'Diagnostic peau, recommandations, explication de chaque ingr\u00e9dient par l\'IA',
+        unique_cbs_title: 'Clean Beauty Score',
+        unique_cbs_desc: 'Chaque composition INCI analys\u00e9e. Score de s\u00e9curit\u00e9 transparent.',
+        unique_loyalty_title: 'Fid\u00e9lit\u00e9 gamifi\u00e9e',
+        unique_loyalty_desc: '4 tiers, coffre du jour, d\u00e9fis, badges. Pas un simple programme \u00e0 points.',
+        unique_trans_title: 'Transparence totale',
+        unique_trans_desc: 'Prix justes, d\u00e9lais r\u00e9els (7-14j), z\u00e9ro faux avis, z\u00e9ro marketing trompeur.',
+
+        // Chatbot upgrade
+        chat_upgrade_title: 'Passez en mode IA',
+        chat_upgrade_text: 'Atteignez 200 \u00c9clats pour d\u00e9bloquer votre conseill\u00e8re beaut\u00e9 IA personnelle.',
+        chat_upgrade_count: 'Vous avez',
+        chat_upgrade_eclats: '\u00c9clats.',
+
+        // Loyalty bar
+        loyalty_bar_remaining: 'Encore',
+        loyalty_bar_unlock: 'd\u00e9bloquez :',
+        loyalty_bar_eclats: '\u00c9clats',
+        loyalty_bar_fomo: 'Vos \u00c9clats valent double aujourd\'hui !',
+        loyalty_bar_fomo_expire: 'Expire dans',
+        loyalty_bar_fomo_cta: 'En profiter \u2192',
+
+        // Floating CTA
+        floating_cta: '\u2728 Mon diagnostic gratuit'
     },
 
     en: {
@@ -414,7 +457,50 @@ const TRANSLATIONS = {
         diag_routine_btn: '\u2728 Find my ideal routine \u2192',
 
         // Bestsellers
-        section_best_desc: 'A selection of products we recommend. Best-sellers will appear here automatically after the first orders.'
+        section_best_desc: 'A selection of products we recommend. Best-sellers will appear here automatically after the first orders.',
+
+        // Routine composer
+        routine_tag: '\u2728 Our strength: AI',
+        routine_title: 'Your personalized routine',
+        routine_desc: 'AI analyzes your skin and creates the ideal routine. Unique in Europe.',
+        routine_step1: '1. Cleansing',
+        routine_step1_desc: 'Sonic brushes, scrubbers, steamers',
+        routine_step2: '2. Targeted care',
+        routine_step2_desc: 'Serums, patches, active masks',
+        routine_step3: '3. Beauty tools',
+        routine_step3_desc: 'LED, Gua Sha, rollers, EMS',
+        routine_step4: '4. Hydration',
+        routine_step4_desc: 'Oils, creams, mists',
+        routine_subtext: '2 minutes, 4 questions. AI creates your custom routine.',
+
+        // Unique section
+        unique_tag: 'What makes us unique',
+        unique_title: 'What no other site does',
+        unique_ai_title: 'Personalized AI',
+        unique_ai_desc: 'Skin diagnostic, recommendations, AI explanation of every ingredient',
+        unique_cbs_title: 'Clean Beauty Score',
+        unique_cbs_desc: 'Every INCI composition analyzed. Transparent safety score.',
+        unique_loyalty_title: 'Gamified loyalty',
+        unique_loyalty_desc: '4 tiers, daily chest, challenges, badges. Not just a basic points program.',
+        unique_trans_title: 'Total transparency',
+        unique_trans_desc: 'Fair prices, real delivery times (7-14d), zero fake reviews, zero misleading marketing.',
+
+        // Chatbot upgrade
+        chat_upgrade_title: 'Switch to AI mode',
+        chat_upgrade_text: 'Reach 200 \u00c9clats to unlock your personal AI beauty advisor.',
+        chat_upgrade_count: 'You have',
+        chat_upgrade_eclats: '\u00c9clats.',
+
+        // Loyalty bar
+        loyalty_bar_remaining: 'Only',
+        loyalty_bar_unlock: 'to unlock:',
+        loyalty_bar_eclats: '\u00c9clats',
+        loyalty_bar_fomo: 'Your \u00c9clats are worth double today!',
+        loyalty_bar_fomo_expire: 'Expires in',
+        loyalty_bar_fomo_cta: 'Shop now \u2192',
+
+        // Floating CTA
+        floating_cta: '\u2728 Free skin diagnostic'
     },
 
     es: {
@@ -615,7 +701,50 @@ const TRANSLATIONS = {
         diag_routine_btn: '\u2728 Encontrar mi rutina ideal \u2192',
 
         // Bestsellers
-        section_best_desc: 'Una selecci\u00f3n de productos que recomendamos. Los m\u00e1s vendidos aparecer\u00e1n aqu\u00ed autom\u00e1ticamente.'
+        section_best_desc: 'Una selecci\u00f3n de productos que recomendamos. Los m\u00e1s vendidos aparecer\u00e1n aqu\u00ed autom\u00e1ticamente.',
+
+        // Routine composer
+        routine_tag: '\u2728 Nuestra fuerza: la IA',
+        routine_title: 'Tu rutina personalizada',
+        routine_desc: 'La IA analiza tu piel y crea la rutina ideal. \u00danico en Europa.',
+        routine_step1: '1. Limpieza',
+        routine_step1_desc: 'Cepillos s\u00f3nicos, scrubbers, vaporizadores',
+        routine_step2: '2. Cuidado espec\u00edfico',
+        routine_step2_desc: 'S\u00e9rums, parches, mascarillas activas',
+        routine_step3: '3. Herramientas de belleza',
+        routine_step3_desc: 'LED, Gua Sha, rodillos, EMS',
+        routine_step4: '4. Hidrataci\u00f3n',
+        routine_step4_desc: 'Aceites, cremas, brumas',
+        routine_subtext: '2 minutos, 4 preguntas. La IA crea tu rutina a medida.',
+
+        // Unique section
+        unique_tag: 'Lo que nos hace \u00fanicos',
+        unique_title: 'Lo que ning\u00fan otro sitio hace',
+        unique_ai_title: 'IA personalizada',
+        unique_ai_desc: 'Diagn\u00f3stico de piel, recomendaciones, explicaci\u00f3n de cada ingrediente por IA',
+        unique_cbs_title: 'Clean Beauty Score',
+        unique_cbs_desc: 'Cada composici\u00f3n INCI analizada. Puntuaci\u00f3n de seguridad transparente.',
+        unique_loyalty_title: 'Fidelidad gamificada',
+        unique_loyalty_desc: '4 niveles, cofre diario, desaf\u00edos, insignias. No es un simple programa de puntos.',
+        unique_trans_title: 'Transparencia total',
+        unique_trans_desc: 'Precios justos, plazos reales (7-14d), cero rese\u00f1as falsas, cero marketing enga\u00f1oso.',
+
+        // Chatbot upgrade
+        chat_upgrade_title: 'Activa el modo IA',
+        chat_upgrade_text: 'Alcanza 200 \u00c9clats para desbloquear tu asesora de belleza IA personal.',
+        chat_upgrade_count: 'Tienes',
+        chat_upgrade_eclats: '\u00c9clats.',
+
+        // Loyalty bar
+        loyalty_bar_remaining: 'Faltan',
+        loyalty_bar_unlock: 'para desbloquear:',
+        loyalty_bar_eclats: '\u00c9clats',
+        loyalty_bar_fomo: '\u00a1Tus \u00c9clats valen el doble hoy!',
+        loyalty_bar_fomo_expire: 'Expira en',
+        loyalty_bar_fomo_cta: 'Aprovecha \u2192',
+
+        // Floating CTA
+        floating_cta: '\u2728 Diagn\u00f3stico gratis'
     },
 
     de: {
@@ -816,7 +945,50 @@ const TRANSLATIONS = {
         diag_routine_btn: '\u2728 Meine ideale Routine finden \u2192',
 
         // Bestsellers
-        section_best_desc: 'Eine Auswahl von Produkten, die wir empfehlen. Bestseller erscheinen hier automatisch nach den ersten Bestellungen.'
+        section_best_desc: 'Eine Auswahl von Produkten, die wir empfehlen. Bestseller erscheinen hier automatisch nach den ersten Bestellungen.',
+
+        // Routine composer
+        routine_tag: '\u2728 Unsere St\u00e4rke: KI',
+        routine_title: 'Ihre personalisierte Routine',
+        routine_desc: 'KI analysiert Ihre Haut und erstellt die ideale Routine. Einzigartig in Europa.',
+        routine_step1: '1. Reinigung',
+        routine_step1_desc: 'Sonic-B\u00fcrsten, Scrubber, Dampf',
+        routine_step2: '2. Gezielte Pflege',
+        routine_step2_desc: 'Seren, Patches, aktive Masken',
+        routine_step3: '3. Beauty-Tools',
+        routine_step3_desc: 'LED, Gua Sha, Roller, EMS',
+        routine_step4: '4. Feuchtigkeit',
+        routine_step4_desc: '\u00d6le, Cremes, Sprays',
+        routine_subtext: '2 Minuten, 4 Fragen. KI erstellt Ihre individuelle Routine.',
+
+        // Unique section
+        unique_tag: 'Was uns einzigartig macht',
+        unique_title: 'Was keine andere Seite bietet',
+        unique_ai_title: 'Personalisierte KI',
+        unique_ai_desc: 'Hautdiagnose, Empfehlungen, KI-Erkl\u00e4rung jeder Zutat',
+        unique_cbs_title: 'Clean Beauty Score',
+        unique_cbs_desc: 'Jede INCI-Zusammensetzung analysiert. Transparenter Sicherheitsscore.',
+        unique_loyalty_title: 'Gamifizierte Treue',
+        unique_loyalty_desc: '4 Stufen, t\u00e4gliche Truhe, Herausforderungen, Abzeichen. Kein einfaches Punkteprogramm.',
+        unique_trans_title: 'Totale Transparenz',
+        unique_trans_desc: 'Faire Preise, echte Lieferzeiten (7-14T), keine Fake-Bewertungen, kein irref\u00fchrendes Marketing.',
+
+        // Chatbot upgrade
+        chat_upgrade_title: 'KI-Modus aktivieren',
+        chat_upgrade_text: 'Erreichen Sie 200 \u00c9clats, um Ihre pers\u00f6nliche KI-Beauty-Beraterin freizuschalten.',
+        chat_upgrade_count: 'Sie haben',
+        chat_upgrade_eclats: '\u00c9clats.',
+
+        // Loyalty bar
+        loyalty_bar_remaining: 'Noch',
+        loyalty_bar_unlock: 'um freizuschalten:',
+        loyalty_bar_eclats: '\u00c9clats',
+        loyalty_bar_fomo: 'Ihre \u00c9clats z\u00e4hlen heute doppelt!',
+        loyalty_bar_fomo_expire: 'L\u00e4uft ab in',
+        loyalty_bar_fomo_cta: 'Jetzt shoppen \u2192',
+
+        // Floating CTA
+        floating_cta: '\u2728 Gratis Hautdiagnose'
     }
 };
 
@@ -905,12 +1077,40 @@ function applyTranslations() {
         // AI personalization section
         '.ai-personalization .section-tag': 'ai_section_tag',
         '.ai-personalization .section-header h2': 'ai_section_title',
+        '#aiSectionDesc': 'ai_section_desc',
+        '#aiSectionLink': 'ai_section_link',
 
         // Diagnostic CTA
         '#diagCTATitle': 'diag_cta_title',
         '#diagCTADesc': 'diag_cta_desc',
         '#diagCTABtn': 'diag_cta_btn',
         '#routineDiagBtn': 'diag_routine_btn',
+
+        // Routine composer
+        '#routineTag': 'routine_tag',
+        '#routineTitle': 'routine_title',
+        '#routineDesc': 'routine_desc',
+        '#routineStep1': 'routine_step1',
+        '#routineStep1Desc': 'routine_step1_desc',
+        '#routineStep2': 'routine_step2',
+        '#routineStep2Desc': 'routine_step2_desc',
+        '#routineStep3': 'routine_step3',
+        '#routineStep3Desc': 'routine_step3_desc',
+        '#routineStep4': 'routine_step4',
+        '#routineStep4Desc': 'routine_step4_desc',
+        '#routineSubtext': 'routine_subtext',
+
+        // Unique section
+        '#uniqueTag': 'unique_tag',
+        '#uniqueTitle': 'unique_title',
+        '#uniqueAiTitle': 'unique_ai_title',
+        '#uniqueAiDesc': 'unique_ai_desc',
+        '#uniqueCbsTitle': 'unique_cbs_title',
+        '#uniqueCbsDesc': 'unique_cbs_desc',
+        '#uniqueLoyaltyTitle': 'unique_loyalty_title',
+        '#uniqueLoyaltyDesc': 'unique_loyalty_desc',
+        '#uniqueTransTitle': 'unique_trans_title',
+        '#uniqueTransDesc': 'unique_trans_desc',
 
         // Bestsellers
         '.bestsellers-section .section-tag': 'section_best_tag',
@@ -1040,24 +1240,59 @@ function applyTranslations() {
         const btnEl = card.querySelector('.btn');
         if (btnEl) btnEl.textContent = t('bundle_add');
     });
+
+    // Floating CTA
+    var floatingCta = document.getElementById('floatingCTA');
+    if (floatingCta) floatingCta.innerHTML = t('floating_cta');
 }
 
 // Auto-detect language on load
 document.addEventListener('DOMContentLoaded', () => {
-    // Create language selector
+    // Create language selector with flags
     const nav = document.querySelector('.nav-actions');
     if (nav && !document.getElementById('langSelector')) {
-        const selector = document.createElement('select');
-        selector.id = 'langSelector';
-        selector.className = 'lang-selector';
-        selector.innerHTML = `
-            <option value="fr" ${currentLang === 'fr' ? 'selected' : ''}>FR</option>
-            <option value="en" ${currentLang === 'en' ? 'selected' : ''}>EN</option>
-            <option value="es" ${currentLang === 'es' ? 'selected' : ''}>ES</option>
-            <option value="de" ${currentLang === 'de' ? 'selected' : ''}>DE</option>
-        `;
-        selector.addEventListener('change', (e) => setLanguage(e.target.value));
-        nav.insertBefore(selector, nav.firstChild);
+        const FLAGS = { fr: '\ud83c\uddeb\ud83c\uddf7', en: '\ud83c\uddec\ud83c\udde7', es: '\ud83c\uddea\ud83c\uddf8', de: '\ud83c\udde9\ud83c\uddea' };
+        const LANG_NAMES = { fr: 'Fran\u00e7ais', en: 'English', es: 'Espa\u00f1ol', de: 'Deutsch' };
+        const wrapper = document.createElement('div');
+        wrapper.id = 'langSelector';
+        wrapper.className = 'lang-selector';
+        wrapper.innerHTML = '<button type="button" class="lang-toggle" aria-label="Langue">' +
+            '<span class="lang-flag">' + FLAGS[currentLang] + '</span>' +
+            '<span class="lang-code">' + currentLang.toUpperCase() + '</span>' +
+            '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>' +
+        '</button>' +
+        '<div class="lang-dropdown" style="display:none;">' +
+            Object.keys(FLAGS).map(function(code) {
+                return '<button type="button" data-lang="' + code + '"' + (code === currentLang ? ' class="active"' : '') + '>' +
+                    '<span class="lang-flag">' + FLAGS[code] + '</span> ' +
+                    '<span>' + LANG_NAMES[code] + '</span>' +
+                '</button>';
+            }).join('') +
+        '</div>';
+        // Toggle dropdown
+        wrapper.querySelector('.lang-toggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            var dd = wrapper.querySelector('.lang-dropdown');
+            dd.style.display = dd.style.display === 'none' ? 'block' : 'none';
+        });
+        // Select language
+        wrapper.querySelectorAll('.lang-dropdown button').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var lang = this.dataset.lang;
+                setLanguage(lang);
+                wrapper.querySelector('.lang-flag').textContent = FLAGS[lang];
+                wrapper.querySelector('.lang-code').textContent = lang.toUpperCase();
+                wrapper.querySelector('.lang-dropdown').style.display = 'none';
+                wrapper.querySelectorAll('.lang-dropdown button').forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+            });
+        });
+        // Close on outside click
+        document.addEventListener('click', function() {
+            var dd = wrapper.querySelector('.lang-dropdown');
+            if (dd) dd.style.display = 'none';
+        });
+        nav.insertBefore(wrapper, nav.firstChild);
     }
 
     applyTranslations();

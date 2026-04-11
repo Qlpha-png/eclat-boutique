@@ -3118,11 +3118,23 @@ input { font-family: inherit; }
     font-size: 0.85rem;
     cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .lang-dropdown button:hover {
     background: var(--color-bg-alt);
     color: var(--color-secondary);
 }
+.lang-dropdown button.active {
+    background: var(--color-bg-alt);
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+.lang-flag { font-size: 1.1em; line-height: 1; }
+.lang-toggle { white-space: nowrap; }
+.lang-toggle .lang-flag { margin-right: 2px; }
+.lang-toggle svg { margin-left: 2px; opacity: 0.6; }
 
 /* --- Guarantee Cards --- */
 .guarantee-card {

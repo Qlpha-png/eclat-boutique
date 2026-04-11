@@ -6,85 +6,83 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
-// Pools de récompenses par tier
+// ══════════════════════════════════════════════════════════════
+// POOLS ÉCONOMIE V2 — Rebalancé par analyse économique
+// Objectif : coffre = petit plaisir quotidien (2-5 Éclats/jour max)
+// Les achats doivent rester la source PRINCIPALE d'Éclats (80%+)
+// Ancienne version : 20-145 Éclats/jour GRATUITS → économie cassée
+// Nouvelle version : 2-5 Éclats/jour → engagement sans hémorragie
+// Plus de discount/shipping gratuits dans le coffre (réservé aux achats)
+// ══════════════════════════════════════════════════════════════
 const CHEST_POOLS = {
     eclat: {
-        slots: 3,
+        slots: 2,
         pool: [
-            { rarity: 'commun', prob: 0.60, rewards: [
-                { type: 'eclats', min: 3, max: 5 }
+            { rarity: 'commun', prob: 0.75, rewards: [
+                { type: 'eclats', min: 1, max: 1 }
             ]},
-            { rarity: 'peu_commun', prob: 0.30, rewards: [
-                { type: 'eclats', min: 8, max: 12 }
+            { rarity: 'peu_commun', prob: 0.20, rewards: [
+                { type: 'eclats', min: 1, max: 2 }
             ]},
-            { rarity: 'rare', prob: 0.09, rewards: [
-                { type: 'eclats', min: 18, max: 22 },
-                { type: 'discount', value: 2, label: '-2\u20ac' }
+            { rarity: 'rare', prob: 0.04, rewards: [
+                { type: 'eclats', min: 2, max: 3 }
             ]},
             { rarity: 'exclusif', prob: 0.01, rewards: [
-                { type: 'eclats', min: 40, max: 50 },
-                { type: 'discount', value: 5, label: '-5\u20ac' }
+                { type: 'eclats', min: 3, max: 5 }
             ]}
         ]
     },
     lumiere: {
-        slots: 4,
+        slots: 2,
         pool: [
-            { rarity: 'commun', prob: 0.45, rewards: [
-                { type: 'eclats', min: 5, max: 8 }
+            { rarity: 'commun', prob: 0.70, rewards: [
+                { type: 'eclats', min: 1, max: 2 }
             ]},
-            { rarity: 'peu_commun', prob: 0.35, rewards: [
-                { type: 'eclats', min: 12, max: 18 }
+            { rarity: 'peu_commun', prob: 0.23, rewards: [
+                { type: 'eclats', min: 2, max: 3 }
             ]},
-            { rarity: 'rare', prob: 0.15, rewards: [
-                { type: 'eclats', min: 22, max: 28 },
-                { type: 'discount', value: 3, label: '-3\u20ac' }
+            { rarity: 'rare', prob: 0.06, rewards: [
+                { type: 'eclats', min: 3, max: 4 }
             ]},
-            { rarity: 'exclusif', prob: 0.05, rewards: [
-                { type: 'eclats', min: 40, max: 55 },
-                { type: 'shipping', value: 1, label: 'Livraison offerte' }
+            { rarity: 'exclusif', prob: 0.01, rewards: [
+                { type: 'eclats', min: 4, max: 6 }
             ]}
         ]
     },
     prestige: {
-        slots: 5,
+        slots: 3,
         pool: [
-            { rarity: 'commun', prob: 0.35, rewards: [
-                { type: 'eclats', min: 8, max: 12 }
+            { rarity: 'commun', prob: 0.65, rewards: [
+                { type: 'eclats', min: 1, max: 2 }
             ]},
-            { rarity: 'peu_commun', prob: 0.35, rewards: [
-                { type: 'eclats', min: 15, max: 22 }
+            { rarity: 'peu_commun', prob: 0.27, rewards: [
+                { type: 'eclats', min: 2, max: 3 }
             ]},
-            { rarity: 'rare', prob: 0.22, rewards: [
-                { type: 'eclats', min: 25, max: 35 },
-                { type: 'discount', value: 5, label: '-5\u20ac' }
+            { rarity: 'rare', prob: 0.06, rewards: [
+                { type: 'eclats', min: 3, max: 5 }
             ]},
-            { rarity: 'exclusif', prob: 0.08, rewards: [
-                { type: 'eclats', min: 60, max: 80 },
-                { type: 'discount', value: 10, label: '-10\u20ac' }
+            { rarity: 'exclusif', prob: 0.02, rewards: [
+                { type: 'eclats', min: 5, max: 8 }
             ]}
         ]
     },
     diamant: {
-        slots: 6,
+        slots: 3,
         pool: [
-            { rarity: 'commun', prob: 0.25, rewards: [
+            { rarity: 'commun', prob: 0.60, rewards: [
+                { type: 'eclats', min: 1, max: 2 }
+            ]},
+            { rarity: 'peu_commun', prob: 0.28, rewards: [
+                { type: 'eclats', min: 2, max: 4 }
+            ]},
+            { rarity: 'rare', prob: 0.08, rewards: [
+                { type: 'eclats', min: 4, max: 6 }
+            ]},
+            { rarity: 'exclusif', prob: 0.03, rewards: [
+                { type: 'eclats', min: 6, max: 10 }
+            ]},
+            { rarity: 'legendaire', prob: 0.01, rewards: [
                 { type: 'eclats', min: 10, max: 15 }
-            ]},
-            { rarity: 'peu_commun', prob: 0.35, rewards: [
-                { type: 'eclats', min: 20, max: 30 }
-            ]},
-            { rarity: 'rare', prob: 0.28, rewards: [
-                { type: 'eclats', min: 35, max: 45 },
-                { type: 'discount', value: 5, label: '-5\u20ac' }
-            ]},
-            { rarity: 'exclusif', prob: 0.10, rewards: [
-                { type: 'eclats', min: 80, max: 110 },
-                { type: 'discount', value: 15, label: '-15\u20ac' }
-            ]},
-            { rarity: 'legendaire', prob: 0.02, rewards: [
-                { type: 'eclats', min: 180, max: 220 },
-                { type: 'discount', value: 15, label: '-15\u20ac' }
             ]}
         ]
     }

@@ -6,16 +6,24 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
-// Pool de défis disponibles
+// ══════════════════════════════════════════════════════════════
+// ÉCONOMIE V2 — Défis rebalancés
+// Défis GRATUITS (engagement) : 3-5 Éclats (ancien : 20-40)
+// Défis ACHAT (dépense requise) : 8-15 Éclats (ancien : 20-50)
+// Total hebdo max gratuit : ~10 Éclats = 0.60€/semaine
+// Les gros gains viennent des ACHATS, pas des clics
+// ══════════════════════════════════════════════════════════════
 const CHALLENGE_POOL = [
-    { key: 'explorateur', title: 'Explorateur', description: 'Visitez 5 pages produits', icon: '\ud83d\udccd', condition_type: 'visit_pages', condition_target: 5, reward_eclats: 20 },
-    { key: 'critique', title: 'Critique', description: 'Laissez 2 avis', icon: '\u2b50', condition_type: 'reviews', condition_target: 2, reward_eclats: 30 },
-    { key: 'panier_genereux', title: 'Panier G\u00e9n\u00e9reux', description: 'Commandez pour 50\u20ac+', icon: '\ud83d\uded2', condition_type: 'order_amount', condition_target: 50, reward_eclats: 35 },
-    { key: 'ambassadeur', title: 'Ambassadeur', description: 'Partagez 1 produit sur les r\u00e9seaux', icon: '\ud83d\udce3', condition_type: 'share', condition_target: 1, reward_eclats: 25 },
-    { key: 'fidele', title: 'Fid\u00e8le', description: 'Check-in 5 jours cons\u00e9cutifs', icon: '\ud83d\udd25', condition_type: 'checkin_streak', condition_target: 5, reward_eclats: 40 },
-    { key: 'photographe', title: 'Photographe', description: 'Postez 1 avis avec photo', icon: '\ud83d\udcf8', condition_type: 'review_photo', condition_target: 1, reward_eclats: 30 },
-    { key: 'collectionneur', title: 'Collectionneur', description: 'Achetez dans 2 cat\u00e9gories', icon: '\ud83c\udfc6', condition_type: 'categories', condition_target: 2, reward_eclats: 50 },
-    { key: 'early_bird', title: 'Early Bird', description: 'Commandez avant 10h', icon: '\ud83c\udf05', condition_type: 'early_order', condition_target: 1, reward_eclats: 20 }
+    // ENGAGEMENT (gratuit, petits rewards = la carotte)
+    { key: 'explorateur', title: 'Explorateur', description: 'Visitez 5 pages produits', icon: '\ud83d\udccd', condition_type: 'visit_pages', condition_target: 5, reward_eclats: 3 },
+    { key: 'critique', title: 'Critique', description: 'Laissez 2 avis', icon: '\u2b50', condition_type: 'reviews', condition_target: 2, reward_eclats: 5 },
+    { key: 'ambassadeur', title: 'Ambassadeur', description: 'Partagez 1 produit sur les r\u00e9seaux', icon: '\ud83d\udce3', condition_type: 'share', condition_target: 1, reward_eclats: 3 },
+    { key: 'fidele', title: 'Fid\u00e8le', description: 'Check-in 5 jours cons\u00e9cutifs', icon: '\ud83d\udd25', condition_type: 'checkin_streak', condition_target: 5, reward_eclats: 5 },
+    { key: 'photographe', title: 'Photographe', description: 'Postez 1 avis avec photo', icon: '\ud83d\udcf8', condition_type: 'review_photo', condition_target: 1, reward_eclats: 5 },
+    // ACHAT (dépense requise = rewards justifiés par le CA)
+    { key: 'panier_genereux', title: 'Panier G\u00e9n\u00e9reux', description: 'Commandez pour 50\u20ac+', icon: '\ud83d\uded2', condition_type: 'order_amount', condition_target: 50, reward_eclats: 10 },
+    { key: 'collectionneur', title: 'Collectionneur', description: 'Achetez dans 2 cat\u00e9gories', icon: '\ud83c\udfc6', condition_type: 'categories', condition_target: 2, reward_eclats: 12 },
+    { key: 'early_bird', title: 'Early Bird', description: 'Commandez avant 10h', icon: '\ud83c\udf05', condition_type: 'early_order', condition_target: 1, reward_eclats: 8 }
 ];
 
 module.exports = async function handler(req, res) {

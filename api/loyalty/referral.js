@@ -6,8 +6,14 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
-const REFERRAL_REWARD_PARRAIN = 75;
-const REFERRAL_REWARD_FILLEUL = 30;
+// ══════════════════════════════════════════════════════════════
+// ÉCONOMIE V2 — Parrainage rebalancé
+// Ancien : 75+30 = 105 Éclats = 6.30€ par referral → farming facile
+// Nouveau : 25+10 = 35 Éclats = 2.10€ → acceptable car acquisition client
+// Le parrain reçoit ses Éclats seulement après le 1er ACHAT du filleul
+// ══════════════════════════════════════════════════════════════
+const REFERRAL_REWARD_PARRAIN = 25;
+const REFERRAL_REWARD_FILLEUL = 10;
 const MAX_REFERRALS_PER_MONTH = 5;
 
 module.exports = async function handler(req, res) {

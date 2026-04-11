@@ -53,23 +53,44 @@
 
         var streakText = streak >= 2 ? ' <span style="color:#f1c40f;font-size:0.7rem;">x' + getMultiplier(streak) + ' streak</span>' : '';
 
+        // i18n
+        var lang = (typeof currentLang !== 'undefined' ? currentLang : localStorage.getItem('eclat_lang')) || 'fr';
+        var barTexts = {
+            fr: { remaining: 'Encore', unlock: 'd\u00e9bloquez :', eclats: '\u00c9clats' },
+            en: { remaining: 'Only', unlock: 'to unlock:', eclats: '\u00c9clats' },
+            es: { remaining: 'Faltan', unlock: 'para desbloquear:', eclats: '\u00c9clats' },
+            de: { remaining: 'Noch', unlock: 'um freizuschalten:', eclats: '\u00c9clats' }
+        };
+        var perkTexts = {
+            fr: { 'IA beauté': 'IA beaut\u00e9', 'IA experte + 50 msg': 'IA experte + 50 msg', 'IA illimitée + VIP': 'IA illimit\u00e9e + VIP' },
+            en: { 'IA beauté': 'Beauty AI', 'IA experte + 50 msg': 'Expert AI + 50 msg', 'IA illimitée + VIP': 'Unlimited AI + VIP' },
+            es: { 'IA beauté': 'IA de belleza', 'IA experte + 50 msg': 'IA experta + 50 msg', 'IA illimitée + VIP': 'IA ilimitada + VIP' },
+            de: { 'IA beauté': 'Beauty-KI', 'IA experte + 50 msg': 'Experten-KI + 50 Msg', 'IA illimitée + VIP': 'Unbegrenzte KI + VIP' }
+        };
+        var bt = barTexts[lang] || barTexts.fr;
+        var pt = perkTexts[lang] || perkTexts.fr;
+        var perkLabel = pt[nextTier.perk] || nextTier.perk || nextTier.name;
+
         bar.innerHTML = '<div style="flex:1;min-width:0;">' +
             '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
                 '<span style="font-size:0.75rem;color:var(--color-secondary);font-weight:600;">' + currentTier.name + ' \u2192 ' + nextTier.name + streakText + '</span>' +
-                '<span style="font-size:0.72rem;color:var(--color-text-light);">' + eclats + '/' + nextTier.min + ' \u00c9clats</span>' +
+                '<span style="font-size:0.72rem;color:var(--color-text-light);">' + eclats + '/' + nextTier.min + ' ' + bt.eclats + '</span>' +
             '</div>' +
             '<div style="height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">' +
                 '<div id="loyaltyProgress" style="height:100%;background:linear-gradient(90deg,' + currentTier.color + ',' + (nextTier.color) + ');border-radius:3px;width:0%;transition:width 1.5s ease;"></div>' +
             '</div>' +
-            '<div style="font-size:0.68rem;color:var(--color-text-light);margin-top:3px;">Encore ' + remaining + ' \u00c9clats \u2192 d\u00e9bloquez : <strong style="color:var(--color-secondary);">' + (nextTier.perk || nextTier.name) + '</strong></div>' +
+            '<div style="font-size:0.68rem;color:var(--color-text-light);margin-top:3px;">' + bt.remaining + ' ' + remaining + ' ' + bt.eclats + ' \u2192 ' + bt.unlock + ' <strong style="color:var(--color-secondary);">' + perkLabel + '</strong></div>' +
         '</div>' +
         '<button id="loyaltyBarClose" style="background:none;border:none;color:var(--color-text-light);cursor:pointer;font-size:1.1rem;padding:4px 8px;">\u00d7</button>';
 
         document.body.appendChild(bar);
 
-        // Animer l'entrée
+        // Animer l'entrée + décaler le chatbot vers le haut
         setTimeout(function() {
             bar.style.transform = 'translateY(0)';
+            // Décaler le chatbot au-dessus de la barre
+            var chatEl = document.getElementById('eclatChat');
+            if (chatEl) chatEl.style.bottom = '64px';
         }, 2000);
 
         // Animer la barre de progression
@@ -87,6 +108,9 @@
         document.getElementById('loyaltyBarClose').addEventListener('click', function() {
             bar.style.transform = 'translateY(100%)';
             localStorage.setItem(barDismissKey, '1');
+            // Remettre le chatbot à sa position normale
+            var chatEl = document.getElementById('eclatChat');
+            if (chatEl) chatEl.style.bottom = '24px';
             setTimeout(function() { bar.remove(); }, 500);
         });
 
@@ -115,7 +139,15 @@
         var hours = Math.floor(remaining / 3600000);
         var mins = Math.floor((remaining % 3600000) / 60000);
 
-        fomo.innerHTML = '\u2728 Vos \u00c9clats valent double aujourd\u0027hui ! <strong style="color:var(--color-secondary, #c9a87c);">Expire dans ' + hours + 'h' + String(mins).padStart(2, '0') + '</strong> \u2014 <a href="index.html#products" style="color:var(--color-secondary, #c9a87c);text-decoration:underline;font-weight:700;">En profiter \u2192</a> ' +
+        var fomoLang = (typeof currentLang !== 'undefined' ? currentLang : localStorage.getItem('eclat_lang')) || 'fr';
+        var fomoTexts = {
+            fr: { msg: '\u2728 Vos \u00c9clats valent double aujourd\'hui !', expire: 'Expire dans', cta: 'En profiter \u2192' },
+            en: { msg: '\u2728 Your \u00c9clats are worth double today!', expire: 'Expires in', cta: 'Shop now \u2192' },
+            es: { msg: '\u2728 \u00a1Tus \u00c9clats valen el doble hoy!', expire: 'Expira en', cta: 'Aprovecha \u2192' },
+            de: { msg: '\u2728 Ihre \u00c9clats z\u00e4hlen heute doppelt!', expire: 'L\u00e4uft ab in', cta: 'Jetzt shoppen \u2192' }
+        };
+        var ft = fomoTexts[fomoLang] || fomoTexts.fr;
+        fomo.innerHTML = ft.msg + ' <strong style="color:var(--color-secondary, #c9a87c);">' + ft.expire + ' ' + hours + 'h' + String(mins).padStart(2, '0') + '</strong> \u2014 <a href="index.html#products" style="color:var(--color-secondary, #c9a87c);text-decoration:underline;font-weight:700;">' + ft.cta + '</a> ' +
             '<button onclick="this.parentElement.style.transform=\'translateY(-100%)\';localStorage.setItem(\'' + fomoKey + '\',1);" style="background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.1rem;position:absolute;right:12px;top:50%;transform:translateY(-50%);">\u00d7</button>';
 
         document.body.appendChild(fomo);

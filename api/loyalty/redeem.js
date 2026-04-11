@@ -6,14 +6,21 @@
 const { verifyAuth, getProfile, getSupabase } = require('../_middleware/auth');
 const { applyRateLimit } = require('../_middleware/rateLimit');
 
+// ══════════════════════════════════════════════════════════════
+// ÉCONOMIE V2 — Coûts de rédemption augmentés
+// Ancien : livraison 40 Éclats (0.12€/Éclat = DOUBLE du taux normal!)
+// Nouveau : coûts ajustés, taux uniforme ~0.05€/Éclat
+// Un client qui dépense 35€ gagne 35 Éclats/mois → peut obtenir
+// une réduction -3€ tous les ~1.5 mois = ratio sain (8.5% en valeur)
+// ══════════════════════════════════════════════════════════════
 const REWARDS = {
-    discount_3: { cost: 50, type: 'fixed', value: 3, label: '-3\u20ac sur votre commande' },
-    discount_5: { cost: 80, type: 'fixed', value: 5, label: '-5\u20ac sur votre commande' },
-    discount_10: { cost: 150, type: 'fixed', value: 10, label: '-10\u20ac sur votre commande' },
-    discount_15pct: { cost: 100, type: 'percentage', value: 15, label: '-15% sur votre commande' },
-    shipping: { cost: 40, type: 'fixed', value: 4.90, label: 'Livraison gratuite' },
-    ai_messages: { cost: 60, type: 'ai', value: 10, label: '+10 messages IA' },
-    double_eclats: { cost: 80, type: 'boost', value: 2, label: 'Double \u00c9clats 24h' }
+    discount_3: { cost: 60, type: 'fixed', value: 3, label: '-3\u20ac sur votre commande' },
+    discount_5: { cost: 100, type: 'fixed', value: 5, label: '-5\u20ac sur votre commande' },
+    discount_10: { cost: 200, type: 'fixed', value: 10, label: '-10\u20ac sur votre commande' },
+    discount_10pct: { cost: 120, type: 'percentage', value: 10, label: '-10% sur votre commande' },
+    shipping: { cost: 80, type: 'fixed', value: 4.90, label: 'Livraison gratuite' },
+    ai_messages: { cost: 80, type: 'ai', value: 10, label: '+10 messages IA' },
+    double_eclats: { cost: 100, type: 'boost', value: 2, label: 'Double \u00c9clats 24h' }
 };
 
 module.exports = async function handler(req, res) {

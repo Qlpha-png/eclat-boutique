@@ -682,21 +682,38 @@
             function renderChallenges(challenges) {
                 var el = document.getElementById('challengesList');
                 // Si pas de défis depuis l'API, générer des défis hebdo par défaut
+                // ── ÉCONOMIE ÉCLATS V2 ──
+                // 1 Éclat ≈ 0.05€ | 60 Éclats = -3€ | Max gratuit/semaine ≈ 8 Éclats (0.40€)
+                // Les défis gratuits = la carotte (engagement) - petits montants
+                // Les vrais Éclats viennent des ACHATS (1€ = 1 Éclat × multiplicateur)
+                // Objectif : 80%+ des Éclats proviennent des achats
                 if (!challenges || !challenges.length) {
                     var weekNum = Math.ceil((new Date() - new Date(new Date().getFullYear(),0,1)) / 604800000);
-                    var defaultChallenges = [
-                        { icon: '\uD83D\uDED2', title: 'Premi\u00e8re commande', description: 'Passez votre premi\u00e8re commande cette semaine', reward: 50, progress: 0, target: 1, completed: false },
-                        { icon: '\u2B50', title: 'Check-in 3 jours', description: 'Connectez-vous 3 jours de suite', reward: 20, progress: 0, target: 3, completed: false },
-                        { icon: '\uD83D\uDC96', title: 'Wishlist +3', description: 'Ajoutez 3 produits \u00e0 votre liste de souhaits', reward: 10, progress: 0, target: 3, completed: false },
-                        { icon: '\uD83D\uDD2C', title: 'Diagnostic beaut\u00e9', description: 'Faites votre diagnostic personnalis\u00e9', reward: 30, progress: 0, target: 1, completed: false },
-                        { icon: '\uD83D\uDCAC', title: 'Premier avis', description: 'Laissez un avis sur un produit', reward: 25, progress: 0, target: 1, completed: false }
+                    // Engagement : 2-5 Éclats (avant : 2-8, encore réduit)
+                    var engagementChallenges = [
+                        { icon: '\u2B50', title: 'Fid\u00e8le 3 jours', description: 'Connectez-vous 3 jours cette semaine', reward: 3, progress: 0, target: 3, completed: false },
+                        { icon: '\uD83D\uDC96', title: 'Coup de c\u0153ur', description: 'Ajoutez 2 produits \u00e0 votre wishlist', reward: 2, progress: 0, target: 2, completed: false },
+                        { icon: '\uD83D\uDD2C', title: 'Mon diagnostic', description: 'Compl\u00e9tez votre diagnostic beaut\u00e9', reward: 3, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83D\uDCAC', title: 'Votre avis compte', description: 'Laissez un avis sur un produit achet\u00e9', reward: 5, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83D\uDCE7', title: 'Rester connect\u00e9', description: 'Ouvrez la newsletter de la semaine', reward: 2, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83C\uDF1F', title: 'Explorateur', description: 'Consultez 5 fiches produit diff\u00e9rentes', reward: 3, progress: 0, target: 5, completed: false },
+                        { icon: '\uD83D\uDCF1', title: 'Partage beaut\u00e9', description: 'Partagez un produit sur les r\u00e9seaux', reward: 3, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83C\uDFAF', title: 'S\u00e9rie parfaite', description: 'Check-in 5 jours de suite', reward: 5, progress: 0, target: 5, completed: false }
                     ];
-                    // Rotate 3 challenges per week
-                    var start = (weekNum * 3) % defaultChallenges.length;
-                    challenges = [];
-                    for (var i = 0; i < 3; i++) {
-                        challenges.push(defaultChallenges[(start + i) % defaultChallenges.length]);
-                    }
+                    // Achat : 8-12 Éclats (avant : 15-25, réduit car justifié par la dépense)
+                    var purchaseChallenges = [
+                        { icon: '\uD83D\uDED2', title: 'Commande de la semaine', description: 'Passez une commande cette semaine', reward: 8, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83D\uDCB0', title: 'Panier 39\u20ac+', description: 'Commande de 39\u20ac ou plus', reward: 12, progress: 0, target: 1, completed: false },
+                        { icon: '\uD83C\uDF81', title: 'D\u00e9couverte coffret', description: 'Achetez un coffret/bundle', reward: 10, progress: 0, target: 1, completed: false }
+                    ];
+                    // Chaque semaine : 2 défis engagement + 1 défi achat
+                    var eStart = (weekNum * 2) % engagementChallenges.length;
+                    var pStart = weekNum % purchaseChallenges.length;
+                    challenges = [
+                        engagementChallenges[eStart],
+                        engagementChallenges[(eStart + 1) % engagementChallenges.length],
+                        purchaseChallenges[pStart]
+                    ];
                 }
                 el.innerHTML = challenges.map(function(c) {
                     var pct = c.target > 0 ? Math.min(100, Math.round((c.progress / c.target) * 100)) : 0;

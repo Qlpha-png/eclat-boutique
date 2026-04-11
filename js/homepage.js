@@ -514,7 +514,7 @@
 
             if (recommended.length >= 3) {
                 var html = '<p style="font-size:.85rem;color:var(--color-text-light);margin-bottom:16px;">';
-                html += '&#129302; ' + reason + '</p>';
+                html += '\u2728 ' + reason + '</p>';
                 html += '<div id="carouselPourVous"></div>';
                 container.innerHTML = html;
                 createCarousel('carouselPourVous', recommended);
