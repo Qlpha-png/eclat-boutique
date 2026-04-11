@@ -769,6 +769,7 @@ function applyTranslations() {
     if (langToggle) {
         var codeEl = langToggle.querySelector('.lang-code');
         if (codeEl) codeEl.textContent = currentLang.toUpperCase();
+        langToggle.setAttribute('aria-label', currentLang.toUpperCase());
         // Update active state in dropdown
         document.querySelectorAll('.lang-dropdown button').forEach(function(btn) {
             btn.classList.toggle('active', btn.dataset.lang === currentLang);
@@ -786,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapper = document.createElement('div');
         wrapper.id = 'langSelector';
         wrapper.className = 'lang-selector';
-        wrapper.innerHTML = '<button type="button" class="lang-toggle" aria-label="Langue">' +
+        wrapper.innerHTML = '<button type="button" class="lang-toggle" aria-label="Changer la langue (' + currentLang.toUpperCase() + ')" aria-expanded="false" aria-haspopup="true">' +
             '<svg class="lang-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>' +
             '<span class="lang-code">' + currentLang.toUpperCase() + '</span>' +
             '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>' +
@@ -803,7 +804,9 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.querySelector('.lang-toggle').addEventListener('click', function(e) {
             e.stopPropagation();
             var dd = wrapper.querySelector('.lang-dropdown');
-            dd.style.display = dd.style.display === 'none' ? 'block' : 'none';
+            var isOpen = dd.style.display !== 'none';
+            dd.style.display = isOpen ? 'none' : 'block';
+            this.setAttribute('aria-expanded', !isOpen);
         });
         // Select language
         wrapper.querySelectorAll('.lang-dropdown button').forEach(function(btn) {

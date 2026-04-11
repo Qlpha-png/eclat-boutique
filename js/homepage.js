@@ -160,10 +160,22 @@
             // Background
             heroSection.style.background = slide.bg;
 
-            // Perks visibility
+            // Perks visibility — use opacity/visibility instead of display:none to prevent CLS
             var perks = heroContent.querySelector('.hero-perks');
             if (perks) {
-                perks.style.display = idx === 0 ? '' : 'none';
+                if (idx === 0) {
+                    perks.style.visibility = '';
+                    perks.style.height = '';
+                    perks.style.overflow = '';
+                    perks.style.opacity = '';
+                    perks.style.margin = '';
+                } else {
+                    perks.style.visibility = 'hidden';
+                    perks.style.height = '0';
+                    perks.style.overflow = 'hidden';
+                    perks.style.opacity = '0';
+                    perks.style.margin = '0';
+                }
             }
 
             // Fade in

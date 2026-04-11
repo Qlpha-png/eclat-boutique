@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<div style="padding:12px;">' +
                         '<div data-category-key="' + escapeHTML(product.category) + '" style="font-size:.72rem;color:var(--color-text-light,#6b6560);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + getCategoryLabel(product.category) + '</div>' +
                         '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>' +
-                        '<div style="color:var(--color-secondary,#c9a87c);font-weight:700;font-size:1rem;margin-bottom:8px;">' + formatPrice(product.price) + '</div>' +
+                        '<div style="color:var(--color-secondary-text,#7a5f30);font-weight:700;font-size:1rem;margin-bottom:8px;">' + formatPrice(product.price) + '</div>' +
                         '<button class="btn btn-primary btn-sm" data-action="add-to-cart" data-pid="' + product.id + '" style="width:100%;font-size:.8rem;padding:8px 12px;">' + t('btn_add_cart') + '</button>' +
                     '</div>' +
                 '</div>';

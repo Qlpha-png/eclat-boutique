@@ -25,7 +25,7 @@
 :root {
     --color-primary: #2d2926;
     --color-secondary: #c9a87c;
-    --color-secondary-text: #8a6d3b;
+    --color-secondary-text: #7a5f30;
     --color-accent: #e8c8a0;
     --color-bg: #faf8f5;
     --color-bg-alt: #f3efe9;
@@ -302,9 +302,13 @@ input { font-family: inherit; }
     min-height: calc(100vh - 110px);
     align-items: center;
     padding: 60px 24px;
+    padding-bottom: 48px;
     max-width: 1200px;
     margin: 0 auto;
     gap: 60px;
+    overflow: hidden;
+    position: relative;
+    transition: background .5s ease;
 }
 
 .hero-tag {
@@ -614,7 +618,7 @@ input { font-family: inherit; }
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #8a6d3b;
+    color: var(--color-secondary-text);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 12px;
@@ -2822,16 +2826,28 @@ input { font-family: inherit; }
     margin-top: 16px;
 }
 .bundles-dot {
-    width: 10px;
-    height: 10px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: var(--color-border, #e8e4de);
+    background: transparent;
     border: none;
     cursor: pointer;
     transition: all 0.3s;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
-.bundles-dot--active {
+.bundles-dot::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-border, #e8e4de);
+    transition: all 0.3s;
+}
+.bundles-dot--active::after {
     background: var(--color-secondary, #c9a87c);
     transform: scale(1.2);
 }
@@ -4064,57 +4080,11 @@ input { font-family: inherit; }
 
 /* Category cards mobile handled by .cat-grid-4 responsive rules above */
 
-/* --- Performance: content-visibility for off-screen sections --- */
-/* Skips rendering of sections far below fold, massive perf gain on 14k+ page */
-/* CLS fix: per-section contain-intrinsic-size to match actual rendered heights */
-.categories-visual {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 280px;
-}
-.ai-personalization {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 200px;
-}
-.bestsellers-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 380px;
-}
-.products-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 600px;
-}
-.homepage-carousel-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 360px;
-}
-.bundles-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 350px;
-}
-.newsletter-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 300px;
-}
-.recently-viewed-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 300px;
-}
-.routine-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 400px;
-}
-.reviews-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 300px;
-}
-.social-proof-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 200px;
-}
-.footer {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 400px;
-}
+/* --- Performance: content-visibility removed to eliminate CLS --- */
+/* content-visibility: auto caused massive CLS (1.751) when external CSS loaded
+   asynchronously via media=print onload hack. Sections would resize when
+   contain-intrinsic-size was applied after initial paint with critical CSS only.
+   The perf gain (~50ms) is not worth the CLS penalty on page load. */
 
 /* --- Hover effects (replaces inline onmouseover/onmouseout) --- */
 .hover-bg-alt {
@@ -4613,7 +4583,7 @@ input { font-family: inherit; }
 .rb-card-price {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-secondary-text, #8a6d3b);
+    color: var(--color-secondary-text, #7a5f30);
 }
 .rb-card-feature {
     font-size: 0.75rem;
