@@ -11,9 +11,11 @@ const TRANSLATIONS = {
         nav_reviews: 'Avis',
         nav_story: 'Notre histoire',
         nav_loyalty: 'Avantages',
-        nav_guide: 'Guide Beauté',
+        nav_guide: 'Guide Beaut\u00e9',
         nav_packs: 'Coffrets',
         nav_guarantees: 'Garanties',
+        nav_about: '\u00c0 propos',
+        nav_account: 'Mon compte',
 
         // Hero
         hero_tag: '\u2728 Plus de 500 soins s\u00e9lectionn\u00e9s',
@@ -180,7 +182,38 @@ const TRANSLATIONS = {
         trust_modal_secure: 'Paiement s\u00e9curis\u00e9',
         popup_code_toast: 'Code BIENVENUE10 activ\u00e9 ! V\u00e9rifiez votre email.',
         btn_details: 'D\u00e9tails',
-        btn_full_details: 'Voir la fiche compl\u00e8te'
+        btn_full_details: 'Voir la fiche compl\u00e8te',
+
+        // Categories section
+        cat_section_tag: 'Explorer',
+        cat_section_title: 'Nos univers beaut\u00e9',
+        cat_visage: 'Soins visage',
+        cat_visage_desc: 'S\u00e9rums, masques, nettoyants',
+        cat_cheveux: 'Cheveux',
+        cat_cheveux_desc: 'Brosses, s\u00e9rums, accessoires',
+        cat_corps: 'Corps & Bien-\u00eatre',
+        cat_corps_desc: 'Gommages, huiles, massage',
+        cat_homme: 'Homme',
+        cat_homme_desc: 'Grooming, barbe, skincare',
+        cat_ongles: 'Ongles',
+        cat_outils: 'Outils beaut\u00e9',
+        cat_bienetre: 'Bien-\u00eatre',
+        cat_accessoires: 'Accessoires',
+
+        // AI section
+        ai_section_tag: '\u2728 Intelligence Beaut\u00e9',
+        ai_section_title: 'S\u00e9lectionn\u00e9 pour vous',
+        ai_section_desc: 'Nos recommandations personnalis\u00e9es par notre IA beaut\u00e9.',
+        ai_section_link: 'Faire mon diagnostic \u2192',
+
+        // Diagnostic CTA
+        diag_cta_title: 'D\u00e9couvrez votre routine id\u00e9ale',
+        diag_cta_desc: 'R\u00e9pondez \u00e0 4 questions en 2 minutes. Notre IA cr\u00e9e une routine personnalis\u00e9e pour votre type de peau.',
+        diag_cta_btn: 'Trouver ma routine \u2192',
+        diag_routine_btn: '\u2728 Trouver ma routine id\u00e9ale \u2192',
+
+        // Bestsellers
+        section_best_desc: 'Une s\u00e9lection de produits que nous recommandons. Les best-sellers appara\u00eetront ici automatiquement d\u00e8s les premi\u00e8res commandes.'
     },
 
     en: {
@@ -193,6 +226,8 @@ const TRANSLATIONS = {
         nav_guide: 'Beauty Guide',
         nav_packs: 'Bundles',
         nav_guarantees: 'Guarantees',
+        nav_about: 'About us',
+        nav_account: 'My account',
 
         hero_tag: '\u2728 500+ curated beauty products',
         hero_title: 'Your beauty,',
@@ -348,7 +383,38 @@ const TRANSLATIONS = {
         trust_modal_secure: 'Secure payment',
         popup_code_toast: 'Code BIENVENUE10 activated! Check your email.',
         btn_details: 'Details',
-        btn_full_details: 'View full details'
+        btn_full_details: 'View full details',
+
+        // Categories section
+        cat_section_tag: 'Explore',
+        cat_section_title: 'Our beauty worlds',
+        cat_visage: 'Face care',
+        cat_visage_desc: 'Serums, masks, cleansers',
+        cat_cheveux: 'Hair',
+        cat_cheveux_desc: 'Brushes, serums, accessories',
+        cat_corps: 'Body & Wellness',
+        cat_corps_desc: 'Scrubs, oils, massage',
+        cat_homme: 'Men',
+        cat_homme_desc: 'Grooming, beard, skincare',
+        cat_ongles: 'Nails',
+        cat_outils: 'Beauty tools',
+        cat_bienetre: 'Wellness',
+        cat_accessoires: 'Accessories',
+
+        // AI section
+        ai_section_tag: '\u2728 Beauty Intelligence',
+        ai_section_title: 'Selected for you',
+        ai_section_desc: 'Personalized recommendations by our beauty AI.',
+        ai_section_link: 'Take my diagnostic \u2192',
+
+        // Diagnostic CTA
+        diag_cta_title: 'Discover your ideal routine',
+        diag_cta_desc: 'Answer 4 questions in 2 minutes. Our AI creates a personalized routine for your skin type.',
+        diag_cta_btn: 'Find my routine \u2192',
+        diag_routine_btn: '\u2728 Find my ideal routine \u2192',
+
+        // Bestsellers
+        section_best_desc: 'A selection of products we recommend. Best-sellers will appear here automatically after the first orders.'
     },
 
     es: {
@@ -358,9 +424,11 @@ const TRANSLATIONS = {
         nav_reviews: 'Opiniones',
         nav_story: 'Nuestra historia',
         nav_loyalty: 'Ventajas',
-        nav_guide: 'Guía Belleza',
+        nav_guide: 'Gu\u00eda Belleza',
         nav_packs: 'Packs',
-        nav_guarantees: 'Garantías',
+        nav_guarantees: 'Garant\u00edas',
+        nav_about: 'Sobre nosotros',
+        nav_account: 'Mi cuenta',
 
         hero_tag: '\u2728 M\u00e1s de 500 productos seleccionados',
         hero_title: 'Tu belleza,',
@@ -516,7 +584,38 @@ const TRANSLATIONS = {
         trust_modal_secure: 'Pago seguro',
         popup_code_toast: '\u00a1C\u00f3digo BIENVENUE10 activado! Revisa tu email.',
         btn_details: 'Detalles',
-        btn_full_details: 'Ver ficha completa'
+        btn_full_details: 'Ver ficha completa',
+
+        // Categories section
+        cat_section_tag: 'Explorar',
+        cat_section_title: 'Nuestros universos de belleza',
+        cat_visage: 'Cuidado facial',
+        cat_visage_desc: 'S\u00e9rums, mascarillas, limpiadores',
+        cat_cheveux: 'Cabello',
+        cat_cheveux_desc: 'Cepillos, s\u00e9rums, accesorios',
+        cat_corps: 'Cuerpo y Bienestar',
+        cat_corps_desc: 'Exfoliantes, aceites, masaje',
+        cat_homme: 'Hombre',
+        cat_homme_desc: 'Grooming, barba, skincare',
+        cat_ongles: 'U\u00f1as',
+        cat_outils: 'Herramientas de belleza',
+        cat_bienetre: 'Bienestar',
+        cat_accessoires: 'Accesorios',
+
+        // AI section
+        ai_section_tag: '\u2728 Inteligencia de Belleza',
+        ai_section_title: 'Seleccionado para ti',
+        ai_section_desc: 'Recomendaciones personalizadas por nuestra IA de belleza.',
+        ai_section_link: 'Hacer mi diagn\u00f3stico \u2192',
+
+        // Diagnostic CTA
+        diag_cta_title: 'Descubre tu rutina ideal',
+        diag_cta_desc: 'Responde 4 preguntas en 2 minutos. Nuestra IA crea una rutina personalizada para tu tipo de piel.',
+        diag_cta_btn: 'Encontrar mi rutina \u2192',
+        diag_routine_btn: '\u2728 Encontrar mi rutina ideal \u2192',
+
+        // Bestsellers
+        section_best_desc: 'Una selecci\u00f3n de productos que recomendamos. Los m\u00e1s vendidos aparecer\u00e1n aqu\u00ed autom\u00e1ticamente.'
     },
 
     de: {
@@ -529,6 +628,8 @@ const TRANSLATIONS = {
         nav_guide: 'Beauty-Guide',
         nav_packs: 'Sets',
         nav_guarantees: 'Garantien',
+        nav_about: '\u00dcber uns',
+        nav_account: 'Mein Konto',
 
         hero_tag: '\u2728 \u00dcber 500 ausgew\u00e4hlte Produkte',
         hero_title: 'Ihre Sch\u00f6nheit,',
@@ -684,7 +785,38 @@ const TRANSLATIONS = {
         trust_modal_secure: 'Sichere Zahlung',
         popup_code_toast: 'Code BIENVENUE10 aktiviert! Pr\u00fcfen Sie Ihre E-Mail.',
         btn_details: 'Details',
-        btn_full_details: 'Alle Details ansehen'
+        btn_full_details: 'Alle Details ansehen',
+
+        // Categories section
+        cat_section_tag: 'Entdecken',
+        cat_section_title: 'Unsere Beauty-Welten',
+        cat_visage: 'Gesichtspflege',
+        cat_visage_desc: 'Seren, Masken, Reinigung',
+        cat_cheveux: 'Haare',
+        cat_cheveux_desc: 'B\u00fcrsten, Seren, Zubeh\u00f6r',
+        cat_corps: 'K\u00f6rper & Wohlbefinden',
+        cat_corps_desc: 'Peelings, \u00d6le, Massage',
+        cat_homme: 'M\u00e4nner',
+        cat_homme_desc: 'Grooming, Bart, Hautpflege',
+        cat_ongles: 'N\u00e4gel',
+        cat_outils: 'Beauty-Tools',
+        cat_bienetre: 'Wohlbefinden',
+        cat_accessoires: 'Zubeh\u00f6r',
+
+        // AI section
+        ai_section_tag: '\u2728 Beauty-Intelligenz',
+        ai_section_title: 'F\u00fcr Sie ausgew\u00e4hlt',
+        ai_section_desc: 'Personalisierte Empfehlungen unserer Beauty-KI.',
+        ai_section_link: 'Meine Diagnose machen \u2192',
+
+        // Diagnostic CTA
+        diag_cta_title: 'Entdecken Sie Ihre ideale Routine',
+        diag_cta_desc: 'Beantworten Sie 4 Fragen in 2 Minuten. Unsere KI erstellt eine personalisierte Routine f\u00fcr Ihren Hauttyp.',
+        diag_cta_btn: 'Meine Routine finden \u2192',
+        diag_routine_btn: '\u2728 Meine ideale Routine finden \u2192',
+
+        // Bestsellers
+        section_best_desc: 'Eine Auswahl von Produkten, die wir empfehlen. Bestseller erscheinen hier automatisch nach den ersten Bestellungen.'
     }
 };
 
@@ -714,6 +846,8 @@ function applyTranslations() {
         '.nav-links li:nth-child(2) a': 'nav_packs',
         '.nav-links li:nth-child(3) a': 'nav_guarantees',
         '.nav-links li:nth-child(4) a': 'nav_guide',
+        '.nav-links li:nth-child(5) a': 'nav_about',
+        '.nav-links li:nth-child(6) a': 'nav_account',
 
         // Hero — TOUT
         '.hero-tag': 'hero_tag',
@@ -752,9 +886,36 @@ function applyTranslations() {
         '.filter-btn[data-category="marques"]': 'filter_brands',
         '.filter-btn[data-category="parfums"]': 'filter_perfumes',
 
+        // Categories section
+        '#catSectionTag': 'cat_section_tag',
+        '#catSectionTitle': 'cat_section_title',
+        '[data-cat-name="visage"]': 'cat_visage',
+        '[data-cat-desc="visage"]': 'cat_visage_desc',
+        '[data-cat-name="cheveux"]': 'cat_cheveux',
+        '[data-cat-desc="cheveux"]': 'cat_cheveux_desc',
+        '[data-cat-name="corps"]': 'cat_corps',
+        '[data-cat-desc="corps"]': 'cat_corps_desc',
+        '[data-cat-name="homme"]': 'cat_homme',
+        '[data-cat-desc="homme"]': 'cat_homme_desc',
+        '[data-cat-label="ongles"]': 'cat_ongles',
+        '[data-cat-label="outils"]': 'cat_outils',
+        '[data-cat-label="bienetre"]': 'cat_bienetre',
+        '[data-cat-label="accessoires"]': 'cat_accessoires',
+
+        // AI personalization section
+        '.ai-personalization .section-tag': 'ai_section_tag',
+        '.ai-personalization .section-header h2': 'ai_section_title',
+
+        // Diagnostic CTA
+        '#diagCTATitle': 'diag_cta_title',
+        '#diagCTADesc': 'diag_cta_desc',
+        '#diagCTABtn': 'diag_cta_btn',
+        '#routineDiagBtn': 'diag_routine_btn',
+
         // Bestsellers
         '.bestsellers-section .section-tag': 'section_best_tag',
         '.bestsellers-section .section-header h2': 'section_best_title',
+        '#bestsellerDesc': 'section_best_desc',
 
         // Reviews
         '.reviews-section .section-tag': 'section_reviews_tag',

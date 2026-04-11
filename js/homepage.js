@@ -524,11 +524,11 @@
         } else {
             // No data — show CTA to start diagnostic
             section.style.display = '';
-            container.innerHTML = '<div style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary));border-radius:var(--radius-lg);padding:40px;text-align:center;color:var(--color-white,#fff);">' +
-                '<div style="font-size:3rem;margin-bottom:12px;">&#129302;</div>' +
-                '<h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:8px;">Votre espace personnalis\u00e9 vous attend</h3>' +
-                '<p style="color:rgba(255,255,255,.7);font-size:.9rem;max-width:500px;margin:0 auto 20px;">Faites notre diagnostic IA gratuit en 2 minutes. Votre page d\'accueil s\'adaptera \u00e0 votre profil unique.</p>' +
-                '<a href="pages/diagnostic.html" class="btn" style="background:var(--color-secondary);color:var(--color-white,#fff);padding:14px 32px;font-size:.95rem;">&#129302; Mon diagnostic gratuit &rarr;</a>' +
+            container.innerHTML = '<div style="background:linear-gradient(135deg,var(--color-primary),var(--color-primary));border-radius:var(--radius-lg);padding:48px 40px;text-align:center;color:var(--color-white,#fff);">' +
+                '<div style="width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l.146.146A3.004 3.004 0 0118 19.5H6a3.004 3.004 0 01-1.682-2.314l.146-.146z"/></svg></div>' +
+                '<h3 id="diagCTATitle" style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:8px;">' + (typeof t === "function" ? t('diag_cta_title') : 'D\u00e9couvrez votre routine id\u00e9ale') + '</h3>' +
+                '<p id="diagCTADesc" style="color:rgba(255,255,255,.7);font-size:.9rem;max-width:500px;margin:0 auto 24px;">' + (typeof t === "function" ? t('diag_cta_desc') : 'R\u00e9pondez \u00e0 4 questions en 2 minutes. Notre IA cr\u00e9e une routine personnalis\u00e9e pour votre type de peau.') + '</p>' +
+                '<a href="pages/diagnostic.html" class="btn" id="diagCTABtn" style="background:var(--color-secondary);color:var(--color-white,#fff);padding:14px 36px;font-size:.95rem;border-radius:30px;">' + (typeof t === "function" ? t('diag_cta_btn') : 'Trouver ma routine \u2192') + '</a>' +
                 '</div>';
         }
     }

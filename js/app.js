@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 badgeHTML + wishHTML +
             '</div>' +
             '<div class="product-info">' +
-                '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                '<div class="product-category" data-category-key="' + escapeHTML(product.category) + '">' + getCategoryLabel(product.category) + '</div>' +
                 '<h3 class="product-name"><a href="pages/product.html?id=' + product.id + '" style="color:inherit;text-decoration:none;" onclick="event.preventDefault();openModal(' + product.id + ')">' + escapeHTML(pName) + '</a></h3>' +
                 '<div class="product-rating">' + starsHTML + ' ' + reviewsHTML + '</div>' +
                 '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span> ' + oldPriceHTML + '</div>' +
@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:700;">#' + rank + '</span>' +
                     '</div>' +
                     '<div style="padding:12px;">' +
-                        '<div style="font-size:.72rem;color:var(--color-text-light,#6b6560);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + getCategoryLabel(product.category) + '</div>' +
+                        '<div data-category-key="' + escapeHTML(product.category) + '" style="font-size:.72rem;color:var(--color-text-light,#6b6560);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + getCategoryLabel(product.category) + '</div>' +
                         '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>' +
                         '<div style="color:var(--color-secondary,#c9a87c);font-weight:700;font-size:1rem;margin-bottom:8px;">' + formatPrice(product.price) + '</div>' +
                         '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();addToCart(' + product.id + ')" style="width:100%;font-size:.8rem;padding:8px 12px;">' + t('btn_add_cart') + '</button>' +
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<div class="modal-grid">' +
                 '<div class="modal-image"><img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" referrerpolicy="no-referrer"></div>' +
                 '<div class="modal-details">' +
-                    '<div class="product-category">' + getCategoryLabel(product.category) + '</div>' +
+                    '<div class="product-category" data-category-key="' + escapeHTML(product.category) + '">' + getCategoryLabel(product.category) + '</div>' +
                     '<h2 class="product-name" id="modalTitle">' + escapeHTML(pName) + '</h2>' +
                     (product.reviews > 0 ? '<div class="product-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="count">' + product.rating + '/5 (' + product.reviews + ' avis)</span></div>' : '<div style="font-size:.85rem;color:var(--color-text-light);margin-bottom:8px;">Aucun avis pour le moment</div>') +
                     '<p class="product-description">' + escapeHTML(pDesc) + '</p>' +

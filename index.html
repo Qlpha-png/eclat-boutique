@@ -389,7 +389,7 @@
             <div class="hero-perks" style="display:flex;gap:16px;flex-wrap:wrap;">
                 <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
                 <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128260; Retours 30j</span>
-                <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#129302; Diagnostic IA gratuit</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;" data-i18n="hero_perk_diag">&#10024; Diagnostic personnalis&eacute;</span>
             </div>
         </div>
         <div class="hero-visual">
@@ -408,7 +408,7 @@
             <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128666; Livraison suivie 7-14j</span>
             <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128274; Paiement Stripe s&eacute;curis&eacute;</span>
             <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#8634; Retours 30 jours</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#129514; Diagnostic IA gratuit</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#10024; Diagnostic personnalis&eacute;</span>
             <span style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#127467;&#127479; Entreprise fran&ccedil;aise</span>
         </div>
     </div>
@@ -417,49 +417,49 @@
     <section class="categories-visual anim-fade-up" style="padding:48px 0;">
         <div class="container">
             <div class="section-header" style="margin-bottom:32px;">
-                <span class="section-tag">Explorer</span>
-                <h2>Nos univers beaut&eacute;</h2>
+                <span class="section-tag" id="catSectionTag">Explorer</span>
+                <h2 id="catSectionTitle">Nos univers beaut&eacute;</h2>
             </div>
             <!-- Row 1 : 4 grandes catégories -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
                 <a href="pages/category.html?cat=visage" class="cat-card-xl" style="background:linear-gradient(135deg,#f8e8d4,#f0d4b8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
                     <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F9D6;</span>
-                    <span style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Soins visage</span>
-                    <span style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">S&eacute;rums, masques, nettoyants</span>
+                    <span class="cat-xl-name" data-cat-name="visage" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Soins visage</span>
+                    <span class="cat-xl-desc" data-cat-desc="visage" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">S&eacute;rums, masques, nettoyants</span>
                 </a>
                 <a href="pages/category.html?cat=cheveux" class="cat-card-xl" style="background:linear-gradient(135deg,#e8d8f0,#d4c0e8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
                     <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F487;</span>
-                    <span style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Cheveux</span>
-                    <span style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Brosses, s&eacute;rums, accessoires</span>
+                    <span class="cat-xl-name" data-cat-name="cheveux" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Cheveux</span>
+                    <span class="cat-xl-desc" data-cat-desc="cheveux" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Brosses, s&eacute;rums, accessoires</span>
                 </a>
                 <a href="pages/category.html?cat=corps" class="cat-card-xl" style="background:linear-gradient(135deg,#d4e8d8,#b8d8c0);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
                     <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F6C1;</span>
-                    <span style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Corps &amp; Bien-&ecirc;tre</span>
-                    <span style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Gommages, huiles, massage</span>
+                    <span class="cat-xl-name" data-cat-name="corps" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Corps &amp; Bien-&ecirc;tre</span>
+                    <span class="cat-xl-desc" data-cat-desc="corps" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Gommages, huiles, massage</span>
                 </a>
                 <a href="pages/category.html?cat=homme" class="cat-card-xl" style="background:linear-gradient(135deg,#d4dce8,#b8c8d8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
                     <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F9D4;</span>
-                    <span style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Homme</span>
-                    <span style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Grooming, barbe, skincare</span>
+                    <span class="cat-xl-name" data-cat-name="homme" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Homme</span>
+                    <span class="cat-xl-desc" data-cat-desc="homme" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Grooming, barbe, skincare</span>
                 </a>
             </div>
             <!-- Row 2 : 4 petites catégories -->
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
                 <a href="#produits" class="cat-card" data-cat="ongles" onclick="setTimeout(function(){var b=document.querySelector('[data-category=ongles]');if(b)b.click();},200)">
                     <div class="cat-icon">&#x1F485;</div>
-                    <span class="cat-label">Ongles</span>
+                    <span class="cat-label" data-cat-label="ongles">Ongles</span>
                 </a>
                 <a href="#produits" class="cat-card" data-cat="outils" onclick="setTimeout(function(){var b=document.querySelector('[data-category=outils]');if(b)b.click();},200)">
                     <div class="cat-icon">&#x2728;</div>
-                    <span class="cat-label">Outils beaut&eacute;</span>
+                    <span class="cat-label" data-cat-label="outils">Outils beaut&eacute;</span>
                 </a>
                 <a href="#produits" class="cat-card" data-cat="aromatherapie" onclick="setTimeout(function(){var b=document.querySelector('[data-category=aromatherapie]');if(b)b.click();},200)">
                     <div class="cat-icon">&#x1F33F;</div>
-                    <span class="cat-label">Bien-&ecirc;tre</span>
+                    <span class="cat-label" data-cat-label="bienetre">Bien-&ecirc;tre</span>
                 </a>
                 <a href="#produits" class="cat-card" data-cat="accessoire" onclick="setTimeout(function(){var b=document.querySelector('[data-category=accessoire]');if(b)b.click();},200)">
                     <div class="cat-icon">&#x1F392;</div>
-                    <span class="cat-label">Accessoires</span>
+                    <span class="cat-label" data-cat-label="accessoires">Accessoires</span>
                 </a>
             </div>
         </div>
@@ -631,7 +631,7 @@
                 </a>
             </div>
             <div style="text-align:center;">
-                <a href="pages/diagnostic.html" class="btn btn-primary" style="font-size:1rem;padding:16px 36px;border-radius:30px;">&#129302; Diagnostic IA personnalis&eacute; &mdash; Gratuit &rarr;</a>
+                <a href="pages/diagnostic.html" class="btn btn-primary" id="routineDiagBtn" style="font-size:1rem;padding:16px 36px;border-radius:30px;">&#10024; Trouver ma routine id&eacute;ale &rarr;</a>
                 <p style="font-size:.78rem;color:var(--color-text-light,#6b6560);margin-top:8px;">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
             </div>
         </div>
