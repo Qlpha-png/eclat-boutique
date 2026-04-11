@@ -36,6 +36,25 @@ function getCategoryLabel(cat) {
 // Expose globally
 window.getCategoryLabel = getCategoryLabel;
 
+// Global image error handler — replaces inline onerror on all <img> tags
+document.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.target.style.display = 'none';
+        // If the image is inside a .product-image container, add fallback
+        var parent = e.target.parentElement;
+        if (parent && parent.classList.contains('product-image')) {
+            parent.classList.add('has-fallback');
+            var alt = e.target.getAttribute('alt') || '';
+            if (alt && !parent.querySelector('.fallback-label')) {
+                var fallback = document.createElement('div');
+                fallback.className = 'fallback-label';
+                fallback.textContent = alt;
+                parent.appendChild(fallback);
+            }
+        }
+    }
+}, true);
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- DOM Elements ---
@@ -60,6 +79,81 @@ document.addEventListener('DOMContentLoaded', function() {
     var modalContent = document.getElementById('modalContent');
     var newsletterForm = document.getElementById('newsletterForm');
     var filterBtns = document.querySelectorAll('.filter-btn');
+
+    // --- Global event delegation for data-action attributes ---
+    // Replaces inline onclick handlers to prevent XSS attack surface
+    document.addEventListener('click', function(e) {
+        var target = e.target.closest('[data-action]');
+        if (!target) return;
+        var action = target.getAttribute('data-action');
+        var pid = target.getAttribute('data-pid');
+
+        switch (action) {
+            case 'open-modal':
+                e.preventDefault();
+                if (pid && typeof openModal === 'function') {
+                    openModal(parseInt(pid, 10));
+                } else if (pid) {
+                    window.location.href = 'pages/product.html?id=' + pid;
+                }
+                break;
+            case 'add-to-cart':
+                e.stopPropagation();
+                if (pid && typeof addToCart === 'function') addToCart(parseInt(pid, 10));
+                break;
+            case 'add-to-cart-close':
+                if (pid && typeof addToCart === 'function') addToCart(parseInt(pid, 10));
+                if (typeof closeModal === 'function') closeModal();
+                break;
+            case 'cart-qty':
+                if (pid && typeof updateCartQty === 'function') {
+                    updateCartQty(parseInt(pid, 10), parseInt(target.getAttribute('data-qty'), 10));
+                }
+                break;
+            case 'cart-remove':
+                if (pid && typeof removeFromCart === 'function') removeFromCart(parseInt(pid, 10));
+                break;
+            case 'convert-bundle':
+                var bundleKey = target.getAttribute('data-bundle-key');
+                if (bundleKey && typeof convertToBundle === 'function') convertToBundle(bundleKey);
+                break;
+            case 'scroll-carousel':
+                var scTrackId = target.getAttribute('data-track');
+                var dir = parseInt(target.getAttribute('data-dir'), 10);
+                if (typeof scrollCarousel === 'function') {
+                    scrollCarousel(scTrackId, dir);
+                } else {
+                    var trackEl = document.getElementById(scTrackId);
+                    if (trackEl) trackEl.scrollBy({ left: dir * 260, behavior: 'smooth' });
+                }
+                break;
+            case 'wishlist-toggle':
+                e.stopPropagation();
+                if (pid && typeof Wishlist !== 'undefined') Wishlist.toggle(parseInt(pid, 10));
+                break;
+            case 'close-parent':
+                var sel = target.getAttribute('data-close-target');
+                var toClose = sel ? target.closest(sel) : target.parentElement;
+                if (toClose) toClose.remove();
+                break;
+            case 'dismiss-fomo':
+                var fomoParent = target.parentElement;
+                if (fomoParent) fomoParent.style.transform = 'translateY(-100%)';
+                var fomoStorageKey = target.getAttribute('data-storage-key');
+                if (fomoStorageKey) localStorage.setItem(fomoStorageKey, 1);
+                break;
+            case 'copy-code':
+                var code = target.getAttribute('data-code');
+                var copiedText = target.getAttribute('data-copied-text');
+                if (code) navigator.clipboard.writeText(code);
+                if (copiedText) target.textContent = copiedText;
+                break;
+            case 'hide-search-results':
+                var navSR = document.getElementById('navSearchResults');
+                if (navSR) navSR.style.display = 'none';
+                break;
+        }
+    });
 
     // --- Navbar scroll effect ---
     window.addEventListener('scroll', function() {
@@ -109,17 +203,17 @@ document.addEventListener('DOMContentLoaded', function() {
         var oldPriceHTML = product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '';
 
         return '<div class="product-card fade-in" data-id="' + product.id + '" data-product-id="' + product.id + '">' +
-            '<div class="product-image" onclick="openModal(' + product.id + ')" style="cursor:pointer;position:relative;">' +
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'has-fallback\');this.parentElement.innerHTML+=\'<div class=fallback-label>' + escapeHTML(pName) + '</div>\';">' +
+            '<div class="product-image" data-action="open-modal" data-pid="' + product.id + '" style="cursor:pointer;position:relative;">' +
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="300" height="300" loading="lazy" referrerpolicy="no-referrer">' +
                 badgeHTML + wishHTML +
             '</div>' +
             '<div class="product-info">' +
                 '<div class="product-category" data-category-key="' + escapeHTML(product.category) + '">' + getCategoryLabel(product.category) + '</div>' +
-                '<h3 class="product-name"><a href="pages/product.html?id=' + product.id + '" style="color:inherit;text-decoration:none;" onclick="event.preventDefault();openModal(' + product.id + ')">' + escapeHTML(pName) + '</a></h3>' +
+                '<h3 class="product-name"><a href="pages/product.html?id=' + product.id + '" style="color:inherit;text-decoration:none;" data-action="open-modal" data-pid="' + product.id + '">' + escapeHTML(pName) + '</a></h3>' +
                 '<div class="product-rating">' + starsHTML + ' ' + reviewsHTML + '</div>' +
                 '<div class="product-price"><span class="price-current">' + formatPrice(product.price) + '</span> ' + oldPriceHTML + '</div>' +
                 '<div class="product-trust"><span class="trust-tag shipping">' + t('trust_shipping') + '</span><span class="trust-tag">' + t('trust_refund') + '</span></div>' +
-                '<div class="product-actions"><button class="btn btn-primary btn-sm" onclick="addToCart(' + product.id + ')">' + t('btn_add_cart') + '</button></div>' +
+                '<div class="product-actions"><button class="btn btn-primary btn-sm" data-action="add-to-cart" data-pid="' + product.id + '">' + t('btn_add_cart') + '</button></div>' +
             '</div>' +
         '</div>';
     }
@@ -268,16 +362,16 @@ document.addEventListener('DOMContentLoaded', function() {
             var cardsHTML = products.map(function(product, idx) {
                 var rank = isRealData ? (idx + 1) : (product.bestsellerRank || (idx + 1));
                 var pName = (typeof getProductText === 'function') ? (getProductText(product.id, 'name', (typeof currentLang !== 'undefined' ? currentLang : 'fr')) || product.name) : product.name;
-                return '<div style="min-width:220px;max-width:220px;flex-shrink:0;background:var(--color-white,#fff);border-radius:12px;border:1px solid var(--color-border,#e8e4de);overflow:hidden;cursor:pointer;transition:all .3s;" onclick="openModal(' + product.id + ')">' +
+                return '<div style="min-width:220px;max-width:220px;flex-shrink:0;background:var(--color-white,#fff);border-radius:12px;border:1px solid var(--color-border,#e8e4de);overflow:hidden;cursor:pointer;transition:all .3s;" data-action="open-modal" data-pid="' + product.id + '">' +
                     '<div style="position:relative;height:200px;overflow:hidden;background:linear-gradient(135deg,var(--color-bg-alt,#f3efe9),var(--color-accent,#e8d5b5));">' +
-                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' +
+                        '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="220" height="200" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;">' +
                         '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary,#c9a87c);color:var(--color-white,#fff);font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:700;">#' + rank + '</span>' +
                     '</div>' +
                     '<div style="padding:12px;">' +
                         '<div data-category-key="' + escapeHTML(product.category) + '" style="font-size:.72rem;color:var(--color-text-light,#6b6560);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + getCategoryLabel(product.category) + '</div>' +
                         '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>' +
                         '<div style="color:var(--color-secondary,#c9a87c);font-weight:700;font-size:1rem;margin-bottom:8px;">' + formatPrice(product.price) + '</div>' +
-                        '<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();addToCart(' + product.id + ')" style="width:100%;font-size:.8rem;padding:8px 12px;">' + t('btn_add_cart') + '</button>' +
+                        '<button class="btn btn-primary btn-sm" data-action="add-to-cart" data-pid="' + product.id + '" style="width:100%;font-size:.8rem;padding:8px 12px;">' + t('btn_add_cart') + '</button>' +
                     '</div>' +
                 '</div>';
             }).join('');
@@ -287,8 +381,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<div id="' + trackId + '" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px 0;">' +
                         cardsHTML +
                     '</div>' +
-                    '<button onclick="var t=document.getElementById(\'' + trackId + '\');if(t)t.scrollBy({left:-260,behavior:\'smooth\'})" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10094;</button>' +
-                    '<button onclick="var t=document.getElementById(\'' + trackId + '\');if(t)t.scrollBy({left:260,behavior:\'smooth\'})" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10095;</button>' +
+                    '<button class="carousel-arrow carousel-prev" data-action="scroll-carousel" data-track="' + trackId + '" data-dir="-1" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10094;</button>' +
+                    '<button class="carousel-arrow carousel-next" data-action="scroll-carousel" data-track="' + trackId + '" data-dir="1" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.1rem;z-index:5;">&#10095;</button>' +
                 '</div>';
         });
     }
@@ -471,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<ul class="modal-features">' +
                         features.map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') +
                     '</ul>' +
-                    '<button class="btn btn-primary btn-full" onclick="addToCart(' + product.id + '); closeModal();">' +
+                    '<button class="btn btn-primary btn-full" data-action="add-to-cart-close" data-pid="' + product.id + '">' +
                         t('btn_add_cart') + ' - ' + formatPrice(product.price) +
                     '</button>' +
                     '<a href="pages/product.html?id=' + product.id + '" class="btn btn-outline btn-full" style="margin-top:8px;">' + (t('btn_full_details') || 'Voir la fiche compl\u00e8te') + '</a>' +
@@ -556,12 +650,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="cart-item-name">${escapeHTML(item.name)}</div>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
                     <div class="cart-item-qty">
-                        <button class="qty-btn" onclick="updateCartQty(${item.id}, ${item.qty - 1})">-</button>
+                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty - 1}">-</button>
                         <span>${item.qty}</span>
-                        <button class="qty-btn" onclick="updateCartQty(${item.id}, ${item.qty + 1})">+</button>
+                        <button class="qty-btn" data-action="cart-qty" data-pid="${item.id}" data-qty="${item.qty + 1}">+</button>
                     </div>
                 </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">&times;</button>
+                <button class="cart-item-remove" data-action="cart-remove" data-pid="${item.id}">&times;</button>
             </div>
         `).join('');
 
@@ -629,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="cs-name">${escapeHTML(p.name)}</div>
                         <div class="cs-price">${formatPrice(p.price)}</div>
                     </div>
-                    <button class="cross-sell-add" onclick="addToCart(${p.id})">${t('btn_add_short')}</button>
+                    <button class="cross-sell-add" data-action="add-to-cart" data-pid="${p.id}">${t('btn_add_short')}</button>
                 </div>
             `).join('')}
         `;
@@ -694,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return '<div class="bundle-suggestion"><div class="bundle-suggestion-icon">&#127873;</div>' +
                 '<div class="bundle-suggestion-text"><strong>' + bundleName + '</strong><br>' +
                 t('bundle_match_text') + ' <span class="bundle-savings">' + t('bundle_save') + ' ' + formatPrice(s.savings) + '</span></div>' +
-                '<button class="btn btn-primary btn-sm bundle-convert-btn" onclick="convertToBundle(\'' + s.bundle.key + '\')">' + formatPrice(s.bundle.price) + '</button></div>';
+                '<button class="btn btn-primary btn-sm bundle-convert-btn" data-action="convert-bundle" data-bundle-key="' + escapeHTML(s.bundle.key) + '">' + formatPrice(s.bundle.price) + '</button></div>';
         }).join('');
     }
 

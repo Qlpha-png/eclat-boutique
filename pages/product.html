@@ -7,6 +7,13 @@
     <meta name="description" id="pageDesc" content="">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" id="ogImage" content="https://maison-eclat.shop/images/og-default.jpg">
+    <meta property="og:description" id="ogDesc" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twTitle" content="Produit - ÉCLAT">
+    <meta name="twitter:description" id="twDesc" content="">
+    <meta name="twitter:image" id="twImage" content="https://maison-eclat.shop/images/og-default.jpg">
+    <link rel="canonical" id="canonicalLink" href="https://maison-eclat.shop/pages/product.html">
     <meta name="robots" content="index, follow">
 
     <!-- Hreflang: International SEO (dynamic for product pages) -->
@@ -125,11 +132,57 @@
 
     <script src="../js/products.js?v=2"></script>
     <script src="../js/i18n.js?v=5"></script>
-    <script src="../js/products-i18n-en.js?v=2"></script>
-    <script src="../js/products-i18n-es.js?v=2"></script>
-    <script src="../js/products-i18n-de.js?v=2"></script>
-    <script src="../js/products-i18n.js?v=5"></script>
-    <script src="../js/wishlist.js?v=2"></script>
+    <script>
+    // Lazy-load only the needed i18n translation file (~235-251KB each)
+    // French users load NOTHING extra (data already in products.js)
+    (function() {
+        var basePath = '../js/';
+        var i18nApplierVersion = '5';
+        var supportedLangs = ['en','es','de'];
+
+        function loadI18nForLang(lang, callback) {
+            if (lang === 'fr' || supportedLangs.indexOf(lang) === -1) {
+                if (callback) callback();
+                return;
+            }
+            if ((lang === 'en' && typeof PRODUCT_I18N_EN !== 'undefined') ||
+                (lang === 'es' && typeof PRODUCT_I18N_ES !== 'undefined') ||
+                (lang === 'de' && typeof PRODUCT_I18N_DE !== 'undefined')) {
+                if (callback) callback();
+                return;
+            }
+            var s = document.createElement('script');
+            s.src = basePath + 'products-i18n-' + lang + '.js?v=2';
+            s.onload = function() { if (callback) callback(); };
+            s.onerror = function() { if (callback) callback(); };
+            document.head.appendChild(s);
+        }
+
+        function loadI18nApplier() {
+            if (typeof getProductText !== 'undefined') return;
+            var s2 = document.createElement('script');
+            s2.src = basePath + 'products-i18n.js?v=' + i18nApplierVersion;
+            document.head.appendChild(s2);
+        }
+
+        var lang = (typeof currentLang !== 'undefined') ? currentLang
+                 : (localStorage.getItem('eclat_lang') || navigator.language.substring(0,2) || 'fr');
+
+        if (lang !== 'fr' && supportedLangs.indexOf(lang) !== -1) {
+            loadI18nForLang(lang, function() { loadI18nApplier(); });
+        } else {
+            loadI18nApplier();
+        }
+
+        window._loadProductI18n = function(lang, callback) {
+            loadI18nForLang(lang, function() {
+                loadI18nApplier();
+                if (callback) callback();
+            });
+        };
+    })();
+    </script>
+    <script src="../js/wishlist.js?v=3"></script>
     <script src="../js/social-share.js?v=2"></script>
     <script src="../js/recently-viewed.js?v=2"></script>
     <script src="../js/ingredients-db.js?v=2"></script>
@@ -199,6 +252,22 @@
             // Set page meta
             document.title = escapeHTML(pName) + ' - \u00c9CLAT';
             document.getElementById('pageDesc').setAttribute('content', pDesc);
+
+            // Set OG & Twitter meta tags dynamically
+            var ogImg = document.getElementById('ogImage');
+            if (ogImg) ogImg.setAttribute('content', product.image);
+            var ogDesc = document.getElementById('ogDesc');
+            if (ogDesc) ogDesc.setAttribute('content', pDesc);
+            var twTitle = document.getElementById('twTitle');
+            if (twTitle) twTitle.setAttribute('content', escapeHTML(pName) + ' - \u00c9CLAT');
+            var twDesc = document.getElementById('twDesc');
+            if (twDesc) twDesc.setAttribute('content', pDesc);
+            var twImg = document.getElementById('twImage');
+            if (twImg) twImg.setAttribute('content', product.image);
+
+            // Set canonical URL with product ID
+            var canonical = document.getElementById('canonicalLink');
+            if (canonical) canonical.href = 'https://maison-eclat.shop/pages/product.html?id=' + product.id;
 
             // Set JSON-LD Product schema (enriched with sku, brand, aggregateRating, offers)
             var productSchemaData = {
@@ -317,7 +386,7 @@
 
             // Render image
             document.getElementById('ppImage').innerHTML =
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" referrerpolicy="no-referrer">';
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="500" height="500" referrerpolicy="no-referrer">';
 
             // Render info
             var guide = guideMap[product.id];
@@ -462,7 +531,7 @@
                     related.map(function(p){
                         var csName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
                         return '<a href="product.html?id='+p.id+'" class="pp-cs-card">' +
-                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(csName)+'" loading="lazy" referrerpolicy="no-referrer">' +
+                            '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(csName)+'" width="180" height="120" loading="lazy" referrerpolicy="no-referrer">' +
                             '<div class="pp-cs-name">'+escapeHTML(csName)+'</div>' +
                             '<div class="pp-cs-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div>' +
                         '</a>';

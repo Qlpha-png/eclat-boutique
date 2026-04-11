@@ -148,7 +148,7 @@
         };
         var ft = fomoTexts[fomoLang] || fomoTexts.fr;
         fomo.innerHTML = ft.msg + ' <strong style="color:var(--color-secondary, #c9a87c);">' + ft.expire + ' ' + hours + 'h' + String(mins).padStart(2, '0') + '</strong> \u2014 <a href="index.html#products" style="color:var(--color-secondary, #c9a87c);text-decoration:underline;font-weight:700;">' + ft.cta + '</a> ' +
-            '<button onclick="this.parentElement.style.transform=\'translateY(-100%)\';localStorage.setItem(\'' + fomoKey + '\',1);" style="background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.1rem;position:absolute;right:12px;top:50%;transform:translateY(-50%);">\u00d7</button>';
+            '<button data-action="dismiss-fomo" data-storage-key="' + fomoKey + '" style="background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:1.1rem;position:absolute;right:12px;top:50%;transform:translateY(-50%);">\u00d7</button>';
 
         document.body.appendChild(fomo);
         setTimeout(function() { fomo.style.transform = 'translateY(0)'; }, 3000);

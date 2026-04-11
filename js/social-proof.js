@@ -60,7 +60,7 @@
                 '<div class="sp-text">' + template(prenom, ville, produit) + '</div>' +
                 '<div class="sp-time">Il y a ' + mins + ' min · ' + produit.price + ' €</div>' +
             '</div>' +
-            '<button class="sp-close" onclick="this.parentElement.remove()" aria-label="Fermer">&times;</button>';
+            '<button class="sp-close" data-action="close-parent" aria-label="Fermer">&times;</button>';
 
         document.body.appendChild(el);
 

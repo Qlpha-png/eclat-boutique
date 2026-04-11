@@ -228,7 +228,7 @@
             size = size || 22;
             var active = Wishlist.has(productId) ? ' active' : '';
             return '<button class="wishlist-heart' + active + '" data-product-id="' + productId + '" ' +
-                'onclick="event.stopPropagation();Wishlist.toggle(' + productId + ');" ' +
+                'data-action="wishlist-toggle" data-pid="' + productId + '" ' +
                 'aria-label="Ajouter aux favoris" ' +
                 'style="background:rgba(255,255,255,.85);border:none;border-radius:50%;width:' + (size + 12) + 'px;height:' + (size + 12) + 'px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;padding:0;">' +
                 '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +

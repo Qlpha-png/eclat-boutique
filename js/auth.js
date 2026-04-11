@@ -212,9 +212,9 @@
         html += '</div>';
 
         for (var i = 0; i < items.length; i++) {
-            html += '<a href="' + items[i].href + '" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:var(--color-primary,#2d2926);font-size:0.85rem;transition:background 0.15s;" onmouseover="this.style.background=\'var(--color-bg-alt,#f3efe9)\'" onmouseout="this.style.background=\'transparent\'">' + items[i].icon + ' ' + items[i].label + '</a>';
+            html += '<a href="' + items[i].href + '" class="hover-bg-alt" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:var(--color-primary,#2d2926);font-size:0.85rem;">' + items[i].icon + ' ' + items[i].label + '</a>';
         }
-        html += '<div style="border-top:1px solid var(--color-border,#e8e4de);margin-top:4px;padding-top:4px;"><a href="#" id="logoutLink" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#e74c3c;font-size:0.85rem;" onmouseover="this.style.background=\'var(--color-bg-alt,#f3efe9)\'" onmouseout="this.style.background=\'transparent\'">🚪 ' + tr('logout') + '</a></div>';
+        html += '<div style="border-top:1px solid var(--color-border,#e8e4de);margin-top:4px;padding-top:4px;"><a href="#" id="logoutLink" class="hover-bg-alt" style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#e74c3c;font-size:0.85rem;">🚪 ' + tr('logout') + '</a></div>';
 
         dropdown.innerHTML = html;
         btn.style.position = 'relative';

@@ -559,7 +559,7 @@
 
                     var ttHtml = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">';
                     ttHtml += '<strong style="font-size:1rem;">' + escapeHtml(ing.name) + '</strong>';
-                    ttHtml += '<button onclick="this.closest(\'.cb-tooltip\').remove()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--color-text-light);">\u00d7</button>';
+                    ttHtml += '<button data-action="close-parent" data-close-target=".cb-tooltip" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--color-text-light);">\u00d7</button>';
                     ttHtml += '</div>';
                     ttHtml += '<div style="display:flex;gap:8px;margin-bottom:10px;">';
                     ttHtml += '<span style="font-size:0.75rem;padding:3px 8px;border-radius:10px;background:' + (safetyColors[ing.safety] || '#999') + ';color:#fff;">' + (safetyLabels[ing.safety] || ing.safety) + '</span>';

@@ -165,12 +165,19 @@ function translateProducts() {
 }
 
 // Override setLanguage pour traduire les produits aussi
+// Charge dynamiquement le fichier i18n si pas encore chargé (lazy-loading)
 (function() {
     var _origSetLang = typeof setLanguage === 'function' ? setLanguage : null;
     if (_origSetLang) {
         window.setLanguage = function(lang) {
             _origSetLang(lang);
-            setTimeout(translateProducts, 100);
+            if (typeof window._loadProductI18n === 'function') {
+                window._loadProductI18n(lang, function() {
+                    setTimeout(translateProducts, 100);
+                });
+            } else {
+                setTimeout(translateProducts, 100);
+            }
         };
     }
 })();

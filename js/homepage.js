@@ -226,10 +226,10 @@
             if (p.badge === 'best') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:var(--color-secondary);color:var(--color-white,#fff);font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeBestText + '</span>';
             if (p.badge === 'new') badgeHTML = '<span style="position:absolute;top:8px;left:8px;background:#4caf50;color:#fff;font-size:.65rem;padding:3px 10px;border-radius:20px;font-weight:600;z-index:2;">' + badgeNewText + '</span>';
 
-            html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
+            html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" data-action="open-modal" data-pid="' + p.id + '">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';
             html += badgeHTML;
-            html += '<img src="' + escapeHTML(p.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
+            html += '<img src="' + escapeHTML(p.image) + '" alt="' + escapeHTML(pName) + '" width="300" height="200" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;">';
             html += '</div>';
             html += '<div style="padding:12px;">';
             html += '<div style="font-size:.75rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + escapeHTML(p.category || '') + '</div>';
@@ -241,8 +241,8 @@
         html += '</div>';
 
         // Arrow buttons
-        html += '<button class="carousel-arrow carousel-prev" onclick="scrollCarousel(\'' + trackId + '\',-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.2rem;z-index:5;transition:all .2s;">\u276E</button>';
-        html += '<button class="carousel-arrow carousel-next" onclick="scrollCarousel(\'' + trackId + '\',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.2rem;z-index:5;transition:all .2s;">\u276F</button>';
+        html += '<button class="carousel-arrow carousel-prev" data-action="scroll-carousel" data-track="' + trackId + '" data-dir="-1" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.2rem;z-index:5;transition:all .2s;">\u276E</button>';
+        html += '<button class="carousel-arrow carousel-next" data-action="scroll-carousel" data-track="' + trackId + '" data-dir="1" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:1.2rem;z-index:5;transition:all .2s;">\u276F</button>';
 
         html += '</div>';
 
@@ -408,8 +408,8 @@
         overlay.innerHTML =
             '<div style="max-width:800px;margin:0 auto;height:100%;display:flex;align-items:center;gap:12px;">' +
                 '<input type="search" id="navSearchInput" placeholder="Rechercher un produit, un ingr\u00e9dient, une routine..." style="flex:1;padding:12px 20px;border:2px solid var(--color-secondary);border-radius:var(--radius-xl);font-size:1rem;font-family:var(--font-body);background:var(--color-white);outline:none;box-shadow:0 0 0 4px rgba(201,168,124,.12);">' +
-                '<button id="navSearchSubmit" style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--color-secondary);border:none;border-radius:50%;cursor:pointer;color:#fff;flex-shrink:0;transition:all .2s;" onmouseover="this.style.background=\'var(--color-primary)\'" onmouseout="this.style.background=\'var(--color-secondary)\'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>' +
-                '<button id="navSearchClose" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--color-border);border-radius:50%;cursor:pointer;color:var(--color-text-light);flex-shrink:0;font-size:1.1rem;transition:all .2s;" onmouseover="this.style.borderColor=\'var(--color-secondary)\'" onmouseout="this.style.borderColor=\'var(--color-border)\'">\u2715</button>' +
+                '<button id="navSearchSubmit" class="nav-search-submit" style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--color-secondary);border:none;border-radius:50%;cursor:pointer;color:#fff;flex-shrink:0;transition:all .2s;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>' +
+                '<button id="navSearchClose" class="nav-search-close" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--color-border);border-radius:50%;cursor:pointer;color:var(--color-text-light);flex-shrink:0;font-size:1.1rem;transition:all .2s;">\u2715</button>' +
             '</div>' +
             '<div id="navSearchResults" style="display:none;position:absolute;top:70px;left:50%;transform:translateX(-50%);width:100%;max-width:800px;background:var(--color-white,#fff);border:1px solid var(--color-border);border-radius:0 0 var(--radius-md) var(--radius-md);max-height:360px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1100;"></div>';
 
@@ -502,8 +502,8 @@
         for (var i = 0; i < results.length; i++) {
             var p = results[i];
             var priceStr = p.price.toFixed(2).replace('.', ',') + ' \u20ac';
-            html += '<a href="pages/product.html?id=' + p.id + '" style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--color-border);transition:background .2s;text-decoration:none;color:inherit;" onmouseover="this.style.background=\'var(--color-bg-alt)\'" onmouseout="this.style.background=\'\'">';
-            html += '<img src="' + escapeHTML(p.image) + '" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" loading="lazy" onerror="this.style.display=\'none\'">';
+            html += '<a href="pages/product.html?id=' + p.id + '" class="hover-bg-alt" style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--color-border);text-decoration:none;color:inherit;">';
+            html += '<img src="' + escapeHTML(p.image) + '" alt="" width="44" height="44" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" loading="lazy">';
             html += '<div style="flex:1;min-width:0;">';
             html += '<div style="font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHTML(p.name) + '</div>';
             html += '<div style="font-size:.75rem;color:var(--color-text-light);">' + escapeHTML(p.category || '') + '</div>';
@@ -511,7 +511,7 @@
             html += '<div style="font-weight:700;color:var(--color-secondary);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
             html += '</a>';
         }
-        html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary);font-weight:600;" onclick="document.getElementById(\'navSearchResults\').style.display=\'none\'">Voir tous les r\u00e9sultats \u2192</a>';
+        html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';
 
         resultsDiv.innerHTML = html;
         resultsDiv.style.display = 'block';

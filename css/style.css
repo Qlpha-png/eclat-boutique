@@ -3571,3 +3571,54 @@ input { font-family: inherit; }
         grid-template-columns: repeat(2, 1fr) !important;
     }
 }
+
+/* --- Performance: content-visibility for off-screen sections --- */
+/* Skips rendering of sections far below fold, massive perf gain on 14k+ page */
+.categories-visual,
+.ai-personalization,
+.bestsellers-section,
+.products-section,
+.homepage-carousel-section,
+.bundles-section,
+.newsletter-section,
+.recently-viewed-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+}
+
+/* --- Hover effects (replaces inline onmouseover/onmouseout) --- */
+.hover-bg-alt {
+    transition: background 0.2s;
+}
+.hover-bg-alt:hover {
+    background: var(--color-bg-alt, #f3efe9);
+}
+.hover-border-secondary {
+    transition: border-color 0.2s;
+}
+.hover-border-secondary:hover {
+    border-color: var(--color-secondary, #c9a87c);
+}
+.nav-search-submit:hover {
+    background: var(--color-primary, #2d2926) !important;
+}
+.nav-search-close:hover {
+    border-color: var(--color-secondary, #c9a87c) !important;
+}
+.search-result-item:hover {
+    background: var(--color-bg-alt, #f3efe9);
+}
+/* Image fallback for broken images */
+.product-image.has-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-alt, #f3efe9);
+    min-height: 200px;
+}
+.fallback-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light, #6b6560);
+    text-align: center;
+    padding: 12px;
+}

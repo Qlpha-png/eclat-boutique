@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.className = 'exit-intent-overlay';
         overlay.innerHTML = `
             <div class="exit-intent-modal">
-                <button class="exit-intent-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                <button class="exit-intent-close" data-action="close-parent" data-close-target=".exit-intent-overlay">×</button>
                 <div class="eim-content">
                     <div class="eim-icon">🎁</div>
                     <h2>${xt.title}</h2>
@@ -141,10 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="eim-offer">
                         <strong>${xt.offer}</strong>
                         <p>${xt.with}</p>
-                        <div class="eim-code" onclick="navigator.clipboard.writeText('RESTEZ15'); this.textContent='${xt.copied}'">RESTEZ15</div>
+                        <div class="eim-code" data-action="copy-code" data-code="RESTEZ15" data-copied-text="${xt.copied}">RESTEZ15</div>
                     </div>
                     <p class="eim-expire">${xt.expire}</p>
-                    <a href="#produits" class="btn btn-primary btn-full" onclick="this.closest('.exit-intent-overlay').remove()">${xt.cta}</a>
+                    <a href="#produits" class="btn btn-primary btn-full" data-action="close-parent" data-close-target=".exit-intent-overlay">${xt.cta}</a>
                 </div>
             </div>
         `;
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const candidates = PRODUCTS.filter(p => PRODUCT_ROUTINE_MAP[p.id] === step.key && !cartIds.includes(p.id));
                 if (candidates.length > 0) {
                     const best = candidates.sort((a, b) => a.price - b.price)[0];
-                    html += `<div class="rb-step missing" onclick="addToCart(${best.id}); renderRoutineBuilder();">
+                    html += `<div class="rb-step missing" data-action="add-to-cart" data-pid="${best.id}" style="cursor:pointer;">
                         <span class="rb-icon">${step.icon}</span>
                         <span class="rb-label">${label}</span>
                         <span class="rb-suggest">${typeof escapeHTML==='function'?escapeHTML(best.name.split(' ').slice(0, 3).join(' ')):best.name.split(' ').slice(0, 3).join(' ')} — ${best.price.toFixed(2).replace('.', ',')}€</span>
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="recently-viewed-grid">
                     ${products.map(p => `
-                        <div class="rv-card" onclick="openModal(${p.id})">
+                        <div class="rv-card" data-action="open-modal" data-pid="${p.id}" style="cursor:pointer;">
                             <img src="${typeof escapeHTML==='function'?escapeHTML(p.image):p.image}" alt="${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}" loading="lazy">
                             <div class="rv-info">
                                 <span class="rv-name">${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}</span>

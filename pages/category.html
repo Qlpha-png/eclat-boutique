@@ -7,6 +7,13 @@
     <meta name="description" id="pageDesc" content="Découvrez notre sélection beauté premium">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" id="ogImage" content="https://maison-eclat.shop/images/og-default.jpg">
+    <meta property="og:description" id="ogDesc" content="Découvrez notre sélection beauté premium">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twTitle" content="Catégorie - ÉCLAT">
+    <meta name="twitter:description" id="twDesc" content="Découvrez notre sélection beauté premium">
+    <meta name="twitter:image" id="twImage" content="https://maison-eclat.shop/images/og-default.jpg">
+    <link rel="canonical" id="canonicalLink" href="https://maison-eclat.shop/pages/category.html">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -120,10 +127,56 @@
     <script src="../js/products.js?v=2"></script>
     <script src="../js/cart.js?v=2"></script>
     <script src="../js/i18n.js?v=5"></script>
-    <script src="../js/products-i18n-en.js?v=2"></script>
-    <script src="../js/products-i18n-es.js?v=2"></script>
-    <script src="../js/products-i18n-de.js?v=2"></script>
-    <script src="../js/products-i18n.js?v=5"></script>
+    <script>
+    // Lazy-load only the needed i18n translation file (~235-251KB each)
+    // French users load NOTHING extra (data already in products.js)
+    (function() {
+        var basePath = '../js/';
+        var i18nApplierVersion = '5';
+        var supportedLangs = ['en','es','de'];
+
+        function loadI18nForLang(lang, callback) {
+            if (lang === 'fr' || supportedLangs.indexOf(lang) === -1) {
+                if (callback) callback();
+                return;
+            }
+            if ((lang === 'en' && typeof PRODUCT_I18N_EN !== 'undefined') ||
+                (lang === 'es' && typeof PRODUCT_I18N_ES !== 'undefined') ||
+                (lang === 'de' && typeof PRODUCT_I18N_DE !== 'undefined')) {
+                if (callback) callback();
+                return;
+            }
+            var s = document.createElement('script');
+            s.src = basePath + 'products-i18n-' + lang + '.js?v=2';
+            s.onload = function() { if (callback) callback(); };
+            s.onerror = function() { if (callback) callback(); };
+            document.head.appendChild(s);
+        }
+
+        function loadI18nApplier() {
+            if (typeof getProductText !== 'undefined') return;
+            var s2 = document.createElement('script');
+            s2.src = basePath + 'products-i18n.js?v=' + i18nApplierVersion;
+            document.head.appendChild(s2);
+        }
+
+        var lang = (typeof currentLang !== 'undefined') ? currentLang
+                 : (localStorage.getItem('eclat_lang') || navigator.language.substring(0,2) || 'fr');
+
+        if (lang !== 'fr' && supportedLangs.indexOf(lang) !== -1) {
+            loadI18nForLang(lang, function() { loadI18nApplier(); });
+        } else {
+            loadI18nApplier();
+        }
+
+        window._loadProductI18n = function(lang, callback) {
+            loadI18nForLang(lang, function() {
+                loadI18nApplier();
+                if (callback) callback();
+            });
+        };
+    })();
+    </script>
     <script>
     (function() {
         var params = new URLSearchParams(window.location.search);
@@ -163,6 +216,20 @@
         document.getElementById('catDesc').textContent = meta.desc;
         document.getElementById('pageTitle').textContent = catTitle + ' - \u00c9CLAT';
         document.getElementById('pageDesc').content = meta.desc;
+
+        // Set OG & Twitter meta tags dynamically
+        var ogDesc = document.getElementById('ogDesc');
+        if (ogDesc) ogDesc.setAttribute('content', meta.desc);
+        var twTitle = document.getElementById('twTitle');
+        if (twTitle) twTitle.setAttribute('content', catTitle + ' - \u00c9CLAT');
+        var twDesc = document.getElementById('twDesc');
+        if (twDesc) twDesc.setAttribute('content', meta.desc);
+
+        // Set canonical URL with category parameter
+        var canonicalUrl = 'https://maison-eclat.shop/pages/category.html';
+        if (cat) canonicalUrl += '?cat=' + encodeURIComponent(cat);
+        var canonical = document.getElementById('canonicalLink');
+        if (canonical) canonical.href = canonicalUrl;
 
         // Set filter values from URL
         document.getElementById('sortSelect').value = sort;
@@ -245,9 +312,9 @@
                 var oldPrice = p.compare_at_price || p.oldPrice;
                 var pName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
                 var pDesc = (typeof getProductText === 'function') ? (getProductText(p.id, 'description', lang) || p.description) : p.description;
-                return '<div class="cat-card" data-product-id="' + p.id + '" onclick="window.location.href=\'/pages/product.html?id=' + p.id + '\'">' +
+                return '<a href="/pages/product.html?id=' + p.id + '" class="cat-card" data-product-id="' + p.id + '" style="text-decoration:none;color:inherit;">' +
                     '<div class="cat-card-img">' +
-                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer">' +
+                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" width="300" height="260" loading="lazy" referrerpolicy="no-referrer">' +
                     (p.badge ? '<span class="cat-card-badge">' + escapeHTML(p.badge) + '</span>' : '') +
                     '</div>' +
                     '<div class="cat-card-info">' +
@@ -255,20 +322,20 @@
                     '<div class="cat-card-price">' + formatPrice(p.price) +
                     (oldPrice ? '<span class="old">' + formatPrice(oldPrice) + '</span>' : '') +
                     '</div></div>' +
-                    '<button class="cat-card-btn" onclick="event.stopPropagation();addToCart(' + p.id + ')">Ajouter au panier</button>' +
-                    '</div>';
+                    '<button class="cat-card-btn" data-action="add-to-cart" data-pid="' + p.id + '">Ajouter au panier</button>' +
+                    '</a>';
             }).join('');
 
             // Pagination
             var pag = document.getElementById('catPagination');
             if (totalPages > 1) {
                 var html = '';
-                html += '<button ' + (page <= 1 ? 'disabled' : 'onclick="goPage(' + (page-1) + ')"') + '>&laquo;</button>';
+                html += '<button ' + (page <= 1 ? 'disabled' : '') + ' data-page-nav="' + (page-1) + '">&laquo;</button>';
                 for (var i = 1; i <= Math.min(totalPages, 5); i++) {
-                    html += '<button class="' + (i === page ? 'active' : '') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+                    html += '<button class="' + (i === page ? 'active' : '') + '" data-page-nav="' + i + '">' + i + '</button>';
                 }
-                if (totalPages > 5) html += '<button disabled>...</button><button onclick="goPage(' + totalPages + ')">' + totalPages + '</button>';
-                html += '<button ' + (page >= totalPages ? 'disabled' : 'onclick="goPage(' + (page+1) + ')"') + '>&raquo;</button>';
+                if (totalPages > 5) html += '<button disabled>...</button><button data-page-nav="' + totalPages + '">' + totalPages + '</button>';
+                html += '<button ' + (page >= totalPages ? 'disabled' : '') + ' data-page-nav="' + (page+1) + '">&raquo;</button>';
                 pag.innerHTML = html;
             } else {
                 pag.innerHTML = '';
@@ -286,6 +353,23 @@
             loadProducts();
             window.scrollTo(0, 0);
         };
+
+        // Pagination event delegation (replaces inline onclick)
+        document.getElementById('catPagination').addEventListener('click', function(e) {
+            var btn = e.target.closest('[data-page-nav]');
+            if (!btn || btn.disabled) return;
+            goPage(parseInt(btn.getAttribute('data-page-nav'), 10));
+        });
+
+        // Category card add-to-cart delegation (data-action handled by app.js if loaded, fallback here)
+        document.getElementById('catGrid').addEventListener('click', function(e) {
+            var btn = e.target.closest('[data-action="add-to-cart"]');
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            var pid = parseInt(btn.getAttribute('data-pid'), 10);
+            if (pid && typeof addToCart === 'function') addToCart(pid);
+        });
 
         // Filter change handlers
         document.getElementById('sortSelect').onchange = function() { page = 1; loadProducts(); };
