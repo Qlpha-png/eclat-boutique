@@ -131,7 +131,7 @@ module.exports = async (req, res) => {
         const result = await createCJOrder(req.body, cjApiKey);
         return res.status(200).json(result);
     } catch (error) {
-        return res.status(500).json({ success: false, error: error.message });
+        return res.status(500).json({ success: false, error: 'Erreur serveur' });
     }
 };
 

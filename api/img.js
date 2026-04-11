@@ -1,5 +1,5 @@
 /**
- * GET /api/img?url=ENCODED_URL — Proxy images CJ Dropshipping
+ * GET /api/img?url=ENCODED_URL — Proxy images CJ Dropshipping / Unsplash
  *
  * CJ CDN bloque :
  * - Requêtes navigateur (hotlink protection)
@@ -10,59 +10,148 @@
  * - Referer cjdropshipping.com
  * - Cache CDN Vercel 30 jours (1 fetch par image, puis edge cache)
  *
- * Sécurité : seuls les domaines CJ autorisés.
+ * Sécurité : allowlist stricte de domaines, HTTPS uniquement, blocage IP privées.
  */
+
+const { URL } = require('url');
+const dns = require('dns');
+const { promisify } = require('util');
+
+const dnsResolve = promisify(dns.resolve4);
+
+// --- Allowlist stricte des domaines autorisés ---
+const ALLOWED_HOSTS = new Set([
+    'oss-cf.cjdropshipping.com',
+    'cf.cjdropshipping.com',
+    'images.unsplash.com'
+]);
+
+/**
+ * Vérifie si une adresse IP est dans un range privé/réservé.
+ * Bloque : 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12,
+ *          192.168.0.0/16, 0.0.0.0, 169.254.0.0/16
+ */
+function isPrivateIP(ip) {
+    // IPv6 loopback
+    if (ip === '::1' || ip === '::') return true;
+
+    var parts = ip.split('.').map(Number);
+    if (parts.length !== 4 || parts.some(function(p) { return isNaN(p); })) return true;
+
+    // 0.0.0.0
+    if (parts[0] === 0) return true;
+    // 127.0.0.0/8
+    if (parts[0] === 127) return true;
+    // 10.0.0.0/8
+    if (parts[0] === 10) return true;
+    // 172.16.0.0/12
+    if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return true;
+    // 192.168.0.0/16
+    if (parts[0] === 192 && parts[1] === 168) return true;
+    // 169.254.0.0/16 (link-local)
+    if (parts[0] === 169 && parts[1] === 254) return true;
+
+    return false;
+}
 
 module.exports = async function handler(req, res) {
     // CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.method === 'OPTIONS') return res.status(200).end();
 
-    var url = req.query.url;
-    if (!url) {
-        return res.status(400).json({ error: 'url parameter required' });
+    var rawUrl = req.query.url;
+    if (!rawUrl) {
+        return res.status(400).json({ error: 'Missing required parameter' });
     }
 
     // Décoder si nécessaire
-    try { url = decodeURIComponent(url); } catch(e) {}
+    try { rawUrl = decodeURIComponent(rawUrl); } catch(e) {}
 
-    // Sécurité : uniquement CJ CDN
-    if (url.indexOf('cjdropshipping.com') === -1) {
-        return res.status(403).json({ error: 'Only CJ CDN URLs allowed' });
+    // --- Validation stricte de l'URL ---
+    var parsed;
+    try {
+        parsed = new URL(rawUrl);
+    } catch (e) {
+        return res.status(400).json({ error: 'Invalid URL' });
     }
 
-    // Forcer HTTPS
-    if (url.indexOf('http://') === 0) {
-        url = url.replace('http://', 'https://');
+    // Protocole : HTTPS uniquement
+    if (parsed.protocol !== 'https:') {
+        return res.status(403).json({ error: 'Forbidden' });
     }
+
+    // Hostname : doit être exactement dans l'allowlist
+    var hostname = parsed.hostname.toLowerCase();
+
+    // Bloquer localhost et variantes
+    if (hostname === 'localhost' || hostname === '[::1]') {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    if (!ALLOWED_HOSTS.has(hostname)) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    // Bloquer les credentials dans l'URL (user:pass@host)
+    if (parsed.username || parsed.password) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    // Résolution DNS pour bloquer les IP privées (anti DNS-rebinding basique)
+    try {
+        var addresses = await dnsResolve(hostname);
+        for (var i = 0; i < addresses.length; i++) {
+            if (isPrivateIP(addresses[i])) {
+                return res.status(403).json({ error: 'Forbidden' });
+            }
+        }
+    } catch (dnsErr) {
+        // Si la résolution DNS échoue, on bloque par précaution
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    // Reconstruire l'URL à partir de l'objet parsé (évite l'injection via fragments, etc.)
+    var safeUrl = parsed.toString();
 
     try {
-        var response = await fetch(url, {
+        var response = await fetch(safeUrl, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.9',
                 'Referer': 'https://cjdropshipping.com/',
                 'Origin': 'https://cjdropshipping.com'
-            }
+            },
+            redirect: 'error'  // Bloquer les redirections vers des domaines non autorisés
         });
 
         if (!response.ok) {
             // Fallback : essayer sans Referer
-            response = await fetch(url, {
+            response = await fetch(safeUrl, {
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                     'Accept': 'image/*,*/*;q=0.8'
-                }
+                },
+                redirect: 'error'
             });
         }
 
         if (!response.ok) {
-            return res.status(response.status).end();
+            return res.status(502).json({ error: 'Image unavailable' });
+        }
+
+        // Vérifier que la réponse est bien une image
+        var contentType = response.headers.get('content-type') || '';
+        if (!contentType.startsWith('image/')) {
+            return res.status(403).json({ error: 'Forbidden' });
         }
 
         var buffer = Buffer.from(await response.arrayBuffer());
-        var contentType = response.headers.get('content-type') || 'image/jpeg';
+
+        // Limiter la taille (10 MB max)
+        if (buffer.length > 10 * 1024 * 1024) {
+            return res.status(413).json({ error: 'Image too large' });
+        }
 
         // Cache agressif : 30j CDN, 7j navigateur
         res.setHeader('Content-Type', contentType);
@@ -70,7 +159,7 @@ module.exports = async function handler(req, res) {
         return res.status(200).send(buffer);
 
     } catch (err) {
-        console.error('[img-proxy]', err.message);
-        return res.status(502).json({ error: 'Image fetch failed' });
+        console.error('[img-proxy] fetch error');
+        return res.status(502).json({ error: 'Image unavailable' });
     }
 };

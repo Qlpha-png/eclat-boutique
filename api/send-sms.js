@@ -67,6 +67,6 @@ module.exports = async (req, res) => {
         }
     } catch (error) {
         console.error('[SMS] Erreur:', error.message);
-        return res.status(200).json({ sent: false, error: error.message });
+        return res.status(200).json({ sent: false, error: 'Erreur interne' });
     }
 };

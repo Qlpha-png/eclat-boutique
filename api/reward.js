@@ -76,6 +76,6 @@ module.exports = async function handler(req, res) {
         return res.status(200).json({ success: true, result: result });
     } catch (err) {
         console.error('[reward]', err.message);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };

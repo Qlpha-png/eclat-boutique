@@ -77,7 +77,7 @@ module.exports = async function handler(req, res) {
         return res.status(200).send('\uFEFF' + csv); // BOM for Excel UTF-8
     } catch (err) {
         console.error('[admin/export]', err.message);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };
 

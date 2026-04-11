@@ -16,10 +16,9 @@
 const { createClient } = require('@supabase/supabase-js');
 
 var ALLOWED_ORIGINS = [
+    'https://eclat-boutique.vercel.app',
     'https://maison-eclat.shop',
-    'https://www.maison-eclat.shop',
-    'http://localhost:3000',
-    'http://localhost:5173'
+    'https://www.maison-eclat.shop'
 ];
 
 var _supabase = null;

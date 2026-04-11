@@ -106,7 +106,7 @@ module.exports = async function handler(req, res) {
         });
     } catch (err) {
         console.error('[supplier-import]', err.message);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur lors de l\'import. Réessayez.' });
     }
 };
 

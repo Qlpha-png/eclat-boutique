@@ -271,7 +271,7 @@ async function handleProcessAlerts(req, res) {
 
     } catch (err) {
         console.error('[stock-alert GET]', err.message);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 }
 

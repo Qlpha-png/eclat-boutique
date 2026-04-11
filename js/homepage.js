@@ -7,6 +7,14 @@
 (function() {
     'use strict';
 
+    // --- Sécurité XSS ---
+    function escapeHTML(str) {
+        if (typeof str !== 'string') return '';
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     // --- Hero Slider ---
     // Images lifestyle Unsplash (gratuites, usage commercial)
     var heroImages = [
@@ -221,11 +229,11 @@
             html += '<div class="carousel-card" style="min-width:' + cardWidth + 'px;max-width:' + cardWidth + 'px;background:var(--color-white,#fff);border-radius:var(--radius-md);border:1px solid var(--color-border);overflow:hidden;transition:all .3s;cursor:pointer;flex-shrink:0;" onclick="if(typeof openModal===\'function\')openModal(' + p.id + ');else window.location.href=\'pages/product.html?id=' + p.id + '\'">';
             html += '<div style="position:relative;height:200px;overflow:hidden;background:var(--color-bg-alt);">';
             html += badgeHTML;
-            html += '<img src="' + p.image + '" alt="' + pName.replace(/"/g, '') + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
+            html += '<img src="' + escapeHTML(p.image) + '" alt="' + escapeHTML(pName) + '" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">';
             html += '</div>';
             html += '<div style="padding:12px;">';
-            html += '<div style="font-size:.75rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + (p.category || '') + '</div>';
-            html += '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + pName + '</div>';
+            html += '<div style="font-size:.75rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + escapeHTML(p.category || '') + '</div>';
+            html += '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>';
             html += '<div style="color:var(--color-secondary);font-weight:700;font-size:1rem;">' + priceStr + '</div>';
             html += '</div></div>';
         }
@@ -448,10 +456,10 @@
             var p = results[i];
             var priceStr = p.price.toFixed(2).replace('.', ',') + ' \u20ac';
             html += '<a href="pages/product.html?id=' + p.id + '" style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--color-border);transition:background .2s;text-decoration:none;color:inherit;" onmouseover="this.style.background=\'var(--color-bg-alt)\'" onmouseout="this.style.background=\'\'">';
-            html += '<img src="' + p.image + '" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" loading="lazy" onerror="this.style.display=\'none\'">';
+            html += '<img src="' + escapeHTML(p.image) + '" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" loading="lazy" onerror="this.style.display=\'none\'">';
             html += '<div style="flex:1;min-width:0;">';
-            html += '<div style="font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + p.name + '</div>';
-            html += '<div style="font-size:.75rem;color:var(--color-text-light);">' + (p.category || '') + '</div>';
+            html += '<div style="font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHTML(p.name) + '</div>';
+            html += '<div style="font-size:.75rem;color:var(--color-text-light);">' + escapeHTML(p.category || '') + '</div>';
             html += '</div>';
             html += '<div style="font-weight:700;color:var(--color-secondary);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
             html += '</a>';
@@ -540,7 +548,7 @@
 
             if (recommended.length >= 3) {
                 var html = '<p style="font-size:.85rem;color:var(--color-text-light);margin-bottom:16px;">';
-                html += '\u2728 ' + reason + '</p>';
+                html += '\u2728 ' + escapeHTML(reason) + '</p>';
                 html += '<div id="carouselPourVous"></div>';
                 container.innerHTML = html;
                 createCarousel('carouselPourVous', recommended);

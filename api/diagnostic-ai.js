@@ -7,12 +7,31 @@ const { getSupabase } = require('./_middleware/auth');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 
 module.exports = async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // CORS — production origins only
+    var allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
+    var origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Vary', 'Origin');
     if (req.method === 'OPTIONS') return res.status(200).end();
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-    if (applyRateLimit(req, res, 'public')) return;
+
+    // Auth check — authenticated users get 'chat' limit, unauthenticated get stricter 'contact' limit
+    var isAuthenticated = false;
+    var authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        try {
+            var sb = getSupabase();
+            var token = authHeader.replace('Bearer ', '');
+            var { data: { user }, error: authError } = await sb.auth.getUser(token);
+            if (!authError && user) isAuthenticated = true;
+        } catch (_) {}
+    }
+    // Stricter rate limit for unauthenticated requests (5 req/5min vs 10 req/min)
+    if (applyRateLimit(req, res, isAuthenticated ? 'chat' : 'contact')) return;
 
     var { skinType, concern, budget, age, lang } = req.body || {};
     if (!skinType || !concern) {

@@ -3,7 +3,7 @@
 // Cache-first assets, network-first API/HTML
 // ============================
 
-var CACHE_NAME = 'eclat-v16';
+var CACHE_NAME = 'eclat-v17';
 var PRECACHE = [
     '/',
     '/css/style.css',

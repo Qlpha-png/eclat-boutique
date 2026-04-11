@@ -41,7 +41,7 @@ function generateTicketRef() {
 }
 
 module.exports = async (req, res) => {
-    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop', 'http://localhost:3000'];
+    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -92,7 +92,7 @@ module.exports = async (req, res) => {
                 .order('created_at', { ascending: false })
                 .limit(50);
 
-            if (error) return res.status(500).json({ error: error.message });
+            if (error) return res.status(500).json({ error: 'Erreur serveur' });
             return res.status(200).json({ tickets: data || [] });
         }
 
@@ -153,7 +153,7 @@ module.exports = async (req, res) => {
                 if (error.code === '23505') {
                     return res.status(500).json({ error: 'Erreur, veuillez réessayer' });
                 }
-                return res.status(500).json({ error: error.message });
+                return res.status(500).json({ error: 'Erreur serveur' });
             }
 
             // Envoyer email de confirmation au client
@@ -242,7 +242,7 @@ module.exports = async (req, res) => {
                 })
                 .eq('id', ticket.id);
 
-            if (updateError) return res.status(500).json({ error: updateError.message });
+            if (updateError) return res.status(500).json({ error: 'Erreur serveur' });
 
             return res.status(200).json({ success: true });
         }
@@ -250,6 +250,7 @@ module.exports = async (req, res) => {
         return res.status(405).json({ error: 'Method not allowed' });
 
     } catch (err) {
-        return res.status(500).json({ error: err.message });
+        console.error('[tickets]', err.message);
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };

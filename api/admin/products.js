@@ -66,7 +66,7 @@ module.exports = async function handler(req, res) {
             });
         } catch (err) {
             console.error('[admin/products GET]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 
@@ -126,7 +126,7 @@ module.exports = async function handler(req, res) {
             return res.status(201).json(data);
         } catch (err) {
             console.error('[admin/products POST]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 
@@ -182,7 +182,7 @@ module.exports = async function handler(req, res) {
             return res.status(200).json(data);
         } catch (err) {
             console.error('[admin/products PATCH]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 
@@ -209,7 +209,7 @@ module.exports = async function handler(req, res) {
             return res.status(200).json(data);
         } catch (err) {
             console.error('[admin/products DELETE]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 

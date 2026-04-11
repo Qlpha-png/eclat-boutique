@@ -49,9 +49,9 @@ module.exports = async (req, res) => {
             created_at: new Date().toISOString()
         }, { onConflict: 'endpoint' });
 
-        if (error) return res.status(500).json({ error: error.message });
+        if (error) return res.status(500).json({ error: 'Erreur serveur' });
         return res.status(201).json({ success: true });
     } catch (err) {
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };

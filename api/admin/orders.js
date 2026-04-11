@@ -63,7 +63,7 @@ module.exports = async function handler(req, res) {
             });
         } catch (err) {
             console.error('[admin/orders GET]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 
@@ -112,7 +112,7 @@ module.exports = async function handler(req, res) {
             return res.status(200).json(data);
         } catch (err) {
             console.error('[admin/orders PATCH]', err.message);
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({ error: 'Erreur serveur' });
         }
     }
 

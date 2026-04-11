@@ -177,6 +177,6 @@ module.exports = async (req, res) => {
         return res.status(200).send(html);
 
     } catch (err) {
-        return res.status(500).json({ error: 'Erreur serveur', message: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };

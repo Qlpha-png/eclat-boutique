@@ -123,7 +123,7 @@ module.exports = async (req, res) => {
         }
     } catch (err) {
         console.error('[WEBHOOK] Pipeline error:', err.message);
-        results.error = err.message;
+        results.error = 'internal_error';
     }
 
     return res.status(200).json({ received: true, results });

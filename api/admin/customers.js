@@ -45,6 +45,6 @@ module.exports = async function handler(req, res) {
         });
     } catch (err) {
         console.error('[admin/customers]', err.message);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: 'Erreur serveur' });
     }
 };
