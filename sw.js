@@ -3,11 +3,13 @@
 // Cache-first assets, network-first API/HTML
 // ============================
 
-var CACHE_NAME = 'eclat-v36';
+var CACHE_NAME = 'eclat-v37';
 // Core app shell only — other assets cached on first use via fetch handler
 var PRECACHE = [
     '/',
-    '/css/style.css?v=21',
+    '/fonts/inter-latin.woff2',
+    '/fonts/playfair-latin.woff2',
+    '/css/style.css?v=22',
     '/css/themes.css?v=3',
     '/css/mega-menu.css?v=1',
     '/css/skeleton.css?v=1',
