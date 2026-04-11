@@ -11368,7 +11368,7 @@ const BUNDLES = [
     { key: 'nails', name: 'Coffret Nail Pro', productIds: [307, 304, 316], price: 39.90 },
     { key: 'cheveux', name: 'Coffret Cheveux Soyeux', productIds: [222, 221, 223], price: 22.90 },
     { key: 'spa', name: 'Coffret SPA Maison', productIds: [434, 419, 13], price: 29.90 },
-    { key: 'corps', name: 'Coffret Corps Complet', productIds: [195, 183, 183], price: 19.90 },
+    { key: 'corps', name: 'Coffret Corps Complet', productIds: [195, 183, 184], price: 19.90 },
 ];
 
 const ROUTINE_STEPS = [
