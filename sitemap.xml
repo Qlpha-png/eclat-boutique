@@ -424,4 +424,54 @@
         <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
+
+    <!-- Blog: Acide Hyaluronique Guide -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/acide-hyaluronique-guide.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/acide-hyaluronique-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/acide-hyaluronique-guide.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Niacinamide Bienfaits -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/niacinamide-bienfaits.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/niacinamide-bienfaits.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/niacinamide-bienfaits.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Routine Anti-Âge 30 Ans -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/routine-anti-age-30-ans.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/routine-anti-age-30-ans.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/routine-anti-age-30-ans.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Peau Grasse Erreurs -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/peau-grasse-erreurs.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/peau-grasse-erreurs.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/peau-grasse-erreurs.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Clean Beauty Guide -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/clean-beauty-guide.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/clean-beauty-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/clean-beauty-guide.html?lang=en"/>
+    </url>
 </urlset>
