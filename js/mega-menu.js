@@ -112,7 +112,7 @@
         badge: 'Coup de c\u0153ur',
         name: 'Coffret Rituel \u00c9clat',
         price: '49,90\u00a0\u20ac',
-        img: '/img/featured-coffret.webp',
+        img: 'https://cf.cjdropshipping.com/quick/product/a1ae3177-fe09-43ca-8969-57c5a5475d07.jpg',
         href: '/pages/category.html?cat=coffrets&sub=gift-sets',
         cta: 'D\u00e9couvrir'
     };

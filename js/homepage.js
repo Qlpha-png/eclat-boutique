@@ -474,12 +474,18 @@
         });
     }
 
+    // Normalize accented characters for search (é→e, è→e, ê→e, etc.)
+    function stripAccents(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
     function searchProducts(query, resultsDiv) {
         if (typeof PRODUCTS === 'undefined') return;
+        var normalizedQuery = stripAccents(query);
 
         var results = PRODUCTS.filter(function(p) {
-            return p.name.toLowerCase().indexOf(query) !== -1 ||
-                (p.category && p.category.toLowerCase().indexOf(query) !== -1);
+            return stripAccents(p.name.toLowerCase()).indexOf(normalizedQuery) !== -1 ||
+                (p.category && stripAccents(p.category.toLowerCase()).indexOf(normalizedQuery) !== -1);
         }).slice(0, 8);
 
         if (results.length === 0) {
@@ -610,12 +616,14 @@
 
     // --- Init ---
     document.addEventListener('DOMContentLoaded', function() {
-        // Wait for PRODUCTS to be defined
+        // Search bar + hero don't need PRODUCTS — init immediately
+        initSearchBar();
+        initHeroSlider();
+
+        // Wait for PRODUCTS for sections that need product data
         var checkProducts = setInterval(function() {
             if (typeof PRODUCTS !== 'undefined') {
                 clearInterval(checkProducts);
-                initHeroSlider();
-                initSearchBar();
                 initAIPersonalization();
                 buildHomepageSections();
             }
