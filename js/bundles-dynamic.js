@@ -152,8 +152,8 @@
                 html += '<div class="bundle-savings-dynamic">';
                 html += '\u00c9conomisez ' + formatPrice(vb.savings);
                 html += ' <span class="bundle-pct">(-' + savePct + '%)</span>';
-                // Livraison offerte seulement si coffret >= 39€ (seuil réel)
-                if (bun.price >= 39) {
+                // Livraison offerte seulement si coffret >= 29€ (seuil réel app.js)
+                if (bun.price >= 29) {
                     html += ' \u2022 Livraison offerte';
                 }
                 html += '</div>';
