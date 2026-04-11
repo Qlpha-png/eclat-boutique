@@ -377,7 +377,37 @@
         <priority>0.5</priority>
     </url>
 
-    <!-- Blog: Routine Peau Grasse (NEW) -->
+    <!-- Blog: Routine Skincare Soir -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/routine-skincare-soir.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/routine-skincare-soir.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/routine-skincare-soir.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Guide Sérum Visage -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/serum-visage-guide.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/serum-visage-guide.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/serum-visage-guide.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Skincare Homme -->
+    <url>
+        <loc>https://maison-eclat.shop/pages/blog/skincare-homme.html</loc>
+        <lastmod>2026-04-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/blog/skincare-homme.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/blog/skincare-homme.html?lang=en"/>
+    </url>
+
+    <!-- Blog: Routine Peau Grasse -->
     <url>
         <loc>https://maison-eclat.shop/pages/blog/routine-peau-grasse.html</loc>
         <lastmod>2026-04-11</lastmod>
