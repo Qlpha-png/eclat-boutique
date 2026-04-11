@@ -254,8 +254,13 @@
             document.getElementById('pageDesc').setAttribute('content', pDesc);
 
             // Set OG & Twitter meta tags dynamically
+            // Ensure absolute URL for og:image (social crawlers need full URLs)
+            var absImage = product.image;
+            if (absImage && absImage.indexOf('http') !== 0) {
+                absImage = 'https://maison-eclat.shop' + (absImage.charAt(0) === '/' ? '' : '/') + absImage.replace(/^\.\.\//g, '');
+            }
             var ogImg = document.getElementById('ogImage');
-            if (ogImg) ogImg.setAttribute('content', product.image);
+            if (ogImg) ogImg.setAttribute('content', absImage);
             var ogDesc = document.getElementById('ogDesc');
             if (ogDesc) ogDesc.setAttribute('content', pDesc);
             var twTitle = document.getElementById('twTitle');
@@ -263,7 +268,7 @@
             var twDesc = document.getElementById('twDesc');
             if (twDesc) twDesc.setAttribute('content', pDesc);
             var twImg = document.getElementById('twImage');
-            if (twImg) twImg.setAttribute('content', product.image);
+            if (twImg) twImg.setAttribute('content', absImage);
 
             // Set canonical URL with product ID
             var canonical = document.getElementById('canonicalLink');
