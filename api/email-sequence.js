@@ -146,34 +146,64 @@ module.exports = async function handler(req, res) {
 // ============================================================================
 
 async function createWelcomeSequences(sb, now, results) {
-    // Abonnes newsletter des 8 derniers jours (couvre J3 + J7 + marge)
+    // RÈGLE KEVIN : Seulement les clients qui ont payé reçoivent les séquences
+    // On cherche les commandes récentes (8 derniers jours) pour identifier les NOUVEAUX clients
     var eightDaysAgo = new Date(Date.now() - 8 * 24 * 3600000).toISOString();
 
-    var { data: subscribers, error: subErr } = await sb
-        .from('newsletter_subscribers')
-        .select('email, created_at')
-        .eq('unsubscribed', false)
+    var { data: recentOrders, error: ordErr } = await sb
+        .from('orders')
+        .select('customer_email, created_at')
+        .in('status', ['paid', 'confirmed', 'shipped', 'delivered'])
         .gte('created_at', eightDaysAgo)
         .limit(100);
 
-    if (subErr || !subscribers) return;
+    if (ordErr || !recentOrders) return;
 
-    for (var i = 0; i < subscribers.length; i++) {
-        var sub = subscribers[i];
-        var subscribedAt = new Date(sub.created_at);
-        var j3 = new Date(subscribedAt.getTime() + 3 * 24 * 3600000);
-        var j7 = new Date(subscribedAt.getTime() + 7 * 24 * 3600000);
+    // Dédupliquer par email — garder la première commande
+    var seen = {};
+    for (var i = 0; i < recentOrders.length; i++) {
+        var order = recentOrders[i];
+        if (!order.customer_email) continue;
+        var email = order.customer_email.toLowerCase();
+        if (seen[email]) continue;
+        seen[email] = true;
 
-        // J3 : conseils beaute
-        await ensureSequenceJob(sb, sub.email, 'welcome_j3', 1, j3, {
-            subscriber_email: sub.email,
-            subscribed_at: sub.created_at
+        // Vérifier que c'est bien la PREMIÈRE commande (nouveau client)
+        var { data: previousOrders } = await sb
+            .from('orders')
+            .select('id')
+            .eq('customer_email', email)
+            .in('status', ['paid', 'confirmed', 'shipped', 'delivered'])
+            .lt('created_at', order.created_at)
+            .limit(1);
+
+        // Si ce n'est pas la première commande, pas de séquence welcome
+        if (previousOrders && previousOrders.length > 0) continue;
+
+        // Vérifier que l'email est aussi abonné newsletter (pas désabonné)
+        var { data: subCheck } = await sb
+            .from('newsletter_subscribers')
+            .select('unsubscribed')
+            .eq('email', email)
+            .limit(1)
+            .single();
+
+        if (!subCheck || subCheck.unsubscribed === true) continue;
+
+        var orderDate = new Date(order.created_at);
+        var j3 = new Date(orderDate.getTime() + 3 * 24 * 3600000);
+        var j7 = new Date(orderDate.getTime() + 7 * 24 * 3600000);
+
+        // J3 : conseils beauté
+        await ensureSequenceJob(sb, email, 'welcome_j3', 1, j3, {
+            subscriber_email: email,
+            subscribed_at: order.created_at
         }, results, 'welcomeCreated');
 
         // J7 : rappel code promo + best-sellers
-        await ensureSequenceJob(sb, sub.email, 'welcome_j7', 2, j7, {
-            subscriber_email: sub.email,
-            subscribed_at: sub.created_at
+        await ensureSequenceJob(sb, email, 'welcome_j7', 2, j7, {
+            subscriber_email: email,
+            subscribed_at: order.created_at
         }, results, 'welcomeCreated');
     }
 }
@@ -251,6 +281,16 @@ async function createBirthdaySequences(sb, now, results) {
         var bdDD = parts[2];
 
         if (bdMM !== mm || bdDD !== dd) continue;
+
+        // RÈGLE KEVIN : Seulement les clients qui ont payé
+        var { data: hasOrder } = await sb
+            .from('orders')
+            .select('id')
+            .eq('customer_email', profile.email.toLowerCase())
+            .in('status', ['paid', 'confirmed', 'shipped', 'delivered'])
+            .limit(1);
+
+        if (!hasOrder || hasOrder.length === 0) continue;
 
         // Planifier pour maintenant (envoi immediat au prochain cron)
         var promoCode = 'ANNIV15-' + today.getFullYear();

@@ -354,15 +354,15 @@
                 <li><a href="pages/account.html" id="navAccount">Mon compte</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="pages/account.html#eclats" id="navLoyaltyWidget" class="loyalty-widget" style="display:none;" aria-label="Mes Éclats">
+                <a href="pages/account.html#eclats" id="navLoyaltyWidget" class="loyalty-widget loyalty-widget--hidden" aria-label="Mes Éclats">
                     <span class="lw-eclats" id="lwEclats">0</span>
                     <span class="lw-label">Éclats</span>
                 </a>
-                <a href="pages/wishlist.html" class="cart-btn" aria-label="Favoris" style="position:relative;">
+                <a href="pages/wishlist.html" class="cart-btn cart-btn--relative" aria-label="Favoris">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
                     </svg>
-                    <span class="cart-count" id="wishlistBadge" style="display:none;">0</span>
+                    <span class="cart-count cart-count--hidden" id="wishlistBadge">0</span>
                 </a>
                 <button class="cart-btn" id="cartBtn" aria-label="Panier">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -389,10 +389,10 @@
                 <a href="pages/diagnostic.html" class="btn btn-primary">&#128300; Trouver ma routine</a>
                 <a href="#routine-composer" class="btn btn-outline">&#10024; Composer ma routine</a>
             </div>
-            <div class="hero-perks" style="display:flex;gap:16px;flex-wrap:wrap;">
-                <span id="heroPerkShip" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
-                <span id="heroPerkReturn" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#128260; Retours 30j</span>
-                <span id="heroPerkDiag" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);background:var(--color-bg-alt);padding:6px 14px;border-radius:20px;">&#10024; Diagnostic personnalis&eacute;</span>
+            <div class="hero-perks">
+                <span class="hero-perk" id="heroPerkShip">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
+                <span class="hero-perk" id="heroPerkReturn">&#128260; Retours 30j</span>
+                <span class="hero-perk" id="heroPerkDiag">&#10024; Diagnostic personnalis&eacute;</span>
             </div>
         </div>
         <div class="hero-visual">
@@ -406,48 +406,48 @@
     </section>
 
     <!-- Trust Bar — compact 1-ligne (comme Amazon/Sephora) -->
-    <div class="trust-bar" style="background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:12px 0;">
-        <div class="container" style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center;">
-            <span id="tbShip" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128666; Livraison suivie 7-14j</span>
-            <span id="tbPay" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#128274; Paiement Stripe s&eacute;curis&eacute;</span>
-            <span id="tbReturn" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#8634; Retours 30 jours</span>
-            <span id="tbDiag" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#10024; Diagnostic personnalis&eacute;</span>
-            <span id="tbEu" style="display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--color-text-light);font-weight:500;">&#127467;&#127479; Entreprise fran&ccedil;aise</span>
+    <div class="trust-bar">
+        <div class="container">
+            <span class="trust-bar-item" id="tbShip">&#128666; Livraison suivie 7-14j</span>
+            <span class="trust-bar-item" id="tbPay">&#128274; Paiement Stripe s&eacute;curis&eacute;</span>
+            <span class="trust-bar-item" id="tbReturn">&#8634; Retours 30 jours</span>
+            <span class="trust-bar-item" id="tbDiag">&#10024; Diagnostic personnalis&eacute;</span>
+            <span class="trust-bar-item" id="tbEu">&#127467;&#127479; Entreprise fran&ccedil;aise</span>
         </div>
     </div>
 
     <!-- Categories Visuelles — Style Sephora/Amazon : grandes cartes cliquables -->
-    <section class="categories-visual anim-fade-up" style="padding:48px 0;">
+    <section class="categories-visual anim-fade-up">
         <div class="container">
-            <div class="section-header" style="margin-bottom:32px;">
+            <div class="section-header section-header--mb32">
                 <span class="section-tag" id="catSectionTag">Explorer</span>
                 <h2 id="catSectionTitle">Nos univers beaut&eacute;</h2>
             </div>
             <!-- Row 1 : 4 grandes catégories -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;">
-                <a href="pages/category.html?cat=visage" class="cat-card-xl" style="background:linear-gradient(135deg,#f8e8d4,#f0d4b8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
-                    <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F9D6;</span>
-                    <span class="cat-xl-name" data-cat-name="visage" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Soins visage</span>
-                    <span class="cat-xl-desc" data-cat-desc="visage" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">S&eacute;rums, masques, nettoyants</span>
+            <div class="cat-grid-4 cat-grid-4--mb16">
+                <a href="pages/category.html?cat=visage" class="cat-card-xl cat-card-xl--visage">
+                    <span class="cat-card-xl-icon">&#x1F9D6;</span>
+                    <span class="cat-xl-name" data-cat-name="visage">Soins visage</span>
+                    <span class="cat-xl-desc" data-cat-desc="visage">S&eacute;rums, masques, nettoyants</span>
                 </a>
-                <a href="pages/category.html?cat=cheveux" class="cat-card-xl" style="background:linear-gradient(135deg,#e8d8f0,#d4c0e8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
-                    <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F487;</span>
-                    <span class="cat-xl-name" data-cat-name="cheveux" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Cheveux</span>
-                    <span class="cat-xl-desc" data-cat-desc="cheveux" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Brosses, s&eacute;rums, accessoires</span>
+                <a href="pages/category.html?cat=cheveux" class="cat-card-xl cat-card-xl--cheveux">
+                    <span class="cat-card-xl-icon">&#x1F487;</span>
+                    <span class="cat-xl-name" data-cat-name="cheveux">Cheveux</span>
+                    <span class="cat-xl-desc" data-cat-desc="cheveux">Brosses, s&eacute;rums, accessoires</span>
                 </a>
-                <a href="pages/category.html?cat=corps" class="cat-card-xl" style="background:linear-gradient(135deg,#d4e8d8,#b8d8c0);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
-                    <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F6C1;</span>
-                    <span class="cat-xl-name" data-cat-name="corps" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Corps &amp; Bien-&ecirc;tre</span>
-                    <span class="cat-xl-desc" data-cat-desc="corps" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Gommages, huiles, massage</span>
+                <a href="pages/category.html?cat=corps" class="cat-card-xl cat-card-xl--corps">
+                    <span class="cat-card-xl-icon">&#x1F6C1;</span>
+                    <span class="cat-xl-name" data-cat-name="corps">Corps &amp; Bien-&ecirc;tre</span>
+                    <span class="cat-xl-desc" data-cat-desc="corps">Gommages, huiles, massage</span>
                 </a>
-                <a href="pages/category.html?cat=homme" class="cat-card-xl" style="background:linear-gradient(135deg,#d4dce8,#b8c8d8);min-height:160px;border-radius:var(--radius-md);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;position:relative;overflow:hidden;text-decoration:none;transition:all .3s;">
-                    <span style="position:absolute;top:16px;right:16px;font-size:3rem;opacity:.3;">&#x1F9D4;</span>
-                    <span class="cat-xl-name" data-cat-name="homme" style="font-weight:700;font-size:1.05rem;color:var(--color-primary);">Homme</span>
-                    <span class="cat-xl-desc" data-cat-desc="homme" style="font-size:.78rem;color:var(--color-text-light);margin-top:2px;">Grooming, barbe, skincare</span>
+                <a href="pages/category.html?cat=homme" class="cat-card-xl cat-card-xl--homme">
+                    <span class="cat-card-xl-icon">&#x1F9D4;</span>
+                    <span class="cat-xl-name" data-cat-name="homme">Homme</span>
+                    <span class="cat-xl-desc" data-cat-desc="homme">Grooming, barbe, skincare</span>
                 </a>
             </div>
             <!-- Row 2 : 4 petites catégories -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+            <div class="cat-grid-4">
                 <a href="#produits" class="cat-card" data-cat="ongles" data-action="filter-category" data-filter="ongles">
                     <div class="cat-icon">&#x1F485;</div>
                     <span class="cat-label" data-cat-label="ongles">Ongles</span>
@@ -469,12 +469,12 @@
     </section>
 
     <!-- IA Personnalisation — Section conditionnelle "Pour vous" -->
-    <section class="ai-personalization anim-fade-up" id="pourVous" style="padding:40px 0;display:none;">
+    <section class="ai-personalization anim-fade-up" id="pourVous">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">&#10024; Intelligence Beaut&eacute;</span>
                 <h2>S&eacute;lectionn&eacute; pour vous</h2>
-                <p style="font-size:.88rem;color:var(--color-text-light);margin-top:4px;"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="pages/diagnostic.html" id="aiSectionLink" style="color:var(--color-secondary);font-weight:600;text-decoration:underline;">Faire mon diagnostic &rarr;</a></p>
+                <p class="ai-section-desc"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="pages/diagnostic.html" id="aiSectionLink" class="ai-section-link">Faire mon diagnostic &rarr;</a></p>
             </div>
             <div id="aiRecommendations"></div>
         </div>
@@ -486,7 +486,7 @@
             <div class="section-header">
                 <span class="section-tag" id="bestsellerTag">Notre s&eacute;lection</span>
                 <h2 id="bestsellerTitle">Nos coups de c&oelig;ur</h2>
-                <p style="font-size:.88rem;color:var(--color-text-light);" id="bestsellerDesc">Une s&eacute;lection de produits que nous recommandons. Les best-sellers appara&icirc;tront ici automatiquement d&egrave;s les premi&egrave;res commandes.</p>
+                <p class="bestseller-desc" id="bestsellerDesc">Une s&eacute;lection de produits que nous recommandons. Les best-sellers appara&icirc;tront ici automatiquement d&egrave;s les premi&egrave;res commandes.</p>
             </div>
             <div class="bestseller-showcase" id="bestsellerShowcase">
                 <!-- Injected by JS — basé sur les vraies ventes quand disponibles -->
@@ -530,7 +530,7 @@
     <div id="homepageCarousels"></div>
 
     <!-- Recently Viewed (personnalisé) -->
-    <div id="recentlyViewedHome" class="container" style="display:none;padding:24px 0;"></div>
+    <div id="recentlyViewedHome" class="container recently-viewed--hidden"></div>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof RecentlyViewed === 'undefined') return;
@@ -544,21 +544,21 @@
     </script>
 
     <!-- Promo Banner — Compact -->
-    <section style="background:linear-gradient(135deg,#2d2926 0%,#3d3530 100%);padding:32px 0;overflow:hidden;">
-        <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <section class="promo-banner-dark">
+        <div class="container promo-banner-inner">
             <div>
-                <span style="font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:#c9a87c;">Offre de lancement</span>
-                <h3 style="font-family:var(--font-display);color:#fff;font-size:1.5rem;margin:6px 0;">-10% avec le code <strong style="color:#c9a87c;">BIENVENUE10</strong></h3>
-                <p style="color:rgba(255,255,255,.6);font-size:.85rem;">Valable sur tout le site, sans minimum d'achat.</p>
+                <span class="promo-offer-tag">Offre de lancement</span>
+                <h3 class="promo-offer-title">-10% avec le code <strong>BIENVENUE10</strong></h3>
+                <p class="promo-offer-desc">Valable sur tout le site, sans minimum d'achat.</p>
             </div>
-            <a href="#produits" class="btn" style="background:#c9a87c;color:#fff;padding:12px 28px;white-space:nowrap;">Voir la boutique</a>
+            <a href="#produits" class="btn promo-offer-btn">Voir la boutique</a>
         </div>
     </section>
 
     <!-- Bundles / Coffrets — Rendu dynamique depuis BUNDLES[] -->
     <section class="bundles-section" id="packs">
         <div class="container">
-            <div class="section-header" style="position:relative;">
+            <div class="section-header section-header--relative">
                 <span class="section-tag">Nos coffrets</span>
                 <h2>&Eacute;conomisez avec nos coffrets</h2>
                 <p>Routines compl&egrave;tes &agrave; prix r&eacute;duit. Jusqu'&agrave; -30%. Tous les produits inclus, livraison offerte.</p>

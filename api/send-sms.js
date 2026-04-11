@@ -30,9 +30,17 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'phone and message required' });
     }
 
-    // Formater le numéro FR : 06... → +336...
-    let formattedPhone = phone.replace(/\s/g, '').replace(/\./g, '');
-    if (formattedPhone.startsWith('0')) {
+    // Formater le numéro — support toute l'Europe
+    // Stripe collecte déjà au format international E.164 (+33612345678)
+    let formattedPhone = phone.replace(/[\s.\-()]/g, '');
+
+    // Indicatifs EU courants pour numéros nationaux (0X → +XXX)
+    // La plupart du temps, Stripe fournit déjà le format international
+    if (formattedPhone.startsWith('00')) {
+        // Format international 00XX → +XX
+        formattedPhone = '+' + formattedPhone.substring(2);
+    } else if (formattedPhone.startsWith('0') && formattedPhone.length >= 10) {
+        // Numéro national sans indicatif — on assume FR par défaut
         formattedPhone = '+33' + formattedPhone.substring(1);
     }
     if (!formattedPhone.startsWith('+')) {

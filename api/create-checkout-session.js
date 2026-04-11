@@ -114,7 +114,12 @@ module.exports = async (req, res) => {
             phone_number_collection: { enabled: true },
             locale: stripeLocale,
             shipping_address_collection: {
-                allowed_countries: ['FR', 'BE', 'CH', 'LU', 'DE', 'ES', 'IT', 'NL', 'PT', 'AT', 'IE', 'GB'],
+                // Toute l'Europe : UE + EEE + UK + CH + micro-états
+                allowed_countries: [
+                    'FR', 'BE', 'CH', 'LU', 'DE', 'ES', 'IT', 'NL', 'PT', 'AT', 'IE', 'GB',
+                    'PL', 'CZ', 'SK', 'HU', 'RO', 'BG', 'HR', 'SI', 'EE', 'LV', 'LT',
+                    'FI', 'SE', 'DK', 'NO', 'IS', 'GR', 'CY', 'MT', 'MC', 'AD', 'LI'
+                ],
             },
             customer_email: customer_email || undefined,
             // Metadata pour tracking et factures

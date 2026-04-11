@@ -120,7 +120,6 @@
             if (resp.ok) {
                 return await resp.json();
             }
-            console.warn('[auth] fetchProfile API ' + resp.status);
             return null;
         } catch (e) {
             console.error('[auth] fetchProfile error:', e);
@@ -260,7 +259,7 @@
     // ── Initialisation ──
     function init() {
         if (!SUPABASE_ANON_KEY) {
-            console.warn('[auth] SUPABASE_ANON_KEY manquante — auth désactivé');
+            console.error('[auth] SUPABASE_ANON_KEY manquante — auth désactivé');
             auth._notifyReady();
             renderAccountButton();
             return;
@@ -305,7 +304,7 @@
                 // Timeout de sécurité — toujours déclencher ready dans les 5s
                 setTimeout(function() {
                     if (!auth._ready) {
-                        console.warn('[auth] Timeout — forçage ready');
+                        console.error('[auth] Timeout — forçage ready');
                         auth._notifyReady();
                     }
                 }, 5000);

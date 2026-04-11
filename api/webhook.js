@@ -1209,9 +1209,18 @@ ${crossSellItems.length > 0 ? `
 
 // Indicatifs téléphoniques par pays
 const COUNTRY_CODES = {
-    FR: '33', BE: '32', CH: '41', LU: '352',
-    DE: '49', AT: '43', ES: '34', IT: '39',
-    NL: '31', PT: '351', IE: '353', GB: '44',
+    // Europe de l'Ouest
+    FR: '33', BE: '32', CH: '41', LU: '352', MC: '377',
+    DE: '49', AT: '43', ES: '34', IT: '39', NL: '31',
+    PT: '351', IE: '353', GB: '44', AD: '376', LI: '423',
+    // Scandinavie & Baltique
+    SE: '46', DK: '45', NO: '47', FI: '358', IS: '354',
+    EE: '372', LV: '371', LT: '370',
+    // Europe centrale & orientale
+    PL: '48', CZ: '420', SK: '421', HU: '36',
+    RO: '40', BG: '359', HR: '385', SI: '386',
+    // Méditerranée
+    GR: '30', CY: '357', MT: '356',
 };
 
 function formatPhoneInternational(phone, countryCode) {
