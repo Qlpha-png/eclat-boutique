@@ -154,7 +154,7 @@
         var html = '';
         html += '<div class="mega-menu-featured">';
         html += '  <span class="mega-menu-featured__badge">' + escapeAttr(f.badge) + '</span>';
-        html += '  <img class="mega-menu-featured__img" src="' + escapeAttr(f.img) + '" alt="' + escapeAttr(f.name) + '" loading="lazy">';
+        html += '  <img class="mega-menu-featured__img" src="' + escapeAttr(f.img) + '" alt="' + escapeAttr(f.name) + '" width="280" height="280" loading="lazy">';
         html += '  <div class="mega-menu-featured__content">';
         html += '    <div class="mega-menu-featured__name">' + escapeAttr(f.name) + '</div>';
         html += '    <div class="mega-menu-featured__price">' + escapeAttr(f.price) + '</div>';

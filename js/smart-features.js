@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="recently-viewed-grid">
                     ${products.map(p => `
                         <div class="rv-card" data-action="open-modal" data-pid="${p.id}" style="cursor:pointer;">
-                            <img src="${typeof escapeHTML==='function'?escapeHTML(p.image):p.image}" alt="${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}" loading="lazy">
+                            <img src="${typeof escapeHTML==='function'?escapeHTML(p.image):p.image}" alt="${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}" width="120" height="120" loading="lazy">
                             <div class="rv-info">
                                 <span class="rv-name">${typeof escapeHTML==='function'?escapeHTML(p.name):p.name}</span>
                                 <strong class="rv-price">${p.price.toFixed(2).replace('.', ',')} €</strong>

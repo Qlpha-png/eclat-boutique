@@ -153,7 +153,7 @@
                 products.forEach(function(p){
                     var sel = selected[step.key]===p.id ? 'selected' : '';
                     html += '<div class="rb-option '+sel+'" onclick="selectProduct(\''+step.key+'\','+p.id+')">';
-                    html += '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.name)+'" loading="lazy">';
+                    html += '<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.name)+'" width="80" height="80" loading="lazy">';
                     html += '<div class="rb-opt-info"><div class="rb-opt-name">'+escapeHTML(p.name)+'</div><div class="rb-opt-price">'+p.price.toFixed(2).replace('.',',')+' \u20ac</div></div>';
                     html += '</div>';
                 });

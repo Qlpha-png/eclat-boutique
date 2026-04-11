@@ -820,7 +820,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h4>${t('cart_cross_sell')}</h4>
             ${suggestions.map(p => `
                 <div class="cross-sell-item">
-                    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" referrerpolicy="no-referrer">
+                    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" width="60" height="60" loading="lazy" referrerpolicy="no-referrer">
                     <div class="cross-sell-info">
                         <div class="cs-name">${escapeHTML(p.name)}</div>
                         <div class="cs-price">${formatPrice(p.price)}</div>

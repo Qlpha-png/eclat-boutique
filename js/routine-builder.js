@@ -459,7 +459,7 @@
                 if (sp) {
                     totalProducts++;
                     totalPrice += sp.price;
-                    thumbsHTML += '<div class="rb-summary-thumb"><img src="' + getImgUrl(sp.image) + '" alt="' + escHTML(sp.name) + '" width="44" height="44"></div>';
+                    thumbsHTML += '<div class="rb-summary-thumb"><img src="' + getImgUrl(sp.image) + '" alt="' + escHTML(sp.name) + '" width="44" height="44" loading="lazy"></div>';
                 }
             }
         }

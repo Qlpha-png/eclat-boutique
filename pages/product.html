@@ -681,7 +681,7 @@
                     if (r.photos && r.photos.length > 0) {
                         html += '<div style="display:flex;gap:8px;margin-top:10px;">';
                         for (var p = 0; p < r.photos.length; p++) {
-                            html += '<img src="' + escapeHTML(r.photos[p]) + '" alt="Photo avis" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border);cursor:pointer;" onclick="window.open(this.src)">';
+                            html += '<img src="' + escapeHTML(r.photos[p]) + '" alt="Photo avis client" width="64" height="64" loading="lazy" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border);cursor:pointer;" onclick="window.open(this.src)">';
                         }
                         html += '</div>';
                     }
