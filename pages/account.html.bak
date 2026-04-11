@@ -6,13 +6,9 @@
     <title>Mon compte - &Eacute;CLAT</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cf.cjdropshipping.com">
-    <link rel="preconnect" href="https://js.stripe.com">
-    <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=15">
+    <link rel="stylesheet" href="../css/style.css?v=2">
     <link rel="stylesheet" href="../css/themes.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
@@ -167,11 +163,8 @@
     </style>
 </head>
 <body style="background:var(--color-bg);">
-    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <nav class="navbar"><div class="nav-container"><a href="../index.html" class="logo">&Eacute;CLAT</a><a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);">&larr; Boutique</a></div></nav>
 
-
-    <main id="main-content">
     <div class="account-page">
         <h1>Mon compte</h1>
 
@@ -200,36 +193,18 @@
                             <span class="streak-badge" id="streakBadge" style="display:none;"></span>
                         </div>
                     </div>
-                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;">
                         <div class="account-card" style="text-align:center;">
-                            <div class="stat-label" id="statLabelEclats">&Eacute;clats</div>
+                            <div class="stat-label">&Eacute;clats</div>
                             <div class="points-display" id="userPoints">0</div>
                         </div>
                         <div class="account-card" style="text-align:center;">
-                            <div class="stat-label" id="statLabelOrders">Commandes</div>
-                            <div class="points-display" id="userOrderCount">0</div>
-                        </div>
-                        <div class="account-card" style="text-align:center;">
-                            <div class="stat-label" id="statLabelSpent">D&eacute;pens&eacute;</div>
-                            <div class="points-display" id="userTotalSpent" style="font-size:1.5rem;">0&euro;</div>
-                        </div>
-                        <div class="account-card" style="text-align:center;">
-                            <div class="stat-label" id="statLabelStreak">Streak</div>
+                            <div class="stat-label">Streak</div>
                             <div class="points-display" id="userStreak">0j</div>
                         </div>
                         <div class="account-card" style="text-align:center;">
-                            <div class="stat-label" id="statLabelMember">Anciennet&eacute;</div>
-                            <div class="points-display" id="userMemberDays" style="font-size:1.5rem;">-</div>
-                        </div>
-                    </div>
-                    <div style="margin-top:16px;">
-                        <div class="account-card">
-                            <div style="display:flex;justify-content:space-between;align-items:center;">
-                                <div>
-                                    <div class="stat-label" id="statLabelNextTier">Palier suivant</div>
-                                    <div id="nextTierInfo" style="font-size:0.85rem;color:var(--color-text-light);margin-top:4px;"></div>
-                                </div>
-                            </div>
+                            <div class="stat-label">Palier suivant</div>
+                            <div id="nextTierInfo" style="font-size:0.85rem;color:var(--color-text-light);margin-top:4px;"></div>
                             <div class="progress-bar" style="margin-top:8px;"><div class="progress-fill" id="tierProgress" style="width:0%;"></div></div>
                         </div>
                     </div>
@@ -238,34 +213,34 @@
                 <!-- Profile -->
                 <div class="account-section" id="tab-profile">
                     <div class="account-card">
-                        <h3 id="accMyInfo">Mes informations</h3>
+                        <h3>Mes informations</h3>
                         <form id="profileForm">
                             <div style="display:flex;gap:12px;">
                                 <div class="form-group" style="flex:1;">
-                                    <label for="pFirstName" id="accFirstnameLabel">Pr&eacute;nom</label>
+                                    <label for="pFirstName">Pr&eacute;nom</label>
                                     <input type="text" id="pFirstName">
                                 </div>
                                 <div class="form-group" style="flex:1;">
-                                    <label for="pLastName" id="accLastnameLabel">Nom</label>
+                                    <label for="pLastName">Nom</label>
                                     <input type="text" id="pLastName">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="pEmail" id="accEmailLabel">Email</label>
+                                <label for="pEmail">Email</label>
                                 <input type="email" id="pEmail" disabled style="opacity:0.6;">
                             </div>
                             <div class="form-group">
-                                <label for="pPhone" id="accPhoneLabel">T&eacute;l&eacute;phone</label>
+                                <label for="pPhone">T&eacute;l&eacute;phone</label>
                                 <input type="tel" id="pPhone" placeholder="+33...">
                             </div>
-                            <button type="submit" class="save-btn" id="accSaveBtn">Enregistrer</button>
+                            <button type="submit" class="save-btn">Enregistrer</button>
                             <span id="profileMsg" style="margin-left:12px;font-size:0.85rem;"></span>
                         </form>
                     </div>
                     <div class="account-card">
-                        <h3 id="accChangePwd">Changer le mot de passe</h3>
-                        <p style="font-size:0.85rem;color:var(--color-text-light);margin-bottom:12px;" id="accPwdDesc">Un email de r&eacute;initialisation sera envoy&eacute; &agrave; votre adresse.</p>
-                        <button class="save-btn" id="resetPwdBtn" style="background:var(--color-bg-alt);color:var(--color-primary);"><span id="accPwdBtn">Envoyer le lien</span></button>
+                        <h3>Changer le mot de passe</h3>
+                        <p style="font-size:0.85rem;color:var(--color-text-light);margin-bottom:12px;">Un email de r&eacute;initialisation sera envoy&eacute; &agrave; votre adresse.</p>
+                        <button class="save-btn" id="resetPwdBtn" style="background:var(--color-bg-alt);color:var(--color-primary);">Envoyer le lien</button>
                         <span id="pwdMsg" style="margin-left:12px;font-size:0.85rem;"></span>
                     </div>
                 </div>
@@ -273,8 +248,8 @@
                 <!-- Orders -->
                 <div class="account-section" id="tab-orders">
                     <div class="account-card">
-                        <h3 id="accOrdersTitle">Mes commandes</h3>
-                        <div id="ordersList"><p style="color:var(--color-text-light);" id="accOrdersNone">Aucune commande pour le moment.</p></div>
+                        <h3>Mes commandes</h3>
+                        <div id="ordersList"><p style="color:var(--color-text-light);">Aucune commande pour le moment.</p></div>
                     </div>
                 </div>
 
@@ -346,12 +321,12 @@
                 <!-- Referral -->
                 <div class="account-section" id="tab-referral">
                     <div class="account-card">
-                        <h3 id="accReferralTitle">Parrainage</h3>
-                        <p style="font-size:0.9rem;color:var(--color-text-light);" id="accReferralDesc">Partagez votre code. Votre filleul re&ccedil;oit 50 &Eacute;clats de bienvenue, et vous gagnez 100 &Eacute;clats !</p>
+                        <h3>Parrainage</h3>
+                        <p style="font-size:0.9rem;color:var(--color-text-light);">Partagez votre code. Votre filleul re&ccedil;oit 50 &Eacute;clats de bienvenue, et vous gagnez 100 &Eacute;clats !</p>
                         <div class="referral-box">
                             <div class="referral-code" id="referralCode">---</div>
-                            <button class="copy-btn" id="copyRefBtn"><span id="accReferralCopy">Copier le code</span></button>
-                            <div id="copyMsg" style="font-size:0.8rem;margin-top:8px;color:var(--color-success);display:none;"><span id="accReferralCopied">Copi&eacute; !</span></div>
+                            <button class="copy-btn" id="copyRefBtn">Copier le code</button>
+                            <div id="copyMsg" style="font-size:0.8rem;margin-top:8px;color:var(--color-success);display:none;">Copi&eacute; !</div>
                         </div>
                     </div>
                 </div>
@@ -424,7 +399,7 @@
                                 <label class="pref-toggle"><input type="checkbox" id="nlTips" checked><span id="nlTipsLabel">Conseils beaut&eacute;</span></label>
                                 <label class="pref-toggle"><input type="checkbox" id="nlLoyalty" checked><span id="nlLoyaltyLabel">Fid&eacute;lit&eacute; &amp; r&eacute;compenses</span></label>
                             </div>
-                            <button type="submit" class="save-btn" style="margin-top:20px;" id="accPrefsSaveBtn">Enregistrer</button>
+                            <button type="submit" class="save-btn" style="margin-top:20px;">Enregistrer</button>
                             <span id="prefsMsg" style="margin-left:12px;font-size:0.85rem;"></span>
                         </form>
                     </div>
@@ -442,35 +417,27 @@
                             <label id="accLangLabel">Langue</label>
                             <div style="display:flex;gap:8px;margin-top:8px;" id="displayLangBtns"></div>
                         </div>
-                        <div class="form-group">
-                            <label id="accDensityLabel">Densit&eacute; d'affichage</label>
-                            <div style="display:flex;gap:8px;margin-top:8px;" id="displayDensityBtns">
-                                <button type="button" class="display-lang-btn" data-density="compact" id="densityCompact">Compact</button>
-                                <button type="button" class="display-lang-btn" data-density="normal" id="densityNormal">Normal</button>
-                                <button type="button" class="display-lang-btn" data-density="spacious" id="densitySpacious">A&eacute;r&eacute;</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- RGPD / Mes donnees -->
+                <!-- RGPD / Mes données -->
                 <div class="account-section" id="tab-privacy">
                     <div class="account-card">
-                        <h3 id="accPrivacyTitle">Mes donn&eacute;es personnelles</h3>
-                        <p style="font-size:0.9rem;color:var(--color-text-light);margin-bottom:20px;" id="accPrivacyDesc">
+                        <h3>Mes donn&eacute;es personnelles</h3>
+                        <p style="font-size:0.9rem;color:var(--color-text-light);margin-bottom:20px;">
                             Conform&eacute;ment au RGPD et &agrave; la loi Informatique et Libert&eacute;s, vous disposez d'un droit d'acc&egrave;s, de rectification, de suppression et de portabilit&eacute; de vos donn&eacute;es.
                         </p>
                         <div style="display:flex;flex-direction:column;gap:12px;">
                             <div style="background:var(--color-bg);border-radius:10px;padding:16px;border:1px solid var(--color-border);">
-                                <strong id="accExportTitle">Exporter mes donn&eacute;es</strong>
-                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 12px;" id="accExportDesc">T&eacute;l&eacute;chargez un fichier contenant toutes vos donn&eacute;es personnelles (profil, commandes, avis).</p>
-                                <button class="btn btn-sm btn-outline" id="gdprExportBtn" onclick="exportMyData()"><span id="accExportBtn">T&eacute;l&eacute;charger mes donn&eacute;es</span></button>
+                                <strong>Exporter mes donn&eacute;es</strong>
+                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 12px;">T&eacute;l&eacute;chargez un fichier contenant toutes vos donn&eacute;es personnelles (profil, commandes, avis).</p>
+                                <button class="btn btn-sm btn-outline" id="gdprExportBtn" onclick="exportMyData()">T&eacute;l&eacute;charger mes donn&eacute;es</button>
                             </div>
                             <div style="background:#fef2f2;border-radius:10px;padding:16px;border:1px solid #fecaca;">
-                                <strong style="color:#dc2626;" id="accDeleteTitle">Supprimer mon compte</strong>
-                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 4px;" id="accDeleteDesc">Vos donn&eacute;es personnelles seront supprim&eacute;es/anonymis&eacute;es. Les donn&eacute;es de facturation sont conserv&eacute;es 10 ans (obligation l&eacute;gale).</p>
-                                <p style="font-size:0.82rem;color:#dc2626;font-weight:600;margin:0 0 12px;" id="accDeleteWarn">Cette action est irr&eacute;versible.</p>
-                                <button class="btn btn-sm" style="background:#dc2626;color:#fff;" id="gdprDeleteBtn" onclick="deleteMyData()"><span id="accDeleteBtn">Supprimer mes donn&eacute;es</span></button>
+                                <strong style="color:#dc2626;">Supprimer mon compte</strong>
+                                <p style="font-size:0.82rem;color:var(--color-text-light);margin:8px 0 4px;">Vos donn&eacute;es personnelles seront supprim&eacute;es/anonymis&eacute;es. Les donn&eacute;es de facturation sont conserv&eacute;es 10 ans (obligation l&eacute;gale).</p>
+                                <p style="font-size:0.82rem;color:#dc2626;font-weight:600;margin:0 0 12px;">Cette action est irr&eacute;versible.</p>
+                                <button class="btn btn-sm" style="background:#dc2626;color:#fff;" id="gdprDeleteBtn" onclick="deleteMyData()">Supprimer mes donn&eacute;es</button>
                             </div>
                         </div>
                     </div>
@@ -1063,19 +1030,12 @@
                         container.innerHTML = orders.map(function(o) {
                             var s = statusMap[o.status] || { label: o.status, color: '#888' };
                             var date = new Date(o.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
-                            var safeId = escapeHTML(String(o.id));
-                            var trackLink = '<a href="tracking.html?order=' + encodeURIComponent(o.id) + '" style="font-size:0.78rem;color:var(--color-secondary);font-weight:600;text-decoration:none;">Suivre le colis &rarr;</a>';
-                            return '<div class="order-row" style="cursor:pointer;" data-order-id="' + safeId + '">' +
-                                '<div><strong>' + escapeHTML(o.order_number || o.id.substring(0, 8)) + '</strong><br><span style="font-size:0.8rem;color:var(--color-text-light);">' + escapeHTML(date) + '</span></div>' +
+                            var trackLink = '<a href="tracking.html?order=' + o.id + '" style="font-size:0.78rem;color:var(--color-secondary);font-weight:600;text-decoration:none;">Suivre le colis &rarr;</a>';
+                            return '<div class="order-row" style="cursor:pointer;" onclick="window.location.href=\'tracking.html?order=' + o.id + '\'">' +
+                                '<div><strong>' + (o.order_number || o.id.substring(0, 8)) + '</strong><br><span style="font-size:0.8rem;color:var(--color-text-light);">' + date + '</span></div>' +
                                 '<div style="text-align:right;"><span style="color:' + s.color + ';font-weight:600;font-size:0.8rem;">' + s.label + '</span><br><strong>' + parseFloat(o.total).toFixed(2) + ' \u20ac</strong><br>' + trackLink + '</div>' +
                             '</div>';
                         }).join('');
-                        // Bind click events (safer than inline onclick)
-                        container.querySelectorAll('.order-row[data-order-id]').forEach(function(row) {
-                            row.addEventListener('click', function() {
-                                window.location.href = 'tracking.html?order=' + encodeURIComponent(this.dataset.orderId);
-                            });
-                        });
                     }
                 } catch(e) {
                     console.warn('[account] Orders load error:', e.message);
@@ -1166,28 +1126,7 @@
                         if (prefs.nl_tips === false) document.getElementById('nlTips').checked = false;
                         if (prefs.nl_loyalty === false) document.getElementById('nlLoyalty').checked = false;
                     }
-                } catch(e) {
-                    // Fallback: load from localStorage
-                    try {
-                        var localPrefs = JSON.parse(localStorage.getItem('eclat_preferences') || localStorage.getItem('eclat_beauty_prefs') || 'null');
-                        if (localPrefs) {
-                            if (localPrefs.skin_type) document.getElementById('prefSkinType').value = localPrefs.skin_type;
-                            if (localPrefs.main_concern) document.getElementById('prefConcern').value = localPrefs.main_concern;
-                            if (localPrefs.age_range) document.getElementById('prefAge').value = localPrefs.age_range;
-                            if (localPrefs.gender_pref) document.getElementById('prefGender').value = localPrefs.gender_pref;
-                            if (localPrefs.fav_categories && Array.isArray(localPrefs.fav_categories)) {
-                                localPrefs.fav_categories.forEach(function(c) {
-                                    var cb = document.querySelector('#prefCatsContainer input[value="' + c + '"]');
-                                    if (cb) cb.checked = true;
-                                });
-                            }
-                            if (localPrefs.nl_new_products === false) document.getElementById('nlNewProducts').checked = false;
-                            if (localPrefs.nl_promotions === false) document.getElementById('nlPromotions').checked = false;
-                            if (localPrefs.nl_tips === false) document.getElementById('nlTips').checked = false;
-                            if (localPrefs.nl_loyalty === false) document.getElementById('nlLoyalty').checked = false;
-                        }
-                    } catch(le) {}
-                }
+                } catch(e) {}
             })();
 
             document.getElementById('prefsForm').addEventListener('submit', async function(e) {
@@ -1214,9 +1153,8 @@
                     if (error) throw error;
                     msg.textContent = '\u2705 Pr\u00e9f\u00e9rences enregistr\u00e9es !';
                     msg.style.color = '#16a34a';
-                    // Save to localStorage for offline/homepage personalization
+                    // Also save to localStorage for offline/homepage personalization
                     localStorage.setItem('eclat_beauty_prefs', JSON.stringify(updates));
-                    localStorage.setItem('eclat_preferences', JSON.stringify(updates));
                     setTimeout(function() { msg.textContent = ''; }, 3000);
                 } catch(err) {
                     msg.textContent = 'Erreur : ' + (err.message || 'inconnu');
@@ -1262,163 +1200,7 @@
                 var lang = btn.dataset.lang;
                 if (typeof setLanguage === 'function') setLanguage(lang);
                 langContainer.querySelectorAll('.display-lang-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.lang === lang); });
-                // Re-apply account page i18n after language change
-                setTimeout(applyAccountI18n, 100);
             });
-
-            // === DENSITY PICKER ===
-            var densityMap = { compact: '14px', normal: '16px', spacious: '18px' };
-            var currentDensity = localStorage.getItem('eclat_density') || 'normal';
-            function applyDensity(d) {
-                document.documentElement.style.fontSize = densityMap[d] || '16px';
-                localStorage.setItem('eclat_density', d);
-                var container = document.getElementById('displayDensityBtns');
-                if (container) container.querySelectorAll('[data-density]').forEach(function(b) { b.classList.toggle('active', b.dataset.density === d); });
-            }
-            applyDensity(currentDensity);
-            var densityContainer = document.getElementById('displayDensityBtns');
-            if (densityContainer) {
-                densityContainer.addEventListener('click', function(e) {
-                    var btn = e.target.closest('[data-density]');
-                    if (!btn) return;
-                    applyDensity(btn.dataset.density);
-                });
-            }
-
-            // === I18N for Account Page ===
-            function applyAccountI18n() {
-                if (typeof t !== 'function') return;
-                var idMap = {
-                    // Tabs
-                    'accPrefsTitle': 'acc_prefs_title',
-                    'accPrefsDesc': 'acc_prefs_desc',
-                    'accSkinTypeLabel': 'acc_skin_type',
-                    'accConcernLabel': 'acc_concern',
-                    'accAgeLabel': 'acc_age_range',
-                    'accGenderLabel': 'acc_gender_pref',
-                    'accCatsLabel': 'acc_categories',
-                    'accNlPrefsTitle': 'acc_newsletter_prefs',
-                    'accDisplayTitle': 'acc_display_title',
-                    'accThemeLabel': 'acc_theme',
-                    'accLangLabel': 'acc_language',
-                    'accDensityLabel': 'acc_density',
-                    // Select options
-                    'optSkinNormal': 'acc_skin_normal',
-                    'optSkinDry': 'acc_skin_dry',
-                    'optSkinOily': 'acc_skin_oily',
-                    'optSkinCombi': 'acc_skin_combination',
-                    'optSkinSensitive': 'acc_skin_sensitive',
-                    'optConcernAcne': 'acc_concern_acne',
-                    'optConcernAging': 'acc_concern_aging',
-                    'optConcernHydration': 'acc_concern_hydration',
-                    'optConcernRadiance': 'acc_concern_radiance',
-                    'optConcernSpots': 'acc_concern_dark_spots',
-                    'optGenderAll': 'acc_gender_all',
-                    'optGenderFemme': 'acc_gender_femme',
-                    'optGenderHomme': 'acc_gender_homme',
-                    // Category chips
-                    'chipVisage': 'acc_cat_visage',
-                    'chipCorps': 'acc_cat_corps',
-                    'chipCheveux': 'acc_cat_cheveux',
-                    'chipOngles': 'acc_cat_ongles',
-                    'chipOutils': 'acc_cat_outils',
-                    'chipBienetre': 'acc_cat_bienetre',
-                    // Newsletter toggles
-                    'nlNewLabel': 'acc_nl_new_products',
-                    'nlPromoLabel': 'acc_nl_promotions',
-                    'nlTipsLabel': 'acc_nl_beauty_tips',
-                    'nlLoyaltyLabel': 'acc_nl_loyalty',
-                    // Density buttons
-                    'densityCompact': 'acc_density_compact',
-                    'densityNormal': 'acc_density_normal',
-                    'densitySpacious': 'acc_density_spacious',
-                    // Dashboard stat labels
-                    'statLabelEclats': 'acc_stat_eclats',
-                    'statLabelOrders': 'acc_stat_orders',
-                    'statLabelSpent': 'acc_stat_spent',
-                    'statLabelStreak': 'acc_stat_streak',
-                    'statLabelMember': 'acc_stat_member',
-                    'statLabelNextTier': 'acc_next_tier',
-                    // Orders section
-                    'accOrdersTitle': 'acc_orders_title',
-                    'accOrdersNone': 'acc_orders_none',
-                    // Prefs save button
-                    'accPrefsSaveBtn': 'acc_save',
-                    // Profile section
-                    'accMyInfo': 'acc_my_info',
-                    'accFirstnameLabel': 'acc_firstname',
-                    'accLastnameLabel': 'acc_lastname',
-                    'accEmailLabel': 'acc_email',
-                    'accPhoneLabel': 'acc_phone',
-                    'accSaveBtn': 'acc_save',
-                    'accChangePwd': 'acc_change_pwd',
-                    'accPwdDesc': 'acc_pwd_desc',
-                    'accPwdBtn': 'acc_pwd_btn',
-                    // Referral section
-                    'accReferralTitle': 'acc_referral_title',
-                    'accReferralDesc': 'acc_referral_desc',
-                    'accReferralCopy': 'acc_referral_copy',
-                    'accReferralCopied': 'acc_referral_copied',
-                    // Privacy / RGPD section
-                    'accPrivacyTitle': 'acc_privacy_title',
-                    'accPrivacyDesc': 'acc_privacy_desc',
-                    'accExportTitle': 'acc_export_title',
-                    'accExportDesc': 'acc_export_desc',
-                    'accExportBtn': 'acc_export_btn',
-                    'accDeleteTitle': 'acc_delete_title',
-                    'accDeleteDesc': 'acc_delete_desc',
-                    'accDeleteWarn': 'acc_delete_warn',
-                    'accDeleteBtn': 'acc_delete_btn'
-                };
-                for (var id in idMap) {
-                    var el = document.getElementById(id);
-                    if (el) el.textContent = t(idMap[id]);
-                }
-                // Nav tabs
-                var tabMap = {
-                    overview: 'acc_tab_overview',
-                    profile: 'acc_tab_profile',
-                    preferences: 'acc_tab_preferences',
-                    orders: 'acc_tab_orders',
-                    loyalty: 'acc_tab_loyalty',
-                    referral: 'acc_tab_referral',
-                    display: 'acc_tab_display',
-                    privacy: 'acc_tab_privacy'
-                };
-                for (var tab in tabMap) {
-                    var tabEl = document.querySelector('#accountNav [data-tab="' + tab + '"]');
-                    if (tabEl) tabEl.textContent = t(tabMap[tab]);
-                }
-                // Logout button
-                var logoutEl = document.getElementById('logoutBtn');
-                if (logoutEl) logoutEl.textContent = t('acc_logout');
-                // Page title
-                var h1 = document.querySelector('.account-page h1');
-                if (h1) h1.textContent = t('acc_title');
-            }
-            applyAccountI18n();
-
-            // === DASHBOARD STATS (orders count, total spent, member since) ===
-            (async function loadDashboardStats() {
-                try {
-                    var { data: orders } = await auth._supabase
-                        .from('orders')
-                        .select('total, created_at, status')
-                        .in('status', ['paid', 'processing', 'shipped', 'delivered']);
-                    if (orders && orders.length) {
-                        document.getElementById('userOrderCount').textContent = orders.length;
-                        var totalSpent = orders.reduce(function(s, o) { return s + parseFloat(o.total || 0); }, 0);
-                        document.getElementById('userTotalSpent').textContent = totalSpent.toFixed(0) + '\u20ac';
-                    }
-                } catch(e) {}
-                // Member since
-                if (user.created_at) {
-                    var created = new Date(user.created_at);
-                    var now = new Date();
-                    var daysSince = Math.floor((now - created) / 86400000);
-                    document.getElementById('userMemberDays').textContent = daysSince + (typeof t === 'function' ? ' ' + t('acc_days') : 'j');
-                }
-            })();
 
             // Deep link support (#fidelite, #commandes, etc.)
             var hash = window.location.hash.replace('#', '');
@@ -1608,7 +1390,6 @@
     </script>
     <script src="../js/themes.js?v=2" defer></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-</main>
 <script src="../js/push.js?v=2" defer></script>
 </body>
 </html>
