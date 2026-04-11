@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d2926"/>
+      <stop offset="40%" stop-color="#231f1d"/>
+      <stop offset="100%" stop-color="#1a1714"/>
+    </linearGradient>
+    <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0c9a8"/>
+      <stop offset="30%" stop-color="#d4b896"/>
+      <stop offset="60%" stop-color="#c9a87c"/>
+      <stop offset="100%" stop-color="#b8935f"/>
+    </linearGradient>
+    <linearGradient id="lineH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#c9a87c" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#d4b896" stop-opacity="0.4"/>
+      <stop offset="85%" stop-color="#c9a87c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lineV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#c9a87c" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#d4b896" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#c9a87c" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="25%" cy="50%" r="30%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="underline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4b896" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#b8935f" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bgG)"/>
+  <rect width="1500" height="500" fill="url(#glowL)"/>
+
+  <!-- Decorative horizontal lines -->
+  <line x1="0" y1="70" x2="1500" y2="70" stroke="url(#lineH)" stroke-width="0.8"/>
+  <line x1="0" y1="430" x2="1500" y2="430" stroke="url(#lineH)" stroke-width="0.8"/>
+
+  <!-- Corner accents -->
+  <line x1="40" y1="40" x2="80" y2="40" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="40" y1="40" x2="40" y2="80" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="1420" y1="40" x2="1460" y2="40" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="1460" y1="40" x2="1460" y2="80" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="40" y1="460" x2="80" y2="460" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="40" y1="420" x2="40" y2="460" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="1420" y1="460" x2="1460" y2="460" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+  <line x1="1460" y1="420" x2="1460" y2="460" stroke="#c9a87c" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- Left side: Brand name -->
+  <text x="140" y="240" font-family="Georgia, 'Playfair Display', serif" font-size="100" font-weight="700" letter-spacing="14" fill="url(#goldG)">ÉCLAT</text>
+
+  <!-- Underline accent -->
+  <line x1="140" y1="265" x2="430" y2="265" stroke="url(#underline)" stroke-width="2"/>
+
+  <!-- Subtitle -->
+  <text x="140" y="310" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="300" letter-spacing="8" fill="#c9a87c" opacity="0.7">BEAUTE CLEAN</text>
+
+  <!-- Center: Vertical divider -->
+  <line x1="560" y1="120" x2="560" y2="380" stroke="url(#lineV)" stroke-width="1"/>
+
+  <!-- Right side: Value proposition -->
+  <text x="640" y="195" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#ffffff" opacity="0.9">Score Clean Beauty</text>
+  <text x="640" y="230" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="300" fill="#ffffff" opacity="0.5">Analyse les ingredients de tes soins</text>
+
+  <!-- Feature bullets -->
+  <rect x="640" y="268" width="6" height="6" fill="#c9a87c" opacity="0.6" transform="rotate(45 643 271)"/>
+  <text x="660" y="276" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#ffffff" opacity="0.65">Diagnostic beaute IA gratuit</text>
+
+  <rect x="640" y="303" width="6" height="6" fill="#c9a87c" opacity="0.6" transform="rotate(45 643 306)"/>
+  <text x="660" y="311" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#ffffff" opacity="0.65">Transparence 100% ingredients</text>
+
+  <rect x="640" y="338" width="6" height="6" fill="#c9a87c" opacity="0.6" transform="rotate(45 643 341)"/>
+  <text x="660" y="346" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#ffffff" opacity="0.65">Livraison France - Paiement securise</text>
+
+  <!-- Website URL bottom right -->
+  <text x="1370" y="460" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="15" letter-spacing="2" fill="#c9a87c" opacity="0.6">maison-eclat.shop</text>
+</svg>

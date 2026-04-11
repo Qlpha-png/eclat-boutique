@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0c9a8"/>
+      <stop offset="25%" stop-color="#d4b896"/>
+      <stop offset="50%" stop-color="#c9a87c"/>
+      <stop offset="75%" stop-color="#b8935f"/>
+      <stop offset="100%" stop-color="#c9a87c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGrad" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#3a3330"/>
+      <stop offset="50%" stop-color="#2d2926"/>
+      <stop offset="85%" stop-color="#231f1d"/>
+      <stop offset="100%" stop-color="#1a1714"/>
+    </radialGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#c9a87c" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#d4b896" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#c9a87c" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c9a87c" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#c9a87c" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#d4b896" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#c9a87c" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c9a87c" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b896"/>
+      <stop offset="50%" stop-color="#c9a87c"/>
+      <stop offset="100%" stop-color="#b8935f"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4b896" stop-opacity="0.5"/>
+      <stop offset="25%" stop-color="#c9a87c" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#b8935f" stop-opacity="0.3"/>
+      <stop offset="75%" stop-color="#c9a87c" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#d4b896" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+  <rect width="800" height="800" fill="url(#glow)"/>
+
+  <!-- Outer decorative ring -->
+  <circle cx="400" cy="400" r="370" fill="none" stroke="url(#ringGrad)" stroke-width="1.5"/>
+  <circle cx="400" cy="400" r="360" fill="none" stroke="url(#ringGrad)" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Corner accents -->
+  <line x1="60" y1="60" x2="100" y2="60" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="60" y1="60" x2="60" y2="100" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="700" y1="60" x2="740" y2="60" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="740" y1="60" x2="740" y2="100" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="60" y1="740" x2="100" y2="740" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="60" y1="700" x2="60" y2="740" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="700" y1="740" x2="740" y2="740" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+  <line x1="740" y1="700" x2="740" y2="740" stroke="#c9a87c" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Top diamond -->
+  <rect x="396" y="298" width="10" height="10" fill="url(#diamondGrad)" opacity="0.7" transform="rotate(45 401 303)"/>
+
+  <!-- Top decorative line -->
+  <line x1="310" y1="320" x2="490" y2="320" stroke="url(#lineGrad)" stroke-width="1.5"/>
+
+  <!-- Main brand name -->
+  <text x="400" y="410" text-anchor="middle" font-family="Georgia, 'Playfair Display', 'Times New Roman', serif" font-size="120" font-weight="700" letter-spacing="16" fill="url(#goldGrad)">ÉCLAT</text>
+
+  <!-- Separator -->
+  <line x1="310" y1="440" x2="385" y2="440" stroke="url(#sepGrad)" stroke-width="0.8"/>
+  <rect x="397" y="436" width="7" height="7" fill="#c9a87c" opacity="0.5" transform="rotate(45 400.5 439.5)"/>
+  <line x1="415" y1="440" x2="490" y2="440" stroke="url(#sepGrad)" stroke-width="0.8"/>
+
+  <!-- Subtitle -->
+  <text x="400" y="480" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="300" letter-spacing="14" fill="#c9a87c" opacity="0.75">BEAUTE</text>
+
+  <!-- Bottom decorative line -->
+  <line x1="310" y1="500" x2="490" y2="500" stroke="url(#lineGrad)" stroke-width="1.5"/>
+
+  <!-- Bottom diamond -->
+  <rect x="396" y="512" width="10" height="10" fill="url(#diamondGrad)" opacity="0.7" transform="rotate(45 401 517)"/>
+</svg>
