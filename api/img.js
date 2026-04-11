@@ -18,6 +18,7 @@ const dns = require('dns');
 const { promisify } = require('util');
 
 const dnsResolve = promisify(dns.resolve4);
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 // --- Allowlist stricte des domaines autorisés ---
 const ALLOWED_HOSTS = new Set([
@@ -58,6 +59,7 @@ module.exports = async function handler(req, res) {
     // CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'api')) return;
 
     var rawUrl = req.query.url;
     if (!rawUrl) {

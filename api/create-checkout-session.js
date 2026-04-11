@@ -2,16 +2,22 @@ const Stripe = require('stripe');
 
 const { applyRateLimit } = require('./_middleware/rateLimit');
 const { checkFraud } = require('./_middleware/fraud');
+const { getSupabase } = require('./_middleware/auth');
 
 const SITE_URL = 'https://maison-eclat.shop';
 
+const ALLOWED_ORIGINS = [
+    'https://maison-eclat.shop',
+    'https://www.maison-eclat.shop',
+    'https://eclat-boutique.vercel.app'
+];
+
 module.exports = async (req, res) => {
-    const allowedOrigins = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    if (ALLOWED_ORIGINS.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     } else {
-        res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0]);
+        res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGINS[0]);
     }
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -19,6 +25,12 @@ module.exports = async (req, res) => {
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
+
+    // CSRF / Origin check — reject requests from unauthorized origins
+    if (!origin || !ALLOWED_ORIGINS.includes(origin)) {
+        return res.status(403).json({ error: 'Origine non autorisée' });
+    }
+
     if (applyRateLimit(req, res, 'public')) return;
 
     if (req.method !== 'POST') {
@@ -65,6 +77,43 @@ module.exports = async (req, res) => {
             if (typeof shipping_cost !== 'number' || !validShipping.includes(shipping_cost)) {
                 return res.status(400).json({ error: 'Invalid shipping cost' });
             }
+        }
+
+        // SERVER-SIDE PRICE VERIFICATION — query real prices from Supabase
+        const sb = getSupabase();
+        const productNames = items.map(i => i.name);
+        const { data: dbProducts, error: dbError } = await sb
+            .from('products')
+            .select('id, name, price')
+            .in('name', productNames)
+            .eq('is_active', true);
+
+        if (dbError) {
+            console.error('[checkout] Supabase product lookup error:', dbError.message);
+            return res.status(500).json({ error: 'Erreur de vérification des prix' });
+        }
+
+        // Build a lookup map: product name -> real price
+        const priceMap = {};
+        if (dbProducts) {
+            for (const p of dbProducts) {
+                priceMap[p.name] = p.price;
+            }
+        }
+
+        // Verify each item's price against the database
+        for (const item of items) {
+            const realPrice = priceMap[item.name];
+            if (realPrice === undefined) {
+                console.error('[checkout] Product not found in DB:', item.name);
+                return res.status(400).json({ error: `Produit introuvable : ${item.name}` });
+            }
+            if (Math.abs(item.price - realPrice) > 0.01) {
+                console.error('[checkout] Price mismatch for', item.name, '- client:', item.price, 'db:', realPrice);
+                return res.status(400).json({ error: 'Prix invalide. Veuillez rafraîchir la page.' });
+            }
+            // Use the verified DB price instead of client-sent price
+            item.price = realPrice;
         }
 
         // Anti-fraude

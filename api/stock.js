@@ -14,6 +14,7 @@
  * CREATE INDEX idx_inventory_product_id ON inventory(product_id);
  */
 const { createClient } = require('@supabase/supabase-js');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 var ALLOWED_ORIGINS = [
     'https://eclat-boutique.vercel.app',
@@ -47,6 +48,7 @@ function setCors(req, res) {
 
 module.exports = async function handler(req, res) {
     setCors(req, res);
+    if (applyRateLimit(req, res, 'api')) return;
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();

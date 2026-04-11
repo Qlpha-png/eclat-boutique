@@ -5,6 +5,7 @@
 // ============================
 
 const { createClient } = require('@supabase/supabase-js');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 function escapeHtml(str) {
     return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -17,6 +18,7 @@ const supabase = createClient(
 
 module.exports = async (req, res) => {
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'api')) return;
     if (req.method !== 'GET') return res.status(405).json({ error: 'GET only' });
 
     const { orderId } = req.query;

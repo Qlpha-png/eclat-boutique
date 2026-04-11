@@ -4,6 +4,7 @@
 // ============================
 
 const { createClient } = require('@supabase/supabase-js');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 function escapeHtml(str) {
     return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -53,6 +54,7 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'contact')) return;
 
     // Auth
     const authHeader = req.headers.authorization;

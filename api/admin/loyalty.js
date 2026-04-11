@@ -157,8 +157,9 @@ module.exports = async function handler(req, res) {
                 metadata: { reason, admin_id: admin.userId, previous_balance: profile.eclats || 0 }
             });
 
-            await logAdminAction(req, admin.userId, amount > 0 ? 'credit_eclats' : 'debit_eclats', 'profile', user_id, {
-                amount, reason, previous: profile.eclats || 0, new_balance: newBalance
+            await logAdminAction({
+                adminId: admin.userId, action: amount > 0 ? 'credit_eclats' : 'debit_eclats', entityType: 'profile',
+                entityId: user_id, details: { amount, reason, previous: profile.eclats || 0, new_balance: newBalance }, req
             });
 
             return res.status(200).json({

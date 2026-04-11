@@ -34,6 +34,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 var ALLOWED_ORIGINS = [
     'https://eclat-boutique.vercel.app',
@@ -70,6 +71,7 @@ function isCacheValid(cachedAt) {
 module.exports = async function handler(req, res) {
     setCors(req, res);
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'api')) return;
     if (req.method !== 'GET') return res.status(405).json({ error: 'Méthode non autorisée' });
 
     var supabase = getSupabase();

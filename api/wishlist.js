@@ -17,6 +17,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
+const { applyRateLimit } = require('./_middleware/rateLimit');
 
 var ALLOWED_ORIGINS = [
     'https://eclat-boutique.vercel.app',
@@ -53,6 +54,7 @@ function extractToken(req) {
 module.exports = async function handler(req, res) {
     setCors(req, res);
     if (req.method === 'OPTIONS') return res.status(200).end();
+    if (applyRateLimit(req, res, 'api')) return;
 
     var supabase = getSupabase();
 
