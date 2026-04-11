@@ -4925,3 +4925,124 @@ input { font-family: inherit; }
         min-height: 120px;
     }
 }
+
+/* ============================
+   MOBILE CRITICAL FIXES (375px audit)
+   ============================ */
+
+/* 1. CRITIQUE — Empêcher le scroll horizontal parasite */
+html, body {
+    overflow-x: hidden;
+}
+
+/* 2. CRITIQUE — Floating CTA ne doit pas déborder */
+.floating-cta {
+    max-width: calc(100vw - 48px);
+    box-sizing: border-box;
+}
+
+/* 3. Payment icons — wrap sur mobile */
+@media (max-width: 768px) {
+    .payment-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* 4. CRITIQUE — Nav-actions ne doit pas dépasser le viewport */
+@media (max-width: 768px) {
+    .nav-actions {
+        gap: 8px;
+        flex-shrink: 1;
+        min-width: 0;
+    }
+    .nav-actions .loyalty-widget {
+        display: none;
+    }
+    /* Hamburger visible et accessible */
+    .mobile-menu-btn {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    /* Boutons cart/wishlist taille tactile */
+    .cart-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Navbar ne déborde pas */
+    .navbar .container {
+        gap: 8px;
+    }
+}
+
+/* 5. Product badge — texte trop petit sur mobile (9.92px → 12px) */
+@media (max-width: 768px) {
+    .product-badge {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+}
+
+/* 6. Boutons CTA coffrets — hauteur tactile minimum */
+@media (max-width: 768px) {
+    .bundle-cta-dynamic {
+        min-height: 48px;
+        font-size: 0.95rem;
+        padding: 14px 20px;
+    }
+}
+
+/* 7. Flèches carousel coffrets — taille tactile */
+@media (max-width: 768px) {
+    .bundles-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+}
+
+/* 8. Footer liens — zone tactile minimum */
+@media (max-width: 768px) {
+    .footer-links a,
+    .footer-col a {
+        display: inline-block;
+        padding: 8px 0;
+        min-height: 44px;
+        line-height: 28px;
+    }
+}
+
+/* 9. Overlays et modales — ne pas dépasser le viewport */
+.cart-overlay,
+.modal-overlay,
+.cart-sidebar {
+    max-width: 100vw;
+}
+@media (max-width: 768px) {
+    .product-modal {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 12px 12px 0 0;
+    }
+    .cart-sidebar {
+        width: 100%;
+        max-width: 100vw;
+    }
+}
+
+/* 10. Trust bar items — wrap sur petit écran */
+@media (max-width: 640px) {
+    .trust-bar .container {
+        gap: 12px;
+    }
+    .trust-bar-item {
+        font-size: 0.7rem;
+    }
+}
