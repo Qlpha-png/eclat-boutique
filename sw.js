@@ -28,6 +28,11 @@ var PRECACHE = [
     '/js/social-proof.js?v=3',
     '/js/clean-beauty.js?v=2',
     '/js/auth.js?v=3',
+    '/js/cookie-consent.js',
+    '/js/recently-viewed.js?v=1',
+    '/js/social-share.js?v=1',
+    '/js/init.js?v=1',
+    '/js/themes.js?v=1',
     '/pages/offline.html'
 ];
 

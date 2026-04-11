@@ -6,13 +6,30 @@
 const { getSupabase } = require('./_middleware/auth');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 
+var ALLOWED_ORIGINS = [
+    'https://eclat-boutique.vercel.app',
+    'https://maison-eclat.shop'
+];
+
+function setCors(req, res) {
+    var origin = req.headers.origin || '';
+    if (ALLOWED_ORIGINS.indexOf(origin) !== -1) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+}
+
 module.exports = async function handler(req, res) {
+    setCors(req, res);
+    if (req.method === 'OPTIONS') return res.status(200).end();
+
     if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
     if (applyRateLimit(req, res, 'public')) return;
 
     // Cache CDN 60 secondes
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
-    res.setHeader('Access-Control-Allow-Origin', '*');
 
     try {
         const sb = getSupabase();

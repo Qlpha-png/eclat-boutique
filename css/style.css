@@ -594,7 +594,7 @@ input { font-family: inherit; }
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-secondary);
+    color: #a88a5c;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 12px;
@@ -627,7 +627,7 @@ input { font-family: inherit; }
 }
 
 .filter-btn {
-    padding: 10px 24px;
+    padding: 14px 24px;
     border-radius: var(--radius-xl);
     font-size: 0.85rem;
     font-weight: 500;
@@ -799,7 +799,7 @@ input { font-family: inherit; }
 
 .filter-group select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 14px 16px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-size: 0.85rem;
@@ -1761,7 +1761,7 @@ input { font-family: inherit; }
     right: 16px;
     font-size: 1.8rem;
     color: var(--color-text-light);
-    z-index: 1;
+    z-index: 3002;
     transition: var(--transition);
     padding: 4px 8px;
 }
@@ -3356,6 +3356,17 @@ input { font-family: inherit; }
     outline-offset: 2px;
 }
 
+/* WCAG 2.4.7 — Focus visible sur éléments interactifs */
+.btn:focus-visible,
+.cart-btn:focus-visible,
+.nav-links a:focus-visible,
+[data-action]:focus-visible,
+.filter-btn:focus-visible,
+.bundle-cta-dynamic:focus-visible {
+    outline: 3px solid var(--color-secondary, #c9a87c);
+    outline-offset: 2px;
+}
+
 /* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -4604,4 +4615,11 @@ input { font-family: inherit; }
     .rb-diag-dot { width: 28px; height: 28px; font-size: 0.65rem; gap: 6px; }
     .rb-diag-dots { gap: 6px; }
     .rb-profile-banner { flex-direction: column; text-align: center; gap: 6px; }
+}
+
+/* --- Hero responsive 640px --- */
+@media (max-width: 640px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero-buttons { flex-direction: column; gap: 10px; }
+    .hero-content > p { font-size: 0.95rem; }
 }
