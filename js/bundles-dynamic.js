@@ -128,15 +128,15 @@
             }
             html += '</div>';
 
-            // Éclats bonus — bundles earn x2 Éclats vs individual
+            // Éclats — même taux que produits individuels (1 Éclat/€) + bonus coffret 50%
             var baseEclats = Math.floor(bun.price);
-            var bonusEclats = baseEclats; // x2 total
+            var bonusEclats = Math.floor(baseEclats * 0.5);
             var totalEclats = baseEclats + bonusEclats;
 
             html += '<div class="bundle-eclats-badge">';
             html += '<span class="bundle-eclats-icon">\u2728</span>';
             html += '<span class="bundle-eclats-value">+' + totalEclats + ' \u00c9clats</span>';
-            html += '<span class="bundle-eclats-bonus">(x2 bonus coffret)</span>';
+            html += '<span class="bundle-eclats-bonus">(' + baseEclats + ' + ' + bonusEclats + ' bonus)</span>';
             html += '</div>';
 
             // Pricing
@@ -152,16 +152,18 @@
                 html += '<div class="bundle-savings-dynamic">';
                 html += '\u00c9conomisez ' + formatPrice(vb.savings);
                 html += ' <span class="bundle-pct">(-' + savePct + '%)</span>';
-                html += ' \u2022 Livraison offerte';
+                // Livraison offerte seulement si coffret >= 39€ (seuil réel)
+                if (bun.price >= 39) {
+                    html += ' \u2022 Livraison offerte';
+                }
                 html += '</div>';
             }
 
-            // Éclats price (pour membres fidélité)
-            var eclatValue = 0.06; // 1 Éclat = 0.06€
-            var eclatDiscount = totalEclats * eclatValue;
-            var priceWithEclats = Math.max(bun.price - eclatDiscount, bun.price * 0.85);
+            // Valeur Éclats gagnés (1 Éclat = 0,06€)
+            var eclatValue = 0.06;
+            var rewardValue = (totalEclats * eclatValue).toFixed(2).replace('.', ',');
             html += '<div class="bundle-eclats-price">';
-            html += '\u2728 Avec vos \u00c9clats : <strong>' + formatPrice(Math.round(priceWithEclats * 100) / 100) + '</strong>';
+            html += '\u2728 = ' + rewardValue + '\u00a0\u20ac de r\u00e9compenses fid\u00e9lit\u00e9';
             html += '</div>';
 
             html += '</div>';

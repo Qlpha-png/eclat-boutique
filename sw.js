@@ -6,7 +6,7 @@
 var CACHE_NAME = 'eclat-v23';
 var PRECACHE = [
     '/',
-    '/css/style.css?v=8',
+    '/css/style.css?v=9',
     '/css/themes.css?v=2',
     '/css/mega-menu.css?v=1',
     '/css/skeleton.css?v=1',
@@ -17,7 +17,7 @@ var PRECACHE = [
     '/js/app.js?v=5',
     '/js/homepage.js?v=8',
     '/js/routine-builder.js?v=3',
-    '/js/bundles-dynamic.js?v=2',
+    '/js/bundles-dynamic.js?v=3',
     '/js/smart-features.js?v=3',
     '/js/chatbot.js?v=5',
     '/js/search.js?v=2',
