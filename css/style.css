@@ -2638,41 +2638,41 @@ input { font-family: inherit; }
 /* Bundle carousel wrapper + lateral arrows */
 .bundles-carousel-wrapper {
     position: relative;
-    padding: 0 48px;
 }
 .bundles-arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-60%);
     z-index: 10;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: 2px solid var(--color-secondary, #c9a87c);
-    background: var(--color-white, #fff);
+    background: rgba(255,255,255,0.95);
     color: var(--color-secondary, #c9a87c);
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
-    box-shadow: 0 4px 16px rgba(45,41,38,0.12);
+    box-shadow: 0 4px 20px rgba(45,41,38,0.15);
 }
 .bundles-arrow:hover {
     background: var(--color-secondary, #c9a87c);
     color: var(--color-white, #fff);
-    transform: translateY(-50%) scale(1.08);
-    box-shadow: 0 6px 24px rgba(201,168,124,0.3);
+    transform: translateY(-60%) scale(1.1);
+    box-shadow: 0 6px 28px rgba(201,168,124,0.35);
 }
 .bundles-arrow:active {
-    transform: translateY(-50%) scale(0.95);
+    transform: translateY(-60%) scale(0.95);
 }
 .bundles-arrow--left {
-    left: 0;
+    left: 8px;
 }
 .bundles-arrow--right {
-    right: 0;
+    right: 8px;
 }
 .bundles-arrow--hidden {
     opacity: 0;
@@ -2706,13 +2706,10 @@ input { font-family: inherit; }
 }
 
 @media (max-width: 768px) {
-    .bundles-carousel-wrapper {
-        padding: 0 36px;
-    }
     .bundles-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
     .bundle-card-dynamic {
         flex: 0 0 260px;
@@ -2725,12 +2722,9 @@ input { font-family: inherit; }
     .bundle-current { font-size: 1.2rem; }
 }
 @media (max-width: 480px) {
-    .bundles-carousel-wrapper {
-        padding: 0 28px;
-    }
     .bundles-arrow {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         font-size: 1rem;
     }
 }
