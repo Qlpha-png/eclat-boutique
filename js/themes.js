@@ -34,7 +34,7 @@
 
     // Get saved theme or default
     function getSavedTheme() {
-        return localStorage.getItem(STORAGE_KEY) || 'rose';
+        return localStorage.getItem(STORAGE_KEY) || 'eclat';
     }
 
     // Apply immediately

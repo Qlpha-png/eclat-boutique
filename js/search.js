@@ -50,16 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
         '</div>' +
         '<div class="filter-row">' +
             '<div class="filter-group">' +
-                '<label>' + f.price + '</label>' +
-                '<select id="filterPrice"><option value="all">' + f.allPrices + '</option><option value="0-15">' + f.under15 + '</option><option value="15-25">' + f.f1525 + '</option><option value="25-40">' + f.f2540 + '</option><option value="40+">' + f.over40 + '</option></select>' +
+                '<label for="filterPrice">' + f.price + '</label>' +
+                '<select id="filterPrice" aria-label="' + f.price + '"><option value="all">' + f.allPrices + '</option><option value="0-15">' + f.under15 + '</option><option value="15-25">' + f.f1525 + '</option><option value="25-40">' + f.f2540 + '</option><option value="40+">' + f.over40 + '</option></select>' +
             '</div>' +
             '<div class="filter-group">' +
-                '<label>' + f.rating + '</label>' +
-                '<select id="filterRating"><option value="0">' + f.allRatings + '</option><option value="4.5">4.5+ \u2605</option><option value="4.7">4.7+ \u2605</option><option value="4.8">4.8+ \u2605</option><option value="4.9">4.9+ \u2605</option></select>' +
+                '<label for="filterRating">' + f.rating + '</label>' +
+                '<select id="filterRating" aria-label="' + f.rating + '"><option value="0">' + f.allRatings + '</option><option value="4.5">4.5+ \u2605</option><option value="4.7">4.7+ \u2605</option><option value="4.8">4.8+ \u2605</option><option value="4.9">4.9+ \u2605</option></select>' +
             '</div>' +
             '<div class="filter-group">' +
-                '<label>' + f.concern + '</label>' +
-                '<select id="filterConcern"><option value="all">' + f.allConcerns + '</option>' +
+                '<label for="filterConcern">' + f.concern + '</label>' +
+                '<select id="filterConcern" aria-label="' + f.concern + '"><option value="all">' + f.allConcerns + '</option>' +
                     '<option value="acne">' + cl.acne + '</option>' +
                     '<option value="aging">' + cl.aging + '</option>' +
                     '<option value="glow">' + cl.glow + '</option>' +
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 '</select>' +
             '</div>' +
             '<div class="filter-group">' +
-                '<label>' + f.sort + '</label>' +
-                '<select id="filterSort"><option value="popular">' + f.popular + '</option><option value="price-asc">' + f.priceAsc + '</option><option value="price-desc">' + f.priceDesc + '</option><option value="rating">' + f.bestRating + '</option><option value="reviews">' + f.mostReviews + '</option><option value="new">' + f.newest + '</option></select>' +
+                '<label for="filterSort">' + f.sort + '</label>' +
+                '<select id="filterSort" aria-label="' + f.sort + '"><option value="popular">' + f.popular + '</option><option value="price-asc">' + f.priceAsc + '</option><option value="price-desc">' + f.priceDesc + '</option><option value="rating">' + f.bestRating + '</option><option value="reviews">' + f.mostReviews + '</option><option value="new">' + f.newest + '</option></select>' +
             '</div>' +
         '</div>';
     }

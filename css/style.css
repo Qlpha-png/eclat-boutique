@@ -841,7 +841,7 @@ input { font-family: inherit; }
 }
 
 .badge-best {
-    background: #9a7a50;
+    background: var(--color-secondary-text);
     color: var(--color-white);
 }
 
