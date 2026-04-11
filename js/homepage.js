@@ -384,24 +384,67 @@
         if (homme.length >= 4) createCarousel('carouselHomme', homme);
     }
 
-    // --- Search Bar in Navbar ---
+    // --- Search Overlay in Navbar ---
     function initSearchBar() {
         var navContainer = document.querySelector('.nav-container');
-        if (!navContainer || document.getElementById('navSearchBar')) return;
+        if (!navContainer || document.getElementById('navSearchToggle')) return;
 
-        // Insert search bar after nav-links
-        var navLinks = navContainer.querySelector('.nav-links');
-        if (!navLinks) return;
+        var navActions = navContainer.querySelector('.nav-actions');
+        if (!navActions) return;
 
-        var searchHTML = '<div id="navSearchBar" class="nav-search" style="flex:1;max-width:480px;margin:0 16px;position:relative;">';
-        searchHTML += '<input type="search" id="navSearchInput" placeholder="Rechercher un produit..." style="width:100%;padding:11px 48px 11px 18px;border:1.5px solid var(--color-border);border-radius:var(--radius-xl);font-size:.88rem;font-family:var(--font-body);background:var(--color-bg-alt);transition:all .3s;outline:none;" onfocus="this.style.borderColor=\'var(--color-secondary)\';this.style.boxShadow=\'0 0 0 3px rgba(201,168,124,.12)\'" onblur="this.style.borderColor=\'\';this.style.boxShadow=\'\'">';
-        searchHTML += '<button onclick="executeNavSearch()" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--color-secondary);border:none;border-radius:50%;cursor:pointer;color:var(--color-white,#fff);transition:all .2s;" onmouseover="this.style.background=\'var(--color-primary)\'" onmouseout="this.style.background=\'var(--color-secondary)\'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>';
-        searchHTML += '<div id="navSearchResults" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-white,#fff);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-top:4px;max-height:320px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1000;"></div>';
-        searchHTML += '</div>';
+        // 1. Search icon button in nav-actions (before first child)
+        var toggleBtn = document.createElement('button');
+        toggleBtn.id = 'navSearchToggle';
+        toggleBtn.className = 'cart-btn';
+        toggleBtn.setAttribute('aria-label', 'Rechercher');
+        toggleBtn.style.cssText = 'background:var(--color-secondary);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;color:#fff;transition:all .2s;border:none;cursor:pointer;';
+        toggleBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+        navActions.insertBefore(toggleBtn, navActions.firstChild);
 
-        navLinks.insertAdjacentHTML('afterend', searchHTML);
+        // 2. Full-width search overlay (hidden by default)
+        var overlay = document.createElement('div');
+        overlay.id = 'navSearchBar';
+        overlay.style.cssText = 'display:none;position:absolute;top:0;left:0;right:0;height:70px;background:rgba(250,248,245,.98);backdrop-filter:blur(20px);z-index:1100;padding:0 24px;';
+        overlay.innerHTML =
+            '<div style="max-width:800px;margin:0 auto;height:100%;display:flex;align-items:center;gap:12px;">' +
+                '<input type="search" id="navSearchInput" placeholder="Rechercher un produit, un ingr\u00e9dient, une routine..." style="flex:1;padding:12px 20px;border:2px solid var(--color-secondary);border-radius:var(--radius-xl);font-size:1rem;font-family:var(--font-body);background:var(--color-white);outline:none;box-shadow:0 0 0 4px rgba(201,168,124,.12);">' +
+                '<button id="navSearchSubmit" style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--color-secondary);border:none;border-radius:50%;cursor:pointer;color:#fff;flex-shrink:0;transition:all .2s;" onmouseover="this.style.background=\'var(--color-primary)\'" onmouseout="this.style.background=\'var(--color-secondary)\'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>' +
+                '<button id="navSearchClose" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--color-border);border-radius:50%;cursor:pointer;color:var(--color-text-light);flex-shrink:0;font-size:1.1rem;transition:all .2s;" onmouseover="this.style.borderColor=\'var(--color-secondary)\'" onmouseout="this.style.borderColor=\'var(--color-border)\'">\u2715</button>' +
+            '</div>' +
+            '<div id="navSearchResults" style="display:none;position:absolute;top:70px;left:50%;transform:translateX(-50%);width:100%;max-width:800px;background:var(--color-white,#fff);border:1px solid var(--color-border);border-radius:0 0 var(--radius-md) var(--radius-md);max-height:360px;overflow-y:auto;box-shadow:var(--shadow-lg);z-index:1100;"></div>';
 
-        // Live search
+        // Insert overlay inside navbar (position:relative)
+        var navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.position = 'relative';
+            navbar.appendChild(overlay);
+        }
+
+        // 3. Toggle behavior
+        var isOpen = false;
+        function openSearch() {
+            overlay.style.display = 'block';
+            isOpen = true;
+            setTimeout(function() {
+                document.getElementById('navSearchInput').focus();
+            }, 50);
+        }
+        function closeSearch() {
+            overlay.style.display = 'none';
+            isOpen = false;
+            var resultsDiv = document.getElementById('navSearchResults');
+            if (resultsDiv) resultsDiv.style.display = 'none';
+            document.getElementById('navSearchInput').value = '';
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isOpen) closeSearch(); else openSearch();
+        });
+        document.getElementById('navSearchClose').addEventListener('click', closeSearch);
+        document.getElementById('navSearchSubmit').addEventListener('click', function() { executeNavSearch(); });
+
+        // 4. Live search
         var input = document.getElementById('navSearchInput');
         var resultsDiv = document.getElementById('navSearchResults');
         var debounceTimer = null;
@@ -419,16 +462,14 @@
         });
 
         input.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                executeNavSearch();
-            }
+            if (e.key === 'Enter') { e.preventDefault(); executeNavSearch(); }
+            if (e.key === 'Escape') { closeSearch(); }
         });
 
         // Close on click outside
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('#navSearchBar')) {
-                resultsDiv.style.display = 'none';
+            if (isOpen && !e.target.closest('#navSearchBar') && !e.target.closest('#navSearchToggle')) {
+                closeSearch();
             }
         });
     }
