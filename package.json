@@ -2,9 +2,16 @@
   "name": "eclat-boutique",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "node scripts/minify.js"
+  },
   "dependencies": {
-    "stripe": "^14.0.0",
     "@supabase/supabase-js": "^2.45.0",
+    "stripe": "^14.0.0",
     "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "terser": "^5.46.1"
   }
 }

@@ -1,4 +1,5 @@
 {
+    "buildCommand": "npm run build",
     "outputDirectory": ".",
     "crons": [
         { "path": "/api/email-sequence", "schedule": "0 */1 * * *" },
