@@ -111,15 +111,22 @@ input { font-family: inherit; }
 
 .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.nav-links li {
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-text-light);
     transition: var(--transition);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {

@@ -142,6 +142,27 @@
             accessoire: 'Accessoires'
         };
         var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+
+        // Origine / provenance produit
+        var originMap = {
+            1: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Technologie LED, fabriqu\u00e9 en Asie', country: 'CN' },
+            2: { flag: '\uD83C\uDDE7\uD83C\uDDF7', text: 'Quartz rose naturel, pierre du Br\u00e9sil', country: 'BR' },
+            3: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Technologie ultrasonique, fabriqu\u00e9 en Asie', country: 'CN' },
+            4: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Silicone hypoallerg\u00e9nique, fabriqu\u00e9 en Asie', country: 'CN' },
+            5: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Acier inoxydable m\u00e9dical, fabriqu\u00e9 en Asie', country: 'CN' },
+            6: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Technologie EMS, fabriqu\u00e9 en Asie', country: 'CN' },
+            7: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'C\u00e9ramique pi\u00e9zo\u00e9lectrique, fabriqu\u00e9 en Asie', country: 'CN' },
+            8: { flag: '\uD83C\uDDEB\uD83C\uDDF7', text: 'Formule Vitamine C stabilis\u00e9e, fabriqu\u00e9 en Asie', country: 'CN' },
+            9: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Inspir\u00e9 K-beauty, collag\u00e8ne + or 24K', country: 'KR' },
+            10: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Inspir\u00e9 K-beauty, collag\u00e8ne bio-actif', country: 'KR' },
+            11: { flag: '\uD83C\uDDE8\uD83C\uDDF1', text: 'Huile de rose musqu\u00e9e, origine Chili', country: 'CL' },
+            12: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Micro-aiguilles acide hyaluronique, fabriqu\u00e9 en Asie', country: 'CN' },
+            13: { flag: '\uD83C\uDDEF\uD83C\uDDF5', text: 'Chaleur naturelle, parfum lavande', country: 'CN' },
+            14: { flag: '\uD83C\uDDF0\uD83C\uDDF7', text: 'Verre borosilicate, diffusion ultrasonique', country: 'CN' },
+            15: { flag: '\uD83C\uDDEB\uD83C\uDDF7', text: 'Satin anti-frizz, mousse m\u00e9moire de forme', country: 'CN' }
+        };
+        var defaultOrigin = { flag: '\uD83C\uDDEB\uD83C\uDDF7', text: 'S\u00e9lectionn\u00e9 par \u00c9CLAT', country: 'CN' };
+
         var guideMap = {
             1:'led', 2:'guasha', 3:'ultrasons', 4:'ultrasons', 5:'cryo',
             6:'ems', 7:'led', 8:'vitc', 9:'collagene', 10:'collagene',
@@ -194,6 +215,7 @@
                     "url": "https://maison-eclat.shop"
                 },
                 "category": catLabels[product.category] || product.category,
+                "countryOfOrigin": (originMap[product.id] || defaultOrigin).country,
                 "offers": {
                     "@type": "Offer",
                     "price": product.price.toFixed(2),
@@ -335,9 +357,12 @@
                 howToHTML = '<div class="pp-section"><h2>Mode d\'emploi</h2><div class="pp-howto">' + escapeHTML(displayHowTo) + '</div></div>';
             }
 
+            var prodOrigin = originMap[product.id] || defaultOrigin;
+
             document.getElementById('ppInfo').innerHTML =
                 '<div class="pp-category">' + escapeHTML(pCatLabel) + '</div>' +
                 '<h1 class="pp-name">' + escapeHTML(pName) + '</h1>' +
+                '<div style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--color-text-light);margin:-8px 0 4px;"><span>' + prodOrigin.flag + '</span> <span>' + escapeHTML(prodOrigin.text) + '</span></div>' +
                 (product.reviews > 0 ? '<div class="pp-rating">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5 (' + product.reviews + ' avis)</span></div>' : '<div class="pp-rating" style="font-size:0.9rem;color:var(--color-text-light);">Aucun avis &mdash; <a href="#ppReviews" style="color:var(--color-secondary);text-decoration:underline;">Soyez le premier !</a></div>') +
                 (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: pName + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +

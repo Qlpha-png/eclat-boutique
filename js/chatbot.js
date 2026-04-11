@@ -5,6 +5,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── Sécurité XSS ──
+    function escapeHTML(str) {
+        if (typeof str !== 'string') return '';
+        var d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
     // ── Mode IA : activé si utilisateur connecté avec palier >= Lumière ──
     var aiMode = false;
     var aiHistory = [];
@@ -400,16 +408,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function sanitizeChatHtml(str) {
-        // Allow only safe tags: b, i, em, strong, br, a (with href sanitization)
-        var div = document.createElement('div');
-        div.textContent = str;
-        var safe = div.innerHTML;
-        // Re-enable only safe formatting tags
-        safe = safe.replace(/&lt;(\/?(b|i|em|strong|br)\s*\/?)&gt;/gi, '<$1>');
-        // Re-enable links but only with https
-        safe = safe.replace(/&lt;a href=&quot;(https:\/\/[^&"]+)&quot;&gt;/gi, '<a href="$1" target="_blank" rel="noopener noreferrer">');
-        safe = safe.replace(/&lt;\/a&gt;/gi, '</a>');
-        return safe;
+        // DOM-based sanitizer: parse HTML, remove dangerous elements/attributes, keep safe formatting
+        var parser = new DOMParser();
+        var doc = parser.parseFromString('<div>' + str + '</div>', 'text/html');
+        var root = doc.body.firstChild;
+
+        // Remove dangerous elements
+        var dangerousTags = ['script', 'iframe', 'object', 'embed', 'form', 'input', 'textarea', 'select', 'link', 'meta', 'base', 'svg', 'math'];
+        dangerousTags.forEach(function(tag) {
+            var els = root.querySelectorAll(tag);
+            for (var i = 0; i < els.length; i++) els[i].remove();
+        });
+
+        // Remove dangerous attributes from all elements
+        var allEls = root.querySelectorAll('*');
+        for (var i = 0; i < allEls.length; i++) {
+            var el = allEls[i];
+            var attrs = Array.from(el.attributes);
+            for (var j = 0; j < attrs.length; j++) {
+                var name = attrs[j].name.toLowerCase();
+                // Remove event handlers and dangerous attributes
+                if (name.startsWith('on') || name === 'srcdoc' || name === 'formaction') {
+                    el.removeAttribute(attrs[j].name);
+                }
+                // Sanitize href/src — only allow https and relative
+                if (name === 'href' || name === 'src') {
+                    var val = (attrs[j].value || '').trim().toLowerCase();
+                    if (val.startsWith('javascript:') || val.startsWith('data:') || val.startsWith('vbscript:')) {
+                        el.removeAttribute(attrs[j].name);
+                    }
+                }
+            }
+            // Force external links to open safely
+            if (el.tagName === 'A' && el.getAttribute('href')) {
+                el.setAttribute('target', '_blank');
+                el.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+
+        return root.innerHTML;
     }
 
     function addMessage(text, sender) {
@@ -511,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 aiUsage = data.usage;
                 const tierBadge = document.getElementById('chatTierBadge');
                 if (tierBadge) {
-                    tierBadge.innerHTML = '\u2728 ' + data.tier + ' &bull; ' + data.usage.used + '/' + data.usage.limit + ' msg';
+                    tierBadge.innerHTML = '\u2728 ' + escapeHTML(String(data.tier)) + ' &bull; ' + parseInt(data.usage.used) + '/' + parseInt(data.usage.limit) + ' msg';
                 }
             }
 

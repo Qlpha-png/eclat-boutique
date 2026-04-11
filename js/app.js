@@ -186,8 +186,10 @@ document.addEventListener('DOMContentLoaded', function() {
             loadMoreDiv.className = 'load-more-container';
             loadMoreDiv.style.cssText = 'grid-column:1/-1;text-align:center;padding:32px 0;';
             var showCount = Math.min(PRODUCTS_PER_PAGE, remaining);
+            var loadMoreLabel = t('load_more');
+            if (loadMoreLabel === 'load_more') loadMoreLabel = 'Voir plus';
             loadMoreDiv.innerHTML = '<button class="btn btn-outline load-more-btn" id="loadMoreBtn">' +
-                t('load_more') || ('Voir plus (' + remaining + ' restants)') +
+                loadMoreLabel + ' (' + remaining + ' restants)' +
                 '</button>' +
                 '<p style="font-size:.8rem;color:var(--color-text-light);margin-top:8px;">' + countText + '</p>';
             productsGrid.appendChild(loadMoreDiv);
