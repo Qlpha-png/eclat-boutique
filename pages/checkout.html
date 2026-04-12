@@ -61,6 +61,8 @@
             </div>
         </div>
 
+        <div class="checkout-error" id="checkoutError" style="display:none;background:#fef2f2;color:#dc2626;padding:12px 16px;border-radius:8px;font-size:0.9rem;margin-bottom:16px;border:1px solid #fca5a5;" role="alert" aria-live="assertive"></div>
+
         <h1 data-i18n="checkout_title">Finaliser ma commande</h1>
 
         <!-- Order Summary -->
@@ -275,11 +277,15 @@
 
             // CGV acceptance validation
             const cgvCheckbox = document.getElementById('acceptCGV');
+            const checkoutError = document.getElementById('checkoutError');
             if (!cgvCheckbox.checked) {
-                alert('Veuillez accepter les conditions g\u00e9n\u00e9rales de vente pour continuer.');
+                checkoutError.textContent = 'Veuillez accepter les conditions g\u00e9n\u00e9rales de vente pour continuer.';
+                checkoutError.style.display = 'block';
+                checkoutError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 cgvCheckbox.focus();
                 return;
             }
+            checkoutError.style.display = 'none';
 
             const payBtn = document.getElementById('payBtn');
             payBtn.disabled = true;
@@ -319,7 +325,10 @@
                 }
             } catch (error) {
                 console.error('[checkout]', error.message);
-                alert(t('checkout_error_prefix') + '\n\n' + t('checkout_error_stripe'));
+                const checkoutError = document.getElementById('checkoutError');
+                checkoutError.textContent = t('checkout_error_prefix') + ' ' + t('checkout_error_stripe');
+                checkoutError.style.display = 'block';
+                checkoutError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 payBtn.disabled = false;
                 payBtn.innerHTML = '&#128274; <span data-i18n="checkout_pay">' + t('checkout_pay') + '</span>';
             }

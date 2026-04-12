@@ -192,10 +192,15 @@
             if (res.error) {
                 errorEl.textContent = res.error.message || t.err_generic;
                 errorEl.style.display = 'block';
+                document.getElementById('email').setAttribute('aria-invalid', 'true');
+                document.getElementById('password').setAttribute('aria-invalid', 'true');
                 btn.disabled = false;
                 btn.textContent = t.btn_register;
                 return;
             }
+
+            document.getElementById('email').setAttribute('aria-invalid', 'false');
+            document.getElementById('password').setAttribute('aria-invalid', 'false');
 
             // Supabase envoie un email de confirmation
             if (res.data.user && !res.data.session) {

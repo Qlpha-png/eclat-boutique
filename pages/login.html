@@ -164,11 +164,15 @@
             if (res.error) {
                 errorEl.textContent = t.err_invalid;
                 errorEl.style.display = 'block';
+                document.getElementById('email').setAttribute('aria-invalid', 'true');
+                document.getElementById('password').setAttribute('aria-invalid', 'true');
                 btn.disabled = false;
                 btn.textContent = t.btn_login;
                 return;
             }
 
+            document.getElementById('email').setAttribute('aria-invalid', 'false');
+            document.getElementById('password').setAttribute('aria-invalid', 'false');
             var redirect = safeRedirect(new URLSearchParams(window.location.search).get('redirect'));
             window.location.href = redirect;
         });

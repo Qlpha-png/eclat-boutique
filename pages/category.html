@@ -77,19 +77,24 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/" class="logo">&Eacute;CLAT</a>
-            <div class="nav-links" id="navLinks">
-                <a href="/">Accueil</a>
-                <a href="/#products">Boutique</a>
-                <a href="/pages/diagnostic.html">Diagnostic</a>
-                <a href="/pages/blog.html">Blog</a>
-                <a href="/pages/contact.html">Contact</a>
-            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#produits">Produits</a></li>
+                <li><a href="../index.html#packs">Coffrets</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="guide-beaute.html">Guide Beauté</a></li>
+                <li><a href="a-propos.html">À propos</a></li>
+                <li><a href="account.html">Mon compte</a></li>
+            </ul>
             <div class="nav-actions">
-                <a href="/pages/account.html" class="cart-btn" title="Mon compte">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <a href="account.html#eclats" id="navLoyaltyWidget" class="loyalty-widget loyalty-widget--hidden" aria-label="Mes Éclats">
+                    <span class="lw-eclats" id="lwEclats">0</span>
+                    <span class="lw-label">Éclats</span>
                 </a>
-                <a href="/pages/wishlist.html" class="cart-btn" title="Wishlist" style="position:relative;">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                <a href="wishlist.html" class="cart-btn cart-btn--relative" aria-label="Favoris">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                    </svg>
                 </a>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
