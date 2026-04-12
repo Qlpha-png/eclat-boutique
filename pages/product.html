@@ -20,6 +20,10 @@
     <meta name="twitter:image" id="twImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
     <link rel="canonical" id="canonicalLink" href="https://maison-eclat.shop/pages/product.html">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="Maison Éclat">
+    <meta name="geo.region" content="FR">
+    <meta name="geo.placename" content="France">
+    <meta name="language" content="French">
 
     <!-- Hreflang: International SEO (dynamic for product pages) -->
     <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/product.html">
@@ -28,9 +32,10 @@
     <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/product.html?lang=de">
     <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/product.html">
     <link rel="preconnect" href="https://cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
-    <link rel="preconnect" href="https://oss-cf.cjdropshipping.com">
     <noscript>
     </noscript>
     <link rel="stylesheet" href="../css/style.css?v=23">
@@ -431,7 +436,7 @@
 
             // Render image
             document.getElementById('ppImage').innerHTML =
-                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="500" height="500" referrerpolicy="no-referrer">';
+                '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + ' - soin beaut\u00e9 Maison \u00c9clat" width="500" height="500" fetchpriority="high" referrerpolicy="no-referrer">';
 
             // Render info
             var guide = guideMap[product.id];
@@ -721,7 +726,7 @@
                     if (r.photos && r.photos.length > 0) {
                         html += '<div style="display:flex;gap:8px;margin-top:10px;">';
                         for (var p = 0; p < r.photos.length; p++) {
-                            html += '<img src="' + escapeHTML(r.photos[p]) + '" alt="Photo avis client" width="64" height="64" loading="lazy" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border);cursor:pointer;" onclick="window.open(this.src)">';
+                            html += '<img src="' + escapeHTML(r.photos[p]) + '" alt="Photo avis client pour ' + escapeHTML(pName) + '" width="64" height="64" loading="lazy" style="width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border);cursor:pointer;" onclick="window.open(this.src)">';
                         }
                         html += '</div>';
                     }
