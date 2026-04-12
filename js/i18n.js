@@ -16,6 +16,7 @@ const TRANSLATIONS = {
         nav_packs: 'Coffrets',
         nav_guarantees: 'Garanties',
         nav_about: '\u00c0 propos',
+        nav_diagnostic: 'Diagnostic',
         nav_account: 'Mon compte',
 
         // Hero
@@ -489,14 +490,15 @@ function applyTranslations() {
         // Top banner
         '.top-banner p': 'banner_text',
 
-        // Nav links (7 items: Produits, Coffrets, Garanties, Blog, Guide, À propos, Mon compte)
+        // Nav links (8 items: Produits, Coffrets, Garanties, Blog, Diagnostic, Guide, À propos, Mon compte)
         '.nav-links li:nth-child(1) a': 'nav_products',
         '.nav-links li:nth-child(2) a': 'nav_packs',
         '.nav-links li:nth-child(3) a': 'nav_guarantees',
         '.nav-links li:nth-child(4) a': 'nav_blog',
-        '.nav-links li:nth-child(5) a': 'nav_guide',
-        '.nav-links li:nth-child(6) a': 'nav_about',
-        '.nav-links li:nth-child(7) a': 'nav_account',
+        '.nav-links li:nth-child(5) a': 'nav_diagnostic',
+        '.nav-links li:nth-child(6) a': 'nav_guide',
+        '.nav-links li:nth-child(7) a': 'nav_about',
+        '.nav-links li:nth-child(8) a': 'nav_account',
 
         // Hero — TOUT
         '.hero-tag': 'hero_tag',

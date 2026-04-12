@@ -115,8 +115,8 @@
             setTimeout(function() { bar.remove(); }, 500);
         });
 
-        // ── FOMO : Promo avec compte à rebours ──
-        showFomoIfApplicable(eclats);
+        // ── FOMO : Disabled (Kevin 2026-04-12) ──
+        // showFomoIfApplicable(eclats);
     }
 
     function showFomoIfApplicable(eclats) {

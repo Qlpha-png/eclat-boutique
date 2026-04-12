@@ -19,93 +19,129 @@
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
-    <meta name="description" content="Test de peau gratuit en 60 secondes. D&eacute;couvrez votre type de peau et recevez une routine skincare personnalis&eacute;e. Par &Eacute;CLAT.">
-    <meta name="keywords" content="diagnostic beaut&eacute;, test type de peau, routine skincare personnalis&eacute;e, analyse peau gratuit, quel soin pour ma peau">
-    <title>Diagnostic Beaut&eacute; Gratuit | Skincare Personnalis&eacute; &mdash; &Eacute;CLAT</title>
-    <meta property="og:title" content="Diagnostic Beauté Gratuit | Routine Skincare Personnalisée — ÉCLAT">
-    <meta property="og:description" content="Test de peau gratuit en 60 secondes. Découvrez votre type de peau et recevez une routine skincare personnalisée.">
+    <meta name="description" content="Diagnostic beaut&eacute; complet et gratuit. 24 questions, analyse IA personnalis&eacute;e, routine matin et soir sur mesure. Par Maison &Eacute;clat.">
+    <meta name="keywords" content="diagnostic beaut&eacute;, test type de peau, routine skincare personnalis&eacute;e, analyse peau IA, quel soin pour ma peau, diagnostic peau complet">
+    <title>Diagnostic Beaut&eacute; Complet | Analyse IA Personnalis&eacute;e &mdash; Maison &Eacute;clat</title>
+    <meta property="og:title" content="Diagnostic Beauté Complet | Analyse IA Personnalisée — Maison Éclat">
+    <meta property="og:description" content="24 questions, 5 minutes. Recevez votre diagnostic complet et votre routine personnalisée matin + soir.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://maison-eclat.shop/pages/diagnostic.html">
     <meta property="og:image" content="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=80">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Diagnostic Beauté Gratuit | Routine Skincare Personnalisée — ÉCLAT">
-    <meta name="twitter:description" content="Test de peau gratuit en 60 secondes. Découvrez votre type de peau et recevez une routine personnalisée.">
+    <meta name="twitter:title" content="Diagnostic Beauté Complet | Analyse IA — Maison Éclat">
+    <meta name="twitter:description" content="24 questions, analyse IA personnalisée, routine sur mesure matin + soir.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=80">
     <link rel="canonical" href="https://maison-eclat.shop/pages/diagnostic.html">
     <link rel="alternate" hreflang="fr" href="https://maison-eclat.shop/pages/diagnostic.html">
     <link rel="alternate" hreflang="en" href="https://maison-eclat.shop/pages/diagnostic.html?lang=en">
-    <link rel="alternate" hreflang="es" href="https://maison-eclat.shop/pages/diagnostic.html?lang=es">
-    <link rel="alternate" hreflang="de" href="https://maison-eclat.shop/pages/diagnostic.html?lang=de">
     <link rel="alternate" hreflang="x-default" href="https://maison-eclat.shop/pages/diagnostic.html">
     <link rel="preconnect" href="https://cf.cjdropshipping.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
     <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <noscript>
-    </noscript>
-    <link rel="stylesheet" href="../css/style.css?v=23">
+    <link rel="stylesheet" href="../css/style.css?v=24">
     <link rel="stylesheet" href="../css/themes.css?v=3">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
-        .diag-page { max-width:640px; margin:0 auto; padding:40px 24px 80px; min-height:100vh; }
-        .diag-header { text-align:center; margin-bottom:40px; }
-        .diag-header h1 { font-family:var(--font-display); font-size:2.2rem; margin-bottom:8px; }
-        .diag-header p { color:var(--color-text-light); }
+        .diag-page{max-width:680px;margin:0 auto;padding:40px 24px 80px;min-height:100vh}
+        .diag-hero{text-align:center;margin-bottom:40px}
+        .diag-hero h1{font-family:var(--font-display);font-size:2.2rem;margin-bottom:8px}
+        .diag-hero p{color:var(--color-text-light);max-width:500px;margin:0 auto;line-height:1.6}
+        .diag-hero .diag-stats{display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap}
+        .diag-hero .diag-stat{font-size:.8rem;color:var(--color-text-light);display:flex;align-items:center;gap:6px}
 
-        .diag-progress { display:flex; gap:6px; margin-bottom:32px; }
-        .diag-progress .bar { flex:1; height:4px; border-radius:2px; background:var(--color-border); transition:all 0.4s; }
-        .diag-progress .bar.active { background:var(--color-secondary); }
+        /* Progress */
+        .diag-progress-wrap{margin-bottom:32px}
+        .diag-progress-bar{display:flex;gap:4px;margin-bottom:8px}
+        .diag-progress-bar .seg{flex:1;height:4px;border-radius:2px;background:var(--color-border);transition:background .4s}
+        .diag-progress-bar .seg.done{background:var(--color-secondary)}
+        .diag-progress-bar .seg.active{background:var(--color-secondary);opacity:.6}
+        .diag-progress-info{display:flex;justify-content:space-between;font-size:.78rem;color:var(--color-text-light)}
+        .diag-section-label{font-weight:600;color:var(--color-secondary-text)}
 
-        .diag-step { display:none; animation:fadeUp 0.4s ease; }
-        .diag-step.active { display:block; }
+        /* Steps */
+        .diag-step{display:none;animation:diagFadeUp .4s ease}
+        .diag-step.active{display:block}
+        @keyframes diagFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-        @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+        .diag-q{font-family:var(--font-display);font-size:1.3rem;margin-bottom:6px;text-align:center}
+        .diag-q-sub{font-size:.85rem;color:var(--color-text-light);text-align:center;margin-bottom:24px}
+        .diag-section-intro{text-align:center;padding:20px 0 8px}
+        .diag-section-intro .section-icon{font-size:2rem;margin-bottom:8px;display:block}
+        .diag-section-intro h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:4px}
+        .diag-section-intro p{font-size:.82rem;color:var(--color-text-light)}
 
-        .diag-question { font-family:var(--font-display); font-size:1.4rem; margin-bottom:24px; text-align:center; }
+        /* Options */
+        .diag-opts{display:flex;flex-direction:column;gap:10px}
+        .diag-opt{padding:16px 20px;border:2px solid var(--color-border);border-radius:var(--radius-md);cursor:pointer;transition:all .2s;font-size:.92rem;text-align:left;display:flex;align-items:center;gap:14px;background:var(--color-white)}
+        .diag-opt:hover{border-color:var(--color-secondary);transform:translateX(4px)}
+        .diag-opt.selected{border-color:var(--color-secondary);background:rgba(201,168,124,.08)}
+        .diag-opt .oi{font-size:1.4rem;flex-shrink:0}
+        .diag-opt strong{display:block;margin-bottom:2px}
+        .diag-opt small{color:var(--color-text-light);font-size:.8rem}
 
-        .diag-options { display:flex; flex-direction:column; gap:12px; }
-        .diag-option {
-            padding:18px 24px; border:2px solid var(--color-border); border-radius:var(--radius-md);
-            cursor:pointer; transition:var(--transition); font-size:0.95rem; text-align:left;
-            display:flex; align-items:center; gap:14px; background:var(--color-white);
+        /* Multi-select */
+        .diag-opts--multi .diag-opt{position:relative}
+        .diag-opts--multi .diag-opt::after{content:'';position:absolute;right:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;border:2px solid var(--color-border);border-radius:4px;transition:all .2s}
+        .diag-opts--multi .diag-opt.selected::after{background:var(--color-secondary);border-color:var(--color-secondary)}
+        .diag-opts--multi .diag-opt.selected::before{content:'\2713';position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--color-white);font-size:.7rem;font-weight:700;z-index:1}
+        .diag-multi-next{display:block;width:100%;margin-top:16px;padding:14px;background:var(--color-primary);color:var(--color-white);border:none;border-radius:var(--radius-xl);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .2s}
+        .diag-multi-next:hover{background:var(--color-secondary)}
+        .diag-multi-next:disabled{opacity:.4;cursor:default}
+
+        /* Navigation */
+        .diag-nav{display:flex;justify-content:space-between;margin-top:24px}
+        .diag-back{background:none;border:none;color:var(--color-text-light);font-size:.85rem;cursor:pointer;padding:8px 0;display:flex;align-items:center;gap:4px}
+        .diag-back:hover{color:var(--color-secondary-text)}
+
+        /* Result */
+        .diag-result{display:none;animation:diagFadeUp .5s ease}
+        .diag-result.active{display:block}
+        .diag-result h2{font-family:var(--font-display);font-size:1.6rem;margin-bottom:8px;text-align:center}
+        .diag-result>p{text-align:center;color:var(--color-text-light);margin-bottom:28px}
+
+        .diag-profile{padding:24px;background:linear-gradient(135deg,rgba(201,168,124,.1),rgba(201,168,124,.03));border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:24px}
+        .diag-profile h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+        .diag-profile-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+        .diag-profile-tag{padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;background:rgba(201,168,124,.15);color:var(--color-secondary-text)}
+
+        .diag-ai-box{padding:20px 24px;background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:24px;line-height:1.7;font-size:.92rem}
+        .diag-ai-box .ai-label{font-weight:600;font-size:.8rem;color:var(--color-secondary-text);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+        .diag-ai-box .ai-label .dot{width:8px;height:8px;background:var(--color-secondary);border-radius:50%;display:inline-block}
+        .diag-ai-section{margin-bottom:16px}
+        .diag-ai-section h4{font-size:.88rem;font-weight:700;margin-bottom:6px;color:var(--color-primary)}
+        .diag-ai-section ul{padding-left:18px;margin:0}
+        .diag-ai-section li{margin-bottom:4px;font-size:.88rem;color:var(--color-text)}
+
+        .routine-block{margin-bottom:24px}
+        .routine-block h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+        .routine-step{display:flex;gap:16px;padding:16px;background:var(--color-white);border-radius:var(--radius-md);border:1px solid var(--color-border);margin-bottom:10px;align-items:center;transition:all .2s}
+        .routine-step:hover{box-shadow:var(--shadow-md);border-color:transparent}
+        .routine-step .step-num{width:32px;height:32px;background:var(--color-secondary);color:var(--color-white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+        .routine-step .step-info{flex:1}
+        .routine-step .step-name{font-weight:600;font-size:.9rem;margin-bottom:1px}
+        .routine-step .step-product{font-size:.8rem;color:var(--color-secondary-text);font-weight:600}
+        .routine-step .step-why{font-size:.78rem;color:var(--color-text-light);margin-top:2px}
+        .routine-step .step-price{font-weight:700;font-size:.95rem;color:var(--color-primary);white-space:nowrap}
+
+        .routine-total{text-align:center;padding:24px;background:linear-gradient(135deg,var(--color-primary),#1a1714);color:var(--color-white);border-radius:var(--radius-md);margin-top:24px}
+        .routine-total .total-label{font-size:.85rem;opacity:.7}
+        .routine-total .total-price{font-size:2rem;font-weight:700;margin:8px 0}
+        .routine-total .total-savings{color:var(--color-secondary);font-weight:600}
+
+        .diag-loader{text-align:center;padding:40px 16px}
+        .diag-loader .spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--color-border);border-top-color:var(--color-secondary);border-radius:50%;animation:spin .8s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .diag-loader p{font-size:.85rem;color:var(--color-text-light);margin-top:12px}
+
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+        @media(max-width:768px){
+            .diag-hero h1{font-size:1.7rem}
+            .diag-q{font-size:1.15rem}
         }
-        .diag-option:hover { border-color:var(--color-secondary); transform:translateX(4px); }
-        .diag-option.selected { border-color:var(--color-secondary); background:rgba(201,168,124,0.08); }
-        .diag-option .opt-icon { font-size:1.5rem; }
-
-        .diag-result { display:none; animation:fadeUp 0.5s ease; }
-        .diag-result.active { display:block; }
-        .diag-result h2 { font-family:var(--font-display); font-size:1.6rem; margin-bottom:16px; text-align:center; }
-        .diag-result > p { text-align:center; color:var(--color-text-light); margin-bottom:32px; }
-
-        .routine-step {
-            display:flex; gap:16px; padding:20px; background:var(--color-white);
-            border-radius:var(--radius-md); border:1px solid var(--color-border); margin-bottom:12px;
-            align-items:center; transition:var(--transition);
-        }
-        .routine-step:hover { box-shadow:var(--shadow-md); border-color:transparent; }
-        .routine-step .step-num {
-            width:36px; height:36px; background:var(--color-secondary); color:var(--color-white);
-            border-radius:50%; display:flex; align-items:center; justify-content:center;
-            font-weight:700; font-size:0.9rem; flex-shrink:0;
-        }
-        .routine-step .step-info { flex:1; }
-        .routine-step .step-name { font-weight:600; font-size:0.95rem; margin-bottom:2px; }
-        .routine-step .step-product { font-size:0.82rem; color:var(--color-secondary-text); font-weight:600; }
-        .routine-step .step-price { font-weight:700; font-size:1rem; color:var(--color-primary); white-space:nowrap; }
-
-        .routine-total {
-            text-align:center; padding:24px; background:linear-gradient(135deg, var(--color-primary), #1a1714);
-            color:var(--color-white); border-radius:var(--radius-md); margin-top:24px;
-        }
-        .routine-total .total-label { font-size:0.85rem; opacity:0.7; }
-        .routine-total .total-price { font-size:2rem; font-weight:700; margin:8px 0; }
-        .routine-total .total-savings { color:var(--color-secondary); font-weight:600; }
-        .routine-total .btn { margin-top:16px; display:inline-block; }
-        .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-        @keyframes spin { to { transform:rotate(360deg); } }
     </style>
 </head>
 <body style="background:var(--color-bg);">
@@ -113,397 +149,752 @@
     <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">ÉCLAT</a>
-            <span style="font-size:0.85rem;color:var(--color-text-light);">Diagnostic Beauté</span>
+            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <span style="font-size:.85rem;color:var(--color-text-light);">Diagnostic Beaut&eacute; Complet</span>
         </div>
     </nav>
 
-
     <main id="main-content">
     <div class="diag-page">
-        <div class="diag-header">
-            <h1>Votre routine sur-mesure</h1>
-            <p>Répondez à 4 questions, recevez votre routine personnalisée en 60 secondes.</p>
-        </div>
-
-        <div class="diag-progress" id="progress">
-            <div class="bar active"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-
-        <!-- Step 1: Skin Type -->
-        <div class="diag-step active" data-step="1">
-            <h2 class="diag-question">Quel est votre type de peau ?</h2>
-            <div class="diag-options" role="radiogroup" aria-label="Type de peau">
-                <label class="diag-option">
-                    <input type="radio" name="skinType" value="dry" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🏜️</span>
-                    <div><strong>Sèche</strong><br><small style="color:var(--color-text-light)">Tiraillements, manque de confort</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="skinType" value="oily" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">💧</span>
-                    <div><strong>Grasse</strong><br><small style="color:var(--color-text-light)">Brillance, pores dilatés</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="skinType" value="combo" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">⚖️</span>
-                    <div><strong>Mixte</strong><br><small style="color:var(--color-text-light)">Zone T grasse, joues sèches</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="skinType" value="sensitive" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🌸</span>
-                    <div><strong>Sensible</strong><br><small style="color:var(--color-text-light)">Rougeurs, réactions fréquentes</small></div>
-                </label>
+        <div class="diag-hero" id="diagHero">
+            <h1>Votre diagnostic beaut&eacute; complet</h1>
+            <p>24 questions pour comprendre votre peau en profondeur. L'IA analyse votre profil et cr&eacute;e votre routine personnalis&eacute;e matin + soir.</p>
+            <div class="diag-stats">
+                <span class="diag-stat">&#9201; ~5 minutes</span>
+                <span class="diag-stat">&#129302; Analyse IA</span>
+                <span class="diag-stat">&#127873; 100% gratuit</span>
             </div>
         </div>
 
-        <!-- Step 2: Main Concern -->
-        <div class="diag-step" data-step="2">
-            <h2 class="diag-question">Votre préoccupation principale ?</h2>
-            <div class="diag-options" role="radiogroup" aria-label="Préoccupation principale">
-                <label class="diag-option">
-                    <input type="radio" name="concern" value="acne" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🎯</span>
-                    <div><strong>Acné & imperfections</strong><br><small style="color:var(--color-text-light)">Boutons, points noirs, marques</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="concern" value="aging" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">✨</span>
-                    <div><strong>Anti-âge & fermeté</strong><br><small style="color:var(--color-text-light)">Rides, relâchement, manque d'éclat</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="concern" value="glow" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🌟</span>
-                    <div><strong>Éclat & teint uniforme</strong><br><small style="color:var(--color-text-light)">Taches, teint terne, irrégularités</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="concern" value="hydration" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">💦</span>
-                    <div><strong>Hydratation intense</strong><br><small style="color:var(--color-text-light)">Déshydratation, inconfort, tiraillements</small></div>
-                </label>
+        <div class="diag-progress-wrap" id="progressWrap">
+            <div class="diag-progress-bar" id="progressBar"></div>
+            <div class="diag-progress-info">
+                <span class="diag-section-label" id="sectionLabel"></span>
+                <span id="progressCount"></span>
             </div>
         </div>
 
-        <!-- Step 3: Budget -->
-        <div class="diag-step" data-step="3">
-            <h2 class="diag-question">Votre budget routine ?</h2>
-            <div class="diag-options" role="radiogroup" aria-label="Budget">
-                <label class="diag-option">
-                    <input type="radio" name="budget" value="low" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🪙</span>
-                    <div><strong>Petit budget</strong><br><small style="color:var(--color-text-light)">Moins de 30€</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="budget" value="medium" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">💰</span>
-                    <div><strong>Budget moyen</strong><br><small style="color:var(--color-text-light)">30€ - 60€</small></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="budget" value="high" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">💎</span>
-                    <div><strong>Je veux le meilleur</strong><br><small style="color:var(--color-text-light)">60€ et plus</small></div>
-                </label>
-            </div>
-        </div>
+        <div id="stepsContainer"></div>
 
-        <!-- Step 4: Age -->
-        <div class="diag-step" data-step="4">
-            <h2 class="diag-question">Votre tranche d'âge ?</h2>
-            <div class="diag-options" role="radiogroup" aria-label="Tranche d'âge">
-                <label class="diag-option">
-                    <input type="radio" name="age" value="18-25" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🌱</span>
-                    <div><strong>18 - 25 ans</strong></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="age" value="26-35" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🌿</span>
-                    <div><strong>26 - 35 ans</strong></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="age" value="36-45" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">🌳</span>
-                    <div><strong>36 - 45 ans</strong></div>
-                </label>
-                <label class="diag-option">
-                    <input type="radio" name="age" value="45+" class="sr-only" onchange="selectOption(this)">
-                    <span class="opt-icon" aria-hidden="true">👑</span>
-                    <div><strong>45 ans et plus</strong></div>
-                </label>
-            </div>
-        </div>
-
-        <!-- Result -->
-        <div class="diag-result" id="diagResult">
-            <h2>Votre routine personnalisée</h2>
-            <div id="aiAnalysis" style="display:none;padding:20px 24px;background:linear-gradient(135deg,rgba(201,168,124,0.08),rgba(201,168,124,0.02));border:1px solid var(--color-border);border-radius:var(--radius-md);margin-bottom:24px;line-height:1.7;font-size:0.93rem;color:var(--color-text);position:relative;">
-                <div style="font-weight:600;font-size:0.8rem;color:var(--color-secondary-text);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-                    <span style="width:8px;height:8px;background:var(--color-secondary);border-radius:50%;display:inline-block;"></span>
-                    Analyse personnalisée par IA
-                </div>
-                <div id="aiAnalysisText"></div>
-            </div>
-            <div id="aiAnalysisLoader" style="display:none;text-align:center;padding:16px;margin-bottom:16px;">
-                <div style="display:inline-block;width:24px;height:24px;border:3px solid var(--color-border);border-top-color:var(--color-secondary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-                <p style="font-size:0.82rem;color:var(--color-text-light);margin-top:8px;">Analyse de votre profil en cours...</p>
-            </div>
-            <p id="diagSummary"></p>
-            <div id="routineSteps"></div>
-            <div class="routine-total" id="routineTotal"></div>
-            <div style="text-align:center;margin-top:24px;">
-                <a href="../index.html" style="color:var(--color-secondary-text);font-size:0.9rem;">Voir tous nos produits</a>
-            </div>
-        </div>
+        <div class="diag-result" id="diagResult"></div>
     </div>
 
-    <script src="../js/products.js?v=4" defer></script>
+    <script src="../js/products.js?v=4"></script>
     <script>
-        const answers = {};
-        let currentStep = 1;
-        let recommendedIds = [];
+    (function() {
+        'use strict';
 
-        function selectOption(el) {
-            // el is the radio input inside a label.diag-option
-            const label = el.closest('.diag-option');
-            const step = el.closest('.diag-step');
-            step.querySelectorAll('.diag-option').forEach(o => o.classList.remove('selected'));
-            label.classList.add('selected');
+        // ============================
+        // QUESTIONS DATA — 24 questions, 6 sections
+        // ============================
+        var SECTIONS = [
+            { key: 'peau', label: 'Votre Peau', icon: '\u2728', desc: 'Apprenons \u00e0 conna\u00eetre votre peau' },
+            { key: 'preoccupations', label: 'Vos Pr\u00e9occupations', icon: '\uD83C\uDFAF', desc: 'Ce que vous aimeriez am\u00e9liorer' },
+            { key: 'vie', label: 'Mode de Vie', icon: '\uD83C\uDF3F', desc: 'Votre quotidien influence votre peau' },
+            { key: 'environnement', label: 'Environnement', icon: '\uD83C\uDF0D', desc: 'Votre peau face \u00e0 l\'ext\u00e9rieur' },
+            { key: 'routine', label: 'Routine Actuelle', icon: '\uD83E\uDDF4', desc: 'Ce que vous faites aujourd\'hui' },
+            { key: 'preferences', label: 'Pr\u00e9f\u00e9rences', icon: '\uD83D\uDC8E', desc: 'Vos go\u00fbts et votre budget' }
+        ];
 
-            const stepNum = parseInt(step.dataset.step);
-            answers[stepNum] = el.value;
+        var QUESTIONS = [
+            // === SECTION 1: Votre Peau (q1-q6) ===
+            { section: 0, name: 'skinType', q: 'Quel est votre type de peau\u00a0?', sub: 'Comment d\u00e9cririez-vous votre peau au quotidien\u00a0?', opts: [
+                { v: 'dry', icon: '\uD83C\uDFDC\uFE0F', label: 'S\u00e8che', desc: 'Tiraillements, manque de confort' },
+                { v: 'oily', icon: '\uD83D\uDCA7', label: 'Grasse', desc: 'Brillance, pores dilat\u00e9s' },
+                { v: 'combo', icon: '\u2696\uFE0F', label: 'Mixte', desc: 'Zone T grasse, joues s\u00e8ches' },
+                { v: 'normal', icon: '\u2705', label: 'Normale', desc: 'Equilibr\u00e9e, peu de probl\u00e8mes' },
+                { v: 'sensitive', icon: '\uD83C\uDF38', label: 'Sensible', desc: 'Rougeurs, r\u00e9actions fr\u00e9quentes' }
+            ]},
+            { section: 0, name: 'endOfDay', q: 'Comment votre peau se sent en fin de journ\u00e9e\u00a0?', opts: [
+                { v: 'tight', icon: '\uD83E\uDE9B', label: 'Elle tiraille', desc: 'S\u00e9cheresse, inconfort' },
+                { v: 'shiny', icon: '\u2728', label: 'Elle brille', desc: 'Exc\u00e8s de s\u00e9bum' },
+                { v: 'both', icon: '\u21C4', label: 'Les deux', desc: 'Zone T grasse, joues s\u00e8ches' },
+                { v: 'fine', icon: '\uD83D\uDE0A', label: 'Confortable', desc: 'Pas de probl\u00e8me particulier' }
+            ]},
+            { section: 0, name: 'pores', q: 'Comment sont vos pores\u00a0?', opts: [
+                { v: 'invisible', icon: '\uD83D\uDD0D', label: 'Quasiment invisibles', desc: 'Grain de peau fin' },
+                { v: 'tzone', icon: '\uD83D\uDC43', label: 'Visibles sur la zone T', desc: 'Nez, front, menton' },
+                { v: 'visible', icon: '\u26AB', label: 'Visibles partout', desc: 'Sur l\'ensemble du visage' },
+                { v: 'uneven', icon: '\uD83E\uDDE9', label: 'In\u00e9gaux', desc: 'Dilat\u00e9s \u00e0 certains endroits' }
+            ]},
+            { section: 0, name: 'sensitivity', q: 'Votre peau r\u00e9agit-elle facilement\u00a0?', sub: 'Rougeurs, picotements, irritations...', opts: [
+                { v: 'never', icon: '\uD83D\uDCAA', label: 'Jamais', desc: 'Tol\u00e8re tout sans probl\u00e8me' },
+                { v: 'sometimes', icon: '\uD83E\uDE79', label: 'Parfois', desc: 'Avec certains produits' },
+                { v: 'often', icon: '\u26A0\uFE0F', label: 'Souvent', desc: 'R\u00e9agit r\u00e9guli\u00e8rement' },
+                { v: 'very', icon: '\uD83D\uDED1', label: 'Tr\u00e8s r\u00e9active', desc: 'Quasi syst\u00e9matiquement' }
+            ]},
+            { section: 0, name: 'complexion', q: 'Votre carnation\u00a0?', sub: 'Aide \u00e0 adapter les recommandations SPF et \u00e9clat', opts: [
+                { v: 'very-light', icon: '\uD83E\uDD0D', label: 'Tr\u00e8s claire', desc: 'Br\u00fble facilement au soleil' },
+                { v: 'light', icon: '\uD83E\uDDE1', label: 'Claire', desc: 'Bronze l\u00e9g\u00e8rement' },
+                { v: 'medium', icon: '\uD83D\uDFE4', label: 'M\u00e9dium', desc: 'Bronze mod\u00e9r\u00e9ment' },
+                { v: 'dark', icon: '\uD83D\uDFAB', label: 'Fonc\u00e9e', desc: 'Bronze facilement' },
+                { v: 'very-dark', icon: '\u2B1B', label: 'Tr\u00e8s fonc\u00e9e', desc: 'Rarement de coups de soleil' }
+            ]},
+            { section: 0, name: 'skinIssues', q: 'Votre peau pr\u00e9sente-t-elle\u00a0?', sub: 'S\u00e9lectionnez tout ce qui s\'applique', multi: true, opts: [
+                { v: 'redness', icon: '\uD83D\uDD34', label: 'Rougeurs' },
+                { v: 'shine', icon: '\u2728', label: 'Brillance excessive' },
+                { v: 'dryness', icon: '\uD83C\uDFDC\uFE0F', label: 'Zones s\u00e8ches / desquamation' },
+                { v: 'roughness', icon: '\uD83E\uDEA8', label: 'Rugosit\u00e9 / texture in\u00e9gale' },
+                { v: 'spots', icon: '\uD83D\uDD35', label: 'Taches pigmentaires' },
+                { v: 'blackheads', icon: '\u2B24', label: 'Points noirs' },
+                { v: 'none', icon: '\u2705', label: 'Aucun de ces probl\u00e8mes' }
+            ]},
 
-            setTimeout(() => {
-                if (stepNum < 4) {
-                    step.classList.remove('active');
-                    document.querySelector(`[data-step="${stepNum + 1}"]`).classList.add('active');
-                    document.querySelectorAll('.diag-progress .bar')[stepNum].classList.add('active');
-                    currentStep = stepNum + 1;
-                } else {
-                    step.classList.remove('active');
-                    showResult();
-                }
-            }, 400);
+            // === SECTION 2: Pr\u00e9occupations (q7-q10) ===
+            { section: 1, name: 'concern1', q: 'Votre pr\u00e9occupation principale\u00a0?', sub: 'La priorit\u00e9 num\u00e9ro 1 pour votre peau', opts: [
+                { v: 'acne', icon: '\uD83C\uDFAF', label: 'Acn\u00e9 & imperfections', desc: 'Boutons, points noirs, marques' },
+                { v: 'aging', icon: '\u2728', label: 'Anti-\u00e2ge & fermet\u00e9', desc: 'Rides, rel\u00e2chement' },
+                { v: 'glow', icon: '\uD83C\uDF1F', label: '\u00c9clat & teint uniforme', desc: 'Taches, teint terne' },
+                { v: 'hydration', icon: '\uD83D\uDCA6', label: 'Hydratation intense', desc: 'D\u00e9shydratation, inconfort' },
+                { v: 'pores', icon: '\uD83D\uDD0D', label: 'Pores & texture', desc: 'Grain de peau irr\u00e9gulier' },
+                { v: 'dark-circles', icon: '\uD83D\uDC41\uFE0F', label: 'Cernes & poches', desc: 'Regard fatigu\u00e9' }
+            ]},
+            { section: 1, name: 'concern2', q: 'Votre pr\u00e9occupation secondaire\u00a0?', sub: 'Facultatif \u2014 s\u00e9lectionnez si applicable', optional: true, opts: [
+                { v: 'none', icon: '\u2796', label: 'Pas de pr\u00e9occupation secondaire' },
+                { v: 'acne', icon: '\uD83C\uDFAF', label: 'Acn\u00e9 & imperfections' },
+                { v: 'aging', icon: '\u2728', label: 'Anti-\u00e2ge & fermet\u00e9' },
+                { v: 'glow', icon: '\uD83C\uDF1F', label: '\u00c9clat & teint uniforme' },
+                { v: 'hydration', icon: '\uD83D\uDCA6', label: 'Hydratation intense' },
+                { v: 'pores', icon: '\uD83D\uDD0D', label: 'Pores & texture' },
+                { v: 'dark-circles', icon: '\uD83D\uDC41\uFE0F', label: 'Cernes & poches' },
+                { v: 'redness', icon: '\uD83D\uDD34', label: 'Rougeurs & irritations' }
+            ]},
+            { section: 1, name: 'zones', q: 'Quelle(s) zone(s) vous pr\u00e9occupent\u00a0?', sub: 'S\u00e9lectionnez tout ce qui s\'applique', multi: true, opts: [
+                { v: 'forehead', icon: '\uD83E\uDDE0', label: 'Front' },
+                { v: 'cheeks', icon: '\uD83D\uDE0A', label: 'Joues' },
+                { v: 'nose', icon: '\uD83D\uDC43', label: 'Nez' },
+                { v: 'chin', icon: '\uD83E\uDDD4', label: 'Menton' },
+                { v: 'eyes', icon: '\uD83D\uDC41\uFE0F', label: 'Contour des yeux' },
+                { v: 'neck', icon: '\uD83E\uDDCD', label: 'Cou & d\u00e9collet\u00e9' },
+                { v: 'all', icon: '\uD83D\uDE36', label: 'Visage entier' }
+            ]},
+            { section: 1, name: 'duration', q: 'Depuis combien de temps\u00a0?', sub: 'Vos pr\u00e9occupations sont...', opts: [
+                { v: 'recent', icon: '\uD83C\uDD95', label: 'R\u00e9centes', desc: 'Moins de 6 mois' },
+                { v: 'moderate', icon: '\uD83D\uDCC5', label: 'Quelques mois', desc: '6 \u00e0 12 mois' },
+                { v: 'long', icon: '\uD83D\uDCC6', label: 'Depuis longtemps', desc: '1 \u00e0 3 ans' },
+                { v: 'chronic', icon: '\u267E\uFE0F', label: 'Depuis toujours', desc: 'Plus de 3 ans' }
+            ]},
+
+            // === SECTION 3: Mode de vie (q11-q15) ===
+            { section: 2, name: 'age', q: 'Votre tranche d\'\u00e2ge\u00a0?', opts: [
+                { v: '18-25', icon: '\uD83C\uDF31', label: '18 \u2013 25 ans' },
+                { v: '26-35', icon: '\uD83C\uDF3F', label: '26 \u2013 35 ans' },
+                { v: '36-45', icon: '\uD83C\uDF33', label: '36 \u2013 45 ans' },
+                { v: '46-55', icon: '\uD83C\uDF3A', label: '46 \u2013 55 ans' },
+                { v: '55+', icon: '\uD83D\uDC51', label: '55 ans et plus' }
+            ]},
+            { section: 2, name: 'gender', q: 'Vous \u00eates\u00a0?', sub: 'Les besoins de la peau varient selon les profils hormonaux', opts: [
+                { v: 'female', icon: '\u2640\uFE0F', label: 'Femme' },
+                { v: 'male', icon: '\u2642\uFE0F', label: 'Homme' },
+                { v: 'other', icon: '\u2B50', label: 'Autre / Pr\u00e9f\u00e8re ne pas dire' }
+            ]},
+            { section: 2, name: 'sleep', q: 'Qualit\u00e9 de votre sommeil\u00a0?', sub: 'Le sommeil est le meilleur soin anti-\u00e2ge', opts: [
+                { v: 'excellent', icon: '\uD83D\uDE34', label: 'Excellent', desc: '7-9h, sommeil profond' },
+                { v: 'good', icon: '\uD83D\uDE0C', label: 'Bon', desc: 'G\u00e9n\u00e9ralement bien' },
+                { v: 'average', icon: '\uD83D\uDE10', label: 'Moyen', desc: 'R\u00e9veils fr\u00e9quents' },
+                { v: 'poor', icon: '\uD83D\uDE29', label: 'Mauvais', desc: 'Insomnies, fatigue chronique' }
+            ]},
+            { section: 2, name: 'stress', q: 'Votre niveau de stress\u00a0?', sub: 'Le stress acc\u00e9l\u00e8re le vieillissement cutan\u00e9', opts: [
+                { v: 'low', icon: '\uD83E\uDDD8', label: 'Faible', desc: 'Vie sereine' },
+                { v: 'moderate', icon: '\uD83D\uDE0C', label: 'Mod\u00e9r\u00e9', desc: 'Stress ponctuel' },
+                { v: 'high', icon: '\uD83D\uDE13', label: '\u00c9lev\u00e9', desc: 'Stress fr\u00e9quent' },
+                { v: 'very-high', icon: '\uD83E\uDD2F', label: 'Tr\u00e8s \u00e9lev\u00e9', desc: 'Stress permanent' }
+            ]},
+            { section: 2, name: 'water', q: 'Combien d\'eau buvez-vous par jour\u00a0?', sub: 'L\'hydratation interne se voit sur la peau', opts: [
+                { v: 'low', icon: '\uD83E\uDD64', label: 'Moins d\'1 litre' },
+                { v: 'medium', icon: '\uD83D\uDCA7', label: '1 \u00e0 2 litres' },
+                { v: 'high', icon: '\uD83C\uDFCA', label: 'Plus de 2 litres' }
+            ]},
+
+            // === SECTION 4: Environnement (q16-q18) ===
+            { section: 3, name: 'environment', q: 'O\u00f9 vivez-vous\u00a0?', sub: 'La pollution et le climat impactent votre peau', opts: [
+                { v: 'urban', icon: '\uD83C\uDFD9\uFE0F', label: 'Ville / Zone urbaine', desc: 'Pollu\u00e9e, stress environnemental' },
+                { v: 'suburban', icon: '\uD83C\uDFE1', label: 'P\u00e9riurbain', desc: 'Mixte ville-campagne' },
+                { v: 'rural', icon: '\uD83C\uDF3E', label: 'Campagne', desc: 'Air pur, peu de pollution' },
+                { v: 'coastal', icon: '\uD83C\uDFD6\uFE0F', label: 'Bord de mer', desc: 'Air salin, vent' }
+            ]},
+            { section: 3, name: 'sun', q: 'Votre exposition au soleil\u00a0?', opts: [
+                { v: 'rare', icon: '\uD83C\uDF27\uFE0F', label: 'Rarement', desc: 'Principalement en int\u00e9rieur' },
+                { v: 'moderate', icon: '\u26C5', label: 'Mod\u00e9r\u00e9e', desc: 'Trajets quotidiens' },
+                { v: 'frequent', icon: '\u2600\uFE0F', label: 'Fr\u00e9quente', desc: 'Activit\u00e9s ext\u00e9rieures r\u00e9guli\u00e8res' },
+                { v: 'very', icon: '\uD83C\uDF1E', label: 'Tr\u00e8s fr\u00e9quente', desc: 'Ext\u00e9rieur la majorit\u00e9 du temps' }
+            ]},
+            { section: 3, name: 'spf', q: 'Utilisez-vous un SPF au quotidien\u00a0?', opts: [
+                { v: 'always', icon: '\uD83D\uDEE1\uFE0F', label: 'Toujours', desc: 'Chaque matin, m\u00eame en hiver' },
+                { v: 'sometimes', icon: '\uD83E\uDD37', label: 'Parfois', desc: 'Quand j\'y pense ou en \u00e9t\u00e9' },
+                { v: 'never', icon: '\u274C', label: 'Jamais', desc: 'Je n\'en utilise pas' }
+            ]},
+
+            // === SECTION 5: Routine actuelle (q19-q21) ===
+            { section: 4, name: 'currentSteps', q: 'Combien d\'\u00e9tapes dans votre routine actuelle\u00a0?', opts: [
+                { v: 'none', icon: '\uD83D\uDE45', label: 'Aucune routine', desc: 'Je ne fais rien de sp\u00e9cial' },
+                { v: 'basic', icon: '\uD83E\uDDF4', label: 'Basique (1-2 \u00e9tapes)', desc: 'Nettoyant + cr\u00e8me' },
+                { v: 'moderate', icon: '\uD83E\uDDEA', label: 'Mod\u00e9r\u00e9e (3-4 \u00e9tapes)', desc: 'Nettoyant + s\u00e9rum + cr\u00e8me + SPF' },
+                { v: 'complete', icon: '\uD83D\uDCAB', label: 'Compl\u00e8te (5+ \u00e9tapes)', desc: 'Double nettoyage, actifs, masques...' }
+            ]},
+            { section: 4, name: 'routineTime', q: 'Combien de temps pour votre routine\u00a0?', sub: 'Soyez honn\u00eate \u2014 on adapte les recommandations \u00e0 votre r\u00e9alit\u00e9', opts: [
+                { v: '2min', icon: '\u23F1\uFE0F', label: 'Express (< 2 min)', desc: 'Le minimum vital' },
+                { v: '5min', icon: '\u231B', label: '2 \u00e0 5 minutes', desc: 'L\'essentiel efficace' },
+                { v: '10min', icon: '\uD83D\uDD54', label: '5 \u00e0 10 minutes', desc: 'Routine compl\u00e8te' },
+                { v: '10min+', icon: '\uD83E\uDDD6', label: '10 minutes +', desc: 'Rituel complet et cocooning' }
+            ]},
+            { section: 4, name: 'allergies', q: 'Avez-vous des allergies ou intol\u00e9rances\u00a0?', sub: 'S\u00e9lectionnez tout ce qui s\'applique', multi: true, opts: [
+                { v: 'none', icon: '\u2705', label: 'Aucune allergie connue' },
+                { v: 'fragrance', icon: '\uD83C\uDF3A', label: 'Parfums / fragrances' },
+                { v: 'essential-oils', icon: '\uD83E\uDED2', label: 'Huiles essentielles' },
+                { v: 'alcohol', icon: '\uD83E\uDDEA', label: 'Alcool dans les cosmetics' },
+                { v: 'silicone', icon: '\uD83E\uDDF4', label: 'Silicones' },
+                { v: 'other', icon: '\u2753', label: 'Autre' }
+            ]},
+
+            // === SECTION 6: Pr\u00e9f\u00e9rences (q22-q24) ===
+            { section: 5, name: 'texture', q: 'Quelle texture pr\u00e9f\u00e9rez-vous\u00a0?', opts: [
+                { v: 'light', icon: '\uD83D\uDCA8', label: 'L\u00e9g\u00e8re / fluide', desc: 'S\'\u00e9tale vite, z\u00e9ro r\u00e9sidu' },
+                { v: 'cream', icon: '\u2601\uFE0F', label: 'Cr\u00e9meuse', desc: 'Nourrissante et confortable' },
+                { v: 'oil', icon: '\uD83E\uDED2', label: 'Huile', desc: 'Nutrition intense' },
+                { v: 'gel', icon: '\uD83D\uDCA7', label: 'Gel / eau', desc: 'Fra\u00eecheur, l\u00e9g\u00e8ret\u00e9' },
+                { v: 'no-pref', icon: '\uD83E\uDD37', label: 'Pas de pr\u00e9f\u00e9rence' }
+            ]},
+            { section: 5, name: 'scent', q: 'Votre pr\u00e9f\u00e9rence pour les parfums\u00a0?', opts: [
+                { v: 'none', icon: '\uD83D\uDEB7', label: 'Sans parfum', desc: 'Le plus neutre possible' },
+                { v: 'light', icon: '\uD83C\uDF38', label: 'L\u00e9g\u00e8rement parfum\u00e9', desc: 'Discret et agr\u00e9able' },
+                { v: 'love', icon: '\uD83C\uDF3A', label: 'J\'adore les parfums', desc: 'Exp\u00e9rience sensorielle' },
+                { v: 'no-pref', icon: '\uD83E\uDD37', label: 'Peu importe' }
+            ]},
+            { section: 5, name: 'budget', q: 'Votre budget mensuel skincare\u00a0?', sub: 'On trouve les meilleurs produits \u00e0 chaque budget', opts: [
+                { v: 'low', icon: '\uD83E\uDE99', label: 'Petit budget', desc: 'Moins de 25\u20ac' },
+                { v: 'medium', icon: '\uD83D\uDCB0', label: 'Budget moyen', desc: '25\u20ac \u2013 50\u20ac' },
+                { v: 'high', icon: '\uD83D\uDCB8', label: 'Budget confort', desc: '50\u20ac \u2013 80\u20ac' },
+                { v: 'premium', icon: '\uD83D\uDC8E', label: 'Je veux le meilleur', desc: '80\u20ac et plus' }
+            ]}
+        ];
+
+        var TOTAL_Q = QUESTIONS.length;
+        var answers = {};
+        var currentQ = 0;
+
+        // ============================
+        // RENDER
+        // ============================
+        function buildProgressBar() {
+            var bar = document.getElementById('progressBar');
+            var html = '';
+            for (var i = 0; i < TOTAL_Q; i++) {
+                html += '<div class="seg" data-qi="' + i + '"></div>';
+            }
+            bar.innerHTML = html;
         }
 
-        // Routines basées UNIQUEMENT sur les vrais produits ÉCLAT (IDs du catalogue)
-        function showResult() {
-            const concern = answers[2];
-            const budget = answers[3];
+        function updateProgress() {
+            var segs = document.querySelectorAll('.diag-progress-bar .seg');
+            for (var i = 0; i < segs.length; i++) {
+                segs[i].className = 'seg';
+                if (i < currentQ) segs[i].classList.add('done');
+                if (i === currentQ) segs[i].classList.add('active');
+            }
+            var section = SECTIONS[QUESTIONS[currentQ].section];
+            document.getElementById('sectionLabel').textContent = section.icon + ' ' + section.label;
+            document.getElementById('progressCount').textContent = (currentQ + 1) + ' / ' + TOTAL_Q;
+        }
 
-            // Sauvegarder le diagnostic en localStorage pour product-recommendation
-            var diagData = { skinType: answers[1], concern: answers[2], budget: answers[3], age: answers[4], date: new Date().toISOString() };
+        function renderStep(qi) {
+            var q = QUESTIONS[qi];
+            var container = document.getElementById('stepsContainer');
+
+            // Show section intro if first question of a new section
+            var sectionIntro = '';
+            if (qi === 0 || QUESTIONS[qi - 1].section !== q.section) {
+                var sec = SECTIONS[q.section];
+                sectionIntro = '<div class="diag-section-intro">' +
+                    '<span class="section-icon">' + sec.icon + '</span>' +
+                    '<h3>' + sec.label + '</h3>' +
+                    '<p>' + sec.desc + '</p>' +
+                    '</div>';
+            }
+
+            var html = '<div class="diag-step active" data-qi="' + qi + '">';
+            html += sectionIntro;
+            html += '<h2 class="diag-q">' + q.q + '</h2>';
+            if (q.sub) html += '<p class="diag-q-sub">' + q.sub + '</p>';
+
+            html += '<div class="diag-opts' + (q.multi ? ' diag-opts--multi' : '') + '" data-name="' + q.name + '">';
+            for (var i = 0; i < q.opts.length; i++) {
+                var o = q.opts[i];
+                var wasSelected = false;
+                if (q.multi && answers[q.name]) {
+                    wasSelected = answers[q.name].indexOf(o.v) !== -1;
+                } else if (answers[q.name] === o.v) {
+                    wasSelected = true;
+                }
+                html += '<div class="diag-opt' + (wasSelected ? ' selected' : '') + '" data-v="' + o.v + '">';
+                html += '<span class="oi">' + o.icon + '</span>';
+                html += '<div><strong>' + o.label + '</strong>';
+                if (o.desc) html += '<br><small>' + o.desc + '</small>';
+                html += '</div></div>';
+            }
+            html += '</div>';
+
+            if (q.multi) {
+                html += '<button class="diag-multi-next" id="multiNext">Continuer</button>';
+            }
+
+            html += '<div class="diag-nav">';
+            if (qi > 0) {
+                html += '<button class="diag-back" id="backBtn">&larr; Retour</button>';
+            } else {
+                html += '<span></span>';
+            }
+            html += '</div>';
+
+            html += '</div>';
+            container.innerHTML = html;
+
+            // Bind events
+            var opts = container.querySelectorAll('.diag-opt');
+            for (var j = 0; j < opts.length; j++) {
+                opts[j].addEventListener('click', q.multi ? handleMultiClick : handleSingleClick);
+            }
+
+            if (q.multi) {
+                var nextBtn = document.getElementById('multiNext');
+                nextBtn.addEventListener('click', function() {
+                    var selected = container.querySelectorAll('.diag-opt.selected');
+                    var vals = [];
+                    for (var k = 0; k < selected.length; k++) {
+                        vals.push(selected[k].getAttribute('data-v'));
+                    }
+                    if (vals.length === 0) return;
+                    // If "none"/"all" is selected alone, just use that
+                    if (vals.indexOf('none') !== -1) vals = ['none'];
+                    if (vals.indexOf('all') !== -1) vals = ['all'];
+                    answers[q.name] = vals;
+                    goNext();
+                });
+            }
+
+            var backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    currentQ--;
+                    updateProgress();
+                    renderStep(currentQ);
+                });
+            }
+        }
+
+        function handleSingleClick(e) {
+            var opt = e.currentTarget;
+            var parent = opt.closest('.diag-opts');
+            var allOpts = parent.querySelectorAll('.diag-opt');
+            for (var i = 0; i < allOpts.length; i++) {
+                allOpts[i].classList.remove('selected');
+            }
+            opt.classList.add('selected');
+
+            var q = QUESTIONS[currentQ];
+            answers[q.name] = opt.getAttribute('data-v');
+
+            setTimeout(goNext, 350);
+        }
+
+        function handleMultiClick(e) {
+            var opt = e.currentTarget;
+            var v = opt.getAttribute('data-v');
+            var parent = opt.closest('.diag-opts');
+            var allOpts = parent.querySelectorAll('.diag-opt');
+
+            if (v === 'none' || v === 'all') {
+                // Exclusive: deselect others
+                for (var i = 0; i < allOpts.length; i++) {
+                    allOpts[i].classList.remove('selected');
+                }
+                opt.classList.add('selected');
+            } else {
+                // Deselect "none"/"all" if clicking something else
+                for (var j = 0; j < allOpts.length; j++) {
+                    var ov = allOpts[j].getAttribute('data-v');
+                    if (ov === 'none' || ov === 'all') allOpts[j].classList.remove('selected');
+                }
+                opt.classList.toggle('selected');
+            }
+        }
+
+        function goNext() {
+            if (currentQ >= TOTAL_Q - 1) {
+                showLoading();
+                return;
+            }
+            currentQ++;
+            updateProgress();
+            renderStep(currentQ);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================
+        // RESULTS
+        // ============================
+        function showLoading() {
+            document.getElementById('stepsContainer').innerHTML = '';
+            document.getElementById('progressWrap').style.display = 'none';
+
+            var result = document.getElementById('diagResult');
+            result.innerHTML = '<div class="diag-loader"><div class="spinner"></div><p>Analyse de votre profil en cours...</p><p style="font-size:.78rem;margin-top:4px;color:var(--color-text-light);">L\'IA \u00e9tudie vos 24 r\u00e9ponses</p></div>';
+            result.classList.add('active');
+
+            // Save to localStorage
+            var diagData = JSON.parse(JSON.stringify(answers));
+            diagData.date = new Date().toISOString();
             try { localStorage.setItem('eclat_diagnostic', JSON.stringify(diagData)); } catch(e) {}
 
-            // Lancer l'analyse IA en parallèle
+            // Call AI API
             fetchAIAnalysis(diagData);
-
-            const routines = {
-                acne: {
-                    summary: 'peau à imperfections qui a besoin de purification et de régulation',
-                    steps: [
-                        { id: 4, step: 'Nettoyage', why: 'Nettoyage sonique en profondeur, désincruste les pores' },
-                        { id: 3, step: 'Purification', why: 'Ultrasons pour extraire sébum et points noirs sans agresser' },
-                        { id: 8, step: 'Sérum', why: 'Vitamine C antioxydante, réduit les marques post-acné' },
-                        { id: 1, step: 'Traitement LED', why: 'Lumière bleue antibactérienne, lumière rouge cicatrisante' }
-                    ]
-                },
-                aging: {
-                    summary: 'peau mature qui a besoin de fermeté, régénération et éclat',
-                    steps: [
-                        { id: 8, step: 'Sérum', why: 'Vitamine C 20% — stimule la production de collagène' },
-                        { id: 11, step: 'Soin nuit', why: 'Huile de rose musquée — régénération cellulaire nocturne' },
-                        { id: 12, step: 'Anti-rides', why: 'Stickers lissants — corrigent les rides pendant le sommeil' },
-                        { id: 1, step: 'Traitement LED', why: 'Lumière rouge 630nm — stimulation du collagène profond' }
-                    ]
-                },
-                glow: {
-                    summary: 'peau en quête d\'éclat, d\'uniformité et de luminosité',
-                    steps: [
-                        { id: 3, step: 'Exfoliation', why: 'Scrubber ultrasonique — resurfaçage doux, teint uniforme' },
-                        { id: 8, step: 'Sérum', why: 'Vitamine C — anti-taches, boost de luminosité' },
-                        { id: 10, step: 'Masque', why: 'Collagène lifting — résultat glass skin immédiat' },
-                        { id: 2, step: 'Massage', why: 'Gua Sha quartz rose — booste la microcirculation' }
-                    ]
-                },
-                hydration: {
-                    summary: 'peau déshydratée qui a besoin de confort et de nutrition',
-                    steps: [
-                        { id: 7, step: 'Préparation', why: 'Facial steamer — ouvre les pores, optimise l\'absorption' },
-                        { id: 11, step: 'Nutrition', why: 'Huile de rose musquée — nourrit et restaure la barrière cutanée' },
-                        { id: 9, step: 'Contour yeux', why: 'Patchs collagène or 24K — hydratation intense zone fragile' },
-                        { id: 5, step: 'Drainage', why: 'Ice roller cryo — réduit poches et active la circulation' }
-                    ]
-                }
-            };
-
-            const routine = routines[concern] || routines.glow;
-            let steps = routine.steps;
-
-            // Adapter au budget
-            if (budget === 'low') steps = steps.slice(0, 2);
-            if (budget === 'medium') steps = steps.slice(0, 3);
-
-            // Résoudre les vrais produits depuis le catalogue
-            const resolved = steps.map(s => {
-                const product = PRODUCTS.find(p => p.id === s.id);
-                return product ? { ...s, product } : null;
-            }).filter(Boolean);
-
-            recommendedIds = resolved.map(r => r.product.id);
-            const total = resolved.reduce((sum, r) => sum + r.product.price, 0);
-
-            document.getElementById('diagSummary').textContent =
-                `Pour votre ${routine.summary}, voici la routine idéale :`;
-
-            document.getElementById('routineSteps').innerHTML = resolved.map((r, i) => `
-                <div class="routine-step">
-                    <div class="step-num">${i + 1}</div>
-                    <div class="step-info">
-                        <div class="step-name">${r.step}</div>
-                        <div class="step-product">${r.product.name}</div>
-                        <div style="font-size:0.78rem;color:var(--color-text-light);margin-top:2px;">${r.why}</div>
-                    </div>
-                    <div class="step-price">${r.product.price.toFixed(2).replace('.', ',')} €</div>
-                </div>
-            `).join('');
-
-            // Chercher si un coffret correspond aux produits recommandés
-            let bundleHtml = '';
-            if (typeof BUNDLES !== 'undefined') {
-                const matchedBundle = BUNDLES.find(b => {
-                    const overlap = b.productIds.filter(id => recommendedIds.includes(id));
-                    return overlap.length >= 2; // au moins 2 produits en commun
-                });
-                if (matchedBundle) {
-                    const bundleTotal = matchedBundle.price;
-                    const bundleIndividual = matchedBundle.productIds.reduce((s, id) => {
-                        const p = PRODUCTS.find(pr => pr.id === id);
-                        return s + (p ? p.price : 0);
-                    }, 0);
-                    const saving = (bundleIndividual - bundleTotal).toFixed(2).replace('.', ',');
-                    bundleHtml = `
-                        <div style="margin-top:20px;padding:16px 20px;background:#f0f7f0;border:1px solid #c8e6c9;border-radius:12px;text-align:center;">
-                            <p style="font-size:0.85rem;color:#2e7d32;margin:0 0 8px;font-weight:600;">
-                                \u2728 Astuce : le ${matchedBundle.name} contient ces produits !
-                            </p>
-                            <p style="font-size:0.82rem;color:#558b2f;margin:0 0 12px;">
-                                ${bundleTotal.toFixed(2).replace('.', ',')} \u20ac au lieu de ${bundleIndividual.toFixed(2).replace('.', ',')} \u20ac \u2014 \u00e9conomisez ${saving} \u20ac
-                            </p>
-                            <button onclick="addBundleFromDiag('${matchedBundle.key}')" class="btn btn-primary" style="background:#2e7d32;border:none;cursor:pointer;font-size:0.9rem;">
-                                Prendre le coffret \u00e0 ${bundleTotal.toFixed(2).replace('.', ',')} \u20ac
-                            </button>
-                        </div>`;
-                }
-            }
-
-            document.getElementById('routineTotal').innerHTML = `
-                <div class="total-label">Votre routine compl\u00e8te</div>
-                <div class="total-price">${total.toFixed(2).replace('.', ',')} \u20ac</div>
-                <div class="total-savings">Livraison offerte ${total >= 29 ? '\u2713 (incluse !)' : `d\u00e8s 29\u20ac (plus que ${(29 - total).toFixed(2).replace('.', ',')} \u20ac)`}</div>
-                <button onclick="addAllToCart()" class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);border:none;cursor:pointer;">Ajouter tout au panier</button>
-                ${bundleHtml}
-            `;
-
-            document.getElementById('diagResult').classList.add('active');
-            document.querySelectorAll('.diag-progress .bar').forEach(b => b.classList.add('active'));
-        }
-
-        function addBundleFromDiag(bundleKey) {
-            const bundle = BUNDLES.find(b => b.key === bundleKey);
-            if (!bundle) return;
-            const firstProduct = PRODUCTS.find(p => p.id === bundle.productIds[0]);
-            const existing = JSON.parse(localStorage.getItem('eclat_cart')) || [];
-            const bundleId = 'bundle-' + bundle.key;
-            const inCart = existing.find(item => item.id === bundleId);
-            if (inCart) {
-                inCart.qty += 1;
-            } else {
-                existing.push({
-                    id: bundleId,
-                    name: bundle.name,
-                    price: bundle.price,
-                    image: firstProduct ? firstProduct.image : '',
-                    qty: 1
-                });
-            }
-            localStorage.setItem('eclat_cart', JSON.stringify(existing));
-            window.location.href = '../index.html?openCart=1';
         }
 
         function fetchAIAnalysis(diagData) {
-            var loader = document.getElementById('aiAnalysisLoader');
-            var box = document.getElementById('aiAnalysis');
-            var textEl = document.getElementById('aiAnalysisText');
-            loader.style.display = 'block';
-
             fetch('/api/diagnostic-ai', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ skinType: diagData.skinType, concern: diagData.concern, budget: diagData.budget, age: diagData.age, lang: 'fr' })
+                body: JSON.stringify(diagData)
             })
-            .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+            .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
             .then(function(data) {
-                loader.style.display = 'none';
-                if (data && data.analysis) {
-                    textEl.textContent = data.analysis;
-                    box.style.display = 'block';
-                }
+                renderResult(diagData, data);
             })
             .catch(function() {
-                loader.style.display = 'none';
+                // Fallback: render result without AI analysis
+                renderResult(diagData, null);
             });
         }
 
-        function addAllToCart() {
-            // Sauvegarder les IDs dans localStorage pour que app.js les ajoute au panier
-            const existing = JSON.parse(localStorage.getItem('eclat_cart')) || [];
-            recommendedIds.forEach(id => {
-                const product = PRODUCTS.find(p => p.id === id);
+        function renderResult(diagData, aiData) {
+            var result = document.getElementById('diagResult');
+
+            // Build profile tags
+            var tags = [];
+            var skinLabels = { dry: 'Peau s\u00e8che', oily: 'Peau grasse', combo: 'Peau mixte', normal: 'Peau normale', sensitive: 'Peau sensible' };
+            if (skinLabels[diagData.skinType]) tags.push(skinLabels[diagData.skinType]);
+            var concernLabels = { acne: 'Anti-acn\u00e9', aging: 'Anti-\u00e2ge', glow: '\u00c9clat', hydration: 'Hydratation', pores: 'Pores', 'dark-circles': 'Cernes' };
+            if (concernLabels[diagData.concern1]) tags.push(concernLabels[diagData.concern1]);
+            if (diagData.concern2 && diagData.concern2 !== 'none' && concernLabels[diagData.concern2]) tags.push(concernLabels[diagData.concern2]);
+            var ageLabel = diagData.age || '';
+            if (ageLabel) tags.push(ageLabel + ' ans');
+            var envLabels = { urban: 'Urbain', suburban: 'P\u00e9riurbain', rural: 'Rural', coastal: 'Bord de mer' };
+            if (envLabels[diagData.environment]) tags.push(envLabels[diagData.environment]);
+
+            // Build routine based on concerns + skin type
+            var morningSteps = buildMorningRoutine(diagData);
+            var eveningSteps = buildEveningRoutine(diagData);
+
+            // All recommended product IDs
+            var allIds = [];
+            morningSteps.forEach(function(s) { if (allIds.indexOf(s.id) === -1) allIds.push(s.id); });
+            eveningSteps.forEach(function(s) { if (allIds.indexOf(s.id) === -1) allIds.push(s.id); });
+
+            var totalPrice = 0;
+            allIds.forEach(function(id) {
+                var p = PRODUCTS.find(function(pr) { return pr.id === id; });
+                if (p) totalPrice += p.price;
+            });
+
+            var html = '';
+            html += '<h2>Votre diagnostic complet</h2>';
+            html += '<p>Bas\u00e9 sur vos 24 r\u00e9ponses, voici votre analyse personnalis\u00e9e.</p>';
+
+            // Profile summary
+            html += '<div class="diag-profile">';
+            html += '<h3>\uD83D\uDCCB Votre profil</h3>';
+            html += '<div class="diag-profile-tags">';
+            tags.forEach(function(t) { html += '<span class="diag-profile-tag">' + t + '</span>'; });
+            html += '</div></div>';
+
+            // AI Analysis
+            if (aiData && aiData.analysis) {
+                html += '<div class="diag-ai-box">';
+                html += '<div class="ai-label"><span class="dot"></span>Analyse personnalis\u00e9e par l\'IA</div>';
+                html += '<div>' + formatAIAnalysis(aiData.analysis) + '</div>';
+                html += '</div>';
+            }
+
+            // Morning routine
+            html += '<div class="routine-block">';
+            html += '<h3>\u2600\uFE0F Routine Matin</h3>';
+            html += renderRoutineSteps(morningSteps);
+            html += '</div>';
+
+            // Evening routine
+            html += '<div class="routine-block">';
+            html += '<h3>\uD83C\uDF19 Routine Soir</h3>';
+            html += renderRoutineSteps(eveningSteps);
+            html += '</div>';
+
+            // Bundle suggestion
+            var bundleHtml = '';
+            if (typeof BUNDLES !== 'undefined') {
+                var matchedBundle = null;
+                for (var b = 0; b < BUNDLES.length; b++) {
+                    var overlap = 0;
+                    for (var bi = 0; bi < BUNDLES[b].productIds.length; bi++) {
+                        if (allIds.indexOf(BUNDLES[b].productIds[bi]) !== -1) overlap++;
+                    }
+                    if (overlap >= 2) { matchedBundle = BUNDLES[b]; break; }
+                }
+                if (matchedBundle) {
+                    var bundleIndividual = 0;
+                    matchedBundle.productIds.forEach(function(id) {
+                        var p = PRODUCTS.find(function(pr) { return pr.id === id; });
+                        if (p) bundleIndividual += p.price;
+                    });
+                    var saving = (bundleIndividual - matchedBundle.price).toFixed(2).replace('.', ',');
+                    bundleHtml = '<div style="margin-top:20px;padding:16px 20px;background:#f0f7f0;border:1px solid #c8e6c9;border-radius:12px;text-align:center;">' +
+                        '<p style="font-size:.85rem;color:#2e7d32;margin:0 0 8px;font-weight:600;">\u2728 Le ' + matchedBundle.name + ' contient ces produits !</p>' +
+                        '<p style="font-size:.82rem;color:#558b2f;margin:0 0 12px;">' + matchedBundle.price.toFixed(2).replace('.', ',') + ' \u20ac au lieu de ' + bundleIndividual.toFixed(2).replace('.', ',') + ' \u20ac \u2014 \u00e9conomisez ' + saving + ' \u20ac</p>' +
+                        '<button class="btn btn-primary" style="background:#2e7d32;border:none;cursor:pointer;font-size:.9rem;" data-action="add-bundle" data-bundle="' + matchedBundle.key + '">Prendre le coffret</button>' +
+                        '</div>';
+                }
+            }
+
+            // Total
+            html += '<div class="routine-total">';
+            html += '<div class="total-label">Votre routine compl\u00e8te (matin + soir)</div>';
+            html += '<div class="total-price">' + totalPrice.toFixed(2).replace('.', ',') + ' \u20ac</div>';
+            html += '<div class="total-savings">Livraison offerte ' + (totalPrice >= 29 ? '\u2713 (incluse !)' : 'd\u00e8s 29\u20ac') + '</div>';
+            html += '<button class="btn btn-primary" style="margin-top:16px;display:inline-block;background:var(--color-secondary);border:none;cursor:pointer;" data-action="add-all">Ajouter tout au panier</button>';
+            html += bundleHtml;
+            html += '</div>';
+
+            // Retake + home links
+            html += '<div style="text-align:center;margin-top:24px;display:flex;flex-direction:column;gap:8px;">';
+            html += '<button style="background:none;border:none;color:var(--color-secondary-text);font-size:.88rem;cursor:pointer;font-weight:600;" data-action="retake">\u21bb Refaire le diagnostic</button>';
+            html += '<a href="../index.html" style="color:var(--color-text-light);font-size:.85rem;">Retour \u00e0 l\'accueil</a>';
+            html += '</div>';
+
+            result.innerHTML = html;
+
+            // Bind add-all button
+            var addAllBtn = result.querySelector('[data-action="add-all"]');
+            if (addAllBtn) {
+                addAllBtn.addEventListener('click', function() {
+                    addProductsToCart(allIds);
+                });
+            }
+
+            // Bind bundle button
+            var bundleBtn = result.querySelector('[data-action="add-bundle"]');
+            if (bundleBtn) {
+                bundleBtn.addEventListener('click', function() {
+                    addBundleToCart(this.getAttribute('data-bundle'));
+                });
+            }
+
+            // Bind retake
+            var retakeBtn = result.querySelector('[data-action="retake"]');
+            if (retakeBtn) {
+                retakeBtn.addEventListener('click', function() {
+                    answers = {};
+                    currentQ = 0;
+                    document.getElementById('diagResult').classList.remove('active');
+                    document.getElementById('diagResult').innerHTML = '';
+                    document.getElementById('progressWrap').style.display = '';
+                    document.getElementById('diagHero').style.display = '';
+                    buildProgressBar();
+                    updateProgress();
+                    renderStep(0);
+                });
+            }
+        }
+
+        function formatAIAnalysis(text) {
+            // Simple markdown-ish formatting
+            return text
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        function renderRoutineSteps(steps) {
+            var html = '';
+            for (var i = 0; i < steps.length; i++) {
+                var s = steps[i];
+                var product = PRODUCTS.find(function(p) { return p.id === s.id; });
+                if (!product) continue;
+                html += '<div class="routine-step">';
+                html += '<div class="step-num">' + (i + 1) + '</div>';
+                html += '<div class="step-info">';
+                html += '<div class="step-name">' + s.step + '</div>';
+                html += '<div class="step-product">' + product.name + '</div>';
+                html += '<div class="step-why">' + s.why + '</div>';
+                html += '</div>';
+                html += '<div class="step-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>';
+                html += '</div>';
+            }
+            return html;
+        }
+
+        // ============================
+        // ROUTINE BUILDER LOGIC
+        // ============================
+        function buildMorningRoutine(d) {
+            var steps = [];
+            var concern = d.concern1 || 'glow';
+            var budget = d.budget || 'medium';
+            var skin = d.skinType || 'combo';
+            var time = d.routineTime || '5min';
+
+            // Step 1: Nettoyage (tout le monde)
+            if (skin === 'oily' || concern === 'acne') {
+                steps.push({ id: 4, step: 'Nettoyage', why: 'Nettoyage sonique pour d\u00e9sincruster les pores en douceur' });
+            } else {
+                steps.push({ id: 4, step: 'Nettoyage', why: 'Nettoyage doux pour pr\u00e9parer la peau aux actifs' });
+            }
+
+            // Step 2: S\u00e9rum (si budget >= medium ou temps >= 5min)
+            if (budget !== 'low' || time !== '2min') {
+                if (concern === 'aging' || concern === 'glow') {
+                    steps.push({ id: 8, step: 'S\u00e9rum Vitamine C', why: 'Antioxydant puissant, boost d\'\u00e9clat et anti-taches' });
+                } else if (concern === 'hydration') {
+                    steps.push({ id: 8, step: 'S\u00e9rum', why: 'Vitamine C pour prot\u00e9ger et illuminer la peau' });
+                } else {
+                    steps.push({ id: 8, step: 'S\u00e9rum actif', why: 'Vitamine C antioxydante contre les agressions quotidiennes' });
+                }
+            }
+
+            // Step 3: Contour yeux (si concern cernes ou aging)
+            if ((concern === 'dark-circles' || concern === 'aging') && budget !== 'low') {
+                steps.push({ id: 9, step: 'Contour des yeux', why: 'Patchs collag\u00e8ne or 24K pour d\u00e9gonfler et lisser' });
+            }
+
+            // Step 4: Massage/activation (si temps >= 5min)
+            if (time !== '2min' && budget !== 'low') {
+                if (concern === 'glow' || concern === 'pores') {
+                    steps.push({ id: 2, step: 'Massage Gua Sha', why: 'Active la microcirculation pour un teint lumineux' });
+                } else if (concern === 'dark-circles') {
+                    steps.push({ id: 5, step: 'Ice Roller', why: 'Effet d\u00e9congestionnant imm\u00e9diat, r\u00e9duit les poches' });
+                }
+            }
+
+            return steps;
+        }
+
+        function buildEveningRoutine(d) {
+            var steps = [];
+            var concern = d.concern1 || 'glow';
+            var budget = d.budget || 'medium';
+            var skin = d.skinType || 'combo';
+            var time = d.routineTime || '5min';
+
+            // Step 1: Nettoyage profond
+            if (skin === 'oily' || concern === 'acne' || concern === 'pores') {
+                steps.push({ id: 3, step: 'Nettoyage profond', why: 'Scrubber ultrasonique pour extraire impuret\u00e9s et s\u00e9bum' });
+            } else {
+                steps.push({ id: 4, step: 'Nettoyage doux', why: 'Nettoyage sonique pour retirer maquillage et pollution' });
+            }
+
+            // Step 2: Traitement cibl\u00e9
+            if (concern === 'acne') {
+                steps.push({ id: 1, step: 'Traitement LED', why: 'Lumi\u00e8re bleue antibact\u00e9rienne + rouge cicatrisante' });
+            } else if (concern === 'aging') {
+                steps.push({ id: 1, step: 'Th\u00e9rapie LED', why: 'Lumi\u00e8re rouge 630nm \u2014 stimulation du collag\u00e8ne profond' });
+            } else if (concern === 'glow' || concern === 'hydration') {
+                steps.push({ id: 10, step: 'Masque Collag\u00e8ne', why: 'Lifting et hydratation intense, effet glass skin' });
+            } else if (concern === 'pores') {
+                steps.push({ id: 3, step: 'Exfoliation ultrason', why: 'Resurfa\u00e7age doux pour affiner le grain de peau' });
+            } else if (concern === 'dark-circles') {
+                steps.push({ id: 9, step: 'Soin contour yeux', why: 'Patchs collag\u00e8ne or pour r\u00e9g\u00e9n\u00e9rer la zone fragile' });
+            }
+
+            // Step 3: Soin nuit (si budget >= medium)
+            if (budget !== 'low') {
+                if (skin === 'dry' || concern === 'hydration') {
+                    steps.push({ id: 11, step: 'Huile nourrissante', why: 'Rose musqu\u00e9e \u2014 r\u00e9g\u00e9n\u00e9ration cellulaire nocturne' });
+                } else if (concern === 'aging') {
+                    steps.push({ id: 12, step: 'Anti-rides nuit', why: 'Stickers lissants \u2014 corrigent les rides pendant le sommeil' });
+                }
+            }
+
+            // Step 4: Pr\u00e9paration vapeur (si routine compl\u00e8te + temps)
+            if (time === '10min' || time === '10min+') {
+                if (concern === 'hydration' || concern === 'pores') {
+                    steps.push({ id: 7, step: 'Vapeur faciale', why: 'Ouvre les pores, optimise l\'absorption des actifs' });
+                }
+            }
+
+            // Step 5: Massage relaxant (si temps et budget)
+            if ((time === '10min' || time === '10min+') && (budget === 'high' || budget === 'premium')) {
+                steps.push({ id: 6, step: 'Derma Roller', why: 'Micro-needling doux \u2014 stimule le renouvellement cellulaire' });
+            }
+
+            return steps;
+        }
+
+        // ============================
+        // CART ACTIONS
+        // ============================
+        function addProductsToCart(ids) {
+            var existing = [];
+            try { existing = JSON.parse(localStorage.getItem('eclat_cart')) || []; } catch(e) {}
+            ids.forEach(function(id) {
+                var product = PRODUCTS.find(function(p) { return p.id === id; });
                 if (!product) return;
-                const inCart = existing.find(item => item.id === id);
+                var inCart = existing.find(function(item) { return item.id === id; });
                 if (inCart) {
                     inCart.qty += 1;
                 } else {
-                    existing.push({ id: product.id, name: product.name, price: product.price, image: product.image, qty: 1 });
+                    existing.push({ id: product.id, name: product.name, price: product.price, image: product.image || (product.images && product.images[0]) || '', qty: 1 });
                 }
             });
             localStorage.setItem('eclat_cart', JSON.stringify(existing));
             window.location.href = '../index.html?openCart=1';
         }
+
+        function addBundleToCart(bundleKey) {
+            if (typeof BUNDLES === 'undefined') return;
+            var bundle = BUNDLES.find(function(b) { return b.key === bundleKey; });
+            if (!bundle) return;
+            var firstProduct = PRODUCTS.find(function(p) { return p.id === bundle.productIds[0]; });
+            var existing = [];
+            try { existing = JSON.parse(localStorage.getItem('eclat_cart')) || []; } catch(e) {}
+            var bundleId = 'bundle-' + bundle.key;
+            var inCart = existing.find(function(item) { return item.id === bundleId; });
+            if (inCart) {
+                inCart.qty += 1;
+            } else {
+                existing.push({ id: bundleId, name: bundle.name, price: bundle.price, image: firstProduct ? (firstProduct.image || firstProduct.images[0]) : '', qty: 1 });
+            }
+            localStorage.setItem('eclat_cart', JSON.stringify(existing));
+            window.location.href = '../index.html?openCart=1';
+        }
+
+        // ============================
+        // INIT
+        // ============================
+        function init() {
+            buildProgressBar();
+            updateProgress();
+            renderStep(0);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
     </script>
+
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "\u00c9CLAT",
-                "item": "https://maison-eclat.shop/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Diagnostic Beaut\u00e9",
-                "item": "https://maison-eclat.shop/pages/diagnostic.html"
-            }
+            { "@type": "ListItem", "position": 1, "name": "\u00c9CLAT", "item": "https://maison-eclat.shop/" },
+            { "@type": "ListItem", "position": 2, "name": "Diagnostic Beaut\u00e9", "item": "https://maison-eclat.shop/pages/diagnostic.html" }
         ]
     }
     </script>
     <script src="../js/themes.js?v=2" defer></script>
-    <script src="../js/auth.js?v=2" defer></script>
-<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-<script src="../js/push.js?v=2" defer></script>
-</main>
-<script src="../js/i18n.js?v=5" defer></script>
-<script src="../js/cookie-consent.js" defer></script>
-<script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
-<script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
-<script src="../js/analytics.js" defer></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    </main>
 </body>
 </html>
