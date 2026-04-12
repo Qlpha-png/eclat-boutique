@@ -15,11 +15,26 @@
             label: 'Soins Visage',
             icon: '\u2728',
             subs: [
-                { text: 'S\u00e9rums', slug: 'serums' },
-                { text: 'Masques', slug: 'masques' },
-                { text: 'Nettoyants', slug: 'nettoyants' },
-                { text: 'Masques LED', slug: 'masques-led' },
-                { text: 'Gua Sha & Rollers', slug: 'gua-sha-rollers' }
+                { text: 'Cr\u00e8mes', slug: 'creme' },
+                { text: 'D\u00e9maquillants', slug: 'demaquillant' },
+                { text: 'Exfoliants', slug: 'exfoliant' },
+                { text: 'Masques', slug: 'masque' },
+                { text: 'Lotions', slug: 'lotion' },
+                { text: 'Contour des yeux', slug: 'contour-yeux' },
+                { text: 'Solaire', slug: 'solaire' },
+                { text: 'Eau micellaire', slug: 'eau-micellaire' }
+            ]
+        },
+        {
+            key: 'soin',
+            label: 'S\u00e9rums',
+            icon: '\uD83E\uDDEA',
+            subs: [
+                { text: 'S\u00e9rums visage', slug: 'serum' },
+                { text: 'S\u00e9rums \u00e9clat', slug: 'serum-eclat' },
+                { text: 'S\u00e9rums anti-\u00e2ge', slug: 'serum-antiage' },
+                { text: 'S\u00e9rums collag\u00e8ne', slug: 'serum-collagene' },
+                { text: 'S\u00e9rums peptides', slug: 'serum-peptide' }
             ]
         },
         {
@@ -27,21 +42,38 @@
             label: 'Cheveux',
             icon: '\uD83D\uDC87',
             subs: [
-                { text: 'Brosses', slug: 'brosses' },
-                { text: 'S\u00e9rums capillaires', slug: 'serums-capillaires' },
-                { text: 'Accessoires cheveux', slug: 'accessoires-cheveux' },
-                { text: 'Masques cheveux', slug: 'masques-cheveux' }
+                { text: 'Shampoings', slug: 'shampoing' },
+                { text: 'Apr\u00e8s-shampoings', slug: 'apres-shampoing' },
+                { text: 'Soins cuir chevelu', slug: 'soin-cuir-chevelu' },
+                { text: 'Soins sans rin\u00e7age', slug: 'soin-sans-rincage' },
+                { text: 'Soins k\u00e9ratine', slug: 'soin-keratine' },
+                { text: 'Masques capillaires', slug: 'masque-capillaire' },
+                { text: 'S\u00e9rums capillaires', slug: 'serum-capillaire' },
+                { text: 'Bigoudis', slug: 'bigoudi' }
+            ]
+        },
+        {
+            key: 'outils',
+            label: 'Outils Beaut\u00e9',
+            icon: '\uD83D\uDC86',
+            subs: [
+                { text: 'Gua Sha', slug: 'gua-sha' },
+                { text: 'Aspirateurs pores', slug: 'aspirateur-pores' },
+                { text: 'Derma rollers', slug: 'derma-roller' },
+                { text: 'Rouleaux glace', slug: 'rouleau-glace' },
+                { text: 'Appareils visage', slug: 'appareil-visage' }
             ]
         },
         {
             key: 'corps',
-            label: 'Corps & Bien-\u00eatre',
+            label: 'Corps',
             icon: '\uD83E\uDDF4',
             subs: [
-                { text: 'Gommages', slug: 'gommages' },
-                { text: 'Huiles corps', slug: 'huiles-corps' },
-                { text: 'Cr\u00e8mes hydratantes', slug: 'cremes-hydratantes' },
-                { text: 'Anti-cellulite', slug: 'anti-cellulite' }
+                { text: 'Laits corps', slug: 'lait-corps' },
+                { text: 'Anti-vergetures', slug: 'anti-vergetures' },
+                { text: 'Gommages corps', slug: 'gommage-corps' },
+                { text: 'Gels douche', slug: 'gel-douche' },
+                { text: 'Cr\u00e8mes corps', slug: 'creme-corps' }
             ]
         },
         {
@@ -49,19 +81,10 @@
             label: 'Homme',
             icon: '\uD83E\uDDD4',
             subs: [
-                { text: 'Grooming', slug: 'grooming' },
-                { text: 'Kit barbe', slug: 'kit-barbe' },
-                { text: 'Skincare homme', slug: 'skincare-homme' }
-            ]
-        },
-        {
-            key: 'outils',
-            label: 'Maquillage & Outils',
-            icon: '\uD83D\uDC84',
-            subs: [
-                { text: 'Pinceaux', slug: 'pinceaux' },
-                { text: '\u00c9ponges', slug: 'eponges' },
-                { text: 'Outils beaut\u00e9', slug: 'outils-beaute' }
+                { text: 'Rasage', slug: 'rasage' },
+                { text: 'Kits barbe', slug: 'kit-barbe' },
+                { text: 'Apr\u00e8s-rasage', slug: 'apres-rasage' },
+                { text: 'Soins homme', slug: 'soin-homme' }
             ]
         },
         {
@@ -69,10 +92,10 @@
             label: 'Ongles',
             icon: '\uD83D\uDC85',
             subs: [
+                { text: 'Lampes UV', slug: 'lampe-uv' },
                 { text: 'Vernis', slug: 'vernis' },
-                { text: 'Outils ongles', slug: 'outils-ongles' },
-                { text: 'Nail art', slug: 'nail-art' },
-                { text: 'Lampes UV/LED', slug: 'lampes-uv-led' }
+                { text: 'Faux ongles', slug: 'faux-ongles' },
+                { text: 'Nail art', slug: 'nail-art' }
             ]
         },
         {
@@ -80,10 +103,9 @@
             label: 'Bien-\u00eatre',
             icon: '\uD83E\uDDD8',
             subs: [
-                { text: 'Aromath\u00e9rapie', slug: 'aromatherapie' },
-                { text: 'Massage', slug: 'massage' },
-                { text: 'Diffuseurs', slug: 'diffuseurs' },
-                { text: 'Bombes bain', slug: 'bombes-bain' }
+                { text: 'Diffuseurs', slug: 'diffuseur' },
+                { text: 'Bombes de bain', slug: 'bombe-bain' },
+                { text: 'Huiles essentielles', slug: 'huile-essentielle' }
             ]
         },
         {
@@ -91,29 +113,18 @@
             label: 'Accessoires',
             icon: '\uD83D\uDCBC',
             subs: [
-                { text: 'Miroirs LED', slug: 'miroirs-led' },
-                { text: 'Rangement', slug: 'rangement' },
-                { text: 'Trousses', slug: 'trousses' }
-            ]
-        },
-        {
-            key: 'coffrets',
-            label: 'Coffrets',
-            icon: '\uD83C\uDF81',
-            subs: [
-                { text: 'Gift sets', slug: 'gift-sets' },
-                { text: 'Bundles', slug: 'bundles' },
-                { text: 'Coffrets d\u00e9couverte', slug: 'coffrets-decouverte' }
+                { text: 'Bonnets satin', slug: 'bonnet-satin' },
+                { text: 'Chouchous', slug: 'chouchou' }
             ]
         }
     ];
 
     var FEATURED = {
         badge: 'Coup de c\u0153ur',
-        name: 'Coffret Rituel \u00c9clat',
-        price: '49,90\u00a0\u20ac',
-        img: 'https://cf.cjdropshipping.com/quick/product/a1ae3177-fe09-43ca-8969-57c5a5475d07.jpg',
-        href: '/pages/category.html?cat=coffrets&sub=gift-sets',
+        name: 'Masque LED Pro 7 Couleurs',
+        price: '39,90\u00a0\u20ac',
+        img: '/api/img?url=' + encodeURIComponent('https://oss-cf.cjdropshipping.com/product/2025/12/02/07/52018798-4e16-43fe-8e02-f280acf86442_trans.jpeg'),
+        href: '/pages/product.html?id=1',
         cta: 'D\u00e9couvrir'
     };
 
