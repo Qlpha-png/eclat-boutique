@@ -7333,6 +7333,11 @@ const PRODUCT_ROUTINE_MAP = {
             if (PRODUCTS[i] && PRODUCTS[i].image) {
                 PRODUCTS[i].image = proxyUrl(PRODUCTS[i].image);
             }
+            if (PRODUCTS[i] && Array.isArray(PRODUCTS[i].images)) {
+                for (var j = 0; j < PRODUCTS[i].images.length; j++) {
+                    PRODUCTS[i].images[j] = proxyUrl(PRODUCTS[i].images[j]);
+                }
+            }
         }
     }
 })();

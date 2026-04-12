@@ -41,6 +41,7 @@
     </noscript>
     <link rel="stylesheet" href="../css/style.css?v=23">
     <link rel="stylesheet" href="../css/themes.css?v=3">
+    <link rel="stylesheet" href="../css/mega-menu.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
@@ -319,12 +320,16 @@
 
             grid.innerHTML = products.map(function(p) {
                 var img = Array.isArray(p.images) && p.images[0] ? p.images[0] : (p.image || '');
+                // Fallback proxy if not already proxied by products.js
+                if (img && img.indexOf('/api/img') === -1 && img.indexOf('cjdropshipping.com') !== -1) {
+                    img = '/api/img?url=' + encodeURIComponent(img);
+                }
                 var oldPrice = p.compare_at_price || p.oldPrice;
                 var pName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
                 var pDesc = (typeof getProductText === 'function') ? (getProductText(p.id, 'description', lang) || p.description) : p.description;
                 return '<a href="/pages/product.html?id=' + p.id + '" class="cat-card" data-product-id="' + p.id + '" style="text-decoration:none;color:inherit;">' +
                     '<div class="cat-card-img">' +
-                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" width="300" height="260" loading="lazy" referrerpolicy="no-referrer">' +
+                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" width="300" height="260" loading="lazy">' +
                     (p.badge ? '<span class="cat-card-badge">' + escapeHTML(p.badge) + '</span>' : '') +
                     '</div>' +
                     '<div class="cat-card-info">' +
@@ -391,6 +396,7 @@
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </main>
 <script src="../js/themes.js?v=3" defer></script>
+<script src="../js/mega-menu.js" defer></script>
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
 <script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
