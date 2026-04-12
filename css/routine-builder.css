@@ -360,11 +360,17 @@
 
 /* Products grid */
 .rb-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
     gap: 20px;
     margin-bottom: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+    position: relative;
 }
+.rb-products::-webkit-scrollbar { display: none; }
 
 /* Product card */
 .rb-card {
@@ -375,6 +381,10 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    min-width: 220px;
+    max-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 .rb-card:hover {
     border-color: rgba(201,168,124,0.5);
@@ -398,6 +408,7 @@
     display: block;
     width: 100%;
     aspect-ratio: 1;
+    max-height: 220px;
     overflow: hidden;
     background: var(--color-bg-alt, #f3efe9);
     position: relative;
@@ -511,6 +522,39 @@
     background: var(--color-primary, #2d2926);
     color: #fff;
 }
+
+/* Products scroll arrows */
+.rb-products-wrap {
+    position: relative;
+}
+.rb-scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-white, #fff);
+    border: 1px solid var(--color-border, #e8e4de);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    font-size: 1.1rem;
+    color: var(--color-primary, #2d2926);
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.rb-scroll-arrow:hover {
+    background: var(--color-secondary, #c9a87c);
+    color: #fff;
+    border-color: var(--color-secondary, #c9a87c);
+}
+.rb-scroll-arrow--left { left: -16px; }
+.rb-scroll-arrow--right { right: -16px; }
+.rb-scroll-arrow[disabled] { opacity: 0; pointer-events: none; }
 
 /* Step navigation */
 .rb-nav {
@@ -629,9 +673,13 @@
     .rb-tab-icon { font-size: 1.3rem; }
     .rb-tab-label { font-size: 0.7rem; }
     .rb-products {
-        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
+    .rb-card {
+        min-width: 180px;
+        max-width: 200px;
+    }
+    .rb-card-img { max-height: 180px; }
     .rb-panel-title { font-size: 1.15rem; }
     .rb-panel-desc { font-size: 0.82rem; }
     .rb-card-name { font-size: 0.82rem; }

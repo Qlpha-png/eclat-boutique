@@ -489,7 +489,9 @@
 
     // ---- Render products ----
     function renderProducts(step) {
-        var html = '<div class="rb-products">';
+        var html = '<div class="rb-products-wrap">';
+        html += '<button class="rb-scroll-arrow rb-scroll-arrow--left" data-action="rb-scroll" data-dir="-1" aria-label="D\u00e9filer \u00e0 gauche">&#8249;</button>';
+        html += '<div class="rb-products">';
         for (var p = 0; p < step.productIds.length; p++) {
             var product = getProduct(step.productIds[p]);
             if (!product) continue;
@@ -529,7 +531,9 @@
 
             html += '</div>';
         }
-        html += '</div>';
+        html += '</div>'; // .rb-products
+        html += '<button class="rb-scroll-arrow rb-scroll-arrow--right" data-action="rb-scroll" data-dir="1" aria-label="D\u00e9filer \u00e0 droite">&#8250;</button>';
+        html += '</div>'; // .rb-products-wrap
         return html;
     }
 
@@ -625,6 +629,19 @@
                         activeProductStep = stepIdx + 1;
                         render();
                     }, 600);
+                }
+            }
+        }
+
+        // Scroll arrows
+        if (action === 'rb-scroll') {
+            e.preventDefault();
+            var dir = parseInt(target.getAttribute('data-dir'), 10);
+            var wrap = target.closest('.rb-products-wrap');
+            if (wrap) {
+                var container = wrap.querySelector('.rb-products');
+                if (container) {
+                    container.scrollBy({ left: dir * 300, behavior: 'smooth' });
                 }
             }
         }
