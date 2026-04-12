@@ -117,12 +117,12 @@ async function generateMerchantFeed() {
 
 async function main() {
     console.log('ÉCLAT Build — Minifying assets...\n');
+    console.log('Google Shopping (before minify):');
+    await generateMerchantFeed();
     console.log('CSS:');
     await minifyCSS();
     console.log('JS:');
     await minifyJS();
-    console.log('Google Shopping:');
-    await generateMerchantFeed();
     console.log('\nBuild complete ✓');
 }
 
