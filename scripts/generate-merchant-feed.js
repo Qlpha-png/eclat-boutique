@@ -74,6 +74,13 @@ function getImageUrl(product) {
     return SITE_URL + '/api/img?url=' + encodeURIComponent(product.image) + '&w=800&q=80';
 }
 
+// Products excluded from Google Shopping feed (policy violations)
+var EXCLUDED_IDS = [
+    127,                                          // Huile Démaquillante N°2 — flagged "intérêts sexuels"
+    184, 199, 200, 201, 203, 204, 205, 206,      // Soin Anti-Vergetures — flagged "bouleversements personnels"
+    207, 208, 209, 210, 211                       // Soin Anti-Vergetures (suite)
+];
+
 function generateFeed(products) {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n';
@@ -82,9 +89,11 @@ function generateFeed(products) {
     xml += '  <link>' + SITE_URL + '</link>\n';
     xml += '  <description>Boutique beauté clean France. Soins visage, cheveux, corps. Livraison offerte dès 29€.</description>\n';
 
+    var excluded = 0;
     for (var i = 0; i < products.length; i++) {
         var p = products[i];
         if (!p.name || !p.price || !p.image) continue;
+        if (EXCLUDED_IDS.indexOf(p.id) !== -1) { excluded++; continue; }
 
         var googleCat = GOOGLE_CATEGORIES[p.category] || GOOGLE_CATEGORIES.accessoire;
 
@@ -177,7 +186,7 @@ function main() {
     // Google Shopping feed
     var feed = generateFeed(products);
     fs.writeFileSync(path.join(ROOT, 'merchant-feed.xml'), feed, 'utf8');
-    console.log('  ✓ merchant-feed.xml: ' + products.length + ' products, ' + (feed.length / 1024).toFixed(1) + 'KB');
+    console.log('  ✓ merchant-feed.xml: ' + (products.length - EXCLUDED_IDS.length) + '/' + products.length + ' products (' + EXCLUDED_IDS.length + ' excluded), ' + (feed.length / 1024).toFixed(1) + 'KB');
 
     // Product sitemap
     var sitemap = generateProductSitemap(products);
