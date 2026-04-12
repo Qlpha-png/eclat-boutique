@@ -17,20 +17,20 @@ window.ECLAT_I18N_DE = {
         hero_tag: '\u2728 \u00dcber 500 ausgew\u00e4hlte Produkte',
         hero_title: 'Ihre Sch\u00f6nheit,',
         hero_title_em: 'veredelt durch Wissenschaft.',
-        hero_desc: 'Professionelle Technologien und Premium-Pflege, ausgew\u00e4hlt f\u00fcr nachgewiesene Wirksamkeit. Versand mit Tracking, 30 Tage R\u00fcckgabe.',
+        hero_desc: 'Professionelle Technologien und Premium-Pflege, ausgew\u00e4hlt f\u00fcr nachgewiesene Wirksamkeit. Versand mit Tracking, 14 Tage Widerrufsrecht.',
         hero_cta1: '\uD83D\uDD2C Meine Routine finden',
         hero_cta2: '\u2728 Routine zusammenstellen',
         hero_stat1: '500+',
         hero_stat2: '4.8',
-        hero_stat3: '30T',
+        hero_stat3: '14T',
         brands_bar_title: 'Vertrauenswürdig — Unsere Partnermarken',
 
         trust1_title: 'Schneller Versand',
         trust1_desc: '3-7 Tage in ganz Europa',
         trust2_title: 'Sichere Zahlung',
         trust2_desc: 'Stripe • Karte • PayPal',
-        trust3_title: 'Kostenlose Rücksendung',
-        trust3_desc: '30 Tage Rückgaberecht',
+        trust3_title: 'Widerrufsrecht 14T',
+        trust3_desc: 'Gem\u00e4\u00df Verbraucherrecht',
         trust4_title: 'Umweltfreundlich',
         trust4_desc: 'Recycelte Verpackung',
 
@@ -85,7 +85,7 @@ window.ECLAT_I18N_DE = {
         cart_shipping_remaining: 'Nur noch {amount} bis zum kostenlosen Versand',
         cart_cross_sell: 'Vervollständigen Sie Ihre Routine',
 
-        banner_text: 'Kostenloser Versand ab 29€ • 30 Tage Geld-zurück • Sichere Zahlung',
+        banner_text: 'Kostenloser Versand ab 29\u20ac \u2022 14 Tage Widerrufsrecht \u2022 Sichere Zahlung',
 
         footer_shop: 'Shop',
         footer_help: 'Kundenservice',
@@ -163,9 +163,9 @@ window.ECLAT_I18N_DE = {
 
         // Trust badges
         trust_shipping: '\ud83d\ude9a Kostenloser Versand ab 29\u20ac',
-        trust_refund: '\ud83d\udd04 30 Tage R\u00fcckgabe',
+        trust_refund: '\ud83d\udd04 14 Tage Widerrufsrecht',
         trust_modal_shipping: 'Kostenloser Versand ab 29\u20ac',
-        trust_modal_refund: '30 Tage Geld-zur\u00fcck-Garantie',
+        trust_modal_refund: '14 Tage Widerrufsrecht',
         trust_modal_secure: 'Sichere Zahlung',
         popup_code_toast: 'Code BIENVENUE10 aktiviert! Pr\u00fcfen Sie Ihre E-Mail.',
         btn_details: 'Details',
@@ -252,7 +252,7 @@ window.ECLAT_I18N_DE = {
         footer_pay_label: '100% sichere Zahlung',
         footer_trust_ssl: 'Sichere<br>SSL-Zahlung',
         footer_trust_ship: 'Verfolgte<br>Lieferung EU',
-        footer_trust_refund: 'Zufrieden oder<br>Geld zur\u00fcck 30T',
+        footer_trust_refund: 'Widerrufsrecht<br>14 Tage',
         footer_trust_support: 'Kundensupport<br>7/7',
         footer_trust_eu: 'EU-Verordnung<br>konform',
 
@@ -278,13 +278,13 @@ window.ECLAT_I18N_DE = {
 
         // Hero perks
         hero_perk_ship: '\uD83D\uDE9A Kostenloser Versand ab 29\u20ac',
-        hero_perk_return: '\uD83D\uDD04 30 Tage R\u00fcckgabe',
+        hero_perk_return: '\uD83D\uDD04 14 Tage Widerrufsrecht',
         hero_perk_diag: '\u2728 Personalisierte Diagnose',
 
         // Trust bar
         tb_ship: '\uD83D\uDE9A Versand mit Tracking 7-14T',
         tb_pay: '\uD83D\uDD12 Sichere Stripe-Zahlung',
-        tb_return: '\u21BA 30 Tage R\u00fcckgabe',
+        tb_return: '\u21BA 14 Tage Widerrufsrecht',
         tb_diag: '\u2728 Personalisierte Diagnose',
         tb_eu: '\uD83C\uddEB\uD83C\udDF7 Franz\u00f6sisches Unternehmen',
 

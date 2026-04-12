@@ -17,20 +17,20 @@ window.ECLAT_I18N_ES = {
         hero_tag: '\u2728 M\u00e1s de 500 productos seleccionados',
         hero_title: 'Tu belleza,',
         hero_title_em: 'sublimada por la ciencia.',
-        hero_desc: 'Tecnolog\u00edas profesionales y cuidados premium seleccionados por su eficacia probada. Env\u00edo con seguimiento, devoluci\u00f3n gratuita 30d.',
+        hero_desc: 'Tecnolog\u00edas profesionales y cuidados premium seleccionados por su eficacia probada. Env\u00edo con seguimiento, derecho de desistimiento 14d.',
         hero_cta1: '\uD83D\uDD2C Encontrar mi rutina',
         hero_cta2: '\u2728 Crear mi rutina',
         hero_stat1: '500+',
         hero_stat2: '4.8',
-        hero_stat3: '30d',
+        hero_stat3: '14d',
         brands_bar_title: 'Confían en nosotros — Nuestras marcas asociadas',
 
         trust1_title: 'Envío rápido',
         trust1_desc: '3-7 días en toda Europa',
         trust2_title: 'Pago seguro',
         trust2_desc: 'Stripe • Tarjeta • PayPal',
-        trust3_title: 'Devoluciones gratis',
-        trust3_desc: '30 días para cambiar de opinión',
+        trust3_title: 'Desistimiento 14d',
+        trust3_desc: 'Conforme a la ley del consumidor',
         trust4_title: 'Eco-responsable',
         trust4_desc: 'Embalajes reciclados',
 
@@ -85,7 +85,7 @@ window.ECLAT_I18N_ES = {
         cart_shipping_remaining: 'Solo faltan {amount} para envío gratis',
         cart_cross_sell: 'Completa tu rutina',
 
-        banner_text: 'Envío gratis a partir de 29€ • Satisfecho o reembolsado 30d • Pago seguro',
+        banner_text: 'Env\u00edo gratis a partir de 29\u20ac \u2022 Desistimiento 14d \u2022 Pago seguro',
 
         footer_shop: 'Tienda',
         footer_help: 'Atención al Cliente',
@@ -163,9 +163,9 @@ window.ECLAT_I18N_ES = {
 
         // Trust badges
         trust_shipping: '\ud83d\ude9a Env\u00edo gratis desde 29\u20ac',
-        trust_refund: '\ud83d\udd04 30d reembolso',
+        trust_refund: '\ud83d\udd04 Desistimiento 14d',
         trust_modal_shipping: 'Env\u00edo gratis desde 29\u20ac',
-        trust_modal_refund: 'Satisfecho o reembolsado 30d',
+        trust_modal_refund: 'Desistimiento 14 d\u00edas',
         trust_modal_secure: 'Pago seguro',
         popup_code_toast: '\u00a1C\u00f3digo BIENVENUE10 activado! Revisa tu email.',
         btn_details: 'Detalles',
@@ -252,7 +252,7 @@ window.ECLAT_I18N_ES = {
         footer_pay_label: 'Pago 100% seguro',
         footer_trust_ssl: 'Pago<br>seguro SSL',
         footer_trust_ship: 'Env\u00edo<br>con seguimiento',
-        footer_trust_refund: 'Satisfecho o<br>reembolsado 30d',
+        footer_trust_refund: 'Desistimiento<br>14 d\u00edas',
         footer_trust_support: 'Atenci\u00f3n al cliente<br>7/7',
         footer_trust_eu: 'Conforme<br>normativa UE',
 
@@ -278,13 +278,13 @@ window.ECLAT_I18N_ES = {
 
         // Hero perks
         hero_perk_ship: '\uD83D\uDE9A Env\u00edo gratis desde 29\u20ac',
-        hero_perk_return: '\uD83D\uDD04 Devoluciones 30d',
+        hero_perk_return: '\uD83D\uDD04 Desistimiento 14d',
         hero_perk_diag: '\u2728 Diagn\u00f3stico personalizado',
 
         // Trust bar
         tb_ship: '\uD83D\uDE9A Env\u00edo con seguimiento 7-14d',
         tb_pay: '\uD83D\uDD12 Pago seguro con Stripe',
-        tb_return: '\u21BA Devoluciones 30 d\u00edas',
+        tb_return: '\u21BA Desistimiento 14 d\u00edas',
         tb_diag: '\u2728 Diagn\u00f3stico personalizado',
         tb_eu: '\uD83C\uddEB\uD83C\udDF7 Empresa francesa',
 

@@ -234,7 +234,7 @@ module.exports = async function handler(req, res) {
                     + '<p style="margin:0 0 8px;font-size:14px;opacity:0.7;">Prochaines \u00e9tapes</p>'
                     + '<ul style="margin:0;padding-left:20px;line-height:2;">'
                     + '<li>Notre \u00e9quipe traitera votre demande sous <strong>48h ouvr\u00e9es</strong></li>'
-                    + '<li>Vous recevrez une \u00e9tiquette de retour gratuite par email</li>'
+                    + '<li>Vous recevrez l\u2019adresse de retour par email (frais d\u2019exp\u00e9dition \u00e0 votre charge)</li>'
                     + '<li>Le remboursement sera effectu\u00e9 sous <strong>14 jours</strong> apr\u00e8s r\u00e9ception du retour</li>'
                     + '</ul>'
                     + '</div>'

@@ -17,20 +17,20 @@ window.ECLAT_I18N_EN = {
         hero_tag: '\u2728 500+ curated beauty products',
         hero_title: 'Your beauty,',
         hero_title_em: 'elevated by science.',
-        hero_desc: 'Professional technologies and premium skincare selected for proven efficacy. Tracked shipping, free 30-day returns.',
+        hero_desc: 'Professional technologies and premium skincare selected for proven efficacy. Tracked shipping, 14-day withdrawal right.',
         hero_cta1: '\uD83D\uDD2C Find my routine',
         hero_cta2: '\u2728 Build my routine',
         hero_stat1: '500+',
         hero_stat2: '4.8',
-        hero_stat3: '30d',
+        hero_stat3: '14d',
         brands_bar_title: 'Trusted by the best — Our partner brands',
 
         trust1_title: 'Fast shipping',
         trust1_desc: '3-7 days across Europe',
         trust2_title: 'Secure payment',
         trust2_desc: 'Stripe • Card • PayPal',
-        trust3_title: 'Free returns',
-        trust3_desc: '30 days to change your mind',
+        trust3_title: '14-day withdrawal',
+        trust3_desc: 'As per consumer law',
         trust4_title: 'Eco-friendly',
         trust4_desc: 'Recycled packaging',
 
@@ -85,7 +85,7 @@ window.ECLAT_I18N_EN = {
         cart_shipping_remaining: 'Only {amount} away from free shipping',
         cart_cross_sell: 'Complete your routine',
 
-        banner_text: 'Free shipping over €29 • 30-day money-back guarantee • Secure payment',
+        banner_text: 'Free shipping over \u20ac29 \u2022 14-day withdrawal right \u2022 Secure payment',
 
         footer_shop: 'Shop',
         footer_help: 'Customer Service',
@@ -163,9 +163,9 @@ window.ECLAT_I18N_EN = {
 
         // Trust badges
         trust_shipping: '\ud83d\ude9a Free shipping over \u20ac29',
-        trust_refund: '\ud83d\udd04 30-day refund',
+        trust_refund: '\ud83d\udd04 14-day withdrawal',
         trust_modal_shipping: 'Free shipping over \u20ac29',
-        trust_modal_refund: '30-day money-back guarantee',
+        trust_modal_refund: '14-day withdrawal right',
         trust_modal_secure: 'Secure payment',
         popup_code_toast: 'Code BIENVENUE10 activated! Check your email.',
         btn_details: 'Details',
@@ -252,7 +252,7 @@ window.ECLAT_I18N_EN = {
         footer_pay_label: '100% secure payment',
         footer_trust_ssl: 'Secure<br>SSL payment',
         footer_trust_ship: 'Tracked<br>shipping EU',
-        footer_trust_refund: 'Satisfied or<br>refunded 30d',
+        footer_trust_refund: 'Withdrawal<br>right 14d',
         footer_trust_support: 'Customer support<br>7/7',
         footer_trust_eu: 'EU regulation<br>compliant',
 
@@ -278,13 +278,13 @@ window.ECLAT_I18N_EN = {
 
         // Hero perks
         hero_perk_ship: '\uD83D\uDE9A Free shipping over \u20ac29',
-        hero_perk_return: '\uD83D\uDD04 30-day returns',
+        hero_perk_return: '\uD83D\uDD04 14-day withdrawal',
         hero_perk_diag: '\u2728 Personalized diagnostic',
 
         // Trust bar
         tb_ship: '\uD83D\uDE9A Tracked shipping 7-14 days',
         tb_pay: '\uD83D\uDD12 Secure Stripe payment',
-        tb_return: '\u21BA 30-day returns',
+        tb_return: '\u21BA 14-day withdrawal',
         tb_diag: '\u2728 Personalized diagnostic',
         tb_eu: '\uD83C\uddEB\uD83C\udDF7 French company',
 

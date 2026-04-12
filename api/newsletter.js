@@ -568,7 +568,7 @@ const WELCOME_TRANSLATIONS = {
         testimonial_author: 'Marie L., cliente vérifiée',
         guarantee_1: 'Paiement 100% sécurisé',
         guarantee_2: 'Livraison suivie en Europe',
-        guarantee_3: 'Retours gratuits 30 jours',
+        guarantee_3: 'R\u00e9tractation 14 jours',
         unsubscribe: 'Se désabonner'
     },
     en: {
@@ -613,7 +613,7 @@ const WELCOME_TRANSLATIONS = {
         testimonial_author: 'Marie L., verified customer',
         guarantee_1: '100% secure payment',
         guarantee_2: 'Tracked delivery in Europe',
-        guarantee_3: 'Free returns within 30 days',
+        guarantee_3: '14-day withdrawal right',
         unsubscribe: 'Unsubscribe'
     },
     es: {
@@ -658,7 +658,7 @@ const WELCOME_TRANSLATIONS = {
         testimonial_author: 'Marie L., clienta verificada',
         guarantee_1: 'Pago 100% seguro',
         guarantee_2: 'Envío con seguimiento',
-        guarantee_3: 'Devoluciones gratis 30 días',
+        guarantee_3: 'Desistimiento 14 d\u00edas',
         unsubscribe: 'Darse de baja'
     },
     de: {
@@ -703,7 +703,7 @@ const WELCOME_TRANSLATIONS = {
         testimonial_author: 'Marie L., verifizierte Kundin',
         guarantee_1: '100% sichere Zahlung',
         guarantee_2: 'Verfolgter Versand in Europa',
-        guarantee_3: '30 Tage kostenlose Rückgabe',
+        guarantee_3: '14 Tage Widerrufsrecht',
         unsubscribe: 'Abbestellen'
     }
 };

@@ -15,13 +15,13 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
     <title id="pageTitle">Produit - &Eacute;CLAT</title>
-    <meta name="description" id="pageDesc" content="Découvrez ce produit beauté premium chez Maison Éclat. Livraison France offerte dès 29€. Retours gratuits 30 jours.">
+    <meta name="description" id="pageDesc" content="Découvrez ce produit beauté premium chez Maison Éclat. Livraison France offerte dès 29€. Retours sous 14 jours.">
     <meta property="og:title" id="ogTitle" content="Produit — Maison Éclat">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:url" id="ogUrl" content="https://maison-eclat.shop/pages/product.html">
     <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
-    <meta property="og:description" id="ogDesc" content="Découvrez ce produit beauté premium chez Maison Éclat. Livraison France offerte dès 29€. Retours gratuits 30 jours.">
+    <meta property="og:description" id="ogDesc" content="Découvrez ce produit beauté premium chez Maison Éclat. Livraison France offerte dès 29€. Retours sous 14 jours.">
     <meta property="og:price:amount" id="ogPrice" content="">
     <meta property="og:price:currency" content="EUR">
     <meta property="product:price:amount" id="productPrice" content="">
@@ -396,9 +396,9 @@
                         "@type": "MerchantReturnPolicy",
                         "applicableCountry": "FR",
                         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                        "merchantReturnDays": 30,
+                        "merchantReturnDays": 14,
                         "returnMethod": "https://schema.org/ReturnByMail",
-                        "returnFees": "https://schema.org/FreeReturn"
+                        "returnFees": "https://schema.org/ReturnShippingFees"
                     }
                 }
             };
@@ -516,7 +516,7 @@
                 '<ul class="pp-features">' + (pFeatures || details.features || product.features || []).map(function(f) { return '<li>' + escapeHTML(f) + '</li>'; }).join('') + '</ul>' +
                 '<div class="pp-trust">' +
                     '<span><span aria-hidden="true">&#128666;</span> Livraison suivie</span>' +
-                    '<span><span aria-hidden="true">&#128260;</span> Satisfait 30j</span>' +
+                    '<span><span aria-hidden="true">&#128260;</span> R\u00e9tractation 14j</span>' +
                     '<span><span aria-hidden="true">&#128274;</span> Paiement s\u00e9curis\u00e9</span>' +
                 '</div>' +
                 '<div class="pp-actions" style="display:flex;gap:12px;align-items:center;">' +
@@ -527,8 +527,8 @@
                 '<div id="ppStockDelivery"></div>' +
                 '<div class="pp-badges">' +
                     ((details.features || product.features || []).indexOf('Certifi\u00e9 CE') !== -1 ? '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> Certifi\u00e9 CE</div>' : '') +
-                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> Garantie 30j</div>' +
-                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Retour gratuit 14j</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#9c27b0;"></span> R\u00e9tractation 14j</div>' +
+                    '<div class="pp-cert"><span class="pp-cert-dot" style="background:#4caf50;"></span> Retour 14j</div>' +
                     '<div class="pp-cert"><span class="pp-cert-dot" style="background:#2196f3;"></span> SAV r\u00e9actif</div>' +
                 '</div>';
 

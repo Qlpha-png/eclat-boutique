@@ -23,12 +23,12 @@ const TRANSLATIONS = {
         hero_tag: '\u2728 Plus de 500 soins s\u00e9lectionn\u00e9s',
         hero_title: 'Votre beaut\u00e9,',
         hero_title_em: 'sublim\u00e9e par la science.',
-        hero_desc: 'Technologies professionnelles et soins premium s\u00e9lectionn\u00e9s pour leur efficacit\u00e9 prouv\u00e9e. Livraison suivie, retours gratuits 30j.',
+        hero_desc: 'Technologies professionnelles et soins premium s\u00e9lectionn\u00e9s pour leur efficacit\u00e9 prouv\u00e9e. Livraison suivie, r\u00e9tractation 14j.',
         hero_cta1: '\uD83D\uDD2C Trouver ma routine',
         hero_cta2: '\u2728 Composer ma routine',
         hero_stat1: '500+',
         hero_stat2: '4.8',
-        hero_stat3: '30j',
+        hero_stat3: '14j',
         brands_bar_title: 'Ils nous font confiance — Nos marques partenaires',
 
         // Trust
@@ -36,8 +36,8 @@ const TRANSLATIONS = {
         trust1_desc: '7-14 jours ouvrés en Europe',
         trust2_title: 'Paiement sécurisé',
         trust2_desc: 'Stripe • CB • PayPal',
-        trust3_title: 'Retours gratuits',
-        trust3_desc: '30 jours pour changer d\'avis',
+        trust3_title: 'R\u00e9tractation 14j',
+        trust3_desc: 'Conform\u00e9ment au Code de la consommation',
         trust4_title: 'Éco-responsable',
         trust4_desc: 'Emballages recyclés',
 
@@ -98,7 +98,7 @@ const TRANSLATIONS = {
         cart_cross_sell: 'Complétez votre routine',
 
         // Banner
-        banner_text: 'Livraison offerte dès 29€ • Satisfait ou remboursé 30j • Paiement sécurisé',
+        banner_text: 'Livraison offerte d\u00e8s 29\u20ac \u2022 R\u00e9tractation 14j \u2022 Paiement s\u00e9curis\u00e9',
 
         // Footer
         footer_shop: 'Boutique',
@@ -179,9 +179,9 @@ const TRANSLATIONS = {
 
         // Trust badges
         trust_shipping: '\ud83d\ude9a Livraison offerte d\u00e8s 29\u20ac',
-        trust_refund: '\ud83d\udd04 30j rembours\u00e9',
+        trust_refund: '\ud83d\udd04 R\u00e9tractation 14j',
         trust_modal_shipping: 'Livraison offerte d\u00e8s 29\u20ac',
-        trust_modal_refund: 'Satisfait ou rembours\u00e9 30j',
+        trust_modal_refund: 'R\u00e9tractation 14j',
         trust_modal_secure: 'Paiement s\u00e9curis\u00e9',
         popup_code_toast: 'Code BIENVENUE10 activ\u00e9 ! V\u00e9rifiez votre email.',
         btn_details: 'D\u00e9tails',
@@ -268,7 +268,7 @@ const TRANSLATIONS = {
         footer_pay_label: 'Paiement 100% s\u00e9curis\u00e9',
         footer_trust_ssl: 'Paiement<br>s\u00e9curis\u00e9 SSL',
         footer_trust_ship: 'Livraison<br>suivie France',
-        footer_trust_refund: 'Satisfait ou<br>rembours\u00e9 30j',
+        footer_trust_refund: 'R\u00e9tractation<br>14 jours',
         footer_trust_support: 'Support client<br>7j/7',
         footer_trust_eu: 'Conforme<br>r\u00e9glementation UE',
 
@@ -294,13 +294,13 @@ const TRANSLATIONS = {
 
         // Hero perks
         hero_perk_ship: '\uD83D\uDE9A Livraison offerte d\u00e8s 29\u20ac',
-        hero_perk_return: '\uD83D\uDD04 Retours 30j',
+        hero_perk_return: '\uD83D\uDD04 R\u00e9tractation 14j',
         hero_perk_diag: '\u2728 Diagnostic personnalis\u00e9',
 
         // Trust bar
         tb_ship: '\uD83D\uDE9A Livraison suivie 7-14j',
         tb_pay: '\uD83D\uDD12 Paiement Stripe s\u00e9curis\u00e9',
-        tb_return: '\u21BA Retours 30 jours',
+        tb_return: '\u21BA R\u00e9tractation 14 jours',
         tb_diag: '\u2728 Diagnostic personnalis\u00e9',
         tb_eu: '\uD83C\uddEB\uD83C\udDF7 Entreprise fran\u00e7aise',
 

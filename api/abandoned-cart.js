@@ -118,7 +118,7 @@ module.exports = async (req, res) => {
             '<div style="text-align:center;margin:32px 0;">' +
             '<a href="https://maison-eclat.shop" style="display:inline-block;background:#2d2926;color:#fff;padding:14px 40px;border-radius:30px;text-decoration:none;font-weight:600;">Retrouver mon panier</a>' +
             '</div>' +
-            '<p style="color:#6b6560;font-size:13px;text-align:center;">Livraison offerte d\u00e8s 29\u20ac | Retours gratuits 30 jours</p>' +
+            '<p style="color:#6b6560;font-size:13px;text-align:center;">Livraison offerte d\u00e8s 29\u20ac | R\u00e9tractation 14 jours</p>' +
             '</div>' +
             '<div style="background:#f3efe9;padding:20px;text-align:center;font-size:12px;color:#6b6560;">' +
             '<p>Vous recevez cet email car vous \u00eates inscrit(e) \u00e0 la newsletter \u00c9CLAT.</p>' +
