@@ -509,7 +509,6 @@
                 '<h1 class="pp-name">' + escapeHTML(pName) + '</h1>' +
                 '<div style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--color-text-light);margin:-8px 0 4px;"><span>' + prodOrigin.flag + '</span> <span>' + escapeHTML(prodOrigin.text) + '</span></div>' +
                 (product.reviews > 0 ? '<div class="pp-rating"><a href="#ppReviews" style="text-decoration:none;color:inherit;cursor:pointer;">' + '\u2605'.repeat(Math.floor(product.rating)) + ' <span style="color:var(--color-text-light);font-size:0.9rem;">' + product.rating + '/5 (' + product.reviews + ' avis) \u2193</span></a></div>' : '<div class="pp-rating" style="font-size:0.9rem;color:var(--color-text-light);">Aucun avis &mdash; <a href="#ppReviews" style="color:var(--color-secondary-text);text-decoration:underline;font-weight:600;">Soyez le premier \u00e0 donner votre avis !</a></div>') +
-                (typeof SocialShare !== 'undefined' ? '<div style="margin:8px 0;">' + SocialShare.renderButtons({ title: pName + ' | \u00c9CLAT', size: 30 }) + '</div>' : '') +
                 '<div class="pp-price">' + product.price.toFixed(2).replace('.', ',') + ' \u20ac</div>' +
                 '<p class="pp-desc">' + escapeHTML(pDesc) + '</p>' +
                 guideHTML +
