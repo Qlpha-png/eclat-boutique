@@ -11,6 +11,7 @@
     <meta name="description" id="pageDesc" content="">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" id="ogUrl" content="https://maison-eclat.shop/pages/product.html">
     <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
     <meta property="og:description" id="ogDesc" content="">
     <meta name="twitter:card" content="summary_large_image">
@@ -285,6 +286,8 @@
             if (ogImg) ogImg.setAttribute('content', absImage);
             var ogDesc = document.getElementById('ogDesc');
             if (ogDesc) ogDesc.setAttribute('content', pDesc);
+            var ogUrl = document.getElementById('ogUrl');
+            if (ogUrl) ogUrl.setAttribute('content', 'https://maison-eclat.shop/pages/product.html?id=' + product.id);
             var twTitle = document.getElementById('twTitle');
             if (twTitle) twTitle.setAttribute('content', escapeHTML(pName) + ' - \u00c9CLAT');
             var twDesc = document.getElementById('twDesc');
@@ -296,22 +299,23 @@
             var canonical = document.getElementById('canonicalLink');
             if (canonical) canonical.href = 'https://maison-eclat.shop/pages/product.html?id=' + product.id;
 
-            // Set JSON-LD Product schema (enriched with sku, brand, aggregateRating, offers)
+            // Set JSON-LD Product schema (enriched for Google Shopping / Merchant Center)
             var productSchemaData = {
                 "@context": "https://schema.org",
                 "@type": "Product",
                 "name": pName,
                 "description": pDesc,
-                "image": product.image,
+                "image": [absImage],
                 "sku": "ECLAT-" + String(product.id).padStart(4, '0'),
                 "mpn": "ECLAT-" + String(product.id).padStart(4, '0'),
+                "gtin14": undefined,
                 "brand": {
                     "@type": "Brand",
-                    "name": "\u00c9CLAT",
-                    "url": "https://maison-eclat.shop"
+                    "name": "Maison \u00c9clat"
                 },
                 "category": catLabels[product.category] || product.category,
                 "countryOfOrigin": (originMap[product.id] || defaultOrigin).country,
+                "url": "https://maison-eclat.shop/pages/product.html?id=" + product.id,
                 "offers": {
                     "@type": "Offer",
                     "price": product.price.toFixed(2),
@@ -319,9 +323,11 @@
                     "availability": "https://schema.org/InStock",
                     "itemCondition": "https://schema.org/NewCondition",
                     "url": "https://maison-eclat.shop/pages/product.html?id=" + product.id,
+                    "priceValidUntil": (new Date(Date.now() + 90 * 86400000)).toISOString().split('T')[0],
                     "seller": {
                         "@type": "Organization",
-                        "name": "Maison \u00c9clat"
+                        "name": "Maison \u00c9clat",
+                        "url": "https://maison-eclat.shop"
                     },
                     "shippingDetails": {
                         "@type": "OfferShippingDetails",
@@ -339,14 +345,14 @@
                             },
                             "transitTime": {
                                 "@type": "QuantitativeValue",
-                                "minValue": 7,
-                                "maxValue": 14,
+                                "minValue": 5,
+                                "maxValue": 10,
                                 "unitCode": "DAY"
                             }
                         },
                         "shippingRate": {
                             "@type": "MonetaryAmount",
-                            "value": "0",
+                            "value": "0.00",
                             "currency": "EUR"
                         }
                     },
@@ -355,18 +361,24 @@
                         "applicableCountry": "FR",
                         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                         "merchantReturnDays": 30,
-                        "returnMethod": "https://schema.org/ReturnByMail"
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
                     }
-                },
-                "aggregateRating": (product.reviews && product.reviews > 0) ? {
+                }
+            };
+            // Add aggregateRating only if real reviews exist (Omnibus compliance)
+            if (product.reviews && product.reviews > 0) {
+                productSchemaData.aggregateRating = {
                     "@type": "AggregateRating",
                     "ratingValue": product.rating,
                     "reviewCount": product.reviews,
                     "bestRating": 5,
                     "worstRating": 1
-                } : undefined
-            };
-            document.getElementById('productSchema').textContent = JSON.stringify(productSchemaData);
+                };
+            }
+            // Clean undefined keys before serialization
+            var schemaJSON = JSON.stringify(productSchemaData, function(k, v) { return v === undefined ? undefined : v; });
+            document.getElementById('productSchema').textContent = schemaJSON;
 
             // BreadcrumbList schema
             var breadcrumbScript = document.createElement('script');
@@ -665,26 +677,28 @@
                             "worstRating": 1,
                             "reviewCount": agg.count
                         };
-                        // Add individual reviews to schema (max 5 for performance)
+                        // Add individual reviews to schema (max 5 for Google Rich Results)
                         if (reviews.length > 0) {
                             ld.review = reviews.slice(0, 5).map(function(r) {
                                 return {
                                     "@type": "Review",
+                                    "name": r.title || undefined,
                                     "reviewRating": {
                                         "@type": "Rating",
                                         "ratingValue": r.rating,
-                                        "bestRating": 5
+                                        "bestRating": 5,
+                                        "worstRating": 1
                                     },
                                     "author": {
                                         "@type": "Person",
                                         "name": r.name || "Client v\u00e9rifi\u00e9"
                                     },
                                     "datePublished": r.created_at ? r.created_at.split('T')[0] : "",
-                                    "reviewBody": r.comment || ""
+                                    "reviewBody": r.body || r.comment || ""
                                 };
                             });
                         }
-                        schema.textContent = JSON.stringify(ld);
+                        schema.textContent = JSON.stringify(ld, function(k, v) { return v === undefined ? undefined : v; });
                     } catch(e) {}
                 }
             }
