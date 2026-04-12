@@ -257,6 +257,15 @@
         });
     }
 
+    // ── Vérifier si une session Supabase existe en localStorage ──
+    function hasStoredSession() {
+        try {
+            var key = 'sb-omysrhwpyexlcgwyiigq-auth-token';
+            var val = localStorage.getItem(key);
+            return val && val.length > 10;
+        } catch (e) { return false; }
+    }
+
     // ── Initialisation ──
     function init() {
         if (!SUPABASE_ANON_KEY) {
@@ -266,7 +275,23 @@
             return;
         }
 
-        loadSupabaseSDK(function() {
+        // Optimisation perf : ne pas charger le SDK Supabase (49KB) pour les visiteurs non connectés
+        if (!hasStoredSession()) {
+            auth._notifyReady();
+            renderAccountButton();
+            // Charger le SDK en arrière-plan après l'interaction (au cas où l'utilisateur se connecte)
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { loadSupabaseSDK(function() { initSupabase(); }); });
+            } else {
+                setTimeout(function() { loadSupabaseSDK(function() { initSupabase(); }); }, 3000);
+            }
+            return;
+        }
+
+        loadSupabaseSDK(function() { initSupabase(); });
+    }
+
+    function initSupabase() {
             try {
                 auth._supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -314,7 +339,6 @@
                 console.error('[auth] Init error:', err);
                 auth._notifyReady();
             }
-        });
     }
 
     if (document.readyState === 'loading') {

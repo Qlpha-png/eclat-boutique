@@ -16,7 +16,8 @@ const CSS_FILES = [
     'css/themes.css',
     'css/animations.css',
     'css/mega-menu.css',
-    'css/skeleton.css'
+    'css/skeleton.css',
+    'css/routine-builder.css'
 ];
 
 const JS_FILES = [
@@ -36,7 +37,16 @@ const JS_FILES = [
     'js/wishlist.js',
     'js/animations.js',
     'js/mega-menu.js',
-    'js/social-proof.js'
+    'js/social-proof.js',
+    'js/chatbot.js',
+    'js/routine-builder.js',
+    'js/products-details.js',
+    'js/cookie-consent.js',
+    'js/bug-report.js',
+    'js/loyalty-bar.js',
+    'js/reward-wheel.js',
+    'js/checkin.js',
+    'js/preferences.js'
 ];
 
 async function minifyCSS() {

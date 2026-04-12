@@ -160,9 +160,9 @@ module.exports = async function handler(req, res) {
             return res.status(413).json({ error: 'Image too large' });
         }
 
-        // Cache agressif : 30j CDN, 7j navigateur
+        // Cache agressif : 30j CDN, 30j navigateur
         res.setHeader('Content-Type', contentType);
-        res.setHeader('Cache-Control', 'public, max-age=604800, s-maxage=2592000, stale-while-revalidate=86400');
+        res.setHeader('Cache-Control', 'public, max-age=2592000, s-maxage=2592000, immutable');
         return res.status(200).send(buffer);
 
     } catch (err) {
