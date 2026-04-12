@@ -87,13 +87,13 @@
         <div class="nav-container">
             <a href="/" class="logo">&Eacute;CLAT</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html">Accueil</a></li>
                 <li><a href="category.html">Produits</a></li>
                 <li><a href="../index.html#packs">Coffrets</a></li>
+                <li><a href="../index.html#garanties">Garanties</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="guide-beaute.html">Guide Beauté</a></li>
-                <li><a href="a-propos.html">À propos</a></li>
-                <li><a href="account.html">Mon compte</a></li>
+                <li><a href="diagnostic.html">Diagnostic</a></li>
+                <li><a href="guide-beaute.html">Guide Beaut&eacute;</a></li>
+                <li><a href="a-propos.html">&Agrave; propos</a></li>
             </ul>
             <div class="nav-actions">
                 <a href="account.html#eclats" id="navLoyaltyWidget" class="loyalty-widget loyalty-widget--hidden" aria-label="Mes Éclats">
@@ -136,25 +136,6 @@
                 <option value="newest">Nouveaut&eacute;s</option>
                 <option value="price_asc">Prix croissant</option>
                 <option value="price_desc">Prix d&eacute;croissant</option>
-                <option value="score">Clean Beauty Score</option>
-            </select>
-            <label for="genderSelect" class="sr-only">Genre</label>
-            <select id="genderSelect">
-                <option value="">Tous</option>
-                <option value="femme">Femme</option>
-                <option value="homme">Homme</option>
-                <option value="unisex">Unisexe</option>
-            </select>
-            <label for="concernSelect" class="sr-only">Préoccupation</label>
-            <select id="concernSelect">
-                <option value="">Toutes pr&eacute;occupations</option>
-                <option value="acne">Acn&eacute;</option>
-                <option value="aging">Anti-&acirc;ge</option>
-                <option value="hydration">Hydratation</option>
-                <option value="glow">&Eacute;clat</option>
-                <option value="dark-spots">Taches</option>
-                <option value="pores">Pores</option>
-                <option value="redness">Rougeurs</option>
             </select>
         </div>
 
@@ -226,8 +207,7 @@
         var subcat = params.get('sub') || '';
         var page = parseInt(params.get('page')) || 1;
         var sort = params.get('sort') || 'popular';
-        var gender = params.get('gender') || '';
-        var concern = params.get('concern') || '';
+        // gender/concern/subcategory not in DB yet — removed
 
         var CATEGORY_META = {
             visage: { title: 'Soins Visage', desc: 'Masques LED, gua sha, s\u00e9rums et plus pour une peau rayonnante.' },
@@ -277,8 +257,6 @@
 
         // Set filter values from URL
         document.getElementById('sortSelect').value = sort;
-        document.getElementById('genderSelect').value = gender;
-        document.getElementById('concernSelect').value = concern;
 
         // BreadcrumbList
         document.getElementById('breadcrumbLD').textContent = JSON.stringify({
@@ -311,15 +289,10 @@
             grid.innerHTML = '<div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div>';
 
             var sort = document.getElementById('sortSelect').value;
-            var gender = document.getElementById('genderSelect').value;
-            var concern = document.getElementById('concernSelect').value;
 
             // Try API first, fallback to local PRODUCTS
             var apiUrl = '/api/products-catalog?page=' + page + '&limit=24&sort=' + sort;
             if (cat) apiUrl += '&category=' + encodeURIComponent(cat);
-            if (subcat) apiUrl += '&subcategory=' + encodeURIComponent(subcat);
-            if (gender) apiUrl += '&gender=' + encodeURIComponent(gender);
-            if (concern) apiUrl += '&concern=' + encodeURIComponent(concern);
 
             fetch(apiUrl).then(function(r) {
                 if (!r.ok) throw new Error('API error');
@@ -332,11 +305,9 @@
                 }
             }).catch(function() {
                 // Fallback local
-                var filtered = typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
+                var filtered = typeof PRODUCTS !== 'undefined' ? PRODUCTS.slice() : [];
                 if (cat) filtered = filtered.filter(function(p) { return p.category === cat; });
                 if (subcat) filtered = filtered.filter(function(p) { return p.subcategory && p.subcategory.toLowerCase() === subcat.toLowerCase(); });
-                if (gender) filtered = filtered.filter(function(p) { return p.gender === gender || p.gender === 'unisex'; });
-                if (concern) filtered = filtered.filter(function(p) { return p.concerns && p.concerns.indexOf(concern) !== -1; });
                 // Sort
                 if (sort === 'price_asc') filtered.sort(function(a,b) { return a.price - b.price; });
                 else if (sort === 'price_desc') filtered.sort(function(a,b) { return b.price - a.price; });
@@ -421,8 +392,7 @@
 
         // Filter change handlers
         document.getElementById('sortSelect').onchange = function() { page = 1; loadProducts(); };
-        document.getElementById('genderSelect').onchange = function() { page = 1; loadProducts(); };
-        document.getElementById('concernSelect').onchange = function() { page = 1; loadProducts(); };
+        // gender/concern filters removed — columns don't exist in DB yet
 
         loadProducts();
     })();

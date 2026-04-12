@@ -24,25 +24,16 @@ module.exports = async function handler(req, res) {
         var limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 24));
         var offset = (page - 1) * limit;
         var category = (req.query.category || '').trim().toLowerCase();
-        var subcategory = (req.query.subcategory || '').trim().toLowerCase();
-        var concern = (req.query.concern || '').trim().toLowerCase();
-        var gender = (req.query.gender || '').trim().toLowerCase();
         var sort = (req.query.sort || 'popular').trim();
         var q = (req.query.q || '').trim();
-        var trending = req.query.trending === 'true';
-        var minScore = parseInt(req.query.minScore) || 0;
 
+        // Colonnes réelles de la table products
         var query = sb.from('products')
-            .select('id, name, slug, price, compare_at_price, tagline, description, category, subcategory, images, badge, is_featured, metadata, concerns, gender, clean_beauty_score, trending, bestseller_rank, created_at', { count: 'exact' })
+            .select('id, name, slug, price, compare_at_price, tagline, description, category, images, badge, is_featured, metadata, stock, created_at', { count: 'exact' })
             .eq('is_active', true);
 
         // Filtres
         if (category) query = query.eq('category', category);
-        if (subcategory) query = query.eq('subcategory', subcategory);
-        if (gender) query = query.eq('gender', gender);
-        if (trending) query = query.eq('trending', true);
-        if (minScore > 0) query = query.gte('clean_beauty_score', minScore);
-        if (concern) query = query.contains('concerns', [concern]);
 
         // Recherche texte
         if (q) {
@@ -56,10 +47,9 @@ module.exports = async function handler(req, res) {
             case 'price_asc': query = query.order('price', { ascending: true }); break;
             case 'price_desc': query = query.order('price', { ascending: false }); break;
             case 'newest': query = query.order('created_at', { ascending: false }); break;
-            case 'score': query = query.order('clean_beauty_score', { ascending: false, nullsFirst: false }); break;
             case 'name': query = query.order('name', { ascending: true }); break;
-            default: // popular
-                query = query.order('bestseller_rank', { ascending: true, nullsFirst: false })
+            default: // popular — par prix décroissant comme proxy popularité
+                query = query.order('is_featured', { ascending: false, nullsFirst: false })
                              .order('created_at', { ascending: false });
         }
 
