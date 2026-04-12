@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=800, height=800">
+<title>ÉCLAT Logo Render</title>
+<!-- System fonts only for fast render -->
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 800px;
+  height: 800px;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at 50% 45%, #3a3330 0%, #2d2926 40%, #231f1d 75%, #1a1714 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.logo-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 50% 40%, rgba(201, 168, 124, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Outer ring */
+.ring-outer {
+  position: absolute;
+  width: 740px;
+  height: 740px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(to right, #2d2926, #2d2926),
+    linear-gradient(135deg, #d4b896 0%, #c9a87c 25%, #b8935f 50%, #c9a87c 75%, #d4b896 100%);
+  opacity: 0.5;
+}
+
+/* Inner ring */
+.ring-inner {
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  border: 0.8px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(to right, #2d2926, #2d2926),
+    linear-gradient(135deg, #c9a87c 0%, #b8935f 50%, #c9a87c 100%);
+  opacity: 0.3;
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Top decorative line */
+.line-top, .line-bottom {
+  width: 180px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, #c9a87c 20%, #d4b896 50%, #c9a87c 80%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* Top diamond */
+.diamond-top {
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, #d4b896, #c9a87c, #b8935f);
+  transform: rotate(45deg);
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+/* Main brand name */
+.brand-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 128px;
+  font-weight: 700;
+  letter-spacing: 18px;
+  text-indent: 18px;
+  background: linear-gradient(135deg, #e0c9a8 0%, #d4b896 20%, #c9a87c 50%, #b8935f 80%, #c9a87c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin: 20px 0 8px 0;
+  filter: drop-shadow(0 2px 8px rgba(201, 168, 124, 0.15));
+}
+
+/* Decorative separator */
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.sep-line {
+  width: 60px;
+  height: 0.8px;
+  background: linear-gradient(90deg, transparent, #c9a87c, transparent);
+  opacity: 0.5;
+}
+
+.sep-diamond {
+  width: 6px;
+  height: 6px;
+  background: #c9a87c;
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: 'Inter', 'Cormorant Garamond', sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 16px;
+  text-indent: 16px;
+  color: #c9a87c;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+/* Bottom diamond */
+.diamond-bottom {
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, #d4b896, #c9a87c, #b8935f);
+  transform: rotate(45deg);
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+.line-bottom {
+  margin-top: 12px;
+}
+
+/* Subtle corner accents */
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.15;
+}
+.corner-tl { top: 60px; left: 60px; border-top: 1px solid #c9a87c; border-left: 1px solid #c9a87c; }
+.corner-tr { top: 60px; right: 60px; border-top: 1px solid #c9a87c; border-right: 1px solid #c9a87c; }
+.corner-bl { bottom: 60px; left: 60px; border-bottom: 1px solid #c9a87c; border-left: 1px solid #c9a87c; }
+.corner-br { bottom: 60px; right: 60px; border-bottom: 1px solid #c9a87c; border-right: 1px solid #c9a87c; }
+</style>
+</head>
+<body>
+<div class="logo-container">
+  <!-- Decorative rings -->
+  <div class="ring-outer"></div>
+  <div class="ring-inner"></div>
+
+  <!-- Corner accents -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="diamond-top"></div>
+    <div class="line-top"></div>
+    <div class="brand-name">ÉCLAT</div>
+    <div class="separator">
+      <div class="sep-line"></div>
+      <div class="sep-diamond"></div>
+      <div class="sep-line"></div>
+    </div>
+    <div class="subtitle">BEAUTÉ</div>
+    <div class="line-bottom"></div>
+    <div class="diamond-bottom"></div>
+  </div>
+</div>
+</body>
+</html>
