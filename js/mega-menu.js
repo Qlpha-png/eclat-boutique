@@ -99,17 +99,22 @@
     var megaEl = null;
     var overlayEl = null;
     var triggerLink = null;
+    var parentLi = null;
     var isOpen = false;
+    var closeTimer = null;
 
     function injectCSS() {
-        if (document.getElementById('eclat-mega-css-v5')) return;
+        if (document.getElementById('eclat-mega-css-v6')) return;
         var s = document.createElement('style');
-        s.id = 'eclat-mega-css-v5';
+        s.id = 'eclat-mega-css-v6';
         s.textContent = [
             // Overlay
             '#eclat-mega-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,0.18);display:none;}',
             // Container — fixed, centered below navbar
             '#eclat-mega-panel{position:fixed;top:0;left:50%;z-index:9999;width:920px;max-width:calc(100vw - 24px);transform:translateX(-50%);background:#fff;border:1px solid #e8e0d8;border-radius:0 0 14px 14px;box-shadow:0 12px 48px rgba(0,0,0,0.14);padding:24px 28px 20px;display:none;}',
+            // Chevron on Produits link via ::after (immune to i18n text replacement)
+            'a.eclat-mega-trigger::after{content:"";display:inline-block;width:0;height:0;margin-left:5px;vertical-align:middle;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform .2s;}',
+            'a.eclat-mega-trigger.eclat-mega-open::after{transform:rotate(180deg);}',
             // Grid
             '#eclat-mega-panel .mg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 28px;}',
             // Category block
@@ -189,19 +194,36 @@
         }
     }
 
+    function cancelClose() {
+        if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    }
+
     function open() {
+        cancelClose();
         if (!megaEl || isOpen) return;
         positionPanel();
         megaEl.style.display = 'block';
         if (overlayEl) overlayEl.style.display = 'block';
+        if (triggerLink) triggerLink.classList.add('eclat-mega-open');
         isOpen = true;
     }
 
     function close() {
+        cancelClose();
         if (!megaEl || !isOpen) return;
         megaEl.style.display = 'none';
         if (overlayEl) overlayEl.style.display = 'none';
+        if (triggerLink) triggerLink.classList.remove('eclat-mega-open');
         isOpen = false;
+    }
+
+    function scheduleClose() {
+        cancelClose();
+        closeTimer = setTimeout(function() {
+            if (megaEl && megaEl.matches(':hover')) return;
+            if (parentLi && parentLi.matches(':hover')) return;
+            close();
+        }, 350);
     }
 
     function init() {
@@ -232,10 +254,13 @@
         var oldOv = document.getElementById('eclat-mega-overlay');
         if (oldOv) oldOv.remove();
 
-        var parentLi = triggerLink.parentElement;
+        parentLi = triggerLink.parentElement;
         if (parentLi && parentLi.classList.contains('mega-menu-trigger')) {
             parentLi.classList.remove('mega-menu-trigger');
         }
+
+        // Add chevron class to Produits link (CSS ::after handles the arrow)
+        triggerLink.classList.add('eclat-mega-trigger');
 
         // Prevent default navigation on Produits
         triggerLink.addEventListener('click', function(e) {
@@ -249,20 +274,13 @@
         megaEl = built.panel;
         overlayEl = built.overlay;
 
-        // Desktop hover
+        // Desktop hover — cancelClose on both sides to prevent trembling
         if (parentLi) {
-            parentLi.addEventListener('mouseenter', function() { open(); });
-            parentLi.addEventListener('mouseleave', function() {
-                setTimeout(function() {
-                    if (megaEl && !megaEl.matches(':hover')) close();
-                }, 200);
-            });
+            parentLi.addEventListener('mouseenter', function() { cancelClose(); open(); });
+            parentLi.addEventListener('mouseleave', scheduleClose);
         }
-        megaEl.addEventListener('mouseleave', function() {
-            setTimeout(function() {
-                if (parentLi && !parentLi.matches(':hover')) close();
-            }, 200);
-        });
+        megaEl.addEventListener('mouseenter', cancelClose);
+        megaEl.addEventListener('mouseleave', scheduleClose);
 
         // Close on click outside
         document.addEventListener('click', function(e) {
