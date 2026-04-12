@@ -19,7 +19,7 @@ class LoyaltyProgram {
 
     // --- Tiers (basé sur Éclats — doit correspondre à loyalty-bar.js) ---
     static TIERS = {
-        eclat:     { name: 'Éclat',     min: 0,    multiplier: 1,   icon: '✨', perks: ['10 Éclats par € dépensé', 'Coffre du jour', 'Badges à collectionner'] },
+        eclat:     { name: 'Éclat',     min: 0,    multiplier: 1,   icon: '✨', perks: ['1 Éclat par € dépensé', 'Coffre du jour', 'Badges à collectionner'] },
         lumiere:   { name: 'Lumière',   min: 300,  multiplier: 1.3, icon: '💡', perks: ['x1.3 Éclats', 'IA beauté', 'Livraison offerte dès 39€', 'Roue de la fortune'] },
         prestige:  { name: 'Prestige',  min: 750,  multiplier: 1.6, icon: '👑', perks: ['x1.6 Éclats', 'IA experte + 50 msg', 'Accès avant-premières', 'Cadeau trimestriel'] },
         diamant:   { name: 'Diamant',   min: 1500, multiplier: 2,   icon: '💎', perks: ['x2 Éclats', 'IA illimitée + VIP', '-10% permanent', 'Événements exclusifs'] }
