@@ -609,8 +609,8 @@
             <h1>Votre beaut&eacute;,<br><em>sublim&eacute;e par la science.</em></h1>
             <p>500+ soins s&eacute;lectionn&eacute;s pour leur efficacit&eacute; prouv&eacute;e. Chaque ingr&eacute;dient analys&eacute;. Livraison suivie en Europe, 30 jours satisfait ou rembours&eacute;.</p>
             <div class="hero-buttons">
-                <a href="pages/diagnostic.html" class="btn btn-primary">&#128300; Trouver ma routine</a>
-                <a href="#routine-composer" class="btn btn-outline">&#10024; Composer ma routine</a>
+                <a href="pages/category.html" class="btn btn-primary">&#128722; Explorer la boutique</a>
+                <a href="pages/diagnostic.html" class="btn btn-outline">&#128300; Trouver ma routine</a>
             </div>
             <div class="hero-perks">
                 <span class="hero-perk" id="heroPerkShip">&#128666; Livraison offerte d&egrave;s 29&euro;</span>
@@ -646,6 +646,35 @@
         </div>
     </div>
 
+    <!-- IA Personnalisation — Section conditionnelle "Pour vous" (sous l'accueil) -->
+    <section class="ai-personalization anim-fade-up" id="pourVous" aria-labelledby="pourVousTitle">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&#10024; Intelligence Beaut&eacute;</span>
+                <h2 id="pourVousTitle">S&eacute;lectionn&eacute; pour vous</h2>
+                <p class="ai-section-desc"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="pages/diagnostic.html" id="aiSectionLink" class="ai-section-link">Faire mon diagnostic &rarr;</a></p>
+            </div>
+            <div id="aiRecommendations"></div>
+        </div>
+    </section>
+
+    <!-- Routine Builder — Section interactive avec vrais produits (les clients adorent) -->
+    <section id="routine-composer" class="routine-composer-section" aria-labelledby="routineTitle">
+        <div class="container">
+            <div class="routine-header">
+                <span class="routine-tag" id="routineTag">&#10024; Composez votre routine</span>
+                <h2 class="routine-title" id="routineTitle">Votre routine personnalis&eacute;e sur mesure</h2>
+                <p class="routine-desc" id="routineDesc">2 questions sur votre peau, puis choisissez vos produits &agrave; chaque &eacute;tape. L&rsquo;IA personnalise les conseils selon votre profil.</p>
+            </div>
+            <div id="routineBuilder"></div>
+            <div class="routine-footer">
+                <p class="routine-footer-hint">Pas s&ucirc;re de vos choix ?</p>
+                <a href="pages/diagnostic.html" class="btn btn-outline routine-diag-btn" id="routineDiagBtn">&#10024; Laissez l'IA choisir pour vous &rarr;</a>
+                <p class="routine-subtext" id="routineSubtext">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Categories Visuelles — Style Sephora/Amazon : grandes cartes cliquables -->
     <section class="categories-visual anim-fade-up" aria-labelledby="catSectionTitle">
         <div class="container">
@@ -678,35 +707,23 @@
             </div>
             <!-- Row 2 : 4 petites catégories -->
             <div class="cat-grid-4">
-                <a href="#produits" class="cat-card" data-cat="ongles" data-action="filter-category" data-filter="ongles">
+                <a href="pages/category.html?cat=ongles" class="cat-card" data-cat="ongles">
                     <div class="cat-icon">&#x1F485;</div>
                     <span class="cat-label" data-cat-label="ongles">Ongles</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="outils" data-action="filter-category" data-filter="outils">
+                <a href="pages/category.html?cat=outils" class="cat-card" data-cat="outils">
                     <div class="cat-icon">&#x2728;</div>
                     <span class="cat-label" data-cat-label="outils">Outils beaut&eacute;</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="aromatherapie" data-action="filter-category" data-filter="aromatherapie">
+                <a href="pages/category.html?cat=aromatherapie" class="cat-card" data-cat="aromatherapie">
                     <div class="cat-icon">&#x1F33F;</div>
                     <span class="cat-label" data-cat-label="bienetre">Bien-&ecirc;tre</span>
                 </a>
-                <a href="#produits" class="cat-card" data-cat="accessoire" data-action="filter-category" data-filter="accessoire">
+                <a href="pages/category.html?cat=accessoire" class="cat-card" data-cat="accessoire">
                     <div class="cat-icon">&#x1F392;</div>
                     <span class="cat-label" data-cat-label="accessoires">Accessoires</span>
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- IA Personnalisation — Section conditionnelle "Pour vous" -->
-    <section class="ai-personalization anim-fade-up" id="pourVous" aria-labelledby="pourVousTitle">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">&#10024; Intelligence Beaut&eacute;</span>
-                <h2 id="pourVousTitle">S&eacute;lectionn&eacute; pour vous</h2>
-                <p class="ai-section-desc"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="pages/diagnostic.html" id="aiSectionLink" class="ai-section-link">Faire mon diagnostic &rarr;</a></p>
-            </div>
-            <div id="aiRecommendations"></div>
         </div>
     </section>
 
@@ -724,67 +741,6 @@
         </div>
     </section>
 
-    <!-- Catalogue complet avec filtres (remonté = accessible vite) -->
-    <section class="products-section anim-fade-up" id="produits" aria-labelledby="produitsTitle">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Notre catalogue</span>
-                <h2 id="produitsTitle">Tous nos produits</h2>
-                <p>500+ soins s&eacute;lectionn&eacute;s. Filtrez par cat&eacute;gorie, prix ou pr&eacute;occupation.</p>
-            </div>
-
-            <!-- Category Filter (sticky wrapper for Amazon/Uber Eats style tabs) -->
-            <div class="category-filter-sticky" id="categorySticky">
-            <div class="category-filter">
-                <button class="filter-btn active" data-category="all">Tous</button>
-                <button class="filter-btn" data-category="visage">Soins visage</button>
-                <button class="filter-btn" data-category="soin">S&eacute;rums &amp; Soins</button>
-                <button class="filter-btn" data-category="corps">Corps</button>
-                <button class="filter-btn" data-category="cheveux">Cheveux</button>
-                <button class="filter-btn" data-category="ongles">Ongles</button>
-                <button class="filter-btn" data-category="homme">Homme</button>
-                <button class="filter-btn" data-category="outils">Outils beaut&eacute;</button>
-                <button class="filter-btn" data-category="aromatherapie">Bien-&ecirc;tre</button>
-                <button class="filter-btn" data-category="accessoire">Accessoires</button>
-            </div>
-            </div>
-            <script>
-            (function() {
-                var sticky = document.getElementById('categorySticky');
-                if (!sticky) return;
-                var observer = new IntersectionObserver(function(entries) {
-                    sticky.classList.toggle('scrolled', !entries[0].isIntersecting);
-                }, { threshold: [1], rootMargin: '-71px 0px 0px 0px' });
-                observer.observe(sticky);
-            })();
-            </script>
-
-            <!-- Filtres avancés injectés par search.js (recherche, tri, prix, préoccupation — i18n 4 langues) -->
-
-            <!-- Products Grid -->
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be injected by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Dynamic Carousels — Tendances, Nouveautés, Petits prix (style Amazon/Sephora) -->
-    <div id="homepageCarousels"></div>
-
-    <!-- Recently Viewed (personnalisé) -->
-    <div id="recentlyViewedHome" class="container recently-viewed--hidden"></div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof RecentlyViewed === 'undefined') return;
-        var items = RecentlyViewed.getAll();
-        if (items.length >= 2) {
-            var el = document.getElementById('recentlyViewedHome');
-            el.innerHTML = RecentlyViewed.renderSection();
-            el.style.display = 'block';
-        }
-    });
-    </script>
-
     <!-- Promo Banner — Compact -->
     <section class="promo-banner-dark">
         <div class="container promo-banner-inner">
@@ -793,7 +749,7 @@
                 <h2 class="promo-offer-title">-10% avec le code <strong>BIENVENUE10</strong></h2>
                 <p class="promo-offer-desc">Valable sur tout le site, sans minimum d'achat.</p>
             </div>
-            <a href="#produits" class="btn promo-offer-btn">Voir la boutique</a>
+            <a href="pages/category.html" class="btn promo-offer-btn">Voir la boutique</a>
         </div>
     </section>
 
@@ -813,56 +769,6 @@
 
 
 
-    <!-- Routine Builder — Section interactive avec vrais produits -->
-    <section id="routine-composer" class="routine-composer-section" aria-labelledby="routineTitle">
-        <div class="container">
-            <div class="routine-header">
-                <span class="routine-tag" id="routineTag">&#10024; Composez votre routine</span>
-                <h2 class="routine-title" id="routineTitle">Votre routine personnalis&eacute;e sur mesure</h2>
-                <p class="routine-desc" id="routineDesc">2 questions sur votre peau, puis choisissez vos produits &agrave; chaque &eacute;tape. L&rsquo;IA personnalise les conseils selon votre profil.</p>
-            </div>
-            <!-- JS renders the dynamic routine builder here -->
-            <div id="routineBuilder"></div>
-            <div class="routine-footer">
-                <p class="routine-footer-hint">Pas s&ucirc;re de vos choix ?</p>
-                <a href="pages/diagnostic.html" class="btn btn-outline routine-diag-btn" id="routineDiagBtn">&#10024; Laissez l'IA choisir pour vous &rarr;</a>
-                <p class="routine-subtext" id="routineSubtext">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Forces ÉCLAT — Ce qu'aucun autre site ne fait -->
-    <section class="unique-section" aria-labelledby="uniqueTitle">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag" id="uniqueTag">Ce qui nous rend uniques</span>
-                <h2 id="uniqueTitle">Ce qu'aucun autre site ne fait</h2>
-            </div>
-            <div class="unique-grid">
-                <div class="unique-card">
-                    <div class="unique-card-icon">&#10024;</div>
-                    <h3 id="uniqueAiTitle">IA personnalis&eacute;e</h3>
-                    <p id="uniqueAiDesc">Diagnostic peau, recommandations, explication de chaque ingr&eacute;dient par l'IA</p>
-                </div>
-                <div class="unique-card">
-                    <div class="unique-card-icon">&#128300;</div>
-                    <h3 id="uniqueCbsTitle">Clean Beauty Score</h3>
-                    <p id="uniqueCbsDesc">Chaque composition INCI analys&eacute;e. Score de s&eacute;curit&eacute; transparent.</p>
-                </div>
-                <div class="unique-card">
-                    <div class="unique-card-icon">&#128142;</div>
-                    <h3 id="uniqueLoyaltyTitle">Fid&eacute;lit&eacute; gamifi&eacute;e</h3>
-                    <p id="uniqueLoyaltyDesc">4 tiers, coffre du jour, d&eacute;fis, badges. Pas un simple programme &agrave; points.</p>
-                </div>
-                <div class="unique-card">
-                    <div class="unique-card-icon">&#127775;</div>
-                    <h3 id="uniqueTransTitle">Transparence totale</h3>
-                    <p id="uniqueTransDesc">Prix justes, d&eacute;lais r&eacute;els (7-14j), z&eacute;ro faux avis, z&eacute;ro marketing trompeur.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Vrais avis clients — apparaîtront quand il y en aura -->
     <div id="homepageReviews" class="container homepage-reviews--hidden">
         <div class="section-header">
@@ -871,6 +777,69 @@
         </div>
         <div id="homepageReviewsList" class="reviews-grid"></div>
     </div>
+
+    <!-- Blog — Derniers articles -->
+    <section class="blog-preview-section anim-fade-up" aria-labelledby="blogPreviewTitle">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre blog</span>
+                <h2 id="blogPreviewTitle">Conseils &amp; astuces beaut&eacute;</h2>
+            </div>
+            <div class="blog-preview-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+                <a href="pages/blog/routine-anti-age.html" class="blog-preview-card" style="background:var(--color-white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition);text-decoration:none;color:inherit;">
+                    <div style="padding:24px;">
+                        <span style="font-size:.75rem;color:var(--color-secondary-text);font-weight:600;text-transform:uppercase;letter-spacing:.5px;">Anti-&acirc;ge</span>
+                        <h3 style="font-family:var(--font-display);font-size:1.1rem;margin:8px 0;">Routine anti-&acirc;ge : les gestes essentiels</h3>
+                        <p style="font-size:.85rem;color:var(--color-text-light);line-height:1.5;">D&eacute;couvrez les 5 &eacute;tapes cl&eacute;s pour une peau plus jeune et lumineuse.</p>
+                    </div>
+                </a>
+                <a href="pages/blog/bienfaits-gua-sha.html" class="blog-preview-card" style="background:var(--color-white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition);text-decoration:none;color:inherit;">
+                    <div style="padding:24px;">
+                        <span style="font-size:.75rem;color:var(--color-secondary-text);font-weight:600;text-transform:uppercase;letter-spacing:.5px;">Bien-&ecirc;tre</span>
+                        <h3 style="font-family:var(--font-display);font-size:1.1rem;margin:8px 0;">Les bienfaits du Gua Sha sur votre visage</h3>
+                        <p style="font-size:.85rem;color:var(--color-text-light);line-height:1.5;">Drainage lymphatique, &eacute;clat naturel : pourquoi adopter le gua sha.</p>
+                    </div>
+                </a>
+                <a href="pages/blog/ingredients-eviter.html" class="blog-preview-card" style="background:var(--color-white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition);text-decoration:none;color:inherit;">
+                    <div style="padding:24px;">
+                        <span style="font-size:.75rem;color:var(--color-secondary-text);font-weight:600;text-transform:uppercase;letter-spacing:.5px;">Clean Beauty</span>
+                        <h3 style="font-family:var(--font-display);font-size:1.1rem;margin:8px 0;">5 ingr&eacute;dients &agrave; &eacute;viter dans vos soins</h3>
+                        <p style="font-size:.85rem;color:var(--color-text-light);line-height:1.5;">Parab&egrave;nes, sulfates, silicones : d&eacute;cryptage des &eacute;tiquettes.</p>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align:center;margin-top:24px;">
+                <a href="pages/blog.html" class="btn btn-outline">Voir tous les articles &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Besoin d'aide ? — FAQ + Chatbot + Support -->
+    <section class="help-section anim-fade-up" aria-labelledby="helpTitle" style="padding:60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Service client</span>
+                <h2 id="helpTitle">Besoin d'aide ?</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:800px;margin:0 auto;">
+                <a href="pages/faq.html" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);">
+                    <span style="font-size:2rem;">&#128221;</span>
+                    <strong style="font-size:1rem;">Questions fr&eacute;quentes</strong>
+                    <span style="font-size:.85rem;color:var(--color-text-light);text-align:center;">Livraison, retours, paiement... Trouvez votre r&eacute;ponse en 1 clic.</span>
+                </a>
+                <a href="#" onclick="event.preventDefault();if(typeof toggleChat==='function')toggleChat();else if(document.querySelector('.chat-toggle'))document.querySelector('.chat-toggle').click();" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);cursor:pointer;">
+                    <span style="font-size:2rem;">&#129302;</span>
+                    <strong style="font-size:1rem;">Chatbot IA</strong>
+                    <span style="font-size:.85rem;color:var(--color-text-light);text-align:center;">Notre assistant r&eacute;pond &agrave; vos questions 24h/24, 7j/7.</span>
+                </a>
+                <a href="pages/support.html" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);">
+                    <span style="font-size:2rem;">&#128232;</span>
+                    <strong style="font-size:1rem;">Signaler un probl&egrave;me</strong>
+                    <span style="font-size:.85rem;color:var(--color-text-light);text-align:center;">Un souci avec votre commande ? Cr&eacute;ez un ticket, on vous r&eacute;pond vite.</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Newsletter -->
     <section class="newsletter-section anim-fade-up" aria-labelledby="newsletterTitle">
@@ -908,7 +877,7 @@
                 <div class="footer-col">
                     <h3 class="footer-col-heading">Boutique</h3>
                     <ul>
-                        <li><a href="#produits" id="fl_all">Tous les produits</a></li>
+                        <li><a href="pages/category.html" id="fl_all">Tous les produits</a></li>
                         <li><a href="#bestsellers" id="fl_best">Best-sellers</a></li>
                         <li><a href="pages/category.html?cat=visage" id="fl_face">Soins visage</a></li>
                         <li><a href="pages/category.html?cat=corps" id="fl_body">Soins corps</a></li>
