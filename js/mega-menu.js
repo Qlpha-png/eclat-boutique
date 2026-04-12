@@ -104,12 +104,12 @@
     var closeTimer = null;
 
     function injectCSS() {
-        if (document.getElementById('eclat-mega-css-v7')) return;
+        if (document.getElementById('eclat-mega-css-v8')) return;
         var s = document.createElement('style');
-        s.id = 'eclat-mega-css-v7';
+        s.id = 'eclat-mega-css-v8';
         s.textContent = [
             // Overlay
-            '#eclat-mega-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,0.18);display:none;}',
+            '#eclat-mega-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,0.18);display:none;pointer-events:auto;}',
             // Container — fixed, centered below navbar, with invisible bridge on top to prevent hover gap
             '#eclat-mega-panel{position:fixed;top:0;left:50%;z-index:9999;width:920px;max-width:calc(100vw - 24px);transform:translateX(-50%);background:#fff;border:1px solid #e8e0d8;border-radius:0 0 14px 14px;box-shadow:0 12px 48px rgba(0,0,0,0.14);padding:24px 28px 20px;display:none;}',
             '#eclat-mega-panel::before{content:"";position:absolute;top:-20px;left:0;right:0;height:20px;}',
@@ -192,6 +192,8 @@
         if (nav) {
             var rect = nav.getBoundingClientRect();
             megaEl.style.top = rect.bottom + 'px';
+            // Overlay starts below navbar so it doesn't intercept hover on nav links
+            if (overlayEl) overlayEl.style.top = rect.bottom + 'px';
         }
     }
 
