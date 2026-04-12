@@ -3337,21 +3337,31 @@ input { font-family: inherit; }
 
 .email-popup form {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.email-popup form input {
-    flex: 1;
+.email-popup form input[type="email"] {
+    width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-size: 0.9rem;
     font-family: var(--font-body);
+    box-sizing: border-box;
 }
 
 .email-popup form button {
-    padding: 12px 20px;
+    padding: 14px 20px;
+    width: 100%;
     white-space: nowrap;
+}
+
+.email-popup .newsletter-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
 }
 
 .email-popup .popup-note {

@@ -152,11 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(() => overlay.classList.add('show'));
     }
 
-    document.addEventListener('mouseout', (e) => {
-        if (e.clientY < 5 && !exitIntentShown) {
-            showExitIntent();
-        }
-    });
+    // Exit intent disabled — BIENVENUE10 (-10%) is already active via newsletter popup
+    // document.addEventListener('mouseout', (e) => {
+    //     if (e.clientY < 5 && !exitIntentShown) {
+    //         showExitIntent();
+    //     }
+    // });
 
     // =============================
     // 5. PRODUITS "RÉCEMMENT VUS"
