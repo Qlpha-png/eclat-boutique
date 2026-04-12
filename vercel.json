@@ -1,12 +1,6 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": ".",
-    "images": {
-        "domains": ["oss-cf.cjdropshipping.com", "cf.cjdropshipping.com", "images.unsplash.com"],
-        "formats": ["image/avif", "image/webp"],
-        "minimumCacheTTL": 2592000,
-        "sizes": [320, 480, 640, 800, 1024, 1200]
-    },
     "crons": [
         { "path": "/api/email-sequence", "schedule": "0 */1 * * *" },
         { "path": "/api/push-daily", "schedule": "0 9 * * *" }
