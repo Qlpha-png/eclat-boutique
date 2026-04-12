@@ -6,11 +6,13 @@
 // ============================
 
 var GA_ID = 'G-4FKZ0GTSG9';
+var GADS_ID = 'AW-16772916314';
+var GADS_CONVERSION_LABEL = 'AW-16772916314/UUb9CKzp4-cZENrI-bO-';
 
 const Analytics = {
     _gaLoaded: false,
 
-    // Load GA4 script if cookie consent for analytics is granted
+    // Load GA4 + Google Ads script if cookie consent for analytics is granted
     _loadGA() {
         if (this._gaLoaded) return;
         // Check cookie consent from localStorage (set by cookie-consent.js)
@@ -27,6 +29,7 @@ const Analytics = {
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', GA_ID, { anonymize_ip: true });
+        gtag('config', GADS_ID);
         window.gtag = gtag;
     },
 
@@ -107,6 +110,16 @@ const Analytics = {
             items: items.map(i => ({ item_id: i.id, item_name: i.name, price: i.price, quantity: i.qty }))
         });
         this._fb('Purchase', { value: total, currency: 'EUR', content_ids: items.map(i => i.id) });
+    },
+
+    // Google Ads conversion tracking — fired on success page
+    gadsConversion(transactionId, value) {
+        this._ga('event', 'conversion', {
+            send_to: GADS_CONVERSION_LABEL,
+            value: value || 0,
+            currency: 'EUR',
+            transaction_id: transactionId || ''
+        });
     },
 
     search(query) {

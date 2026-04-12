@@ -95,6 +95,22 @@
         // Clear cart after successful purchase
         localStorage.removeItem('eclat_cart');
 
+        // Google Ads conversion tracking
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var sessionId = params.get('session_id') || '';
+            var orderTotal = 0;
+            try { orderTotal = parseFloat(sessionStorage.getItem('eclat_order_total')) || 0; } catch(e) {}
+            sessionStorage.removeItem('eclat_order_total');
+
+            // Wait for analytics.js to load gtag, then fire conversion
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof Analytics !== 'undefined' && typeof Analytics.gadsConversion === 'function') {
+                    Analytics.gadsConversion(sessionId, orderTotal);
+                }
+            });
+        })();
+
         // Apply i18n translations to data-i18n elements
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('[data-i18n]').forEach(function(el) {

@@ -350,6 +350,11 @@
                 const data = await response.json();
 
                 if (data.url) {
+                    // Save order total for Google Ads conversion tracking
+                    try {
+                        var orderTotal = cart.getTotal() + shippingCost;
+                        sessionStorage.setItem('eclat_order_total', orderTotal.toFixed(2));
+                    } catch(e) {}
                     window.location.href = data.url;
                 } else {
                     throw new Error(data.error || t('checkout_error'));
