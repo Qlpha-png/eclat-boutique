@@ -15,6 +15,12 @@
     <meta property="og:url" id="ogUrl" content="https://maison-eclat.shop/pages/product.html">
     <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=630&q=80">
     <meta property="og:description" id="ogDesc" content="Découvrez ce produit beauté premium chez Maison Éclat. Livraison France offerte dès 29€. Retours gratuits 30 jours.">
+    <meta property="og:price:amount" id="ogPrice" content="">
+    <meta property="og:price:currency" content="EUR">
+    <meta property="product:price:amount" id="productPrice" content="">
+    <meta property="product:price:currency" content="EUR">
+    <meta property="og:availability" content="instock">
+    <meta property="product:brand" content="Maison Éclat">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" id="twTitle" content="Produit - ÉCLAT">
     <meta name="twitter:description" id="twDesc" content="">
@@ -311,6 +317,11 @@
             if (twDesc) twDesc.setAttribute('content', pDesc);
             var twImg = document.getElementById('twImage');
             if (twImg) twImg.setAttribute('content', absImage);
+            // Pinterest Rich Pins — prix dynamique
+            var ogPrice = document.getElementById('ogPrice');
+            if (ogPrice) ogPrice.setAttribute('content', product.price.toFixed(2));
+            var productPriceMeta = document.getElementById('productPrice');
+            if (productPriceMeta) productPriceMeta.setAttribute('content', product.price.toFixed(2));
 
             // Set canonical URL with product ID
             var canonical = document.getElementById('canonicalLink');

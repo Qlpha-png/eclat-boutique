@@ -17,8 +17,9 @@ Disallow: /sql/
 Disallow: /scripts/
 Disallow: /supabase/
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://maison-eclat.shop/sitemap.xml
+Sitemap: https://maison-eclat.shop/sitemap-products.xml
 
 # Crawl-delay (optional, polite)
 Crawl-delay: 1

@@ -107,13 +107,23 @@ async function minifyJS() {
     console.log(`  JS total saved: ${(totalSaved/1024).toFixed(1)}KB\n`);
 }
 
+async function generateMerchantFeed() {
+    try {
+        require('./generate-merchant-feed');
+    } catch (e) {
+        console.error('  ✗ merchant-feed:', e.message);
+    }
+}
+
 async function main() {
     console.log('ÉCLAT Build — Minifying assets...\n');
     console.log('CSS:');
     await minifyCSS();
     console.log('JS:');
     await minifyJS();
-    console.log('Build complete ✓');
+    console.log('Google Shopping:');
+    await generateMerchantFeed();
+    console.log('\nBuild complete ✓');
 }
 
 main().catch(err => {
