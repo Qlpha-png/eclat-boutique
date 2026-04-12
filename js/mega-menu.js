@@ -104,17 +104,18 @@
     var closeTimer = null;
 
     function injectCSS() {
-        if (document.getElementById('eclat-mega-css-v6')) return;
+        if (document.getElementById('eclat-mega-css-v7')) return;
         var s = document.createElement('style');
-        s.id = 'eclat-mega-css-v6';
+        s.id = 'eclat-mega-css-v7';
         s.textContent = [
             // Overlay
             '#eclat-mega-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,0.18);display:none;}',
-            // Container — fixed, centered below navbar
+            // Container — fixed, centered below navbar, with invisible bridge on top to prevent hover gap
             '#eclat-mega-panel{position:fixed;top:0;left:50%;z-index:9999;width:920px;max-width:calc(100vw - 24px);transform:translateX(-50%);background:#fff;border:1px solid #e8e0d8;border-radius:0 0 14px 14px;box-shadow:0 12px 48px rgba(0,0,0,0.14);padding:24px 28px 20px;display:none;}',
-            // Chevron on Produits link via ::after (immune to i18n text replacement)
-            'a.eclat-mega-trigger::after{content:"";display:inline-block;width:0;height:0;margin-left:5px;vertical-align:middle;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid currentColor;transition:transform .2s;}',
-            'a.eclat-mega-trigger.eclat-mega-open::after{transform:rotate(180deg);}',
+            '#eclat-mega-panel::before{content:"";position:absolute;top:-20px;left:0;right:0;height:20px;}',
+            // Hamburger icon on Produits link via ::after (immune to i18n text replacement)
+            'a.eclat-mega-trigger::after{content:"\\2630";display:inline-block;margin-left:6px;font-size:0.85em;vertical-align:middle;transition:opacity .2s;}',
+            'a.eclat-mega-trigger.eclat-mega-open::after{content:"\\2715";}',
             // Grid
             '#eclat-mega-panel .mg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 28px;}',
             // Category block
@@ -223,7 +224,7 @@
             if (megaEl && megaEl.matches(':hover')) return;
             if (parentLi && parentLi.matches(':hover')) return;
             close();
-        }, 350);
+        }, 500);
     }
 
     function init() {
