@@ -55,7 +55,7 @@
     // Slide structure (non-text properties)
     var heroSlidesMeta = [
         { btn1Href: 'pages/diagnostic.html', btn2Href: '#routine-composer', bg: 'linear-gradient(135deg, #fff5f8 0%, #fce8ef 50%, #fdf5f0 100%)' },
-        { btn1Href: '#packs', btn2Href: '#produits', bg: 'linear-gradient(135deg, #f8f0e8 0%, #f0e4d4 50%, #faf5f0 100%)' },
+        { btn1Href: '#packs', btn2Href: 'pages/category.html', bg: 'linear-gradient(135deg, #f8f0e8 0%, #f0e4d4 50%, #faf5f0 100%)' },
         { btn1Href: 'pages/diagnostic.html', btn2Href: 'pages/guide-beaute.html', bg: 'linear-gradient(135deg, #f5f0f8 0%, #ece4f0 50%, #faf5fa 100%)' },
         { btn1Href: 'pages/loyalty.html', btn2Href: 'pages/register.html', bg: 'linear-gradient(135deg, #fdf5f0 0%, #fce8e0 50%, #f5ebe4 100%)' }
     ];
@@ -323,7 +323,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Populaire</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Tendances du moment</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="pages/category.html" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselTendances"></div>';
             sectionsHTML += '</div></section>';
@@ -335,7 +335,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Nouveaut\u00e9s</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Vient d\'arriver</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="pages/category.html" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselNouveautes"></div>';
             sectionsHTML += '</div></section>';
@@ -359,7 +359,7 @@
             sectionsHTML += '<div class="container">';
             sectionsHTML += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">';
             sectionsHTML += '<div><span class="section-tag">Bon plan</span><h2 style="font-family:var(--font-display);font-size:1.5rem;">Petits prix, grands r\u00e9sultats</h2></div>';
-            sectionsHTML += '<a href="#produits" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
+            sectionsHTML += '<a href="pages/category.html" style="font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;">Voir tout \u2192</a>';
             sectionsHTML += '</div>';
             sectionsHTML += '<div id="carouselPetitPrix"></div>';
             sectionsHTML += '</div></section>';
@@ -514,7 +514,7 @@
             html += '<div style="font-weight:700;color:var(--color-secondary-text);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
             html += '</a>';
         }
-        html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';
+        html += '<a href="pages/category.html" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';
 
         resultsDiv.innerHTML = html;
         resultsDiv.style.display = 'block';

@@ -554,7 +554,7 @@ function buildWelcomeJ7(meta) {
             '</td>' +
         '</tr></table>' +
         '<div style="text-align:center;margin:28px 0 8px;">' +
-            '<a href="' + SITE_URL + '#produits" style="display:inline-block;background:' + DARK + ';color:#fff;padding:14px 40px;border-radius:30px;text-decoration:none;font-weight:600;font-size:15px;">D\u00e9couvrir la boutique</a>' +
+            '<a href="' + SITE_URL + 'pages/category.html" style="display:inline-block;background:' + DARK + ';color:#fff;padding:14px 40px;border-radius:30px;text-decoration:none;font-weight:600;font-size:15px;">D\u00e9couvrir la boutique</a>' +
         '</div>';
 
     return {

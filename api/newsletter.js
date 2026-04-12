@@ -358,7 +358,7 @@ function buildWelcomeEmail(t, email) {
     </tr>
     </table>
     <div style="text-align:center;margin-top:24px;">
-        <a href="${SITE}#produits" style="display:inline-block;background:${DARK};color:#fff;padding:12px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px;">${t.cta_products}</a>
+        <a href="${SITE}pages/category.html" style="display:inline-block;background:${DARK};color:#fff;padding:12px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px;">${t.cta_products}</a>
     </div>
 </td></tr>
 

@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="eim-code" data-action="copy-code" data-code="RESTEZ15" data-copied-text="${xt.copied}">RESTEZ15</div>
                     </div>
                     <p class="eim-expire">${xt.expire}</p>
-                    <a href="#produits" class="btn btn-primary btn-full" data-action="close-parent" data-close-target=".exit-intent-overlay">${xt.cta}</a>
+                    <a href="pages/category.html" class="btn btn-primary btn-full" data-action="close-parent" data-close-target=".exit-intent-overlay">${xt.cta}</a>
                 </div>
             </div>
         `;

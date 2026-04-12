@@ -11,7 +11,7 @@
 
     var CATEGORIES = [
         {
-            key: 'soins-visage',
+            key: 'visage',
             label: 'Soins Visage',
             icon: '\u2728',
             subs: [
@@ -34,7 +34,7 @@
             ]
         },
         {
-            key: 'corps-bien-etre',
+            key: 'corps',
             label: 'Corps & Bien-\u00eatre',
             icon: '\uD83E\uDDF4',
             subs: [
@@ -55,7 +55,7 @@
             ]
         },
         {
-            key: 'maquillage-outils',
+            key: 'outils',
             label: 'Maquillage & Outils',
             icon: '\uD83D\uDC84',
             subs: [
@@ -76,7 +76,7 @@
             ]
         },
         {
-            key: 'bien-etre',
+            key: 'aromatherapie',
             label: 'Bien-\u00eatre',
             icon: '\uD83E\uDDD8',
             subs: [
@@ -87,7 +87,7 @@
             ]
         },
         {
-            key: 'accessoires',
+            key: 'accessoire',
             label: 'Accessoires',
             icon: '\uD83D\uDCBC',
             subs: [
@@ -349,7 +349,7 @@
             var text = a.textContent.trim().toLowerCase();
             var href = (a.getAttribute('href') || '').toLowerCase();
 
-            if (text === 'boutique' || text === 'produits' || href === '#produits' || href === '#boutique') {
+            if (text === 'boutique' || text === 'produits' || href.indexOf('category.html') !== -1 || href === '#boutique') {
                 return items[i];
             }
         }
