@@ -1,5 +1,5 @@
 /**
- * GET /api/img?url=ENCODED_URL — Proxy images CJ Dropshipping / Unsplash
+ * GET /api/img?url=ENCODED_URL&w=WIDTH&q=QUALITY — Proxy + optimisation images
  *
  * CJ CDN bloque :
  * - Requêtes navigateur (hotlink protection)
@@ -8,6 +8,8 @@
  * Solution : on fetch côté serveur Vercel avec :
  * - User-Agent navigateur réaliste
  * - Referer cjdropshipping.com
+ * - Conversion auto WebP/AVIF selon le navigateur (Sharp)
+ * - Redimensionnement optionnel via ?w=WIDTH
  * - Cache CDN Vercel 30 jours (1 fetch par image, puis edge cache)
  *
  * Sécurité : allowlist stricte de domaines, HTTPS uniquement, blocage IP privées.
@@ -16,6 +18,7 @@
 const { URL } = require('url');
 const dns = require('dns');
 const { promisify } = require('util');
+var sharp;
 
 const dnsResolve = promisify(dns.resolve4);
 const { applyRateLimit } = require('./_middleware/rateLimit');
@@ -160,9 +163,42 @@ module.exports = async function handler(req, res) {
             return res.status(413).json({ error: 'Image too large' });
         }
 
+        // ── Optimisation image via Sharp (WebP/AVIF + resize) ──
+        var outputType = contentType;
+        try {
+            if (!sharp) sharp = require('sharp');
+            var acceptHeader = req.headers.accept || '';
+            var targetWidth = parseInt(req.query.w, 10) || 0;
+            var targetQuality = parseInt(req.query.q, 10) || 80;
+            if (targetQuality < 10) targetQuality = 10;
+            if (targetQuality > 100) targetQuality = 100;
+
+            var pipeline = sharp(buffer);
+
+            // Redimensionner si largeur demandée (max 2000px, pas d'agrandissement)
+            if (targetWidth > 0 && targetWidth <= 2000) {
+                pipeline = pipeline.resize(targetWidth, null, { withoutEnlargement: true });
+            }
+
+            // Convertir au meilleur format supporté par le navigateur
+            if (acceptHeader.includes('image/avif') && !contentType.includes('svg') && !contentType.includes('gif')) {
+                pipeline = pipeline.avif({ quality: targetQuality });
+                outputType = 'image/avif';
+            } else if (acceptHeader.includes('image/webp') && !contentType.includes('svg') && !contentType.includes('gif')) {
+                pipeline = pipeline.webp({ quality: targetQuality });
+                outputType = 'image/webp';
+            }
+
+            buffer = await pipeline.toBuffer();
+        } catch (sharpErr) {
+            // Si Sharp échoue, on sert l'image originale (fallback safe)
+        }
+
         // Cache agressif : 30j CDN, 30j navigateur
-        res.setHeader('Content-Type', contentType);
+        // Vary: Accept pour que le CDN cache WebP/AVIF séparément
+        res.setHeader('Content-Type', outputType);
         res.setHeader('Cache-Control', 'public, max-age=2592000, s-maxage=2592000, immutable');
+        res.setHeader('Vary', 'Accept');
         return res.status(200).send(buffer);
 
     } catch (err) {
