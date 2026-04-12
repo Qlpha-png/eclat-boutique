@@ -350,10 +350,12 @@
                 const data = await response.json();
 
                 if (data.url) {
-                    // Save order total for Google Ads conversion tracking
+                    // Save order data for Google Ads conversion tracking
                     try {
                         var orderTotal = cart.getTotal() + shippingCost;
                         sessionStorage.setItem('eclat_order_total', orderTotal.toFixed(2));
+                        sessionStorage.setItem('eclat_order_email', email.trim().toLowerCase());
+                        sessionStorage.setItem('eclat_order_items', JSON.stringify(cart.items.map(function(i) { return { id: i.id, price: i.price, qty: i.qty }; })));
                     } catch(e) {}
                     window.location.href = data.url;
                 } else {

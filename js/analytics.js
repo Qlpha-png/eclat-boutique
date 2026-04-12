@@ -68,11 +68,14 @@ const Analytics = {
         this._fb('PageView');
     },
 
+    // item_id must match Merchant Center feed g:id format (ECLAT-xxx)
+    _feedId(id) { return 'ECLAT-' + id; },
+
     viewProduct(product) {
         this._ga('event', 'view_item', {
             currency: 'EUR',
             value: product.price,
-            items: [{ item_id: product.id, item_name: product.name, price: product.price, item_category: product.category }]
+            items: [{ item_id: this._feedId(product.id), item_name: product.name, price: product.price, item_category: product.category }]
         });
         this._fb('ViewContent', { content_ids: [product.id], content_type: 'product', value: product.price, currency: 'EUR' });
     },
@@ -81,7 +84,7 @@ const Analytics = {
         this._ga('event', 'add_to_cart', {
             currency: 'EUR',
             value: product.price * (qty || 1),
-            items: [{ item_id: product.id, item_name: product.name, price: product.price, quantity: qty || 1 }]
+            items: [{ item_id: this._feedId(product.id), item_name: product.name, price: product.price, quantity: qty || 1 }]
         });
         this._fb('AddToCart', { content_ids: [product.id], content_type: 'product', value: product.price, currency: 'EUR' });
     },
@@ -89,37 +92,54 @@ const Analytics = {
     removeFromCart(product) {
         this._ga('event', 'remove_from_cart', {
             currency: 'EUR',
-            items: [{ item_id: product.id, item_name: product.name, price: product.price }]
+            items: [{ item_id: this._feedId(product.id), item_name: product.name, price: product.price }]
         });
     },
 
     beginCheckout(items, total) {
+        var self = this;
         this._ga('event', 'begin_checkout', {
             currency: 'EUR',
             value: total,
-            items: items.map(i => ({ item_id: i.id, item_name: i.name, price: i.price, quantity: i.qty }))
+            items: items.map(i => ({ item_id: self._feedId(i.id), item_name: i.name, price: i.price, quantity: i.qty }))
         });
         this._fb('InitiateCheckout', { value: total, currency: 'EUR', num_items: items.length });
     },
 
     purchase(orderId, total, items) {
+        var self = this;
         this._ga('event', 'purchase', {
             transaction_id: orderId,
             currency: 'EUR',
             value: total,
-            items: items.map(i => ({ item_id: i.id, item_name: i.name, price: i.price, quantity: i.qty }))
+            items: items.map(i => ({ item_id: self._feedId(i.id), item_name: i.name, price: i.price, quantity: i.qty }))
         });
         this._fb('Purchase', { value: total, currency: 'EUR', content_ids: items.map(i => i.id) });
     },
 
-    // Google Ads conversion tracking — fired on success page
-    gadsConversion(transactionId, value) {
-        this._ga('event', 'conversion', {
+    // Google Ads conversion tracking with enhanced conversions — fired on success page
+    async gadsConversion(transactionId, value, email) {
+        var convData = {
             send_to: GADS_CONVERSION_LABEL,
             value: value || 0,
             currency: 'EUR',
             transaction_id: transactionId || ''
-        });
+        };
+        // Enhanced conversions: send SHA256-hashed email for better attribution
+        if (email) {
+            try {
+                var hash = await this._sha256(email.trim().toLowerCase());
+                convData.user_data = { sha256_email_address: hash };
+            } catch(e) {}
+        }
+        this._ga('event', 'conversion', convData);
+    },
+
+    // SHA256 hash via Web Crypto API (for enhanced conversions)
+    async _sha256(str) {
+        var buf = new TextEncoder().encode(str);
+        var hash = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(hash)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
     },
 
     search(query) {

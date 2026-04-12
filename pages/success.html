@@ -95,18 +95,29 @@
         // Clear cart after successful purchase
         localStorage.removeItem('eclat_cart');
 
-        // Google Ads conversion tracking
+        // Google Ads conversion + enhanced conversions + GA4 purchase
         (function() {
             var params = new URLSearchParams(window.location.search);
             var sessionId = params.get('session_id') || '';
             var orderTotal = 0;
+            var orderEmail = '';
+            var orderItems = [];
             try { orderTotal = parseFloat(sessionStorage.getItem('eclat_order_total')) || 0; } catch(e) {}
+            try { orderEmail = sessionStorage.getItem('eclat_order_email') || ''; } catch(e) {}
+            try { orderItems = JSON.parse(sessionStorage.getItem('eclat_order_items')) || []; } catch(e) {}
             sessionStorage.removeItem('eclat_order_total');
+            sessionStorage.removeItem('eclat_order_email');
+            sessionStorage.removeItem('eclat_order_items');
 
-            // Wait for analytics.js to load gtag, then fire conversion
             document.addEventListener('DOMContentLoaded', function() {
-                if (typeof Analytics !== 'undefined' && typeof Analytics.gadsConversion === 'function') {
-                    Analytics.gadsConversion(sessionId, orderTotal);
+                if (typeof Analytics === 'undefined') return;
+                // Google Ads conversion with enhanced conversions (hashed email)
+                if (typeof Analytics.gadsConversion === 'function') {
+                    Analytics.gadsConversion(sessionId, orderTotal, orderEmail);
+                }
+                // GA4 purchase event
+                if (typeof Analytics.purchase === 'function' && orderTotal > 0) {
+                    Analytics.purchase(sessionId, orderTotal, orderItems);
                 }
             });
         })();
