@@ -233,8 +233,9 @@
     <script src="../js/wishlist.js?v=3"></script>
     <script src="../js/social-share.js?v=2"></script>
     <script src="../js/recently-viewed.js?v=2"></script>
-    <script src="../js/ingredients-db.js?v=2"></script>
-    <script src="../js/clean-beauty.js?v=2"></script>
+    <!-- Clean Beauty Score désactivé (compositions souvent imprécises) -->
+    <!-- <script src="../js/ingredients-db.js?v=2"></script> -->
+    <!-- <script src="../js/clean-beauty.js?v=2"></script> -->
     <script>
         var catLabels = {
             visage: 'Soins visage', soin: 'Skincare', corps: 'Corps & fitness',
@@ -486,19 +487,12 @@
                 specsHTML += '</dl></div>';
             }
 
-            // Build ingredients HTML with Clean Beauty Score
+            // Build ingredients HTML (liste simple, pas de score)
             var ingredientsHTML = '';
+            var cbResult = null;
             var productIngredients = details.ingredients || product.ingredients;
             if (productIngredients) {
-                // Build a product-like object with ingredients for CleanBeauty
-                var cbProduct = { id: product.id, ingredients: productIngredients, name: product.name, category: product.category };
-                if (window.CleanBeauty && window.INGREDIENTS_DB) {
-                    var cbResult = CleanBeauty.renderSection(cbProduct);
-                    ingredientsHTML = cbResult.html;
-                    // Tooltips will be bound after techContainer DOM update below
-                } else {
-                    ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(productIngredients) + '</div></div>';
-                }
+                ingredientsHTML = '<div class="pp-section"><h2>Composition / Ingr\u00e9dients</h2><div class="pp-ingredients">' + escapeHTML(productIngredients) + '</div></div>';
             }
 
             // Build how-to HTML — use translated howTo if available
@@ -542,10 +536,7 @@
             var techContainer = document.getElementById('ppTechnical');
             if (techContainer) {
                 techContainer.innerHTML = howToHTML + specsHTML + ingredientsHTML + '<div id="ppWhyForYou"></div>';
-                // Bind CleanBeauty tooltips now that DOM is updated
-                if (cbResult && cbResult.result && window.CleanBeauty) {
-                    setTimeout(function() { CleanBeauty.bindTooltips(cbResult.result); }, 100);
-                }
+                // Clean Beauty Score désactivé
             }
 
             // "Pourquoi ce produit pour vous" — personnalisé si diagnostic fait
@@ -867,5 +858,7 @@
 <script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
 <script src="../js/bug-report.js?v=1" defer fetchpriority="low"></script>
 <script src="../js/analytics.js" defer></script>
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
