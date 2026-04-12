@@ -47,7 +47,7 @@
         .cat-card img { width:100%; height:260px; object-fit:cover; }
         .cat-card-info { padding:16px; }
         .cat-card-name { font-weight:600; margin-bottom:4px; font-size:.95rem; }
-        .cat-card-price { color:var(--color-secondary); font-weight:700; font-size:1.1rem; }
+        .cat-card-price { color:var(--color-secondary-text); font-weight:700; font-size:1.1rem; }
         .cat-card-price .old { text-decoration:line-through; color:var(--color-text-light); font-size:.85rem; font-weight:400; margin-left:8px; }
         .cat-card-badge { position:absolute; top:12px; left:12px; background:var(--color-secondary); color:var(--color-white); font-size:.7rem; padding:4px 10px; border-radius:20px; font-weight:600; text-transform:uppercase; }
         .cat-card-img { position:relative; }
@@ -98,6 +98,15 @@
 
 
     <main id="main-content">
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+        <nav aria-label="Fil d'ariane" class="breadcrumb-nav">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#produits">Produits</a></li>
+                <li aria-current="page" id="breadcrumbCategory">Catégorie</li>
+            </ol>
+        </nav>
+    </div>
     <div class="cat-hero">
         <h1 id="catTitle">Chargement...</h1>
         <p id="catDesc"></p>
@@ -107,6 +116,7 @@
         <div class="cat-subcats" id="catSubcats"></div>
 
         <div class="cat-filters">
+            <label for="sortSelect" class="sr-only">Trier par</label>
             <select id="sortSelect">
                 <option value="popular">Populaires</option>
                 <option value="newest">Nouveaut&eacute;s</option>
@@ -114,12 +124,14 @@
                 <option value="price_desc">Prix d&eacute;croissant</option>
                 <option value="score">Clean Beauty Score</option>
             </select>
+            <label for="genderSelect" class="sr-only">Genre</label>
             <select id="genderSelect">
                 <option value="">Tous</option>
                 <option value="femme">Femme</option>
                 <option value="homme">Homme</option>
                 <option value="unisex">Unisexe</option>
             </select>
+            <label for="concernSelect" class="sr-only">Préoccupation</label>
             <select id="concernSelect">
                 <option value="">Toutes pr&eacute;occupations</option>
                 <option value="acne">Acn&eacute;</option>
@@ -229,6 +241,8 @@
         // Use translated category label if available
         var catTitle = (typeof getCategoryText === 'function' && cat) ? getCategoryText(cat, lang) : meta.title;
         document.getElementById('catTitle').textContent = catTitle;
+        var bcCat = document.getElementById('breadcrumbCategory');
+        if (bcCat) bcCat.textContent = catTitle;
         document.getElementById('catDesc').textContent = meta.desc;
         document.getElementById('pageTitle').textContent = catTitle + ' - \u00c9CLAT';
         document.getElementById('pageDesc').content = meta.desc;

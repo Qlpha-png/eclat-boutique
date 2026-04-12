@@ -207,7 +207,7 @@
         var html = '<div style="padding:12px 16px;border-bottom:1px solid var(--color-border,#e8e4de);">';
         html += '<strong style="font-size:0.9rem;">' + name + '</strong>';
         if (tier) {
-            html += '<div style="font-size:0.75rem;color:var(--color-secondary,#c9a87c);margin-top:2px;">' + tier + (profile && profile.loyalty_points != null ? ' — ' + profile.loyalty_points + ' pts' : '') + '</div>';
+            html += '<div style="font-size:0.75rem;color:var(--color-secondary,#c9a87c);margin-top:2px;">' + tier + (profile && profile.loyalty_points != null ? ' — ' + parseInt(profile.loyalty_points, 10) + ' pts' : '') + '</div>';
         }
         html += '</div>';
 

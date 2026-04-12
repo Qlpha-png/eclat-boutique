@@ -36,7 +36,7 @@
     <div class="checkout-page">
         <!-- Progress indicator -->
         <div style="display:flex;justify-content:center;gap:8px;align-items:center;margin-bottom:28px;font-size:0.85rem;">
-            <span style="display:flex;align-items:center;gap:6px;color:var(--color-secondary);font-weight:600;">
+            <span style="display:flex;align-items:center;gap:6px;color:var(--color-secondary-text);font-weight:600;">
                 <span style="background:var(--color-secondary);color:var(--color-white);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;">1</span>
                 Panier &#10003;
             </span>
@@ -80,6 +80,7 @@
                     <span data-i18n="checkout_total">Total</span>
                     <span id="checkoutTotal">0,00 &euro;</span>
                 </div>
+                <p class="checkout-tva-note" style="font-size:0.72rem;color:var(--color-text-light);margin-top:4px;">Prix nets &mdash; TVA non applicable (art. 293 B du CGI)</p>
             </div>
         </div>
 
@@ -166,14 +167,14 @@
                     <strong>Vendeur :</strong> Maison &Eacute;CLAT &mdash; Micro-entreprise<br>
                     <strong>Droit de r&eacute;tractation :</strong> 30 jours apr&egrave;s r&eacute;ception<br>
                     <strong>D&eacute;lai de livraison :</strong> 7 &agrave; 14 jours ouvr&eacute;s<br>
-                    <strong>M&eacute;diation :</strong> <a href="https://www.mediateur-consommation-smp.fr" target="_blank" rel="noopener" style="color:var(--color-secondary);">SMP - M&eacute;diation Professionnelle</a>
+                    <strong>M&eacute;diation :</strong> <a href="https://www.mediateur-consommation-smp.fr" target="_blank" rel="noopener" style="color:var(--color-secondary-text);">SMP - M&eacute;diation Professionnelle</a>
                 </p>
             </div>
 
             <!-- CGV acceptance (mandatory) -->
             <label style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;cursor:pointer;font-size:0.85rem;color:var(--color-text-light);line-height:1.5;">
                 <input type="checkbox" id="acceptCGV" required style="margin-top:3px;min-width:18px;min-height:18px;">
-                <span>J'accepte les <a href="cgv.html" target="_blank" rel="noopener" style="color:var(--color-secondary);text-decoration:underline;">conditions g&eacute;n&eacute;rales de vente</a> et la <a href="confidentialite.html" target="_blank" rel="noopener" style="color:var(--color-secondary);text-decoration:underline;">politique de confidentialit&eacute;</a>. Je reconnais mon droit de r&eacute;tractation de 30 jours. *</span>
+                <span>J'accepte les <a href="cgv.html" target="_blank" rel="noopener" style="color:var(--color-secondary-text);text-decoration:underline;">conditions g&eacute;n&eacute;rales de vente</a> et la <a href="confidentialite.html" target="_blank" rel="noopener" style="color:var(--color-secondary-text);text-decoration:underline;">politique de confidentialit&eacute;</a>. Je reconnais mon droit de r&eacute;tractation de 30 jours. *</span>
             </label>
 
             <button type="submit" class="btn btn-primary btn-full" style="padding:16px;font-size:1rem;" id="payBtn">
@@ -189,7 +190,7 @@
         </form>
 
         <div style="text-align:center;margin-top:24px;">
-            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary);" id="checkoutBackLink">&larr; <span data-i18n="checkout_back">Retour &agrave; la boutique</span></a>
+            <a href="../index.html" style="font-size:0.9rem;color:var(--color-secondary-text);" id="checkoutBackLink">&larr; <span data-i18n="checkout_back">Retour &agrave; la boutique</span></a>
         </div>
     </div>
 

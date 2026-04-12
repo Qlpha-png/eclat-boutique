@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const { getSupabase } = require('./_middleware/auth');
 const { generateUnsubToken } = require('./unsubscribe');
-const { creditReferralParrain } = require('./loyalty/referral');
+const { creditReferralParrain, creditReferralFilleul } = require('./loyalty/referral');
 const { getStreakMultiplier, checkTierUpgrade } = require('./loyalty/checkin');
 
 // ============================
@@ -382,11 +382,15 @@ async function persistToSupabase(order, session) {
                             }).then(() => {}).catch(() => {});
                         }
 
-                        // Parrainage : créditer le parrain si 1ère commande du filleul
+                        // Parrainage : créditer le parrain ET le filleul si 1ère commande >= MIN requis
                         if (orderCount === 1) {
-                            const refResult = await creditReferralParrain(sb, authUser.id);
-                            if (refResult) {
-                                console.log('[PERSIST] Referral bonus: +' + refResult.eclats + ' to parrain', refResult.parrain_id);
+                            const refParrain = await creditReferralParrain(sb, authUser.id);
+                            if (refParrain) {
+                                console.log('[PERSIST] Referral bonus parrain: +' + refParrain.eclats + ' to', refParrain.parrain_id);
+                            }
+                            const refFilleul = await creditReferralFilleul(sb, authUser.id, order.total);
+                            if (refFilleul) {
+                                console.log('[PERSIST] Referral bonus filleul: +' + refFilleul.eclats + ' to', refFilleul.filleul_id);
                             }
                         }
 

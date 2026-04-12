@@ -9,6 +9,7 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/favicon-192.png">
     <title id="pageTitle">Produit - &Eacute;CLAT</title>
     <meta name="description" id="pageDesc" content="">
+    <meta property="og:title" id="ogTitle" content="Produit — Maison Éclat">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:url" id="ogUrl" content="https://maison-eclat.shop/pages/product.html">
@@ -131,6 +132,13 @@
     <main id="main-content">
     <div class="product-page">
         <a href="../index.html#produits" class="pp-back">&larr; Tous les produits</a>
+        <nav aria-label="Fil d'ariane" class="breadcrumb-nav">
+            <ol class="breadcrumb-list">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="../index.html#produits">Produits</a></li>
+                <li aria-current="page" id="breadcrumbProduct">Produit</li>
+            </ol>
+        </nav>
         <div class="pp-grid">
             <div class="pp-image" id="ppImage"></div>
             <div class="pp-info" id="ppInfo"></div>
@@ -279,6 +287,8 @@
 
             // Set page meta
             document.title = escapeHTML(pName) + ' - \u00c9CLAT';
+            var bcProduct = document.getElementById('breadcrumbProduct');
+            if (bcProduct) bcProduct.textContent = pName;
             document.getElementById('pageDesc').setAttribute('content', pDesc);
 
             // Set OG & Twitter meta tags dynamically

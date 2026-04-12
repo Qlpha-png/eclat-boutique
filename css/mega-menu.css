@@ -76,7 +76,7 @@
 }
 
 .mega-menu-col__header:hover {
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
 }
 
 .mega-menu-col__icon {
@@ -113,7 +113,7 @@
 }
 
 .mega-menu-col__links a:hover {
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
     padding-left: 4px;
 }
 
@@ -123,7 +123,7 @@
     margin-top: 6px;
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -153,7 +153,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
     background: rgba(201,168,124,0.12);
     padding: 4px 12px;
     border-radius: 20px;
@@ -179,7 +179,7 @@
 .mega-menu-featured__price {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--color-secondary, #c9a87c);
+    color: var(--color-secondary-text, #7a5f30);
 }
 
 .mega-menu-featured__cta {

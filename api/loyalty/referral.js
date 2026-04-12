@@ -106,24 +106,15 @@ module.exports = async function handler(req, res) {
             return res.status(400).json({ error: 'Le parrain a atteint son plafond mensuel' });
         }
 
-        // Créditer le filleul
+        // Enregistrer le parrain du filleul SANS créditer les Éclats immédiatement.
+        // Les Éclats filleul (REFERRAL_REWARD_FILLEUL) ne sont crédités qu'après
+        // un achat >= MIN_FILLEUL_ORDER_AMOUNT confirmé via le webhook post-achat
+        // (voir module.exports.creditReferralFilleul appelé dans webhook.js).
         await sb.from('profiles').update({
-            referred_by: parrain.id,
-            eclats: (profile.eclats || 0) + REFERRAL_REWARD_FILLEUL
+            referred_by: parrain.id
         }).eq('id', user.userId);
 
-        await sb.from('loyalty_points').insert({
-            user_id: user.userId,
-            amount: REFERRAL_REWARD_FILLEUL,
-            type: 'earn',
-            source: 'referral',
-            reference_id: parrain.id,
-            metadata: { role: 'filleul', parrain_code: referral_code }
-        });
-
-        // Créditer le parrain (bonus immédiat)
-        // Note : le gros bonus (75) est donné quand le filleul fait sa 1ère commande (dans webhook.js)
-        // Ici on donne juste une notification au parrain qu'un filleul s'est inscrit
+        // Incrémenter le compteur mensuel du parrain
         await sb.from('profiles').update({
             referrals_this_month: monthlyCount + 1,
             referrals_month: currentMonth
@@ -146,13 +137,58 @@ module.exports = async function handler(req, res) {
 
         return res.status(200).json({
             success: true,
-            eclats_earned: REFERRAL_REWARD_FILLEUL,
-            new_balance: (profile.eclats || 0) + REFERRAL_REWARD_FILLEUL,
-            message: 'Code parrainage appliqu\u00e9 ! Vous recevez ' + REFERRAL_REWARD_FILLEUL + ' \u00c9clats.'
+            eclats_earned: 0,
+            pending_eclats: REFERRAL_REWARD_FILLEUL,
+            min_order_required: MIN_FILLEUL_ORDER_AMOUNT,
+            message: 'Code parrainage enregistr\u00e9 ! Vous recevrez ' + REFERRAL_REWARD_FILLEUL + ' \u00c9clats apr\u00e8s votre premier achat de ' + MIN_FILLEUL_ORDER_AMOUNT + '\u20ac minimum.'
         });
     } catch (err) {
         console.error('[referral POST]', err.message);
         return res.status(500).json({ error: 'Erreur serveur' });
+    }
+};
+
+// Fonction exportée pour webhook.js : créditer le filleul après son 1er achat >= MIN_FILLEUL_ORDER_AMOUNT
+module.exports.creditReferralFilleul = async function(sb, filleulUserId, orderAmount) {
+    try {
+        // Vérifier le montant minimum
+        if (!orderAmount || orderAmount < MIN_FILLEUL_ORDER_AMOUNT) return null;
+
+        const { data: filleulProfile } = await sb
+            .from('profiles')
+            .select('referred_by, eclats')
+            .eq('id', filleulUserId)
+            .single();
+
+        if (!filleulProfile || !filleulProfile.referred_by) return null;
+
+        // Vérifier si le filleul a déjà reçu ses Éclats de bienvenue parrainage
+        const { data: existing } = await sb
+            .from('loyalty_points')
+            .select('id')
+            .eq('user_id', filleulUserId)
+            .eq('source', 'referral')
+            .single();
+
+        if (existing) return null; // Déjà crédité
+
+        await sb.from('profiles').update({
+            eclats: (filleulProfile.eclats || 0) + REFERRAL_REWARD_FILLEUL
+        }).eq('id', filleulUserId);
+
+        await sb.from('loyalty_points').insert({
+            user_id: filleulUserId,
+            amount: REFERRAL_REWARD_FILLEUL,
+            type: 'earn',
+            source: 'referral',
+            reference_id: filleulProfile.referred_by,
+            metadata: { role: 'filleul', triggered_by: 'first_purchase', order_amount: orderAmount }
+        });
+
+        return { filleul_id: filleulUserId, eclats: REFERRAL_REWARD_FILLEUL };
+    } catch (err) {
+        console.error('[referral] creditFilleul error:', err.message);
+        return null;
     }
 };
 
