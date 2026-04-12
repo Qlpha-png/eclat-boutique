@@ -12,25 +12,23 @@ var GADS_CONVERSION_LABEL = 'AW-18084546055/nV6xCP2-3ZocEIeMsa9D';
 const Analytics = {
     _gaLoaded: false,
 
-    // Load GA4 + Google Ads script if cookie consent for analytics is granted
+    // Update consent mode when user accepts cookies (gtag loaded in HTML head)
     _loadGA() {
         if (this._gaLoaded) return;
-        // Check cookie consent from localStorage (set by cookie-consent.js)
         var consent = null;
         try { consent = JSON.parse(localStorage.getItem('eclat_cookie_consent')); } catch(e) {}
         if (!consent || !consent.analytics) return;
 
         this._gaLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GADS_ID;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', GA_ID, { anonymize_ip: true });
-        gtag('config', GADS_ID);
-        window.gtag = gtag;
+        // gtag.js already loaded in <head> with consent denied — now grant it
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                ad_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted',
+                analytics_storage: 'granted'
+            });
+        }
     },
 
     // Initialize — called once on page load
