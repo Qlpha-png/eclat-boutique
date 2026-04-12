@@ -8,9 +8,9 @@ const { getSupabase } = require('../_middleware/auth');
 module.exports = async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
 
-    // Vérifier clé secrète
+    // Vérifier clé admin (ADMIN_API_KEY en env var Vercel)
     var key = (req.body && req.body.key) || '';
-    var expected = process.env.BULK_IMPORT_KEY || '';
+    var expected = process.env.ADMIN_API_KEY || '';
     if (!expected || key !== expected) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
