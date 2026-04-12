@@ -9,7 +9,7 @@ var PRECACHE = [
     '/',
     '/fonts/inter-latin.woff2',
     '/fonts/playfair-latin.woff2',
-    '/css/style.css?v=23',
+    '/css/style.css?v=24',
     '/css/themes.css?v=3',
     '/css/mega-menu.css?v=1',
     '/css/skeleton.css?v=1',

@@ -1517,9 +1517,28 @@ input { font-family: inherit; }
 
 .newsletter-form {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     max-width: 450px;
     margin: 0 auto;
+}
+
+.newsletter-consent {
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+}
+
+.newsletter-consent label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6) !important;
+    line-height: 1.4;
+}
+
+.newsletter-consent a {
+    color: var(--color-secondary) !important;
 }
 
 .newsletter-form input {
