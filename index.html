@@ -318,52 +318,169 @@
     }
     </script>
 
-    <!-- Product Schema for Bundles -->
+    <!-- Product Schema for Bundles — Google Merchant Listings compliant -->
     <script type="application/ld+json">
     [
         {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "Coffret Routine \u00c9clat",
-            "description": "Ice Roller Cryo + S\u00e9rum Vitamine C 20% + Gua Sha Quartz Rose",
-            "image": "https://cf.cjdropshipping.com/quick/product/1f301f02-d17b-4315-a4b0-33a9c64f2bbd.jpg",
-            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "name": "Coffret Routine Éclat",
+            "description": "Ice Roller Cryo + Sérum Vitamine C 20% + Gua Sha Quartz Rose. Coffret complet pour une routine beauté éclat du visage.",
+            "image": ["https://cf.cjdropshipping.com/quick/product/1f301f02-d17b-4315-a4b0-33a9c64f2bbd.jpg"],
+            "brand": { "@type": "Brand", "name": "Maison Éclat" },
+            "sku": "COFFRET-ECLAT-001",
             "offers": {
                 "@type": "Offer",
                 "price": "24.90",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
-                "url": "https://maison-eclat.shop/#packs"
+                "url": "https://maison-eclat.shop/#packs",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": { "@type": "Organization", "name": "Maison Éclat" },
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "FR",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn",
+                    "returnPolicySeasonalOverride": []
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "4.90",
+                        "currency": "EUR"
+                    },
+                    "shippingDestination": {
+                        "@type": "DefinedRegion",
+                        "addressCountry": "FR"
+                    },
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 1,
+                            "maxValue": 3,
+                            "unitCode": "DAY"
+                        },
+                        "transitTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 5,
+                            "maxValue": 10,
+                            "unitCode": "DAY"
+                        }
+                    }
+                }
             }
         },
         {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "Coffret Routine Anti-\u00c2ge",
-            "description": "Masque LED Pro 7 Couleurs + S\u00e9rum Vitamine C 20% + Masque Collag\u00e8ne Lifting",
-            "image": "https://oss-cf.cjdropshipping.com/product/2025/12/02/07/52018798-4e16-43fe-8e02-f280acf86442_trans.jpeg",
-            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "name": "Coffret Routine Anti-Âge",
+            "description": "Masque LED Pro 7 Couleurs + Sérum Vitamine C 20% + Masque Collagène Lifting. Coffret complet anti-âge professionnel.",
+            "image": ["https://oss-cf.cjdropshipping.com/product/2025/12/02/07/52018798-4e16-43fe-8e02-f280acf86442_trans.jpeg"],
+            "brand": { "@type": "Brand", "name": "Maison Éclat" },
+            "sku": "COFFRET-ANTIAGE-001",
             "offers": {
                 "@type": "Offer",
                 "price": "49.90",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
-                "url": "https://maison-eclat.shop/#packs"
+                "url": "https://maison-eclat.shop/#packs",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": { "@type": "Organization", "name": "Maison Éclat" },
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "FR",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn",
+                    "returnPolicySeasonalOverride": []
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": "EUR"
+                    },
+                    "shippingDestination": {
+                        "@type": "DefinedRegion",
+                        "addressCountry": "FR"
+                    },
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 1,
+                            "maxValue": 3,
+                            "unitCode": "DAY"
+                        },
+                        "transitTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 5,
+                            "maxValue": 10,
+                            "unitCode": "DAY"
+                        }
+                    }
+                }
             }
         },
         {
             "@context": "https://schema.org",
             "@type": "Product",
             "name": "Coffret Routine Glow",
-            "description": "S\u00e9rum Vitamine C 20% + Huile Rose Musqu\u00e9e + Patchs Yeux Collag\u00e8ne",
-            "image": "https://cf.cjdropshipping.com/quick/product/a1ae3177-fe09-43ca-8969-57c5a5475d07.jpg",
-            "brand": { "@type": "Brand", "name": "\u00c9CLAT" },
+            "description": "Sérum Vitamine C 20% + Huile Rose Musquée + Patchs Yeux Collagène. Coffret complet pour un teint lumineux et éclatant.",
+            "image": ["https://cf.cjdropshipping.com/quick/product/a1ae3177-fe09-43ca-8969-57c5a5475d07.jpg"],
+            "brand": { "@type": "Brand", "name": "Maison Éclat" },
+            "sku": "COFFRET-GLOW-001",
             "offers": {
                 "@type": "Offer",
                 "price": "29.90",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
-                "url": "https://maison-eclat.shop/#packs"
+                "url": "https://maison-eclat.shop/#packs",
+                "itemCondition": "https://schema.org/NewCondition",
+                "seller": { "@type": "Organization", "name": "Maison Éclat" },
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "FR",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 30,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/FreeReturn",
+                    "returnPolicySeasonalOverride": []
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": "EUR"
+                    },
+                    "shippingDestination": {
+                        "@type": "DefinedRegion",
+                        "addressCountry": "FR"
+                    },
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 1,
+                            "maxValue": 3,
+                            "unitCode": "DAY"
+                        },
+                        "transitTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 5,
+                            "maxValue": 10,
+                            "unitCode": "DAY"
+                        }
+                    }
+                }
             }
         }
     ]
