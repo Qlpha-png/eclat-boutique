@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         var oldPriceHTML = product.oldPrice ? '<span class="price-old">' + formatPrice(product.oldPrice) + '</span>' : '';
 
-        return '<div class="product-card fade-in" data-id="' + product.id + '" data-product-id="' + product.id + '">' +
+        return '<div class="product-card fade-in visible" data-id="' + product.id + '" data-product-id="' + product.id + '">' +
             '<div class="product-image" data-action="open-modal" data-pid="' + product.id + '" style="cursor:pointer;position:relative;">' +
                 '<img src="' + escapeHTML(product.image) + '" alt="' + escapeHTML(pName) + '" width="300" height="300" loading="lazy" referrerpolicy="no-referrer">' +
                 badgeHTML + wishHTML +
@@ -290,6 +290,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (replace) {
             productsGrid.innerHTML = '';
+            productsGrid.classList.remove('products-grid--collapsed');
+            var oldShowMore = document.querySelector('.products-show-more');
+            if (oldShowMore) oldShowMore.remove();
         }
 
         var html = '';
@@ -331,11 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('loadMoreBtn').addEventListener('click', function() {
                 _currentProductsPage++;
                 renderPage(_currentFilteredList, _currentProductsPage, false);
-                // Animate new cards
-                var newCards = productsGrid.querySelectorAll('.product-card.fade-in:not(.visible)');
-                newCards.forEach(function(el, i) {
-                    setTimeout(function() { el.classList.add('visible'); }, i * 40);
-                });
             });
         } else if (products.length > PRODUCTS_PER_PAGE) {
             // Show total count at bottom
@@ -354,13 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p>' + (t('no_results_hint') || 'Essayez de modifier vos filtres.') + '</p></div>';
         }
 
-        // Trigger fade-in for first batch only (not 515 at once!)
-        requestAnimationFrame(function() {
-            var cards = productsGrid.querySelectorAll('.product-card.fade-in:not(.visible)');
-            cards.forEach(function(el, i) {
-                setTimeout(function() { el.classList.add('visible'); }, i * 40);
-            });
-        });
+        // Cards rendered with .visible class — always visible, no JS fade-in needed
 
         // Auto-collapse on mobile after render
         if (replace && window.innerWidth <= 768 && products.length > 4) {
