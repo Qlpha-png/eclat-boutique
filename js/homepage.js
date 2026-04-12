@@ -237,7 +237,7 @@
             html += '<div style="padding:12px;">';
             html += '<div style="font-size:.75rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">' + escapeHTML(p.category || '') + '</div>';
             html += '<div style="font-weight:600;font-size:.88rem;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + escapeHTML(pName) + '</div>';
-            html += '<div style="color:var(--color-secondary);font-weight:700;font-size:1rem;">' + priceStr + '</div>';
+            html += '<div style="color:var(--color-secondary-text);font-weight:700;font-size:1rem;">' + priceStr + '</div>';
             html += '</div></div>';
         }
 
@@ -511,7 +511,7 @@
             html += '<div style="font-weight:600;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + escapeHTML(p.name) + '</div>';
             html += '<div style="font-size:.75rem;color:var(--color-text-light);">' + escapeHTML(p.category || '') + '</div>';
             html += '</div>';
-            html += '<div style="font-weight:700;color:var(--color-secondary);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
+            html += '<div style="font-weight:700;color:var(--color-secondary-text);font-size:.9rem;white-space:nowrap;">' + priceStr + '</div>';
             html += '</a>';
         }
         html += '<a href="#produits" style="display:block;text-align:center;padding:10px;font-size:.85rem;color:var(--color-secondary-text,#7a5f30);font-weight:600;" data-action="hide-search-results">Voir tous les r\u00e9sultats \u2192</a>';

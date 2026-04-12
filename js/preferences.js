@@ -1,5 +1,5 @@
 // ============================
-// ECLAT Beaute — Preferences Visiteur
+// Maison Eclat — Preferences Visiteur
 // Mini quiz inline, sauvegarde localStorage
 // Styled inline (no external CSS)
 // ============================

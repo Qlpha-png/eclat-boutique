@@ -59,8 +59,7 @@
 var { createClient } = require('@supabase/supabase-js');
 
 var RESEND_KEY = process.env.RESEND_API_KEY || '';
-var CRON_SECRET = process.env.CRON_SECRET || '';
-var EMAIL_FROM = 'ÉCLAT Beaut\u00e9 <contact@maison-eclat.shop>';
+var EMAIL_FROM = 'Maison \u00c9clat <contact@maison-eclat.shop>';
 var SITE_URL = 'https://maison-eclat.shop';
 
 var GOLD = '#c9a87c';
@@ -85,13 +84,10 @@ function getSupabase() {
 // ============================================================================
 
 module.exports = async function handler(req, res) {
-    // Auth cron
-    if (!CRON_SECRET) {
-        console.error('[email-sequence] CRON_SECRET not configured');
-        return res.status(500).json({ error: 'Service indisponible' });
-    }
-    if (req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
-        return res.status(403).json({ error: 'Non autorisé' });
+    // Verify cron secret (Vercel sends this automatically)
+    var cronSecret = process.env.CRON_SECRET;
+    if (cronSecret && req.headers.authorization !== 'Bearer ' + cronSecret) {
+        return res.status(401).json({ error: 'Unauthorized' });
     }
     if (req.method !== 'GET' && req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });

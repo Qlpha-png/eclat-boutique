@@ -1,5 +1,5 @@
 /**
- * /api/reviews — Avis produits ÉCLAT Beauté
+ * /api/reviews — Avis produits Maison Éclat
  * GET  ?productId=X : avis approuvés (public) avec moyenne, compte, distribution
  * POST : soumettre un avis (auth requis, vérifie achat, +Éclats)
  *

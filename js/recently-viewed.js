@@ -2,7 +2,7 @@
     'use strict';
 
     // ============================
-    // ECLAT Beaute — Produits vus recemment
+    // Maison Eclat — Produits vus recemment
     // localStorage, max 8, dedup par id, newest first
     // Horizontal scrollable row + scroll arrows
     // CSS injected by JS — no separate file needed

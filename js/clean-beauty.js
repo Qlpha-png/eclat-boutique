@@ -1,5 +1,5 @@
 // ============================
-// ECLAT Beaute — Clean Beauty Score Algorithm
+// Maison Eclat — Clean Beauty Score Algorithm
 // Score 0-100 par produit base sur composition INCI
 // Fonctionne avec window.INGREDIENTS_DB (ingredients-db.js)
 // Disclaimer : informatif, pas un avis medical ou dermatologique
@@ -504,7 +504,7 @@
 
         // Raw ingredients text
         if (product.ingredients) {
-            html += '<div style="margin-top:12px;"><details><summary style="font-size:0.82rem;cursor:pointer;color:var(--color-secondary);font-weight:600;">Voir la composition compl\u00e8te (INCI)</summary>';
+            html += '<div style="margin-top:12px;"><details><summary style="font-size:0.82rem;cursor:pointer;color:var(--color-secondary-text);font-weight:600;">Voir la composition compl\u00e8te (INCI)</summary>';
             html += '<div class="pp-ingredients" style="margin-top:8px;">' + escapeHtml(product.ingredients) + '</div>';
             html += '</details></div>';
         }

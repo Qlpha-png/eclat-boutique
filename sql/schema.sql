@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS customers (
     email VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(200),
     phone VARCHAR(30),
-    tier VARCHAR(20) DEFAULT 'bronze' CHECK (tier IN ('bronze', 'silver', 'gold', 'diamond')),
+    tier VARCHAR(20) DEFAULT 'eclat' CHECK (tier IN ('eclat', 'lumiere', 'prestige', 'diamant')),
     loyalty_points INTEGER DEFAULT 0,
     total_spent DECIMAL(10,2) DEFAULT 0,
     referral_code VARCHAR(20) UNIQUE,
@@ -247,8 +247,17 @@ CREATE TABLE IF NOT EXISTS newsletter_subscribers (
     lang VARCHAR(5) DEFAULT 'fr',
     source VARCHAR(50) DEFAULT 'website',
     subscribed BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMPTZ DEFAULT NOW()
+    confirmed BOOLEAN DEFAULT FALSE,
+    confirmation_token VARCHAR(36),
+    confirmed_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Double opt-in: index on confirmation_token for fast lookup
+CREATE INDEX IF NOT EXISTS idx_newsletter_confirmation_token
+    ON newsletter_subscribers (confirmation_token)
+    WHERE confirmation_token IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS email_sequences (
     id SERIAL PRIMARY KEY,

@@ -48,7 +48,7 @@ module.exports = async function handler(req, res) {
             csv = 'ID,Email,Prenom,Nom,Total depense,Points,Palier,Inscription\n';
             csv += (data || []).map(c =>
                 [c.id, esc(c.email), esc(c.first_name || ''), esc(c.last_name || ''),
-                 c.total_spent || 0, c.loyalty_points || 0, c.tier || 'bronze', fmtDate(c.created_at)].join(',')
+                 c.total_spent || 0, c.loyalty_points || 0, c.tier || 'eclat', fmtDate(c.created_at)].join(',')
             ).join('\n');
         }
 

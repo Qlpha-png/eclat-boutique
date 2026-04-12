@@ -1,5 +1,5 @@
 // ============================
-// ECLAT Beaute — Web Push Notifications
+// Maison Eclat — Web Push Notifications
 // Respectful UX: no prompt on first visit
 // Custom banner, VAPID, service worker
 // ============================

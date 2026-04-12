@@ -2,7 +2,7 @@
     'use strict';
 
     // ============================
-    // ECLAT Beaute — Social Share
+    // Maison Eclat — Social Share
     // Zero external JS, zero tracking
     // WhatsApp, Facebook, X/Twitter, Copy Link, Native Share
     // ============================
@@ -285,7 +285,7 @@
         if (productPrice) {
             shareTitle += ' - ' + productPrice;
         }
-        shareTitle += ' | \u00c9CLAT Beaut\u00e9';
+        shareTitle += ' | Maison \u00c9clat';
         var shareUrl = window.location.href;
 
         var wrapper = document.createElement('div');

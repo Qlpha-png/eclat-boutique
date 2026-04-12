@@ -3,7 +3,7 @@
 // Utilise Resend (resend.com) - Gratuit jusqu'à 3000 emails/mois
 // ============================
 
-const EMAIL_FROM = 'ÉCLAT Beauté <contact@maison-eclat.shop>';
+const EMAIL_FROM = 'Maison Éclat <contact@maison-eclat.shop>';
 const SITE_URL = 'https://maison-eclat.shop';
 
 // Templates d'emails
@@ -48,7 +48,7 @@ const TEMPLATES = {
         <p style="color:#c9a87c;font-weight:600;font-size:14px;">+ Vous avez gagné ${Math.floor(order.total)} points fidélité !</p>
     </div>
     <div style="text-align:center;margin-top:24px;color:#6b6560;font-size:12px;">
-        <p>ÉCLAT Beauté & Wellness Premium</p>
+        <p>Maison Éclat & Wellness Premium</p>
         <p><a href="${SITE_URL}" style="color:#c9a87c;">maison-eclat.shop</a></p>
     </div>
 </div>

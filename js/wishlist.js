@@ -2,7 +2,7 @@
     'use strict';
 
     // ============================
-    // ECLAT Beaute — Wishlist
+    // Maison Eclat — Wishlist
     // Guest: localStorage | Auth: Supabase /api/wishlist sync
     // ============================
 

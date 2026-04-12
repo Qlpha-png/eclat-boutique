@@ -210,7 +210,7 @@ module.exports = async function handler(req, res) {
                 'Authorization': 'Bearer ' + RESEND_API_KEY
             },
             body: JSON.stringify({
-                from: '\u00c9CLAT Beaut\u00e9 <contact@maison-eclat.shop>',
+                from: 'Maison \u00c9clat <contact@maison-eclat.shop>',
                 to: email,
                 subject: 'Confirmation de r\u00e9tractation ' + ref + ' \u2014 \u00c9CLAT',
                 html: '<div style="font-family:\'Helvetica Neue\',Arial,sans-serif;background:#faf8f5;margin:0;padding:0;">'
@@ -242,7 +242,7 @@ module.exports = async function handler(req, res) {
                     + '<p style="color:#6b6560;font-size:14px;line-height:1.7;">Si vous avez des questions, contactez-nous \u00e0 <a href="mailto:contact@maison-eclat.shop" style="color:#c9a87c;">contact@maison-eclat.shop</a>.</p>'
                     + '</div>'
                     + '<div style="text-align:center;margin-top:24px;color:#6b6560;font-size:12px;">'
-                    + '<p>\u00c9CLAT Beaut\u00e9 &amp; Wellness Premium</p>'
+                    + '<p>Maison \u00c9clat &amp; Wellness Premium</p>'
                     + '<p><a href="https://maison-eclat.shop" style="color:#c9a87c;">maison-eclat.shop</a></p>'
                     + '</div>'
                     + '</div>'

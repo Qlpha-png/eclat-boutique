@@ -269,22 +269,51 @@
             radio.addEventListener('change', updateTotals);
         });
 
+        // Aria-invalid: clear when user corrects a field
+        document.querySelectorAll('#checkoutForm input[required], #checkoutForm select[required]').forEach(function(field) {
+            field.addEventListener('input', function() {
+                if (field.validity.valid) {
+                    field.removeAttribute('aria-invalid');
+                }
+            });
+            field.addEventListener('change', function() {
+                if (field.validity.valid) {
+                    field.removeAttribute('aria-invalid');
+                }
+            });
+        });
+
         // Form submit - Stripe Checkout
         document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             if (cart.isEmpty()) return;
 
+            // Validate all required fields and set aria-invalid
+            let hasErrors = false;
+            document.querySelectorAll('#checkoutForm input[required], #checkoutForm select[required]').forEach(function(field) {
+                if (!field.validity.valid) {
+                    field.setAttribute('aria-invalid', 'true');
+                    hasErrors = true;
+                } else {
+                    field.removeAttribute('aria-invalid');
+                }
+            });
+
             // CGV acceptance validation
             const cgvCheckbox = document.getElementById('acceptCGV');
             const checkoutError = document.getElementById('checkoutError');
             if (!cgvCheckbox.checked) {
+                cgvCheckbox.setAttribute('aria-invalid', 'true');
                 checkoutError.textContent = 'Veuillez accepter les conditions g\u00e9n\u00e9rales de vente pour continuer.';
                 checkoutError.style.display = 'block';
                 checkoutError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 cgvCheckbox.focus();
                 return;
             }
+            cgvCheckbox.removeAttribute('aria-invalid');
+
+            if (hasErrors) return;
             checkoutError.style.display = 'none';
 
             const payBtn = document.getElementById('payBtn');
@@ -349,6 +378,19 @@
     <script src="../js/auth.js?v=2" defer></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </main>
+
+<footer class="footer-minimal" role="contentinfo">
+    <div class="footer-minimal-inner">
+        <div class="footer-links">
+            <a href="cgv.html">CGV</a>
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="confidentialite.html">Confidentialité</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>&copy; 2026 Maison &Eacute;clat — Tous droits r&eacute;serv&eacute;s</p>
+    </div>
+</footer>
+
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
 <script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>

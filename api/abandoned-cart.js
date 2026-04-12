@@ -132,7 +132,7 @@ module.exports = async (req, res) => {
                 'Authorization': 'Bearer ' + resendKey
             },
             body: JSON.stringify({
-                from: '\u00c9CLAT Beaut\u00e9 <contact@maison-eclat.shop>',
+                from: 'Maison \u00c9clat <contact@maison-eclat.shop>',
                 to: email,
                 subject: 'Votre panier vous attend chez \u00c9CLAT \u2728',
                 html: emailHTML

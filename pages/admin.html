@@ -1254,13 +1254,13 @@
                 }
 
                 body.innerHTML = data.customers.map(function(c) {
-                    var tiers = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', diamond: 'Diamant' };
+                    var tiers = { eclat: '\u00c9clat', lumiere: 'Lumi\u00e8re', prestige: 'Prestige', diamant: 'Diamant', bronze: '\u00c9clat', silver: 'Lumi\u00e8re', gold: 'Prestige', diamond: 'Diamant' };
                     return '<tr>' +
                         '<td><strong>' + esc(c.name || '--') + '</strong></td>' +
                         '<td>' + esc(c.email) + '</td>' +
                         '<td><strong>' + fmtEur(c.total_spent || 0) + '</strong></td>' +
                         '<td>' + (c.loyalty_points || 0) + '</td>' +
-                        '<td><span class="badge" style="background:var(--gold-dim);color:var(--gold);">' + (tiers[c.tier] || c.tier || 'Bronze') + '</span></td>' +
+                        '<td><span class="badge" style="background:var(--gold-dim);color:var(--gold);">' + (tiers[c.tier] || c.tier || '\u00c9clat') + '</span></td>' +
                         '<td>' + fmtDate(c.created_at) + '</td>' +
                     '</tr>';
                 }).join('');

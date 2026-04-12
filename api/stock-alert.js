@@ -38,7 +38,7 @@ const { getSupabase } = require('./_middleware/auth');
 const { applyRateLimit } = require('./_middleware/rateLimit');
 
 var RESEND_KEY = process.env.RESEND_API_KEY || '';
-var EMAIL_FROM = 'ÉCLAT Beauté <contact@maison-eclat.shop>';
+var EMAIL_FROM = 'Maison Éclat <contact@maison-eclat.shop>';
 var SITE_URL = 'https://maison-eclat.shop';
 var ALLOWED_ORIGINS = ['https://eclat-boutique.vercel.app', 'https://maison-eclat.shop'];
 var MAX_ALERTS_PER_EMAIL = 10;
@@ -331,7 +331,7 @@ async function sendStockAlertEmail(toEmail, product) {
         // Footer
         '<div style="background:#1a1714;padding:24px;text-align:center;">' +
         '<p style="color:#c9a87c;font-family:Georgia,serif;font-size:14px;letter-spacing:2px;margin:0 0 8px;">' +
-        '\u00c9CLAT Beaut\u00e9 & Wellness Premium</p>' +
+        'Maison \u00c9clat & Wellness Premium</p>' +
         '<p style="margin:0;">' +
         '<a href="' + SITE_URL + '" style="color:#8a847e;font-size:12px;text-decoration:none;">maison-eclat.shop</a>' +
         '</p>' +

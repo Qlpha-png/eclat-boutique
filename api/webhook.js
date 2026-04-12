@@ -865,7 +865,7 @@ async function sendConfirmationEmail(order) {
                 'Authorization': `Bearer ${resendApiKey}`
             },
             body: JSON.stringify({
-                from: process.env.RESEND_FROM || 'ÉCLAT Beauté <onboarding@resend.dev>',
+                from: process.env.RESEND_FROM || 'Maison Éclat <onboarding@resend.dev>',
                 to: order.customer.email,
                 subject: subjectFn(order.id),
                 html: buildConfirmationHtml(order, lang)

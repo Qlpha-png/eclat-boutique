@@ -137,7 +137,7 @@ self.addEventListener('fetch', function(event) {
 // Push Notifications
 // ============================
 self.addEventListener('push', function(event) {
-    var data = { title: 'ÉCLAT Beauté', body: 'Nouvelle notification', icon: '/images/icon-192.png', badge: '/images/icon-192.png' };
+    var data = { title: 'Maison Éclat', body: 'Nouvelle notification', icon: '/images/icon-192.png', badge: '/images/icon-192.png' };
     try {
         if (event.data) data = Object.assign(data, event.data.json());
     } catch(e) {}
@@ -152,7 +152,7 @@ self.addEventListener('push', function(event) {
     };
 
     event.waitUntil(
-        self.registration.showNotification(data.title || 'ÉCLAT Beauté', options)
+        self.registration.showNotification(data.title || 'Maison Éclat', options)
     );
 });
 

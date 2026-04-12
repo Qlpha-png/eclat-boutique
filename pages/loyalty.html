@@ -9,7 +9,7 @@
     <meta name="geo.placename" content="France">
     <meta name="language" content="French">
     <title>Programme &Eacute;clats - &Eacute;CLAT | Fid&eacute;lit&eacute; &amp; R&eacute;compenses</title>
-    <meta name="description" content="Cumulez des &Eacute;clats &agrave; chaque achat : paliers Bronze, Argent, Or, Diamant. R&eacute;ductions, acc&egrave;s VIP et cadeaux exclusifs. Rejoignez le programme !">
+    <meta name="description" content="Cumulez des &Eacute;clats &agrave; chaque achat : paliers &Eacute;clat, Lumi&egrave;re, Prestige, Diamant. R&eacute;ductions, acc&egrave;s VIP et cadeaux exclusifs. Rejoignez le programme !">
     <meta property="og:title" content="Programme &Eacute;clats &mdash; Fid&eacute;lit&eacute; &Eacute;CLAT">
     <meta property="og:description" content="Gagnez des &Eacute;clats &agrave; chaque achat et d&eacute;bloquez des r&eacute;compenses exclusives. 4 paliers, des d&eacute;fis, des surprises quotidiennes.">
     <meta property="og:type" content="website">
@@ -96,7 +96,7 @@
             padding: 8px 20px;
             font-size: 0.82rem;
             font-weight: 600;
-            color: var(--color-secondary);
+            color: var(--color-secondary-text);
             letter-spacing: 0.3px;
             margin-bottom: 24px;
         }
@@ -108,7 +108,7 @@
             color: var(--color-primary);
         }
         .loyalty-hero h1 em {
-            color: var(--color-secondary);
+            color: var(--color-secondary-text);
             font-style: italic;
         }
         .loyalty-hero .subtitle {
@@ -132,7 +132,7 @@
             max-width: 480px;
         }
         .loyalty-hero-value span {
-            color: var(--color-secondary);
+            color: var(--color-secondary-text);
             white-space: nowrap;
         }
 
@@ -235,14 +235,14 @@
             right: 0;
             height: 4px;
         }
-        .tier-bronze { border-color: #cd7f32; }
-        .tier-bronze::before { background: linear-gradient(90deg, #cd7f32, #e8a860); }
-        .tier-argent { border-color: #a8a8a8; }
-        .tier-argent::before { background: linear-gradient(90deg, #a8a8a8, #d0d0d0); }
-        .tier-or { border-color: var(--color-secondary); }
-        .tier-or::before { background: linear-gradient(90deg, var(--color-secondary), #e0c48e); }
-        .tier-diamant { border-color: #7b68ee; }
-        .tier-diamant::before { background: linear-gradient(90deg, #7b68ee, #a388f7); }
+        .tier-eclat { border-color: #c9a87c; }
+        .tier-eclat::before { background: linear-gradient(90deg, #c9a87c, #e0c48e); }
+        .tier-lumiere { border-color: #e8d5b5; }
+        .tier-lumiere::before { background: linear-gradient(90deg, #e8d5b5, #f0e6d0); }
+        .tier-prestige { border-color: #d4af37; }
+        .tier-prestige::before { background: linear-gradient(90deg, #d4af37, #e8c84a); }
+        .tier-diamant { border-color: #b9f2ff; }
+        .tier-diamant::before { background: linear-gradient(90deg, #7b68ee, #b9f2ff); }
 
         .tier-icon {
             font-size: 2.4rem;
@@ -399,7 +399,7 @@
         .loyalty-faq-arrow {
             transition: transform 0.3s;
             font-size: 1rem;
-            color: var(--color-secondary);
+            color: var(--color-secondary-text);
             flex-shrink: 0;
         }
         .loyalty-faq-item.open .loyalty-faq-arrow {
@@ -626,43 +626,43 @@
             </p>
             <div class="tiers-grid">
 
-                <!-- Bronze -->
-                <div class="tier-card tier-bronze">
-                    <span class="tier-icon" aria-hidden="true">&#129353;</span>
-                    <div class="tier-name" data-i18n="tier_bronze_name">Bronze</div>
-                    <div class="tier-threshold" data-i18n="tier_bronze_threshold">D&egrave;s 0 &Eacute;clat</div>
+                <!-- Éclat -->
+                <div class="tier-card tier-eclat">
+                    <span class="tier-icon" aria-hidden="true">&#10024;</span>
+                    <div class="tier-name" data-i18n="tier_eclat_name">&Eacute;clat</div>
+                    <div class="tier-threshold" data-i18n="tier_eclat_threshold">D&egrave;s 0 &Eacute;clat</div>
                     <ul class="tier-benefits">
-                        <li data-i18n="tier_bronze_b1">10 &Eacute;clats par euro d&eacute;pens&eacute;</li>
-                        <li data-i18n="tier_bronze_b2">Acc&egrave;s au coffre du jour</li>
-                        <li data-i18n="tier_bronze_b3">Badges &agrave; collectionner</li>
-                        <li data-i18n="tier_bronze_b4">D&eacute;fis hebdomadaires</li>
+                        <li data-i18n="tier_eclat_b1">10 &Eacute;clats par euro d&eacute;pens&eacute;</li>
+                        <li data-i18n="tier_eclat_b2">Acc&egrave;s au coffre du jour</li>
+                        <li data-i18n="tier_eclat_b3">Badges &agrave; collectionner</li>
+                        <li data-i18n="tier_eclat_b4">D&eacute;fis hebdomadaires</li>
                     </ul>
                 </div>
 
-                <!-- Argent -->
-                <div class="tier-card tier-argent">
-                    <span class="tier-icon" aria-hidden="true">&#129352;</span>
-                    <div class="tier-name" data-i18n="tier_argent_name">Argent</div>
-                    <div class="tier-threshold" data-i18n="tier_argent_threshold">300 &Eacute;clats</div>
+                <!-- Lumière -->
+                <div class="tier-card tier-lumiere">
+                    <span class="tier-icon" aria-hidden="true">&#128161;</span>
+                    <div class="tier-name" data-i18n="tier_lumiere_name">Lumi&egrave;re</div>
+                    <div class="tier-threshold" data-i18n="tier_lumiere_threshold">300 &Eacute;clats</div>
                     <ul class="tier-benefits">
-                        <li data-i18n="tier_argent_b1">Tous les avantages Bronze</li>
-                        <li data-i18n="tier_argent_b2">Livraison offerte d&egrave;s 39&euro;</li>
-                        <li data-i18n="tier_argent_b3">Acc&egrave;s aux ventes priv&eacute;es</li>
-                        <li data-i18n="tier_argent_b4">1 tour de roue par semaine</li>
+                        <li data-i18n="tier_lumiere_b1">Tous les avantages &Eacute;clat</li>
+                        <li data-i18n="tier_lumiere_b2">Livraison offerte d&egrave;s 39&euro;</li>
+                        <li data-i18n="tier_lumiere_b3">IA beaut&eacute; + chatbot</li>
+                        <li data-i18n="tier_lumiere_b4">1 tour de roue par semaine</li>
                     </ul>
                 </div>
 
-                <!-- Or -->
-                <div class="tier-card tier-or">
-                    <span class="tier-icon" aria-hidden="true">&#127942;</span>
-                    <div class="tier-name" data-i18n="tier_or_name">Or</div>
-                    <div class="tier-threshold" data-i18n="tier_or_threshold">750 &Eacute;clats</div>
+                <!-- Prestige -->
+                <div class="tier-card tier-prestige">
+                    <span class="tier-icon" aria-hidden="true">&#128081;</span>
+                    <div class="tier-name" data-i18n="tier_prestige_name">Prestige</div>
+                    <div class="tier-threshold" data-i18n="tier_prestige_threshold">750 &Eacute;clats</div>
                     <ul class="tier-benefits">
-                        <li data-i18n="tier_or_b1">Tous les avantages Argent</li>
-                        <li data-i18n="tier_or_b2">Livraison offerte sans minimum</li>
-                        <li data-i18n="tier_or_b3">Acc&egrave;s anticip&eacute; aux nouveaut&eacute;s</li>
-                        <li data-i18n="tier_or_b4">Cadeau surprise trimestriel</li>
-                        <li data-i18n="tier_or_b5">Support prioritaire</li>
+                        <li data-i18n="tier_prestige_b1">Tous les avantages Lumi&egrave;re</li>
+                        <li data-i18n="tier_prestige_b2">IA experte + 50 msg</li>
+                        <li data-i18n="tier_prestige_b3">Acc&egrave;s anticip&eacute; aux nouveaut&eacute;s</li>
+                        <li data-i18n="tier_prestige_b4">Cadeau surprise trimestriel</li>
+                        <li data-i18n="tier_prestige_b5">Support prioritaire</li>
                     </ul>
                 </div>
 
@@ -672,12 +672,12 @@
                     <div class="tier-name" data-i18n="tier_diamant_name">Diamant</div>
                     <div class="tier-threshold" data-i18n="tier_diamant_threshold">1 500 &Eacute;clats</div>
                     <ul class="tier-benefits">
-                        <li data-i18n="tier_diamant_b1">Tous les avantages Or</li>
-                        <li data-i18n="tier_diamant_b2">Multiplicateur &Eacute;clats x1.7</li>
-                        <li data-i18n="tier_diamant_b3">Conseils beaut&eacute; IA personnalis&eacute;s</li>
+                        <li data-i18n="tier_diamant_b1">Tous les avantages Prestige</li>
+                        <li data-i18n="tier_diamant_b2">Multiplicateur &Eacute;clats x2</li>
+                        <li data-i18n="tier_diamant_b3">IA illimit&eacute;e + VIP</li>
                         <li data-i18n="tier_diamant_b4">Invitation &eacute;v&eacute;nements exclusifs</li>
                         <li data-i18n="tier_diamant_b5">Acc&egrave;s au leaderboard VIP</li>
-                        <li data-i18n="tier_diamant_b6">Offre anniversaire sp&eacute;ciale</li>
+                        <li data-i18n="tier_diamant_b6">-10% permanent + offre anniversaire</li>
                     </ul>
                 </div>
 
@@ -764,7 +764,7 @@
                 <div class="feature-card">
                     <span class="feature-icon" aria-hidden="true">&#127921;</span>
                     <h3 data-i18n="feature_wheel_title">Roue de la fortune</h3>
-                    <p data-i18n="feature_wheel_desc">D&egrave;s le palier Argent, tournez la roue chaque semaine pour gagner des &Eacute;clats, des r&eacute;ductions ou des cadeaux.</p>
+                    <p data-i18n="feature_wheel_desc">D&egrave;s le palier Lumi&egrave;re, tournez la roue chaque semaine pour gagner des &Eacute;clats, des r&eacute;ductions ou des cadeaux.</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon" aria-hidden="true">&#127895;</span>
@@ -787,7 +787,7 @@
                     <span class="loyalty-faq-arrow" aria-hidden="true">&#9660;</span>
                 </button>
                 <div class="loyalty-faq-a"><div class="loyalty-faq-a-inner" data-i18n="loyalty_faq_a1">
-                    <strong>Non, le programme &Eacute;clats est enti&egrave;rement gratuit.</strong> Il vous suffit de cr&eacute;er un compte sur notre site. Vous commencez au palier Bronze avec 50 &Eacute;clats de bienvenue d&egrave;s l'inscription. Aucun engagement, aucun frais cach&eacute;.
+                    <strong>Non, le programme &Eacute;clats est enti&egrave;rement gratuit.</strong> Il vous suffit de cr&eacute;er un compte sur notre site. Vous commencez au palier &Eacute;clat avec 50 &Eacute;clats de bienvenue d&egrave;s l'inscription. Aucun engagement, aucun frais cach&eacute;.
                 </div></div>
             </div>
 

@@ -8,7 +8,7 @@ class LoyaltyProgram {
             points: 0,
             totalSpent: 0,
             ordersCount: 0,
-            tier: 'bronze',
+            tier: 'eclat',
             joinDate: new Date().toISOString(),
             referralCode: this.generateReferralCode(),
             referrals: 0,
@@ -17,12 +17,12 @@ class LoyaltyProgram {
         this.save();
     }
 
-    // --- Tiers ---
+    // --- Tiers (basé sur Éclats — doit correspondre à loyalty-bar.js) ---
     static TIERS = {
-        bronze:   { name: 'Bronze',   min: 0,    multiplier: 1,   icon: '🥉', perks: ['1 point par € dépensé', 'Accès ventes privées'] },
-        silver:   { name: 'Argent',   min: 200,  multiplier: 1.5, icon: '🥈', perks: ['1.5x points', 'Livraison offerte', 'Cadeau anniversaire'] },
-        gold:     { name: 'Or',       min: 500,  multiplier: 2,   icon: '🥇', perks: ['2x points', 'Livraison express offerte', 'Accès avant-premières', 'Réductions exclusives'] },
-        diamond:  { name: 'Diamant',  min: 1000, multiplier: 3,   icon: '💎', perks: ['3x points', 'Tout offert', 'Conseillère dédiée', 'Cadeaux surprise'] }
+        eclat:     { name: 'Éclat',     min: 0,    multiplier: 1,   icon: '✨', perks: ['10 Éclats par € dépensé', 'Coffre du jour', 'Badges à collectionner'] },
+        lumiere:   { name: 'Lumière',   min: 300,  multiplier: 1.3, icon: '💡', perks: ['x1.3 Éclats', 'IA beauté', 'Livraison offerte dès 39€', 'Roue de la fortune'] },
+        prestige:  { name: 'Prestige',  min: 750,  multiplier: 1.6, icon: '👑', perks: ['x1.6 Éclats', 'IA experte + 50 msg', 'Accès avant-premières', 'Cadeau trimestriel'] },
+        diamant:   { name: 'Diamant',   min: 1500, multiplier: 2,   icon: '💎', perks: ['x2 Éclats', 'IA illimitée + VIP', '-10% permanent', 'Événements exclusifs'] }
     };
 
     // --- Récompenses disponibles ---
@@ -66,13 +66,13 @@ class LoyaltyProgram {
         this.save();
     }
 
-    // Mettre à jour le tier
+    // Mettre à jour le tier (basé sur Éclats, pas totalSpent)
     updateTier() {
-        const spent = this.data.totalSpent;
-        if (spent >= 1000) this.data.tier = 'diamond';
-        else if (spent >= 500) this.data.tier = 'gold';
-        else if (spent >= 200) this.data.tier = 'silver';
-        else this.data.tier = 'bronze';
+        const points = this.data.points;
+        if (points >= 1500) this.data.tier = 'diamant';
+        else if (points >= 750) this.data.tier = 'prestige';
+        else if (points >= 300) this.data.tier = 'lumiere';
+        else this.data.tier = 'eclat';
         this.save();
     }
 
@@ -107,7 +107,7 @@ class LoyaltyProgram {
         const next = this.getNextTier();
         if (!next) return 100;
         const current = LoyaltyProgram.TIERS[this.data.tier];
-        const progress = ((this.data.totalSpent - current.min) / (next.min - current.min)) * 100;
+        const progress = ((this.data.points - current.min) / (next.min - current.min)) * 100;
         return Math.min(100, Math.max(0, progress));
     }
 }

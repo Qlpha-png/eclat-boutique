@@ -1,5 +1,5 @@
 /**
- * /api/wishlist — Liste de souhaits ÉCLAT Beauté
+ * /api/wishlist — Liste de souhaits Maison Éclat
  * GET  : liste des favoris de l'utilisateur (auth requis)
  * POST : ajouter un produit à la wishlist (auth requis)
  * DELETE : retirer un produit de la wishlist (auth requis)

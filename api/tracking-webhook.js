@@ -378,7 +378,7 @@ async function sendTrackingEmail(order, trackingNumber, carrier, emailType) {
                 'Authorization': 'Bearer ' + resendApiKey
             },
             body: JSON.stringify({
-                from: process.env.RESEND_FROM || 'ÉCLAT Beauté <noreply@maison-eclat.shop>',
+                from: process.env.RESEND_FROM || 'Maison Éclat <noreply@maison-eclat.shop>',
                 to: order.email,
                 subject: subject,
                 html: html

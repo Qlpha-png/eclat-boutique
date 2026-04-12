@@ -85,19 +85,15 @@ try {
     console.warn('[push-daily] web-push non disponible, notifications push désactivées');
 }
 
-var CRON_SECRET = process.env.CRON_SECRET || '';
 var VAPID_PUBLIC = process.env.VAPID_PUBLIC_KEY || '';
 var VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY || '';
 var VAPID_EMAIL = process.env.VAPID_EMAIL || 'mailto:contact@maison-eclat.shop';
 
 module.exports = async function handler(req, res) {
-    // Auth cron
-    if (!CRON_SECRET) {
-        console.error('[push-daily] CRON_SECRET not configured');
-        return res.status(500).json({ error: 'Service indisponible' });
-    }
-    if (req.headers.authorization !== 'Bearer ' + CRON_SECRET) {
-        return res.status(403).json({ error: 'Non autorisé' });
+    // Verify cron secret (Vercel sends this automatically)
+    var cronSecret = process.env.CRON_SECRET;
+    if (cronSecret && req.headers.authorization !== 'Bearer ' + cronSecret) {
+        return res.status(401).json({ error: 'Unauthorized' });
     }
     if (req.method !== 'GET' && req.method !== 'POST') return res.status(405).end();
 

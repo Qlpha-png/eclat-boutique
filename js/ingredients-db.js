@@ -1,5 +1,5 @@
 // ============================================================================
-// ECLAT Beaute — Base de donnees INCI ingredients
+// Maison Eclat — Base de donnees INCI ingredients
 // Clean Beauty Score — Transparence ingredientielle
 // Sources : EWG Skin Deep, CIR (Cosmetic Ingredient Review), INCIDecoder
 // ============================================================================

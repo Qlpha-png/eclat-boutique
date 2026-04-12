@@ -1,5 +1,5 @@
 // ============================
-// ECLAT Beaute — Mega Menu Professionnel v2
+// Maison Eclat — Mega Menu Professionnel v2
 // Desktop: full-width hover dropdown with categories + featured
 // Mobile: accordion with expand/collapse subcategories
 // Pattern: IIFE, 'use strict', var/function only
