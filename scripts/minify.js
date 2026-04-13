@@ -40,6 +40,7 @@ const JS_FILES = [
     'js/social-proof.js',
     'js/chatbot.js',
     'js/routine-builder.js',
+    'js/bundle-product-page.js',
     'js/products-details.js',
     'js/cookie-consent.js',
     'js/bug-report.js',

@@ -38,11 +38,11 @@
     <link rel="preconnect" href="https://cf.cjdropshipping.com">
     <link rel="preconnect" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://omysrhwpyexlcgwyiigq.supabase.co">
-    <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../css/style.css?v=24">
-    <link rel="stylesheet" href="../css/themes.css?v=3">
-    <link rel="stylesheet" href="../css/mega-menu.css?v=2">
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css?v=24">
+    <link rel="stylesheet" href="css/themes.css?v=3">
+    <link rel="stylesheet" href="css/mega-menu.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2d2926">
     <style>
@@ -150,9 +150,9 @@
     <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="logo">&Eacute;CLAT</a>
+            <a href="index.html" class="logo">&Eacute;CLAT</a>
             <span style="font-size:.85rem;color:var(--color-text-light);">Diagnostic Beaut&eacute; Complet</span>
-            <a href="../index.html" style="margin-left:auto;padding:8px 20px;background:var(--color-primary);color:var(--color-white);border-radius:var(--radius-xl);font-size:.82rem;font-weight:600;text-decoration:none;transition:all .2s;">&larr; Retour boutique</a>
+            <a href="index.html" style="margin-left:auto;padding:8px 20px;background:var(--color-primary);color:var(--color-white);border-radius:var(--radius-xl);font-size:.82rem;font-weight:600;text-decoration:none;transition:all .2s;">&larr; Retour boutique</a>
         </div>
     </nav>
 
@@ -181,7 +181,7 @@
         <div class="diag-result" id="diagResult"></div>
     </div>
 
-    <script src="../js/products.js?v=7"></script>
+    <script src="js/products.js?v=7"></script>
     <script>
     (function() {
         'use strict';
@@ -667,7 +667,7 @@
             // Retake + home links
             html += '<div style="text-align:center;margin-top:24px;display:flex;flex-direction:column;gap:8px;">';
             html += '<button style="background:none;border:none;color:var(--color-secondary-text);font-size:.88rem;cursor:pointer;font-weight:600;" data-action="retake">\u21bb Refaire le diagnostic</button>';
-            html += '<a href="../index.html" style="color:var(--color-text-light);font-size:.85rem;">Retour \u00e0 l\'accueil</a>';
+            html += '<a href="index.html" style="color:var(--color-text-light);font-size:.85rem;">Retour \u00e0 l\'accueil</a>';
             html += '</div>';
 
             result.innerHTML = html;
@@ -845,7 +845,7 @@
                 }
             });
             localStorage.setItem('eclat_cart', JSON.stringify(existing));
-            window.location.href = '../index.html?openCart=1';
+            window.location.href = 'index.html?openCart=1';
         }
 
         function addBundleToCart(bundleKey) {
@@ -863,7 +863,7 @@
                 existing.push({ id: bundleId, name: bundle.name, price: bundle.price, image: firstProduct ? (firstProduct.image || firstProduct.images[0]) : '', qty: 1 });
             }
             localStorage.setItem('eclat_cart', JSON.stringify(existing));
-            window.location.href = '../index.html?openCart=1';
+            window.location.href = 'index.html?openCart=1';
         }
 
         // ============================
@@ -895,11 +895,11 @@
         ]
     }
     </script>
-    <script src="../js/themes.js?v=2" defer></script>
-<script src="../js/mega-menu.js?v=15" defer></script>
-    <script src="../js/cookie-consent.js" defer></script>
-    <script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
-    <script src="../js/analytics.js" defer></script>
+    <script src="js/themes.js?v=2" defer></script>
+<script src="js/mega-menu.js?v=15" defer></script>
+    <script src="js/cookie-consent.js" defer></script>
+    <script src="js/chatbot.js?v=5" defer fetchpriority="low"></script>
+    <script src="js/analytics.js" defer></script>
     <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
     </main>
     <!-- Vercel Web Analytics -->

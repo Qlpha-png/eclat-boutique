@@ -46,6 +46,15 @@
 
     // Featured bundles (shown larger)
     var FEATURED_KEYS = ['antiage', 'spa', 'cheveux'];
+    var BUNDLE_URLS = {
+        eclat: '/products/coffret-eclat.html',
+        antiage: '/products/coffret-anti-age.html',
+        glow: '/products/coffret-glow.html'
+    };
+
+    function getBundleUrl(bundleKey) {
+        return BUNDLE_URLS[bundleKey] || '/pages/category.html';
+    }
 
     function renderBundles() {
         var grid = document.querySelector('.bundles-grid');
@@ -91,6 +100,7 @@
             var bun = vb.bundle;
             var isFeatured = FEATURED_KEYS.indexOf(bun.key) !== -1;
             var icon = BUNDLE_ICONS[bun.key] || '\uD83C\uDF81';
+            var bundleUrl = getBundleUrl(bun.key);
 
             // Try i18n name, fallback to bundle.name
             var bundleName = bun.name;
@@ -101,7 +111,7 @@
                 }
             }
 
-            html += '<div class="bundle-card-dynamic' + (isFeatured ? ' bundle-card--featured' : '') + '">';
+            html += '<div class="bundle-card-dynamic' + (isFeatured ? ' bundle-card--featured' : '') + '" data-bundle-url="' + bundleUrl + '" role="link" tabindex="0">';
 
             // Product images row
             html += '<div class="bundle-images">';
@@ -169,9 +179,9 @@
             html += '</div>';
 
             // CTA
-            html += '<button class="btn btn-primary btn-full bundle-cta-dynamic" data-action="add-bundle" data-bundle-key="' + bun.key + '">';
-            html += '\uD83D\uDED2 Ajouter au panier';
-            html += '</button>';
+            html += '<a class="btn btn-primary btn-full bundle-cta-dynamic" href="' + bundleUrl + '" data-action="open-bundle" data-bundle-key="' + bun.key + '">';
+            html += '\uD83D\uDCD6 Voir le coffret';
+            html += '</a>';
 
             html += '</div>';
         }
@@ -286,6 +296,11 @@
 
     // Scroll handler — smooth scroll one card width
     document.addEventListener('click', function(e) {
+        var bundleCard = e.target.closest('.bundle-card-dynamic[data-bundle-url]');
+        if (bundleCard && !e.target.closest('[data-action="open-bundle"]')) {
+            window.location.href = bundleCard.getAttribute('data-bundle-url');
+            return;
+        }
         // Arrow click
         var arrowTarget = e.target.closest('[data-action="scroll-bundles"]');
         if (arrowTarget) {
@@ -307,6 +322,15 @@
                     cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
                 }
             }
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        var bundleCard = e.target.closest('.bundle-card-dynamic[data-bundle-url]');
+        if (!bundleCard) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = bundleCard.getAttribute('data-bundle-url');
         }
     });
 

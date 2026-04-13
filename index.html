@@ -569,7 +569,7 @@
                 <li><a href="#packs">Coffrets</a></li>
                 <li><a href="pages/retours.html">Garanties</a></li>
                 <li><a href="pages/blog.html">Blog</a></li>
-                <li><a href="pages/diagnostic.html">Diagnostic</a></li>
+                <li><a href="/diagnostic.html">Diagnostic</a></li>
                 <li><a href="pages/guide-beaute.html">Guide Beaut&eacute;</a></li>
                 <li><a href="pages/a-propos.html">&Agrave; propos</a></li>
                 <li><a href="pages/account.html" id="navAccount">Mon compte</a></li>
@@ -653,7 +653,7 @@
             <div class="section-header">
                 <span class="section-tag">&#10024; Intelligence Beaut&eacute;</span>
                 <h2 id="pourVousTitle">S&eacute;lectionn&eacute; pour vous</h2>
-                <p class="ai-section-desc"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="pages/diagnostic.html" id="aiSectionLink" class="ai-section-link">Faire mon diagnostic &rarr;</a></p>
+                <p class="ai-section-desc"><span id="aiSectionDesc">Nos recommandations personnalis&eacute;es par notre IA beaut&eacute;.</span> <a href="/diagnostic.html" id="aiSectionLink" class="ai-section-link">Faire mon diagnostic &rarr;</a></p>
             </div>
             <div id="aiRecommendations"></div>
         </div>
@@ -670,7 +670,7 @@
             <div id="routineBuilder"></div>
             <div class="routine-footer">
                 <p class="routine-footer-hint">Pas s&ucirc;re de vos choix ?</p>
-                <a href="pages/diagnostic.html" class="btn btn-outline routine-diag-btn" id="routineDiagBtn">&#10024; Laissez l'IA choisir pour vous &rarr;</a>
+                <a href="/diagnostic.html" class="btn btn-outline routine-diag-btn" id="routineDiagBtn">&#10024; Laissez l'IA choisir pour vous &rarr;</a>
                 <p class="routine-subtext" id="routineSubtext">2 minutes, 4 questions. L'IA cr&eacute;e votre routine sur mesure.</p>
             </div>
         </div>
@@ -750,7 +750,7 @@
                 <h2 class="promo-offer-title">-10% avec le code <strong>BIENVENUE10</strong></h2>
                 <p class="promo-offer-desc">Valable sur tout le site, sans minimum d'achat.</p>
             </div>
-            <a href="pages/category.html" class="btn promo-offer-btn">Voir la boutique</a>
+            <a href="/pages/category.html" class="btn promo-offer-btn">Voir la boutique</a>
         </div>
     </section>
 
@@ -780,7 +780,7 @@
     </div>
 
     <!-- Blog — Derniers articles -->
-    <section class="blog-preview-section anim-fade-up" aria-labelledby="blogPreviewTitle">
+    <section class="blog-preview-section anim-fade-up" aria-labelledby="blogPreviewTitle" hidden aria-hidden="true">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Notre blog</span>
@@ -828,7 +828,7 @@
                     <strong style="font-size:1rem;">Questions fr&eacute;quentes</strong>
                     <span style="font-size:.85rem;color:var(--color-text-light);text-align:center;">Livraison, retours, paiement... Trouvez votre r&eacute;ponse en 1 clic.</span>
                 </a>
-                <a href="#" onclick="event.preventDefault();if(typeof toggleChat==='function')toggleChat();else if(document.querySelector('.chat-toggle'))document.querySelector('.chat-toggle').click();" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);cursor:pointer;">
+                <a href="#chat" onclick="event.preventDefault();if(window.openEclatChat)window.openEclatChat();" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;background:var(--color-white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);cursor:pointer;">
                     <span style="font-size:2rem;">&#129302;</span>
                     <strong style="font-size:1rem;">Chatbot IA</strong>
                     <span style="font-size:.85rem;color:var(--color-text-light);text-align:center;">Notre assistant r&eacute;pond &agrave; vos questions 24h/24, 7j/7.</span>
@@ -872,7 +872,7 @@
                     <p id="footerTagline">Beaut&eacute; &amp; Wellness Premium</p>
                     <p class="footer-desc" id="footerDesc">Des soins s&eacute;lectionn&eacute;s pour leur efficacit&eacute; prouv&eacute;e. Programme fid&eacute;lit&eacute; &Eacute;clats, livraison suivie, satisfait ou rembours&eacute;.</p>
                     <div class="footer-diag-wrap">
-                        <a href="pages/diagnostic.html" id="footerDiagLink" class="footer-diag-link">Mon diagnostic beaut&eacute; gratuit &rarr;</a>
+                        <a href="/diagnostic.html" id="footerDiagLink" class="footer-diag-link">Mon diagnostic beaut&eacute; gratuit &rarr;</a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -901,7 +901,7 @@
                     <ul>
                         <li><a href="pages/blog.html" id="fl_blog">Blog Beaut&eacute;</a></li>
                         <li><a href="pages/guide-beaute.html" id="fl_guide">Guide Scientifique</a></li>
-                        <li><a href="pages/diagnostic.html" id="fl_diag">Diagnostic IA</a></li>
+                        <li><a href="/diagnostic.html" id="fl_diag">Diagnostic IA</a></li>
                         <li><a href="pages/routine-builder.html" id="fl_routine">Routine Builder</a></li>
                     </ul>
                 </div>
@@ -1042,10 +1042,10 @@
     })();
     </script>
 
-    <script src="js/products.js?v=5" defer></script>
+    <script src="js/products.js?v=7" defer></script>
     <script src="js/products-details.js?v=1" defer fetchpriority="low"></script>
     <script src="js/cart.js?v=2" defer></script>
-    <script src="js/i18n.js?v=8" defer></script>
+    <script src="js/i18n.js?v=9" defer></script>
     <script src="js/app.js?v=9" defer></script>
     <script src="js/wishlist.js?v=3" defer fetchpriority="low"></script>
     <script src="js/recently-viewed.js?v=2" defer fetchpriority="low"></script>
@@ -1143,13 +1143,13 @@
     </script>
 
     <!-- Floating CTA button (appears on scroll past hero) -->
-    <a href="pages/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic gratuit">
+    <a href="/diagnostic.html" id="floatingCTA" class="floating-cta" aria-label="Mon diagnostic gratuit">
         <span aria-hidden="true">&#10024;</span> Mon diagnostic gratuit
     </a>
 <script src="js/routine-builder.js?v=3" defer fetchpriority="low"></script>
 <script src="js/bundles-dynamic.js?v=4" defer fetchpriority="low"></script>
 <script src="js/homepage.js?v=12" defer></script>
-<script src="js/mega-menu.js?v=11" defer fetchpriority="low"></script>
+<script src="js/mega-menu.js?v=15" defer fetchpriority="low"></script>
 <script src="js/animations.js" defer fetchpriority="low"></script>
 <script src="js/preferences.js" defer fetchpriority="low"></script>
 <script>
