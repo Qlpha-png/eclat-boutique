@@ -2,3 +2,7 @@
 node_modules/
 
 .env*
+.server.pid
+reaudit_batch_*.json
+rimg_*.jpg
+dl_all.sh

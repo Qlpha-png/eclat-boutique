@@ -36,6 +36,7 @@
         eclat: '\u2728',
         antiage: '\uD83D\uDC51',
         glow: '\uD83C\uDF38',
+        soin: '\u2728',
         hydra: '\uD83D\uDCA7',
         barbe: '\uD83E\uDDD4',
         nails: '\uD83D\uDC85',
@@ -49,7 +50,8 @@
     var BUNDLE_URLS = {
         eclat: '/products/coffret-eclat.html',
         antiage: '/products/coffret-anti-age.html',
-        glow: '/products/coffret-glow.html'
+        glow: '/products/coffret-glow.html',
+        soin: '/products/coffret-soin.html'
     };
 
     function getBundleUrl(bundleKey) {
