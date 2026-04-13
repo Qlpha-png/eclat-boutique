@@ -1,6 +1,10 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": ".",
+    "rewrites": [
+        { "source": "/blog", "destination": "/blog.html" },
+        { "source": "/blog/(.*)", "destination": "/pages/blog/$1" }
+    ],
     "crons": [
         { "path": "/api/email-sequence", "schedule": "0 */1 * * *" },
         { "path": "/api/push-daily", "schedule": "0 9 * * *" }
