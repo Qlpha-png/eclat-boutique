@@ -178,7 +178,7 @@
         </div>
     </div>
 
-    <script src="../js/products.js?v=5"></script>
+    <script src="../js/products.js?v=8"></script>
     <script src="../js/products-details.js?v=1"></script>
     <script src="../js/i18n.js?v=5"></script>
     <script>
@@ -597,13 +597,20 @@
 
             // Cross-sell: related products
             var crossSellMap = {
-                1:[8,3], 2:[5,6], 3:[8,4], 4:[3,8], 5:[2,9],
-                6:[2,5], 7:[1,10], 8:[11,9], 9:[8,12], 10:[8,7],
-                11:[8,10], 12:[9,11], 13:[14,7], 14:[13,15], 15:[2,5]
+                1:[148,12], 3:[7,8], 4:[8,9], 5:[386,9], 6:[7,12],
+                7:[3,166], 8:[166,9], 9:[8,30], 11:[8,9], 12:[148,1],
+                30:[11,9], 146:[157,166], 148:[1,12], 157:[166,146], 166:[8,11], 386:[5,8]
             };
             var related = (crossSellMap[product.id] || [])
                 .map(function(rid){return PRODUCTS.find(function(p){return p.id===rid;});})
                 .filter(Boolean);
+            if (related.length === 0) {
+                related = PRODUCTS.filter(function(candidate) {
+                    if (candidate.id === product.id) return false;
+                    if (candidate.catalogGroup && product.catalogGroup) return candidate.catalogGroup === product.catalogGroup;
+                    return candidate.category === product.category;
+                }).slice(0, 3);
+            }
 
             if (related.length > 0) {
                 document.getElementById('ppCrossSell').innerHTML =
@@ -836,7 +843,7 @@
         }
     </script>
     <script src="../js/themes.js?v=2" defer></script>
-<script src="../js/mega-menu.js?v=11" defer></script>
+<script src="../js/mega-menu.js?v=15" defer></script>
     <script src="../js/social-proof.js?v=2" defer></script>
     <script src="../js/auth.js?v=2" defer></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>

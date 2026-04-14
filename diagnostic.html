@@ -181,7 +181,7 @@
         <div class="diag-result" id="diagResult"></div>
     </div>
 
-    <script src="js/products.js?v=7"></script>
+    <script src="js/products.js?v=8"></script>
     <script>
     (function() {
         'use strict';
@@ -768,7 +768,7 @@
             // Step 4: Massage/activation (si temps >= 5min)
             if (time !== '2min' && budget !== 'low') {
                 if (concern === 'glow' || concern === 'pores') {
-                    steps.push({ id: 2, step: 'Massage Gua Sha', why: 'Active la microcirculation pour un teint lumineux' });
+                    steps.push({ id: 386, step: 'Massage facial', why: 'Le duo gua sha + jade roller active la microcirculation et reveille l eclat' });
                 } else if (concern === 'dark-circles') {
                     steps.push({ id: 5, step: 'Ice Roller', why: 'Effet d\u00e9congestionnant imm\u00e9diat, r\u00e9duit les poches' });
                 }
@@ -797,7 +797,7 @@
             } else if (concern === 'aging') {
                 steps.push({ id: 1, step: 'Th\u00e9rapie LED', why: 'Lumi\u00e8re rouge 630nm \u2014 stimulation du collag\u00e8ne profond' });
             } else if (concern === 'glow' || concern === 'hydration') {
-                steps.push({ id: 10, step: 'Masque Collag\u00e8ne', why: 'Lifting et hydratation intense, effet glass skin' });
+                    steps.push({ id: 166, step: 'Serum hydratant', why: 'L acide hyaluronique repulpe, lisse et recharge la peau en eau' });
             } else if (concern === 'pores') {
                 steps.push({ id: 3, step: 'Exfoliation ultrason', why: 'Resurfa\u00e7age doux pour affiner le grain de peau' });
             } else if (concern === 'dark-circles') {
@@ -822,7 +822,7 @@
 
             // Step 5: Massage relaxant (si temps et budget)
             if ((time === '10min' || time === '10min+') && (budget === 'high' || budget === 'premium')) {
-                steps.push({ id: 6, step: 'Derma Roller', why: 'Micro-needling doux \u2014 stimule le renouvellement cellulaire' });
+                steps.push({ id: 6, step: 'Massage EMS', why: 'Le roller EMS tonifie l ovale et apporte une finition cabine a domicile' });
             }
 
             return steps;

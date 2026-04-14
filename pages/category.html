@@ -148,7 +148,7 @@
     <!-- BreadcrumbList JSON-LD -->
     <script type="application/ld+json" id="breadcrumbLD">{}</script>
 
-    <script src="../js/products.js?v=5"></script>
+    <script src="../js/products.js?v=8"></script>
     <script src="../js/cart.js?v=2"></script>
     <script src="../js/i18n.js?v=5"></script>
     <script>
@@ -204,179 +204,321 @@
     <script>
     (function() {
         var params = new URLSearchParams(window.location.search);
-        var cat = params.get('cat') || '';
-        var subcat = params.get('sub') || '';
-        var page = parseInt(params.get('page')) || 1;
+        var rawCat = params.get('cat') || '';
+        var page = parseInt(params.get('page'), 10) || 1;
         var sort = params.get('sort') || 'popular';
-        // gender/concern/subcategory not in DB yet — removed
+        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+
+        var FILTERS = [
+            { key: '', label: 'Tous' },
+            { key: 'outils', label: 'Dispositifs' },
+            { key: 'accessoire', label: 'Accessoires' },
+            { key: 'serums', label: 'Sérums' },
+            { key: 'soins-cibles', label: 'Soins ciblés' },
+            { key: 'coffrets', label: 'Coffrets' }
+        ];
 
         var CATEGORY_META = {
-            visage: { title: 'Soins Visage', desc: 'Masques LED, gua sha, s\u00e9rums et plus pour une peau rayonnante.' },
-            corps: { title: 'Soins Corps', desc: 'Gommages, huiles, massages et anti-cellulite pour un corps sublime.' },
-            cheveux: { title: 'Cheveux', desc: 'Brosses, s\u00e9rums capillaires et accessoires coiffure tendance.' },
-            ongles: { title: 'Ongles', desc: 'Vernis, nail art, outils et lampes UV pour des ongles parfaits.' },
-            homme: { title: 'Homme', desc: 'Grooming, barbe et skincare sp\u00e9cialement con\u00e7us pour les hommes.' },
-            bienetre: { title: 'Bien-\u00eatre', desc: 'Aromath\u00e9rapie, massage et relaxation pour votre bien-\u00eatre.' },
-            maquillage: { title: 'Maquillage Outils', desc: 'Pinceaux, \u00e9ponges et rangement pour un maquillage pro.' },
-            voyage: { title: 'Voyage', desc: 'Minis, kits et trousses parfaits pour voyager l\u00e9ger.' },
-            accessoire: { title: 'Accessoires', desc: 'Miroirs LED, rangement beaut\u00e9 et headbands tendance.' },
-            coffrets: { title: 'Coffrets & Sets', desc: 'Gift sets et bundles th\u00e9matiques pour offrir ou se faire plaisir.' },
-            aromatherapie: { title: 'Bien-\u00eatre', desc: 'Diffuseurs, huiles essentielles et relaxation.' },
-            soin: { title: 'Skincare', desc: 'S\u00e9rums, cr\u00e8mes et soins pour une peau parfaite.' },
-            outils: { title: 'Outils Beaut\u00e9', desc: 'Accessoires et appareils de soin haute technologie.' }
+            '': {
+                title: 'Sélection Maison Éclat',
+                desc: 'Une boutique resserrée autour des appareils experts, sérums ciblés et coffrets premium Maison Éclat.'
+            },
+            outils: {
+                title: 'Dispositifs Premium',
+                desc: 'Les appareils visage et outils experts Maison Éclat pour nettoyer, préparer, tonifier et stimuler la peau.'
+            },
+            accessoire: {
+                title: 'Accessoires Beauté',
+                desc: 'Une sélection courte d accessoires premium pour le massage facial et le drainage à la maison.'
+            },
+            soin: {
+                title: 'Skincare Science-Driven',
+                desc: 'Les soins ciblés et sérums essentiels Maison Éclat pour une routine courte, lisible et efficace.'
+            },
+            serums: {
+                title: 'Sérums Ciblés',
+                desc: 'Vitamine C, niacinamide, peptides, hyaluronique et actifs correcteurs pour une routine experte sans superflu.'
+            },
+            'soins-cibles': {
+                title: 'Soins Yeux & Lèvres',
+                desc: 'Les essentiels ciblés pour le regard, les lèvres et les zones marquées.'
+            },
+            coffrets: {
+                title: 'Coffrets Maison Éclat',
+                desc: 'Quatre routines prêtes à l emploi pour simplifier l achat et créer une expérience premium cohérente.'
+            }
         };
 
-        var lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
-        // Coffrets = bundles sur la page d'accueil, pas des produits individuels
-        if (cat === 'coffrets') {
-            window.location.href = '/index.html#packs';
-            return;
+        var BUNDLE_ROUTES = {
+            eclat: '/products/coffret-eclat.html',
+            antiage: '/products/coffret-anti-age.html',
+            glow: '/products/coffret-glow.html',
+            soin: '/products/coffret-soin.html'
+        };
+
+        function normalizeCat(value) {
+            if (!value) return '';
+            if (value === 'outils' || value === 'dispositifs') return 'outils';
+            if (value === 'accessoire' || value === 'accessoires') return 'accessoire';
+            if (value === 'serums') return 'serums';
+            if (value === 'soins-cibles') return 'soins-cibles';
+            if (value === 'coffrets') return 'coffrets';
+            if (value === 'soin' || value === 'visage' || value === 'skincare' || value === 'corps') return 'soin';
+            if (value === 'cheveux' || value === 'aromatherapie') return 'accessoire';
+            if (value === 'homme') return 'outils';
+            if (value === 'ongles') return 'soins-cibles';
+            return '';
         }
-        var meta = CATEGORY_META[cat] || { title: 'Tous les produits', desc: 'D\u00e9couvrez notre collection compl\u00e8te.' };
-        // Use translated category label if available
-        var catTitle = (typeof getCategoryText === 'function' && cat) ? getCategoryText(cat, lang) : meta.title;
-        document.getElementById('catTitle').textContent = catTitle;
-        var bcCat = document.getElementById('breadcrumbCategory');
-        if (bcCat) bcCat.textContent = catTitle;
-        document.getElementById('catDesc').textContent = meta.desc;
-        document.getElementById('pageTitle').textContent = catTitle + ' - \u00c9CLAT';
-        document.getElementById('pageDesc').content = meta.desc;
 
-        // Set OG & Twitter meta tags dynamically
-        var ogDesc = document.getElementById('ogDesc');
-        if (ogDesc) ogDesc.setAttribute('content', meta.desc);
-        var twTitle = document.getElementById('twTitle');
-        if (twTitle) twTitle.setAttribute('content', catTitle + ' - \u00c9CLAT');
-        var twDesc = document.getElementById('twDesc');
-        if (twDesc) twDesc.setAttribute('content', meta.desc);
+        function escapeHTML(value) {
+            if (typeof value !== 'string') return value;
+            var div = document.createElement('div');
+            div.textContent = value;
+            return div.innerHTML;
+        }
 
-        // Set canonical URL with category parameter
-        var canonicalUrl = 'https://maison-eclat.shop/pages/category.html';
-        if (cat) canonicalUrl += '?cat=' + encodeURIComponent(cat);
-        var canonical = document.getElementById('canonicalLink');
-        if (canonical) canonical.href = canonicalUrl;
+        function formatPrice(value) {
+            return parseFloat(value).toFixed(2).replace('.', ',') + ' \u20ac';
+        }
 
-        // Set filter values from URL
-        document.getElementById('sortSelect').value = sort;
+        function getProduct(productId) {
+            if (typeof PRODUCTS === 'undefined') return null;
+            for (var i = 0; i < PRODUCTS.length; i++) {
+                if (PRODUCTS[i].id === productId) return PRODUCTS[i];
+            }
+            return null;
+        }
 
-        // BreadcrumbList
-        document.getElementById('breadcrumbLD').textContent = JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            'itemListElement': [
-                { '@type': 'ListItem', position: 1, name: '\u00c9CLAT', item: 'https://maison-eclat.shop' },
-                { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://maison-eclat.shop/#products' },
-                { '@type': 'ListItem', position: 3, name: meta.title }
-            ]
-        });
+        function getImageUrl(url) {
+            if (!url) return '';
+            if (url.indexOf('/api/img') === 0 || url.indexOf('/assets/') === 0) return url;
+            if (url.indexOf('cjdropshipping.com') !== -1) return '/api/img?url=' + encodeURIComponent(url);
+            return url;
+        }
 
-        // Populate subcategory pills
-        if (cat && typeof PRODUCTS !== 'undefined') {
-            var subcats = {};
-            PRODUCTS.filter(function(p) { return p.category === cat; }).forEach(function(p) {
-                if (p.subcategory) subcats[p.subcategory] = (subcats[p.subcategory] || 0) + 1;
+        function buildBundleCards() {
+            if (typeof BUNDLES === 'undefined') return [];
+            return BUNDLES.map(function(bundle, index) {
+                var bundleProducts = (bundle.productIds || []).map(getProduct).filter(Boolean);
+                var compareAt = bundleProducts.reduce(function(sum, product) {
+                    return sum + (product.price || 0);
+                }, 0);
+                var firstProduct = bundleProducts[0] || {};
+                return {
+                    kind: 'bundle',
+                    id: 'bundle-' + bundle.key,
+                    key: bundle.key,
+                    priority: index + 1,
+                    category: 'coffrets',
+                    catalogGroup: 'coffrets',
+                    name: bundle.name,
+                    description: bundle.description || 'Routine premium Maison Éclat.',
+                    price: bundle.price,
+                    compareAt: compareAt > bundle.price ? compareAt : null,
+                    image: firstProduct.image || '/favicon-192.png',
+                    badge: 'coffret',
+                    route: BUNDLE_ROUTES[bundle.key] || '/index.html#packs'
+                };
             });
-            var subcatEl = document.getElementById('catSubcats');
-            var baseUrl = '/pages/category.html?cat=' + encodeURIComponent(cat);
-            subcatEl.innerHTML = '<a href="' + baseUrl + '" class="' + (!subcat ? 'active' : '') + '">Tous</a>' +
-                Object.keys(subcats).map(function(s) {
-                    return '<a href="' + baseUrl + '&sub=' + encodeURIComponent(s) + '" class="' + (subcat === s ? 'active' : '') + '">' +
-                        s.charAt(0).toUpperCase() + s.slice(1) + ' (' + subcats[s] + ')</a>';
-                }).join('');
+        }
+
+        function getAllItems() {
+            var productItems = (typeof PRODUCTS !== 'undefined' ? PRODUCTS.slice() : []).map(function(product) {
+                return {
+                    kind: 'product',
+                    id: product.id,
+                    priority: 100 + (product.bestsellerRank || product.id),
+                    category: product.category,
+                    catalogGroup: product.catalogGroup || product.category,
+                    name: product.name,
+                    description: product.description || '',
+                    price: product.price,
+                    oldPrice: product.oldPrice || product.compare_at_price || null,
+                    image: product.image || '',
+                    badge: product.badge || '',
+                    rating: product.rating || 0,
+                    reviews: product.reviews || 0,
+                    bestseller: !!product.bestseller,
+                    bestsellerRank: product.bestsellerRank || 999
+                };
+            });
+            return productItems.concat(buildBundleCards());
+        }
+
+        function filterItems(items, cat) {
+            if (!cat) return items;
+            if (cat === 'coffrets') return items.filter(function(item) { return item.kind === 'bundle'; });
+            if (cat === 'serums') return items.filter(function(item) { return item.kind === 'product' && item.catalogGroup === 'serums'; });
+            if (cat === 'soins-cibles') return items.filter(function(item) { return item.kind === 'product' && item.catalogGroup === 'soins-cibles'; });
+            if (cat === 'soin') return items.filter(function(item) { return item.kind === 'product' && item.category === 'soin'; });
+            if (cat === 'outils' || cat === 'accessoire') {
+                return items.filter(function(item) { return item.kind === 'product' && item.category === cat; });
+            }
+            return items;
+        }
+
+        function sortItems(items, sortKey) {
+            var copy = items.slice();
+            if (sortKey === 'price_asc') {
+                copy.sort(function(a, b) { return a.price - b.price; });
+                return copy;
+            }
+            if (sortKey === 'price_desc') {
+                copy.sort(function(a, b) { return b.price - a.price; });
+                return copy;
+            }
+            if (sortKey === 'newest') {
+                copy.sort(function(a, b) {
+                    var aId = typeof a.id === 'number' ? a.id : 0;
+                    var bId = typeof b.id === 'number' ? b.id : 0;
+                    return bId - aId;
+                });
+                return copy;
+            }
+            copy.sort(function(a, b) {
+                var aScore = (a.kind === 'bundle' ? 0 : 1) + (a.bestseller ? 2 : 0);
+                var bScore = (b.kind === 'bundle' ? 0 : 1) + (b.bestseller ? 2 : 0);
+                if (aScore !== bScore) return bScore - aScore;
+                if ((a.bestsellerRank || 999) !== (b.bestsellerRank || 999)) return (a.bestsellerRank || 999) - (b.bestsellerRank || 999);
+                return (a.priority || 999) - (b.priority || 999);
+            });
+            return copy;
+        }
+
+        function getFilterHref(filterKey) {
+            if (!filterKey) return '/pages/category.html';
+            return '/pages/category.html?cat=' + encodeURIComponent(filterKey);
+        }
+
+        function renderFilterPills(allItems, activeCat) {
+            var filterHtml = FILTERS.map(function(filter) {
+                var count = filterItems(allItems, filter.key).length;
+                return '<a href="' + getFilterHref(filter.key) + '" class="' + (activeCat === filter.key ? 'active' : '') + '">' +
+                    escapeHTML(filter.label) + ' (' + count + ')</a>';
+            }).join('');
+            document.getElementById('catSubcats').innerHTML = filterHtml;
+        }
+
+        function renderGrid(items, total, totalPages) {
+            var grid = document.getElementById('catGrid');
+            document.getElementById('catCount').textContent = total + ' élément' + (total > 1 ? 's' : '');
+
+            if (!items.length) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--color-text-light);padding:40px;">Aucun produit dans cette sélection.</p>';
+                document.getElementById('catPagination').innerHTML = '';
+                return;
+            }
+
+            grid.innerHTML = items.map(function(item) {
+                var href = item.kind === 'bundle' ? item.route : '/pages/product.html?id=' + item.id;
+                var image = getImageUrl(item.image);
+                var oldPrice = item.compareAt || item.oldPrice;
+                var name = item.name;
+                if (item.kind === 'product' && typeof getProductText === 'function') {
+                    name = getProductText(item.id, 'name', lang) || item.name;
+                }
+                var cta = item.kind === 'bundle'
+                    ? '<span class="cat-card-btn">Voir le coffret</span>'
+                    : '<button class="cat-card-btn" data-action="add-to-cart" data-pid="' + item.id + '">Ajouter au panier</button>';
+                return '<a href="' + href + '" class="cat-card" data-product-id="' + escapeHTML(String(item.id)) + '" style="text-decoration:none;color:inherit;">' +
+                    '<div class="cat-card-img">' +
+                    '<img src="' + escapeHTML(image) + '" alt="' + escapeHTML(name) + '" width="300" height="260" loading="lazy">' +
+                    (item.badge ? '<span class="cat-card-badge">' + escapeHTML(item.badge) + '</span>' : '') +
+                    '</div>' +
+                    '<div class="cat-card-info">' +
+                    '<div class="cat-card-name">' + escapeHTML(name) + '</div>' +
+                    '<div class="cat-card-price">' + formatPrice(item.price) +
+                    (oldPrice ? '<span class="old">' + formatPrice(oldPrice) + '</span>' : '') +
+                    '</div></div>' +
+                    cta +
+                    '</a>';
+            }).join('');
+
+            var pag = document.getElementById('catPagination');
+            if (totalPages <= 1) {
+                pag.innerHTML = '';
+                return;
+            }
+
+            var paginationHtml = '';
+            paginationHtml += '<button ' + (page <= 1 ? 'disabled' : '') + ' data-page-nav="' + (page - 1) + '">&laquo;</button>';
+            for (var i = 1; i <= totalPages; i++) {
+                if (i <= 5 || i === totalPages) {
+                    paginationHtml += '<button class="' + (i === page ? 'active' : '') + '" data-page-nav="' + i + '">' + i + '</button>';
+                } else if (i === 6) {
+                    paginationHtml += '<button disabled>...</button>';
+                }
+            }
+            paginationHtml += '<button ' + (page >= totalPages ? 'disabled' : '') + ' data-page-nav="' + (page + 1) + '">&raquo;</button>';
+            pag.innerHTML = paginationHtml;
         }
 
         function loadProducts() {
             var grid = document.getElementById('catGrid');
-            grid.innerHTML = '<div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div>';
+            grid.innerHTML = '<div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div><div class="cat-skeleton"></div>';
 
-            var sort = document.getElementById('sortSelect').value;
-
-            // Use local PRODUCTS catalogue (515 produits)
-            var filtered = typeof PRODUCTS !== 'undefined' ? PRODUCTS.slice() : [];
-            if (cat) filtered = filtered.filter(function(p) { return p.category === cat; });
-            if (subcat) filtered = filtered.filter(function(p) { return p.subcategory && p.subcategory.toLowerCase() === subcat.toLowerCase(); });
-
-            // Sort
-            if (sort === 'price_asc') filtered.sort(function(a,b) { return a.price - b.price; });
-            else if (sort === 'price_desc') filtered.sort(function(a,b) { return b.price - a.price; });
-            else if (sort === 'newest') filtered.sort(function(a,b) { return (b.id || 0) - (a.id || 0); });
-            else filtered.sort(function(a,b) { return (b.bestseller ? 1 : 0) - (a.bestseller ? 1 : 0); });
-
-            // Pagination locale
+            var allItems = getAllItems();
+            var currentCat = normalizeCat(rawCat);
+            var filtered = filterItems(allItems, currentCat);
+            var sorted = sortItems(filtered, document.getElementById('sortSelect').value);
             var perPage = 24;
-            var totalPages = Math.ceil(filtered.length / perPage);
-            var paged = filtered.slice((page - 1) * perPage, page * perPage);
-            renderGrid(paged, filtered.length, totalPages);
+            var totalPages = Math.max(1, Math.ceil(sorted.length / perPage));
+            if (page > totalPages) page = totalPages;
+            var paged = sorted.slice((page - 1) * perPage, page * perPage);
+            renderGrid(paged, sorted.length, totalPages);
         }
 
-        function renderGrid(products, total, totalPages) {
-            var grid = document.getElementById('catGrid');
-            document.getElementById('catCount').textContent = total + ' produit' + (total > 1 ? 's' : '');
-
-            if (!products || products.length === 0) {
-                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--color-text-light);padding:40px;">Aucun produit dans cette cat\u00e9gorie.</p>';
-                return;
-            }
-
-            grid.innerHTML = products.map(function(p) {
-                var img = Array.isArray(p.images) && p.images[0] ? p.images[0] : (p.image || '');
-                // Fallback proxy if not already proxied by products.js
-                if (img && img.indexOf('/api/img') === -1 && img.indexOf('cjdropshipping.com') !== -1) {
-                    img = '/api/img?url=' + encodeURIComponent(img);
-                }
-                var oldPrice = p.compare_at_price || p.oldPrice;
-                var pName = (typeof getProductText === 'function') ? (getProductText(p.id, 'name', lang) || p.name) : p.name;
-                var pDesc = (typeof getProductText === 'function') ? (getProductText(p.id, 'description', lang) || p.description) : p.description;
-                return '<a href="/pages/product.html?id=' + p.id + '" class="cat-card" data-product-id="' + p.id + '" style="text-decoration:none;color:inherit;">' +
-                    '<div class="cat-card-img">' +
-                    '<img src="' + escapeHTML(img) + '" alt="' + escapeHTML(pName) + '" width="300" height="260" loading="lazy">' +
-                    (p.badge ? '<span class="cat-card-badge">' + escapeHTML(p.badge) + '</span>' : '') +
-                    '</div>' +
-                    '<div class="cat-card-info">' +
-                    '<div class="cat-card-name">' + escapeHTML(pName) + '</div>' +
-                    '<div class="cat-card-price">' + formatPrice(p.price) +
-                    (oldPrice ? '<span class="old">' + formatPrice(oldPrice) + '</span>' : '') +
-                    '</div></div>' +
-                    '<button class="cat-card-btn" data-action="add-to-cart" data-pid="' + p.id + '">Ajouter au panier</button>' +
-                    '</a>';
-            }).join('');
-
-            // Pagination
-            var pag = document.getElementById('catPagination');
-            if (totalPages > 1) {
-                var html = '';
-                html += '<button ' + (page <= 1 ? 'disabled' : '') + ' data-page-nav="' + (page-1) + '">&laquo;</button>';
-                for (var i = 1; i <= Math.min(totalPages, 5); i++) {
-                    html += '<button class="' + (i === page ? 'active' : '') + '" data-page-nav="' + i + '">' + i + '</button>';
-                }
-                if (totalPages > 5) html += '<button disabled>...</button><button data-page-nav="' + totalPages + '">' + totalPages + '</button>';
-                html += '<button ' + (page >= totalPages ? 'disabled' : '') + ' data-page-nav="' + (page+1) + '">&raquo;</button>';
-                pag.innerHTML = html;
-            } else {
-                pag.innerHTML = '';
-            }
+        function refreshMeta() {
+            var cat = normalizeCat(rawCat);
+            var meta = CATEGORY_META[cat] || CATEGORY_META[''];
+            document.getElementById('catTitle').textContent = meta.title;
+            document.getElementById('catDesc').textContent = meta.desc;
+            document.getElementById('pageTitle').textContent = meta.title + ' - \u00c9CLAT';
+            document.getElementById('pageDesc').setAttribute('content', meta.desc);
+            var bcCat = document.getElementById('breadcrumbCategory');
+            if (bcCat) bcCat.textContent = meta.title;
+            var ogDesc = document.getElementById('ogDesc');
+            if (ogDesc) ogDesc.setAttribute('content', meta.desc);
+            var twTitle = document.getElementById('twTitle');
+            if (twTitle) twTitle.setAttribute('content', meta.title + ' - \u00c9CLAT');
+            var twDesc = document.getElementById('twDesc');
+            if (twDesc) twDesc.setAttribute('content', meta.desc);
+            var canonicalUrl = 'https://maison-eclat.shop/pages/category.html';
+            if (cat) canonicalUrl += '?cat=' + encodeURIComponent(cat);
+            var canonical = document.getElementById('canonicalLink');
+            if (canonical) canonical.href = canonicalUrl;
+            document.getElementById('breadcrumbLD').textContent = JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: '\u00c9CLAT', item: 'https://maison-eclat.shop' },
+                    { '@type': 'ListItem', position: 2, name: 'Boutique', item: 'https://maison-eclat.shop/pages/category.html' },
+                    { '@type': 'ListItem', position: 3, name: meta.title }
+                ]
+            });
         }
 
-        function escapeHTML(s) { if (typeof s !== 'string') return s; var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-        function formatPrice(p) { return parseFloat(p).toFixed(2).replace('.', ',') + ' \u20ac'; }
-
-        window.goPage = function(p) {
-            page = p;
-            var url = new URL(window.location);
-            url.searchParams.set('page', p);
+        window.goPage = function(nextPage) {
+            page = nextPage;
+            var url = new URL(window.location.href);
+            if (page > 1) url.searchParams.set('page', page);
+            else url.searchParams.delete('page');
             window.history.pushState({}, '', url);
             loadProducts();
             window.scrollTo(0, 0);
         };
 
-        // Pagination event delegation (replaces inline onclick)
+        document.getElementById('sortSelect').value = sort;
+        refreshMeta();
+        renderFilterPills(getAllItems(), normalizeCat(rawCat));
+        loadProducts();
+
         document.getElementById('catPagination').addEventListener('click', function(e) {
             var btn = e.target.closest('[data-page-nav]');
             if (!btn || btn.disabled) return;
             goPage(parseInt(btn.getAttribute('data-page-nav'), 10));
         });
 
-        // Category card add-to-cart delegation (data-action handled by app.js if loaded, fallback here)
         document.getElementById('catGrid').addEventListener('click', function(e) {
             var btn = e.target.closest('[data-action="add-to-cart"]');
             if (!btn) return;
@@ -386,17 +528,16 @@
             if (pid && typeof addToCart === 'function') addToCart(pid);
         });
 
-        // Filter change handlers
-        document.getElementById('sortSelect').onchange = function() { page = 1; loadProducts(); };
-        // gender/concern filters removed — columns don't exist in DB yet
-
-        loadProducts();
+        document.getElementById('sortSelect').addEventListener('change', function() {
+            page = 1;
+            loadProducts();
+        });
     })();
     </script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
 </main>
 <script src="../js/themes.js?v=3" defer></script>
-<script src="../js/mega-menu.js?v=11" defer></script>
+<script src="../js/mega-menu.js?v=15" defer></script>
 <script src="../js/push.js?v=2" defer></script>
 <script src="../js/cookie-consent.js" defer></script>
 <script src="../js/chatbot.js?v=5" defer fetchpriority="low"></script>
